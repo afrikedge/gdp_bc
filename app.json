@@ -1,0 +1,33 @@
+{
+  "id": "f4da46eb-f108-4f4c-9235-be1f12de33d6",
+  "name": "gdp_bc",
+  "publisher": "Afrikedge",
+  "version": "24.4.0.1",
+  "brief": "Specific customizations for GDP",
+  "description": "Specific customizations for GDP",
+  "privacyStatement": "https://www.afrikedge.com",
+  "EULA": "https://www.afrikedge.com",
+  "help": "https://www.afrikedge.com",
+  "url": "https://www.afrikedge.com",
+  "contextSensitiveHelpUrl": "https://www.afrikedge.com",
+  "logo": "Logo/ExtensionLogo.jpg",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "24.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 50399
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "13.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}

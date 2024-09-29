@@ -1,0 +1,64 @@
+{
+    "name": "Company ruleset",
+    "description": "Company custom ruleset",
+    "rules": [
+        {
+            "id": "AS0084",
+            "action": "None",
+            "justification": "Justification"
+        },
+        {
+            "id": "AA0074",
+            "action": "None",
+            "justification": "Variable must have a suffix from this list: Msg, Tok, Err, Qst, Lbl, Txt."
+        },
+        {
+            "id": "AA0072",
+            "action": "None",
+            "justification": "The name of variables and parameters must be suffixed with the type or object name."
+        },        
+        {
+            "id": "AA0218",
+            "action": "None",
+            "justification": "The Tooltip property must be filled."
+        },                  
+        {
+            "id": "AL0604",
+            "action": "Error",
+            "justification": "Use of implicit 'with' will be removed in the future. Qualify with '{0}'.This warning will become an error in a future release."
+        },
+        {
+            "id": "AL0606",
+            "action": "Error",
+            "justification": "The 'with' statement is deprecated and will be removed for cloud development in a future release."
+        },
+        {
+            "id": "AL0603",
+            "action": "Error",
+            "justification": "An implicit conversion is being performed from a value of type 'Integer' to a value of type 'Enum'. This conversion can lead to unexpected runtime issues. This warning will become an error in a future release."
+        },        
+        {
+            "id": "AS0092",
+            "action": "None",
+            "justification": "The app.json file must specify an Azure Application Insights resource with the property 'applicationInsightsKey' for monitoring operations related to this extension. See https://docs.microsoft.com/dynamics365/business-central/dev-itpro/administration/telemetry-overview for additional information."
+        },
+        {
+            "id": "AS0005",
+            "action": "None",
+            "justification": "Allow simple if structure"
+        }    
+        ,
+        {
+            "id": "AA0005",
+            "action": "None",
+            "justification": "Allow simple if structure"
+        }  
+        ,
+        {
+            "id": "AA0232",
+            "action": "None",
+            "justification": "bug"
+        } 
+        
+    ]
+}
