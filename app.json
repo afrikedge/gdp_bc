@@ -2,7 +2,7 @@
   "id": "f4da46eb-f108-4f4c-9235-be1f12de33d6",
   "name": "gdp_bc",
   "publisher": "Afrikedge",
-  "version": "24.4.0.1",
+  "version": "1.0.0.0",
   "brief": "Specific customizations for GDP",
   "description": "Specific customizations for GDP",
   "privacyStatement": "https://www.afrikedge.com",
@@ -27,7 +27,7 @@
     "includeSourceInSymbolFile": true
   },
   "runtime": "13.0",
-  "features": [
-    "NoImplicitWith"
+"features": [
+    "NoImplicitWith","TranslationFile","GenerateCaptions"
   ]
 }

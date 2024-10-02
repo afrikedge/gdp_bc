@@ -1,0 +1,95 @@
+table 50057 "Import Data"
+{
+
+    fields
+    {
+        field(1;EntryNo;Integer)
+        {
+            AutoIncrement = true;
+        }
+        field(2;PostingDate;Code[20])
+        {
+        }
+        field(3;GLAccountNo;Code[20])
+        {
+        }
+        field(4;Description;Text[50])
+        {
+        }
+        field(5;CodeAnalytique;Code[20])
+        {
+        }
+        field(6;ExternalDocNo;Code[20])
+        {
+        }
+        field(7;Amount;Decimal)
+        {
+        }
+        field(8;DebitAmount;Decimal)
+        {
+        }
+        field(9;CreditAmount;Decimal)
+        {
+        }
+        field(10;DocumentNo;Code[20])
+        {
+        }
+        field(11;DocNum1;Code[30])
+        {
+        }
+        field(12;DocNum2;Code[30])
+        {
+        }
+        field(13;LocationCode;Code[10])
+        {
+        }
+        field(14;LocationCode2;Code[10])
+        {
+        }
+        field(15;Description2;Text[50])
+        {
+        }
+        field(16;PieceNo;Code[20])
+        {
+        }
+        field(17;InvoiceNo;Code[20])
+        {
+        }
+        field(18;CodeTiers;Code[20])
+        {
+        }
+        field(19;CodeAnalytique2;Code[20])
+        {
+        }
+        field(20;CodeAnalytique3;Code[20])
+        {
+        }
+        field(21;CodeAnalytique4;Code[20])
+        {
+        }
+        field(22;CodeAnalytique5;Code[20])
+        {
+        }
+        field(23;PostingDate2;Code[20])
+        {
+        }
+        field(24;CodeAnalytique6;Code[20])
+        {
+        }
+        field(25;CodeAnalytique7;Code[20])
+        {
+        }
+    }
+
+    keys
+    {
+        key(Key1;EntryNo)
+        {
+        }
+    }
+
+    fieldgroups
+    {
+    }
+}
+
