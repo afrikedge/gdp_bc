@@ -1,8 +1,8 @@
-tableextension 70000126 tableextension70000126 extends "Adjust Exchange Rate Buffer" 
+tableextension 50046 "A02 Adjust Exchange Rate Buf" extends "Adjust Exchange Rate Buffer"
 {
     fields
     {
-        field(50000;IsProgal;Boolean)
+        field(50000; IsProgal; Boolean)
         {
         }
     }
@@ -11,9 +11,9 @@ tableextension 70000126 tableextension70000126 extends "Adjust Exchange Rate Buf
 
         //Unsupported feature: Deletion (KeyCollection) on ""Currency Code,Posting Group,Dimension Entry No.,Posting Date,IC Partner Code"(Key)".
 
-        key(Key1;"Currency Code","Posting Group","Dimension Entry No.","Posting Date","IC Partner Code",IsProgal)
-        {
-        }
+        // key(Key1;"Currency Code","Posting Group","Dimension Entry No.","Posting Date","IC Partner Code",IsProgal)
+        // {
+        // }
     }
 }
 

@@ -4,13 +4,13 @@ table 50033 "Adjustment Header"
 
     fields
     {
-        field(1;"Document Type";Option)
+        field(1; "Document Type"; Option)
         {
             Caption = 'Document Type';
             OptionCaption = 'Exchange,Loan,Borrow,Consignation,Shipment,Invoiced Consumption,FA Conso,Transfer';
             OptionMembers = Exchange,Loan,Borrow,Consignation,Shipment,"Invoiced Consumption","FA Conso",Transfer;
         }
-        field(2;"No.";Code[20])
+        field(2; "No."; Code[20])
         {
             Caption = 'No.';
             Editable = false;
@@ -18,91 +18,91 @@ table 50033 "Adjustment Header"
             trigger OnValidate()
             begin
                 if "No." <> xRec."No." then begin
-                  AddOnSetup.Get;
-                  NoSeriesMgt.TestManual(GetNoSeriesCode);
-                  "No. Series" := '';
+                    AddOnSetup.Get;
+                    NoSeriesMgt.TestManual(GetNoSeriesCode);
+                    "No. Series" := '';
                 end;
             end;
         }
-        field(3;"Posting Date";Date)
+        field(3; "Posting Date"; Date)
         {
             Caption = 'Posting Date';
 
             trigger OnValidate()
             begin
-                if Rec."Document Type" in [Rec."Document Type"::Transfer,Rec."Document Type"::Borrow,
+                if Rec."Document Type" in [Rec."Document Type"::Transfer, Rec."Document Type"::Borrow,
                   Rec."Document Type"::Loan] then
-                  TestStatusOpen;
+                    TestStatusOpen;
             end;
         }
-        field(4;"Posting Description";Text[50])
+        field(4; "Posting Description"; Text[50])
         {
             Caption = 'Posting Description';
         }
-        field(5;"Shortcut Dimension 1 Code";Code[20])
+        field(5; "Shortcut Dimension 1 Code"; Code[20])
         {
             CaptionClass = '1,2,1';
             Caption = 'Shortcut Dimension 1 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(1));
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
 
             trigger OnValidate()
             begin
-                ValidateShortcutDimCode(1,"Shortcut Dimension 1 Code");
+                ValidateShortcutDimCode(1, "Shortcut Dimension 1 Code");
             end;
         }
-        field(6;"Shortcut Dimension 2 Code";Code[20])
+        field(6; "Shortcut Dimension 2 Code"; Code[20])
         {
             CaptionClass = '1,2,2';
             Caption = 'Shortcut Dimension 2 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(2));
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
 
             trigger OnValidate()
             begin
-                ValidateShortcutDimCode(2,"Shortcut Dimension 2 Code");
+                ValidateShortcutDimCode(2, "Shortcut Dimension 2 Code");
             end;
         }
-        field(7;Comment;Boolean)
+        field(7; Comment; Boolean)
         {
-            CalcFormula = Exist("Sales Comment Line" WHERE ("Document Type"=FIELD("Document Type"),
-                                                            "No."=FIELD("No."),
-                                                            "Document Line No."=CONST(0)));
+            CalcFormula = Exist("Sales Comment Line" WHERE("Document Type" = FIELD("Document Type"),
+                                                            "No." = FIELD("No."),
+                                                            "Document Line No." = CONST(0)));
             Caption = 'Comment';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(8;"No. Printed";Integer)
+        field(8; "No. Printed"; Integer)
         {
             Caption = 'No. Printed';
             Editable = false;
         }
-        field(9;"Document Date";Date)
+        field(9; "Document Date"; Date)
         {
             Caption = 'Document Date';
         }
-        field(10;"External Document No.";Code[35])
+        field(10; "External Document No."; Code[35])
         {
             Caption = 'External Document No.';
 
             trigger OnValidate()
             begin
-                if Rec."Document Type"=Rec."Document Type"::Transfer then
-                  TestStatusOpen;
+                if Rec."Document Type" = Rec."Document Type"::Transfer then
+                    TestStatusOpen;
             end;
         }
-        field(11;"No. Series";Code[10])
+        field(11; "No. Series"; Code[10])
         {
             Caption = 'No. Series';
             Editable = false;
             TableRelation = "No. Series";
         }
-        field(12;Status;Option)
+        field(12; Status; Option)
         {
             Caption = 'Status';
             Editable = false;
             OptionCaption = 'Open,Released,Pending Approval,Pending Prepayment,Cancelled';
             OptionMembers = Open,Released,"Pending Approval","Pending Prepayment",Cancelled;
         }
-        field(13;"Customer No.";Code[20])
+        field(13; "Customer No."; Code[20])
         {
             Caption = 'Customer Code';
             TableRelation = Customer;
@@ -110,36 +110,36 @@ table 50033 "Adjustment Header"
             trigger OnValidate()
             begin
                 if Cust.Get("Customer No.") then
-                  "Customer Name" := Cust.Name;
+                    "Customer Name" := Cust.Name;
 
-                if "Document Type"=Rec."Document Type"::Exchange then begin
-                if Cust.Get("Customer No.") then
-                  if Vend.Get(Cust."Related Vendor") then begin
-                    "Vendor No." := Vend."No.";
-                    "Vendor Name" := Vend.Name;
-                  end;
+                if "Document Type" = Rec."Document Type"::Exchange then begin
+                    if Cust.Get("Customer No.") then
+                        if Vend.Get(Cust."Related Vendor") then begin
+                            "Vendor No." := Vend."No.";
+                            "Vendor Name" := Vend.Name;
+                        end;
                 end;
 
-                if "Document Type" in [Rec."Document Type"::Borrow,Rec."Document Type"::Exchange,
+                if "Document Type" in [Rec."Document Type"::Borrow, Rec."Document Type"::Exchange,
                   Rec."Document Type"::Loan] then
-                  if Cust.Get("Customer No.") then
-                    Cust.TestField(Cust."GDP Partner");
+                    if Cust.Get("Customer No.") then
+                        Cust.TestField(Cust."GDP Partner");
 
-                CreateDim(DATABASE::Customer,"Customer No.",DATABASE::Vendor,"Vendor No.",
-                DATABASE::"Responsibility Center","Responsibility Center",0,'',0,'');
+                CreateDim(DATABASE::Customer, "Customer No.", DATABASE::Vendor, "Vendor No.",
+                DATABASE::"Responsibility Center", "Responsibility Center", 0, '', 0, '');
 
 
-                if Rec."Document Type"=Rec."Document Type"::"Invoiced Consumption" then begin
-                  SalesOrderHeader.Reset;
-                  SalesOrderHeader.SetRange(SalesOrderHeader."Document Type",SalesOrderHeader."Document Type"::Invoice);
-                  SalesOrderHeader.SetRange(SalesOrderHeader."Created By Doc Type",SalesOrderHeader."Created By Doc Type"::SortieARefacturer);
-                  SalesOrderHeader.SetRange(SalesOrderHeader."Created By Doc No.",Rec."No.");
-                  if SalesOrderHeader.FindFirst then
-                    Error(Text011Err,SalesOrderHeader."No.");
+                if Rec."Document Type" = Rec."Document Type"::"Invoiced Consumption" then begin
+                    SalesOrderHeader.Reset;
+                    SalesOrderHeader.SetRange(SalesOrderHeader."Document Type", SalesOrderHeader."Document Type"::Invoice);
+                    SalesOrderHeader.SetRange(SalesOrderHeader."Created By Doc Type", SalesOrderHeader."Created By Doc Type"::SortieARefacturer);
+                    SalesOrderHeader.SetRange(SalesOrderHeader."Created By Doc No.", Rec."No.");
+                    if SalesOrderHeader.FindFirst then
+                        Error(Text011Err, SalesOrderHeader."No.");
                 end;
             end;
         }
-        field(14;"Vendor No.";Code[20])
+        field(14; "Vendor No."; Code[20])
         {
             Caption = 'Vendor No.';
             TableRelation = Vendor;
@@ -147,84 +147,84 @@ table 50033 "Adjustment Header"
             trigger OnValidate()
             begin
                 if Vend.Get(Rec."Vendor No.") then
-                  "Vendor Name":=Vend.Name;
+                    "Vendor Name" := Vend.Name;
 
-                if "Document Type" in [Rec."Document Type"::Borrow,Rec."Document Type"::Exchange,
+                if "Document Type" in [Rec."Document Type"::Borrow, Rec."Document Type"::Exchange,
                   Rec."Document Type"::Loan] then
-                  if Vend.Get("Vendor No.") then
-                    Vend.TestField("GDP Partner");
+                    if Vend.Get("Vendor No.") then
+                        Vend.TestField("GDP Partner");
 
 
-                CreateDim(DATABASE::Customer,"Customer No.",DATABASE::Vendor,"Vendor No.",
-                DATABASE::"Responsibility Center","Responsibility Center",0,'',0,'');
+                CreateDim(DATABASE::Customer, "Customer No.", DATABASE::Vendor, "Vendor No.",
+                DATABASE::"Responsibility Center", "Responsibility Center", 0, '', 0, '');
             end;
         }
-        field(15;"Order No.";Code[20])
+        field(15; "Order No."; Code[20])
         {
             Caption = 'Order No.';
-            TableRelation = "Sales Header"."No." WHERE ("Document Type"=CONST(Order));
+            TableRelation = "Sales Header"."No." WHERE("Document Type" = CONST(Order));
         }
-        field(16;"Ship-to Code";Code[10])
+        field(16; "Ship-to Code"; Code[10])
         {
             Caption = 'Ship-to Code';
-            TableRelation = "Ship-to Address".Code WHERE ("Customer No."=FIELD("Customer No."));
+            TableRelation = "Ship-to Address".Code WHERE("Customer No." = FIELD("Customer No."));
         }
-        field(17;"Customer Name";Text[50])
+        field(17; "Customer Name"; Text[50])
         {
             Caption = 'Customer Name';
             Editable = false;
         }
-        field(18;"Vendor Name";Text[50])
+        field(18; "Vendor Name"; Text[50])
         {
             Caption = 'Vendor Name';
             Editable = false;
         }
-        field(21;"Shipment Date";Date)
+        field(21; "Shipment Date"; Date)
         {
             Caption = 'Shipment Date';
         }
-        field(27;"Shipment Method Code";Code[10])
+        field(27; "Shipment Method Code"; Code[10])
         {
             Caption = 'Shipment Method Code';
             TableRelation = "Shipment Method";
         }
-        field(28;"Location Code";Code[10])
+        field(28; "Location Code"; Code[10])
         {
             Caption = 'Location Code';
-            TableRelation = Location WHERE ("Use As In-Transit"=CONST(false),
-                                            "Item Category Code"=FIELD("Item Category Code"),
-                                            "Virtual Location"=CONST(false));
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(false),
+                                            "Item Category Code" = FIELD("Item Category Code"),
+                                            "Virtual Location" = CONST(false));
 
             trigger OnValidate()
             begin
-                if Rec."Document Type"=Rec."Document Type"::Transfer then
-                  TestStatusOpen;
-
-                AFK_SecMgt.CheckWarehouseUser("Location Code");
+                if Rec."Document Type" = Rec."Document Type"::Transfer then
+                    TestStatusOpen;
+                //TODO Migration
+                //AFK_SecMgt.CheckWarehouseUser("Location Code");
             end;
         }
-        field(30;"Shipment Status";Option)
+        field(30; "Shipment Status"; Option)
         {
             Caption = 'Shipment Status';
             Editable = false;
             OptionCaption = ' ,Prepared,Shipped,Confirmed';
             OptionMembers = " ",Prepared,Shipped,Confirmed;
         }
-        field(31;"Reception Validated";Boolean)
+        field(31; "Reception Validated"; Boolean)
         {
             Caption = 'Exchange validated';
             Editable = false;
         }
-        field(32;"Cession Validated";Boolean)
+        field(32; "Cession Validated"; Boolean)
         {
             Caption = 'Exchange validated';
             Editable = false;
         }
-        field(33;"Cession Date";Date)
+        field(33; "Cession Date"; Date)
         {
             Caption = 'Cession Date';
         }
-        field(34;"Receipt Date";Date)
+        field(34; "Receipt Date"; Date)
         {
             Caption = 'Receipt Date';
 
@@ -233,7 +233,7 @@ table 50033 "Adjustment Header"
                 UpdateLinesTransfer;
             end;
         }
-        field(35;"User ID";Code[50])
+        field(35; "User ID"; Code[50])
         {
             Caption = 'User ID';
             Editable = false;
@@ -248,27 +248,28 @@ table 50033 "Adjustment Header"
                 //UserMgt.LookupUserID("User ID");
             end;
         }
-        field(36;"Transfer-to Code";Code[10])
+        field(36; "Transfer-to Code"; Code[10])
         {
             Caption = 'Transfer-to Code';
-            TableRelation = Location WHERE ("Use As In-Transit"=CONST(false),
-                                            "Item Category Code"=FIELD("Item Category Code"),
-                                            "Virtual Location"=CONST(false));
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(false),
+                                            "Item Category Code" = FIELD("Item Category Code"),
+                                            "Virtual Location" = CONST(false));
 
             trigger OnValidate()
             var
                 Location: Record Location;
                 Confirmed: Boolean;
             begin
-                AFK_SecMgt.CheckWarehouseUser("Transfer-to Code");
+                //TODO Migration
+                //AFK_SecMgt.CheckWarehouseUser("Transfer-to Code");
                 UpdateLinesTransfer;
             end;
         }
-        field(37;"In-Transit Code";Code[10])
+        field(37; "In-Transit Code"; Code[10])
         {
             Caption = 'In-Transit Code';
-            TableRelation = Location WHERE ("Transfer Item Transit"=CONST(true),
-                                            "Item Category Code"=FIELD("Item Category Code"));
+            TableRelation = Location WHERE("Transfer Item Transit" = CONST(true),
+                                            "Item Category Code" = FIELD("Item Category Code"));
 
             trigger OnValidate()
             begin
@@ -276,11 +277,11 @@ table 50033 "Adjustment Header"
                 //UpdateTransLines(FIELDNO("In-Transit Code"));
             end;
         }
-        field(38;"BEX Number";Code[20])
+        field(38; "BEX Number"; Code[20])
         {
             Caption = 'BEX Number';
         }
-        field(39;"Item Category Code";Code[10])
+        field(39; "Item Category Code"; Code[10])
         {
             Caption = 'Item Category Code';
             NotBlank = true;
@@ -292,21 +293,21 @@ table 50033 "Adjustment Header"
                 UpdateItemCategory;
             end;
         }
-        field(108;"Credit Notes Import Jrnal";Code[20])
+        field(108; "Credit Notes Import Jrnal"; Code[20])
         {
             Caption = 'Credit Notes Validation Journal';
-            TableRelation = "Gen. Journal Batch".Name WHERE ("Journal Template Name"=FIELD("Sales by Cards Import Tmpl"));
+            TableRelation = "Gen. Journal Batch".Name WHERE("Journal Template Name" = FIELD("Sales by Cards Import Tmpl"));
         }
-        field(109;"Sales by Cards Import Tmpl";Code[10])
+        field(109; "Sales by Cards Import Tmpl"; Code[10])
         {
             TableRelation = "Gen. Journal Template";
         }
-        field(110;"Debit Notes Import Jrnal";Code[20])
+        field(110; "Debit Notes Import Jrnal"; Code[20])
         {
             Caption = 'Debit Notes Validation Journal';
-            TableRelation = "Gen. Journal Batch".Name WHERE ("Journal Template Name"=FIELD("Sales by Cards Import Tmpl"));
+            TableRelation = "Gen. Journal Batch".Name WHERE("Journal Template Name" = FIELD("Sales by Cards Import Tmpl"));
         }
-        field(480;"Dimension Set ID";Integer)
+        field(480; "Dimension Set ID"; Integer)
         {
             Caption = 'Dimension Set ID';
             Editable = false;
@@ -317,17 +318,17 @@ table 50033 "Adjustment Header"
                 ShowDocDim;
             end;
         }
-        field(5700;"Responsibility Center";Code[10])
+        field(5700; "Responsibility Center"; Code[10])
         {
             Caption = 'Responsibility Center';
             TableRelation = "Responsibility Center";
         }
-        field(50000;"Posted Doc No";Code[20])
+        field(50000; "Posted Doc No"; Code[20])
         {
             Caption = 'Posted Doc N°';
             Editable = false;
         }
-        field(50004;"Truck Code";Code[20])
+        field(50004; "Truck Code"; Code[20])
         {
             Caption = 'Truck code';
             TableRelation = pro_moyentransport.immatriculation;
@@ -338,16 +339,16 @@ table 50033 "Adjustment Header"
             trigger OnValidate()
             begin
                 if Camion.Get("Truck Code") then begin
-                  nomchauffeur := Camion.nomchauffeur;
-                  prenomchauffeur := Camion.prenomchauffeur;
-                  permis := Camion.permis;
-                  CarteGrise := Camion.CarteGrise;
-                  if (Camion.codetransporteur<>'') then
-                    Validate("Transporter Code", Camion.codetransporteur);
+                    nomchauffeur := Camion.nomchauffeur;
+                    prenomchauffeur := Camion.prenomchauffeur;
+                    permis := Camion.permis;
+                    CarteGrise := Camion.CarteGrise;
+                    if (Camion.codetransporteur <> '') then
+                        Validate("Transporter Code", Camion.codetransporteur);
                 end
             end;
         }
-        field(50005;"Transporter Code";Code[20])
+        field(50005; "Transporter Code"; Code[20])
         {
             Caption = 'Transporter';
             TableRelation = Vendor;
@@ -355,30 +356,30 @@ table 50033 "Adjustment Header"
             trigger OnValidate()
             begin
                 if Vend.Get("Transporter Code") then
-                  "Transporter Name" := Vend.Name;
+                    "Transporter Name" := Vend.Name;
             end;
         }
-        field(50006;"Transporter Name";Text[50])
+        field(50006; "Transporter Name"; Text[50])
         {
             Caption = 'Transporter Name';
         }
-        field(50007;nomchauffeur;Text[50])
+        field(50007; nomchauffeur; Text[50])
         {
             Caption = 'Driver Name';
         }
-        field(50008;prenomchauffeur;Text[50])
+        field(50008; prenomchauffeur; Text[50])
         {
             Caption = 'Driver First Name';
         }
-        field(50009;permis;Text[50])
+        field(50009; permis; Text[50])
         {
             Caption = 'Driver licence';
         }
-        field(50010;CarteGrise;Text[30])
+        field(50010; CarteGrise; Text[30])
         {
             Caption = 'Carte grise';
         }
-        field(50011;"Cancelled By";Code[50])
+        field(50011; "Cancelled By"; Code[50])
         {
             Caption = 'Cancelled by';
             Description = 'Transfer only';
@@ -394,30 +395,30 @@ table 50033 "Adjustment Header"
                 //UserMgt.LookupUserID("User ID");
             end;
         }
-        field(50012;"Cancellation Date";Date)
+        field(50012; "Cancellation Date"; Date)
         {
             Caption = 'Cancellation Date';
             Description = 'Transfer only';
             Editable = false;
         }
-        field(50013;BLub_Preparation;DateTime)
+        field(50013; BLub_Preparation; DateTime)
         {
             Caption = 'Preparation Date';
             Editable = false;
         }
-        field(50014;BLub_Expedition;DateTime)
+        field(50014; BLub_Expedition; DateTime)
         {
             Caption = 'Expedition Date';
             Editable = false;
         }
-        field(50015;BLub_Confirmation;DateTime)
+        field(50015; BLub_Confirmation; DateTime)
         {
             Caption = 'Confirmation Date';
             Editable = false;
         }
-        field(50016;"Customer Search Name";Text[50])
+        field(50016; "Customer Search Name"; Text[50])
         {
-            CalcFormula = Lookup(Customer."Search Name" WHERE ("No."=FIELD("Customer No.")));
+            CalcFormula = Lookup(Customer."Search Name" WHERE("No." = FIELD("Customer No.")));
             Caption = 'Customer Commercial Name';
             Editable = false;
             FieldClass = FlowField;
@@ -426,19 +427,19 @@ table 50033 "Adjustment Header"
 
     keys
     {
-        key(Key1;"Document Type","No.")
+        key(Key1; "Document Type", "No.")
         {
         }
-        key(Key2;"Order No.")
+        key(Key2; "Order No.")
         {
         }
     }
 
     fieldgroups
     {
-        fieldgroup(Brick;"Posting Date",Field79,Field60,Field84,Field61)
-        {
-        }
+        // fieldgroup(Brick;"Posting Date",Field79,Field60,Field84,Field61)
+        // {
+        // }
     }
 
     trigger OnDelete()
@@ -449,8 +450,8 @@ table 50033 "Adjustment Header"
         if not IsArchive then TestStatusOpen;
 
         SalesLine.Reset;
-        SalesLine.SetRange("Document Type","Document Type");
-        SalesLine.SetRange("Document No.","No.");
+        SalesLine.SetRange("Document Type", "Document Type");
+        SalesLine.SetRange("Document No.", "No.");
         SalesLine.DeleteAll;
     end;
 
@@ -464,8 +465,8 @@ table 50033 "Adjustment Header"
 
         AddOnSetup.Get;
         if "No." = '' then begin
-          TestNoSeries;
-          NoSeriesMgt.InitSeries(GetNoSeriesCode,xRec."No. Series","Posting Date","No.","No. Series");
+            TestNoSeries;
+            NoSeriesMgt.InitSeries(GetNoSeriesCode, xRec."No. Series", "Posting Date", "No.", "No. Series");
         end;
 
 
@@ -476,12 +477,13 @@ table 50033 "Adjustment Header"
         AddOnSetup.TestField(AddOnSetup."PBL Category Code");
         Rec."Item Category Code" := AddOnSetup."PBL Category Code";
 
-        if ((Rec."Document Type"=Rec."Document Type"::Transfer)) then begin
-          DefaultLoc := AFK_SecMgt.GetDefaultOrFirstLocation();
-          if (Loc1.Get(DefaultLoc)) then begin
-            if ((DefaultLoc<>'') and (Loc1."Item Category Code"=Rec."Item Category Code")) then
-              Validate("Location Code",DefaultLoc);
-          end;
+        if ((Rec."Document Type" = Rec."Document Type"::Transfer)) then begin
+            //TODO Migration
+            //DefaultLoc := AFK_SecMgt.GetDefaultOrFirstLocation();
+            if (Loc1.Get(DefaultLoc)) then begin
+                if ((DefaultLoc <> '') and (Loc1."Item Category Code" = Rec."Item Category Code")) then
+                    Validate("Location Code", DefaultLoc);
+            end;
         end;
 
         //IF GetFilterCustNo <> '' THEN
@@ -495,7 +497,7 @@ table 50033 "Adjustment Header"
 
     trigger OnRename()
     begin
-        Error(Text003,TableCaption);
+        Error(Text003, TableCaption);
     end;
 
     var
@@ -572,7 +574,8 @@ table 50033 "Adjustment Header"
         Vend: Record Vendor;
         Camion: Record pro_moyentransport;
         IsArchive: Boolean;
-        AFK_SecMgt: Codeunit "Security Mgt";
+        //TODO Migration
+        //AFK_SecMgt: Codeunit "Security Mgt";
         SalesOrderHeader: Record "Sales Header";
         Text011Err: Label 'La note de débit %1 existe déjà pour cette sortie';
 
@@ -602,49 +605,50 @@ table 50033 "Adjustment Header"
 
     end;
 
-    procedure CreateDim(Type1: Integer;No1: Code[20];Type2: Integer;No2: Code[20];Type3: Integer;No3: Code[20];Type4: Integer;No4: Code[20];Type5: Integer;No5: Code[20])
+    procedure CreateDim(Type1: Integer; No1: Code[20]; Type2: Integer; No2: Code[20]; Type3: Integer; No3: Code[20]; Type4: Integer; No4: Code[20]; Type5: Integer; No5: Code[20])
     var
         SourceCodeSetup: Record "Source Code Setup";
-        TableID: array [10] of Integer;
-        No: array [10] of Code[20];
+        TableID: array[10] of Integer;
+        No: array[10] of Code[20];
         OldDimSetID: Integer;
     begin
-        SourceCodeSetup.Get;
-        TableID[1] := Type1;
-        No[1] := No1;
-        TableID[2] := Type2;
-        No[2] := No2;
-        TableID[3] := Type3;
-        No[3] := No3;
-        TableID[4] := Type4;
-        No[4] := No4;
-        TableID[5] := Type5;
-        No[5] := No5;
-        "Shortcut Dimension 1 Code" := '';
-        "Shortcut Dimension 2 Code" := '';
-        OldDimSetID := "Dimension Set ID";
-        "Dimension Set ID" :=
-          DimMgt.GetDefaultDimID(TableID,No,SourceCodeSetup.Sales,"Shortcut Dimension 1 Code","Shortcut Dimension 2 Code",0,0);
+        //TODO Migration
+        // SourceCodeSetup.Get;
+        // TableID[1] := Type1;
+        // No[1] := No1;
+        // TableID[2] := Type2;
+        // No[2] := No2;
+        // TableID[3] := Type3;
+        // No[3] := No3;
+        // TableID[4] := Type4;
+        // No[4] := No4;
+        // TableID[5] := Type5;
+        // No[5] := No5;
+        // "Shortcut Dimension 1 Code" := '';
+        // "Shortcut Dimension 2 Code" := '';
+        // OldDimSetID := "Dimension Set ID";
+        // "Dimension Set ID" :=
+        //   DimMgt.GetDefaultDimID(TableID,No,SourceCodeSetup.Sales,"Shortcut Dimension 1 Code","Shortcut Dimension 2 Code",0,0);
 
-        if (OldDimSetID <> "Dimension Set ID") and SalesLinesExist then begin
-          Modify;
-          UpdateAllLineDim("Dimension Set ID",OldDimSetID);
-        end;
+        // if (OldDimSetID <> "Dimension Set ID") and SalesLinesExist then begin
+        //   Modify;
+        //   UpdateAllLineDim("Dimension Set ID",OldDimSetID);
+        // end;
     end;
 
-    local procedure ValidateShortcutDimCode(FieldNumber: Integer;var ShortcutDimCode: Code[20])
+    local procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     var
         OldDimSetID: Integer;
     begin
         OldDimSetID := "Dimension Set ID";
-        DimMgt.ValidateShortcutDimValues(FieldNumber,ShortcutDimCode,"Dimension Set ID");
-        if "No."<> '' then
-          Modify;
+        DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "Dimension Set ID");
+        if "No." <> '' then
+            Modify;
 
         if OldDimSetID <> "Dimension Set ID" then begin
-          Modify;
-          if SalesLinesExist then
-            UpdateAllLineDim("Dimension Set ID",OldDimSetID);
+            Modify;
+            if SalesLinesExist then
+                UpdateAllLineDim("Dimension Set ID", OldDimSetID);
         end;
     end;
 
@@ -652,19 +656,20 @@ table 50033 "Adjustment Header"
     var
         OldDimSetID: Integer;
     begin
-        OldDimSetID := "Dimension Set ID";
-        "Dimension Set ID" :=
-          DimMgt.EditDimensionSet2(
-            "Dimension Set ID",StrSubstNo('%1 %2',"Document Type","Posting Date"),
-            "Shortcut Dimension 1 Code","Shortcut Dimension 2 Code");
-        if OldDimSetID <> "Dimension Set ID" then begin
-          Modify;
-          if SalesLinesExist then
-            UpdateAllLineDim("Dimension Set ID",OldDimSetID);
-        end;
+        //TODO Migration
+        // OldDimSetID := "Dimension Set ID";
+        // "Dimension Set ID" :=
+        //   DimMgt.EditDimensionSet2(
+        //     "Dimension Set ID",StrSubstNo('%1 %2',"Document Type","Posting Date"),
+        //     "Shortcut Dimension 1 Code","Shortcut Dimension 2 Code");
+        // if OldDimSetID <> "Dimension Set ID" then begin
+        //   Modify;
+        //   if SalesLinesExist then
+        //     UpdateAllLineDim("Dimension Set ID",OldDimSetID);
+        // end;
     end;
 
-    local procedure UpdateAllLineDim(NewParentDimSetID: Integer;OldParentDimSetID: Integer)
+    local procedure UpdateAllLineDim(NewParentDimSetID: Integer; OldParentDimSetID: Integer)
     var
         ATOLink: Record "Assemble-to-Order Link";
         NewDimSetID: Integer;
@@ -672,33 +677,33 @@ table 50033 "Adjustment Header"
         // Update all lines with changed dimensions.
 
         if NewParentDimSetID = OldParentDimSetID then
-          exit;
-        if not HideValidationDialog and GuiAllowed then
-          if not Confirm(Text064) then
             exit;
+        if not HideValidationDialog and GuiAllowed then
+            if not Confirm(Text064) then
+                exit;
 
         SalesLine.Reset;
-        SalesLine.SetRange("Document Type","Document Type");
-        SalesLine.SetRange("Document No.","No.");
+        SalesLine.SetRange("Document Type", "Document Type");
+        SalesLine.SetRange("Document No.", "No.");
         SalesLine.LockTable;
         if SalesLine.Find('-') then
-          repeat
-            NewDimSetID := DimMgt.GetDeltaDimSetID(SalesLine."Dimension Set ID",NewParentDimSetID,OldParentDimSetID);
-            if SalesLine."Dimension Set ID" <> NewDimSetID then begin
-              SalesLine."Dimension Set ID" := NewDimSetID;
-              DimMgt.UpdateGlobalDimFromDimSetID(
-                SalesLine."Dimension Set ID",SalesLine."Shortcut Dimension 1 Code",SalesLine."Shortcut Dimension 2 Code");
-              SalesLine.Modify;
-              //ATOLink.UpdateAsmDimFromSalesLine(SalesLine);
-            end;
-          until SalesLine.Next = 0;
+            repeat
+                NewDimSetID := DimMgt.GetDeltaDimSetID(SalesLine."Dimension Set ID", NewParentDimSetID, OldParentDimSetID);
+                if SalesLine."Dimension Set ID" <> NewDimSetID then begin
+                    SalesLine."Dimension Set ID" := NewDimSetID;
+                    DimMgt.UpdateGlobalDimFromDimSetID(
+                      SalesLine."Dimension Set ID", SalesLine."Shortcut Dimension 1 Code", SalesLine."Shortcut Dimension 2 Code");
+                    SalesLine.Modify;
+                    //ATOLink.UpdateAsmDimFromSalesLine(SalesLine);
+                end;
+            until SalesLine.Next = 0;
     end;
 
     procedure SalesLinesExist(): Boolean
     begin
         SalesLine.Reset;
-        SalesLine.SetRange("Document Type","Document Type");
-        SalesLine.SetRange("Document No.","No.");
+        SalesLine.SetRange("Document Type", "Document Type");
+        SalesLine.SetRange("Document No.", "No.");
         exit(SalesLine.FindFirst);
     end;
 
@@ -706,13 +711,13 @@ table 50033 "Adjustment Header"
     var
         NavigateForm: Page Navigate;
     begin
-        NavigateForm.SetDoc("Posting Date","No.");
+        NavigateForm.SetDoc("Posting Date", "No.");
         NavigateForm.Run;
     end;
 
     procedure ShowDimensions()
     begin
-        DimMgt.ShowDimensionSet("Dimension Set ID",StrSubstNo('%1 %2',TableCaption,"No."));
+        DimMgt.ShowDimensionSet("Dimension Set ID", StrSubstNo('%1 %2', TableCaption, "No."));
     end;
 
     local procedure TestNoSeries(): Boolean
@@ -720,72 +725,72 @@ table 50033 "Adjustment Header"
         AddOnSetup.Get;
 
         case "Document Type" of
-          "Document Type"::Exchange:
-            AddOnSetup.TestField("Item Exchange Nos.");
-          "Document Type"::Loan:
-            begin
-              AddOnSetup.TestField(AddOnSetup."Item Loan Nos.");
-              AddOnSetup.TestField(AddOnSetup."Item Return Loan Nos.");
-            end;
-          "Document Type"::Borrow:
-            begin
-              AddOnSetup.TestField(AddOnSetup."Item Borrow Nos.");
-              AddOnSetup.TestField(AddOnSetup."Item Return Borrow Nos.");
-            end;
-          "Document Type"::Consignation:
-            begin
-              AddOnSetup.TestField(AddOnSetup."Item Consignation Nos.");
-              AddOnSetup.TestField(AddOnSetup."Item Return Consignation Nos.");
-            end;
-          "Document Type"::Shipment:
-            begin
-              AddOnSetup.TestField(AddOnSetup."Item Shipment Nos.");
-              //AddOnSetup.TESTFIELD(AddOnSetup."Item Return Consignation Nos.");
-            end;
-          "Document Type"::"Invoiced Consumption":
-            begin
-              AddOnSetup.TestField(AddOnSetup."Invoiced Consumption Nos.");
-              //AddOnSetup.TESTFIELD(AddOnSetup."Item Return Consignation Nos.");
-            end;
-          "Document Type"::"FA Conso":
-            begin
-              AddOnSetup.TestField(AddOnSetup."FA Conso Nos.");
-              //AddOnSetup.TESTFIELD(AddOnSetup."Item Return Consignation Nos.");
-            end;
-          "Document Type"::Transfer:
-            begin
-              AddOnSetup.TestField(AddOnSetup."Transfer Order Nos.");
-              AddOnSetup.TestField(AddOnSetup."Transfer Receipt Nos.");
-            end;
+            "Document Type"::Exchange:
+                AddOnSetup.TestField("Item Exchange Nos.");
+            "Document Type"::Loan:
+                begin
+                    AddOnSetup.TestField(AddOnSetup."Item Loan Nos.");
+                    AddOnSetup.TestField(AddOnSetup."Item Return Loan Nos.");
+                end;
+            "Document Type"::Borrow:
+                begin
+                    AddOnSetup.TestField(AddOnSetup."Item Borrow Nos.");
+                    AddOnSetup.TestField(AddOnSetup."Item Return Borrow Nos.");
+                end;
+            "Document Type"::Consignation:
+                begin
+                    AddOnSetup.TestField(AddOnSetup."Item Consignation Nos.");
+                    AddOnSetup.TestField(AddOnSetup."Item Return Consignation Nos.");
+                end;
+            "Document Type"::Shipment:
+                begin
+                    AddOnSetup.TestField(AddOnSetup."Item Shipment Nos.");
+                    //AddOnSetup.TESTFIELD(AddOnSetup."Item Return Consignation Nos.");
+                end;
+            "Document Type"::"Invoiced Consumption":
+                begin
+                    AddOnSetup.TestField(AddOnSetup."Invoiced Consumption Nos.");
+                    //AddOnSetup.TESTFIELD(AddOnSetup."Item Return Consignation Nos.");
+                end;
+            "Document Type"::"FA Conso":
+                begin
+                    AddOnSetup.TestField(AddOnSetup."FA Conso Nos.");
+                    //AddOnSetup.TESTFIELD(AddOnSetup."Item Return Consignation Nos.");
+                end;
+            "Document Type"::Transfer:
+                begin
+                    AddOnSetup.TestField(AddOnSetup."Transfer Order Nos.");
+                    AddOnSetup.TestField(AddOnSetup."Transfer Receipt Nos.");
+                end;
         end;
     end;
 
     local procedure GetNoSeriesCode(): Code[10]
     begin
         case "Document Type" of
-          "Document Type"::Exchange:
-            exit(AddOnSetup."Item Exchange Nos.");
-          "Document Type"::Loan:
-            exit(AddOnSetup."Item Loan Nos.");
-          "Document Type"::Borrow:
-            exit(AddOnSetup."Item Borrow Nos.");
-          "Document Type"::Consignation:
-            exit(AddOnSetup."Item Consignation Nos.");
-          "Document Type"::Shipment:
-            exit(AddOnSetup."Item Shipment Nos.");
-          "Document Type"::"Invoiced Consumption":
-            exit(AddOnSetup."Invoiced Consumption Nos.");
-           "Document Type"::"FA Conso":
-            exit(AddOnSetup."FA Conso Nos.");
-           "Document Type"::Transfer:
-            exit(AddOnSetup."Transfer Order Nos.");
+            "Document Type"::Exchange:
+                exit(AddOnSetup."Item Exchange Nos.");
+            "Document Type"::Loan:
+                exit(AddOnSetup."Item Loan Nos.");
+            "Document Type"::Borrow:
+                exit(AddOnSetup."Item Borrow Nos.");
+            "Document Type"::Consignation:
+                exit(AddOnSetup."Item Consignation Nos.");
+            "Document Type"::Shipment:
+                exit(AddOnSetup."Item Shipment Nos.");
+            "Document Type"::"Invoiced Consumption":
+                exit(AddOnSetup."Invoiced Consumption Nos.");
+            "Document Type"::"FA Conso":
+                exit(AddOnSetup."FA Conso Nos.");
+            "Document Type"::Transfer:
+                exit(AddOnSetup."Transfer Order Nos.");
         end;
     end;
 
     local procedure TestStatusOpen()
     begin
-        Rec.TestField(Rec.Status,Rec.Status::Open);
-        Rec.TestField(Rec."Shipment Status",Rec."Shipment Status"::" ");
+        Rec.TestField(Rec.Status, Rec.Status::Open);
+        Rec.TestField(Rec."Shipment Status", Rec."Shipment Status"::" ");
     end;
 
     procedure SetIsArchive(isArch: Boolean)
@@ -796,33 +801,34 @@ table 50033 "Adjustment Header"
     local procedure UpdateItemCategory()
     begin
         SalesLine.Reset;
-        SalesLine.SetRange("Document Type","Document Type");
-        SalesLine.SetRange("Document No.","No.");
+        SalesLine.SetRange("Document Type", "Document Type");
+        SalesLine.SetRange("Document No.", "No.");
         SalesLine.LockTable;
         if SalesLine.FindSet then
-          repeat
-            if SalesLine."Item Category Code" <> Rec."Item Category Code" then begin
-              SalesLine."Item Category Code" := Rec."Item Category Code";
-              SalesLine.Modify;
-            end;
-          until SalesLine.Next = 0;
+            repeat
+                if SalesLine."Item Category Code" <> Rec."Item Category Code" then begin
+                    SalesLine."Item Category Code" := Rec."Item Category Code";
+                    SalesLine.Modify;
+                end;
+            until SalesLine.Next = 0;
     end;
 
     local procedure UpdateLinesTransfer()
     var
         TransfertLine: Record "Adjustment Line";
     begin
-        if "Document Type"<>Rec."Document Type"::Transfer then exit;
+        if "Document Type" <> Rec."Document Type"::Transfer then exit;
 
         TransfertLine.Reset;
-        TransfertLine.SetRange(TransfertLine."Document Type",Rec."Document Type");
-        TransfertLine.SetRange(TransfertLine."Document No.",Rec."No.");
-        if TransfertLine.FindSet then repeat
-          TransfertLine.Validate("Receipt Date",Rec."Receipt Date");
-          TransfertLine.Validate("Transfer-to Code",Rec."Transfer-to Code");
-          TransfertLine.Modify;
-          //TransfertLine.VALIDATE("Receipt Date",Rec."Receipt Date");
-        until TransfertLine.Next=0;
+        TransfertLine.SetRange(TransfertLine."Document Type", Rec."Document Type");
+        TransfertLine.SetRange(TransfertLine."Document No.", Rec."No.");
+        if TransfertLine.FindSet then
+            repeat
+                TransfertLine.Validate("Receipt Date", Rec."Receipt Date");
+                TransfertLine.Validate("Transfer-to Code", Rec."Transfer-to Code");
+                TransfertLine.Modify;
+            //TransfertLine.VALIDATE("Receipt Date",Rec."Receipt Date");
+            until TransfertLine.Next = 0;
     end;
 }
 

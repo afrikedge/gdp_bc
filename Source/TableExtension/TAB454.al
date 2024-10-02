@@ -1,8 +1,8 @@
-tableextension 70000134 tableextension70000134 extends "Approval Entry" 
+tableextension 50049 "A02 Approval Entry" extends "Approval Entry"
 {
     keys
     {
-        key(Key1;"Table ID","Document Type","Document No.",Status,"Last Date-Time Modified")
+        key(A02Key1; "Table ID", "Document Type", "Document No.", Status, "Last Date-Time Modified")
         {
         }
     }

@@ -1,4 +1,4 @@
-tableextension 70000121 tableextension70000121 extends "Vendor Bank Account" 
+tableextension 50042 "A02 Vendor Bank Account" extends "Vendor Bank Account"
 {
     fields
     {
@@ -16,11 +16,11 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
         //trigger OnValidate()
         //Parameters and return type have not been exported.
         //begin
-            /*
-            //***********************
-            ResetVendorValidation;
-            //***********************
-            */
+        /*
+        //***********************
+        ResetVendorValidation;
+        //***********************
+        */
         //end;
 
 
@@ -29,11 +29,11 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
         //trigger OnValidate()
         //Parameters and return type have not been exported.
         //begin
-            /*
-            //***********************
-            ResetVendorValidation;
-            //***********************
-            */
+        /*
+        //***********************
+        ResetVendorValidation;
+        //***********************
+        */
         //end;
 
 
@@ -42,11 +42,11 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
         //trigger OnValidate()
         //Parameters and return type have not been exported.
         //begin
-            /*
-            //***********************
-            ResetVendorValidation;
-            //***********************
-            */
+        /*
+        //***********************
+        ResetVendorValidation;
+        //***********************
+        */
         //end;
 
 
@@ -56,24 +56,24 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
         //Parameters and return type have not been exported.
         //>>>> ORIGINAL CODE:
         //begin
-            /*
-            "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
-            */
+        /*
+        "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
+        */
         //end;
         //>>>> MODIFIED CODE:
         //begin
-            /*
-            "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
+        /*
+        "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
 
-            IBAN := CollectIBAN();//*********
+        IBAN := CollectIBAN();//*********
 
-            IF SwiftCorrespondence.GET("Bank Branch No.") THEN BEGIN
-              "SWIFT Code" := SwiftCorrespondence."SWIFT Code";
-            END;
-            //***********************
-            ResetVendorValidation;
-            //***********************
-            */
+        IF SwiftCorrespondence.GET("Bank Branch No.") THEN BEGIN
+          "SWIFT Code" := SwiftCorrespondence."SWIFT Code";
+        END;
+        //***********************
+        ResetVendorValidation;
+        //***********************
+        */
         //end;
 
 
@@ -83,20 +83,20 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
         //Parameters and return type have not been exported.
         //>>>> ORIGINAL CODE:
         //begin
-            /*
-            "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
-            */
+        /*
+        "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
+        */
         //end;
         //>>>> MODIFIED CODE:
         //begin
-            /*
-            "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
+        /*
+        "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
 
-            IBAN := CollectIBAN();//*********
-            //***********************
-            ResetVendorValidation;
-            //***********************
-            */
+        IBAN := CollectIBAN();//*********
+        //***********************
+        ResetVendorValidation;
+        //***********************
+        */
         //end;
 
 
@@ -105,11 +105,11 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
         //trigger OnValidate()
         //Parameters and return type have not been exported.
         //begin
-            /*
-            //***********************
-            ResetVendorValidation;
-            //***********************
-            */
+        /*
+        //***********************
+        ResetVendorValidation;
+        //***********************
+        */
         //end;
 
 
@@ -119,18 +119,18 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
         //Parameters and return type have not been exported.
         //>>>> ORIGINAL CODE:
         //begin
-            /*
-            CompanyInfo.CheckIBAN(IBAN);
-            */
+        /*
+        CompanyInfo.CheckIBAN(IBAN);
+        */
         //end;
         //>>>> MODIFIED CODE:
         //begin
-            /*
-            //CompanyInfo.CheckIBAN(IBAN);//***********
-            //***********************
-            ResetVendorValidation;
-            //***********************
-            */
+        /*
+        //CompanyInfo.CheckIBAN(IBAN);//***********
+        //***********************
+        ResetVendorValidation;
+        //***********************
+        */
         //end;
 
 
@@ -139,11 +139,11 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
         //trigger OnValidate()
         //Parameters and return type have not been exported.
         //begin
-            /*
-            //***********************
-            ResetVendorValidation;
-            //***********************
-            */
+        /*
+        //***********************
+        ResetVendorValidation;
+        //***********************
+        */
         //end;
 
 
@@ -153,22 +153,22 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
         //Parameters and return type have not been exported.
         //>>>> ORIGINAL CODE:
         //begin
-            /*
-            IF STRLEN("Agency Code") < 5 THEN
-              "Agency Code" := PADSTR('',5 - STRLEN("Agency Code"),'0') + "Agency Code";
-            "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
-            */
+        /*
+        IF STRLEN("Agency Code") < 5 THEN
+          "Agency Code" := PADSTR('',5 - STRLEN("Agency Code"),'0') + "Agency Code";
+        "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
+        */
         //end;
         //>>>> MODIFIED CODE:
         //begin
-            /*
-            #1..3
+        /*
+        #1..3
 
-            IBAN := CollectIBAN();//*********
-            //***********************
-            ResetVendorValidation;
-            //***********************
-            */
+        IBAN := CollectIBAN();//*********
+        //***********************
+        ResetVendorValidation;
+        //***********************
+        */
         //end;
 
 
@@ -178,21 +178,21 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
         //Parameters and return type have not been exported.
         //>>>> ORIGINAL CODE:
         //begin
-            /*
-            "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
-            */
+        /*
+        "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
+        */
         //end;
         //>>>> MODIFIED CODE:
         //begin
-            /*
-            "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
+        /*
+        "RIB Checked" := RIBKey.Check("Bank Branch No.","Agency Code","Bank Account No.","RIB Key");
 
-            IBAN := CollectIBAN();//*********
+        IBAN := CollectIBAN();//*********
 
-            //***********************
-            ResetVendorValidation;
-            //***********************
-            */
+        //***********************
+        ResetVendorValidation;
+        //***********************
+        */
         //end;
 
 
@@ -201,13 +201,13 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
         //trigger OnValidate()
         //Parameters and return type have not been exported.
         //begin
-            /*
-            //***********************
-            ResetVendorValidation;
-            //***********************
-            */
+        /*
+        //***********************
+        ResetVendorValidation;
+        //***********************
+        */
         //end;
-        field(50000;"RIB Key Text";Text[2])
+        field(50000; "RIB Key Text"; Text[2])
         {
             Caption = 'RIB Key Text';
             Description = 'AFK';
@@ -215,7 +215,7 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
             trigger OnValidate()
             begin
                 //*************************************
-                EVALUATE("RIB Key","RIB Key Text");
+                EVALUATE("RIB Key", "RIB Key Text");
 
                 ResetVendorValidation;
                 //***********************
@@ -225,28 +225,28 @@ tableextension 70000121 tableextension70000121 extends "Vendor Bank Account"
 
     procedure AFKGetLongAccountNum(): Text
     begin
-        EXIT("Bank Branch No." + "Agency Code" + "Bank Account No." + CONVERTSTR(FORMAT("RIB Key",2),' ','0'));
+        EXIT("Bank Branch No." + "Agency Code" + "Bank Account No." + CONVERTSTR(FORMAT("RIB Key", 2), ' ', '0'));
     end;
 
     procedure CollectIBAN(): Code[50]
     begin
-        EXIT("Bank Branch No." + "Agency Code" + "Bank Account No." + CONVERTSTR(FORMAT("RIB Key",2),' ','0'));
+        EXIT("Bank Branch No." + "Agency Code" + "Bank Account No." + CONVERTSTR(FORMAT("RIB Key", 2), ' ', '0'));
     end;
 
     local procedure ResetVendorValidation()
     var
-        Vend1: Record "23";
+        Vend1: Record "Vendor";
     begin
         IF Vend1.GET("Vendor No.") THEN BEGIN
-          IF Vend1."Validation Status"<>Vend1."Validation Status"::Created THEN
-            IF NOT CONFIRM(STRSUBSTNO( ErrAfk001,Vend1.Name)) THEN ERROR('');
-          Vend1."Validation Status":=Vend1."Validation Status"::Created;
-          Vend1.MODIFY;
+            IF Vend1."Validation Status" <> Vend1."Validation Status"::Created THEN
+                IF NOT CONFIRM(STRSUBSTNO(ErrAfk001, Vend1.Name)) THEN ERROR('');
+            Vend1."Validation Status" := Vend1."Validation Status"::Created;
+            Vend1.MODIFY;
         END;
     end;
 
     var
-        SwiftCorrespondence: Record "50090";
+        // SwiftCorrespondence: Record "50090";
         ErrAfk001: Label 'La modification de ce champ va ramener la fiche fournisseur %1 au statut ''En création''. Il devra de nouveau être validé.\Voulez-vous poursuivre la modification ?';
 }
 

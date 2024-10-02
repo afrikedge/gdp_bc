@@ -4,150 +4,150 @@ table 50037 "Posted Adjustment Header"
 
     fields
     {
-        field(1;"Document Type";Option)
+        field(1; "Document Type"; Option)
         {
             Caption = 'Document Type';
             OptionCaption = 'Exchange,Loan,Borrow,Consignation,Shipment,Invoiced Consumption,FA Conso,Transfer';
             OptionMembers = Exchange,Loan,Borrow,Consignation,Shipment,"Invoiced Consumption","FA Conso",Transfer;
         }
-        field(2;"No.";Code[20])
+        field(2; "No."; Code[20])
         {
             Caption = 'No.';
         }
-        field(3;"Posting Date";Date)
+        field(3; "Posting Date"; Date)
         {
             Caption = 'Posting Date';
         }
-        field(4;"Posting Description";Text[50])
+        field(4; "Posting Description"; Text[50])
         {
             Caption = 'Posting Description';
         }
-        field(5;"Shortcut Dimension 1 Code";Code[20])
+        field(5; "Shortcut Dimension 1 Code"; Code[20])
         {
             CaptionClass = '1,2,1';
             Caption = 'Shortcut Dimension 1 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(1));
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
 
             trigger OnValidate()
             begin
-                ValidateShortcutDimCode(1,"Shortcut Dimension 1 Code");
+                ValidateShortcutDimCode(1, "Shortcut Dimension 1 Code");
             end;
         }
-        field(6;"Shortcut Dimension 2 Code";Code[20])
+        field(6; "Shortcut Dimension 2 Code"; Code[20])
         {
             CaptionClass = '1,2,2';
             Caption = 'Shortcut Dimension 2 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(2));
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
 
             trigger OnValidate()
             begin
-                ValidateShortcutDimCode(2,"Shortcut Dimension 2 Code");
+                ValidateShortcutDimCode(2, "Shortcut Dimension 2 Code");
             end;
         }
-        field(7;Comment;Boolean)
+        field(7; Comment; Boolean)
         {
-            CalcFormula = Exist("Sales Comment Line" WHERE ("Document Type"=FIELD("Document Type"),
-                                                            "No."=FIELD("No."),
-                                                            "Document Line No."=CONST(0)));
+            CalcFormula = Exist("Sales Comment Line" WHERE("Document Type" = FIELD("Document Type"),
+                                                            "No." = FIELD("No."),
+                                                            "Document Line No." = CONST(0)));
             Caption = 'Comment';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(8;"No. Printed";Integer)
+        field(8; "No. Printed"; Integer)
         {
             Caption = 'No. Printed';
             Editable = false;
         }
-        field(9;"Document Date";Date)
+        field(9; "Document Date"; Date)
         {
             Caption = 'Document Date';
         }
-        field(10;"External Document No.";Code[35])
+        field(10; "External Document No."; Code[35])
         {
             Caption = 'External Document No.';
         }
-        field(11;"No. Series";Code[10])
+        field(11; "No. Series"; Code[10])
         {
             Caption = 'No. Series';
             Editable = false;
             TableRelation = "No. Series";
         }
-        field(12;Status;Option)
+        field(12; Status; Option)
         {
             Caption = 'Status';
             Editable = false;
             OptionCaption = 'Open,Released,Pending Approval,Pending Prepayment,Cancelled';
             OptionMembers = Open,Released,"Pending Approval","Pending Prepayment",Cancelled;
         }
-        field(13;"Customer No.";Code[20])
+        field(13; "Customer No."; Code[20])
         {
             Caption = 'Partner Code (Customer)';
             TableRelation = Customer;
         }
-        field(14;"Vendor No.";Code[20])
+        field(14; "Vendor No."; Code[20])
         {
             Caption = 'Partner Code (Vendor)';
             TableRelation = Vendor;
         }
-        field(15;"Order No.";Code[20])
+        field(15; "Order No."; Code[20])
         {
             Caption = 'Order No.';
-            TableRelation = "Sales Header"."No." WHERE ("Document Type"=CONST(Order));
+            TableRelation = "Sales Header"."No." WHERE("Document Type" = CONST(Order));
         }
-        field(16;"Ship-to Code";Code[10])
+        field(16; "Ship-to Code"; Code[10])
         {
             Caption = 'Ship-to Code';
-            TableRelation = "Ship-to Address".Code WHERE ("Customer No."=FIELD("Customer No."));
+            TableRelation = "Ship-to Address".Code WHERE("Customer No." = FIELD("Customer No."));
         }
-        field(17;"Customer Name";Text[50])
+        field(17; "Customer Name"; Text[50])
         {
             Editable = false;
         }
-        field(18;"Vendor Name";Text[50])
+        field(18; "Vendor Name"; Text[50])
         {
             Editable = false;
         }
-        field(21;"Shipment Date";Date)
+        field(21; "Shipment Date"; Date)
         {
             Caption = 'Shipment Date';
         }
-        field(27;"Shipment Method Code";Code[10])
+        field(27; "Shipment Method Code"; Code[10])
         {
             Caption = 'Shipment Method Code';
             TableRelation = "Shipment Method";
         }
-        field(28;"Location Code";Code[10])
+        field(28; "Location Code"; Code[10])
         {
             Caption = 'Location Code';
-            TableRelation = Location WHERE ("Use As In-Transit"=CONST(false));
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(false));
         }
-        field(30;"Shipment Status";Option)
+        field(30; "Shipment Status"; Option)
         {
             Caption = 'Shipment Status';
             OptionCaption = ' ,Prepared,Shipped';
             OptionMembers = " ",Prepared,Shipped;
         }
-        field(31;"Reception Validated";Boolean)
+        field(31; "Reception Validated"; Boolean)
         {
             Caption = 'Exchange validated';
             Editable = false;
         }
-        field(32;"Cession Validated";Boolean)
+        field(32; "Cession Validated"; Boolean)
         {
             Caption = 'Exchange validated';
             Editable = false;
         }
-        field(33;"Cession Date";Date)
+        field(33; "Cession Date"; Date)
         {
             Caption = 'Cession Date';
             Editable = false;
         }
-        field(34;"Receipt Date";Date)
+        field(34; "Receipt Date"; Date)
         {
             Caption = 'Receipt Date';
             Editable = false;
         }
-        field(35;"User ID";Code[50])
+        field(35; "User ID"; Code[50])
         {
             Caption = 'User ID';
             Editable = false;
@@ -162,10 +162,10 @@ table 50037 "Posted Adjustment Header"
                 //UserMgt.LookupUserID("User ID");
             end;
         }
-        field(36;"Transfer-to Code";Code[10])
+        field(36; "Transfer-to Code"; Code[10])
         {
             Caption = 'Transfer-to Code';
-            TableRelation = Location WHERE ("Use As In-Transit"=CONST(false));
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(false));
 
             trigger OnValidate()
             var
@@ -174,10 +174,10 @@ table 50037 "Posted Adjustment Header"
             begin
             end;
         }
-        field(37;"In-Transit Code";Code[10])
+        field(37; "In-Transit Code"; Code[10])
         {
             Caption = 'In-Transit Code';
-            TableRelation = Location WHERE ("Use As In-Transit"=CONST(true));
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(true));
 
             trigger OnValidate()
             begin
@@ -185,16 +185,16 @@ table 50037 "Posted Adjustment Header"
                 //UpdateTransLines(FIELDNO("In-Transit Code"));
             end;
         }
-        field(38;"BEX Number";Code[20])
+        field(38; "BEX Number"; Code[20])
         {
             Caption = 'BEX Number';
         }
-        field(39;"Item Category Code";Code[10])
+        field(39; "Item Category Code"; Code[10])
         {
             Caption = 'Item Category Code';
             TableRelation = "Item Category";
         }
-        field(480;"Dimension Set ID";Integer)
+        field(480; "Dimension Set ID"; Integer)
         {
             Caption = 'Dimension Set ID';
             Editable = false;
@@ -205,45 +205,45 @@ table 50037 "Posted Adjustment Header"
                 ShowDocDim;
             end;
         }
-        field(5700;"Responsibility Center";Code[10])
+        field(5700; "Responsibility Center"; Code[10])
         {
             Caption = 'Responsibility Center';
             TableRelation = "Responsibility Center";
         }
-        field(50000;"Posted Doc No";Code[20])
+        field(50000; "Posted Doc No"; Code[20])
         {
             Caption = 'Posted Doc N°';
             Editable = false;
         }
-        field(50004;"Truck Code";Code[20])
+        field(50004; "Truck Code"; Code[20])
         {
             Caption = 'Truck code';
             TableRelation = pro_moyentransport.immatriculation;
         }
-        field(50005;"Transporter Code";Code[20])
+        field(50005; "Transporter Code"; Code[20])
         {
             Caption = 'Transporter';
-            TableRelation = Vendor WHERE (Transporter=CONST(true));
+            TableRelation = Vendor WHERE(Transporter = CONST(true));
         }
-        field(50006;"Transporter Name";Text[50])
+        field(50006; "Transporter Name"; Text[50])
         {
         }
-        field(50007;nomchauffeur;Text[50])
+        field(50007; nomchauffeur; Text[50])
         {
             Caption = 'Driver Name';
         }
-        field(50008;prenomchauffeur;Text[50])
+        field(50008; prenomchauffeur; Text[50])
         {
             Caption = 'Driver First Name';
         }
-        field(50009;permis;Text[50])
+        field(50009; permis; Text[50])
         {
             Caption = 'Permis';
         }
-        field(50010;CarteGrise;Text[30])
+        field(50010; CarteGrise; Text[30])
         {
         }
-        field(50011;"Cancelled By";Code[50])
+        field(50011; "Cancelled By"; Code[50])
         {
             Caption = 'Cancelled by';
             Editable = false;
@@ -258,49 +258,49 @@ table 50037 "Posted Adjustment Header"
                 //UserMgt.LookupUserID("User ID");
             end;
         }
-        field(50012;"Cancellation Date";Date)
+        field(50012; "Cancellation Date"; Date)
         {
             Caption = 'Cancellation Date';
             Editable = false;
         }
-        field(50013;BLub_Preparation;DateTime)
+        field(50013; BLub_Preparation; DateTime)
         {
             Caption = 'Preparation Date';
             Editable = false;
         }
-        field(50014;BLub_Expedition;DateTime)
+        field(50014; BLub_Expedition; DateTime)
         {
             Caption = 'Expedition Date';
             Editable = false;
         }
-        field(50015;BLub_Confirmation;DateTime)
+        field(50015; BLub_Confirmation; DateTime)
         {
             Caption = 'Confirmation Date';
             Editable = false;
         }
-        field(50100;Provisioned;Boolean)
+        field(50100; Provisioned; Boolean)
         {
         }
-        field(50101;ProvisionedPassage;Boolean)
+        field(50101; ProvisionedPassage; Boolean)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Document Type","No.")
+        key(Key1; "Document Type", "No.")
         {
         }
-        key(Key2;"Order No.")
+        key(Key2; "Order No.")
         {
         }
     }
 
     fieldgroups
     {
-        fieldgroup(Brick;"Posting Date",Field79,Field60,Field84,Field61)
-        {
-        }
+        // fieldgroup(Brick;"Posting Date",Field79,Field60,Field84,Field61)
+        // {
+        // }
     }
 
     trigger OnDelete()
@@ -312,7 +312,7 @@ table 50037 "Posted Adjustment Header"
 
     trigger OnRename()
     begin
-        Error(Text003,TableCaption);
+        Error(Text003, TableCaption);
     end;
 
     var
@@ -413,11 +413,11 @@ table 50037 "Posted Adjustment Header"
 
     end;
 
-    procedure CreateDim(Type1: Integer;No1: Code[20];Type2: Integer;No2: Code[20];Type3: Integer;No3: Code[20];Type4: Integer;No4: Code[20];Type5: Integer;No5: Code[20])
+    procedure CreateDim(Type1: Integer; No1: Code[20]; Type2: Integer; No2: Code[20]; Type3: Integer; No3: Code[20]; Type4: Integer; No4: Code[20]; Type5: Integer; No5: Code[20])
     var
         SourceCodeSetup: Record "Source Code Setup";
-        TableID: array [10] of Integer;
-        No: array [10] of Code[20];
+        TableID: array[10] of Integer;
+        No: array[10] of Code[20];
         OldDimSetID: Integer;
     begin
         SourceCodeSetup.Get;
@@ -435,27 +435,27 @@ table 50037 "Posted Adjustment Header"
         "Shortcut Dimension 2 Code" := '';
         OldDimSetID := "Dimension Set ID";
         "Dimension Set ID" :=
-          DimMgt.GetDefaultDimID(TableID,No,SourceCodeSetup.Sales,"Shortcut Dimension 1 Code","Shortcut Dimension 2 Code",0,0);
+          DimMgt.GetDefaultDimID(TableID, No, SourceCodeSetup.Sales, "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code", 0, 0);
 
         if (OldDimSetID <> "Dimension Set ID") and SalesLinesExist then begin
-          Modify;
-          UpdateAllLineDim("Dimension Set ID",OldDimSetID);
+            Modify;
+            UpdateAllLineDim("Dimension Set ID", OldDimSetID);
         end;
     end;
 
-    local procedure ValidateShortcutDimCode(FieldNumber: Integer;var ShortcutDimCode: Code[20])
+    local procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     var
         OldDimSetID: Integer;
     begin
         OldDimSetID := "Dimension Set ID";
-        DimMgt.ValidateShortcutDimValues(FieldNumber,ShortcutDimCode,"Dimension Set ID");
-        if "No."<> '' then
-          Modify;
+        DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "Dimension Set ID");
+        if "No." <> '' then
+            Modify;
 
         if OldDimSetID <> "Dimension Set ID" then begin
-          Modify;
-          if SalesLinesExist then
-            UpdateAllLineDim("Dimension Set ID",OldDimSetID);
+            Modify;
+            if SalesLinesExist then
+                UpdateAllLineDim("Dimension Set ID", OldDimSetID);
         end;
     end;
 
@@ -466,16 +466,16 @@ table 50037 "Posted Adjustment Header"
         OldDimSetID := "Dimension Set ID";
         "Dimension Set ID" :=
           DimMgt.EditDimensionSet2(
-            "Dimension Set ID",StrSubstNo('%1 %2',"Document Type","Posting Date"),
-            "Shortcut Dimension 1 Code","Shortcut Dimension 2 Code");
+            "Dimension Set ID", StrSubstNo('%1 %2', "Document Type", "Posting Date"),
+            "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
         if OldDimSetID <> "Dimension Set ID" then begin
-          Modify;
-          if SalesLinesExist then
-            UpdateAllLineDim("Dimension Set ID",OldDimSetID);
+            Modify;
+            if SalesLinesExist then
+                UpdateAllLineDim("Dimension Set ID", OldDimSetID);
         end;
     end;
 
-    local procedure UpdateAllLineDim(NewParentDimSetID: Integer;OldParentDimSetID: Integer)
+    local procedure UpdateAllLineDim(NewParentDimSetID: Integer; OldParentDimSetID: Integer)
     var
         ATOLink: Record "Assemble-to-Order Link";
         NewDimSetID: Integer;
@@ -483,33 +483,33 @@ table 50037 "Posted Adjustment Header"
         // Update all lines with changed dimensions.
 
         if NewParentDimSetID = OldParentDimSetID then
-          exit;
-        if not HideValidationDialog and GuiAllowed then
-          if not Confirm(Text064) then
             exit;
+        if not HideValidationDialog and GuiAllowed then
+            if not Confirm(Text064) then
+                exit;
 
         SalesLine.Reset;
-        SalesLine.SetRange("Document Type","Document Type");
-        SalesLine.SetRange("Document No.","No.");
+        SalesLine.SetRange("Document Type", "Document Type");
+        SalesLine.SetRange("Document No.", "No.");
         SalesLine.LockTable;
         if SalesLine.Find('-') then
-          repeat
-            NewDimSetID := DimMgt.GetDeltaDimSetID(SalesLine."Dimension Set ID",NewParentDimSetID,OldParentDimSetID);
-            if SalesLine."Dimension Set ID" <> NewDimSetID then begin
-              SalesLine."Dimension Set ID" := NewDimSetID;
-              DimMgt.UpdateGlobalDimFromDimSetID(
-                SalesLine."Dimension Set ID",SalesLine."Shortcut Dimension 1 Code",SalesLine."Shortcut Dimension 2 Code");
-              SalesLine.Modify;
-              //ATOLink.UpdateAsmDimFromSalesLine(SalesLine);
-            end;
-          until SalesLine.Next = 0;
+            repeat
+                NewDimSetID := DimMgt.GetDeltaDimSetID(SalesLine."Dimension Set ID", NewParentDimSetID, OldParentDimSetID);
+                if SalesLine."Dimension Set ID" <> NewDimSetID then begin
+                    SalesLine."Dimension Set ID" := NewDimSetID;
+                    DimMgt.UpdateGlobalDimFromDimSetID(
+                      SalesLine."Dimension Set ID", SalesLine."Shortcut Dimension 1 Code", SalesLine."Shortcut Dimension 2 Code");
+                    SalesLine.Modify;
+                    //ATOLink.UpdateAsmDimFromSalesLine(SalesLine);
+                end;
+            until SalesLine.Next = 0;
     end;
 
     procedure SalesLinesExist(): Boolean
     begin
         SalesLine.Reset;
-        SalesLine.SetRange("Document Type","Document Type");
-        SalesLine.SetRange("Document No.","No.");
+        SalesLine.SetRange("Document Type", "Document Type");
+        SalesLine.SetRange("Document No.", "No.");
         exit(SalesLine.FindFirst);
     end;
 
@@ -517,13 +517,13 @@ table 50037 "Posted Adjustment Header"
     var
         NavigateForm: Page Navigate;
     begin
-        NavigateForm.SetDoc("Posting Date","No.");
+        NavigateForm.SetDoc("Posting Date", "No.");
         NavigateForm.Run;
     end;
 
     procedure ShowDimensions()
     begin
-        DimMgt.ShowDimensionSet("Dimension Set ID",StrSubstNo('%1 %2',TableCaption,"No."));
+        DimMgt.ShowDimensionSet("Dimension Set ID", StrSubstNo('%1 %2', TableCaption, "No."));
     end;
 }
 

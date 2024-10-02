@@ -5,19 +5,19 @@ table 50056 "Currency Purchase"
 
     fields
     {
-        field(1;"Document No.";Code[20])
+        field(1; "Document No."; Code[20])
         {
             Caption = 'Document No.';
         }
-        field(2;"Line No.";Integer)
+        field(2; "Line No."; Integer)
         {
             Caption = 'Line No.';
         }
-        field(3;Description;Text[50])
+        field(3; Description; Text[50])
         {
             Caption = 'Description';
         }
-        field(4;"Posting Date";Date)
+        field(4; "Posting Date"; Date)
         {
             Caption = 'Posting Date';
 
@@ -26,52 +26,52 @@ table 50056 "Currency Purchase"
                 TestPosted;
             end;
         }
-        field(5;"Amount Currency";Decimal)
+        field(5; "Amount Currency"; Decimal)
         {
             Caption = 'Amount in currency';
 
             trigger OnValidate()
             begin
-                "Amount LCY":=Round("Amount Currency"*"Convertion Rate");
+                "Amount LCY" := Round("Amount Currency" * "Convertion Rate");
                 RefreshLCLine;
                 TestPosted;
             end;
         }
-        field(6;"Convertion Rate";Decimal)
+        field(6; "Convertion Rate"; Decimal)
         {
             Caption = 'Convertion Rate';
-            DecimalPlaces = 0:3;
+            DecimalPlaces = 0 : 3;
 
             trigger OnValidate()
             begin
-                "Amount LCY":=Round("Amount Currency"*"Convertion Rate");
+                "Amount LCY" := Round("Amount Currency" * "Convertion Rate");
                 RefreshLCLine;
                 TestPosted;
             end;
         }
-        field(7;"Amount LCY";Decimal)
+        field(7; "Amount LCY"; Decimal)
         {
             Caption = 'Amount (AR)';
             Editable = false;
         }
-        field(8;"Due Line";Integer)
+        field(8; "Due Line"; Integer)
         {
             Caption = 'Due Line';
-            TableRelation = "Letter of credit Expiry"."Line No." WHERE ("Document No."=FIELD("Document No."));
+            TableRelation = "Letter of credit Expiry"."Line No." WHERE("Document No." = FIELD("Document No."));
         }
-        field(9;Posted;Boolean)
+        field(9; Posted; Boolean)
         {
-            CalcFormula = Exist("Bank Account Ledger Entry" WHERE ("LC Number"=FIELD("Document No."),
-                                                                   "LC Curr Purchase Line No."=FIELD("Line No."),
-                                                                   Reversed=CONST(false)));
+            CalcFormula = Exist("Bank Account Ledger Entry" WHERE("LC Number" = FIELD("Document No."),
+                                                                   "LC Curr Purchase Line No." = FIELD("Line No."),
+                                                                   Reversed = CONST(false)));
             Caption = 'Posted';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(10;"Affected Provisions";Decimal)
+        field(10; "Affected Provisions"; Decimal)
         {
-            CalcFormula = Sum("Expiry Currency Purchase"."Purchase Amount" WHERE ("LC Document No."=FIELD("Document No."),
-                                                                                  "Purchase Line No."=FIELD("Line No.")));
+            CalcFormula = Sum("Expiry Currency Purchase"."Purchase Amount" WHERE("LC Document No." = FIELD("Document No."),
+                                                                                  "Purchase Line No." = FIELD("Line No.")));
             Editable = false;
             FieldClass = FlowField;
         }
@@ -79,13 +79,13 @@ table 50056 "Currency Purchase"
 
     keys
     {
-        key(Key1;"Document No.","Line No.")
+        key(Key1; "Document No.", "Line No.")
         {
         }
-        key(Key2;"Document No.","Posting Date")
+        key(Key2; "Document No.", "Posting Date")
         {
         }
-        key(Key3;"Document No.","Due Line")
+        key(Key3; "Document No.", "Due Line")
         {
             SumIndexFields = "Amount LCY";
         }
@@ -101,8 +101,8 @@ table 50056 "Currency Purchase"
         JobCreateInvoice: Codeunit "Job Create-Invoice";
         SalesCommentLine: Record "Sales Comment Line";
     begin
-        
-        
+
+
         /*
         SalesCommentLine.SETRANGE("Document Type","Document Type");
         SalesCommentLine.SETRANGE("No.","Document No.");
@@ -115,7 +115,7 @@ table 50056 "Currency Purchase"
 
     trigger OnRename()
     begin
-        Error(Text001,TableCaption);
+        Error(Text001, TableCaption);
     end;
 
     var
@@ -126,7 +126,7 @@ table 50056 "Currency Purchase"
         Item1: Record Item;
         Text001: Label 'You cannot rename a %1.';
         Text002: Label 'Vous ne pouvez pas rembourser une quantité supérieure à la quantité prêtée';
-        GLMgt: Codeunit "Treso Mgt";
+    //GLMgt: Codeunit "Treso Mgt";
 
     procedure SetSalesHeader(NewSalesHeader: Record "Sales Header")
     begin
@@ -155,11 +155,11 @@ table 50056 "Currency Purchase"
 
     end;
 
-    procedure CreateDim(Type1: Integer;No1: Code[20];Type2: Integer;No2: Code[20];Type3: Integer;No3: Code[20])
+    procedure CreateDim(Type1: Integer; No1: Code[20]; Type2: Integer; No2: Code[20]; Type3: Integer; No3: Code[20])
     var
         SourceCodeSetup: Record "Source Code Setup";
-        TableID: array [10] of Integer;
-        No: array [10] of Code[20];
+        TableID: array[10] of Integer;
+        No: array[10] of Code[20];
     begin
         /*
         SourceCodeSetup.GET;
@@ -183,18 +183,18 @@ table 50056 "Currency Purchase"
 
     end;
 
-    procedure ValidateShortcutDimCode(FieldNumber: Integer;var ShortcutDimCode: Code[20])
+    procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         //DimMgt.ValidateShortcutDimValues(FieldNumber,ShortcutDimCode,"Dimension Set ID");
     end;
 
-    procedure LookupShortcutDimCode(FieldNumber: Integer;var ShortcutDimCode: Code[20])
+    procedure LookupShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         //DimMgt.LookupDimValueCode(FieldNumber,ShortcutDimCode);
         //ValidateShortcutDimCode(FieldNumber,ShortcutDimCode);
     end;
 
-    procedure ShowShortcutDimCode(var ShortcutDimCode: array [8] of Code[20])
+    procedure ShowShortcutDimCode(var ShortcutDimCode: array[8] of Code[20])
     begin
         //DimMgt.GetShortcutDimensions("Dimension Set ID",ShortcutDimCode);
     end;
@@ -202,7 +202,7 @@ table 50056 "Currency Purchase"
     local procedure GetSalesSetup()
     begin
         //IF NOT SalesSetupRead THEN
-          AddOnSetup.Get;
+        AddOnSetup.Get;
         //SalesSetupRead := TRUE;
     end;
 
@@ -210,9 +210,9 @@ table 50056 "Currency Purchase"
     begin
 
         GetDocumentHeader;
-         //IF NOT "System-Created Entry" THEN
-         //  IF Type <> Type::" " THEN
-             AdjustHeader.TestField(Status,AdjustHeader.Status::Open);
+        //IF NOT "System-Created Entry" THEN
+        //  IF Type <> Type::" " THEN
+        AdjustHeader.TestField(Status, AdjustHeader.Status::Open);
     end;
 
     local procedure CalcBaseQty(Qty: Decimal): Decimal
@@ -232,17 +232,18 @@ table 50056 "Currency Purchase"
     var
         LCLine: Record "Letter of credit Expiry";
     begin
-        if LCLine.Get("Document No.",Rec."Due Line") then begin
-          LCLine.Validate(LCLine."Provisions %");
-          LCLine.Modify;
+        if LCLine.Get("Document No.", Rec."Due Line") then begin
+            LCLine.Validate(LCLine."Provisions %");
+            LCLine.Modify;
         end else begin
-          GLMgt.RefreshLinesLettreCredit("Document No.");
+            //TODO Migration
+            //GLMgt.RefreshLinesLettreCredit("Document No.");
         end
     end;
 
     local procedure TestPosted()
     begin
-        Rec.TestField(Rec.Posted,false);
+        Rec.TestField(Rec.Posted, false);
     end;
 }
 

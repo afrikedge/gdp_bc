@@ -1,8 +1,8 @@
-tableextension 70000165 tableextension70000165 extends "User Group" 
+tableextension 50074 "A02 User Group" extends "User Group"
 {
     fields
     {
-        field(50000;"Allow Posting From";Date)
+        field(50000; "Allow Posting From"; Date)
         {
             Caption = 'Allow Posting From';
 
@@ -11,7 +11,7 @@ tableextension 70000165 tableextension70000165 extends "User Group"
                 //GLSetup.CheckPostingRange("Allow Posting From",FIELDCAPTION("Allow Posting From"));
             end;
         }
-        field(50001;"Allow Posting To";Date)
+        field(50001; "Allow Posting To"; Date)
         {
             Caption = 'Allow Posting To';
 
@@ -23,6 +23,6 @@ tableextension 70000165 tableextension70000165 extends "User Group"
     }
 
     var
-        GLSetup: Record "98";
+        GLSetup: Record "General Ledger Setup";
 }
 

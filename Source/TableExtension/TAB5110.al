@@ -1,54 +1,54 @@
-tableextension 70000142 tableextension70000142 extends "Purchase Line Archive" 
+tableextension 50060 "A02 Purchase Line Archive" extends "Purchase Line Archive"
 {
     fields
     {
-        field(50010;"Purchase Account";Code[20])
+        field(50010; "Purchase Account"; Code[20])
         {
             Caption = 'Charge Account';
             Editable = false;
         }
-        field(50015;"Purch Req Line No.";Integer)
+        field(50015; "Purch Req Line No."; Integer)
         {
         }
-        field(50016;"Purch Req No.";Code[20])
+        field(50016; "Purch Req No."; Code[20])
         {
         }
-        field(50024;Disponibility;Option)
+        field(50024; Disponibility; Option)
         {
             Caption = 'Disponibility';
             OptionCaption = 'Available,Non available';
             OptionMembers = Dispo,Indisponible;
         }
-        field(50025;"Starting Warranty";Option)
+        field(50025; "Starting Warranty"; Option)
         {
             Caption = 'Starting Garanty';
             OptionCaption = 'On receipt, On starting,No Warranty';
             OptionMembers = Receipt,Starting,"No Warranty";
         }
-        field(50026;"Warranty (Months)";Integer)
+        field(50026; "Warranty (Months)"; Integer)
         {
             Caption = 'Warranty (Months)';
         }
-        field(50027;Insurance;Boolean)
+        field(50027; Insurance; Boolean)
         {
             Caption = 'Insurance';
         }
-        field(50029;"Provision Var Stock Qty";Decimal)
+        field(50029; "Provision Var Stock Qty"; Decimal)
         {
         }
-        field(50030;"Batch Number";Code[100])
+        field(50030; "Batch Number"; Code[100])
         {
             Caption = 'Batch Number';
         }
-        field(50031;"Expiration Date";Date)
+        field(50031; "Expiration Date"; Date)
         {
             Caption = 'Expiration Date';
         }
-        field(50050;"Provision Qty";Decimal)
+        field(50050; "Provision Qty"; Decimal)
         {
             Editable = false;
         }
-        field(50051;"Partially Received";Boolean)
+        field(50051; "Partially Received"; Boolean)
         {
             Caption = 'Partially Received';
             Editable = false;

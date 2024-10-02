@@ -1,8 +1,8 @@
-tableextension 70000013 tableextension70000013 extends "Sales Cr.Memo Header" 
+tableextension 50028 "A02 Sales Cr.Memo Header" extends "Sales Cr.Memo Header"
 {
     fields
     {
-        field(50012;Observations;Text[250])
+        field(50012; Observations; Text[250])
         {
         }
     }
@@ -14,26 +14,26 @@ tableextension 70000013 tableextension70000013 extends "Sales Cr.Memo Header"
     //Parameters and return type have not been exported.
     //>>>> ORIGINAL CODE:
     //begin
-        /*
-        IsHandled := FALSE;
-        OnBeforePrintRecords(DummyReportSelections,Rec,ShowRequestPage,IsHandled);
-        IF IsHandled THEN
-          EXIT;
+    /*
+    IsHandled := FALSE;
+    OnBeforePrintRecords(DummyReportSelections,Rec,ShowRequestPage,IsHandled);
+    IF IsHandled THEN
+      EXIT;
 
-        DocumentSendingProfile.TrySendToPrinter(
-          DummyReportSelections.Usage::"S.Cr.Memo",Rec,FIELDNO("Bill-to Customer No."),ShowRequestPage);
-        */
+    DocumentSendingProfile.TrySendToPrinter(
+      DummyReportSelections.Usage::"S.Cr.Memo",Rec,FIELDNO("Bill-to Customer No."),ShowRequestPage);
+    */
     //end;
     //>>>> MODIFIED CODE:
     //begin
-        /*
-        #1..5
-        CRReports.PrintNoteCredit_Avoir(Rec."No.");//ADDED JN200217
-        {**************************************************************************
-        DocumentSendingProfile.TrySendToPrinter(
-          DummyReportSelections.Usage::"S.Cr.Memo",Rec,FIELDNO("Bill-to Customer No."),ShowRequestPage);
-          }
-        */
+    /*
+    #1..5
+    CRReports.PrintNoteCredit_Avoir(Rec."No.");//ADDED JN200217
+    {**************************************************************************
+    DocumentSendingProfile.TrySendToPrinter(
+      DummyReportSelections.Usage::"S.Cr.Memo",Rec,FIELDNO("Bill-to Customer No."),ShowRequestPage);
+      }
+    */
     //end;
 
 
@@ -43,28 +43,28 @@ tableextension 70000013 tableextension70000013 extends "Sales Cr.Memo Header"
     //Parameters and return type have not been exported.
     //>>>> ORIGINAL CODE:
     //begin
-        /*
-        IF UserSetupMgt.GetSalesFilter <> '' THEN BEGIN
-          FILTERGROUP(2);
-          SETRANGE("Responsibility Center",UserSetupMgt.GetSalesFilter);
-          FILTERGROUP(0);
-        END;
-        */
+    /*
+    IF UserSetupMgt.GetSalesFilter <> '' THEN BEGIN
+      FILTERGROUP(2);
+      SETRANGE("Responsibility Center",UserSetupMgt.GetSalesFilter);
+      FILTERGROUP(0);
+    END;
+    */
     //end;
     //>>>> MODIFIED CODE:
     //begin
-        /*
-        #1..5
+    /*
+    #1..5
 
 
 
-        //**********************************************
-        SETRANGE("User ID",USERID);
-        //**********************************************
-        */
+    //**********************************************
+    SETRANGE("User ID",USERID);
+    //**********************************************
+    */
     //end;
 
     var
-        CRReports: Codeunit "50027";
+    //CRReports: Codeunit "50027";
 }
 

@@ -1042,7 +1042,7 @@ tableextension 50018 "A02 Gen. Journal Line" extends "Gen. Journal Line"
         //AFKGLMgt: Codeunit "50014";
         //AFKSecMgt: Codeunit "50016";
         AFK_Error01: Label 'Vous ne pouvez plus modifier ce champ. Supprimez la ligne plutôt.';
-        AddOnSetup: Record "50000";
+        AddOnSetup: Record "AddOn Setup";
         AFK_Error02: Label 'L''écriture provient d''une lettre de crédit. Vous ne pouvez pas changer le montant';
         AFK_CanUpdateAchatDevise: Boolean;
         AFK_Error03: Label 'Cette option n''est plus valide !';

@@ -1,4 +1,4 @@
-tableextension 70000164 tableextension70000164 extends "Config. Package Table" 
+tableextension 50073 "A02 Config. Package Table" extends "Config. Package Table"
 {
 
     //Unsupported feature: Property Deletion (Local) on "InitPackageFields(PROCEDURE 1)".

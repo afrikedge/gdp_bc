@@ -1,8 +1,8 @@
-tableextension 70000010 tableextension70000010 extends "Cost Center" 
+tableextension 50053 "A02 Cost Center" extends "Cost Center"
 {
     fields
     {
-        field(50000;"Old Code";Code[20])
+        field(50000; "Old Code"; Code[20])
         {
             Caption = 'Old Code';
             NotBlank = false;
@@ -14,7 +14,7 @@ tableextension 70000010 tableextension70000010 extends "Cost Center"
                 //    FIELDCAPTION(Code));
             end;
         }
-        field(50001;Category;Option)
+        field(50001; Category; Option)
         {
             Caption = 'Category';
             OptionCaption = ' ,P&L,Analyse de charges';

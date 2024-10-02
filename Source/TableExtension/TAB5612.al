@@ -1,8 +1,8 @@
-tableextension 70000150 tableextension70000150 extends "FA Depreciation Book" 
+tableextension 50064 "A02 FA Depreciation Book" extends "FA Depreciation Book"
 {
     fields
     {
-        field(50000;"Starting FA Posting Group";Code[10])
+        field(50000; "Starting FA Posting Group"; Code[10])
         {
             Caption = 'Starting FA Posting Group';
             TableRelation = "FA Posting Group";

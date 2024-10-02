@@ -94,21 +94,21 @@ tableextension 50019 "A02 Item Journal Line" extends "Item Journal Line"
 
     procedure AFK_SetDimensions(ItemNo: Code[20]; CustNo: Code[20])
     begin
-        CreateDim(
-          DATABASE::Item, ItemNo,
-          DATABASE::Customer, CustNo,
-          DATABASE::"Work Center", "Work Center No.");
+        // CreateDim(
+        //   DATABASE::Item, ItemNo,
+        //   DATABASE::Customer, CustNo,
+        //   DATABASE::"Work Center", "Work Center No.");
     end;
 
     procedure AFK_SetDimensionsItem(ItemNo: Code[20])
     begin
-        CreateDim(
-          DATABASE::Item, ItemNo,
-          DATABASE::Customer, '',
-          DATABASE::"Work Center", "Work Center No.");
+        // CreateDim(
+        //   DATABASE::Item, ItemNo,
+        //   DATABASE::Customer, '',
+        //   DATABASE::"Work Center", "Work Center No.");
     end;
 
     var
-        AddOnSetup: Record "50000";
+    //AddOnSetup: Record "50000";
 }
 

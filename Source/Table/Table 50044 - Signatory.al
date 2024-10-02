@@ -1,12 +1,12 @@
 table 50044 Signatory
 {
     Caption = 'Contact';
-    DataCaptionFields = "No.",Name;
-    LookupPageID = "Signatory List";
+    DataCaptionFields = "No.", Name;
+    //LookupPageID = "Signatory List";
 
     fields
     {
-        field(1;"No.";Code[20])
+        field(1; "No."; Code[20])
         {
             Caption = 'No.';
 
@@ -22,7 +22,7 @@ table 50044 Signatory
 
             end;
         }
-        field(2;Name;Text[50])
+        field(2; Name; Text[50])
         {
             Caption = 'Name';
 
@@ -32,17 +32,17 @@ table 50044 Signatory
                 //ProcessNameChange;
             end;
         }
-        field(4;"Name 2";Text[50])
+        field(4; "Name 2"; Text[50])
         {
             Caption = 'Name 2';
         }
-        field(89;Picture;BLOB)
+        field(89; Picture; BLOB)
         {
             Caption = 'Picture';
             Compressed = false;
             SubType = Bitmap;
         }
-        field(5051;"Company No.";Code[20])
+        field(5051; "Company No."; Code[20])
         {
             Caption = 'Company No.';
             TableRelation = Customer;
@@ -141,9 +141,9 @@ table 50044 Signatory
 
             end;
         }
-        field(5052;"Company Name";Text[50])
+        field(5052; "Company Name"; Text[50])
         {
-            CalcFormula = Min(Customer.Name WHERE ("No."=FIELD("Company No.")));
+            CalcFormula = Min(Customer.Name WHERE("No." = FIELD("Company No.")));
             Caption = 'Company Name';
             Editable = false;
             FieldClass = FlowField;
@@ -152,16 +152,16 @@ table 50044 Signatory
 
     keys
     {
-        key(Key1;"No.","Company No.")
+        key(Key1; "No.", "Company No.")
         {
         }
     }
 
     fieldgroups
     {
-        fieldgroup(DropDown;"No.",Name,Field5050,Field7,Field91,Field9)
-        {
-        }
+        // fieldgroup(DropDown;"No.",Name,Field5050,Field7,Field91,Field9)
+        // {
+        // }
     }
 
     trigger OnDelete()
@@ -181,7 +181,7 @@ table 50044 Signatory
         CampaignTargetGrMgt: Codeunit "Campaign Target Group Mgt";
         VATRegistrationLogMgt: Codeunit "VAT Registration Log Mgt.";
     begin
-        
+
         /*
         DOPaymentCreditCard.DeleteByContact(Rec);
         
@@ -308,7 +308,7 @@ table 50044 Signatory
           RMSetup.TESTFIELD("Contact Nos.");
           NoSeriesMgt.InitSeries(RMSetup."Contact Nos.",xRec."No. Series",0D,"No.","No. Series");
         END;*/
-        
+
         /*
         IF NOT SkipDefaults THEN BEGIN
           IF "Salesperson Code" = '' THEN
@@ -330,7 +330,7 @@ table 50044 Signatory
         
         TypeChange;
         */
-        
+
         //"Last Date Modified" := TODAY;
         //"Last Time Modified" := TIME;
 
@@ -377,11 +377,11 @@ table 50044 Signatory
         Text033: Label 'Before you can use Online Map, you must fill in the Online Map Setup window.\See Setting Up Online Map in Help.';
         Cust: Record Customer;
 
-    procedure OnModify(xRec: Record Contact)
+    procedure OnModifyRec(xRec: Record Contact)
     var
         OldCont: Record Contact;
     begin
-        
+
         /*
         IF Type = Type::Company THEN BEGIN
           IF (Name <> xRec.Name) OR

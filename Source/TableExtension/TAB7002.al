@@ -1,4 +1,4 @@
-tableextension 70000158 tableextension70000158 extends "Sales Price" 
+tableextension 50072 "A02 Sales Price" extends "Sales Price"
 {
     // AFK_00001 01/05/2016 Permettre de saisir les prix unitaires négatifs
     fields

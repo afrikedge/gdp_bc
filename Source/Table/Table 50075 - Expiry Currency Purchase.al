@@ -1,32 +1,32 @@
 table 50075 "Expiry Currency Purchase"
 {
     Caption = 'Currency purchase for provisions';
-    DrillDownPageID = "Currency Purchase provisions";
-    LookupPageID = "Currency Purchase provisions";
+    // DrillDownPageID = "Currency Purchase provisions";
+    // LookupPageID = "Currency Purchase provisions";
 
     fields
     {
-        field(1;"LC Document No.";Code[20])
+        field(1; "LC Document No."; Code[20])
         {
             Caption = 'Document No.';
         }
-        field(2;"Expiry Line No.";Integer)
+        field(2; "Expiry Line No."; Integer)
         {
             Caption = 'Line No.';
         }
-        field(4;"Purchase Line No.";Integer)
+        field(4; "Purchase Line No."; Integer)
         {
             Caption = 'Line No.';
         }
-        field(5;"Purchase Amount";Decimal)
+        field(5; "Purchase Amount"; Decimal)
         {
             Caption = 'Purchased provisions';
         }
-        field(6;"Currency Exchange";Decimal)
+        field(6; "Currency Exchange"; Decimal)
         {
             Caption = 'Currency Echange Rate';
         }
-        field(7;"Purchase Amount (LCY)";Decimal)
+        field(7; "Purchase Amount (LCY)"; Decimal)
         {
             Caption = 'Purchase Amount (LCY)';
         }
@@ -34,7 +34,7 @@ table 50075 "Expiry Currency Purchase"
 
     keys
     {
-        key(Key1;"LC Document No.","Expiry Line No.","Purchase Line No.")
+        key(Key1; "LC Document No.", "Expiry Line No.", "Purchase Line No.")
         {
             SumIndexFields = "Purchase Amount (LCY)";
         }
