@@ -334,42 +334,42 @@ table 50054 "Posted Purchase Requisition"
         No: array[10] of Code[20];
         OldDimSetID: Integer;
     begin
-        SourceCodeSetup.Get;
-        TableID[1] := Type1;
-        No[1] := No1;
-        TableID[2] := Type2;
-        No[2] := No2;
-        TableID[3] := Type3;
-        No[3] := No3;
-        TableID[4] := Type4;
-        No[4] := No4;
-        "Shortcut Dimension 1 Code" := '';
-        "Shortcut Dimension 2 Code" := '';
-        OldDimSetID := "Dimension Set ID";
-        "Dimension Set ID" :=
-          DimMgt.GetDefaultDimID(TableID, No, SourceCodeSetup.Purchases, "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code", 0, 0);
+        // SourceCodeSetup.Get;
+        // TableID[1] := Type1;
+        // No[1] := No1;
+        // TableID[2] := Type2;
+        // No[2] := No2;
+        // TableID[3] := Type3;
+        // No[3] := No3;
+        // TableID[4] := Type4;
+        // No[4] := No4;
+        // "Shortcut Dimension 1 Code" := '';
+        // "Shortcut Dimension 2 Code" := '';
+        // OldDimSetID := "Dimension Set ID";
+        // "Dimension Set ID" :=
+        //   DimMgt.GetDefaultDimID(TableID, No, SourceCodeSetup.Purchases, "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code", 0, 0);
 
-        if (OldDimSetID <> "Dimension Set ID") and PurchLinesExist then begin
-            Modify;
-            UpdateAllLineDim("Dimension Set ID", OldDimSetID);
-        end;
+        // if (OldDimSetID <> "Dimension Set ID") and PurchLinesExist then begin
+        //     Modify;
+        //     UpdateAllLineDim("Dimension Set ID", OldDimSetID);
+        // end;
     end;
 
     procedure ShowDocDim()
     var
         OldDimSetID: Integer;
     begin
-        OldDimSetID := "Dimension Set ID";
-        "Dimension Set ID" :=
-          DimMgt.EditDimensionSet2(
-            "Dimension Set ID", StrSubstNo('%1 %2', '', "No."),
-            "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
+        // OldDimSetID := "Dimension Set ID";
+        // "Dimension Set ID" :=
+        //   DimMgt.EditDimensionSet2(
+        //     "Dimension Set ID", StrSubstNo('%1 %2', '', "No."),
+        //     "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
 
-        if OldDimSetID <> "Dimension Set ID" then begin
-            Modify;
-            if PurchLinesExist then
-                UpdateAllLineDim("Dimension Set ID", OldDimSetID);
-        end;
+        // if OldDimSetID <> "Dimension Set ID" then begin
+        //     Modify;
+        //     if PurchLinesExist then
+        //         UpdateAllLineDim("Dimension Set ID", OldDimSetID);
+        // end;
     end;
 
     local procedure UpdateAllLineDim(NewParentDimSetID: Integer; OldParentDimSetID: Integer)

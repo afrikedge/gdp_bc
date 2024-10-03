@@ -1,7 +1,7 @@
 table 50084 "Touring Sales Order"
 {
-    DrillDownPageID = "Touring Order Lines";
-    LookupPageID = "Touring Order Lines";
+    // DrillDownPageID = "Touring Order Lines";
+    // LookupPageID = "Touring Order Lines";
 
     fields
     {

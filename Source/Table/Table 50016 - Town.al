@@ -1,16 +1,16 @@
 table 50016 Town
 {
-    LookupPageID = "List of towns";
+    // LookupPageID = "List of towns";
 
     fields
     {
-        field(1;"Code";Code[10])
+        field(1; "Code"; Code[10])
         {
         }
-        field(2;Description;Text[50])
+        field(2; Description; Text[50])
         {
         }
-        field(5700;"Responsibility Center";Code[10])
+        field(5700; "Responsibility Center"; Code[10])
         {
             Caption = 'Responsibility Center';
             TableRelation = "Responsibility Center";
@@ -19,7 +19,7 @@ table 50016 Town
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
         }
     }

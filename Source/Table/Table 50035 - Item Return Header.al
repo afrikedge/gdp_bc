@@ -5,101 +5,101 @@ table 50035 "Item Return Header"
 
     fields
     {
-        field(1;"Document Type";Option)
+        field(1; "Document Type"; Option)
         {
             Caption = 'Document Type';
             OptionCaption = 'Exchange,Loan,Borrow,Consignation,Transfer';
             OptionMembers = Exchange,Loan,Borrow,Consignation,Transfer;
         }
-        field(2;"No.";Code[20])
+        field(2; "No."; Code[20])
         {
             Caption = 'No.';
 
             trigger OnValidate()
             begin
                 if "No." <> xRec."No." then begin
-                  AddOnSetup.Get;
-                  NoSeriesMgt.TestManual(GetNoSeriesCode);
-                  "No. Series" := '';
+                    AddOnSetup.Get;
+                    NoSeriesMgt.TestManual(GetNoSeriesCode);
+                    "No. Series" := '';
                 end;
             end;
         }
-        field(3;"Posting Date";Date)
+        field(3; "Posting Date"; Date)
         {
             Caption = 'Posting Date';
         }
-        field(4;"Posting Description";Text[50])
+        field(4; "Posting Description"; Text[50])
         {
             Caption = 'Posting Description';
         }
-        field(5;"Shortcut Dimension 1 Code";Code[20])
+        field(5; "Shortcut Dimension 1 Code"; Code[20])
         {
             CaptionClass = '1,2,1';
             Caption = 'Shortcut Dimension 1 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(1));
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
 
             trigger OnValidate()
             begin
-                ValidateShortcutDimCode(1,"Shortcut Dimension 1 Code");
+                ValidateShortcutDimCode(1, "Shortcut Dimension 1 Code");
             end;
         }
-        field(6;"Shortcut Dimension 2 Code";Code[20])
+        field(6; "Shortcut Dimension 2 Code"; Code[20])
         {
             CaptionClass = '1,2,2';
             Caption = 'Shortcut Dimension 2 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(2));
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
 
             trigger OnValidate()
             begin
-                ValidateShortcutDimCode(2,"Shortcut Dimension 2 Code");
+                ValidateShortcutDimCode(2, "Shortcut Dimension 2 Code");
             end;
         }
-        field(7;Comment;Boolean)
+        field(7; Comment; Boolean)
         {
-            CalcFormula = Exist("Sales Comment Line" WHERE ("Document Type"=FIELD("Document Type"),
-                                                            "No."=FIELD("No."),
-                                                            "Document Line No."=CONST(0)));
+            CalcFormula = Exist("Sales Comment Line" WHERE("Document Type" = FIELD("Document Type"),
+                                                            "No." = FIELD("No."),
+                                                            "Document Line No." = CONST(0)));
             Caption = 'Comment';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(8;"No. Printed";Integer)
+        field(8; "No. Printed"; Integer)
         {
             Caption = 'No. Printed';
             Editable = false;
         }
-        field(9;"Document Date";Date)
+        field(9; "Document Date"; Date)
         {
             Caption = 'Document Date';
         }
-        field(10;"External Document No.";Code[35])
+        field(10; "External Document No."; Code[35])
         {
             Caption = 'External Document No.';
         }
-        field(11;"No. Series";Code[10])
+        field(11; "No. Series"; Code[10])
         {
             Caption = 'No. Series';
             Editable = false;
             TableRelation = "No. Series";
         }
-        field(12;Status;Option)
+        field(12; Status; Option)
         {
             Caption = 'Status';
             Editable = false;
             OptionCaption = 'Open,Released,Pending Approval,Pending Prepayment';
             OptionMembers = Open,Released,"Pending Approval","Pending Prepayment";
         }
-        field(13;"Customer No.";Code[20])
+        field(13; "Customer No."; Code[20])
         {
             Caption = 'Partner Code (Customer)';
             TableRelation = Customer;
         }
-        field(14;"Vendor No.";Code[20])
+        field(14; "Vendor No."; Code[20])
         {
             Caption = 'Partner Code (Vendor)';
             TableRelation = Vendor;
         }
-        field(35;"User ID";Code[50])
+        field(35; "User ID"; Code[50])
         {
             Caption = 'User ID';
             Editable = false;
@@ -114,10 +114,10 @@ table 50035 "Item Return Header"
                 //UserMgt.LookupUserID("User ID");
             end;
         }
-        field(36;"Transfer-to Code";Code[10])
+        field(36; "Transfer-to Code"; Code[10])
         {
             Caption = 'Transfer-to Code';
-            TableRelation = Location WHERE ("Use As In-Transit"=CONST(false));
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(false));
 
             trigger OnValidate()
             var
@@ -126,10 +126,10 @@ table 50035 "Item Return Header"
             begin
             end;
         }
-        field(37;"In-Transit Code";Code[10])
+        field(37; "In-Transit Code"; Code[10])
         {
             Caption = 'In-Transit Code';
-            TableRelation = Location WHERE ("Use As In-Transit"=CONST(true));
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(true));
 
             trigger OnValidate()
             begin
@@ -137,7 +137,7 @@ table 50035 "Item Return Header"
                 //UpdateTransLines(FIELDNO("In-Transit Code"));
             end;
         }
-        field(480;"Dimension Set ID";Integer)
+        field(480; "Dimension Set ID"; Integer)
         {
             Caption = 'Dimension Set ID';
             Editable = false;
@@ -148,7 +148,7 @@ table 50035 "Item Return Header"
                 ShowDocDim;
             end;
         }
-        field(50000;"Original Doc No";Code[20])
+        field(50000; "Original Doc No"; Code[20])
         {
             Editable = false;
         }
@@ -156,16 +156,16 @@ table 50035 "Item Return Header"
 
     keys
     {
-        key(Key1;"Document Type","No.")
+        key(Key1; "Document Type", "No.")
         {
         }
     }
 
     fieldgroups
     {
-        fieldgroup(Brick;"Posting Date",Field79,Field60,Field84,Field61)
-        {
-        }
+        // fieldgroup(Brick;"Posting Date",Field79,Field60,Field84,Field61)
+        // {
+        // }
     }
 
     trigger OnDelete()
@@ -191,7 +191,7 @@ table 50035 "Item Return Header"
 
     trigger OnRename()
     begin
-        Error(Text003,TableCaption);
+        Error(Text003, TableCaption);
     end;
 
     var
@@ -269,8 +269,8 @@ table 50035 "Item Return Header"
     procedure InitInsert()
     begin
         if "No." = '' then begin
-          TestNoSeries;
-          NoSeriesMgt.InitSeries(GetNoSeriesCode,xRec."No. Series","Posting Date","No.","No. Series");
+            TestNoSeries;
+            NoSeriesMgt.InitSeries(GetNoSeriesCode, xRec."No. Series", "Posting Date", "No.", "No. Series");
         end;
 
         InitRecord;
@@ -325,20 +325,20 @@ table 50035 "Item Return Header"
         AddOnSetup.Get;
 
         case "Document Type" of
-          "Document Type"::Exchange:
-            AddOnSetup.TestField(AddOnSetup."Item Exchange Nos.");
-          "Document Type"::Loan:
-            AddOnSetup.TestField(AddOnSetup."Item Loan Nos.");
-          "Document Type"::Borrow:
-            begin
-              AddOnSetup.TestField(AddOnSetup."Item Borrow Nos.");
-            end;
+            "Document Type"::Exchange:
+                AddOnSetup.TestField(AddOnSetup."Item Exchange Nos.");
+            "Document Type"::Loan:
+                AddOnSetup.TestField(AddOnSetup."Item Loan Nos.");
+            "Document Type"::Borrow:
+                begin
+                    AddOnSetup.TestField(AddOnSetup."Item Borrow Nos.");
+                end;
 
-          "Document Type"::Consignation:
-            begin
-              AddOnSetup.TestField(AddOnSetup."Item Consignation Nos.");
-              //SalesSetup.TESTFIELD("Posted Credit Memo Nos.");
-            end;
+            "Document Type"::Consignation:
+                begin
+                    AddOnSetup.TestField(AddOnSetup."Item Consignation Nos.");
+                    //SalesSetup.TESTFIELD("Posted Credit Memo Nos.");
+                end;
 
         end;
     end;
@@ -346,14 +346,14 @@ table 50035 "Item Return Header"
     local procedure GetNoSeriesCode(): Code[10]
     begin
         case "Document Type" of
-          "Document Type"::Exchange:
-            exit(AddOnSetup."Item Exchange Nos.");
-          "Document Type"::Loan:
-            exit(AddOnSetup."Item Loan Nos.");
-          "Document Type"::Borrow:
-            exit(AddOnSetup."Item Borrow Nos.");
-          "Document Type"::Consignation:
-            exit(AddOnSetup."Item Consignation Nos.");
+            "Document Type"::Exchange:
+                exit(AddOnSetup."Item Exchange Nos.");
+            "Document Type"::Loan:
+                exit(AddOnSetup."Item Loan Nos.");
+            "Document Type"::Borrow:
+                exit(AddOnSetup."Item Borrow Nos.");
+            "Document Type"::Consignation:
+                exit(AddOnSetup."Item Consignation Nos.");
 
         end;
     end;
@@ -365,7 +365,7 @@ table 50035 "Item Return Header"
         //EXIT(SalesSetup."Posted Invoice Nos.");
     end;
 
-    local procedure TestNoSeriesDate(No: Code[20];NoSeriesCode: Code[10];NoCapt: Text[1024];NoSeriesCapt: Text[1024])
+    local procedure TestNoSeriesDate(No: Code[20]; NoSeriesCode: Code[10]; NoCapt: Text[1024]; NoSeriesCapt: Text[1024])
     var
         NoSeries: Record "No. Series";
     begin
@@ -433,8 +433,8 @@ table 50035 "Item Return Header"
     procedure SalesLinesExist(): Boolean
     begin
         SalesLine.Reset;
-        SalesLine.SetRange("Document Type","Document Type");
-        SalesLine.SetRange("Document No.","No.");
+        SalesLine.SetRange("Document Type", "Document Type");
+        SalesLine.SetRange("Document No.", "No.");
         exit(SalesLine.FindFirst);
     end;
 
@@ -443,49 +443,49 @@ table 50035 "Item Return Header"
         HideValidationDialog := NewHideValidationDialog;
     end;
 
-    procedure CreateDim(Type1: Integer;No1: Code[20];Type2: Integer;No2: Code[20];Type3: Integer;No3: Code[20];Type4: Integer;No4: Code[20];Type5: Integer;No5: Code[20])
+    procedure CreateDim(Type1: Integer; No1: Code[20]; Type2: Integer; No2: Code[20]; Type3: Integer; No3: Code[20]; Type4: Integer; No4: Code[20]; Type5: Integer; No5: Code[20])
     var
         SourceCodeSetup: Record "Source Code Setup";
-        TableID: array [10] of Integer;
-        No: array [10] of Code[20];
+        TableID: array[10] of Integer;
+        No: array[10] of Code[20];
         OldDimSetID: Integer;
     begin
-        SourceCodeSetup.Get;
-        TableID[1] := Type1;
-        No[1] := No1;
-        TableID[2] := Type2;
-        No[2] := No2;
-        TableID[3] := Type3;
-        No[3] := No3;
-        TableID[4] := Type4;
-        No[4] := No4;
-        TableID[5] := Type5;
-        No[5] := No5;
-        "Shortcut Dimension 1 Code" := '';
-        "Shortcut Dimension 2 Code" := '';
-        OldDimSetID := "Dimension Set ID";
-        "Dimension Set ID" :=
-          DimMgt.GetDefaultDimID(TableID,No,SourceCodeSetup.Sales,"Shortcut Dimension 1 Code","Shortcut Dimension 2 Code",0,0);
+        // SourceCodeSetup.Get;
+        // TableID[1] := Type1;
+        // No[1] := No1;
+        // TableID[2] := Type2;
+        // No[2] := No2;
+        // TableID[3] := Type3;
+        // No[3] := No3;
+        // TableID[4] := Type4;
+        // No[4] := No4;
+        // TableID[5] := Type5;
+        // No[5] := No5;
+        // "Shortcut Dimension 1 Code" := '';
+        // "Shortcut Dimension 2 Code" := '';
+        // OldDimSetID := "Dimension Set ID";
+        // "Dimension Set ID" :=
+        //   DimMgt.GetDefaultDimID(TableID, No, SourceCodeSetup.Sales, "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code", 0, 0);
 
-        if (OldDimSetID <> "Dimension Set ID") and SalesLinesExist then begin
-          Modify;
-          UpdateAllLineDim("Dimension Set ID",OldDimSetID);
-        end;
+        // if (OldDimSetID <> "Dimension Set ID") and SalesLinesExist then begin
+        //     Modify;
+        //     UpdateAllLineDim("Dimension Set ID", OldDimSetID);
+        // end;
     end;
 
-    local procedure ValidateShortcutDimCode(FieldNumber: Integer;var ShortcutDimCode: Code[20])
+    local procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     var
         OldDimSetID: Integer;
     begin
         OldDimSetID := "Dimension Set ID";
-        DimMgt.ValidateShortcutDimValues(FieldNumber,ShortcutDimCode,"Dimension Set ID");
-        if "No."<> '' then
-          Modify;
+        DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "Dimension Set ID");
+        if "No." <> '' then
+            Modify;
 
         if OldDimSetID <> "Dimension Set ID" then begin
-          Modify;
-          if SalesLinesExist then
-            UpdateAllLineDim("Dimension Set ID",OldDimSetID);
+            Modify;
+            if SalesLinesExist then
+                UpdateAllLineDim("Dimension Set ID", OldDimSetID);
         end;
     end;
 
@@ -493,19 +493,19 @@ table 50035 "Item Return Header"
     var
         OldDimSetID: Integer;
     begin
-        OldDimSetID := "Dimension Set ID";
-        "Dimension Set ID" :=
-          DimMgt.EditDimensionSet2(
-            "Dimension Set ID",StrSubstNo('%1 %2',"Document Type","Posting Date"),
-            "Shortcut Dimension 1 Code","Shortcut Dimension 2 Code");
-        if OldDimSetID <> "Dimension Set ID" then begin
-          Modify;
-          if SalesLinesExist then
-            UpdateAllLineDim("Dimension Set ID",OldDimSetID);
-        end;
+        // OldDimSetID := "Dimension Set ID";
+        // "Dimension Set ID" :=
+        //   DimMgt.EditDimensionSet2(
+        //     "Dimension Set ID", StrSubstNo('%1 %2', "Document Type", "Posting Date"),
+        //     "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
+        // if OldDimSetID <> "Dimension Set ID" then begin
+        //     Modify;
+        //     if SalesLinesExist then
+        //         UpdateAllLineDim("Dimension Set ID", OldDimSetID);
+        // end;
     end;
 
-    local procedure UpdateAllLineDim(NewParentDimSetID: Integer;OldParentDimSetID: Integer)
+    local procedure UpdateAllLineDim(NewParentDimSetID: Integer; OldParentDimSetID: Integer)
     var
         ATOLink: Record "Assemble-to-Order Link";
         NewDimSetID: Integer;
@@ -513,36 +513,36 @@ table 50035 "Item Return Header"
         // Update all lines with changed dimensions.
 
         if NewParentDimSetID = OldParentDimSetID then
-          exit;
-        if not HideValidationDialog and GuiAllowed then
-          if not Confirm(Text064) then
             exit;
+        if not HideValidationDialog and GuiAllowed then
+            if not Confirm(Text064) then
+                exit;
 
         SalesLine.Reset;
-        SalesLine.SetRange("Document Type","Document Type");
-        SalesLine.SetRange("Document No.","No.");
+        SalesLine.SetRange("Document Type", "Document Type");
+        SalesLine.SetRange("Document No.", "No.");
         SalesLine.LockTable;
         if SalesLine.Find('-') then
-          repeat
-            NewDimSetID := DimMgt.GetDeltaDimSetID(SalesLine."Dimension Set ID",NewParentDimSetID,OldParentDimSetID);
-            if SalesLine."Dimension Set ID" <> NewDimSetID then begin
-              SalesLine."Dimension Set ID" := NewDimSetID;
-              DimMgt.UpdateGlobalDimFromDimSetID(
-                SalesLine."Dimension Set ID",SalesLine."Shortcut Dimension 1 Code",SalesLine."Shortcut Dimension 2 Code");
-              SalesLine.Modify;
-              ATOLink.UpdateAsmDimFromSalesLine(SalesLine);
-            end;
-          until SalesLine.Next = 0;
+            repeat
+                NewDimSetID := DimMgt.GetDeltaDimSetID(SalesLine."Dimension Set ID", NewParentDimSetID, OldParentDimSetID);
+                if SalesLine."Dimension Set ID" <> NewDimSetID then begin
+                    SalesLine."Dimension Set ID" := NewDimSetID;
+                    DimMgt.UpdateGlobalDimFromDimSetID(
+                      SalesLine."Dimension Set ID", SalesLine."Shortcut Dimension 1 Code", SalesLine."Shortcut Dimension 2 Code");
+                    SalesLine.Modify;
+                    ATOLink.UpdateAsmDimFromSalesLine(SalesLine);
+                end;
+            until SalesLine.Next = 0;
     end;
 
     procedure InvoicedLineExists(): Boolean
     var
         SalesLine: Record "Sales Line";
     begin
-        SalesLine.SetRange("Document Type","Document Type");
-        SalesLine.SetRange("Document No.","No.");
-        SalesLine.SetFilter(Type,'<>%1',SalesLine.Type::" ");
-        SalesLine.SetFilter("Quantity Invoiced",'<>%1',0);
+        SalesLine.SetRange("Document Type", "Document Type");
+        SalesLine.SetRange("Document No.", "No.");
+        SalesLine.SetFilter(Type, '<>%1', SalesLine.Type::" ");
+        SalesLine.SetFilter("Quantity Invoiced", '<>%1', 0);
         exit(not SalesLine.IsEmpty);
     end;
 
@@ -571,13 +571,13 @@ table 50035 "Item Return Header"
     var
         NavigateForm: Page Navigate;
     begin
-        NavigateForm.SetDoc("Posting Date","No.");
+        NavigateForm.SetDoc("Posting Date", "No.");
         NavigateForm.Run;
     end;
 
     procedure ShowDimensions()
     begin
-        DimMgt.ShowDimensionSet("Dimension Set ID",StrSubstNo('%1 %2',TableCaption,"No."));
+        DimMgt.ShowDimensionSet("Dimension Set ID", StrSubstNo('%1 %2', TableCaption, "No."));
     end;
 }
 

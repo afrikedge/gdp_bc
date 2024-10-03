@@ -1,15 +1,15 @@
 table 50089 "Dispaching Event"
 {
-    DrillDownPageID = "Dispaching Event Entries";
-    LookupPageID = "Dispaching Event Entries";
+    // DrillDownPageID = "Dispaching Event Entries";
+    // LookupPageID = "Dispaching Event Entries";
 
     fields
     {
-        field(1;"Entry No.";Integer)
+        field(1; "Entry No."; Integer)
         {
             Caption = 'Entry No.';
         }
-        field(2;Type;Option)
+        field(2; Type; Option)
         {
             OptionCaption = 'Commentaires,Evènement';
             OptionMembers = Comment,DispachEvent;
@@ -17,37 +17,37 @@ table 50089 "Dispaching Event"
             trigger OnValidate()
             begin
                 if Type <> xRec.Type then
-                  Description := '';
+                    Description := '';
             end;
         }
-        field(3;"Event Code";Code[10])
+        field(3; "Event Code"; Code[10])
         {
             Caption = 'Code';
-            TableRelation = IF (Type=CONST(DispachEvent)) "Dispaching Event Type"."Event Code";
+            TableRelation = IF (Type = CONST(DispachEvent)) "Dispaching Event Type"."Event Code";
 
             trigger OnValidate()
             begin
                 if Type = Rec.Type::DispachEvent then
-                  if "Event Code" <> '' then begin
-                    EventType.Get("Event Code");
-                    Description := EventType.Description;
-                  end else
-                    Description := '';
+                    if "Event Code" <> '' then begin
+                        EventType.Get("Event Code");
+                        Description := EventType.Description;
+                    end else
+                        Description := '';
 
-                if "Event Code"<>'' then
-                  TestField(Type,Rec.Type::DispachEvent);
+                if "Event Code" <> '' then
+                    TestField(Type, Rec.Type::DispachEvent);
             end;
         }
-        field(4;Date;Date)
+        field(4; Date; Date)
         {
             Caption = 'Date';
             ClosingDates = true;
         }
-        field(9;Description;Text[50])
+        field(9; Description; Text[50])
         {
             Caption = 'Description';
         }
-        field(11;"User ID";Code[50])
+        field(11; "User ID"; Code[50])
         {
             Caption = 'User ID';
             Editable = false;
@@ -59,15 +59,15 @@ table 50089 "Dispaching Event"
             var
                 UserMgt: Codeunit "User Management";
             begin
-                UserMgt.LookupUserID("User ID");
+                // UserMgt.LookupUserID("User ID");
             end;
         }
-        field(16;"Last Date Modified";Date)
+        field(16; "Last Date Modified"; Date)
         {
             Caption = 'Last Date Modified';
             Editable = false;
         }
-        field(17;immatriculation;Code[30])
+        field(17; immatriculation; Code[30])
         {
             Caption = 'Registration';
         }
@@ -75,7 +75,7 @@ table 50089 "Dispaching Event"
 
     keys
     {
-        key(Key1;"Entry No.")
+        key(Key1; "Entry No.")
         {
         }
     }
@@ -87,13 +87,13 @@ table 50089 "Dispaching Event"
     trigger OnInsert()
     begin
         TestField(Date);
-        if Type=Rec.Type::DispachEvent then
-          TestField(Rec."Event Code");
+        if Type = Rec.Type::DispachEvent then
+            TestField(Rec."Event Code");
         LockTable;
         "User ID" := UserId;
         "Last Date Modified" := Today;
         if "Entry No." = 0 then
-          "Entry No." := GetNextEntryNo;
+            "Entry No." := GetNextEntryNo;
     end;
 
     trigger OnModify()
@@ -111,7 +111,7 @@ table 50089 "Dispaching Event"
     begin
         EventEntry.SetCurrentKey("Entry No.");
         if EventEntry.FindLast then
-          exit(EventEntry."Entry No." + 1);
+            exit(EventEntry."Entry No." + 1);
 
         exit(1);
     end;

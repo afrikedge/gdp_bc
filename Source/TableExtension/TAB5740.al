@@ -235,12 +235,13 @@ tableextension 50065 "A02 Transfer Header" extends "Transfer Header"
     local procedure AFK_CheckShippedLinesExists()
     begin
         //************************************************
-        TransLine.RESET;
-        TransLine.SETRANGE("Document No.", "No.");
-        IF TransLine.FINDSET THEN
-            REPEAT
-                TransLine.TESTFIELD("Quantity Shipped", 0);
-            UNTIL TransLine.NEXT = 0;
+        //TODO Migration
+        // TransLine.RESET;
+        // TransLine.SETRANGE("Document No.", "No.");
+        // IF TransLine.FINDSET THEN
+        //     REPEAT
+        //         TransLine.TESTFIELD("Quantity Shipped", 0);
+        //     UNTIL TransLine.NEXT = 0;
     end;
 
     procedure AFK_SetAllowDeletionHypo(CanDelete: Boolean)
@@ -252,7 +253,7 @@ tableextension 50065 "A02 Transfer Header" extends "Transfer Header"
         AddOnSetup: Record "50000";
         AFKGriserMagasinDest: Boolean;
         AFKAllowDeletionHypo: Boolean;
-        AFKTransferMgt: Codeunit "50005";
+        //AFKTransferMgt: Codeunit "50005";
         Camion: Record "50009";
         Vend1: Record "23";
 }

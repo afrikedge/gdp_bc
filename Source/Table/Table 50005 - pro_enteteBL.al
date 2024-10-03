@@ -29,8 +29,8 @@ table 50005 pro_enteteBL
 
             trigger OnValidate()
             begin
-
-                AFK_SecMgt.CheckWarehouseUser(depot);
+                //TODO Migration
+                //AFK_SecMgt.CheckWarehouseUser(depot);
                 /*
                 TESTFIELD(Status,Status::Open);
                 IF ("Location Code" <> xRec."Location Code") AND

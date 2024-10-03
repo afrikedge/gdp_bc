@@ -276,7 +276,7 @@ tableextension 50013 "A02 Purchase Header" extends "Purchase Header"
         field(50055; "Ref Cargo"; Code[20])
         {
             Caption = 'Cargo';
-            TableRelation = Cargo WHERE(Closed = CONST(No));
+            TableRelation = Cargo WHERE(Closed = CONST(false));
 
             trigger OnValidate()
             var

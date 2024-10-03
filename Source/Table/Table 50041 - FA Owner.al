@@ -1,16 +1,16 @@
 table 50041 "FA Owner"
 {
     Caption = 'FA Owner';
-    LookupPageID = "FA Owners";
+    // LookupPageID = "FA Owners";
 
     fields
     {
-        field(1;"Code";Code[10])
+        field(1; "Code"; Code[10])
         {
             Caption = 'Code';
             NotBlank = true;
         }
-        field(2;Name;Text[50])
+        field(2; Name; Text[50])
         {
             Caption = 'Name';
         }
@@ -18,7 +18,7 @@ table 50041 "FA Owner"
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
         }
     }

@@ -4,7 +4,7 @@ table 50071 "Security Item"
 
     fields
     {
-        field(1;"User ID";Code[50])
+        field(1; "User ID"; Code[50])
         {
             Caption = 'User ID';
             TableRelation = User."User Name";
@@ -16,32 +16,32 @@ table 50071 "Security Item"
             var
                 UserMgt: Codeunit "User Management";
             begin
-                UserMgt.LookupUserID("User ID");
+                //UserMgt.LookupUserID("User ID");
             end;
 
             trigger OnValidate()
             var
                 UserMgt: Codeunit "User Management";
             begin
-                UserMgt.ValidateUserID("User ID");
+                // UserMgt.ValidateUserID("User ID");
             end;
         }
-        field(2;SecurityType;Option)
+        field(2; SecurityType; Option)
         {
             OptionCaption = 'Region,BankAcc';
             OptionMembers = Region,BankAcc;
         }
-        field(3;"Item Code";Code[20])
+        field(3; "Item Code"; Code[20])
         {
             Caption = 'Code';
-            TableRelation = IF (SecurityType=CONST(Region)) "Responsibility Center"
-                            ELSE IF (SecurityType=CONST(BankAcc)) "Bank Account";
+            TableRelation = IF (SecurityType = CONST(Region)) "Responsibility Center"
+            ELSE IF (SecurityType = CONST(BankAcc)) "Bank Account";
         }
     }
 
     keys
     {
-        key(Key1;"User ID",SecurityType,"Item Code")
+        key(Key1; "User ID", SecurityType, "Item Code")
         {
         }
     }
