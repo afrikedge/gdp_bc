@@ -1,11 +1,29 @@
 codeunit 50035 "EventsSubscribers Table"
 {
-    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterInitRecord', '', true, true)]
-    local procedure OnAfterInitRecord_SalesHeader(var SalesHeader: Record "Sales Header")
+    [EventSubscriber(ObjectType::Table, Database::"Currency", 'OnBeforeGetGainLossAccount', '', true, true)]
+    local procedure Currency_OnBeforeGetGainLossAccount(var Currency: Record Currency; DtldCVLedgEntryBuffer: Record "Detailed CV Ledg. Entry Buffer")
     var
-        SOProcess: codeunit "A01 Sales Order Processing";
+    // AddOnSetup: record "AddOn Setup";
+    // TresoMgt: codeunit "Treso Mgt";
     begin
-        SalesHeader."A01 User Id" := CopyStr(USERID, 1, 50);
-        SOProcess.InsertNewStep(SalesHeader."No.", "A01 ActionStepHistory"::Creation, FORMAT(SalesHeader."A01 Processing Status"), '');
+        // AddOnSetup.GET;
+        // AddOnSetup.TESTFIELD(AddOnSetup."PROGAL Vendor Code");
+        //IF (AddOnSetup."PROGAL Vendor Code" = DtldCVLedgEntryBuffer."CV No.") THEN
+        //EXIT(TresoMgt.GetGainLossAccount_PROGAL(DtldCVLedgEntryBuffer));
     end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Vendor", 'OnBeforeCheckBlockedVend', '', true, true)]
+    local procedure Vendor_OnBeforeCheckBlockedVend(Vendor: Record Vendor; Source: Option Journal,Document; DocType: Option; Transaction: Boolean; var IsHandled: Boolean)
+    var
+    begin
+        Vendor.TESTFIELD(Vendor."Validation Status", Vendor."Validation Status"::Validated);
+    end;
+
+
+
+
+
+
+
+
 }

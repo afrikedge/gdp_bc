@@ -58,17 +58,18 @@ codeunit 50014 "Treso Mgt"
         Text030: Label 'Nouveau paiement par espèces de la part de GALANA';
         Text031: Label 'Nouveau paiement par traite de la part de GALANA';
         Text032: Label 'Veuillez trouver en pièce jointe à ce mail votre paiement validé ce jour.';
+        IncorrectEntryTypeErr: Label 'Incorrect Entry Type %1.';
 
-    procedure ConvertInLocalCurr(CodeDevise: Code[20];PostingDate: Date;AmountToConvert: Decimal) Reponse: Decimal
+    procedure ConvertInLocalCurr(CodeDevise: Code[20]; PostingDate: Date; AmountToConvert: Decimal) Reponse: Decimal
     begin
-        if CodeDevise='' then
-          Reponse := AmountToConvert
+        if CodeDevise = '' then
+            Reponse := AmountToConvert
         else
-          Reponse :=
-                Round(
-                  CurrExchRate.ExchangeAmtFCYToLCY(
-                    PostingDate,CodeDevise,AmountToConvert,
-                    CurrExchRate.ExchangeRate(PostingDate,CodeDevise)));
+            Reponse :=
+                  Round(
+                    CurrExchRate.ExchangeAmtFCYToLCY(
+                      PostingDate, CodeDevise, AmountToConvert,
+                      CurrExchRate.ExchangeRate(PostingDate, CodeDevise)));
     end;
 
     procedure CloseCheckWarranty(var CheckWarranty: Record "Check Warranty")
@@ -79,7 +80,7 @@ codeunit 50014 "Treso Mgt"
         CheckWarranty.TestField(CheckWarranty."Check Date");
         CheckWarranty.TestField(CheckWarranty."Customer No.");
 
-        if not Confirm(StrSubstNo( Text010,CheckWarranty."Check No.")) then exit;
+        if not Confirm(StrSubstNo(Text010, CheckWarranty."Check No.")) then exit;
 
         CheckWarranty.Status := CheckWarranty.Status::Returned;
         CheckWarranty."Return Date" := Today;
@@ -94,7 +95,7 @@ codeunit 50014 "Treso Mgt"
         //LC.TESTFIELD(LC."Check Date");
         LC.TestField(LC."Vendor No.");
 
-        if not Confirm(StrSubstNo( Text011,LC."No.")) then exit;
+        if not Confirm(StrSubstNo(Text011, LC."No.")) then exit;
 
         LC.Status := LC.Status::Closed;
         LC."Closed Date" := Today;
@@ -115,10 +116,10 @@ codeunit 50014 "Treso Mgt"
         //Feuille.GET(GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name");
         //Feuille.TESTFIELD("Payment Class");
 
-        if not PaymentCCConfig.Get(GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name",
+        if not PaymentCCConfig.Get(GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name",
           GenJnlLine."CC Document Type") then
-          Error(StrSubstNo(Text017,GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name",
-          GenJnlLine."CC Document Type"));
+            Error(StrSubstNo(Text017, GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name",
+            GenJnlLine."CC Document Type"));
 
         PaymentCCConfig.TestField("Payment Class");
 
@@ -136,23 +137,23 @@ codeunit 50014 "Treso Mgt"
         PaymentLine.LockTable;
         PaymentHeader.Insert(true);
 
-        PaymentHeader.Validate("Payment Class",PaymentCCConfig."Payment Class");
-        PaymentHeader.Validate("Currency Code",GenJnlLine."Currency Code");
+        PaymentHeader.Validate("Payment Class", PaymentCCConfig."Payment Class");
+        PaymentHeader.Validate("Currency Code", GenJnlLine."Currency Code");
 
         Cust.Get(GenJnlLine."Account No.");
         PaymentHeader."Check Number" := GenJnlLine."Check No.";
         PaymentHeader."Customer No." := Cust."No.";
         PaymentHeader."Customer Name" := Cust.Name;
         PaymentHeader.Description := GenJnlLine.Description;
-        PaymentHeader.Validate("Posting Date",GenJnlLine."Posting Date");
+        PaymentHeader.Validate("Posting Date", GenJnlLine."Posting Date");
         PaymentHeader."Origin Document N°" := GenJnlLine."Document No.";
 
         PaymentHeader.Modify;
 
 
-        LineNum:=0;
+        LineNum := 0;
         PaymentLine.Init;
-        PaymentLine."Document No."  := NoSeriesMgt.GetNextNo(PaymentClass."Line No. Series",WorkDate,true);
+        PaymentLine."Document No." := NoSeriesMgt.GetNextNo(PaymentClass."Line No. Series", WorkDate, true);
         PaymentLine."No." := PaymentHeader."No.";
         PaymentLine."Payment Class" := PaymentHeader."Payment Class";
         LineNum := LineNum + 10000;
@@ -161,16 +162,16 @@ codeunit 50014 "Treso Mgt"
 
 
         PaymentLine."Account Type" := PaymentLine."Account Type"::Customer;
-        PaymentLine.Validate(PaymentLine."Account No.",Cust."No.");
+        PaymentLine.Validate(PaymentLine."Account No.", Cust."No.");
         PaymentLine."Currency Code" := GenJnlLine."Currency Code";
         PaymentLine."Currency Factor" := PaymentHeader."Currency Factor";
         PaymentLine.Validate(Amount, -Abs(GenJnlLine.Amount));
 
-        if ((GenJnlLine."CC Document Type"= GenJnlLine."CC Document Type"::ChequeNormal)
-          or (GenJnlLine."CC Document Type"= GenJnlLine."CC Document Type"::Traite)) then
-          GenJnlLine.TestField("Check No.");
+        if ((GenJnlLine."CC Document Type" = GenJnlLine."CC Document Type"::ChequeNormal)
+          or (GenJnlLine."CC Document Type" = GenJnlLine."CC Document Type"::Traite)) then
+            GenJnlLine.TestField("Check No.");
 
-        PaymentLine."Drawee Reference" := CopyStr(GenJnlLine."Check No.",1,10);
+        PaymentLine."Drawee Reference" := CopyStr(GenJnlLine."Check No.", 1, 10);
         PaymentLine."Due Date" := GenJnlLine."Due Date";
         //PaymentLine.
 
@@ -190,14 +191,14 @@ codeunit 50014 "Treso Mgt"
 
         //Feuille.GET(GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name");
         //Feuille.TESTFIELD("Payment Class");
-        GenJnlLine.TestField(GenJnlLine."Account Type",GenJnlLine."Account Type"::"Bank Account");
-        GenJnlLine.TestField(GenJnlLine."Bal. Account Type",GenJnlLine."Bal. Account Type"::"Bank Account");
+        GenJnlLine.TestField(GenJnlLine."Account Type", GenJnlLine."Account Type"::"Bank Account");
+        GenJnlLine.TestField(GenJnlLine."Bal. Account Type", GenJnlLine."Bal. Account Type"::"Bank Account");
 
 
-        if not PaymentCCConfig.Get(GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name",
+        if not PaymentCCConfig.Get(GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name",
           GenJnlLine."CC Document Type") then
-          Error(StrSubstNo(Text017,GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name",
-          GenJnlLine."CC Document Type"));
+            Error(StrSubstNo(Text017, GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name",
+            GenJnlLine."CC Document Type"));
 
         PaymentCCConfig.TestField("Payment Class");
 
@@ -215,26 +216,26 @@ codeunit 50014 "Treso Mgt"
         PaymentLine.LockTable;
         PaymentHeader.Insert(true);
 
-        PaymentHeader.Validate("Payment Class",PaymentCCConfig."Payment Class");
-        PaymentHeader.Validate("Currency Code",GenJnlLine."Currency Code");
+        PaymentHeader.Validate("Payment Class", PaymentCCConfig."Payment Class");
+        PaymentHeader.Validate("Currency Code", GenJnlLine."Currency Code");
 
         //Cust.GET(GenJnlLine."Account No.");
         PaymentHeader."Check Number" := GenJnlLine."Check No.";
         //PaymentHeader."Customer No." := Cust."No.";
         //PaymentHeader."Customer Name" := Cust.Name;
         PaymentHeader.Description := GenJnlLine.Description;
-        PaymentHeader.Validate("Posting Date",GenJnlLine."Posting Date");
+        PaymentHeader.Validate("Posting Date", GenJnlLine."Posting Date");
         PaymentHeader."Origin Document N°" := GenJnlLine."Document No.";
 
-        PaymentHeader.Validate("Account Type",PaymentHeader."Account Type"::"Bank Account");
-        PaymentHeader.Validate(PaymentHeader."Account No.",GenJnlLine."Account No.");
+        PaymentHeader.Validate("Account Type", PaymentHeader."Account Type"::"Bank Account");
+        PaymentHeader.Validate(PaymentHeader."Account No.", GenJnlLine."Account No.");
 
         PaymentHeader.Modify;
 
 
-        LineNum:=0;
+        LineNum := 0;
         PaymentLine.Init;
-        PaymentLine."Document No."  := NoSeriesMgt.GetNextNo(PaymentClass."Line No. Series",WorkDate,true);
+        PaymentLine."Document No." := NoSeriesMgt.GetNextNo(PaymentClass."Line No. Series", WorkDate, true);
         PaymentLine."No." := PaymentHeader."No.";
         PaymentLine."Payment Class" := PaymentHeader."Payment Class";
         LineNum := LineNum + 10000;
@@ -249,7 +250,7 @@ codeunit 50014 "Treso Mgt"
         PaymentLine.Validate(Amount, -Abs(GenJnlLine.Amount));
 
 
-        PaymentLine."Drawee Reference" := CopyStr(GenJnlLine."Check No.",1,10);
+        PaymentLine."Drawee Reference" := CopyStr(GenJnlLine."Check No.", 1, 10);
         PaymentLine."Due Date" := GenJnlLine."Due Date";
         //PaymentLine.
 
@@ -257,7 +258,7 @@ codeunit 50014 "Treso Mgt"
         PaymentLine.Modify;
     end;
 
-    procedure CreateDocumentReglement_Old(GenJnlLine: Record "Gen. Journal Line";var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line")
+    procedure CreateDocumentReglement_Old(GenJnlLine: Record "Gen. Journal Line"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line")
     begin
         /*
         
@@ -313,11 +314,11 @@ codeunit 50014 "Treso Mgt"
         ChequeGarantie.Modify;
     end;
 
-    procedure CreateNDChequeGarantie_Old(GenJnlOrigine: Record "Gen. Journal Line";var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line")
+    procedure CreateNDChequeGarantie_Old(GenJnlOrigine: Record "Gen. Journal Line"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line")
     var
         GenJnlLine: Record "Gen. Journal Line";
     begin
-        
+
         /*
         AddOnSetup.GET;
         AddOnSetup.TESTFIELD(AddOnSetup."Debit Notes Nos.");
@@ -368,14 +369,15 @@ codeunit 50014 "Treso Mgt"
         LCEcheance: Record "Letter of credit Expiry";
     begin
         Clear(LCEcheance);
-        LCEcheance.SetRange(LCEcheance."Document No.",DocNo);
-        if LCEcheance.FindSet then repeat
-          LCEcheance.Validate("Provisions %");
-          LCEcheance.Modify;
-        until LCEcheance.Next=0;
+        LCEcheance.SetRange(LCEcheance."Document No.", DocNo);
+        if LCEcheance.FindSet then
+            repeat
+                LCEcheance.Validate("Provisions %");
+                LCEcheance.Modify;
+            until LCEcheance.Next = 0;
     end;
 
-    procedure GenerateEcritureAchatDevise(LCNumber: Code[20];LigneAchat: Record "Currency Purchase")
+    procedure GenerateEcritureAchatDevise(LCNumber: Code[20]; LigneAchat: Record "Currency Purchase")
     var
         PostingDate: Date;
         GenJrnLine: Record "Gen. Journal Line";
@@ -402,16 +404,16 @@ codeunit 50014 "Treso Mgt"
         GenJrnTemplate := LC."Currency Purchase Tmpl";
         GenJrnBatch := LC."Currency Purchase Jrnal";
 
-        GenJrnTable.Get(GenJrnTemplate,GenJrnBatch);
+        GenJrnTable.Get(GenJrnTemplate, GenJrnBatch);
 
         GenJrnLine.Reset;
-        GenJrnLine.SetRange("Journal Template Name",GenJrnTemplate);
-        GenJrnLine.SetRange("Journal Batch Name",GenJrnBatch);
-        if GenJrnLine.FindFirst then Error(Text001,GenJrnBatch);
+        GenJrnLine.SetRange("Journal Template Name", GenJrnTemplate);
+        GenJrnLine.SetRange("Journal Batch Name", GenJrnBatch);
+        if GenJrnLine.FindFirst then Error(Text001, GenJrnBatch);
 
         Clear(NoSeriesMgt);
         GenJrnTable.TestField("No. Series");
-        DocNo := NoSeriesMgt.GetNextNo(GenJrnTable."No. Series",WorkDate,false);
+        DocNo := NoSeriesMgt.GetNextNo(GenJrnTable."No. Series", WorkDate, false);
 
 
 
@@ -427,7 +429,7 @@ codeunit 50014 "Treso Mgt"
         JrnTmplName.Get(GenJrnLine."Journal Template Name");
         JrnTmplName.TestField(JrnTmplName."Source Code");
         GenJrnLine."Source Code" := JrnTmplName."Source Code";
-        GenJrnLine.Validate("Posting Date",LigneAchat."Posting Date");
+        GenJrnLine.Validate("Posting Date", LigneAchat."Posting Date");
 
         GenJrnLine."Document No." := DocNo;
         GenJrnLine."Document Type" := GenJrnLine."Document Type"::" ";
@@ -436,21 +438,21 @@ codeunit 50014 "Treso Mgt"
 
         LC.TestField(LC."Accreditif Bank Account");
         GLAccNo := LC."Accreditif Bank Account";
-        GenJrnLine.Validate("Account No.",GLAccNo);
+        GenJrnLine.Validate("Account No.", GLAccNo);
 
         GenJrnLine."Origin Type" := GenJrnLine."Origin Type"::LC;
         GenJrnLine."Origin No." := LC."No.";
         GenJrnLine."Origin Line No." := LigneAchat."Line No.";
-        GenJrnLine.Description := CopyStr(StrSubstNo(Text018,LC."Letter of Credit Ref"),1,49);
+        GenJrnLine.Description := CopyStr(StrSubstNo(Text018, LC."Letter of Credit Ref"), 1, 49);
 
         //GenJrnLine.VALIDATE("Currency Code",LC."Currency Code");
         GenJrnLine.Validate(GenJrnLine.Amount, LigneAchat."Amount Currency");
         //GenJrnLine.VALIDATE("Currency Factor" , ROUND(1 / LigneAchat."Convertion Rate",0.000000000000001));
-        GenJrnLine.Validate(GenJrnLine."Amount (LCY)",LigneAchat."Amount LCY");
-        MontantAR:=GenJrnLine."Amount (LCY)";
+        GenJrnLine.Validate(GenJrnLine."Amount (LCY)", LigneAchat."Amount LCY");
+        MontantAR := GenJrnLine."Amount (LCY)";
 
-        if GenJrnLine.Amount<>0 then
-          GenJrnLine.Insert(true);
+        if GenJrnLine.Amount <> 0 then
+            GenJrnLine.Insert(true);
 
 
 
@@ -467,7 +469,7 @@ codeunit 50014 "Treso Mgt"
         JrnTmplName.TestField(JrnTmplName."Source Code");
         GenJrnLine."Source Code" := JrnTmplName."Source Code";
         LigneAchat.TestField("Posting Date");
-        GenJrnLine.Validate("Posting Date",LigneAchat."Posting Date");
+        GenJrnLine.Validate("Posting Date", LigneAchat."Posting Date");
 
 
 
@@ -478,21 +480,21 @@ codeunit 50014 "Treso Mgt"
 
         LC.TestField(LC."Bank Account");
         GLAccNo := LC."Bank Account";
-        GenJrnLine.Validate("Account No.",GLAccNo);
+        GenJrnLine.Validate("Account No.", GLAccNo);
 
         GenJrnLine."Origin Type" := GenJrnLine."Origin Type"::LC;
         GenJrnLine."Origin No." := LC."No.";
         GenJrnLine."Origin Line No." := LigneAchat."Line No.";
-        GenJrnLine.Description := CopyStr(StrSubstNo(Text018,LC."Letter of Credit Ref"),1,49);
+        GenJrnLine.Description := CopyStr(StrSubstNo(Text018, LC."Letter of Credit Ref"), 1, 49);
 
         //GenJrnLine.VALIDATE("Currency Code",LC."Currency Code");
-        GenJrnLine.Validate("Currency Code",'');
+        GenJrnLine.Validate("Currency Code", '');
         //GenJrnLine.VALIDATE(GenJrnLine.Amount, -LigneAchat."Amount Currency"*LigneAchat."Convertion Rate");
-        GenJrnLine.Validate(GenJrnLine.Amount,-MontantAR);
+        GenJrnLine.Validate(GenJrnLine.Amount, -MontantAR);
 
 
-        if GenJrnLine.Amount<>0 then
-          GenJrnLine.Insert(true);
+        if GenJrnLine.Amount <> 0 then
+            GenJrnLine.Insert(true);
 
 
 
@@ -529,7 +531,7 @@ codeunit 50014 "Treso Mgt"
 
     end;
 
-    procedure GenerateEcriturePaiementEcheance(LCNumber: Code[20];var LigneEch: Record "Letter of credit Expiry")
+    procedure GenerateEcriturePaiementEcheance(LCNumber: Code[20]; var LigneEch: Record "Letter of credit Expiry")
     var
         PostingDate: Date;
         GenJrnLine: Record "Gen. Journal Line";
@@ -545,45 +547,45 @@ codeunit 50014 "Treso Mgt"
         BAcc: Record "Bank Account";
     begin
         AddOnSetup.Get;
-        
-        
-        if LigneEch.Updated=false then Error(Text024);
-        
+
+
+        if LigneEch.Updated = false then Error(Text024);
+
         //LigneEch.CALCFIELDS("Total Purchased Due (LCY)");
-        if LigneEch."Total Purchased Due"<>LigneEch."Due Amount" then
-          Error(Text022,LigneEch."Total Purchased Due",LigneEch."Due Amount");
-        
-        
+        if LigneEch."Total Purchased Due" <> LigneEch."Due Amount" then
+            Error(Text022, LigneEch."Total Purchased Due", LigneEch."Due Amount");
+
+
         //LigneEch.VALIDATE(LigneEch."Provisions %");
         //LigneEch.MODIFY;
-        
+
         LC.Get(LCNumber);
         LC.TestField(LC."Paiement Echeance Tmpl");
         LC.TestField(LC."Paiement Echeance Jrnal");
-        
+
         if LigneEch.Posted then Error(Text020);
         //LigneAchat.TESTFIELD(LigneAchat.Posted,FALSE);
-        
+
         GenJrnTemplate := LC."Paiement Echeance Tmpl";
         GenJrnBatch := LC."Paiement Echeance Jrnal";
-        
-        GenJrnTable.Get(GenJrnTemplate,GenJrnBatch);
-        
+
+        GenJrnTable.Get(GenJrnTemplate, GenJrnBatch);
+
         GenJrnLine.Reset;
-        GenJrnLine.SetRange("Journal Template Name",GenJrnTemplate);
-        GenJrnLine.SetRange("Journal Batch Name",GenJrnBatch);
-        if GenJrnLine.FindFirst then Error(Text001,GenJrnBatch);
-        
+        GenJrnLine.SetRange("Journal Template Name", GenJrnTemplate);
+        GenJrnLine.SetRange("Journal Batch Name", GenJrnBatch);
+        if GenJrnLine.FindFirst then Error(Text001, GenJrnBatch);
+
         Clear(NoSeriesMgt);
         GenJrnTable.TestField("No. Series");
-        DocNo := NoSeriesMgt.GetNextNo(GenJrnTable."No. Series",WorkDate,false);
-        
-        
-        
+        DocNo := NoSeriesMgt.GetNextNo(GenJrnTable."No. Series", WorkDate, false);
+
+
+
         Clear(GenJrnLine);
-        
+
         GenJrnLine.AFK_SetCanUpdateAchatDevise(true);
-        
+
         GenJrnLine."Journal Template Name" := GenJrnTemplate;
         GenJrnLine."Journal Batch Name" := GenJrnBatch;
         LineNo := LineNo + 10000;
@@ -591,55 +593,55 @@ codeunit 50014 "Treso Mgt"
         JrnTmplName.Get(GenJrnLine."Journal Template Name");
         JrnTmplName.TestField(JrnTmplName."Source Code");
         GenJrnLine."Source Code" := JrnTmplName."Source Code";
-        
+
         LigneEch.TestField("Posting Date");
-        GenJrnLine.Validate("Posting Date",LigneEch."Posting Date");
-        
-        
-        
+        GenJrnLine.Validate("Posting Date", LigneEch."Posting Date");
+
+
+
         GenJrnLine."Document No." := DocNo;
         GenJrnLine."Document Type" := GenJrnLine."Document Type"::Payment;
         GenJrnLine."External Document No." := LC."No.";
         GenJrnLine."Account Type" := GenJrnLine."Account Type"::Vendor;
-        
+
         LC.TestField(LC."Vendor No.");
         GLAccNo := LC."Vendor No.";
-        GenJrnLine.Validate("Account No.",GLAccNo);
-        
+        GenJrnLine.Validate("Account No.", GLAccNo);
+
         GenJrnLine."Origin Type" := GenJrnLine."Origin Type"::EchPayment;
         GenJrnLine."Origin No." := LC."No.";
         GenJrnLine."Origin Line No." := LigneEch."Line No.";
-        GenJrnLine.Description := CopyStr(StrSubstNo(Text021,LC."Letter of Credit Ref"),1,49);
-        
+        GenJrnLine.Description := CopyStr(StrSubstNo(Text021, LC."Letter of Credit Ref"), 1, 49);
+
         BAcc.Get(LC."Accreditif Bank Account");
-        GenJrnLine.Validate("Currency Code",BAcc."Currency Code");
+        GenJrnLine.Validate("Currency Code", BAcc."Currency Code");
         //GenJrnLine.VALIDATE("Currency Code",'');
         GenJrnLine.Validate(GenJrnLine.Amount, LigneEch."Due Amount");
-        
-        TauxUtilise := LigneEch."Total Purchased LCY"/LigneEch."Due Amount";
-        GenJrnLine.Validate("Currency Factor" , Round(1 / TauxUtilise,0.000000000000001));
-        
-        GenJrnLine.Validate(GenJrnLine."Payment Method Code",AddOnSetup."LC Payment Method");
-        
-        if LC."Vendor Invoice Number"<>'' then begin
-          GenJrnLine."Applies-to Doc. Type" := GenJrnLine."Applies-to Doc. Type"::Invoice;
-          GenJrnLine.Validate(GenJrnLine."Applies-to Doc. No.",LC."Vendor Invoice Number");
+
+        TauxUtilise := LigneEch."Total Purchased LCY" / LigneEch."Due Amount";
+        GenJrnLine.Validate("Currency Factor", Round(1 / TauxUtilise, 0.000000000000001));
+
+        GenJrnLine.Validate(GenJrnLine."Payment Method Code", AddOnSetup."LC Payment Method");
+
+        if LC."Vendor Invoice Number" <> '' then begin
+            GenJrnLine."Applies-to Doc. Type" := GenJrnLine."Applies-to Doc. Type"::Invoice;
+            GenJrnLine.Validate(GenJrnLine."Applies-to Doc. No.", LC."Vendor Invoice Number");
         end;
-        
+
         GenJrnLine."Bal. Account Type" := GenJrnLine."Bal. Account Type"::"Bank Account";
-        GenJrnLine.Validate("Bal. Account No.",LC."Accreditif Bank Account");
-        
-        
-        if GenJrnLine.Amount<>0 then
-          GenJrnLine.Insert(true);
-        
-        
-        
-        
-        
-        
-        
-        
+        GenJrnLine.Validate("Bal. Account No.", LC."Accreditif Bank Account");
+
+
+        if GenJrnLine.Amount <> 0 then
+            GenJrnLine.Insert(true);
+
+
+
+
+
+
+
+
         /*
         CLEAR(GenJrnLine);
         
@@ -678,9 +680,9 @@ codeunit 50014 "Treso Mgt"
         IF GenJrnLine.Amount<>0 THEN
           GenJrnLine.INSERT(TRUE);
           */
-        
+
         //AdjustGenjrn.RUN(GenJrnLine);
-        
+
         Message(TxtTraitementTerminé);
 
     end;
@@ -700,7 +702,7 @@ codeunit 50014 "Treso Mgt"
         AddOnSetup.Get;
         //AddOnSetup.TESTFIELD(AddOnSetup."Credit Bank Account");
 
-        if not Confirm(StrSubstNo( Text019,Check."Check No.")) then exit;
+        if not Confirm(StrSubstNo(Text019, Check."Check No.")) then exit;
 
 
 
@@ -710,12 +712,12 @@ codeunit 50014 "Treso Mgt"
         GenJrnTemplate := Check."CCL Tmpl";
         GenJrnBatch := Check."CCL Jrnal";
 
-        GenJrnTable.Get(GenJrnTemplate,GenJrnBatch);
+        GenJrnTable.Get(GenJrnTemplate, GenJrnBatch);
 
         GenJrnLine.Reset;
-        GenJrnLine.SetRange("Journal Template Name",GenJrnTemplate);
-        GenJrnLine.SetRange("Journal Batch Name",GenJrnBatch);
-        if GenJrnLine.FindFirst then Error(Text001,GenJrnBatch);
+        GenJrnLine.SetRange("Journal Template Name", GenJrnTemplate);
+        GenJrnLine.SetRange("Journal Batch Name", GenJrnBatch);
+        if GenJrnLine.FindFirst then Error(Text001, GenJrnBatch);
 
 
         Clear(GenJrnLine);
@@ -726,13 +728,13 @@ codeunit 50014 "Treso Mgt"
         JrnTmplName.Get(GenJrnLine."Journal Template Name");
         JrnTmplName.TestField(JrnTmplName."Source Code");
         GenJrnLine."Source Code" := JrnTmplName."Source Code";
-        GenJrnLine.Validate("Posting Date",WorkDate);
+        GenJrnLine.Validate("Posting Date", WorkDate);
 
         GenJrnTable.TestField("No. Series");
         Clear(NoSeriesMgt);
 
-        if LastDocNoDebit='' then begin
-            GenJrnLine."Document No." := NoSeriesMgt.GetNextNo(GenJrnTable."No. Series",GenJrnLine."Posting Date",false);
+        if LastDocNoDebit = '' then begin
+            GenJrnLine."Document No." := NoSeriesMgt.GetNextNo(GenJrnTable."No. Series", GenJrnLine."Posting Date", false);
             LastDocNoDebit := GenJrnLine."Document No.";
         end else begin
             GenJrnLine."Document No." := IncStr(LastDocNoDebit);
@@ -747,13 +749,13 @@ codeunit 50014 "Treso Mgt"
 
         Check.TestField(Check."Customer No.");
         GLAccNo := Check."Customer No.";
-        GenJrnLine.Validate("Account No.",GLAccNo);
+        GenJrnLine.Validate("Account No.", GLAccNo);
 
         GenJrnLine."Check Date" := Check."Check Date";
         GenJrnLine."Check No." := Check."Check No.";
 
         //GenJrnLine."MoneyTech Import No." := LC."No.";
-        GenJrnLine.Description := CopyStr(StrSubstNo(Check.Description),1,49);
+        GenJrnLine.Description := CopyStr(StrSubstNo(Check.Description), 1, 49);
         //GenJrnLine.Description := COPYSTR("Import Data".Description,1,37)+' - '+COPYSTR("Import Data".InvoiceNo,1,10);
 
         //GenJrnLine."Posting Group" := Cust2."Customer Posting Group";
@@ -767,20 +769,20 @@ codeunit 50014 "Treso Mgt"
         //GenJrnLine."Gen. Prod. Posting Group" := '';
         //GenJrnLine."VAT Bus. Posting Group" := '';
         //GenJrnLine."VAT Prod. Posting Group" := '';
-        GenJrnLine.Validate("Currency Code",'');
+        GenJrnLine.Validate("Currency Code", '');
 
         GenJrnTable.TestField("Bal. Account No.");
         BalGLAccountNo := GenJrnTable."Bal. Account No.";
-        GenJrnLine."Bal. Account Type" :=  GenJrnLine."Bal. Account Type"::"Bank Account";
-        GenJrnLine.Validate("Bal. Account No.",BalGLAccountNo);
+        GenJrnLine."Bal. Account Type" := GenJrnLine."Bal. Account Type"::"Bank Account";
+        GenJrnLine.Validate("Bal. Account No.", BalGLAccountNo);
 
         GenJrnLine.Validate(Amount, -Check.Amount);
 
         LastAmountTotal := LastAmountTotal + GenJrnLine.Amount;
 
 
-        if GenJrnLine.Amount<>0 then
-          GenJrnLine.Insert(true);
+        if GenJrnLine.Amount <> 0 then
+            GenJrnLine.Insert(true);
 
 
         Check.Status := Check.Status::Confirmed;
@@ -808,13 +810,13 @@ codeunit 50014 "Treso Mgt"
 
         GenJnlLine.TestField(GenJnlLine."Payment Method Code");
         PaymentMethod.Get(GenJnlLine."Payment Method Code");
-        if PaymentMethod."CC Document Type"=PaymentMethod."CC Document Type"::" " then exit;
+        if PaymentMethod."CC Document Type" = PaymentMethod."CC Document Type"::" " then exit;
 
 
-        if not PaymentCCConfig.Get(GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name",
+        if not PaymentCCConfig.Get(GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name",
           PaymentMethod."CC Document Type") then
-          Error(StrSubstNo(Text017,GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name",
-          PaymentMethod."CC Document Type"));
+            Error(StrSubstNo(Text017, GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name",
+            PaymentMethod."CC Document Type"));
 
         PaymentCCConfig.TestField("Payment Class");
 
@@ -823,7 +825,7 @@ codeunit 50014 "Treso Mgt"
         PaymentHeader.Init;
 
         PaymentClass.TestField("Header No. Series");
-        PaymentHeader."No." := NoSeriesMgt.GetNextNo(PaymentClass."Header No. Series",WorkDate,true);
+        PaymentHeader."No." := NoSeriesMgt.GetNextNo(PaymentClass."Header No. Series", WorkDate, true);
 
         //NoSeriesMgt.InitSeries(PaymentClass."Header No. Series",xRec."No. Series",0D,"No.","No. Series");
 
@@ -831,23 +833,23 @@ codeunit 50014 "Treso Mgt"
         PaymentLine.LockTable;
         PaymentHeader.Insert(true);
 
-        PaymentHeader.Validate("Payment Class",PaymentCCConfig."Payment Class");
-        PaymentHeader.Validate("Currency Code",GenJnlLine."Currency Code");
+        PaymentHeader.Validate("Payment Class", PaymentCCConfig."Payment Class");
+        PaymentHeader.Validate("Currency Code", GenJnlLine."Currency Code");
 
         Vend.Get(GenJnlLine."Account No.");
         PaymentHeader."Check Number" := GenJnlLine."Check No.";
         PaymentHeader."Customer No." := Vend."No.";
         PaymentHeader."Customer Name" := Vend.Name;
         PaymentHeader.Description := GenJnlLine.Description;
-        PaymentHeader.Validate("Posting Date",GenJnlLine."Posting Date");
+        PaymentHeader.Validate("Posting Date", GenJnlLine."Posting Date");
         PaymentHeader."Origin Document N°" := GenJnlLine."Document No.";
 
         PaymentHeader.Modify;
 
 
-        LineNum:=0;
+        LineNum := 0;
         PaymentLine.Init;
-        PaymentLine."Document No."  := NoSeriesMgt.GetNextNo(PaymentClass."Line No. Series",WorkDate,true);
+        PaymentLine."Document No." := NoSeriesMgt.GetNextNo(PaymentClass."Line No. Series", WorkDate, true);
         PaymentLine."No." := PaymentHeader."No.";
         PaymentLine."Payment Class" := PaymentHeader."Payment Class";
         LineNum := LineNum + 10000;
@@ -856,11 +858,11 @@ codeunit 50014 "Treso Mgt"
 
 
         PaymentLine."Account Type" := PaymentLine."Account Type"::Vendor;
-        PaymentLine.Validate(PaymentLine."Account No.",Vend."No.");
+        PaymentLine.Validate(PaymentLine."Account No.", Vend."No.");
         PaymentLine."Currency Code" := GenJnlLine."Currency Code";
         PaymentLine."Currency Factor" := PaymentHeader."Currency Factor";
         PaymentLine.Validate(Amount, Abs(GenJnlLine.Amount));
-        PaymentLine."Drawee Reference" := CopyStr(GenJnlLine."Check No.",1,10);
+        PaymentLine."Drawee Reference" := CopyStr(GenJnlLine."Check No.", 1, 10);
         PaymentLine."Due Date" := GenJnlLine."Due Date";
         //PaymentLine.
 
@@ -879,24 +881,24 @@ codeunit 50014 "Treso Mgt"
     begin
 
         CurrPurchExpiry.Reset;
-        CurrPurchExpiry.SetRange("LC Document No.",LC."No.");
+        CurrPurchExpiry.SetRange("LC Document No.", LC."No.");
         CurrPurchExpiry.DeleteAll;
 
         CurrPurch.Reset;
-        CurrPurch.SetCurrentKey("Document No.","Posting Date");
-        CurrPurch.SetRange("Document No.",LC."No.");
-        CurrPurch.SetRange(CurrPurch."Due Line",0);
+        CurrPurch.SetCurrentKey("Document No.", "Posting Date");
+        CurrPurch.SetRange("Document No.", LC."No.");
+        CurrPurch.SetRange(CurrPurch."Due Line", 0);
         if CurrPurch.FindSet then
-        repeat
+            repeat
 
-          CurrPurch.CalcFields(Posted);
-          if CurrPurch.Posted then
-            AffecterProvisionsAchat(CurrPurch,LC);
+                CurrPurch.CalcFields(Posted);
+                if CurrPurch.Posted then
+                    AffecterProvisionsAchat(CurrPurch, LC);
 
-        until CurrPurch.Next=0;
+            until CurrPurch.Next = 0;
     end;
 
-    procedure AffecterProvisionsAchat(CurrPurch: Record "Currency Purchase";LC: Record "Letter of credit")
+    procedure AffecterProvisionsAchat(CurrPurch: Record "Currency Purchase"; LC: Record "Letter of credit")
     var
         CurrPurchExpiry: Record "Expiry Currency Purchase";
         LCExpiry: Record "Letter of credit Expiry";
@@ -907,39 +909,39 @@ codeunit 50014 "Treso Mgt"
     begin
 
         CurrPurch.CalcFields("Affected Provisions");
-        ResteAAffecter := CurrPurch."Amount Currency"-CurrPurch."Affected Provisions";
+        ResteAAffecter := CurrPurch."Amount Currency" - CurrPurch."Affected Provisions";
 
-        if (ResteAAffecter<=0) then exit;
+        if (ResteAAffecter <= 0) then exit;
 
         LCExpiry.Reset;
-        LCExpiry.SetRange("Document No.",LC."No.");
+        LCExpiry.SetRange("Document No.", LC."No.");
         if LCExpiry.FindSet then
-        repeat
+            repeat
 
-          LCExpiry.CalcFields("Affected Provisions");
-          ProvisionsEcheance := Round(LCExpiry."Provisions %"*LC."Provisions Amount"/100) - LCExpiry."Affected Provisions";
-          if ProvisionsEcheance>0 then begin
+                LCExpiry.CalcFields("Affected Provisions");
+                ProvisionsEcheance := Round(LCExpiry."Provisions %" * LC."Provisions Amount" / 100) - LCExpiry."Affected Provisions";
+                if ProvisionsEcheance > 0 then begin
 
-            if ResteAAffecter>ProvisionsEcheance then
-              MontantAAffecter := ProvisionsEcheance
-            else
-              MontantAAffecter := ResteAAffecter;
+                    if ResteAAffecter > ProvisionsEcheance then
+                        MontantAAffecter := ProvisionsEcheance
+                    else
+                        MontantAAffecter := ResteAAffecter;
 
-            CurrPurchExpiry.Init;
-            CurrPurchExpiry."LC Document No." := LC."No.";
-            CurrPurchExpiry."Expiry Line No." := LCExpiry."Line No.";
-            CurrPurchExpiry."Purchase Line No." := CurrPurch."Line No.";
-            CurrPurchExpiry."Currency Exchange" := CurrPurch."Convertion Rate";
-            CurrPurchExpiry."Purchase Amount" := MontantAAffecter;
-            CurrPurchExpiry."Purchase Amount (LCY)" := MontantAAffecter * CurrPurchExpiry."Currency Exchange";
-            CurrPurchExpiry.Insert;
+                    CurrPurchExpiry.Init;
+                    CurrPurchExpiry."LC Document No." := LC."No.";
+                    CurrPurchExpiry."Expiry Line No." := LCExpiry."Line No.";
+                    CurrPurchExpiry."Purchase Line No." := CurrPurch."Line No.";
+                    CurrPurchExpiry."Currency Exchange" := CurrPurch."Convertion Rate";
+                    CurrPurchExpiry."Purchase Amount" := MontantAAffecter;
+                    CurrPurchExpiry."Purchase Amount (LCY)" := MontantAAffecter * CurrPurchExpiry."Currency Exchange";
+                    CurrPurchExpiry.Insert;
 
-            CurrPurch.CalcFields("Affected Provisions");
-            ResteAAffecter := CurrPurch."Amount Currency" - CurrPurch."Affected Provisions";
+                    CurrPurch.CalcFields("Affected Provisions");
+                    ResteAAffecter := CurrPurch."Amount Currency" - CurrPurch."Affected Provisions";
 
-          end;
+                end;
 
-        until ((LCExpiry.Next=0) or (ResteAAffecter<=0));
+            until ((LCExpiry.Next = 0) or (ResteAAffecter <= 0));
     end;
 
     procedure SendEmailVendorTransfer(GenJnlLine: Record "Gen. Journal Line")
@@ -952,30 +954,30 @@ codeunit 50014 "Treso Mgt"
         GenJnlLine3: Record "Gen. Journal Line";
         EmailObject: Text[250];
     begin
-        
-        if GenJnlLine."Account Type"<>GenJnlLine."Account Type"::Vendor then exit;
-        if GenJnlLine."Document Type"<>GenJnlLine."Document Type"::Payment then exit;
-        GenJnlLine.TestField("Payment Method Code",'VIREMENT');
+
+        if GenJnlLine."Account Type" <> GenJnlLine."Account Type"::Vendor then exit;
+        if GenJnlLine."Document Type" <> GenJnlLine."Document Type"::Payment then exit;
+        GenJnlLine.TestField("Payment Method Code", 'VIREMENT');
         GenJnlLine.TestField(GenJnlLine."Document No.");
-        
+
         Vend1.Get(GenJnlLine."Account No.");
         Vend1.TestField(Vend1."E-Mail");
-        
+
         AddOnSetup.Get;
         SMTPSetup.Get;
         //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
-        
+
         EmailObject := GetVendorEmailObject(GenJnlLine."Payment Method Code");
-        
-        _mail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",
-            Vend1."E-Mail",EmailObject,Text032,false);
-        
+
+        _mail.CreateMessage(SMTPSetup."From Name", SMTPSetup."From Adress",
+            Vend1."E-Mail", EmailObject, Text032, false);
+
         Emplacement := GetEmplacementFichierVirement(GenJnlLine);
-        
+
         if not Exists(Emplacement) then exit;
-          //IF ERASE(Emplacement) THEN;
-        
-        
+        //IF ERASE(Emplacement) THEN;
+
+
         /*
         GenJnlLine3.RESET;
         GenJnlLine3.COPY(GenJnlLine);
@@ -992,11 +994,11 @@ codeunit 50014 "Treso Mgt"
         GenJnlLine3.SETRANGE("Document No.",GenJnlLine."Document No.");//**************************************added
         REPORT.SAVEASPDF(50185,Emplacement,GenJnlLine3);
         */
-        
+
         //SLEEP(1000);
-        
+
         _mail.AddAttachment(Emplacement, FileName);
-        
+
         //MESSAGE('%1',Vend1."E-Mail");
         _mail.Send();
 
@@ -1013,38 +1015,38 @@ codeunit 50014 "Treso Mgt"
         TmpPath: Text;
         PaymentMethod: Record "Payment Method";
     begin
-        
+
         if PaymentMethod.Get(GenJnlLine."Payment Method Code") then;
-        
-        GenJnlLine.TestField("Account Type",GenJnlLine."Account Type"::Vendor);
-        GenJnlLine.TestField("Document Type",GenJnlLine."Document Type"::Payment);
+
+        GenJnlLine.TestField("Account Type", GenJnlLine."Account Type"::Vendor);
+        GenJnlLine.TestField("Document Type", GenJnlLine."Document Type"::Payment);
         /*
         IF ((GenJnlLine."Payment Method Code"<>'VIREMENT') AND
           (GenJnlLine."Payment Method Code"<>'CHEQUES')) THEN
             ERROR(Text026);
         *///041023 JN
-        
+
         if not PaymentMethod."Allow vendor email" then Error(Text027);//041023 JN
-        
+
         //GenJnlLine.TESTFIELD("Payment Method Code",'VIREMENT');
         GenJnlLine.TestField(GenJnlLine."Document No.");
-        
+
         Vend1.Get(GenJnlLine."Account No.");
         //Vend1.TESTFIELD(Vend1."E-Mail");
-        
+
         AddOnSetup.Get;
         SMTPSetup.Get;
         //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
-        
+
         //_mail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",
         //Vend1."E-Mail",'Nouveau virement de la part de GALANA','Veuillez trouver en pièce jointe à ce mail votre virement validé ce jour.',FALSE);
-        
+
         Emplacement := GetEmplacementFichierVirement(GenJnlLine);
-        
+
         if Exists(Emplacement) then
-          if Erase(Emplacement) then;
-        
-        
+            if Erase(Emplacement) then;
+
+
         /*
         GenJnlLine3.RESET;
         GenJnlLine3.COPY(GenJnlLine);
@@ -1054,20 +1056,20 @@ codeunit 50014 "Treso Mgt"
         GenJnlLine3.SETRANGE("Document No.",GenJnlLine."Document No.");//**************************************added
         //REPORT.RUN(REPORT::FacturePaiement,FALSE,FALSE,GenJnlLine3);
         */
-        GenJnlLine3.Get(GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name",GenJnlLine."Line No.");
-        GenJnlLine.SetRange("Journal Template Name",GenJnlLine."Journal Template Name");
-        GenJnlLine3.SetRange("Journal Batch Name",GenJnlLine."Journal Batch Name");
-        GenJnlLine3.SetRange("Posting Date",GenJnlLine."Posting Date");
-        GenJnlLine3.SetRange("Document No.",GenJnlLine."Document No.");//**************************************added
-        GenJnlLine3.SetRange("Account No.",GenJnlLine."Account No.");
-        REPORT.SaveAsPdf(50185,Emplacement,GenJnlLine3);
-        
-        
-        InsertEmailToSend(GenJnlLine3,Emplacement);
+        GenJnlLine3.Get(GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name", GenJnlLine."Line No.");
+        GenJnlLine.SetRange("Journal Template Name", GenJnlLine."Journal Template Name");
+        GenJnlLine3.SetRange("Journal Batch Name", GenJnlLine."Journal Batch Name");
+        GenJnlLine3.SetRange("Posting Date", GenJnlLine."Posting Date");
+        GenJnlLine3.SetRange("Document No.", GenJnlLine."Document No.");//**************************************added
+        GenJnlLine3.SetRange("Account No.", GenJnlLine."Account No.");
+        REPORT.SaveAsPdf(50185, Emplacement, GenJnlLine3);
+
+
+        InsertEmailToSend(GenJnlLine3, Emplacement);
         //SLEEP(1000);
-        
+
         //_mail.AddAttachment(Emplacement, FileName);
-        
+
         //MESSAGE('%1',Vend1."E-Mail");
         //_mail.Send();
 
@@ -1084,7 +1086,7 @@ codeunit 50014 "Treso Mgt"
         exit(TemporaryPath + FileName);
     end;
 
-    local procedure InsertEmailToSend(GenJrnLine: Record "Gen. Journal Line";FileName: Text)
+    local procedure InsertEmailToSend(GenJrnLine: Record "Gen. Journal Line"; FileName: Text)
     var
         EmailToSend: Record "Tampon Payment Vendor Email";
         NextID: Integer;
@@ -1092,9 +1094,9 @@ codeunit 50014 "Treso Mgt"
 
         EmailToSend.Reset;
         if EmailToSend.FindLast then
-          NextID := EmailToSend.EntryID + 1
+            NextID := EmailToSend.EntryID + 1
         else
-          NextID := 1;
+            NextID := 1;
 
         EmailToSend.Init;
         EmailToSend.EntryID := NextID;
@@ -1129,20 +1131,20 @@ codeunit 50014 "Treso Mgt"
         EmailObject := GetVendorEmailObject(TmpVendEmail."Payment Method Code");
 
         Clear(_mail);
-        _mail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",
-            Vend1."E-Mail",EmailObject,Text032,false);
+        _mail.CreateMessage(SMTPSetup."From Name", SMTPSetup."From Adress",
+            Vend1."E-Mail", EmailObject, Text032, false);
 
         Emplacement := TmpVendEmail.Attachment;
 
         if not Exists(Emplacement) then begin
-          Message(Text026);
-          exit;
+            Message(Text026);
+            exit;
         end;
 
         _mail.AddAttachment(Emplacement, FileName);
 
         if (AddOnSetup2."Email Avis Paiement" <> '') then
-          _mail.AddCC(AddOnSetup2."Email Avis Paiement");
+            _mail.AddCC(AddOnSetup2."Email Avis Paiement");
 
         //MESSAGE('%1',Vend1."E-Mail");
         _mail.Send();
@@ -1163,11 +1165,12 @@ codeunit 50014 "Treso Mgt"
     begin
 
         TmpVendEmail.Reset;
-        TmpVendEmail.SetRange(TmpVendEmail."User ID",UserId);
-        if TmpVendEmail.FindSet then repeat
-          Vend1.Get(TmpVendEmail."Vendor No.");
-          Vend1.TestField(Vend1."E-Mail");
-        until TmpVendEmail.Next=0;
+        TmpVendEmail.SetRange(TmpVendEmail."User ID", UserId);
+        if TmpVendEmail.FindSet then
+            repeat
+                Vend1.Get(TmpVendEmail."Vendor No.");
+                Vend1.TestField(Vend1."E-Mail");
+            until TmpVendEmail.Next = 0;
 
 
         AddOnSetup.Get;
@@ -1176,46 +1179,140 @@ codeunit 50014 "Treso Mgt"
         //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
 
         TmpVendEmail.Reset;
-        TmpVendEmail.SetRange(TmpVendEmail."User ID",UserId);
-        if TmpVendEmail.FindSet then repeat
+        TmpVendEmail.SetRange(TmpVendEmail."User ID", UserId);
+        if TmpVendEmail.FindSet then
+            repeat
 
-          Vend1.Get(TmpVendEmail."Vendor No.");
+                Vend1.Get(TmpVendEmail."Vendor No.");
 
-          EmailObject := GetVendorEmailObject(TmpVendEmail."Payment Method Code");
+                EmailObject := GetVendorEmailObject(TmpVendEmail."Payment Method Code");
 
-          Clear(_mail);
-          _mail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",
-          Vend1."E-Mail",EmailObject,Text032,false);
+                Clear(_mail);
+                _mail.CreateMessage(SMTPSetup."From Name", SMTPSetup."From Adress",
+                Vend1."E-Mail", EmailObject, Text032, false);
 
-          Emplacement := TmpVendEmail.Attachment;
+                Emplacement := TmpVendEmail.Attachment;
 
-          if (AddOnSetup2."Email Avis Paiement" <> '') then
-            _mail.AddCC(AddOnSetup2."Email Avis Paiement");
+                if (AddOnSetup2."Email Avis Paiement" <> '') then
+                    _mail.AddCC(AddOnSetup2."Email Avis Paiement");
 
-          if Exists(Emplacement) then begin
-            _mail.AddAttachment(Emplacement, FileName);
-            _mail.Send();
-            TmpVendEmail.Delete;
-          end;
+                if Exists(Emplacement) then begin
+                    _mail.AddAttachment(Emplacement, FileName);
+                    _mail.Send();
+                    TmpVendEmail.Delete;
+                end;
 
-        until TmpVendEmail.Next=0;
+            until TmpVendEmail.Next = 0;
     end;
 
     local procedure GetVendorEmailObject(PaymentMethodCode: Code[10]): Text[250]
     begin
-        if PaymentMethodCode='CHEQUES' then
-          exit(Text028);
+        if PaymentMethodCode = 'CHEQUES' then
+            exit(Text028);
 
-        if PaymentMethodCode='ESPECES' then
-          exit(Text030);
+        if PaymentMethodCode = 'ESPECES' then
+            exit(Text030);
 
-        if PaymentMethodCode='TRAITES' then
-          exit(Text031);
+        if PaymentMethodCode = 'TRAITES' then
+            exit(Text031);
 
-        if PaymentMethodCode='VIREMENT' then
-          exit(Text029);
+        if PaymentMethodCode = 'VIREMENT' then
+            exit(Text029);
 
         exit(Text029);
     end;
+
+
+    procedure GetGainLossAccount_PROGAL(DtldCVLedgEntryBuf: Record "Detailed CV Ledg. Entry Buffer"): Code[20]
+    begin
+        AddOnSetup.Get;
+        case DtldCVLedgEntryBuf."Entry Type" of
+            DtldCVLedgEntryBuf."Entry Type"::"Unrealized Loss":
+                begin
+                    AddOnSetup.TestField("PROGAL Unrealized Losses Acc.");
+                    exit(AddOnSetup."PROGAL Unrealized Losses Acc.");
+                end;
+            DtldCVLedgEntryBuf."Entry Type"::"Unrealized Gain":
+                begin
+                    AddOnSetup.TestField("PROGAL Unrealized Gains Acc.");
+                    exit(AddOnSetup."PROGAL Unrealized Gains Acc.");
+                end;
+            DtldCVLedgEntryBuf."Entry Type"::"Realized Loss":
+                begin
+                    AddOnSetup.TestField("PROGAL Realized Losses Acc.");
+                    exit(AddOnSetup."PROGAL Realized Losses Acc.");
+                end;
+            DtldCVLedgEntryBuf."Entry Type"::"Realized Gain":
+                begin
+                    AddOnSetup.TestField("PROGAL Realized Gains Acc.");
+                    exit(AddOnSetup."PROGAL Realized Gains Acc.");
+                end;
+            else
+                Error(IncorrectEntryTypeErr, DtldCVLedgEntryBuf."Entry Type");
+        end;
+    end;
+
+
+    procedure AFK_ProcessFeuilleReglementCCL(GenJnlLine: Record "Gen. Journal Line")
+    var
+        GenJnlLine3: Record "Gen. Journal Line";
+        GenJournalLine2: Record "Gen. Journal Line";
+        AFK_GLMgt: codeunit 1;
+        DocNo: Code[20];
+        TextAFKErr002: label 'Cette option n''est plus disponible !';
+    begin
+
+        //**********************************************************
+        //**********************************************************
+        //**********************************************************
+        //**********************************************************
+
+        // if TempGenJnlLine.Find('-') then
+        //     repeat
+
+        //IF TempGenJnlLine."CC Document Type"=TempGenJnlLine."CC Document Type"::" " THEN EXIT;
+        GenJnlLine3 := GenJnlLine;
+        GenJournalLine2.Copy(GenJnlLine3);
+
+        if GenJnlLine3."CC Document Type" = GenJnlLine3."CC Document Type"::ChequeCaution then begin
+            Error(TextAFKErr002);
+            //   AFK_GLMgt.CreateNewPaymentDoc(GenJnlLine3);
+            //   AFK_CreateNDChequeGarantie(GenJournalLine2);
+        end;
+
+        if GenJnlLine3."CC Document Type" = GenJnlLine3."CC Document Type"::ChequeNormal then
+            AFK_GLMgt.CreateNewPaymentDoc(GenJnlLine3);
+
+        if GenJnlLine3."CC Document Type" = GenJnlLine3."CC Document Type"::Traite then
+            AFK_GLMgt.CreateNewPaymentDoc(GenJnlLine3);
+
+        if GenJnlLine3."CC Document Type" = GenJnlLine3."CC Document Type"::Virement then begin
+            if GenJnlLine3."Account Type" = GenJnlLine3."Account Type"::Customer then
+                AFK_GLMgt.CreateNewPaymentDoc(GenJnlLine3);
+            if GenJnlLine3."Account Type" = GenJnlLine3."Account Type"::"Bank Account" then //JN231019 Vir from Treso
+                AFK_GLMgt.CreateNewPaymentDoc_VirementFromTreso(GenJnlLine3);//***
+        end;
+
+        if GenJnlLine3."CC Document Type" = GenJnlLine3."CC Document Type"::Especes then
+            AFK_GLMgt.CreateNewPaymentDoc(GenJnlLine3);
+
+        if GenJnlLine3."CC Document Type" = GenJnlLine3."CC Document Type"::ChequeGarantie then
+            AFK_GLMgt.CreateChequeGarantie(GenJnlLine3);
+
+
+
+        //Traite fournisseur
+        if (GenJnlLine3."Account Type" = GenJnlLine3."Account Type"::Vendor) and (GenJnlLine3."Payment Method Code" <> '') then begin
+            AFK_GLMgt.CreateNewPaymentDocVendor(GenJnlLine3);
+            //IF SendVendorEmails_AFK THEN
+            //  AFKTresoMgt.SendEmailVendorTransfer(GenJnlLine3);//Envoi manuel
+        end;
+
+        //until TempGenJnlLine.Next = 0;
+
+    end;
+
+
+
 }
 

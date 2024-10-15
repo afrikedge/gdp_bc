@@ -32,6 +32,10 @@ tableextension 50039 "A02 Bank Account" extends "Bank Account"
                 //*************************************
             end;
         }
+        field(50004; "Check Report Usage"; enum "Report Selection Usage")
+        {
+            Caption = 'Check Report Usage';
+        }
     }
 
     procedure AFKGetLongAccountNum(): Text

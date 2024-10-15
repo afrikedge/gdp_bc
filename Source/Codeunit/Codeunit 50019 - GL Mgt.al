@@ -3,7 +3,7 @@ codeunit 50019 "GL Mgt"
 
     trigger OnRun()
     begin
-        Message('%1',20230321D-20230201D);
+        Message('%1', 20230321D - 20230201D);
     end;
 
     var
@@ -55,19 +55,19 @@ codeunit 50019 "GL Mgt"
         AFK_Text007: Label 'Fonction non autorisée';
         AFK_Text008: Label 'Voulez-vous valider cet article  %1 - %2 ? \Il faut vous assurer que toutes les contraintes analytiques ont été renseignées';
 
-    procedure ConvertInLocalCurr(CodeDevise: Code[20];PostingDate: Date;AmountToConvert: Decimal) Reponse: Decimal
+    procedure ConvertInLocalCurr(CodeDevise: Code[20]; PostingDate: Date; AmountToConvert: Decimal) Reponse: Decimal
     begin
-        if CodeDevise='' then
-          Reponse := AmountToConvert
+        if CodeDevise = '' then
+            Reponse := AmountToConvert
         else
-          Reponse :=
-                Round(
-                  CurrExchRate.ExchangeAmtFCYToLCY(
-                    PostingDate,CodeDevise,AmountToConvert,
-                    CurrExchRate.ExchangeRate(PostingDate,CodeDevise)));
+            Reponse :=
+                  Round(
+                    CurrExchRate.ExchangeAmtFCYToLCY(
+                      PostingDate, CodeDevise, AmountToConvert,
+                      CurrExchRate.ExchangeRate(PostingDate, CodeDevise)));
     end;
 
-    procedure GetPostingAllowedDatesOnGroupsUsers(var AllowPostingFrom: Date;var AllowPostingTo: Date;var SetupRecordID: RecordID)
+    procedure GetPostingAllowedDatesOnGroupsUsers(var AllowPostingFrom: Date; var AllowPostingTo: Date; var SetupRecordID: RecordID)
     var
         UserGroupMember: Record "User Group Member";
         UserGroup: Record "User Group";
@@ -76,14 +76,14 @@ codeunit 50019 "GL Mgt"
         if not AddOnSetup."GL Security On Group Users" then exit;
 
         UserGroupMember.Reset;
-        UserGroupMember.SetRange("User Name",UserId);
+        UserGroupMember.SetRange("User Name", UserId);
         //UserGroupMember.SETRANGE("Company Name",COMPANYNAME);
         if UserGroupMember.FindFirst then begin
-          if UserGroup.Get(UserGroupMember."User Group Code") then begin
-            AllowPostingFrom := UserGroup."Allow Posting From";
-            AllowPostingTo := UserGroup."Allow Posting To";
-            SetupRecordID := UserGroup.RecordId;
-          end;
+            if UserGroup.Get(UserGroupMember."User Group Code") then begin
+                AllowPostingFrom := UserGroup."Allow Posting From";
+                AllowPostingTo := UserGroup."Allow Posting To";
+                SetupRecordID := UserGroup.RecordId;
+            end;
         end;
     end;
 
@@ -93,22 +93,23 @@ codeunit 50019 "GL Mgt"
         GLAccount: Record "G/L Account";
     begin
         GLAccount.Get(GLAcc);
-        if not ParamGL.Get(GLAccount."Gen. Bus. Posting Group",GLAccount."Gen. Prod. Posting Group") then
-          Error(Text020,GLAcc);
+        if not ParamGL.Get(GLAccount."Gen. Bus. Posting Group", GLAccount."Gen. Prod. Posting Group") then
+            Error(Text020, GLAcc);
     end;
 
-    procedure CreateAdjustmentNaphta(ItemJournalLine: Record "Item Journal Line";OrderNo: Code[20])
+    procedure CreateAdjustmentNaphta(ItemJournalLine: Record "Item Journal Line"; OrderNo: Code[20])
     var
         ItemJnlLine: Record "Item Journal Line";
         Item1: Record Item;
         SourceCode: Code[20];
         ItemJnlPostLine: Codeunit "Item Jnl.-Post Line";
     begin
-        if ItemJournalLine.Quantity=0 then exit;
+        if ItemJournalLine.Quantity = 0 then exit;
 
         if ((ItemJournalLine."Document Type" <> ItemJnlLine."Document Type"::"Sales Return Receipt")
-        and  (ItemJournalLine."Document Type" <> ItemJnlLine."Document Type"::"Sales Shipment"))
-         then exit;
+        and (ItemJournalLine."Document Type" <> ItemJnlLine."Document Type"::"Sales Shipment"))
+         then
+            exit;
 
         Item1.Get(ItemJournalLine."Item No.");
 
@@ -119,7 +120,7 @@ codeunit 50019 "GL Mgt"
         if not AddOnSetup."Activer ajustement Naphta" then exit;
 
         AddOnSetup.TestField("Naphta Fictif Location");
-        if Item1."Product Group Code"<>AddOnSetup."Naphta Product Group" then exit;
+        if Item1."Product Group Code" <> AddOnSetup."Naphta Product Group" then exit;
 
         ItemJnlLine.Init;
         ItemJnlLine."Adjustment Type" := ItemJnlLine."Adjustment Type"::AjustNaphta;
@@ -128,23 +129,23 @@ codeunit 50019 "GL Mgt"
         ItemJnlLine."Document No." := ItemJournalLine."Document No.";
         ItemJnlLine."External Document No." := ItemJournalLine."External Document No.";
 
-        if ItemJournalLine."Document Type"=ItemJournalLine."Document Type"::"Sales Shipment" then//Livraison
-          ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt."
+        if ItemJournalLine."Document Type" = ItemJournalLine."Document Type"::"Sales Shipment" then//Livraison
+            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt."
         else//Avoir
-          ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt.";
+            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt.";
 
 
-        ItemJnlLine.Validate("Item No." , ItemJournalLine."Item No.");
-        ItemJnlLine.Description := StrSubstNo(AFK_Text001,OrderNo);
+        ItemJnlLine.Validate("Item No.", ItemJournalLine."Item No.");
+        ItemJnlLine.Description := StrSubstNo(AFK_Text001, OrderNo);
 
         ItemJnlLine.Validate("Location Code", AddOnSetup."Naphta Fictif Location");
-        ItemJnlLine.Validate(Quantity , Abs(ItemJournalLine.Quantity));
+        ItemJnlLine.Validate(Quantity, Abs(ItemJournalLine.Quantity));
 
 
 
 
 
-        ItemJnlLine.Validate("Unit of Measure Code" , ItemJournalLine."Unit of Measure Code");
+        ItemJnlLine.Validate("Unit of Measure Code", ItemJournalLine."Unit of Measure Code");
         ItemJnlLine."Invoiced Quantity" := Abs(ItemJournalLine.Quantity);
         ItemJnlLine."Source Code" := SourceCode;
         ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
@@ -153,108 +154,108 @@ codeunit 50019 "GL Mgt"
         ItemJnlLine."Shortcut Dimension 2 Code" := ItemJournalLine."Shortcut Dimension 2 Code";
         ItemJnlLine."Dimension Set ID" := ItemJournalLine."Dimension Set ID";
 
-        ItemJnlLine.Validate(ItemJnlLine."Unit Amount",0);
+        ItemJnlLine.Validate(ItemJnlLine."Unit Amount", 0);
 
         ItemJnlPostLine.RunWithCheck(ItemJnlLine);
     end;
 
-    procedure CheckPlageCheques(BankAcc2: Record "Bank Account";UseCheckNo: Code[20])
+    procedure CheckPlageCheques(BankAcc2: Record "Bank Account"; UseCheckNo: Code[20])
     begin
         //**********************************************************
         //**********************************************************
         AddOnSetup.Get;
         if not AddOnSetup."Desactivate Check Nos Control" then
-          if not NoSeriesMgt.AFK_IsInPlage(UseCheckNo,BankAcc2."Starting Check No.",BankAcc2."Ending Check No.") then
-            Error(StrSubstNo(AFK_Err0001,UseCheckNo,BankAcc2."Starting Check No.",BankAcc2."Ending Check No."));
+            if not NoSeriesMgt.AFK_IsInPlage(UseCheckNo, BankAcc2."Starting Check No.", BankAcc2."Ending Check No.") then
+                Error(StrSubstNo(AFK_Err0001, UseCheckNo, BankAcc2."Starting Check No.", BankAcc2."Ending Check No."));
         //**********************************************************
         //**********************************************************
     end;
 
-    procedure ValidateItem(Item1: Record Item;Status: Integer)
+    procedure ValidateItem(Item1: Record Item; Status: Integer)
     begin
 
-        if Status=0 then begin
-          if not Confirm(StrSubstNo(AFK_Text003,Item1."No.",Item1.Description)) then exit;
-          if Item1."Validation Status" <> Item1."Validation Status"::Created then exit;
-          Item1."Validation Status" := Item1."Validation Status"::InWorkflowCDG;
-          Item1."Created By UserID" := UserId;
-          Item1."Created By Date" := Today;
+        if Status = 0 then begin
+            if not Confirm(StrSubstNo(AFK_Text003, Item1."No.", Item1.Description)) then exit;
+            if Item1."Validation Status" <> Item1."Validation Status"::Created then exit;
+            Item1."Validation Status" := Item1."Validation Status"::InWorkflowCDG;
+            Item1."Created By UserID" := UserId;
+            Item1."Created By Date" := Today;
         end;
 
-        if Status=1 then begin
-          if not Confirm(StrSubstNo(AFK_Text008,Item1."No.",Item1.Description)) then exit;
-          if Item1."Validation Status" <> Item1."Validation Status"::InWorkflowCDG then exit;
+        if Status = 1 then begin
+            if not Confirm(StrSubstNo(AFK_Text008, Item1."No.", Item1.Description)) then exit;
+            if Item1."Validation Status" <> Item1."Validation Status"::InWorkflowCDG then exit;
 
-          Item1."Validation Status" := Item1."Validation Status"::InWorkflowFOUR;
-          Item1."Validated CDG By UserID" := UserId;
-          Item1."Validated CDG By Date" := Today;
+            Item1."Validation Status" := Item1."Validation Status"::InWorkflowFOUR;
+            Item1."Validated CDG By UserID" := UserId;
+            Item1."Validated CDG By Date" := Today;
         end;
 
-        if Status=2 then begin
+        if Status = 2 then begin
 
-          if not SecMgt.CanValidateItems then Error(AFK_Text007);
+            if not SecMgt.CanValidateItems then Error(AFK_Text007);
 
-          if not Confirm(StrSubstNo(AFK_Text004,Item1."No.",Item1.Description)) then exit;
-          if Item1."Validation Status" <> Item1."Validation Status"::InWorkflowFOUR then exit;
+            if not Confirm(StrSubstNo(AFK_Text004, Item1."No.", Item1.Description)) then exit;
+            if Item1."Validation Status" <> Item1."Validation Status"::InWorkflowFOUR then exit;
 
-          Item1.TestField(Item1."Item Category Code");
-          Item1.TestField(Item1."Base Unit of Measure");
-          Item1.TestField(Item1."Gen. Prod. Posting Group");
-          if (Item1.Type = Item1.Type::Inventory) then
-            Item1.TestField(Item1."Inventory Posting Group");
-          Item1.TestField(Item1."VAT Prod. Posting Group");
+            Item1.TestField(Item1."Item Category Code");
+            Item1.TestField(Item1."Base Unit of Measure");
+            Item1.TestField(Item1."Gen. Prod. Posting Group");
+            if (Item1.Type = Item1.Type::Inventory) then
+                Item1.TestField(Item1."Inventory Posting Group");
+            Item1.TestField(Item1."VAT Prod. Posting Group");
 
-          Item1."Validation Status" := Item1."Validation Status"::Validated;
-          Item1."Validated By UserID" := UserId;
-          Item1."Validated By Date" := Today;
+            Item1."Validation Status" := Item1."Validation Status"::Validated;
+            Item1."Validated By UserID" := UserId;
+            Item1."Validated By Date" := Today;
         end;
 
         Item1.Modify;
         Message(AFK_Text002);
     end;
 
-    procedure ValidateVendor(Vend1: Record Vendor;Status: Integer)
+    procedure ValidateVendor(Vend1: Record Vendor; Status: Integer)
     begin
 
-        if Status=0 then begin
-          if not Confirm(StrSubstNo(AFK_Text005,Vend1."No.",Vend1.Name)) then exit;
-          if Vend1."Validation Status" <> Vend1."Validation Status"::Created then exit;
-          Vend1."Validation Status" := Vend1."Validation Status"::InWorkflow;
-          Vend1."Created By UserID" := UserId;
-          Vend1."Created By Date" := Today;
+        if Status = 0 then begin
+            if not Confirm(StrSubstNo(AFK_Text005, Vend1."No.", Vend1.Name)) then exit;
+            if Vend1."Validation Status" <> Vend1."Validation Status"::Created then exit;
+            Vend1."Validation Status" := Vend1."Validation Status"::InWorkflow;
+            Vend1."Created By UserID" := UserId;
+            Vend1."Created By Date" := Today;
         end;
 
-        if Status=1 then begin
+        if Status = 1 then begin
 
-          if not SecMgt.CanValidateVendors then Error(AFK_Text007);
+            if not SecMgt.CanValidateVendors then Error(AFK_Text007);
 
-          if not Confirm(StrSubstNo(AFK_Text006,Vend1."No.",Vend1.Name)) then exit;
-          if Vend1."Validation Status" <> Vend1."Validation Status"::InWorkflow then exit;
+            if not Confirm(StrSubstNo(AFK_Text006, Vend1."No.", Vend1.Name)) then exit;
+            if Vend1."Validation Status" <> Vend1."Validation Status"::InWorkflow then exit;
 
-          //Vend1.TESTFIELD(Vend1.Name);
-          //Vend1.TESTFIELD(Vend1."VAT Registration No.");
-          Vend1.TestField(Vend1."Gen. Bus. Posting Group");
-          Vend1.TestField(Vend1."Vendor Posting Group");
-          Vend1.TestField(Vend1."VAT Bus. Posting Group");
+            //Vend1.TESTFIELD(Vend1.Name);
+            //Vend1.TESTFIELD(Vend1."VAT Registration No.");
+            Vend1.TestField(Vend1."Gen. Bus. Posting Group");
+            Vend1.TestField(Vend1."Vendor Posting Group");
+            Vend1.TestField(Vend1."VAT Bus. Posting Group");
 
-          Vend1."Validation Status" := Vend1."Validation Status"::Validated;
-          Vend1."Validated By UserID" := UserId;
-          Vend1."Validated By Date" := Today;
+            Vend1."Validation Status" := Vend1."Validation Status"::Validated;
+            Vend1."Validated By UserID" := UserId;
+            Vend1."Validated By Date" := Today;
         end;
 
         Vend1.Modify;
         Message(AFK_Text002);
     end;
 
-    procedure AddGLInfos(GenJrnLine1: Record "Gen. Journal Line";GLEntryNo: Integer)
+    procedure AddGLInfos(GenJrnLine1: Record "Gen. Journal Line"; GLEntryNo: Integer)
     var
         GLInfos: Record "G/l Entry Infos";
     begin
         if not DoAddInfos(GenJrnLine1) then
-          exit;
+            exit;
 
         Clear(GLInfos);
-        GLInfos."Entry No.":= GLEntryNo;
+        GLInfos."Entry No." := GLEntryNo;
         GLInfos."Item No." := GenJrnLine1.CodeArticleProvisions;
         GLInfos.TypeProvision := GenJrnLine1.TypeProvision;
         GLInfos."Vendor Code" := GenJrnLine1.VendorCodeProvisions;
@@ -263,22 +264,180 @@ codeunit 50019 "GL Mgt"
 
     local procedure DoAddInfos(GenJrnLine: Record "Gen. Journal Line"): Boolean
     begin
-        if GenJrnLine.CodeArticleProvisions <> '' then exit (true);
-        if GenJrnLine.VendorCodeProvisions <> '' then exit (true);
+        if GenJrnLine.CodeArticleProvisions <> '' then exit(true);
+        if GenJrnLine.VendorCodeProvisions <> '' then exit(true);
     end;
 
-    procedure UpdateReconciliationInfos(GenJrnLine2: Record "Gen. Journal Line";GLEntryNo: Integer)
+    procedure UpdateReconciliationInfos(GenJrnLine2: Record "Gen. Journal Line"; GLEntryNo: Integer)
     var
         ReconInfo: Record "Reconciliation Info";
     begin
         ReconInfo.Reset;
-        ReconInfo.SetRange("Customer No.",GenJrnLine2."Account No.");
-        ReconInfo.SetRange("Journal Template Name",GenJrnLine2."Journal Template Name");
-        ReconInfo.SetRange("Journal Batch Name",GenJrnLine2."Journal Batch Name");
-        ReconInfo.SetRange("Line No.",GenJrnLine2."Line No.");
-        ReconInfo.ModifyAll("G/L Entry No",GLEntryNo);
-        ReconInfo.ModifyAll(ReconInfo."Journal Batch Name",'');
-        ReconInfo.ModifyAll(ReconInfo."Journal Template Name",'');
+        ReconInfo.SetRange("Customer No.", GenJrnLine2."Account No.");
+        ReconInfo.SetRange("Journal Template Name", GenJrnLine2."Journal Template Name");
+        ReconInfo.SetRange("Journal Batch Name", GenJrnLine2."Journal Batch Name");
+        ReconInfo.SetRange("Line No.", GenJrnLine2."Line No.");
+        ReconInfo.ModifyAll("G/L Entry No", GLEntryNo);
+        ReconInfo.ModifyAll(ReconInfo."Journal Batch Name", '');
+        ReconInfo.ModifyAll(ReconInfo."Journal Template Name", '');
+    end;
+
+
+    procedure VATCorrectionGDP(var SalesH: Record "Sales Header")
+    var
+        Item1: Record Item;
+        Cust2: Record Customer;
+        RDSFees: Decimal;
+        FERFees: Decimal;
+        OMHFees: Decimal;
+        ENVFees: Decimal;
+        SalesLine: Record "Sales Line";
+        TotalFeesAmount: Decimal;
+        TVARedevance: Decimal;
+        TauxTVA: Decimal;
+        TVAArticle: Decimal;
+        HTHorsRedevance: Decimal;
+        TauxTVAArticle: Decimal;
+        TauxTVARedevance: Decimal;
+        TotalTVA: Decimal;
+        HTAFacturer: Decimal;
+    begin
+
+        AddOnSetup.Get;
+        AddOnSetup2.Get;
+
+        if AddOnSetup."Cancel Fees Retention Posting" then exit;
+        Cust2.Get(SalesH."Sell-to Customer No.");
+        if Cust2."GDP Partner" then exit;
+
+        if SalesH."Currency Code" = '' then
+            Currency.InitRoundingPrecision
+        else
+            Currency.Get(SalesH."Currency Code");
+
+        SalesLine.Reset;
+        SalesLine.SetRange("Document Type", SalesH."Document Type");
+        SalesLine.SetRange("Document No.", SalesH."No.");
+        SalesLine.SetRange(Type, SalesLine.Type::Item);
+        //SalesLine.SETFILTER("Qty. to Invoice",'<>0');
+        if SalesLine.FindSet then
+            repeat
+
+                OMHFees := 0;
+                FERFees := 0;
+                ENVFees := 0;
+                RDSFees := 0;
+                TauxTVA := 0;
+                Item1.Get(SalesLine."No.");
+                if Item1."VAT Correction" then begin
+                    AfkSalesPost.AfkCalculateFeesRetention(SalesLine, Item1, Cust2, FERFees, OMHFees, ENVFees, RDSFees);
+                    TotalFeesAmount := OMHFees + FERFees + ENVFees + RDSFees;
+                    if (TotalFeesAmount <> 0) then begin
+
+                        HTAFacturer := SalesLine."Unit Price" * SalesLine."Qty. to Invoice";
+                        HTHorsRedevance := HTAFacturer - TotalFeesAmount;
+                        //VATPostingSetup.GET(SalesLine."VAT Bus. Posting Group",SalesLine."VAT Prod. Posting Group");
+                        VATPostingSetup.Get(SalesLine."VAT Bus. Posting Group", Item1."VAT Prod. Posting Group");
+                        TauxTVAArticle := VATPostingSetup."VAT %";
+                        TVAArticle := Round(HTHorsRedevance * TauxTVAArticle / 100, Currency."Amount Rounding Precision");
+
+                        AddOnSetup2.TestField(AddOnSetup2."Fee Redevance VAT%");
+                        TauxTVARedevance := AddOnSetup2."Fee Redevance VAT%";
+
+                        if (TauxTVAArticle = 0) then
+                            TauxTVARedevance := 0;
+
+                        TVARedevance := Round(TotalFeesAmount * TauxTVARedevance / 100, Currency."Amount Rounding Precision");
+
+                        TotalTVA := TVAArticle + TVARedevance;
+                        if (HTAFacturer <> 0) then
+                            TauxTVA := Round(100 * TotalTVA / HTAFacturer, 0.0000000001);
+
+                        //Edit151122
+                        TVAArticle := TVAArticle + TVARedevance;
+                        TVARedevance := 0;
+
+
+                        if ((SalesLine."VAT %" <> TauxTVA)
+                            or (SalesLine.VAT15Amount <> TVAArticle) or (SalesLine.VAT20Amount <> TVARedevance)) then begin
+                            SalesLine."VAT %" := TauxTVA;
+                            SalesLine.Validate(Amount);
+                            SalesLine.VAT15Amount := TVAArticle;
+                            SalesLine.VAT20Amount := TVARedevance;
+                            SalesLine.Modify;
+                        end;
+
+
+                    end;
+                end;
+
+            until SalesLine.Next = 0;
+
+        //AfkSalesPost.AfkCalculateFeesRetention
+        //"VAT %" := ROUND(100 * "VAT Amount" / "VAT Base",0.00001);
+    end;
+
+    procedure TemplateSelectionFromBatchCCL(GenJnlManagement: codeunit GenJnlManagement; var GenJnlBatch: Record "Gen. Journal Batch")
+    var
+        GenJnlLine: Record "Gen. Journal Line";
+        GenJnlTemplate: Record "Gen. Journal Template";
+    begin
+        //********************************************************************
+        OpenFromBatch := true;
+        GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
+        GenJnlTemplate.TestField("Page ID");
+        GenJnlBatch.TestField(Name);
+
+        GenJnlLine.FilterGroup := 2;
+        GenJnlLine.SetRange("Journal Template Name", GenJnlTemplate.Name);
+        GenJnlLine.FilterGroup := 0;
+
+        GenJnlLine."Journal Template Name" := '';
+        GenJnlLine."Journal Batch Name" := GenJnlBatch.Name;
+        PAGE.Run(50144, GenJnlLine);
+        //********************************************************************
+    end;
+
+    procedure TemplateSelectionFromBatchTRESO(var GenJnlBatch: Record "Gen. Journal Batch")
+    var
+        GenJnlLine: Record "Gen. Journal Line";
+        GenJnlTemplate: Record "Gen. Journal Template";
+    begin
+        //********************************************************************
+        OpenFromBatch := true;
+        GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
+        GenJnlTemplate.TestField("Page ID");
+        GenJnlBatch.TestField(Name);
+
+        GenJnlLine.FilterGroup := 2;
+        GenJnlLine.SetRange("Journal Template Name", GenJnlTemplate.Name);
+        GenJnlLine.FilterGroup := 0;
+
+        GenJnlLine."Journal Template Name" := '';
+        GenJnlLine."Journal Batch Name" := GenJnlBatch.Name;
+        PAGE.Run(50268, GenJnlLine);
+        //********************************************************************
+    end;
+
+    procedure TemplateSelectionFromBatchTRESO_VIREMENT(var GenJnlBatch: Record "Gen. Journal Batch")
+    var
+        GenJnlLine: Record "Gen. Journal Line";
+        GenJnlTemplate: Record "Gen. Journal Template";
+    begin
+        //********************************************************************
+        OpenFromBatch := true;
+        GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
+        GenJnlTemplate.TestField("Page ID");
+        GenJnlBatch.TestField(Name);
+
+        GenJnlLine.FilterGroup := 2;
+        GenJnlLine.SetRange("Journal Template Name", GenJnlTemplate.Name);
+        GenJnlLine.FilterGroup := 0;
+
+        GenJnlLine."Journal Template Name" := '';
+        GenJnlLine."Journal Batch Name" := GenJnlBatch.Name;
+        PAGE.Run(50200, GenJnlLine);
+        //********************************************************************
     end;
 }
 
