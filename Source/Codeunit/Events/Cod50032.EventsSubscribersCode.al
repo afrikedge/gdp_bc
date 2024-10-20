@@ -726,11 +726,169 @@ codeunit 50032 "EventsSubscribers Code"
         AFK_AddOnSetup.GET;
         IF AFK_AddOnSetup."Security on Journal" THEN BEGIN
             FiltresFeuilles := AFK_SecMgt.GetFiltresFeuilles(GenJnlBatch."Journal Template Name");
-            GenJnlBatch.FILTERGROUP(2);
-            GenJnlBatch.SETFILTER(GenJnlBatch.Name, FiltresFeuilles);
-            GenJnlBatch.FILTERGROUP(0);
+            GenJnlBatch.FilterGroup(2);
+            GenJnlBatch.SetFilter(GenJnlBatch.Name, FiltresFeuilles);
+            GenJnlBatch.FilterGroup(0);
         END;
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item-Check Avail.", 'OnBeforeShowWarningForThisItem', '', true, true)]
+    local procedure ItemCheckAvail_OnBeforeShowWarningForThisItem(Item: Record Item; var ShowWarning: Boolean; var IsHandled: Boolean)
+    var
+    begin
+        if not Item.IsNonInventoriableType() then begin
+            ShowWarning := true;
+            IsHandled := true;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.Header-Printed", 'OnBeforeModify', '', true, true)]
+    local procedure PurchHeaderPrinted_OnBeforeShowWarningForThisItem(var PurchaseHeader: Record "Purchase Header")
+    var
+    begin
+        PurchaseHeader.Printed := true;
+        PurchaseHeader."Printed Date" := Today;
+        PurchaseHeader."Printed By" := UserId;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Availability Forms Mgt", 'OnAfterCalcItemPlanningFields', '', true, true)]
+    local procedure ItemAvailabilityFormsMgt_OnAfterCalcItemPlanningFields(var Item: Record Item)
+    var
+    begin
+        item.CalcFields("Qty. in Transit AFK");
+    end;
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Availability Forms Mgt", 'OnAfterCalculateNeed', '', true, true)]
+    local procedure ItemAvailabilityFormsMgt_OnAfterCalculateNeed(var Item: Record Item; var GrossRequirement: Decimal; var PlannedOrderReceipt: Decimal; var ScheduledReceipt: Decimal; var PlannedOrderReleases: Decimal)
+    var
+    begin
+        ScheduledReceipt := ScheduledReceipt + Item."Qty. in Transit AFK";
+    end;
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Sales Document", 'OnAfterUpdateSalesDocLines', '', true, true)]
+    local procedure ReleaseSalesDocument_OnAfterUpdateSalesDocLines(var SalesHeader: Record "Sales Header"; var LinesWereModified: Boolean; PreviewMode: Boolean)
+    var
+        GLMgt: Codeunit "GL Mgt";
+    begin
+        GLMgt.VATCorrectionGDP(SalesHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Purchase Document", 'OnCodeOnBeforeModifyHeader', '', true, true)]
+    local procedure ReleasePurchaseDocument_OnCodeOnBeforeModifyHeader(var PurchaseHeader: Record "Purchase Header"; var PurchaseLine: Record "Purchase Line"; PreviewMode: Boolean; var LinesWereModified: Boolean)
+    var
+    begin
+        IF PurchaseHeader."Purchase Type" = PurchaseHeader."Purchase Type"::AchatAutre THEN
+            PurchaseHeader."Order Date" := Today;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Available to Promise", 'OnAfterCalcScheduledReceipt', '', true, true)]
+    local procedure AvailabletoPromise_OnAfterCalcScheduledReceipt(var Item: Record Item; var ScheduledReceipt: Decimal)
+    var
+    begin
+        Item.CalcFields("Qty. in Transit AFK");
+        ScheduledReceipt := ScheduledReceipt + Item."Qty. in Transit AFK";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Posting To G/L", 'OnPostInvtPostBufOnAfterInitGenJnlLine', '', true, true)]
+    local procedure InventoryPostingToGL_OnPostInvtPostBufOnAfterInitGenJnlLine(var GenJournalLine: Record "Gen. Journal Line"; var ValueEntry: Record "Value Entry")
+    var
+        FAMgt: codeunit "FA Mgt";
+        Descr: Text[100];
+    begin
+        Descr := FAMgt.AFK_GetNewDescr(ValueEntry);
+        if (Descr <> '') then
+            GenJournalLine.Description := Descr;
+    end;
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopyPurchInvLinesToDocOnAfterTransferFields', '', true, true)]
+    local procedure CopyDocumentMgt_OnCopyPurchInvLinesToDocOnAfterTransferFields(var FromPurchaseLine: Record "Purchase Line"; var FromPurchaseHeader: Record "Purchase Header"; var ToPurchaseHeader: Record "Purchase Header"; FromPurchInvHeader: Record "Purch. Inv. Header"; var FromPurchInvLine: Record "Purch. Inv. Line")
+    var
+        AFK_ProvisionMgt: codeunit "Provisions Cde Mgt";
+        Descr: Text[100];
+    begin
+        AFK_ProvisionMgt.SetSoucheExtourneProvisionFA(FromPurchInvHeader, ToPurchaseHeader);
+    end;
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales Price Calc. Mgt.", 'OnAfterFindSalesLineItemPrice', '', true, true)]
+    local procedure SalesPriceCalcMgt_OnAfterFindSalesLineItemPrice(var SalesLine: Record "Sales Line"; var TempSalesPrice: Record "Sales Price" temporary; var FoundSalesPrice: Boolean; CalledByFieldNo: Integer)
+    var
+        GLMgt: codeunit "GL Mgt";
+        Descr: Text[100];
+    begin
+        GLMgt.CalcBestUnitPrice(SalesLine, TempSalesPrice, FoundSalesPrice, CalledByFieldNo);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales Price Calc. Mgt.", 'OnBeforeSalesHeaderStartDate', '', true, true)]
+    local procedure SalesPriceCalcMgt_OnBeforeSalesHeaderStartDate(var SalesHeader: Record "Sales Header"; var DateCaption: Text[30]; var StartDate: Date; var IsHandled: Boolean)
+    var
+        SingleCodeunit: codeunit "SingleInstance";
+        SalesPriceDate: Date;
+    begin
+        SalesPriceDate := SingleCodeunit.Get_SalesPriceDate();
+        IF SalesPriceDate <> 0D then begin
+            StartDate := SalesPriceDate;
+            IsHandled := true;
+        end;
+    end;
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Payment Management", 'OnGenerEntriesOnBeforeGenJnlPostLineRunWithCheck', '', true, true)]
+    local procedure PaymentManagement_OnGenerEntriesOnBeforeGenJnlPostLineRunWithCheck(var GenJnlLine: Record "Gen. Journal Line"; PaymentHeader: Record "Payment Header"; StepLedger: Record "Payment Step Ledger")
+    var
+    begin
+        GenJnlLine."Check No." := PaymentHeader."Check Number";
+    end;
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Payment Management", 'OnPostInvPostingBufferOnBeforeGenJnlPostLineRunWithCheck', '', true, true)]
+    local procedure PaymentManagement_OnPostInvPostingBufferOnBeforeGenJnlPostLineRunWithCheck(var GenJnlLine: Record "Gen. Journal Line"; var PaymentHeader: Record "Payment Header"; var PaymentClass: Record "Payment Class"; PaymentLine: Record "Payment Line")
+    var
+    begin
+        GenJnlLine."Check No." := PaymentHeader."Check Number";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"PostSales-Delete", 'OnBeforeDeleteHeader', '', true, true)]
+    local procedure PostSalesDelete_OnBeforeDeleteHeader(var SalesHeader: Record "Sales Header"; var SalesShipmentHeader: Record "Sales Shipment Header"; var SalesInvoiceHeader: Record "Sales Invoice Header"; var SalesCrMemoHeader: Record "Sales Cr.Memo Header"; var ReturnReceiptHeader: Record "Return Receipt Header"; var SalesInvoiceHeaderPrepmt: Record "Sales Invoice Header"; var SalesCrMemoHeaderPrepmt: Record "Sales Cr.Memo Header"; var IsHandled: Boolean)
+    var
+        SingleCU: Codeunit SingleInstance;
+    begin
+        //Deletion forced by Sales Order Process (do not delete related docs)
+        if (SingleCU.Get_AllowDeletionSalesHeader()) then
+            IsHandled := true;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"ArchiveManagement", 'OnBeforeAutoArchivePurchDocument', '', true, true)]
+    local procedure ArchiveManagement_OnBeforeDeleteHeader(var PurchaseHeader: Record "Purchase Header"; var IsHandled: Boolean)
+    var
+        ArchiveMgt: Codeunit "ArchiveManagement";
+    begin
+        ArchiveMgt.ArchPurchDocumentNoConfirm(PurchaseHeader);
+        IsHandled := true;
+    end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

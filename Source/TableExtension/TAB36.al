@@ -535,8 +535,18 @@ tableextension 50011 "A02 Sales Header" extends "Sales Header"
     //end;
 
     procedure AFK_AllowDeletion(CanDelete: Boolean)
+    var
+        SingleCU: Codeunit SingleInstance;
     begin
+        SingleCU.Set_AllowDeletionSalesHeader(true);
         AFK_AllowDeletionVar := CanDelete;
+    end;
+
+    procedure Clear_AllowDeletion()
+    var
+        SingleCU: Codeunit SingleInstance;
+    begin
+        SingleCU.Set_AllowDeletionSalesHeader(false);
     end;
 
 

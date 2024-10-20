@@ -5,6 +5,10 @@ codeunit 50036 SingleInstance
     var
         AFK_EscapeCheck_MultiLevelAdjmt: Boolean;
         SendVendorEmails_AFK: Boolean;
+        AllowDeletionSalesHeader: Boolean;
+        IsSolderCommande: Boolean;
+        SalesPriceDate: Date;
+        CanUpdateAchatDevise: Boolean;
 
     procedure Set_AFK_EscapeCheck_MultiLevelAdjmt(EscapeCheck: Boolean)
     begin
@@ -29,5 +33,45 @@ codeunit 50036 SingleInstance
     procedure Get_SendVendorEmails_AFK(): Boolean
     begin
         exit(SendVendorEmails_AFK);
+    end;
+
+    procedure Set_SalesPriceDate(SalesPriceDate1: Date)
+    begin
+        SalesPriceDate := SalesPriceDate1;
+    end;
+
+    procedure Get_SalesPriceDate(): Date
+    begin
+        exit(SalesPriceDate);
+    end;
+
+    procedure Set_AllowDeletionSalesHeader(Allow: Boolean)
+    begin
+        AllowDeletionSalesHeader := Allow;
+    end;
+
+    procedure Get_AllowDeletionSalesHeader(): Boolean
+    begin
+        exit(AllowDeletionSalesHeader);
+    end;
+
+    procedure Set_IsSolderCommande(isSolde: Boolean)
+    begin
+        IsSolderCommande := isSolde;
+    end;
+
+    procedure Get_IsSolderCommande(): Boolean
+    begin
+        exit(IsSolderCommande);
+    end;
+
+    procedure Set_CanUpdateAchatDevise(modify: Boolean)
+    begin
+        CanUpdateAchatDevise := modify;
+    end;
+
+    procedure Get_CanUpdateAchatDevise(): Boolean
+    begin
+        exit(CanUpdateAchatDevise);
     end;
 }

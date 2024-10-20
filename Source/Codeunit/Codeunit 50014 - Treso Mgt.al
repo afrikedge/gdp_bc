@@ -10,6 +10,7 @@ codeunit 50014 "Treso Mgt"
         AddOnSetup: Record "AddOn Setup";
         GLSetup: Record "General Ledger Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
+        SingleInstanceCU: Codeunit SingleInstance;
         HavePostMoneyTechTrans: Boolean;
         GenJrnTableND: Record "Gen. Journal Batch";
         GenJrnBatch_ND: Code[20];
@@ -421,6 +422,7 @@ codeunit 50014 "Treso Mgt"
         Clear(GenJrnLine);
 
         GenJrnLine.AFK_SetCanUpdateAchatDevise(true);
+        SingleInstanceCU.Set_CanUpdateAchatDevise(true);
 
         GenJrnLine."Journal Template Name" := GenJrnTemplate;
         GenJrnLine."Journal Batch Name" := GenJrnBatch;
@@ -508,6 +510,7 @@ codeunit 50014 "Treso Mgt"
 
 
         //AdjustGenjrn.RUN(GenJrnLine);
+        SingleInstanceCU.Set_CanUpdateAchatDevise(false);
 
         Message(TxtTraitementTerminé);
     end;
@@ -585,6 +588,7 @@ codeunit 50014 "Treso Mgt"
         Clear(GenJrnLine);
 
         GenJrnLine.AFK_SetCanUpdateAchatDevise(true);
+        SingleInstanceCU.Set_CanUpdateAchatDevise(true);
 
         GenJrnLine."Journal Template Name" := GenJrnTemplate;
         GenJrnLine."Journal Batch Name" := GenJrnBatch;
@@ -635,54 +639,7 @@ codeunit 50014 "Treso Mgt"
         if GenJrnLine.Amount <> 0 then
             GenJrnLine.Insert(true);
 
-
-
-
-
-
-
-
-        /*
-        CLEAR(GenJrnLine);
-        
-        GenJrnLine.AFK_SetCanUpdateAchatDevise(TRUE);
-        
-        GenJrnLine."Journal Template Name" := GenJrnTemplate;
-        GenJrnLine."Journal Batch Name" := GenJrnBatch;
-        LineNo := LineNo + 10000;
-        GenJrnLine."Line No." := LineNo;
-        JrnTmplName.GET(GenJrnLine."Journal Template Name");
-        JrnTmplName.TESTFIELD(JrnTmplName."Source Code");
-        GenJrnLine."Source Code" := JrnTmplName."Source Code";
-        GenJrnLine.VALIDATE("Posting Date",LigneAchat."Posting Date");
-        
-        GenJrnLine."Document No." := DocNo;
-        GenJrnLine."Document Type" := GenJrnLine."Document Type"::" ";
-        GenJrnLine."External Document No." := LC."No.";
-        GenJrnLine."Account Type" := GenJrnLine."Account Type"::"Bank Account";
-        
-        LC.TESTFIELD(LC."Accreditif Bank Account");
-        GLAccNo := LC."Accreditif Bank Account";
-        GenJrnLine.VALIDATE("Account No.",GLAccNo);
-        
-        //GenJrnLine."MoneyTech Import No." := LC."No.";
-        GenJrnLine."Origin Type" := GenJrnLine."Origin Type"::LC;
-        GenJrnLine."Origin No." := LC."No.";
-        GenJrnLine."Origin Line No." := LigneAchat."Line No.";
-        GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text018,LC."No."),1,49);
-        //GenJrnLine.Description := COPYSTR("Import Data".Description,1,37)+' - '+COPYSTR("Import Data".InvoiceNo,1,10);
-        
-        //GenJrnLine.VALIDATE("Currency Code",LC."Currency Code");
-        GenJrnLine.VALIDATE(GenJrnLine.Amount, LigneAchat."Amount Currency");
-        GenJrnLine.VALIDATE("Currency Factor" , ROUND(1 / LigneAchat."Convertion Rate",0.000000000000001));
-        //GenJrnLine.VALIDATE("Currency Factor" , ROUND(1 / LC."Structure rate",0.000000000000001));
-        
-        IF GenJrnLine.Amount<>0 THEN
-          GenJrnLine.INSERT(TRUE);
-          */
-
-        //AdjustGenjrn.RUN(GenJrnLine);
-
+        SingleInstanceCU.Set_CanUpdateAchatDevise(false);
         Message(TxtTraitementTerminé);
 
     end;
