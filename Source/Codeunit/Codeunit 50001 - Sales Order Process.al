@@ -412,12 +412,13 @@ codeunit 50001 "Sales Order Process"
 
     procedure BloquerCde(SalesH: Record "Sales Header"): Boolean
     var
+        MasterFiles: Codeunit "AG1 Master Files Mgt";
         Bloquer: Boolean;
     begin
         Cust.Get(SalesH."Sell-to Customer No.");
         if Cust."Disable Blocking" then exit(false);
 
-        Bloquer := CustCheckCreditLimit.AFK_SalesHeaderShowWarning(SalesH);
+        Bloquer := MasterFiles.AFK_SalesHeaderShowWarning(SalesH);
 
         exit(Bloquer);
     end;
@@ -450,6 +451,7 @@ codeunit 50001 "Sales Order Process"
     var
         Item1: Record Item;
         Loc1: Record Location;
+        SingleCu: Codeunit SingleInstance;
     begin
 
         if Loc1.Get(SalesH."Location Code") then
@@ -469,7 +471,8 @@ codeunit 50001 "Sales Order Process"
                     SalesLine1.TestField(SalesLine1.Quantity);
 
                     //SalesLine1.TESTFIELD(SalesLine1."Unit Price");//Si le prix est nul envoyer en validation prix
-                    if ItemCheckAvail.AFK_SalesLineShowWarning(SalesLine1, true) then
+                    SingleCu.Set_IsAfkShowItemWarning(true);
+                    if ItemCheckAvail.SalesLineShowWarning(SalesLine1) then
                         exit(true);
                 end;
             until SalesLine1.Next = 0;

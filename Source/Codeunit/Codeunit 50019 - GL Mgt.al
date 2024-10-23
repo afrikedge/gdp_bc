@@ -120,7 +120,9 @@ codeunit 50019 "GL Mgt"
         if not AddOnSetup."Activer ajustement Naphta" then exit;
 
         AddOnSetup.TestField("Naphta Fictif Location");
-        if Item1."Product Group Code" <> AddOnSetup."Naphta Product Group" then exit;
+        //TODO Check Product Code Here
+        //if Item1."Product Group Code" <> AddOnSetup."Naphta Product Group" then exit;
+        if Item1."No." <> '70009-0000' then exit;
 
         ItemJnlLine.Init;
         ItemJnlLine."Adjustment Type" := ItemJnlLine."Adjustment Type"::AjustNaphta;
@@ -165,7 +167,7 @@ codeunit 50019 "GL Mgt"
         //**********************************************************
         AddOnSetup.Get;
         if not AddOnSetup."Desactivate Check Nos Control" then
-            if not NoSeriesMgt.AFK_IsInPlage(UseCheckNo, BankAcc2."Starting Check No.", BankAcc2."Ending Check No.") then
+            if not AFK_IsInPlage(UseCheckNo, BankAcc2."Starting Check No.", BankAcc2."Ending Check No.") then
                 Error(StrSubstNo(AFK_Err0001, UseCheckNo, BankAcc2."Starting Check No.", BankAcc2."Ending Check No."));
         //**********************************************************
         //**********************************************************
@@ -290,6 +292,7 @@ codeunit 50019 "GL Mgt"
         GenJnlTemplate: Record "Gen. Journal Template";
     begin
         //********************************************************************
+        //TODO
         OpenFromBatch := true;
         GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
         GenJnlTemplate.TestField("Page ID");
@@ -311,6 +314,7 @@ codeunit 50019 "GL Mgt"
         GenJnlTemplate: Record "Gen. Journal Template";
     begin
         //********************************************************************
+        //TODO
         OpenFromBatch := true;
         GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
         GenJnlTemplate.TestField("Page ID");
@@ -332,6 +336,7 @@ codeunit 50019 "GL Mgt"
         GenJnlTemplate: Record "Gen. Journal Template";
     begin
         //********************************************************************
+        //TODO
         OpenFromBatch := true;
         GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
         GenJnlTemplate.TestField("Page ID");

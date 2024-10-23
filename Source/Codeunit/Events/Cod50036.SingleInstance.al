@@ -9,6 +9,9 @@ codeunit 50036 SingleInstance
         IsSolderCommande: Boolean;
         SalesPriceDate: Date;
         CanUpdateAchatDevise: Boolean;
+        IsAfkShowItemWarning: Boolean;
+        AfkInventoryPostingToGL: codeunit "Inventory Posting To G/L";
+        IsPostingSortieImmo: Boolean;
 
     procedure Set_AFK_EscapeCheck_MultiLevelAdjmt(EscapeCheck: Boolean)
     begin
@@ -73,5 +76,35 @@ codeunit 50036 SingleInstance
     procedure Get_CanUpdateAchatDevise(): Boolean
     begin
         exit(CanUpdateAchatDevise);
+    end;
+
+    procedure Set_IsAfkShowItemWarning(modify: Boolean)
+    begin
+        IsAfkShowItemWarning := modify;
+    end;
+
+    procedure Get_IsAfkShowItemWarning(): Boolean
+    begin
+        exit(IsAfkShowItemWarning);
+    end;
+
+    procedure Set_IsPostingSortieImmo(modify: Boolean)
+    begin
+        IsPostingSortieImmo := modify;
+    end;
+
+    procedure Get_IsPostingSortieImmo(): Boolean
+    begin
+        exit(IsPostingSortieImmo);
+    end;
+
+    procedure Set_InventoryPostingToGL(AfkInventoryPostingToGL1: codeunit "Inventory Posting To G/L")
+    begin
+        AfkInventoryPostingToGL := AfkInventoryPostingToGL1;
+    end;
+
+    procedure Get_InventoryPostingToGL(): codeunit "Inventory Posting To G/L"
+    begin
+        exit(AfkInventoryPostingToGL);
     end;
 }

@@ -48,7 +48,7 @@ codeunit 50014 "Treso Mgt"
         Text022: Label 'Le montant acheté %1 doit correspondre au montant de l''échéance : %2';
         Text023: Label 'Cette échéance a déjà été comptabilisée';
         Text024: Label 'Vous devez lancer le calcul pour mettre à jour les valeur sur le document';
-        SMTPSetup: Record "SMTP Mail Setup";
+        //SMTPSetup: Record "SMTP Mail Setup";
         FileMgt: Codeunit "File Management";
         Text025: Label 'Cette option n''est valide que pour les virements et les paiements par chèques';
         AddOnSetup2: Record "AddOn Setup2";
@@ -907,57 +907,37 @@ codeunit 50014 "Treso Mgt"
         FileName: Text;
         Emplacement: Text;
         RefFile: Integer;
-        _mail: Codeunit "SMTP Mail";
+        //_mail: Codeunit "SMTP Mail";
         GenJnlLine3: Record "Gen. Journal Line";
         EmailObject: Text[250];
     begin
 
-        if GenJnlLine."Account Type" <> GenJnlLine."Account Type"::Vendor then exit;
-        if GenJnlLine."Document Type" <> GenJnlLine."Document Type"::Payment then exit;
-        GenJnlLine.TestField("Payment Method Code", 'VIREMENT');
-        GenJnlLine.TestField(GenJnlLine."Document No.");
+        // if GenJnlLine."Account Type" <> GenJnlLine."Account Type"::Vendor then exit;
+        // if GenJnlLine."Document Type" <> GenJnlLine."Document Type"::Payment then exit;
+        // GenJnlLine.TestField("Payment Method Code", 'VIREMENT');
+        // GenJnlLine.TestField(GenJnlLine."Document No.");
 
-        Vend1.Get(GenJnlLine."Account No.");
-        Vend1.TestField(Vend1."E-Mail");
+        // Vend1.Get(GenJnlLine."Account No.");
+        // Vend1.TestField(Vend1."E-Mail");
 
-        AddOnSetup.Get;
-        SMTPSetup.Get;
-        //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
+        // AddOnSetup.Get;
+        // SMTPSetup.Get;
+        // //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
 
-        EmailObject := GetVendorEmailObject(GenJnlLine."Payment Method Code");
+        // EmailObject := GetVendorEmailObject(GenJnlLine."Payment Method Code");
 
-        _mail.CreateMessage(SMTPSetup."From Name", SMTPSetup."From Adress",
-            Vend1."E-Mail", EmailObject, Text032, false);
+        // _mail.CreateMessage(SMTPSetup."From Name", SMTPSetup."From Adress",
+        //     Vend1."E-Mail", EmailObject, Text032, false);
 
-        Emplacement := GetEmplacementFichierVirement(GenJnlLine);
+        // Emplacement := GetEmplacementFichierVirement(GenJnlLine);
 
-        if not Exists(Emplacement) then exit;
-        //IF ERASE(Emplacement) THEN;
+        // if not Exists(Emplacement) then exit;
+        // //IF ERASE(Emplacement) THEN;
 
 
-        /*
-        GenJnlLine3.RESET;
-        GenJnlLine3.COPY(GenJnlLine);
-        GenJnlLine.SETRANGE("Journal Template Name",GenJnlLine."Journal Template Name");
-        GenJnlLine3.SETRANGE("Journal Batch Name",GenJnlLine."Journal Batch Name");
-        GenJnlLine3.SETRANGE("Posting Date",GenJnlLine."Posting Date");
-        GenJnlLine3.SETRANGE("Document No.",GenJnlLine."Document No.");//**************************************added
-        //REPORT.RUN(REPORT::FacturePaiement,FALSE,FALSE,GenJnlLine3);
-        
-        GenJnlLine3.GET(GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name",GenJnlLine."Line No.");
-        GenJnlLine.SETRANGE("Journal Template Name",GenJnlLine."Journal Template Name");
-        GenJnlLine3.SETRANGE("Journal Batch Name",GenJnlLine."Journal Batch Name");
-        GenJnlLine3.SETRANGE("Posting Date",GenJnlLine."Posting Date");
-        GenJnlLine3.SETRANGE("Document No.",GenJnlLine."Document No.");//**************************************added
-        REPORT.SAVEASPDF(50185,Emplacement,GenJnlLine3);
-        */
 
-        //SLEEP(1000);
-
-        _mail.AddAttachment(Emplacement, FileName);
-
-        //MESSAGE('%1',Vend1."E-Mail");
-        _mail.Send();
+        // _mail.AddAttachment(Emplacement, FileName);
+        // _mail.Send();
 
     end;
 
@@ -967,68 +947,68 @@ codeunit 50014 "Treso Mgt"
         FileName: Text;
         Emplacement: Text;
         RefFile: Integer;
-        _mail: Codeunit "SMTP Mail";
+        //_mail: Codeunit "SMTP Mail";
         GenJnlLine3: Record "Gen. Journal Line";
         TmpPath: Text;
         PaymentMethod: Record "Payment Method";
     begin
 
-        if PaymentMethod.Get(GenJnlLine."Payment Method Code") then;
+        // if PaymentMethod.Get(GenJnlLine."Payment Method Code") then;
 
-        GenJnlLine.TestField("Account Type", GenJnlLine."Account Type"::Vendor);
-        GenJnlLine.TestField("Document Type", GenJnlLine."Document Type"::Payment);
-        /*
-        IF ((GenJnlLine."Payment Method Code"<>'VIREMENT') AND
-          (GenJnlLine."Payment Method Code"<>'CHEQUES')) THEN
-            ERROR(Text026);
-        *///041023 JN
+        // GenJnlLine.TestField("Account Type", GenJnlLine."Account Type"::Vendor);
+        // GenJnlLine.TestField("Document Type", GenJnlLine."Document Type"::Payment);
+        // /*
+        // IF ((GenJnlLine."Payment Method Code"<>'VIREMENT') AND
+        //   (GenJnlLine."Payment Method Code"<>'CHEQUES')) THEN
+        //     ERROR(Text026);
+        // *///041023 JN
 
-        if not PaymentMethod."Allow vendor email" then Error(Text027);//041023 JN
+        // if not PaymentMethod."Allow vendor email" then Error(Text027);//041023 JN
 
-        //GenJnlLine.TESTFIELD("Payment Method Code",'VIREMENT');
-        GenJnlLine.TestField(GenJnlLine."Document No.");
+        // //GenJnlLine.TESTFIELD("Payment Method Code",'VIREMENT');
+        // GenJnlLine.TestField(GenJnlLine."Document No.");
 
-        Vend1.Get(GenJnlLine."Account No.");
-        //Vend1.TESTFIELD(Vend1."E-Mail");
+        // Vend1.Get(GenJnlLine."Account No.");
+        // //Vend1.TESTFIELD(Vend1."E-Mail");
 
-        AddOnSetup.Get;
-        SMTPSetup.Get;
-        //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
+        // AddOnSetup.Get;
+        // SMTPSetup.Get;
+        // //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
 
-        //_mail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",
-        //Vend1."E-Mail",'Nouveau virement de la part de GALANA','Veuillez trouver en pièce jointe à ce mail votre virement validé ce jour.',FALSE);
+        // //_mail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",
+        // //Vend1."E-Mail",'Nouveau virement de la part de GALANA','Veuillez trouver en pièce jointe à ce mail votre virement validé ce jour.',FALSE);
 
-        Emplacement := GetEmplacementFichierVirement(GenJnlLine);
+        // Emplacement := GetEmplacementFichierVirement(GenJnlLine);
 
-        if Exists(Emplacement) then
-            if Erase(Emplacement) then;
-
-
-        /*
-        GenJnlLine3.RESET;
-        GenJnlLine3.COPY(GenJnlLine);
-        GenJnlLine.SETRANGE("Journal Template Name",GenJnlLine."Journal Template Name");
-        GenJnlLine3.SETRANGE("Journal Batch Name",GenJnlLine."Journal Batch Name");
-        GenJnlLine3.SETRANGE("Posting Date",GenJnlLine."Posting Date");
-        GenJnlLine3.SETRANGE("Document No.",GenJnlLine."Document No.");//**************************************added
-        //REPORT.RUN(REPORT::FacturePaiement,FALSE,FALSE,GenJnlLine3);
-        */
-        GenJnlLine3.Get(GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name", GenJnlLine."Line No.");
-        GenJnlLine.SetRange("Journal Template Name", GenJnlLine."Journal Template Name");
-        GenJnlLine3.SetRange("Journal Batch Name", GenJnlLine."Journal Batch Name");
-        GenJnlLine3.SetRange("Posting Date", GenJnlLine."Posting Date");
-        GenJnlLine3.SetRange("Document No.", GenJnlLine."Document No.");//**************************************added
-        GenJnlLine3.SetRange("Account No.", GenJnlLine."Account No.");
-        REPORT.SaveAsPdf(50185, Emplacement, GenJnlLine3);
+        // if Exists(Emplacement) then
+        //     if Erase(Emplacement) then;
 
 
-        InsertEmailToSend(GenJnlLine3, Emplacement);
-        //SLEEP(1000);
+        // /*
+        // GenJnlLine3.RESET;
+        // GenJnlLine3.COPY(GenJnlLine);
+        // GenJnlLine.SETRANGE("Journal Template Name",GenJnlLine."Journal Template Name");
+        // GenJnlLine3.SETRANGE("Journal Batch Name",GenJnlLine."Journal Batch Name");
+        // GenJnlLine3.SETRANGE("Posting Date",GenJnlLine."Posting Date");
+        // GenJnlLine3.SETRANGE("Document No.",GenJnlLine."Document No.");//**************************************added
+        // //REPORT.RUN(REPORT::FacturePaiement,FALSE,FALSE,GenJnlLine3);
+        // */
+        // GenJnlLine3.Get(GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name", GenJnlLine."Line No.");
+        // GenJnlLine.SetRange("Journal Template Name", GenJnlLine."Journal Template Name");
+        // GenJnlLine3.SetRange("Journal Batch Name", GenJnlLine."Journal Batch Name");
+        // GenJnlLine3.SetRange("Posting Date", GenJnlLine."Posting Date");
+        // GenJnlLine3.SetRange("Document No.", GenJnlLine."Document No.");//**************************************added
+        // GenJnlLine3.SetRange("Account No.", GenJnlLine."Account No.");
+        // REPORT.SaveAsPdf(50185, Emplacement, GenJnlLine3);
 
-        //_mail.AddAttachment(Emplacement, FileName);
 
-        //MESSAGE('%1',Vend1."E-Mail");
-        //_mail.Send();
+        // InsertEmailToSend(GenJnlLine3, Emplacement);
+        // //SLEEP(1000);
+
+        // //_mail.AddAttachment(Emplacement, FileName);
+
+        // //MESSAGE('%1',Vend1."E-Mail");
+        // //_mail.Send();
 
     end;
 
@@ -1037,10 +1017,10 @@ codeunit 50014 "Treso Mgt"
         TmpPath: Text;
         FileName: Text;
     begin
-        FileName := FileMgt.AFK_GetSafeFileName(GenJnlLine."Document No." + GenJnlLine."Account No.") + '.PDF';
-        TmpPath := FileMgt.AFK_GetClientTempSubDirectory();
-        //EXIT( TmpPath + '\' + FileName);
-        exit(TemporaryPath + FileName);
+        // FileName := FileMgt.AFK_GetSafeFileName(GenJnlLine."Document No." + GenJnlLine."Account No.") + '.PDF';
+        // TmpPath := FileMgt.AFK_GetClientTempSubDirectory();
+        // //EXIT( TmpPath + '\' + FileName);
+        // exit(TemporaryPath + FileName);
     end;
 
     local procedure InsertEmailToSend(GenJrnLine: Record "Gen. Journal Line"; FileName: Text)
@@ -1069,97 +1049,97 @@ codeunit 50014 "Treso Mgt"
 
     procedure SendEmailVendorTransferOne(var TmpVendEmail: Record "Tampon Payment Vendor Email")
     var
-        Vend1: Record Vendor;
-        FileName: Text[250];
-        Emplacement: Text[250];
-        RefFile: Integer;
-        _mail: Codeunit "SMTP Mail";
-        GenJnlLine3: Record "Gen. Journal Line";
-        EmailObject: Text[250];
+    // Vend1: Record Vendor;
+    // FileName: Text[250];
+    // Emplacement: Text[250];
+    // RefFile: Integer;
+    // _mail: Codeunit "SMTP Mail";
+    // GenJnlLine3: Record "Gen. Journal Line";
+    // EmailObject: Text[250];
     begin
-        Vend1.Get(TmpVendEmail."Vendor No.");
-        Vend1.TestField(Vend1."E-Mail");
+        // Vend1.Get(TmpVendEmail."Vendor No.");
+        // Vend1.TestField(Vend1."E-Mail");
 
-        AddOnSetup.Get;
-        AddOnSetup2.Get;
-        SMTPSetup.Get;
-        //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
+        // AddOnSetup.Get;
+        // AddOnSetup2.Get;
+        // SMTPSetup.Get;
+        // //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
 
-        EmailObject := GetVendorEmailObject(TmpVendEmail."Payment Method Code");
+        // EmailObject := GetVendorEmailObject(TmpVendEmail."Payment Method Code");
 
-        Clear(_mail);
-        _mail.CreateMessage(SMTPSetup."From Name", SMTPSetup."From Adress",
-            Vend1."E-Mail", EmailObject, Text032, false);
+        // Clear(_mail);
+        // _mail.CreateMessage(SMTPSetup."From Name", SMTPSetup."From Adress",
+        //     Vend1."E-Mail", EmailObject, Text032, false);
 
-        Emplacement := TmpVendEmail.Attachment;
+        // Emplacement := TmpVendEmail.Attachment;
 
-        if not Exists(Emplacement) then begin
-            Message(Text026);
-            exit;
-        end;
+        // if not Exists(Emplacement) then begin
+        //     Message(Text026);
+        //     exit;
+        // end;
 
-        _mail.AddAttachment(Emplacement, FileName);
+        // _mail.AddAttachment(Emplacement, FileName);
 
-        if (AddOnSetup2."Email Avis Paiement" <> '') then
-            _mail.AddCC(AddOnSetup2."Email Avis Paiement");
+        // if (AddOnSetup2."Email Avis Paiement" <> '') then
+        //     _mail.AddCC(AddOnSetup2."Email Avis Paiement");
 
-        //MESSAGE('%1',Vend1."E-Mail");
-        _mail.Send();
+        // //MESSAGE('%1',Vend1."E-Mail");
+        // _mail.Send();
 
-        TmpVendEmail.Delete;
+        // TmpVendEmail.Delete;
     end;
 
     procedure SendEmailVendorTransferAll()
     var
-        Vend1: Record Vendor;
-        FileName: Text[250];
-        Emplacement: Text[250];
-        RefFile: Integer;
-        _mail: Codeunit "SMTP Mail";
-        GenJnlLine3: Record "Gen. Journal Line";
-        TmpVendEmail: Record "Tampon Payment Vendor Email";
-        EmailObject: Text[250];
+    // Vend1: Record Vendor;
+    // FileName: Text[250];
+    // Emplacement: Text[250];
+    // RefFile: Integer;
+    // _mail: Codeunit "SMTP Mail";
+    // GenJnlLine3: Record "Gen. Journal Line";
+    // TmpVendEmail: Record "Tampon Payment Vendor Email";
+    // EmailObject: Text[250];
     begin
 
-        TmpVendEmail.Reset;
-        TmpVendEmail.SetRange(TmpVendEmail."User ID", UserId);
-        if TmpVendEmail.FindSet then
-            repeat
-                Vend1.Get(TmpVendEmail."Vendor No.");
-                Vend1.TestField(Vend1."E-Mail");
-            until TmpVendEmail.Next = 0;
+        // TmpVendEmail.Reset;
+        // TmpVendEmail.SetRange(TmpVendEmail."User ID", UserId);
+        // if TmpVendEmail.FindSet then
+        //     repeat
+        //         Vend1.Get(TmpVendEmail."Vendor No.");
+        //         Vend1.TestField(Vend1."E-Mail");
+        //     until TmpVendEmail.Next = 0;
 
 
-        AddOnSetup.Get;
-        AddOnSetup2.Get;
-        SMTPSetup.Get;
-        //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
+        // AddOnSetup.Get;
+        // AddOnSetup2.Get;
+        // SMTPSetup.Get;
+        // //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
 
-        TmpVendEmail.Reset;
-        TmpVendEmail.SetRange(TmpVendEmail."User ID", UserId);
-        if TmpVendEmail.FindSet then
-            repeat
+        // TmpVendEmail.Reset;
+        // TmpVendEmail.SetRange(TmpVendEmail."User ID", UserId);
+        // if TmpVendEmail.FindSet then
+        //     repeat
 
-                Vend1.Get(TmpVendEmail."Vendor No.");
+        //         Vend1.Get(TmpVendEmail."Vendor No.");
 
-                EmailObject := GetVendorEmailObject(TmpVendEmail."Payment Method Code");
+        //         EmailObject := GetVendorEmailObject(TmpVendEmail."Payment Method Code");
 
-                Clear(_mail);
-                _mail.CreateMessage(SMTPSetup."From Name", SMTPSetup."From Adress",
-                Vend1."E-Mail", EmailObject, Text032, false);
+        //         Clear(_mail);
+        //         _mail.CreateMessage(SMTPSetup."From Name", SMTPSetup."From Adress",
+        //         Vend1."E-Mail", EmailObject, Text032, false);
 
-                Emplacement := TmpVendEmail.Attachment;
+        //         Emplacement := TmpVendEmail.Attachment;
 
-                if (AddOnSetup2."Email Avis Paiement" <> '') then
-                    _mail.AddCC(AddOnSetup2."Email Avis Paiement");
+        //         if (AddOnSetup2."Email Avis Paiement" <> '') then
+        //             _mail.AddCC(AddOnSetup2."Email Avis Paiement");
 
-                if Exists(Emplacement) then begin
-                    _mail.AddAttachment(Emplacement, FileName);
-                    _mail.Send();
-                    TmpVendEmail.Delete;
-                end;
+        //         if Exists(Emplacement) then begin
+        //             _mail.AddAttachment(Emplacement, FileName);
+        //             _mail.Send();
+        //             TmpVendEmail.Delete;
+        //         end;
 
-            until TmpVendEmail.Next = 0;
+        //     until TmpVendEmail.Next = 0;
     end;
 
     local procedure GetVendorEmailObject(PaymentMethodCode: Code[10]): Text[250]
@@ -1214,7 +1194,7 @@ codeunit 50014 "Treso Mgt"
     var
         GenJnlLine3: Record "Gen. Journal Line";
         GenJournalLine2: Record "Gen. Journal Line";
-        AFK_GLMgt: codeunit 1;
+        AFK_GLMgt: codeunit "Treso Mgt";
         DocNo: Code[20];
         TextAFKErr002: label 'Cette option n''est plus disponible !';
     begin

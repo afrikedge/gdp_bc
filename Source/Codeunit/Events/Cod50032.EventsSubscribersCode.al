@@ -870,6 +870,19 @@ codeunit 50032 "EventsSubscribers Code"
         IsHandled := true;
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item-Check Avail.", 'OnBeforeShowWarningForThisItemOnBeforeItemGet', '', true, true)]
+    local procedure ItemCheckAvail_OnBeforeShowWarningForThisItemOnBeforeItemGet(ItemNo: Code[20]; var ShowWarning: Boolean; var IsHandled: Boolean)
+    var
+        SingleCU: Codeunit SingleInstance;
+    begin
+        if (SingleCU.Get_IsAfkShowItemWarning()) then begin
+            IsHandled := true;
+            SingleCU.Set_IsAfkShowItemWarning(false);
+        end;
+
+    end;
+
+
 
 
 

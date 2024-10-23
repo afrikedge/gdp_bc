@@ -1,7 +1,7 @@
 codeunit 50031 VendorInvoiceMgt
 {
-    Permissions = TableData "Vendor Ledger Entry"=rm,
-                  TableData "Purch. Rcpt. Header"=rm;
+    Permissions = TableData "Vendor Ledger Entry" = rm,
+                  TableData "Purch. Rcpt. Header" = rm;
 
     trigger OnRun()
     var
@@ -28,7 +28,7 @@ codeunit 50031 VendorInvoiceMgt
         Text008: Label 'Il existe au moins une réception de cette commande en attente de validation conformité';
         Text009: Label '&Produits conformes,&Signaler une non conformité';
         Text010: Label '&Produits conformes';
-        SMTPSetup: Record "SMTP Mail Setup";
+        //SMTPSetup: Record "SMTP Mail Setup";
         Text011: Label 'Aucune adresse email trouvée pour l''envoi de l''alerte.';
         Text012: Label 'Aucune ligne de facture pour ce paiement';
         Text014: Label 'La ligne de facture %1 n''a pas été validée pour le paiement';
@@ -79,62 +79,62 @@ codeunit 50031 VendorInvoiceMgt
     begin
 
         if VendInvoiceDoc.Status = VendInvoiceDoc.Status::EnSaisie then begin
-          Selection := StrMenu(Text001,1);
-          if Selection = 0 then exit;
-          if Selection = 1 then ValidationEnSaisie(VendInvoiceDoc);
-          exit(true);
+            Selection := StrMenu(Text001, 1);
+            if Selection = 0 then exit;
+            if Selection = 1 then ValidationEnSaisie(VendInvoiceDoc);
+            exit(true);
         end;
 
         if VendInvoiceDoc.Status = VendInvoiceDoc.Status::Receptionee then begin
-          if VendInvoiceDoc."Posted Invoice No"<>'' then begin
-            Selection := StrMenu(Text036,1);
-            if Selection = 0 then exit;
-            if Selection = 1 then ValidationPreSaisie(VendInvoiceDoc);
-            if Selection = 2 then Archiver(VendInvoiceDoc);
-            exit(true);
-          end else begin
-              Selection := StrMenu(Text034,1);
-            if Selection = 0 then exit;
-            if Selection = 1 then RejetPreSaisie(VendInvoiceDoc);
-            if Selection = 2 then Archiver(VendInvoiceDoc);
-            exit(true);
-          end;
+            if VendInvoiceDoc."Posted Invoice No" <> '' then begin
+                Selection := StrMenu(Text036, 1);
+                if Selection = 0 then exit;
+                if Selection = 1 then ValidationPreSaisie(VendInvoiceDoc);
+                if Selection = 2 then Archiver(VendInvoiceDoc);
+                exit(true);
+            end else begin
+                Selection := StrMenu(Text034, 1);
+                if Selection = 0 then exit;
+                if Selection = 1 then RejetPreSaisie(VendInvoiceDoc);
+                if Selection = 2 then Archiver(VendInvoiceDoc);
+                exit(true);
+            end;
         end;
 
         if VendInvoiceDoc.Status = VendInvoiceDoc.Status::Rejetee then begin
-          Selection := StrMenu(Text035,1);
-          if Selection = 0 then exit;
-          if Selection = 1 then AutoriserComptabilisation(VendInvoiceDoc);
-          exit(true);
+            Selection := StrMenu(Text035, 1);
+            if Selection = 0 then exit;
+            if Selection = 1 then AutoriserComptabilisation(VendInvoiceDoc);
+            exit(true);
         end;
 
-        if VendInvoiceDoc.Status in [ VendInvoiceDoc.Status::AttenteValResp1,
-          VendInvoiceDoc.Status::AttenteValResp2,VendInvoiceDoc.Status::AttenteValResp3] then begin
+        if VendInvoiceDoc.Status in [VendInvoiceDoc.Status::AttenteValResp1,
+          VendInvoiceDoc.Status::AttenteValResp2, VendInvoiceDoc.Status::AttenteValResp3] then begin
 
-          Selection := StrMenu(Text037,1);
+            Selection := StrMenu(Text037, 1);
 
-          if Selection = 0 then exit;
-          if Selection = 1 then ValidationResponsable(VendInvoiceDoc);
-          if Selection = 2 then RefusValidation(VendInvoiceDoc);
-          //IF Selection = 3 THEN RenvoyerEnComptaFournisseur(VendInvoiceDoc);
-          exit(true);
+            if Selection = 0 then exit;
+            if Selection = 1 then ValidationResponsable(VendInvoiceDoc);
+            if Selection = 2 then RefusValidation(VendInvoiceDoc);
+            //IF Selection = 3 THEN RenvoyerEnComptaFournisseur(VendInvoiceDoc);
+            exit(true);
         end;
 
 
         if VendInvoiceDoc.Status = VendInvoiceDoc.Status::Litigieuse then begin
-          Selection := StrMenu(Text038,1);
-          if Selection = 0 then exit;
-          if Selection = 1 then ValidationPreSaisie(VendInvoiceDoc);
-          if Selection = 2 then Archiver(VendInvoiceDoc);
-          exit(true);
+            Selection := StrMenu(Text038, 1);
+            if Selection = 0 then exit;
+            if Selection = 1 then ValidationPreSaisie(VendInvoiceDoc);
+            if Selection = 2 then Archiver(VendInvoiceDoc);
+            exit(true);
         end;
 
         if VendInvoiceDoc.Status = VendInvoiceDoc.Status::Validee then begin
-          Selection := StrMenu(Text028,1);
-          if Selection = 0 then exit;
-          if Selection = 1 then AutoriserPaiementDAF(VendInvoiceDoc);
-          if Selection = 2 then RefusValidation(VendInvoiceDoc);
-          exit(true);
+            Selection := StrMenu(Text028, 1);
+            if Selection = 0 then exit;
+            if Selection = 1 then AutoriserPaiementDAF(VendInvoiceDoc);
+            if Selection = 2 then RefusValidation(VendInvoiceDoc);
+            exit(true);
         end;
 
         //EXIT(TRUE);
@@ -151,10 +151,10 @@ codeunit 50031 VendorInvoiceMgt
 
         VendInvoiceDoc.Status := VendInvoiceDoc.Status::Receptionee;
         VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::Receptionee;
-        VendInvoiceDoc."Sent To Validation Date" := CreateDateTime(Today,Time);
+        VendInvoiceDoc."Sent To Validation Date" := CreateDateTime(Today, Time);
         VendInvoiceDoc.Modify;
-        InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-          'Facture réceptionnée',VendInvoiceDoc.Status::Receptionee,TypeAction::" ");
+        InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+          'Facture réceptionnée', VendInvoiceDoc.Status::Receptionee, TypeAction::" ");
     end;
 
     local procedure ValidationPreSaisie(var VendInvoiceDoc: Record "Vendor Invoice Doc")
@@ -167,23 +167,23 @@ codeunit 50031 VendorInvoiceMgt
 
         if not VendInvoiceDoc.HasLinks then Error(Text002);
 
-        IsFinLitige := VendInvoiceDoc.Status=VendInvoiceDoc.Status::Litigieuse;
+        IsFinLitige := VendInvoiceDoc.Status = VendInvoiceDoc.Status::Litigieuse;
 
         VendInvoiceDoc.Status := VendInvoiceDoc.Status::AttenteValResp1;
         VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::AttenteValResp1;
-        VendInvoiceDoc."Sent To Validation Date" := CreateDateTime(Today,Time);
-        VendInvoiceDoc.Validator := GetWorkflowUser(VendInvoiceDoc,1);
+        VendInvoiceDoc."Sent To Validation Date" := CreateDateTime(Today, Time);
+        VendInvoiceDoc.Validator := GetWorkflowUser(VendInvoiceDoc, 1);
 
         VendInvoiceDoc.Modify;
 
         if IsFinLitige then
-          InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-            'Attente vérification',VendInvoiceDoc.Status::AttenteValResp1,TypeAction::FinLitige)
+            InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+              'Attente vérification', VendInvoiceDoc.Status::AttenteValResp1, TypeAction::FinLitige)
         else
-          InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-            'Attente vérification',VendInvoiceDoc.Status::AttenteValResp1,TypeAction::" ");
+            InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+              'Attente vérification', VendInvoiceDoc.Status::AttenteValResp1, TypeAction::" ");
 
-        SendEmail_Facture(VendInvoiceDoc,1);
+        SendEmail_Facture(VendInvoiceDoc, 1);
     end;
 
     local procedure AutoriserComptabilisation(var VendInvoiceDoc: Record "Vendor Invoice Doc")
@@ -197,12 +197,12 @@ codeunit 50031 VendorInvoiceMgt
 
         VendInvoiceDoc.Status := VendInvoiceDoc.Status::Receptionee;
         VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::Receptionee;
-        VendInvoiceDoc."Sent To Validation Date" := CreateDateTime(Today,Time);
+        VendInvoiceDoc."Sent To Validation Date" := CreateDateTime(Today, Time);
         //VendInvoiceDoc.Validator := GetWorkflowUser(VendInvoiceDoc,1);
 
         VendInvoiceDoc.Modify;
-        InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-          'Autorisation comptabilisation',VendInvoiceDoc.Status::Receptionee,TypeAction::" ");
+        InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+          'Autorisation comptabilisation', VendInvoiceDoc.Status::Receptionee, TypeAction::" ");
 
 
         //SendEmail_Facture(VendInvoiceDoc,1);
@@ -217,27 +217,27 @@ codeunit 50031 VendorInvoiceMgt
         CheckVendInvoice(VendInvoiceDoc);
         VendInvoiceDoc.TestField(VendInvoiceDoc."Reason for rejection");
         if VendInvoiceDoc."Send Email for rejection" then
-          if not Confirm(Text025) then exit;
+            if not Confirm(Text025) then exit;
 
         if not VendInvoiceDoc."Send Email for rejection" then
-          if not Confirm(Text026) then exit;
+            if not Confirm(Text026) then exit;
 
         //IF NOT VendInvoiceDoc.HASLINKS THEN ERROR(Text002);
 
         VendInvoiceDoc.Status := VendInvoiceDoc.Status::Rejetee;
-        VendInvoiceDoc."Sent To Validation Date" := CreateDateTime(Today,Time);
+        VendInvoiceDoc."Sent To Validation Date" := CreateDateTime(Today, Time);
         VendInvoiceDoc.Modify;
-        InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-          'Rejet de la facture au fournisseur',VendInvoiceDoc.Status::Rejetee,TypeAction::" ");
+        InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+          'Rejet de la facture au fournisseur', VendInvoiceDoc.Status::Rejetee, TypeAction::" ");
 
         //Envoi du mail au fournisseur
         //***********************************
         if VendInvoiceDoc."Send Email for rejection" then begin
-          Vend1.Get(VendInvoiceDoc."Vendor No");
-          Vend1.TestField("E-Mail");
-          AddOnSetup2.Get;
-          AddOnSetup2.TestField("Email Vend Invoice Refusal");
-          SendEmail_RejetFsseur(VendInvoiceDoc,Vend1."E-Mail",AddOnSetup2."Email Vend Invoice Refusal");
+            Vend1.Get(VendInvoiceDoc."Vendor No");
+            Vend1.TestField("E-Mail");
+            AddOnSetup2.Get;
+            AddOnSetup2.TestField("Email Vend Invoice Refusal");
+            SendEmail_RejetFsseur(VendInvoiceDoc, Vend1."E-Mail", AddOnSetup2."Email Vend Invoice Refusal");
         end;
     end;
 
@@ -247,19 +247,19 @@ codeunit 50031 VendorInvoiceMgt
         VendLedgEntry: Record "Vendor Ledger Entry";
     begin
 
-        if VendInvoiceDoc."Validation Level"= VendInvoiceDoc."Validation Level"::AttenteValResp1 then begin
-          ValidationResponsable1(VendInvoiceDoc);
-          exit;
+        if VendInvoiceDoc."Validation Level" = VendInvoiceDoc."Validation Level"::AttenteValResp1 then begin
+            ValidationResponsable1(VendInvoiceDoc);
+            exit;
         end;
 
-        if VendInvoiceDoc."Validation Level"= VendInvoiceDoc."Validation Level"::AttenteValResp2 then begin
-          ValidationResponsable2(VendInvoiceDoc);
-          exit;
+        if VendInvoiceDoc."Validation Level" = VendInvoiceDoc."Validation Level"::AttenteValResp2 then begin
+            ValidationResponsable2(VendInvoiceDoc);
+            exit;
         end;
 
-        if VendInvoiceDoc."Validation Level"= VendInvoiceDoc."Validation Level"::AttenteValResp3 then begin
-          ValidationResponsable3(VendInvoiceDoc);
-          exit;
+        if VendInvoiceDoc."Validation Level" = VendInvoiceDoc."Validation Level"::AttenteValResp3 then begin
+            ValidationResponsable3(VendInvoiceDoc);
+            exit;
         end;
     end;
 
@@ -270,18 +270,18 @@ codeunit 50031 VendorInvoiceMgt
 
         CheckVendInvoice(VendInvoiceDoc);
 
-        if CanGoToNextLevel(VendInvoiceDoc,2) then begin
+        if CanGoToNextLevel(VendInvoiceDoc, 2) then begin
 
-          //VendInvoiceDoc.Validator := USERID;
-          VendInvoiceDoc.Status := VendInvoiceDoc.Status::AttenteValResp2;
-          VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::AttenteValResp2;
-          VendInvoiceDoc.Validator := GetWorkflowUser(VendInvoiceDoc,2);
-          VendInvoiceDoc.Modify;
-          InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-            'Attente pré-validation',VendInvoiceDoc.Status::AttenteValResp2,TypeAction::" ");
-          SendEmail_Facture(VendInvoiceDoc,2);
+            //VendInvoiceDoc.Validator := USERID;
+            VendInvoiceDoc.Status := VendInvoiceDoc.Status::AttenteValResp2;
+            VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::AttenteValResp2;
+            VendInvoiceDoc.Validator := GetWorkflowUser(VendInvoiceDoc, 2);
+            VendInvoiceDoc.Modify;
+            InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+              'Attente pré-validation', VendInvoiceDoc.Status::AttenteValResp2, TypeAction::" ");
+            SendEmail_Facture(VendInvoiceDoc, 2);
         end else begin
-          ValidationResponsable3(VendInvoiceDoc);
+            ValidationResponsable3(VendInvoiceDoc);
         end;
     end;
 
@@ -292,18 +292,18 @@ codeunit 50031 VendorInvoiceMgt
 
         CheckVendInvoice(VendInvoiceDoc);
 
-        if CanGoToNextLevel(VendInvoiceDoc,3) then begin
+        if CanGoToNextLevel(VendInvoiceDoc, 3) then begin
 
-          //VendInvoiceDoc.Validator := USERID;
-          VendInvoiceDoc.Status := VendInvoiceDoc.Status::AttenteValResp3;
-          VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::AttenteValResp3;
-          VendInvoiceDoc.Validator := GetWorkflowUser(VendInvoiceDoc,3);
-          VendInvoiceDoc.Modify;
-          InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-            'Attente validation finale',VendInvoiceDoc.Status::AttenteValResp3,TypeAction::" ");
-          SendEmail_Facture(VendInvoiceDoc,3);
+            //VendInvoiceDoc.Validator := USERID;
+            VendInvoiceDoc.Status := VendInvoiceDoc.Status::AttenteValResp3;
+            VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::AttenteValResp3;
+            VendInvoiceDoc.Validator := GetWorkflowUser(VendInvoiceDoc, 3);
+            VendInvoiceDoc.Modify;
+            InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+              'Attente validation finale', VendInvoiceDoc.Status::AttenteValResp3, TypeAction::" ");
+            SendEmail_Facture(VendInvoiceDoc, 3);
         end else begin
-          ValidationResponsable3(VendInvoiceDoc);
+            ValidationResponsable3(VendInvoiceDoc);
         end;
     end;
 
@@ -317,19 +317,19 @@ codeunit 50031 VendorInvoiceMgt
 
         WkflCode.Get(WkflCode."Workflow Type"::VendorInvoice, VendInvoiceDoc."Workflow Code");
 
-        if(not WkflCode.Regularisation) then begin
+        if (not WkflCode.Regularisation) then begin
 
-          VendInvoiceDoc.Validator := UserId;
-          VendInvoiceDoc.Status := VendInvoiceDoc.Status::Validee;
-          VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::Validee;
+            VendInvoiceDoc.Validator := UserId;
+            VendInvoiceDoc.Status := VendInvoiceDoc.Status::Validee;
+            VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::Validee;
 
-          VendInvoiceDoc.Modify;
-          InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-            'Facture validée',VendInvoiceDoc.Status::Validee,TypeAction::" ");
+            VendInvoiceDoc.Modify;
+            InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+              'Facture validée', VendInvoiceDoc.Status::Validee, TypeAction::" ");
 
         end else begin
 
-          MarquerCommePayee(VendInvoiceDoc);
+            MarquerCommePayee(VendInvoiceDoc);
 
         end;
     end;
@@ -345,8 +345,8 @@ codeunit 50031 VendorInvoiceMgt
         VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::Receptionee;
 
         VendInvoiceDoc.Modify;
-        InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-          'Facture renvoyée en compta fsseur',VendInvoiceDoc.Status::Receptionee,TypeAction::" ");
+        InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+          'Facture renvoyée en compta fsseur', VendInvoiceDoc.Status::Receptionee, TypeAction::" ");
     end;
 
     local procedure Archiver(var VendInvoiceDoc: Record "Vendor Invoice Doc")
@@ -357,7 +357,7 @@ codeunit 50031 VendorInvoiceMgt
 
         if not Confirm(Text039) then exit;
 
-        IsFinLitige := VendInvoiceDoc.Status=VendInvoiceDoc.Status::Litigieuse;
+        IsFinLitige := VendInvoiceDoc.Status = VendInvoiceDoc.Status::Litigieuse;
 
         CheckVendInvoice(VendInvoiceDoc);
         VendInvoiceDoc.Validator := UserId;
@@ -367,21 +367,21 @@ codeunit 50031 VendorInvoiceMgt
         VendInvoiceDoc.Modify;
 
         if IsFinLitige then
-          InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-            'Facture archivée',VendInvoiceDoc.Status::Archived,TypeAction::FinLitige)
+            InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+              'Facture archivée', VendInvoiceDoc.Status::Archived, TypeAction::FinLitige)
         else
-          InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-            'Facture archivée',VendInvoiceDoc.Status::Archived,TypeAction::" ");
+            InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+              'Facture archivée', VendInvoiceDoc.Status::Archived, TypeAction::" ");
 
         //Verifier si une facture a ete enregistree avec ce numéro qu'elle est lettree
         PostedPurchInv.Reset;
         PostedPurchInv.SetCurrentKey("Pay-to Vendor No.");
-        PostedPurchInv.SetRange("Pay-to Vendor No.",VendInvoiceDoc."Vendor No");
-        PostedPurchInv.SetRange("Vendor Invoice No.",VendInvoiceDoc."Vendor Invoice No.");
+        PostedPurchInv.SetRange("Pay-to Vendor No.", VendInvoiceDoc."Vendor No");
+        PostedPurchInv.SetRange("Vendor Invoice No.", VendInvoiceDoc."Vendor Invoice No.");
         if PostedPurchInv.FindFirst then begin
-          PostedPurchInv.CalcFields(Closed);
-          if not PostedPurchInv.Closed then
-            Error(Text042,PostedPurchInv."No.");
+            PostedPurchInv.CalcFields(Closed);
+            if not PostedPurchInv.Closed then
+                Error(Text042, PostedPurchInv."No.");
         end;
     end;
 
@@ -396,10 +396,10 @@ codeunit 50031 VendorInvoiceMgt
         if not Confirm(Text027) then exit;
 
         VendInvoiceDoc.Status := VendInvoiceDoc.Status::Litigieuse;
-        VendInvoiceDoc."Sent To Validation Date" := CreateDateTime(Today,Time);
+        VendInvoiceDoc."Sent To Validation Date" := CreateDateTime(Today, Time);
         VendInvoiceDoc.Modify;
-        InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-          'Mise en litige',VendInvoiceDoc.Status::Litigieuse,TypeAction::" ");
+        InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+          'Mise en litige', VendInvoiceDoc.Status::Litigieuse, TypeAction::" ");
 
 
         EnvoiEmailRefus_Facture(VendInvoiceDoc);
@@ -413,36 +413,36 @@ codeunit 50031 VendorInvoiceMgt
         PurchReq: Record "PO Tracking Information";
         EmailTo: Text[100];
     begin
-        
+
         //Que faire dans le cas ou la cde n'est pas liée à une requisition?
         if PurchH."Skip Invoice Control" then exit;
-        
+
         if PurchH."Document Type" = PurchH."Document Type"::"Return Order" then exit;
         //IF PurchH."Document Type" = PurchH."Document Type"::"Credit Memo" THEN EXIT;
         //IF PurchH."Document Type" <> PurchH."Document Type"::Order THEN EXIT;
-        
-        
+
+
         VendInvoiceDoc1.Reset;
-        VendInvoiceDoc1.SetCurrentKey("Vendor No","Vendor Invoice No.");
-        VendInvoiceDoc1.SetRange("Vendor No",PurchH."Buy-from Vendor No.");
+        VendInvoiceDoc1.SetCurrentKey("Vendor No", "Vendor Invoice No.");
+        VendInvoiceDoc1.SetRange("Vendor No", PurchH."Buy-from Vendor No.");
         if PurchH."Document Type" = PurchH."Document Type"::"Credit Memo" then
-          VendInvoiceDoc1.SetRange("Vendor Invoice No.",PurchH."Vendor Cr. Memo No.")
+            VendInvoiceDoc1.SetRange("Vendor Invoice No.", PurchH."Vendor Cr. Memo No.")
         else
-          VendInvoiceDoc1.SetRange("Vendor Invoice No.",PurchH."Vendor Invoice No.");
+            VendInvoiceDoc1.SetRange("Vendor Invoice No.", PurchH."Vendor Invoice No.");
         if not VendInvoiceDoc1.FindFirst then begin
-          //IF PurchH."Order Class"<>'' THEN EXIT;//Anciennes commandes avant golive
-          if SecMgt.CanPostVendInvoiceDirectly then
-            exit
-          else
-            Error(Text017,PurchH."Vendor Invoice No.",PurchH."Buy-from Vendor No.");
-        
+            //IF PurchH."Order Class"<>'' THEN EXIT;//Anciennes commandes avant golive
+            if SecMgt.CanPostVendInvoiceDirectly then
+                exit
+            else
+                Error(Text017, PurchH."Vendor Invoice No.", PurchH."Buy-from Vendor No.");
+
         end;
-        
-        if (VendInvoiceDoc1.Status<>VendInvoiceDoc1.Status::Receptionee)then
-          Error(Text030,VendInvoiceDoc1."Reference Number",VendInvoiceDoc1."Vendor Invoice No.");
-        
-        
-        ControlMontantAFacturer(PurchH,VendInvoiceDoc1);
+
+        if (VendInvoiceDoc1.Status <> VendInvoiceDoc1.Status::Receptionee) then
+            Error(Text030, VendInvoiceDoc1."Reference Number", VendInvoiceDoc1."Vendor Invoice No.");
+
+
+        ControlMontantAFacturer(PurchH, VendInvoiceDoc1);
         /*
         PurchH.CALCFIELDS(Amount);
         PurchH.CALCFIELDS("Amount Including VAT");
@@ -452,39 +452,39 @@ codeunit 50031 VendorInvoiceMgt
         IF ABS(PurchH."Amount Including VAT")<>ABS(VendInvoiceDoc1.MontantTTC) THEN
           ERROR(TextErrorSameHT,PurchH."Amount Including VAT",VendInvoiceDoc1."Reference Number",VendInvoiceDoc1.MontantTTC);
           */
-        
-        if ((PurchH."Currency Code"='') or (PurchH."Currency Code"='MGA')) then begin
-        
-          if ((Format(VendInvoiceDoc1.Devise)<>'') and (Format(VendInvoiceDoc1.Devise)<>'MGA'))  then
-            Error(TextErrorSameCurrency,PurchH."Currency Code",
-              VendInvoiceDoc1."Reference Number",Format(VendInvoiceDoc1.Devise));
-        
+
+        if ((PurchH."Currency Code" = '') or (PurchH."Currency Code" = 'MGA')) then begin
+
+            if ((Format(VendInvoiceDoc1.Devise) <> '') and (Format(VendInvoiceDoc1.Devise) <> 'MGA')) then
+                Error(TextErrorSameCurrency, PurchH."Currency Code",
+                  VendInvoiceDoc1."Reference Number", Format(VendInvoiceDoc1.Devise));
+
         end else begin
-        
-          if (PurchH."Currency Code")<>Format(VendInvoiceDoc1.Devise) then
-            Error(TextErrorSameCurrency,PurchH."Currency Code",
-              VendInvoiceDoc1."Reference Number",Format(VendInvoiceDoc1.Devise));
+
+            if (PurchH."Currency Code") <> Format(VendInvoiceDoc1.Devise) then
+                Error(TextErrorSameCurrency, PurchH."Currency Code",
+                  VendInvoiceDoc1."Reference Number", Format(VendInvoiceDoc1.Devise));
         end;
         //VendInvoiceDoc1.TESTFIELD(VendInvoiceDoc1.Status,VendInvoiceDoc1.Status::Validee);
-        
-        PurchH.TestField("Buy-from Vendor No.",VendInvoiceDoc1."Vendor No");
-        
+
+        PurchH.TestField("Buy-from Vendor No.", VendInvoiceDoc1."Vendor No");
+
         //Le numéro de commande doit etre le meme
         if PurchH."Document Type" = PurchH."Document Type"::Order then
-          //IF VendInvoiceDoc1."Order No" <> '' THEN
+            //IF VendInvoiceDoc1."Order No" <> '' THEN
             if VendInvoiceDoc1."Order No" <> PurchH."No." then
-              Error(Text013,VendInvoiceDoc1."Order No");
-        
-        
+                Error(Text013, VendInvoiceDoc1."Order No");
+
+
         ValidationPreSaisie(VendInvoiceDoc1);
-        
+
         //VendInvoiceDoc1.Validator := GetIdUserDAF();
         //VendInvoiceDoc1.Status := VendInvoiceDoc1.Status::Comptabilise;
         VendInvoiceDoc1."Posted Invoice No" := PurchH."Posting No.";
         VendInvoiceDoc1."Due Date" := PurchH."Due Date";
         //VendInvoiceDoc1."Validation Level" := VendInvoiceDoc1."Validation Level"::Comptabilise;
         VendInvoiceDoc1.Modify;
-        
+
         /*
         InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc1."Entry No", VendInvoiceDoc1."Reference Number",
           'Facture comptabilisée',VendInvoiceDoc1.Status::Comptabilise);
@@ -492,7 +492,7 @@ codeunit 50031 VendorInvoiceMgt
 
     end;
 
-    procedure ValidationAutoPaiement(VendNo: Code[20];VendInvoiceNo1: Code[35];PostedPaymentDocNo1: Code[20];VendInvoiceNo2: Code[35];PostedPaymentDocNo2: Code[20])
+    procedure ValidationAutoPaiement(VendNo: Code[20]; VendInvoiceNo1: Code[35]; PostedPaymentDocNo1: Code[20]; VendInvoiceNo2: Code[35]; PostedPaymentDocNo2: Code[20])
     var
         VendInvoiceDoc1: Record "Vendor Invoice Doc";
         NveauStatus: Text[30];
@@ -504,27 +504,27 @@ codeunit 50031 VendorInvoiceMgt
 
         //Facture est 1er element de lettrage
         VendInvoiceDoc1.Reset;
-        VendInvoiceDoc1.SetCurrentKey("Vendor No","Vendor Invoice No.");
-        VendInvoiceDoc1.SetRange("Vendor No",VendNo);
-        VendInvoiceDoc1.SetRange("Vendor Invoice No.",VendInvoiceNo1);
+        VendInvoiceDoc1.SetCurrentKey("Vendor No", "Vendor Invoice No.");
+        VendInvoiceDoc1.SetRange("Vendor No", VendNo);
+        VendInvoiceDoc1.SetRange("Vendor Invoice No.", VendInvoiceNo1);
         if VendInvoiceDoc1.FindFirst then
-          ControleLettrageFacture(VendInvoiceDoc1,PostedPaymentDocNo1);
+            ControleLettrageFacture(VendInvoiceDoc1, PostedPaymentDocNo1);
 
         //END ELSE BEGIN
 
-          //Facture est 2eme element de lettrage
+        //Facture est 2eme element de lettrage
 
         VendInvoiceDoc1.Reset;
-        VendInvoiceDoc1.SetCurrentKey("Vendor No","Vendor Invoice No.");
-        VendInvoiceDoc1.SetRange("Vendor No",VendNo);
-        VendInvoiceDoc1.SetRange("Vendor Invoice No.",VendInvoiceNo2);
+        VendInvoiceDoc1.SetCurrentKey("Vendor No", "Vendor Invoice No.");
+        VendInvoiceDoc1.SetRange("Vendor No", VendNo);
+        VendInvoiceDoc1.SetRange("Vendor Invoice No.", VendInvoiceNo2);
         if VendInvoiceDoc1.FindFirst then
-          ControleLettrageFacture(VendInvoiceDoc1,PostedPaymentDocNo2);
+            ControleLettrageFacture(VendInvoiceDoc1, PostedPaymentDocNo2);
 
         //END;
     end;
 
-    local procedure ControleLettrageFacture(var VendInvoiceDoc1: Record "Vendor Invoice Doc";PostedPaymentDocNo: Code[20])
+    local procedure ControleLettrageFacture(var VendInvoiceDoc1: Record "Vendor Invoice Doc"; PostedPaymentDocNo: Code[20])
     var
         NveauStatus: Text[30];
         IdStatut: Integer;
@@ -533,42 +533,42 @@ codeunit 50031 VendorInvoiceMgt
         IsLitigieuse: Boolean;
     begin
 
-        if ((VendInvoiceDoc1.Status<>VendInvoiceDoc1.Status::AttentePaiement) and
-            (VendInvoiceDoc1.Status<>VendInvoiceDoc1.Status::Archived) and
-            (VendInvoiceDoc1.Status<>VendInvoiceDoc1.Status::Payee)and
-            (VendInvoiceDoc1.Status<>VendInvoiceDoc1.Status::Litigieuse)) then
-              Error(Text031,VendInvoiceDoc1."Reference Number",VendInvoiceDoc1."Vendor Invoice No.");
+        if ((VendInvoiceDoc1.Status <> VendInvoiceDoc1.Status::AttentePaiement) and
+            (VendInvoiceDoc1.Status <> VendInvoiceDoc1.Status::Archived) and
+            (VendInvoiceDoc1.Status <> VendInvoiceDoc1.Status::Payee) and
+            (VendInvoiceDoc1.Status <> VendInvoiceDoc1.Status::Litigieuse)) then
+            Error(Text031, VendInvoiceDoc1."Reference Number", VendInvoiceDoc1."Vendor Invoice No.");
         //VendInvoiceDoc1.TESTFIELD(VendInvoiceDoc1.Status,VendInvoiceDoc1.Status::AttentePaiement);
 
-        IsArchived := VendInvoiceDoc1.Status=VendInvoiceDoc1.Status::Archived;
-        IsLitigieuse := VendInvoiceDoc1.Status=VendInvoiceDoc1.Status::Litigieuse;
+        IsArchived := VendInvoiceDoc1.Status = VendInvoiceDoc1.Status::Archived;
+        IsLitigieuse := VendInvoiceDoc1.Status = VendInvoiceDoc1.Status::Litigieuse;
 
         if not IsArchived then
-          VendInvoiceDoc1.Status := VendInvoiceDoc1.Status::Payee;
+            VendInvoiceDoc1.Status := VendInvoiceDoc1.Status::Payee;
         if IsLitigieuse then
-          VendInvoiceDoc1.Status := VendInvoiceDoc1.Status::Archived;
+            VendInvoiceDoc1.Status := VendInvoiceDoc1.Status::Archived;
         VendInvoiceDoc1."Payment Doc" := PostedPaymentDocNo;
-        VendInvoiceDoc1."Payment Date" := CreateDateTime(Today,Time);
+        VendInvoiceDoc1."Payment Date" := CreateDateTime(Today, Time);
         VendInvoiceDoc1."Pay By" := UserId;
         VendInvoiceDoc1.Modify;
 
         NveauStatus := 'Facture payee';
         if ((IsArchived) or (IsLitigieuse)) then
-          NveauStatus := 'Facture régularisée';
+            NveauStatus := 'Facture régularisée';
         IdStatut := VendInvoiceDoc1.Status::Payee;
 
-        InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc1."Entry No",
-          VendInvoiceDoc1."Reference Number",NveauStatus,IdStatut,TypeAction::" ");
+        InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc1."Entry No",
+          VendInvoiceDoc1."Reference Number", NveauStatus, IdStatut, TypeAction::" ");
     end;
 
-    local procedure ControlMontantAFacturer(PurchH: Record "Purchase Header";VendInvoiceDoc1: Record "Vendor Invoice Doc")
+    local procedure ControlMontantAFacturer(PurchH: Record "Purchase Header"; VendInvoiceDoc1: Record "Vendor Invoice Doc")
     var
         MontantAfacturer: Decimal;
         PurchLine: Record "Purchase Line";
         MontantHT: Decimal;
         MontantTTC: Decimal;
     begin
-        
+
         /*MontantAfacturer:=0;
         PurchLine.RESET;
         PurchLine.SETRANGE(PurchLine."Document Type",PurchH."Document Type");
@@ -578,18 +578,18 @@ codeunit 50031 VendorInvoiceMgt
             MontantAfacturer := MontantAfacturer + PurchLine.GetLineAmountToHandle(PurchLine."Qty. to Invoice");
           UNTIL PurchLine.NEXT=0;
           */
-        
-        CalcInvAmounts(PurchH,MontantHT,MontantTTC);
-        
+
+        CalcInvAmounts(PurchH, MontantHT, MontantTTC);
+
         UserSetup.Get(UserId);
         if not UserSetup.CanPostDirectPurchInvNoControl then begin
-        
-          if Abs(MontantHT)<>Abs(VendInvoiceDoc1.MontantHTVA) then
-            Error(TextErrorSameHT,MontantHT,VendInvoiceDoc1."Reference Number",VendInvoiceDoc1.MontantHTVA);
-        
-          if Abs(MontantTTC)<>Abs(VendInvoiceDoc1.MontantTTC) then
-            Error(TextErrorSameTTC,MontantTTC,VendInvoiceDoc1."Reference Number",VendInvoiceDoc1.MontantTTC);
-        
+
+            if Abs(MontantHT) <> Abs(VendInvoiceDoc1.MontantHTVA) then
+                Error(TextErrorSameHT, MontantHT, VendInvoiceDoc1."Reference Number", VendInvoiceDoc1.MontantHTVA);
+
+            if Abs(MontantTTC) <> Abs(VendInvoiceDoc1.MontantTTC) then
+                Error(TextErrorSameTTC, MontantTTC, VendInvoiceDoc1."Reference Number", VendInvoiceDoc1.MontantTTC);
+
         end;
 
     end;
@@ -599,19 +599,19 @@ codeunit 50031 VendorInvoiceMgt
         VendInvoiceDoc1: Record "Vendor Invoice Doc";
         VendLedgEntry: Record "Vendor Ledger Entry";
     begin
-        
+
         CheckVendInvoice(VendInvoiceDoc);
-        
+
         //IF NOT VendInvoiceDoc.HASLINKS THEN ERROR(Text002);
-        
+
         VendInvoiceDoc.Status := VendInvoiceDoc.Status::AttentePaiement;
         VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::AttenteBAP;
-        VendInvoiceDoc."Sent To Validation Date" := CreateDateTime(Today,Time);
+        VendInvoiceDoc."Sent To Validation Date" := CreateDateTime(Today, Time);
         VendInvoiceDoc.Modify;
-        InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
-          'Bon à payer',VendInvoiceDoc.Status::AttentePaiement,TypeAction::" ");
-        
-        
+        InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc."Entry No", VendInvoiceDoc."Reference Number",
+          'Bon à payer', VendInvoiceDoc.Status::AttentePaiement, TypeAction::" ");
+
+
         //Liberer la facture fournisseur pour le paiement
         /*
         VendLedgEntry.RESET;
@@ -641,53 +641,53 @@ codeunit 50031 VendorInvoiceMgt
         //VendInvoiceDoc.TESTFIELD("Invoice Date");
 
         //JN26092 controle des montants
-        if VendInvoiceDoc.Type=VendInvoiceDoc.Type::Invoice then
-          if ((VendInvoiceDoc.MontantHTVA<0) or (VendInvoiceDoc.MontantTTC<0)) then
-            Error(Text043);
+        if VendInvoiceDoc.Type = VendInvoiceDoc.Type::Invoice then
+            if ((VendInvoiceDoc.MontantHTVA < 0) or (VendInvoiceDoc.MontantTTC < 0)) then
+                Error(Text043);
 
-        if VendInvoiceDoc.Type=VendInvoiceDoc.Type::CreditMemo then
-          if ((VendInvoiceDoc.MontantHTVA>0) or (VendInvoiceDoc.MontantTTC>0)) then
-            Error(Text043);
+        if VendInvoiceDoc.Type = VendInvoiceDoc.Type::CreditMemo then
+            if ((VendInvoiceDoc.MontantHTVA > 0) or (VendInvoiceDoc.MontantTTC > 0)) then
+                Error(Text043);
 
 
-        if(VendInvoiceDoc.Status=VendInvoiceDoc.Status::EnSaisie) then begin
-          DateMaxArrivee := Today;
-          DateMinArrivee := CalcDate('<-3D>',Today);
-          if ((VendInvoiceDoc."Arrival Date">DateMaxArrivee) or (VendInvoiceDoc."Arrival Date"<DateMinArrivee)) then
-            Error(Text032,DateMinArrivee,DateMaxArrivee);
+        if (VendInvoiceDoc.Status = VendInvoiceDoc.Status::EnSaisie) then begin
+            DateMaxArrivee := Today;
+            DateMinArrivee := CalcDate('<-3D>', Today);
+            if ((VendInvoiceDoc."Arrival Date" > DateMaxArrivee) or (VendInvoiceDoc."Arrival Date" < DateMinArrivee)) then
+                Error(Text032, DateMinArrivee, DateMaxArrivee);
         end;
 
 
-        if VendInvoiceDoc.Status<>VendInvoiceDoc.Status::EnSaisie then begin
-          //IF ((VendInvoiceDoc.Status<>VendInvoiceDoc.Status::Receptionee) OR (VendInvoiceDoc."Posted Invoice No"<>'')) THEN
-          VendInvoiceDoc.TestField("Workflow Code");
-          VendInvoiceDoc.TestField("Vendor No");
-          VendInvoiceDoc.TestField("Vendor Invoice No.");
+        if VendInvoiceDoc.Status <> VendInvoiceDoc.Status::EnSaisie then begin
+            //IF ((VendInvoiceDoc.Status<>VendInvoiceDoc.Status::Receptionee) OR (VendInvoiceDoc."Posted Invoice No"<>'')) THEN
+            VendInvoiceDoc.TestField("Workflow Code");
+            VendInvoiceDoc.TestField("Vendor No");
+            VendInvoiceDoc.TestField("Vendor Invoice No.");
         end;
 
         VendInvoiceDoc1.Reset;
-        VendInvoiceDoc1.SetCurrentKey("Vendor No","Vendor Invoice No.");
-        VendInvoiceDoc1.SetRange("Vendor No",VendInvoiceDoc."Vendor No");
-        VendInvoiceDoc1.SetRange("Vendor Invoice No.",VendInvoiceDoc."Vendor Invoice No.");
-        VendInvoiceDoc1.SetFilter("Entry No",'<>%1',VendInvoiceDoc."Entry No");
-        if VendInvoiceDoc1.FindFirst then Error(Text003,VendInvoiceDoc."Vendor Invoice No.");
+        VendInvoiceDoc1.SetCurrentKey("Vendor No", "Vendor Invoice No.");
+        VendInvoiceDoc1.SetRange("Vendor No", VendInvoiceDoc."Vendor No");
+        VendInvoiceDoc1.SetRange("Vendor Invoice No.", VendInvoiceDoc."Vendor Invoice No.");
+        VendInvoiceDoc1.SetFilter("Entry No", '<>%1', VendInvoiceDoc."Entry No");
+        if VendInvoiceDoc1.FindFirst then Error(Text003, VendInvoiceDoc."Vendor Invoice No.");
 
         if not VendInvoiceDoc.HasLinks then Error(Text002);
     end;
 
-    procedure InsertNewStep(DocType: Integer;EntryID: Integer;InvNo: Code[35];NewStatus: Text[50];NewStatusID: Integer;TypeAction: Integer)
+    procedure InsertNewStep(DocType: Integer; EntryID: Integer; InvNo: Code[35]; NewStatus: Text[50]; NewStatusID: Integer; TypeAction: Integer)
     var
         StepEntry: Record "Document Step History";
         NextStepId: Integer;
     begin
 
         StepEntry.Reset;
-        StepEntry.SetRange(StepEntry."Document Type",DocType);
-        StepEntry.SetRange(StepEntry."Document No.",InvNo);
+        StepEntry.SetRange(StepEntry."Document Type", DocType);
+        StepEntry.SetRange(StepEntry."Document No.", InvNo);
         if StepEntry.FindLast then
-          NextStepId := StepEntry."Step ID" + 1
+            NextStepId := StepEntry."Step ID" + 1
         else
-          NextStepId := 1;
+            NextStepId := 1;
 
 
         StepEntry.Init;
@@ -700,7 +700,7 @@ codeunit 50031 VendorInvoiceMgt
         //StepEntry."Created Document" := CreatedDocument;
         StepEntry."New Status ID" := NewStatusID;
         StepEntry.UserID := UserId;
-        StepEntry."Action Date" := CreateDateTime(Today,Time);
+        StepEntry."Action Date" := CreateDateTime(Today, Time);
         StepEntry.TypeAction := TypeAction;
         StepEntry.Insert;
     end;
@@ -730,57 +730,57 @@ codeunit 50031 VendorInvoiceMgt
         Commentaires := VendInvoiceDoc."Order No";
         //ToAdress := GetEmail(PurchReq."Requestor ID");
         //CCAdress := '';
-        Sender := UserSetup."User ID"+ ' - '+ UserSetup."User Full Name";
+        Sender := UserSetup."User ID" + ' - ' + UserSetup."User Full Name";
         SendDate := Format(WorkDate);
         DocType := 'Facture d''achat';
 
-        if ((ToAdress<>'') or (CCAdress<>'')) then
-          SendEmail(Objet,CodeDocument,Commentaires,ToAdress,CCAdress,Sender,SendDate,DocType)
+        if ((ToAdress <> '') or (CCAdress <> '')) then
+            SendEmail(Objet, CodeDocument, Commentaires, ToAdress, CCAdress, Sender, SendDate, DocType)
         else
-          Message(Text011);
+            Message(Text011);
     end;
 
-    procedure SendEmail(Objet: Text[80];CodeDocument: Text[30];Commentaires: Text[150];ToAdress: Text;CCAdress: Text;Sender: Text[100];SendDate: Text[50];DocType: Text[30])
+    procedure SendEmail(Objet: Text[80]; CodeDocument: Text[30]; Commentaires: Text[150]; ToAdress: Text; CCAdress: Text; Sender: Text[100]; SendDate: Text[50]; DocType: Text[30])
     var
-        SMTPMail: Codeunit "SMTP Mail";
+        // SMTPMail: Codeunit "SMTP Mail";
         NewObjet: Text;
     begin
 
-        SMTPSetup.Get;
-        SMTPSetup.TestField(SMTPSetup."From Adress");
-        SMTPSetup.TestField(SMTPSetup."From Name");
+        // SMTPSetup.Get;
+        // SMTPSetup.TestField(SMTPSetup."From Adress");
+        // SMTPSetup.TestField(SMTPSetup."From Name");
 
-        //Test
-        //NewObjet := Objet + ' - ' + gRequisitionSetup.TexteSuffixeObjetEmail;
-        SMTPMail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",ToAdress,Objet,'',true);
+        // //Test
+        // //NewObjet := Objet + ' - ' + gRequisitionSetup.TexteSuffixeObjetEmail;
+        // SMTPMail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",ToAdress,Objet,'',true);
 
-        SMTPMail.AppendBody('<table border="0" he cellpadding="0" cellspacing="0" width="100%" bgcolor="#ecf0f1">');
-        SMTPMail.AppendBody('<span style="font-family: Tahoma; font-size: 12;">');
-        //SMTPMail.AppendBody('<span style="color: #993300;font-size: 13;">Votre validation est r&eacute;quise.</span>');
-        //SMTPMail.AppendBody('<p>Un document a &eacute;t&eacute; envoy&eacute; &agrave; votre niveau pour traitement. D&eacute;tails du document :</p>');
-        SMTPMail.AppendBody('<p>D&eacute;tails du document :</p>');
-        SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
-        SMTPMail.AppendBody('<li>Document : <strong>' + DocType + ' ' + CodeDocument + '</strong></li>');
-        SMTPMail.AppendBody('</ul>');
-        SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
-        SMTPMail.AppendBody('<li>Trait&eacute; par : <strong>' + Sender + '</strong></li>');
-        SMTPMail.AppendBody('</ul>');
-        SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
-        SMTPMail.AppendBody('<li>Trait&eacute; le : <strong>' + SendDate + '</strong></li>');
-        SMTPMail.AppendBody('</ul>');
-        SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
-        SMTPMail.AppendBody('<li>Commentaires : <em>' + Commentaires + '</em></li>');
-        SMTPMail.AppendBody('</ul>');
-        SMTPMail.AppendBody('</span>');
-        SMTPMail.AppendBody('<p>&nbsp;</p>');
-        SMTPMail.AppendBody('<p style="color: rgb(210, 11, 0);"><big>_________________________________</big></p>');
-        SMTPMail.AppendBody('<p style="color: rgb(0, 113, 66);">Message envoy&eacute; depuis Dynamics NAV.</p>');
+        // SMTPMail.AppendBody('<table border="0" he cellpadding="0" cellspacing="0" width="100%" bgcolor="#ecf0f1">');
+        // SMTPMail.AppendBody('<span style="font-family: Tahoma; font-size: 12;">');
+        // //SMTPMail.AppendBody('<span style="color: #993300;font-size: 13;">Votre validation est r&eacute;quise.</span>');
+        // //SMTPMail.AppendBody('<p>Un document a &eacute;t&eacute; envoy&eacute; &agrave; votre niveau pour traitement. D&eacute;tails du document :</p>');
+        // SMTPMail.AppendBody('<p>D&eacute;tails du document :</p>');
+        // SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
+        // SMTPMail.AppendBody('<li>Document : <strong>' + DocType + ' ' + CodeDocument + '</strong></li>');
+        // SMTPMail.AppendBody('</ul>');
+        // SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
+        // SMTPMail.AppendBody('<li>Trait&eacute; par : <strong>' + Sender + '</strong></li>');
+        // SMTPMail.AppendBody('</ul>');
+        // SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
+        // SMTPMail.AppendBody('<li>Trait&eacute; le : <strong>' + SendDate + '</strong></li>');
+        // SMTPMail.AppendBody('</ul>');
+        // SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
+        // SMTPMail.AppendBody('<li>Commentaires : <em>' + Commentaires + '</em></li>');
+        // SMTPMail.AppendBody('</ul>');
+        // SMTPMail.AppendBody('</span>');
+        // SMTPMail.AppendBody('<p>&nbsp;</p>');
+        // SMTPMail.AppendBody('<p style="color: rgb(210, 11, 0);"><big>_________________________________</big></p>');
+        // SMTPMail.AppendBody('<p style="color: rgb(0, 113, 66);">Message envoy&eacute; depuis Dynamics NAV.</p>');
 
 
-        if CCAdress<>'' then SMTPMail.AddCC(CCAdress);
+        // if CCAdress<>'' then SMTPMail.AddCC(CCAdress);
 
-        //MESSAGE('%1 %2',ToAdress,CCAdress);
-        SMTPMail.Send;
+        // //MESSAGE('%1 %2',ToAdress,CCAdress);
+        // SMTPMail.Send;
     end;
 
     procedure GetEmail(UserId: Code[50]): Text
@@ -792,7 +792,7 @@ codeunit 50031 VendorInvoiceMgt
         exit(UserSetup."E-Mail");
     end;
 
-    local procedure SendEmail_Facture(FactureFsseur: Record "Vendor Invoice Doc";Niveau: Integer)
+    local procedure SendEmail_Facture(FactureFsseur: Record "Vendor Invoice Doc"; Niveau: Integer)
     var
         Objet: Text[80];
         CodeDocument: Text[30];
@@ -817,15 +817,15 @@ codeunit 50031 VendorInvoiceMgt
         CodeDocument := FactureFsseur."Vendor Invoice No.";
         ToAdress := GetEmail(FactureFsseur.Validator);
         CCAdress := '';
-        AddCCInterimDemandeur(FactureFsseur,CCAdress,Niveau);
-        Sender := UserSetup."User ID"+ ' - '+ UserSetup."User Full Name";
+        AddCCInterimDemandeur(FactureFsseur, CCAdress, Niveau);
+        Sender := UserSetup."User ID" + ' - ' + UserSetup."User Full Name";
         SendDate := Format(WorkDate);
         DocType := 'Facture d''achat';
 
-        if ((ToAdress<>'') or (CCAdress<>'')) then
-          SendEmail(Objet,CodeDocument,Commentaires,ToAdress,CCAdress,Sender,SendDate,DocType)
+        if ((ToAdress <> '') or (CCAdress <> '')) then
+            SendEmail(Objet, CodeDocument, Commentaires, ToAdress, CCAdress, Sender, SendDate, DocType)
         else
-          Message(Text011);
+            Message(Text011);
     end;
 
     local procedure SendEmail_Facture_DAF(FactureFsseur: Record "Vendor Invoice Doc")
@@ -852,54 +852,54 @@ codeunit 50031 VendorInvoiceMgt
         CodeDocument := FactureFsseur."Vendor Invoice No.";
         ToAdress := GetEmail(FactureFsseur.Validator);
         CCAdress := '';
-        AddCCInterimSG(FactureFsseur,CCAdress);
-        Sender := UserSetup."User ID"+ ' - '+ UserSetup."User Full Name";
+        AddCCInterimSG(FactureFsseur, CCAdress);
+        Sender := UserSetup."User ID" + ' - ' + UserSetup."User Full Name";
         SendDate := Format(WorkDate);
         DocType := 'Facture d''achat';
 
-        if ((ToAdress<>'') or (CCAdress<>'')) then
-          SendEmail(Objet,CodeDocument,Commentaires,ToAdress,CCAdress,Sender,SendDate,DocType)
+        if ((ToAdress <> '') or (CCAdress <> '')) then
+            SendEmail(Objet, CodeDocument, Commentaires, ToAdress, CCAdress, Sender, SendDate, DocType)
         else
-          Message(Text011);
+            Message(Text011);
     end;
 
-    local procedure GetEmailResp(WCode: Code[20];var EmailCC: Text;Niveau: Integer): Text[100]
+    local procedure GetEmailResp(WCode: Code[20]; var EmailCC: Text; Niveau: Integer): Text[100]
     var
         UserSetup: Record "User Setup";
         WUser: Record "Custom Workflow Config";
     begin
         UserSetup.Get(UserId);
-        WUser.Get(WUser."Workflow Type"::VendorInvoice,WCode);
+        WUser.Get(WUser."Workflow Type"::VendorInvoice, WCode);
 
-        if(Niveau = 1 ) then begin
-          if WUser."Activate Interim 1" then begin
-            if WUser."Interim User 1" <> '' then begin
-                if EmailCC = '' then
-                    EmailCC := GetEmail(WUser."Interim User 1")
-                else
-                    EmailCC := EmailCC + '; ' + GetEmail(WUser."Interim User 1");
+        if (Niveau = 1) then begin
+            if WUser."Activate Interim 1" then begin
+                if WUser."Interim User 1" <> '' then begin
+                    if EmailCC = '' then
+                        EmailCC := GetEmail(WUser."Interim User 1")
+                    else
+                        EmailCC := EmailCC + '; ' + GetEmail(WUser."Interim User 1");
+                end;
             end;
-          end;
         end;
-        if(Niveau = 2 ) then begin
-          if WUser."Activate Interim 2" then begin
-            if WUser."Interim User 2" <> '' then begin
-                if EmailCC = '' then
-                    EmailCC := GetEmail(WUser."Interim User 2")
-                else
-                    EmailCC := EmailCC + '; ' + GetEmail(WUser."Interim User 2");
+        if (Niveau = 2) then begin
+            if WUser."Activate Interim 2" then begin
+                if WUser."Interim User 2" <> '' then begin
+                    if EmailCC = '' then
+                        EmailCC := GetEmail(WUser."Interim User 2")
+                    else
+                        EmailCC := EmailCC + '; ' + GetEmail(WUser."Interim User 2");
+                end;
             end;
-          end;
         end;
-        if(Niveau = 3 ) then begin
-          if WUser."Activate Interim 3" then begin
-            if WUser."Interim User 3" <> '' then begin
-                if EmailCC = '' then
-                    EmailCC := GetEmail(WUser."Interim User 3")
-                else
-                    EmailCC := EmailCC + '; ' + GetEmail(WUser."Interim User 3");
+        if (Niveau = 3) then begin
+            if WUser."Activate Interim 3" then begin
+                if WUser."Interim User 3" <> '' then begin
+                    if EmailCC = '' then
+                        EmailCC := GetEmail(WUser."Interim User 3")
+                    else
+                        EmailCC := EmailCC + '; ' + GetEmail(WUser."Interim User 3");
+                end;
             end;
-          end;
         end;
         //EXIT(GetEmail(UserSetup."Approver ID"));
     end;
@@ -912,7 +912,7 @@ codeunit 50031 VendorInvoiceMgt
         ReqMgt: Codeunit "Logistique Mgt";
     begin
         //gReqMgt.GetmailContact_SETUP(
-        
+
         //EXIT('');
         /*
         gRequisitionSetup.GET;
@@ -934,70 +934,71 @@ codeunit 50031 VendorInvoiceMgt
     begin
 
         USetup.Reset;
-        USetup.SetRange(USetup.IsVendorAccountant,true);
-        if USetup.FindSet then repeat
-          USetup.TestField("E-Mail");
-          if _RecepientPURCH = '' then
-            _RecepientPURCH := USetup."E-Mail"
-          else
-            _RecepientPURCH := _RecepientPURCH + '; ' + USetup."E-Mail";
-        until USetup.Next=0;
+        USetup.SetRange(USetup.IsVendorAccountant, true);
+        if USetup.FindSet then
+            repeat
+                USetup.TestField("E-Mail");
+                if _RecepientPURCH = '' then
+                    _RecepientPURCH := USetup."E-Mail"
+                else
+                    _RecepientPURCH := _RecepientPURCH + '; ' + USetup."E-Mail";
+            until USetup.Next = 0;
 
         exit(_RecepientPURCH);
     end;
 
-    local procedure AddCCInterimDemandeur(VendInvoice: Record "Vendor Invoice Doc";var EmailCC: Text;Niveau: Integer)
+    local procedure AddCCInterimDemandeur(VendInvoice: Record "Vendor Invoice Doc"; var EmailCC: Text; Niveau: Integer)
     var
         WUser: Record "Custom Workflow Config";
     begin
 
-        WUser.Get(WUser."Workflow Type"::VendorInvoice,VendInvoice."Workflow Code");
+        WUser.Get(WUser."Workflow Type"::VendorInvoice, VendInvoice."Workflow Code");
 
-        if(Niveau = 1 ) then begin
-          if WUser."Activate Interim 1" then begin
-            if WUser."Interim User 1" <> '' then begin
-                if EmailCC = '' then
-                    EmailCC := GetEmail(WUser."Interim User 1")
-                else
-                    EmailCC := EmailCC + '; ' + GetEmail(WUser."Interim User 1");
+        if (Niveau = 1) then begin
+            if WUser."Activate Interim 1" then begin
+                if WUser."Interim User 1" <> '' then begin
+                    if EmailCC = '' then
+                        EmailCC := GetEmail(WUser."Interim User 1")
+                    else
+                        EmailCC := EmailCC + '; ' + GetEmail(WUser."Interim User 1");
+                end;
             end;
-          end;
         end;
-        if(Niveau = 2 ) then begin
-          if WUser."Activate Interim 2" then begin
-            if WUser."Interim User 2" <> '' then begin
-                if EmailCC = '' then
-                    EmailCC := GetEmail(WUser."Interim User 2")
-                else
-                    EmailCC := EmailCC + '; ' + GetEmail(WUser."Interim User 2");
+        if (Niveau = 2) then begin
+            if WUser."Activate Interim 2" then begin
+                if WUser."Interim User 2" <> '' then begin
+                    if EmailCC = '' then
+                        EmailCC := GetEmail(WUser."Interim User 2")
+                    else
+                        EmailCC := EmailCC + '; ' + GetEmail(WUser."Interim User 2");
+                end;
             end;
-          end;
         end;
-        if(Niveau = 3 ) then begin
-          if WUser."Activate Interim 3" then begin
-            if WUser."Interim User 3" <> '' then begin
-                if EmailCC = '' then
-                    EmailCC := GetEmail(WUser."Interim User 3")
-                else
-                    EmailCC := EmailCC + '; ' + GetEmail(WUser."Interim User 3");
+        if (Niveau = 3) then begin
+            if WUser."Activate Interim 3" then begin
+                if WUser."Interim User 3" <> '' then begin
+                    if EmailCC = '' then
+                        EmailCC := GetEmail(WUser."Interim User 3")
+                    else
+                        EmailCC := EmailCC + '; ' + GetEmail(WUser."Interim User 3");
+                end;
             end;
-          end;
         end;
     end;
 
-    local procedure AddCCInterimSG(VendInvoice: Record "Vendor Invoice Doc";var EmailCC: Text)
+    local procedure AddCCInterimSG(VendInvoice: Record "Vendor Invoice Doc"; var EmailCC: Text)
     var
         WUser: Record "Custom Workflow Config";
     begin
 
         AddOnSetup2.Get;
         if AddOnSetup2."Activate Interim DAF" then begin
-          if AddOnSetup2."Interim User DAF" <> '' then begin
-              if EmailCC = '' then
-                  EmailCC := GetEmail(AddOnSetup2."Interim User DAF")
-              else
-                  EmailCC := EmailCC + '; ' + GetEmail(AddOnSetup2."Interim User DAF");
-          end;
+            if AddOnSetup2."Interim User DAF" <> '' then begin
+                if EmailCC = '' then
+                    EmailCC := GetEmail(AddOnSetup2."Interim User DAF")
+                else
+                    EmailCC := EmailCC + '; ' + GetEmail(AddOnSetup2."Interim User DAF");
+            end;
         end;
     end;
 
@@ -1006,7 +1007,7 @@ codeunit 50031 VendorInvoiceMgt
         UserSetup: Record "User Setup";
     begin
         if (UserSetup.Get(UserId)) then
-          exit(UserSetup."Approver ID");
+            exit(UserSetup."Approver ID");
     end;
 
     procedure GetEmailsAcheteurs_New() Emails: Text
@@ -1026,39 +1027,39 @@ codeunit 50031 VendorInvoiceMgt
 
     end;
 
-    local procedure GetWorkflowUser(VendInv: Record "Vendor Invoice Doc";Level: Integer): Code[20]
+    local procedure GetWorkflowUser(VendInv: Record "Vendor Invoice Doc"; Level: Integer): Code[20]
     var
         WUser: Record "Custom Workflow Config";
     begin
-        WUser.Get(WUser."Workflow Type"::VendorInvoice,VendInv."Workflow Code");
+        WUser.Get(WUser."Workflow Type"::VendorInvoice, VendInv."Workflow Code");
         if (Level = 1) then begin
-          WUser.TestField("User 1");
-          exit(WUser."User 1");
+            WUser.TestField("User 1");
+            exit(WUser."User 1");
         end;
         if (Level = 2) then begin
-          WUser.TestField("User 2");
-          exit(WUser."User 2");
+            WUser.TestField("User 2");
+            exit(WUser."User 2");
         end;
         if (Level = 3) then begin
-          WUser.TestField("User 3");
-          exit(WUser."User 3");
+            WUser.TestField("User 3");
+            exit(WUser."User 3");
         end;
     end;
 
-    local procedure CanGoToNextLevel(VendInv: Record "Vendor Invoice Doc";NextLevel: Integer): Boolean
+    local procedure CanGoToNextLevel(VendInv: Record "Vendor Invoice Doc"; NextLevel: Integer): Boolean
     var
         WUser: Record "Custom Workflow Config";
     begin
-        WUser.Get(WUser."Workflow Type"::VendorInvoice,VendInv."Workflow Code");
+        WUser.Get(WUser."Workflow Type"::VendorInvoice, VendInv."Workflow Code");
         if (NextLevel = 1) then begin
-          Error('Invalid Level');
+            Error('Invalid Level');
         end;
 
         if (NextLevel = 2) then
-          exit (WUser."User 2" <> '');
+            exit(WUser."User 2" <> '');
 
         if (NextLevel = 3) then
-          exit (WUser."User 3" <> '') ;
+            exit(WUser."User 3" <> '');
     end;
 
     local procedure GetIdUserDAF(): Code[50]
@@ -1074,64 +1075,70 @@ codeunit 50031 VendorInvoiceMgt
     begin
 
         WUser.Reset;
-        WUser.SetRange(WUser."User 1",UserId);
-        if WUser.FindSet then repeat
-          if Rep='' then
-            Rep:=WUser."Workflow Code"
-          else
-            Rep := Rep + '|' + WUser."Workflow Code";
-        until WUser.Next=0;
+        WUser.SetRange(WUser."User 1", UserId);
+        if WUser.FindSet then
+            repeat
+                if Rep = '' then
+                    Rep := WUser."Workflow Code"
+                else
+                    Rep := Rep + '|' + WUser."Workflow Code";
+            until WUser.Next = 0;
 
         WUser.Reset;
-        WUser.SetRange(WUser."User 2",UserId);
-        if WUser.FindSet then repeat
-          if Rep='' then
-            Rep:=WUser."Workflow Code"
-          else
-            Rep := Rep + '|' + WUser."Workflow Code";
-        until WUser.Next=0;
+        WUser.SetRange(WUser."User 2", UserId);
+        if WUser.FindSet then
+            repeat
+                if Rep = '' then
+                    Rep := WUser."Workflow Code"
+                else
+                    Rep := Rep + '|' + WUser."Workflow Code";
+            until WUser.Next = 0;
 
         WUser.Reset;
-        WUser.SetRange(WUser."User 3",UserId);
-        if WUser.FindSet then repeat
-          if Rep='' then
-            Rep:=WUser."Workflow Code"
-          else
-            Rep := Rep + '|' + WUser."Workflow Code";
-        until WUser.Next=0;
+        WUser.SetRange(WUser."User 3", UserId);
+        if WUser.FindSet then
+            repeat
+                if Rep = '' then
+                    Rep := WUser."Workflow Code"
+                else
+                    Rep := Rep + '|' + WUser."Workflow Code";
+            until WUser.Next = 0;
 
         WUser.Reset;
-        WUser.SetRange(WUser."Interim User 1",UserId);
-        WUser.SetRange(WUser."Activate Interim 1",true);
-        if WUser.FindSet then repeat
-          if Rep='' then
-            Rep:=WUser."Workflow Code"
-          else
-            Rep := Rep + '|' + WUser."Workflow Code";
-        until WUser.Next=0;
+        WUser.SetRange(WUser."Interim User 1", UserId);
+        WUser.SetRange(WUser."Activate Interim 1", true);
+        if WUser.FindSet then
+            repeat
+                if Rep = '' then
+                    Rep := WUser."Workflow Code"
+                else
+                    Rep := Rep + '|' + WUser."Workflow Code";
+            until WUser.Next = 0;
 
         WUser.Reset;
-        WUser.SetRange(WUser."Interim User 2",UserId);
-        WUser.SetRange(WUser."Activate Interim 2",true);
-        if WUser.FindSet then repeat
-          if Rep='' then
-            Rep:=WUser."Workflow Code"
-          else
-            Rep := Rep + '|' + WUser."Workflow Code";
-        until WUser.Next=0;
+        WUser.SetRange(WUser."Interim User 2", UserId);
+        WUser.SetRange(WUser."Activate Interim 2", true);
+        if WUser.FindSet then
+            repeat
+                if Rep = '' then
+                    Rep := WUser."Workflow Code"
+                else
+                    Rep := Rep + '|' + WUser."Workflow Code";
+            until WUser.Next = 0;
 
         WUser.Reset;
-        WUser.SetRange(WUser."Interim User 3",UserId);
-        WUser.SetRange(WUser."Activate Interim 3",true);
-        if WUser.FindSet then repeat
-          if Rep='' then
-            Rep:=WUser."Workflow Code"
-          else
-            Rep := Rep + '|' + WUser."Workflow Code";
-        until WUser.Next=0;
+        WUser.SetRange(WUser."Interim User 3", UserId);
+        WUser.SetRange(WUser."Activate Interim 3", true);
+        if WUser.FindSet then
+            repeat
+                if Rep = '' then
+                    Rep := WUser."Workflow Code"
+                else
+                    Rep := Rep + '|' + WUser."Workflow Code";
+            until WUser.Next = 0;
 
         if Rep = '' then
-          Rep := ';:*%';// Show nothing
+            Rep := ';:*%';// Show nothing
     end;
 
     procedure CanValidateAsUser1(VendInvoice: Record "Vendor Invoice Doc"): Boolean
@@ -1140,14 +1147,14 @@ codeunit 50031 VendorInvoiceMgt
     begin
 
         VendInvoice.TestField("Workflow Code");
-        WUser.Get(WUser."Workflow Type"::VendorInvoice,VendInvoice."Workflow Code");
+        WUser.Get(WUser."Workflow Type"::VendorInvoice, VendInvoice."Workflow Code");
 
         if WUser."User 1" = UserId then
-          exit(true);
+            exit(true);
 
         if WUser."Activate Interim 1" then
-          if WUser."Interim User 1" = UserId then
-            exit(true);
+            if WUser."Interim User 1" = UserId then
+                exit(true);
     end;
 
     procedure CanValidateAsUser2(VendInvoice: Record "Vendor Invoice Doc"): Boolean
@@ -1156,14 +1163,14 @@ codeunit 50031 VendorInvoiceMgt
     begin
 
         VendInvoice.TestField("Workflow Code");
-        WUser.Get(WUser."Workflow Type"::VendorInvoice,VendInvoice."Workflow Code");
+        WUser.Get(WUser."Workflow Type"::VendorInvoice, VendInvoice."Workflow Code");
 
         if WUser."User 2" = UserId then
-          exit(true);
+            exit(true);
 
         if WUser."Activate Interim 2" then
-          if WUser."Interim User 2" = UserId then
-            exit(true);
+            if WUser."Interim User 2" = UserId then
+                exit(true);
     end;
 
     procedure CanValidateAsUser3(VendInvoice: Record "Vendor Invoice Doc"): Boolean
@@ -1172,14 +1179,14 @@ codeunit 50031 VendorInvoiceMgt
     begin
 
         VendInvoice.TestField("Workflow Code");
-        WUser.Get(WUser."Workflow Type"::VendorInvoice,VendInvoice."Workflow Code");
+        WUser.Get(WUser."Workflow Type"::VendorInvoice, VendInvoice."Workflow Code");
 
         if WUser."User 3" = UserId then
-          exit(true);
+            exit(true);
 
         if WUser."Activate Interim 3" then
-          if WUser."Interim User 3" = UserId then
-            exit(true);
+            if WUser."Interim User 3" = UserId then
+                exit(true);
     end;
 
     procedure CanValidateAsDAF(): Boolean
@@ -1190,11 +1197,11 @@ codeunit 50031 VendorInvoiceMgt
         AddOnSetup2.TestField(AddOnSetup2."User DAF");
 
         if AddOnSetup2."User DAF" = UserId then
-          exit(true);
+            exit(true);
 
         if AddOnSetup2."Activate Interim DAF" then
-          if AddOnSetup2."Interim User DAF" = UserId then
-            exit(true);
+            if AddOnSetup2."Interim User DAF" = UserId then
+                exit(true);
     end;
 
     procedure CanValidateAsCompta(): Boolean
@@ -1202,112 +1209,112 @@ codeunit 50031 VendorInvoiceMgt
         WUser: Record "Custom Workflow Config";
     begin
         UserSetup.Reset;
-        UserSetup.SetRange("User ID",UserId);
-        UserSetup.SetRange(IsVendorAccountant,true);
+        UserSetup.SetRange("User ID", UserId);
+        UserSetup.SetRange(IsVendorAccountant, true);
         exit(UserSetup.FindFirst);
     end;
 
-    procedure SendEmail_RejetFsseur(VendInv: Record "Vendor Invoice Doc";ToAdress: Text[80];CCAdress: Text)
+    procedure SendEmail_RejetFsseur(VendInv: Record "Vendor Invoice Doc"; ToAdress: Text[80]; CCAdress: Text)
     var
-        SMTPMail: Codeunit "SMTP Mail";
+        // SMTPMail: Codeunit "SMTP Mail";
         NewObjet: Text;
         Objet: Text;
     begin
 
-        SMTPSetup.Get;
-        SMTPSetup.TestField(SMTPSetup."From Adress");
-        SMTPSetup.TestField(SMTPSetup."From Name");
+        // SMTPSetup.Get;
+        // SMTPSetup.TestField(SMTPSetup."From Adress");
+        // SMTPSetup.TestField(SMTPSetup."From Name");
 
 
-        //Test
-        //NewObjet := Objet + ' - ' + gRequisitionSetup.TexteSuffixeObjetEmail;
-        Objet := StrSubstNo(ObjetEmailFsseur,VendInv."Vendor Invoice No.",Format(VendInv."Invoice Date"));
-        SMTPMail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",ToAdress,Objet,'',true);
+        // //Test
+        // //NewObjet := Objet + ' - ' + gRequisitionSetup.TexteSuffixeObjetEmail;
+        // Objet := StrSubstNo(ObjetEmailFsseur,VendInv."Vendor Invoice No.",Format(VendInv."Invoice Date"));
+        // SMTPMail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",ToAdress,Objet,'',true);
 
-        SMTPMail.AppendBody('<span style="font-family: Arial;">Madame, Monsieur,<br>');
-        SMTPMail.AppendBody('<br>Nous avons bien reçu votre facture que nous sommes contraints ');
-        SMTPMail.AppendBody('de retourner par le pr&eacute;sent mail afin qu&#8217;elle soit corrig&eacute;e ');
-        SMTPMail.AppendBody('pour le motif <span style="font-weight: bold;"> : "' + VendInv."Reason for rejection" + '". </span><br><br>');
-        //SMTPMail.AppendBody('avant le traitement pour le motif &eacute;nonc&eacute;.<br><br>');
-        SMTPMail.AppendBody('De ce fait, nous vous prions de r&eacute;gulariser la facture et de nous faire ');
-        SMTPMail.AppendBody('parvenir la version rectificative dans les 5 jours &agrave; la r&eacute;ception en vue de son traitement. <br><br>');
-        //SMTPMail.AppendBody('Nous vous remercions d&#8217;avance de prendre en compte notre demande afin ');
-        //SMTPMail.AppendBody('de traiter efficacement les paiements des montants de facture corrects ');
-        //SMTPMail.AppendBody('selon les conditions de paiement que nous avons convenue ensemble. <br><br>');
-        SMTPMail.AppendBody('Nous vous informons que l&#8217;&eacute;ch&eacute;ance ne courra qu&#8217;apr&egrave;s r&eacute;ception ');
-        SMTPMail.AppendBody('d&eacute;finitive de vos factures en r&egrave;gles et en bonne et due forme.&nbsp; <br>');
-        SMTPMail.AppendBody('<br>Comptant sur votre collaboration.<br><br><br>');
-        SMTPMail.AppendBody('<br><span style="font-weight: bold;">Comptabilité fournisseurs</span><br>');
-        SMTPMail.AppendBody('Galana Distribution Pétrolière S.A.<br>');
-        SMTPMail.AppendBody('Immeuble PRADON Antanimena, 2ème étage. </span><br>');
+        // SMTPMail.AppendBody('<span style="font-family: Arial;">Madame, Monsieur,<br>');
+        // SMTPMail.AppendBody('<br>Nous avons bien reçu votre facture que nous sommes contraints ');
+        // SMTPMail.AppendBody('de retourner par le pr&eacute;sent mail afin qu&#8217;elle soit corrig&eacute;e ');
+        // SMTPMail.AppendBody('pour le motif <span style="font-weight: bold;"> : "' + VendInv."Reason for rejection" + '". </span><br><br>');
+        // //SMTPMail.AppendBody('avant le traitement pour le motif &eacute;nonc&eacute;.<br><br>');
+        // SMTPMail.AppendBody('De ce fait, nous vous prions de r&eacute;gulariser la facture et de nous faire ');
+        // SMTPMail.AppendBody('parvenir la version rectificative dans les 5 jours &agrave; la r&eacute;ception en vue de son traitement. <br><br>');
+        // //SMTPMail.AppendBody('Nous vous remercions d&#8217;avance de prendre en compte notre demande afin ');
+        // //SMTPMail.AppendBody('de traiter efficacement les paiements des montants de facture corrects ');
+        // //SMTPMail.AppendBody('selon les conditions de paiement que nous avons convenue ensemble. <br><br>');
+        // SMTPMail.AppendBody('Nous vous informons que l&#8217;&eacute;ch&eacute;ance ne courra qu&#8217;apr&egrave;s r&eacute;ception ');
+        // SMTPMail.AppendBody('d&eacute;finitive de vos factures en r&egrave;gles et en bonne et due forme.&nbsp; <br>');
+        // SMTPMail.AppendBody('<br>Comptant sur votre collaboration.<br><br><br>');
+        // SMTPMail.AppendBody('<br><span style="font-weight: bold;">Comptabilité fournisseurs</span><br>');
+        // SMTPMail.AppendBody('Galana Distribution Pétrolière S.A.<br>');
+        // SMTPMail.AppendBody('Immeuble PRADON Antanimena, 2ème étage. </span><br>');
 
-        if CCAdress<>'' then SMTPMail.AddCC(CCAdress);
+        // if CCAdress<>'' then SMTPMail.AddCC(CCAdress);
 
-        //MESSAGE('%1 %2',ToAdress,CCAdress);
-        SMTPMail.Send;
+        // //MESSAGE('%1 %2',ToAdress,CCAdress);
+        // SMTPMail.Send;
     end;
 
-    procedure InsertNewPayment(PostedVendInvoiceEntry: Record "Vendor Ledger Entry";var GenJnlLine: Record "Gen. Journal Line";var LastLineNo: Integer;var NextDocNo: Code[20];GenJnlBatch: Record "Gen. Journal Batch";GenJnlTemplate: Record "Gen. Journal Template")
+    procedure InsertNewPayment(PostedVendInvoiceEntry: Record "Vendor Ledger Entry"; var GenJnlLine: Record "Gen. Journal Line"; var LastLineNo: Integer; var NextDocNo: Code[20]; GenJnlBatch: Record "Gen. Journal Batch"; GenJnlTemplate: Record "Gen. Journal Template")
     var
         Vendor: Record Vendor;
     begin
 
         with GenJnlLine do begin
-          Init;
-          //Window2.UPDATE(1,TempPaymentBuffer."Vendor No.");
-          "Journal Template Name":= GenJnlTemplate.Name;
-          "Journal Batch Name" := GenJnlBatch.Name;
-          LastLineNo := LastLineNo + 10000;
-          "Line No." := LastLineNo;
-          "Document Type" := "Document Type"::Payment;
-          "Posting No. Series" := GenJnlBatch."Posting No. Series";
+            Init;
+            //Window2.UPDATE(1,TempPaymentBuffer."Vendor No.");
+            "Journal Template Name" := GenJnlTemplate.Name;
+            "Journal Batch Name" := GenJnlBatch.Name;
+            LastLineNo := LastLineNo + 10000;
+            "Line No." := LastLineNo;
+            "Document Type" := "Document Type"::Payment;
+            "Posting No. Series" := GenJnlBatch."Posting No. Series";
 
-           "Document No." := NextDocNo;
-           NextDocNo := IncStr(NextDocNo);
+            "Document No." := NextDocNo;
+            NextDocNo := IncStr(NextDocNo);
 
-          "Account Type" := "Account Type"::Vendor;
-          SetHideValidation(true);
-          Validate("Posting Date",WorkDate);
-          //ShowPostingDateWarning := ShowPostingDateWarning OR
-          //  SetPostingDate(GenJnlLine,GetApplDueDate(TempPaymentBuffer."Vendor Ledg. Entry No."),PostingDate);
-          Validate("Account No.",PostedVendInvoiceEntry."Vendor No.");
-          Vendor.Get(PostedVendInvoiceEntry."Vendor No.");
-          //IF (Vendor."Pay-to Vendor No." <> '') AND (Vendor."Pay-to Vendor No." <> "Account No.") THEN
-          //  MESSAGE(Text025,Vendor.TABLECAPTION,Vendor."No.",Vendor.FIELDCAPTION("Pay-to Vendor No."),
-          //    Vendor."Pay-to Vendor No.");
-          //"Bal. Account Type" := BalAccType;
-          //VALIDATE("Bal. Account No.",BalAccNo);
-          Validate("Currency Code",PostedVendInvoiceEntry."Currency Code");
-          //"Message to Recipient" := GetMessageToRecipient(SummarizePerVend);
-          //"Bank Payment Type" := BankPmtType;
-          //IF SummarizePerVend THEN BEGIN
-          //  "Applies-to ID" := "Document No.";
-          //  Description := STRSUBSTNO(Text029,TempPaymentBuffer."Vendor No.");
-          //END ELSE
-          PostedVendInvoiceEntry.CalcFields(PostedVendInvoiceEntry."Remaining Amount");
+            "Account Type" := "Account Type"::Vendor;
+            SetHideValidation(true);
+            Validate("Posting Date", WorkDate);
+            //ShowPostingDateWarning := ShowPostingDateWarning OR
+            //  SetPostingDate(GenJnlLine,GetApplDueDate(TempPaymentBuffer."Vendor Ledg. Entry No."),PostingDate);
+            Validate("Account No.", PostedVendInvoiceEntry."Vendor No.");
+            Vendor.Get(PostedVendInvoiceEntry."Vendor No.");
+            //IF (Vendor."Pay-to Vendor No." <> '') AND (Vendor."Pay-to Vendor No." <> "Account No.") THEN
+            //  MESSAGE(Text025,Vendor.TABLECAPTION,Vendor."No.",Vendor.FIELDCAPTION("Pay-to Vendor No."),
+            //    Vendor."Pay-to Vendor No.");
+            //"Bal. Account Type" := BalAccType;
+            //VALIDATE("Bal. Account No.",BalAccNo);
+            Validate("Currency Code", PostedVendInvoiceEntry."Currency Code");
+            //"Message to Recipient" := GetMessageToRecipient(SummarizePerVend);
+            //"Bank Payment Type" := BankPmtType;
+            //IF SummarizePerVend THEN BEGIN
+            //  "Applies-to ID" := "Document No.";
+            //  Description := STRSUBSTNO(Text029,TempPaymentBuffer."Vendor No.");
+            //END ELSE
+            PostedVendInvoiceEntry.CalcFields(PostedVendInvoiceEntry."Remaining Amount");
             Description :=
               StrSubstNo(
                 Text029,
                 PostedVendInvoiceEntry."Document Type",
                 PostedVendInvoiceEntry."Document No.");
-          "Source Line No." := PostedVendInvoiceEntry."Entry No.";
-          "Shortcut Dimension 1 Code" := PostedVendInvoiceEntry."Global Dimension 1 Code";
-          "Shortcut Dimension 2 Code" := PostedVendInvoiceEntry."Global Dimension 2 Code";
-          "Dimension Set ID" := PostedVendInvoiceEntry."Dimension Set ID";
-          "Source Code" := GenJnlTemplate."Source Code";
-          "Reason Code" := GenJnlBatch."Reason Code";
-          Validate(Amount,-PostedVendInvoiceEntry."Remaining Amount");
-          "Applies-to Doc. Type" := PostedVendInvoiceEntry."Document Type";
-          "Applies-to Doc. No." := PostedVendInvoiceEntry."Document No.";
-          "Payment Method Code" := PostedVendInvoiceEntry."Payment Method Code";
-          "Creditor No." := PostedVendInvoiceEntry."Creditor No.";
-          "Payment Reference" := PostedVendInvoiceEntry."Payment Reference";
-          "Exported to Payment File" := PostedVendInvoiceEntry."Exported to Payment File";
-          "Applies-to Ext. Doc. No." := PostedVendInvoiceEntry."Applies-to Ext. Doc. No.";
+            "Source Line No." := PostedVendInvoiceEntry."Entry No.";
+            "Shortcut Dimension 1 Code" := PostedVendInvoiceEntry."Global Dimension 1 Code";
+            "Shortcut Dimension 2 Code" := PostedVendInvoiceEntry."Global Dimension 2 Code";
+            "Dimension Set ID" := PostedVendInvoiceEntry."Dimension Set ID";
+            "Source Code" := GenJnlTemplate."Source Code";
+            "Reason Code" := GenJnlBatch."Reason Code";
+            Validate(Amount, -PostedVendInvoiceEntry."Remaining Amount");
+            "Applies-to Doc. Type" := PostedVendInvoiceEntry."Document Type";
+            "Applies-to Doc. No." := PostedVendInvoiceEntry."Document No.";
+            "Payment Method Code" := PostedVendInvoiceEntry."Payment Method Code";
+            "Creditor No." := PostedVendInvoiceEntry."Creditor No.";
+            "Payment Reference" := PostedVendInvoiceEntry."Payment Reference";
+            "Exported to Payment File" := PostedVendInvoiceEntry."Exported to Payment File";
+            "Applies-to Ext. Doc. No." := PostedVendInvoiceEntry."Applies-to Ext. Doc. No.";
 
-          UpdateDimensions(GenJnlLine);
-          Insert;
-          //GenJnlLineInserted := TRUE;
+            UpdateDimensions(GenJnlLine);
+            Insert;
+            //GenJnlLineInserted := TRUE;
         end;
     end;
 
@@ -1318,25 +1325,24 @@ codeunit 50031 VendorInvoiceMgt
         TempDimSetEntry2: Record "Dimension Set Entry" temporary;
         DimVal: Record "Dimension Value";
         NewDimensionID: Integer;
-        DimSetIDArr: array [10] of Integer;
+        DimSetIDArr: array[10] of Integer;
     begin
-        with GenJnlLine do begin
-          NewDimensionID := "Dimension Set ID";
-
-          CreateDim(
-            DimMgt.TypeToTableID1("Account Type"),"Account No.",
-            DimMgt.TypeToTableID1("Bal. Account Type"),"Bal. Account No.",
-            DATABASE::Job,"Job No.",
-            DATABASE::"Salesperson/Purchaser","Salespers./Purch. Code",
-            DATABASE::Campaign,"Campaign No.");
-          if NewDimensionID <> "Dimension Set ID" then begin
-            DimSetIDArr[1] := "Dimension Set ID";
-            DimSetIDArr[2] := NewDimensionID;
-            "Dimension Set ID" :=
-              DimMgt.GetCombinedDimensionSetID(DimSetIDArr,"Shortcut Dimension 1 Code","Shortcut Dimension 2 Code");
-          end;
-
-        end;
+        // with GenJnlLine do begin
+        //     NewDimensionID := "Dimension Set ID";
+        //     //TODO change here
+        //     CreateDim(
+        //       DimMgt.TypeToTableID1("Account Type"), "Account No.",
+        //       DimMgt.TypeToTableID1("Bal. Account Type"), "Bal. Account No.",
+        //       DATABASE::Job, "Job No.",
+        //       DATABASE::"Salesperson/Purchaser", "Salespers./Purch. Code",
+        //       DATABASE::Campaign, "Campaign No.");
+        //     if NewDimensionID <> "Dimension Set ID" then begin
+        //         DimSetIDArr[1] := "Dimension Set ID";
+        //         DimSetIDArr[2] := NewDimensionID;
+        //         "Dimension Set ID" :=
+        //           DimMgt.GetCombinedDimensionSetID(DimSetIDArr, "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
+        //     end;
+        // end;
     end;
 
     procedure EnvoiEmailRefus_Facture(VendInvoiceDoc: Record "Vendor Invoice Doc")
@@ -1364,17 +1370,17 @@ codeunit 50031 VendorInvoiceMgt
         CodeDocument := VendInvoiceDoc."Vendor Invoice No.";
         Objet := 'Nouveau Refus sur une facture : ' + VendInvoiceDoc."Reference Number";
 
-        Commentaires := 'Motif du refus : '+  VendInvoiceDoc."Reason for refusal";
+        Commentaires := 'Motif du refus : ' + VendInvoiceDoc."Reason for refusal";
         //ToAdress := GetEmail(PurchReq."Requestor ID");
         //CCAdress := '';
-        Sender := UserSetup."User ID"+ ' - '+ UserSetup."User Full Name";
+        Sender := UserSetup."User ID" + ' - ' + UserSetup."User Full Name";
         SendDate := Format(WorkDate);
         DocType := 'Facture d''achat';
 
-        if ((ToAdress<>'') or (CCAdress<>'')) then
-          SendEmail(Objet,CodeDocument,Commentaires,ToAdress,CCAdress,Sender,SendDate,DocType)
+        if ((ToAdress <> '') or (CCAdress <> '')) then
+            SendEmail(Objet, CodeDocument, Commentaires, ToAdress, CCAdress, Sender, SendDate, DocType)
         else
-          Message(Text011);
+            Message(Text011);
     end;
 
     procedure RegulFactureFournisseur(var VendInvoiceDoc: Record "Vendor Invoice Doc") Nbre: Integer
@@ -1383,25 +1389,25 @@ codeunit 50031 VendorInvoiceMgt
     begin
         //Envoyer en validation une facture deja comptabilisée dans NAV
         PostedPurchInv.Reset;
-        PostedPurchInv.SetCurrentKey("Vendor Invoice No.","Posting Date");
-        PostedPurchInv.SetRange(PostedPurchInv."Vendor Invoice No.",VendInvoiceDoc."Vendor Invoice No.");
-        PostedPurchInv.SetRange(PostedPurchInv."Buy-from Vendor No.",VendInvoiceDoc."Vendor No");
+        PostedPurchInv.SetCurrentKey("Vendor Invoice No.", "Posting Date");
+        PostedPurchInv.SetRange(PostedPurchInv."Vendor Invoice No.", VendInvoiceDoc."Vendor Invoice No.");
+        PostedPurchInv.SetRange(PostedPurchInv."Buy-from Vendor No.", VendInvoiceDoc."Vendor No");
         if PostedPurchInv.FindFirst then begin
-          if ((PostedPurchInv."Buy-from Vendor No."=VendInvoiceDoc."Vendor No") and
-            (VendInvoiceDoc.Status=VendInvoiceDoc.Status::Receptionee)) then begin
+            if ((PostedPurchInv."Buy-from Vendor No." = VendInvoiceDoc."Vendor No") and
+              (VendInvoiceDoc.Status = VendInvoiceDoc.Status::Receptionee)) then begin
 
-              ValidationPreSaisie(VendInvoiceDoc);
-              VendInvoiceDoc."Posted Invoice No" := PostedPurchInv."No.";
-              VendInvoiceDoc."Due Date" := PostedPurchInv."Due Date";
-              VendInvoiceDoc.Modify;
-              Nbre := Nbre + 1;
+                ValidationPreSaisie(VendInvoiceDoc);
+                VendInvoiceDoc."Posted Invoice No" := PostedPurchInv."No.";
+                VendInvoiceDoc."Due Date" := PostedPurchInv."Due Date";
+                VendInvoiceDoc.Modify;
+                Nbre := Nbre + 1;
             end;
         end;
 
         if Nbre = 0 then
-          Message(Text040)
+            Message(Text040)
         else
-          Message(Text041);
+            Message(Text041);
     end;
 
     local procedure MarquerCommePayee(var VendInvoiceDoc1: Record "Vendor Invoice Doc")
@@ -1412,18 +1418,18 @@ codeunit 50031 VendorInvoiceMgt
     begin
         VendInvoiceDoc1.Status := VendInvoiceDoc1.Status::Payee;
         VendInvoiceDoc1."Payment Doc" := '';
-        VendInvoiceDoc1."Payment Date" := CreateDateTime(Today,Time);
+        VendInvoiceDoc1."Payment Date" := CreateDateTime(Today, Time);
         VendInvoiceDoc1."Pay By" := UserId;
         VendInvoiceDoc1.Modify;
 
         NveauStatus := 'Facture payee(Hors paiement)';
         IdStatut := VendInvoiceDoc1.Status::Payee;
 
-        InsertNewStep(StepEntry."Document Type"::VendorInvoice,VendInvoiceDoc1."Entry No",
-          VendInvoiceDoc1."Reference Number",NveauStatus,IdStatut,TypeAction::" ");
+        InsertNewStep(StepEntry."Document Type"::VendorInvoice, VendInvoiceDoc1."Entry No",
+          VendInvoiceDoc1."Reference Number", NveauStatus, IdStatut, TypeAction::" ");
     end;
 
-    local procedure CalcInvAmounts(PurchaseH: Record "Purchase Header";var TotalHT: Decimal;var TotalTTC: Decimal)
+    local procedure CalcInvAmounts(PurchaseH: Record "Purchase Header"; var TotalHT: Decimal; var TotalTTC: Decimal)
     var
         TempPurchLine: Record "Purchase Line" temporary;
         PurchPost: Codeunit "Purch.-Post";
@@ -1437,16 +1443,16 @@ codeunit 50031 VendorInvoiceMgt
         Clear(PurchPost);
         TempPurchLine.DeleteAll;
         VATAmountLine.DeleteAll;
-        PurchPost.GetPurchLines(PurchaseH,TempPurchLine,1);
-        TempPurchLine.CalcVATAmountLines(1,PurchaseH,TempPurchLine,VATAmountLine);
-        TempPurchLine.UpdateVATOnLines(1,PurchaseH,TempPurchLine,VATAmountLine);
+        PurchPost.GetPurchLines(PurchaseH, TempPurchLine, 1);
+        TempPurchLine.CalcVATAmountLines(1, PurchaseH, TempPurchLine, VATAmountLine);
+        TempPurchLine.UpdateVATOnLines(1, PurchaseH, TempPurchLine, VATAmountLine);
         VATAmount := VATAmountLine.GetTotalVATAmount;
         VATBaseAmount := VATAmountLine.GetTotalVATBase;
         VATDiscountAmount :=
-          VATAmountLine.GetTotalVATDiscount(PurchaseH."Currency Code",PurchaseH."Prices Including VAT");
+          VATAmountLine.GetTotalVATDiscount(PurchaseH."Currency Code", PurchaseH."Prices Including VAT");
         TotalAmountInclVAT := VATAmountLine.GetTotalAmountInclVAT;
 
-        TotalHT := TotalAmountInclVAT-VATAmount;
+        TotalHT := TotalAmountInclVAT - VATAmount;
         TotalTTC := TotalAmountInclVAT;
     end;
 }
