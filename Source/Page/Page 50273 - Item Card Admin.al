@@ -70,7 +70,7 @@ page 50273 "Item Card Admin"
                 field(Type; Rec.Type)
                 {
                 }
-                field(Inventory; Inventory)
+                field(Inventory; Rec.Inventory)
                 {
                     Importance = Promoted;
                     ShowMandatory = true;
@@ -1613,9 +1613,9 @@ page 50273 "Item Card Admin"
 
     local procedure SetSocialListeningFactboxVisibility()
     var
-        SocialListeningMgt: Codeunit "Social Listening Management";
+    // SocialListeningMgt: Codeunit "Social Listening Management";
     begin
-        SocialListeningMgt.GetItemFactboxVisibility(Rec, SocialListeningSetupVisible, SocialListeningVisible);
+        // SocialListeningMgt.GetItemFactboxVisibility(Rec, SocialListeningSetupVisible, SocialListeningVisible);
     end;
 }
 

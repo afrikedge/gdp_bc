@@ -57,7 +57,7 @@ page 50136 "LC Steps Subform"
                 field("Total Purchased LCY"; Rec."Total Purchased LCY")
                 {
                 }
-                field(Posted; Posted)
+                field(Posted; Rec.Posted)
                 {
                 }
             }

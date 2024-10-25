@@ -22,7 +22,7 @@ page 50328 "Confirmed Touring List"
                 field(Description; Rec.Description)
                 {
                 }
-                field("User ID"; Rec.Rec."User ID")
+                field("User ID"; Rec."User ID")
                 {
                 }
                 field("Creation Date"; Rec."Creation Date")

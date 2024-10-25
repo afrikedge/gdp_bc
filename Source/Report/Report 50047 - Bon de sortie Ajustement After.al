@@ -1,0 +1,430 @@
+report 50047 "Bon de sortie Ajustement After"
+{
+    DefaultLayout = RDLC;
+    RDLCLayout = './Bon de sortie Ajustement After.rdlc';
+    Caption = 'Bon de sortie';
+    PreviewMode = PrintLayout;
+
+    dataset
+    {
+        dataitem("Posted Adjustment Header"; "Posted Adjustment Header")
+        {
+            DataItemTableView = SORTING("No.");
+            RequestFilterFields = "No.", "Customer No.";
+            RequestFilterHeading = 'Bon de sortie';
+            column(No_AdjustHeader; "No.")
+            {
+            }
+            column(CustomerNo_AdjustHeader; "Customer No.")
+            {
+            }
+            column(CustName_AdjustHeader; "Customer Name")
+            {
+            }
+            column(PostingDate_AdjustHeader; Format("Posting Date"))
+            {
+            }
+            column(CustAddr; Cust.Address)
+            {
+            }
+            column(ShipmentNoCaption; ShipmentNoCaptionLbl)
+            {
+            }
+            column(NFacture; "Posted Doc No")
+            {
+            }
+            column(PhoneNoCaption; PhoneNoCaptionLbl)
+            {
+            }
+            dataitem("Posted Adjustment Line"; "Posted Adjustment Line")
+            {
+                DataItemLink = "Document No." = FIELD("No.");
+                column(DocumentNo_AdjustLine; "Document No.")
+                {
+                }
+                column(DocumentType_AdjustLine; "Document Type")
+                {
+                }
+                column(ItemNo_AdjustLine; "Item No.")
+                {
+                }
+                column(Descript_AdjustLine; Description)
+                {
+                }
+                column(Quantity_AdjustLine; Quantity)
+                {
+                }
+                column(UOM_AdjustLine; "Unit of Measure")
+                {
+                }
+                column(LocationCode_AdjustLine; "Location Code")
+                {
+                }
+                column(CompanyInfo_Picture; CompanyInfo.Picture)
+                {
+                }
+                column(CompanyAddr1; CompanyAddr[1])
+                {
+                }
+                column(CompanyAddr2; CompanyAddr[2])
+                {
+                }
+                column(CompanyAddr3; CompanyAddr[3])
+                {
+                }
+                column(CompanyAddr4; CompanyAddr[4])
+                {
+                }
+                column(CompanyInfoPhoneNo; CompanyInfo."Phone No.")
+                {
+                }
+                column(CompanyInfoHomePage; CompanyInfo."Home Page")
+                {
+                }
+                column(CompanyInfoEmail; CompanyInfo."E-Mail")
+                {
+                }
+                column(CompanyInfoFaxNo; CompanyInfo."Fax No.")
+                {
+                }
+                column(CompanyInfoFax; CompanyInfo."Fax No.")
+                {
+                }
+                column(CompanyInfoRCS; ' - R.C.S. : ' + CompanyInfo."Trade Register")
+                {
+                }
+                column(CompanyInfoCA; 'S.A. au capital de AR ' + CompanyInfo."Stock Capital")
+                {
+                }
+                column(CompanyInfoNIF; 'NIF : ' + CompanyInfo."Registration No.")
+                {
+                }
+                column(CompanyInfoSTAT; 'STAT : ' + CompanyInfo."Legal Form")
+                {
+                }
+                column(EmailCaption; EmailCaptionLbl)
+                {
+                }
+                column(DocumentDateCaption; DocumentDateCaptionLbl)
+                {
+                }
+                column(FaxCaption; FaxCaptionLbl)
+                {
+                }
+                column(ProductCodeCaption; ProductCodeCaptionLbl)
+                {
+                }
+                column(DescriptionCaption; DescriptionCaptionLbl)
+                {
+                }
+                column(QuantityCaption; QuantityCaptionLbl)
+                {
+                }
+                column(UOMCaption; UOMCaptionLbl)
+                {
+                }
+                column(LineNo; "Line No.")
+                {
+                }
+                column(LocationCaption; LocationCaptionLbl)
+                {
+                }
+                column(MLigne; AmountToBeInvoice)
+                {
+                }
+                column(PU; PUCaptionLbl)
+                {
+                }
+                column(MontantLigne; MLCaption)
+                {
+                }
+                column(TotalHT; THTCaption)
+                {
+                }
+                column(TVA; TVACaption)
+                {
+                }
+                column(MontantTTC; TotalTTC)
+                {
+                }
+                column(Text002; Text002)
+                {
+                }
+                column(FactureCaption; factureCaption)
+                {
+                }
+                column(TotalAmountLetter; TotalAmountLetter[1])
+                {
+                }
+                column(MontantTTCC; MontantTTC)
+                {
+                }
+                column(MontantTVA; MontantTVA)
+                {
+                }
+                column(ligne; SIL.Amount)
+                {
+                }
+                column(SIHno; SIH."No.")
+                {
+                }
+                column(SILno; SIL."Document No.")
+                {
+                }
+                column(totaln; Totaln)
+                {
+                }
+
+                trigger OnAfterGetRecord()
+                begin
+                    SIH.Reset;
+                    SIL.Reset;
+                    SIH.SetRange(SIH."No.", "Posted Adjustment Header"."Posted Doc No");
+                    SIL.SetRange(SIL."Document No.", "Posted Adjustment Header"."Posted Doc No");
+                    ligne := ligne + 10;
+                    SIL.SetRange(SIL."Line No.", ligne);
+
+                    if SIL.FindSet then
+                        repeat
+                        /*Totaln:=Totaln+ ABS(SIL.Amount);
+                         MontantTTC:=MontantTTC+ ABS(SIL."Amount Including VAT");
+                         MontantTVA:=MontantTVA+ (Totaln*0.2);*/
+                        until SIL.Next = 0;
+
+                end;
+            }
+
+            trigger OnAfterGetRecord()
+            begin
+                /*IF RespCenter.GET("Responsibility Center") THEN BEGIN
+                  FormatAddr.RespCenter(CompanyAddr,RespCenter);
+                  CompanyInfo."Phone No." := RespCenter."Phone No.";
+                  CompanyInfo."Fax No." := RespCenter."Fax No.";
+                END ELSE*/
+
+                FormatAddr.Company(CompanyAddr, CompanyInfo);
+
+
+                //FormatAddr.SalesShptBillTo(CustAddr,"Sales Shipment Header");
+                /*ShowCustAddr := "Bill-to Customer No." <> "Sell-to Customer No.";
+                FOR i := 1 TO ARRAYLEN(CustAddr) DO
+                  IF CustAddr[i] <> ShipToAddr[i] THEN
+                    ShowCustAddr := TRUE;*/
+
+                /*IF LogInteraction THEN
+                  IF NOT CurrReport.PREVIEW THEN
+                    SegManagement.LogDocument(
+                      5,"No.",0,0,DATABASE::Customer,"Sell-to Customer No.","Salesperson Code",
+                      "Campaign No.","Posting Description",'');*/
+
+                Cust.Get("Posted Adjustment Header"."Customer No.");
+
+
+                /*MontantTTC :=GetTotalTTCDoc("Posted Adjustment Header"."No.",
+                  "Posted Adjustment Header"."Document Type");
+
+               MontantTVA:=ROUND(MontantTTC*0.2,0.02);
+              MontantTTC := ROUND(MontantTTC*1.2,0.02);
+
+              NbTLet.InitTextVariable;
+              NbTLet.FormatNoTextFR(TotalAmountLetter,MontantTTC,'MGA');*/
+
+
+
+
+                Totaln := GetTotalTTCDoc("Posted Adjustment Header"."Posted Doc No");
+
+                MontantTVA := Round(Totaln * 0.2, 0.02);
+                MontantTTC := Round(Totaln * 1.2, 0.02);
+
+                NbTLet.InitTextVariable;
+                //TODO Montants
+                //NbTLet.FormatNoTextFR(TotalAmountLetter,MontantTTC,'MGA');
+
+            end;
+        }
+    }
+
+    requestpage
+    {
+        SaveValues = true;
+
+        layout
+        {
+        }
+
+        actions
+        {
+        }
+
+        trigger OnInit()
+        begin
+            LogInteractionEnable := true;
+        end;
+
+        trigger OnOpenPage()
+        begin
+            InitLogInteraction;
+            LogInteractionEnable := LogInteraction;
+        end;
+    }
+
+    labels
+    {
+        BonSort = 'ANNEXE NOTE DE DEBIT';
+        PrepareBy = 'Etabli par';
+        Client = 'Le Client : (Nom, Signature et Cachet)';
+        ApproveBy = 'Approuvé par';
+        Text10 = 'Siège Social';
+        Text1 = 'Date de sortie :';
+    }
+
+    trigger OnInitReport()
+    begin
+        CompanyInfo.Get;
+        CompanyInfo.CalcFields(Picture);
+        SalesSetup.Get;
+
+        case SalesSetup."Logo Position on Documents" of
+            SalesSetup."Logo Position on Documents"::"No Logo":
+                ;
+            SalesSetup."Logo Position on Documents"::Left:
+                begin
+                    CompanyInfo3.Get;
+                    CompanyInfo3.CalcFields(Picture);
+                end;
+            SalesSetup."Logo Position on Documents"::Center:
+                begin
+                    CompanyInfo1.Get;
+                    CompanyInfo1.CalcFields(Picture);
+                end;
+            SalesSetup."Logo Position on Documents"::Right:
+                begin
+                    CompanyInfo2.Get;
+                    CompanyInfo2.CalcFields(Picture);
+                end;
+        end;
+    end;
+
+    trigger OnPreReport()
+    begin
+        if not CurrReport.UseRequestPage then
+            InitLogInteraction;
+        AsmHeaderExists := false;
+    end;
+
+    var
+        Text000: Label 'Salesperson';
+        Text001: Label 'COPY';
+        SalesPurchPerson: Record "Salesperson/Purchaser";
+        CompanyInfo: Record "Company Information";
+        CompanyInfo1: Record "Company Information";
+        CompanyInfo2: Record "Company Information";
+        CompanyInfo3: Record "Company Information";
+        RespCenter: Record "Responsibility Center";
+        ItemTrackingAppendix: Report "Item Tracking Appendix";
+        CustAddr: array[8] of Text[50];
+        ShipToAddr: array[8] of Text[50];
+        CompanyAddr: array[8] of Text[50];
+        SalesPersonText: Text[20];
+        ReferenceText: Text[80];
+        SegManagement: Codeunit SegManagement;
+        MoreLines: Boolean;
+        SalesSetup: Record "Sales & Receivables Setup";
+        NoOfCopies: Integer;
+        OutputNo: Integer;
+        NoOfLoops: Integer;
+        TrackingSpecCount: Integer;
+        OldRefNo: Integer;
+        OldNo: Code[20];
+        CopyText: Text[30];
+        ShowCustAddr: Boolean;
+        i: Integer;
+        FormatAddr: Codeunit "Format Address";
+        DimText: Text[120];
+        OldDimText: Text[75];
+        ShowInternalInfo: Boolean;
+        Continue: Boolean;
+        LogInteraction: Boolean;
+        ShowCorrectionLines: Boolean;
+        ShowLotSN: Boolean;
+        ShowTotal: Boolean;
+        ShowGroup: Boolean;
+        TotalQty: Decimal;
+        [InDataSet]
+        LogInteractionEnable: Boolean;
+        DisplayAssemblyInformation: Boolean;
+        AsmHeaderExists: Boolean;
+        LinNo: Integer;
+        ShipmentNoCaptionLbl: Label 'Shipment No.';
+        ShipmentDateCaptionLbl: Label 'Shipment Date';
+        HomePageCaptionLbl: Label 'Home Page';
+        EmailCaptionLbl: Label 'E-Mail';
+        DocumentDateCaptionLbl: Label 'Document Date';
+        PageCaptionCap: Label 'Page %1 of %2';
+        FaxCaptionLbl: Label 'Fax : ';
+        PhoneNoCaptionLbl: Label 'Phone No.';
+        Cust: Record Customer;
+        ProductCodeCaptionLbl: Label 'Code produit';
+        DescriptionCaptionLbl: Label 'Description';
+        QuantityCaptionLbl: Label 'Quantité';
+        UOMCaptionLbl: Label 'Unité';
+        LocationCaptionLbl: Label 'Code Magasin';
+        PUCaptionLbl: Label 'PU HTVA';
+        MLCaption: Label 'Montant';
+        THTCaption: Label 'Montant Total HT';
+        TVACaption: Label 'TVA 20%';
+        TotalTTC: Label 'Total TTC';
+        Text002: Label 'ND arrêtée à la somme de ';
+        factureCaption: Label 'N° Facture';
+        NbTLet: Report Check;
+        TotalAmountLetter: array[2] of Text[150];
+        MontantTTC: Decimal;
+        MontantTVA: Decimal;
+        ligne: Decimal;
+        SIH: Record "Sales Invoice Header";
+        SIL: Record "Sales Invoice Line";
+        Totaln: Decimal;
+
+    procedure InitLogInteraction()
+    begin
+        LogInteraction := SegManagement.FindInteractTmplCode(5) <> '';
+    end;
+
+    procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewLogInteraction: Boolean; NewShowCorrectionLines: Boolean; NewShowLotSN: Boolean; DisplayAsmInfo: Boolean)
+    begin
+        NoOfCopies := NewNoOfCopies;
+        ShowInternalInfo := NewShowInternalInfo;
+        LogInteraction := NewLogInteraction;
+        ShowCorrectionLines := NewShowCorrectionLines;
+        ShowLotSN := NewShowLotSN;
+        DisplayAssemblyInformation := DisplayAsmInfo;
+    end;
+
+    local procedure GetUnitOfMeasureDescr(UOMCode: Code[10]): Text[10]
+    var
+        UnitOfMeasure: Record "Unit of Measure";
+    begin
+        if not UnitOfMeasure.Get(UOMCode) then
+            exit(UOMCode);
+        exit(UnitOfMeasure.Description);
+    end;
+
+    procedure BlanksForIndent(): Text[10]
+    begin
+        exit(PadStr('', 2, ' '));
+    end;
+
+    local procedure GetTotalTTCDoc(CodeDoc: Code[20]) Rep: Decimal
+    var
+        SILine: Record "Sales Invoice Line";
+    begin
+        SILine.Reset;
+        SILine.SetRange(SILine."Document No.", CodeDoc);
+        if SILine.FindSet then
+            repeat
+                Rep := Rep + Abs(SILine.Amount);
+            until SILine.Next = 0;
+    end;
+}
+

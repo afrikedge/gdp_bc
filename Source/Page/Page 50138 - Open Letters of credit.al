@@ -36,7 +36,7 @@ page 50138 "Open Letters of credit"
                 field("BL Date"; Rec."BL Date")
                 {
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                 }
                 field("User ID"; Rec."User ID")

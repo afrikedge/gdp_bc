@@ -665,7 +665,7 @@ page 50043 "Params Setup"
             action("View Licence Objects")
             {
                 Caption = 'View Licence Objects';
-                RunObject = Page "Licence Objects";
+                // RunObject = Page "Licence Objects";
                 Visible = false;
             }
             action("Maj Bls")

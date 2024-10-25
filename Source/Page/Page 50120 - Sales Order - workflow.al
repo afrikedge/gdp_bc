@@ -659,7 +659,7 @@ page 50120 "Sales Order - workflow"
 
                     trigger OnAction()
                     begin
-                        Post(CODEUNIT::"Sales-Post (Yes/No)");
+                        Post2(CODEUNIT::"Sales-Post (Yes/No)");
                     end;
                 }
                 action("Post and &Print")
@@ -674,7 +674,7 @@ page 50120 "Sales Order - workflow"
 
                     trigger OnAction()
                     begin
-                        Post(CODEUNIT::"Sales-Post + Print");
+                        Post2(CODEUNIT::"Sales-Post + Print");
                     end;
                 }
                 action("Post and Email")
@@ -721,7 +721,7 @@ page 50120 "Sales Order - workflow"
 
                     trigger OnAction()
                     begin
-                        CancelBackgroundPosting;
+                        //CancelBackgroundPosting;
                     end;
                 }
                 action("Preview Posting")
@@ -772,8 +772,8 @@ page 50120 "Sales Order - workflow"
     begin
         DynamicEditable := CurrPage.Editable;
         CurrPage.IncomingDocAttachFactBox.PAGE.LoadDataFromRecord(Rec);
-        CRMIsCoupledToRecord := CRMIntegrationEnabled and CRMCouplingManagement.IsRecordCoupledToCRM(RecordId);
-        ShowWorkflowStatus := CurrPage.WorkflowStatus.PAGE.SetFilterOnWorkflowRecord(RecordId);
+        CRMIsCoupledToRecord := CRMIntegrationEnabled and CRMCouplingManagement.IsRecordCoupledToCRM(Rec.RecordId);
+        ShowWorkflowStatus := CurrPage.WorkflowStatus.PAGE.SetFilterOnWorkflowRecord(Rec.RecordId);
 
 
         //*********************************************
@@ -794,7 +794,7 @@ page 50120 "Sales Order - workflow"
     trigger OnDeleteRecord(): Boolean
     begin
         CurrPage.SaveRecord;
-        exit(ConfirmDeletion);
+        exit(Rec.ConfirmDeletion);
     end;
 
     trigger OnInit()
@@ -804,12 +804,12 @@ page 50120 "Sales Order - workflow"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        CheckCreditMaxBeforeInsert;
+        Rec.CheckCreditMaxBeforeInsert;
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Responsibility Center" := UserMgt.GetSalesFilter;
+        Rec."Responsibility Center" := UserMgt.GetSalesFilter;
     end;
 
     trigger OnOpenPage()
@@ -826,8 +826,8 @@ page 50120 "Sales Order - workflow"
 
         SetFiltreCentreGestion;
 
-        SetRange("Date Filter", 0D, WorkDate - 1);
-        SetRange(Rec."No.");
+        Rec.SetRange("Date Filter", 0D, WorkDate - 1);
+        Rec.SetRange(Rec."No.");
 
         SetDocNoVisible;
 
@@ -870,10 +870,10 @@ page 50120 "Sales Order - workflow"
         Text003: Label 'Fonction non autorisée';
         HeaderIsEditable: Boolean;
 
-    local procedure Post(PostingCodeunitID: Integer)
+    local procedure Post2(PostingCodeunitID: Integer)
     begin
-        SendToPosting(PostingCodeunitID);
-        if "Job Queue Status" = "Job Queue Status"::"Scheduled for Posting" then
+        Rec.SendToPosting(PostingCodeunitID);
+        if Rec."Job Queue Status" = Rec."Job Queue Status"::"Scheduled for Posting" then
             CurrPage.Close;
         CurrPage.Update(false);
     end;
@@ -885,9 +885,9 @@ page 50120 "Sales Order - workflow"
 
     local procedure SelltoCustomerNoOnAfterValidat()
     begin
-        if GetFilter("Sell-to Customer No.") = xRec."Sell-to Customer No." then
-            if "Sell-to Customer No." <> xRec."Sell-to Customer No." then
-                SetRange("Sell-to Customer No.");
+        if Rec.GetFilter("Sell-to Customer No.") = xRec."Sell-to Customer No." then
+            if Rec."Sell-to Customer No." <> xRec."Sell-to Customer No." then
+                Rec.SetRange("Sell-to Customer No.");
         CurrPage.Update;
     end;
 
@@ -926,7 +926,7 @@ page 50120 "Sales Order - workflow"
         DocumentNoVisibility: Codeunit DocumentNoVisibility;
         DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order",Reminder,FinChMemo;
     begin
-        DocNoVisible := DocumentNoVisibility.SalesDocumentNoIsVisible(DocType::Order, "No.");
+        DocNoVisible := DocumentNoVisibility.SalesDocumentNoIsVisible(DocType::Order, Rec."No.");
     end;
 
     local procedure SetExtDocNoMandatoryCondition()
@@ -948,12 +948,12 @@ page 50120 "Sales Order - workflow"
     var
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
     begin
-        JobQueueVisible := "Job Queue Status" = "Job Queue Status"::"Scheduled for Posting";
-        HasIncomingDocument := "Incoming Document Entry No." <> 0;
+        JobQueueVisible := Rec."Job Queue Status" = Rec."Job Queue Status"::"Scheduled for Posting";
+        HasIncomingDocument := Rec."Incoming Document Entry No." <> 0;
         SetExtDocNoMandatoryCondition;
 
-        OpenApprovalEntriesExistForCurrUser := ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(RecordId);
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
+        OpenApprovalEntriesExistForCurrUser := ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(Rec.RecordId);
+        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(Rec.RecordId);
     end;
 
     local procedure SetFiltreCentreGestion()
@@ -968,9 +968,9 @@ page 50120 "Sales Order - workflow"
 
             FiltreCG := SecMgt.GetFiltresCentresGestion;
             if FiltreCG <> '' then begin
-                FilterGroup(2);
-                SetFilter("Responsibility Center", FiltreCG);
-                FilterGroup(0);
+                Rec.FilterGroup(2);
+                Rec.SetFilter("Responsibility Center", FiltreCG);
+                Rec.FilterGroup(0);
             end;
         end;
 

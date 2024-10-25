@@ -44,7 +44,7 @@ page 50137 "Letter of Credit"
                 field("BL Date"; Rec."BL Date")
                 {
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                 }
                 field("Payment Terms Code"; Rec."Payment Terms Code")

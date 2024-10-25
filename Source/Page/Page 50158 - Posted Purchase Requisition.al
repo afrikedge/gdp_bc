@@ -84,7 +84,7 @@ page 50158 "Posted Purchase Requisition"
                 field("Order Type"; Rec."Order Type")
                 {
                 }
-                field(Budgeted; Budgeted)
+                field(Budgeted; Rec.Budgeted)
                 {
                 }
                 field("Budgeted Amount"; Rec."Budgeted Amount")
@@ -96,7 +96,7 @@ page 50158 "Posted Purchase Requisition"
                 field("Contract Ref"; Rec."Contract Ref")
                 {
                 }
-                field(Project; Project)
+                field(Project; Rec.Project)
                 {
                 }
                 field("Project Code"; Rec."Project Code")
@@ -108,7 +108,7 @@ page 50158 "Posted Purchase Requisition"
                 Caption = 'Lines';
                 SubPageLink = "Document No" = FIELD("No.");
             }
-            part("Offers List"; Rec."Posted Vendor Offers Part")
+            part("Offers List"; "Posted Vendor Offers Part")
             {
                 Caption = 'Offers List';
                 SubPageLink = "Code Demande" = FIELD("No.");

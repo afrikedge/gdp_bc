@@ -38,10 +38,10 @@ page 50130 "Item Cargo Entries List"
                 field("Invoice No"; Rec."Invoice No")
                 {
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                 }
-                field(Quantity; Quantity)
+                field(Quantity; Rec.Quantity)
                 {
                 }
                 field("Unit Cost"; Rec."Unit Cost")
@@ -50,7 +50,7 @@ page 50130 "Item Cargo Entries List"
                 field("Cost Amount"; Rec."Cost Amount")
                 {
                 }
-                field(Positive; Positive)
+                field(Positive; Rec.Positive)
                 {
                 }
                 field("Item Ledger Entry No."; Rec."Item Ledger Entry No.")
@@ -66,7 +66,7 @@ page 50130 "Item Cargo Entries List"
                 field("User ID"; Rec."User ID")
                 {
                 }
-                field(Journal; Journal)
+                field(Journal; Rec.Journal)
                 {
                 }
                 field("Ref Dossier Cargo"; Rec."Ref Dossier Cargo")
@@ -86,11 +86,11 @@ page 50130 "Item Cargo Entries List"
                 {
                     Visible = false;
                 }
-                field(Source; Source)
+                field(Source; Rec.Source)
                 {
                     Visible = false;
                 }
-                field(Reversed; Reversed)
+                field(Reversed; Rec.Reversed)
                 {
                 }
                 field("Cargo Name"; Rec."Cargo Name")

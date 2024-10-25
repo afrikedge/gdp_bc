@@ -104,7 +104,7 @@ page 50341 "Confirmed Bon List"
                 {
                     Visible = false;
                 }
-                field(observation; observation)
+                field(observation; Rec.observation)
                 {
                 }
             }

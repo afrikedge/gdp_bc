@@ -160,7 +160,7 @@ page 50029 "PBL Purchase Order"
                 field("Ref Dossier Cargo"; Rec."Ref Dossier Cargo")
                 {
                 }
-                field(ProvisionValide; ProvisionValide)
+                field(ProvisionValide; Rec.ProvisionValide)
                 {
                     Visible = false;
                 }
