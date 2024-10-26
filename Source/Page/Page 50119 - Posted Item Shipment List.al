@@ -77,9 +77,9 @@ page 50119 "Posted Item Shipment List"
         if UserMgt.GetSalesFilter <> '' then begin
             FiltreMag := SecMgt.GetFiltresMagasinsDispaching(UserMgt.GetSalesFilter);
             if FiltreMag <> '' then begin
-                FilterGroup(2);
-                SetFilter(Rec."Location Code", FiltreMag);
-                FilterGroup(0);
+                Rec.FilterGroup(2);
+                Rec.SetFilter(Rec."Location Code", FiltreMag);
+                Rec.FilterGroup(0);
             end;
         end;
     end;

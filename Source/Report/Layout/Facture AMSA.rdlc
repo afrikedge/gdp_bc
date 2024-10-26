@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="Date">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Date</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Date</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Reffuel">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Reffuel</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Reffuel</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Prdt">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Prdt</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Prdt</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Lit">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Lit</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Lit</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Com">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Com</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Com</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="RefFact">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>RefFact</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>RefFact</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PU">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PU</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PU</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="MontHT">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>MontHT</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>MontHT</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="MontTVA">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>MontTVA</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>MontTVA</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="MontTTC">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>MontTTC</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>MontTTC</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Letter">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Letter</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Letter</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PrGal">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PrGal</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PrGal</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Prepareby">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Prepareby</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Prepareby</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Autoriseby">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Autoriseby</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Autoriseby</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Dat">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Dat</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Dat</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Cont">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Cont</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Cont</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CondPaie">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CondPaie</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CondPaie</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LieuLiv">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LieuLiv</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LieuLiv</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Clt">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Clt</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Clt</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="No_FuelStat">
+          <DataField>No_FuelStat</DataField>
+        </Field>
+        <Field Name="CustNo_FuelStat">
+          <DataField>CustNo_FuelStat</DataField>
+        </Field>
+        <Field Name="CustName_FuelStat">
+          <DataField>CustName_FuelStat</DataField>
+        </Field>
+        <Field Name="CustAddr1">
+          <DataField>CustAddr1</DataField>
+        </Field>
+        <Field Name="CustAddr2">
+          <DataField>CustAddr2</DataField>
+        </Field>
+        <Field Name="ConditionText">
+          <DataField>ConditionText</DataField>
+        </Field>
+        <Field Name="CustStatCode">
+          <DataField>CustStatCode</DataField>
+        </Field>
+        <Field Name="CustCIFCode">
+          <DataField>CustCIFCode</DataField>
+        </Field>
+        <Field Name="CustNIFCode">
+          <DataField>CustNIFCode</DataField>
+        </Field>
+        <Field Name="CustRCSCode">
+          <DataField>CustRCSCode</DataField>
+        </Field>
+        <Field Name="CustEmail">
+          <DataField>CustEmail</DataField>
+        </Field>
+        <Field Name="RegionClient">
+          <DataField>RegionClient</DataField>
+        </Field>
+        <Field Name="NumFact">
+          <DataField>NumFact</DataField>
+        </Field>
+        <Field Name="NumFactText">
+          <DataField>NumFactText</DataField>
+        </Field>
+        <Field Name="NumCmd">
+          <DataField>NumCmd</DataField>
+        </Field>
+        <Field Name="NumContrat">
+          <DataField>NumContrat</DataField>
+        </Field>
+        <Field Name="AdresseLivraisonText">
+          <DataField>AdresseLivraisonText</DataField>
+        </Field>
+        <Field Name="PrintDate">
+          <DataField>PrintDate</DataField>
+        </Field>
+        <Field Name="LineNo">
+          <DataField>LineNo</DataField>
+        </Field>
+        <Field Name="PostingDate">
+          <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="Product">
+          <DataField>Product</DataField>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+        </Field>
+        <Field Name="QuantityFormat">
+          <DataField>QuantityFormat</DataField>
+        </Field>
+        <Field Name="OrderRef">
+          <DataField>OrderRef</DataField>
+        </Field>
+        <Field Name="InvoiceRef">
+          <DataField>InvoiceRef</DataField>
+        </Field>
+        <Field Name="UnitPrice">
+          <DataField>UnitPrice</DataField>
+        </Field>
+        <Field Name="UnitPriceFormat">
+          <DataField>UnitPriceFormat</DataField>
+        </Field>
+        <Field Name="AmountHT">
+          <DataField>AmountHT</DataField>
+        </Field>
+        <Field Name="AmountHTFormat">
+          <DataField>AmountHTFormat</DataField>
+        </Field>
+        <Field Name="VATAmount">
+          <DataField>VATAmount</DataField>
+        </Field>
+        <Field Name="VATAmountFormat">
+          <DataField>VATAmountFormat</DataField>
+        </Field>
+        <Field Name="AmountTTC">
+          <DataField>AmountTTC</DataField>
+        </Field>
+        <Field Name="AmountTTCFormat">
+          <DataField>AmountTTCFormat</DataField>
+        </Field>
+        <Field Name="QuantityText">
+          <DataField>QuantityText</DataField>
+        </Field>
+        <Field Name="TotalText">
+          <DataField>TotalText</DataField>
+        </Field>
+        <Field Name="TotalAmountLetter">
+          <DataField>TotalAmountLetter</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

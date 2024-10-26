@@ -418,11 +418,11 @@ codeunit 50021 "Item Conso to FA Mgt"
         No[1] := No1;
         GenJrnLine1."Shortcut Dimension 1 Code" := '';
         GenJrnLine1."Shortcut Dimension 2 Code" := '';
-
-        exit(
-          DimMgt.GetDefaultDimID(
-            TableID, No, GenJrnLine1."Source Code",
-            GenJrnLine1."Shortcut Dimension 1 Code", GenJrnLine1."Shortcut Dimension 2 Code", 0, 0));
+        //TODO
+        // exit(
+        //   DimMgt.GetDefaultDimID(
+        //     TableID, No, GenJrnLine1."Source Code",
+        //     GenJrnLine1."Shortcut Dimension 1 Code", GenJrnLine1."Shortcut Dimension 2 Code", 0, 0));
     end;
 
     procedure CreateLigneAdjustCoutDOP(ItemAdj: Record "Posted Adjustment Header"; LineItemAdj: Record "Posted Adjustment Line"; ModeleFeuille: Code[20]; FeuilleImmo: Code[20]; LastDocNum: Code[20]; var LineNum: Integer): Boolean

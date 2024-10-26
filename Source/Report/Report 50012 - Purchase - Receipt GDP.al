@@ -1,7 +1,7 @@
 report 50012 "Purchase - Receipt GDP"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Purchase - Receipt GDP.rdlc';
+    RDLCLayout = './Source/Report/Layout/Purchase - Receipt GDP.rdlc';
     Caption = 'Purchase - Receipt';
     PreviewMode = PrintLayout;
 
@@ -48,9 +48,10 @@ report 50012 "Purchase - Receipt GDP"
             column(FirstApprover_FullName; FirstApprover."Full Name")
             {
             }
-            column(FirstApprover_Signature; FirstApprover.Signature)
-            {
-            }
+            //TODO
+            // column(FirstApprover_Signature; FirstApprover.Signature)
+            // {
+            // }
             column(FirstApprover_UserName; FirstApprover."User Name")
             {
             }

@@ -1,7 +1,7 @@
 report 50030 "Sales - Shipment GDP"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Sales - Shipment GDP.rdlc';
+    RDLCLayout = './Source/Report/Layout/Sales - Shipment GDP.rdlc';
     Caption = 'Sales - Shipment';
     PreviewMode = PrintLayout;
 

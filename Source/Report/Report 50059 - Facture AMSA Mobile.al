@@ -1,7 +1,7 @@
 report 50059 "Facture AMSA Mobile"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Facture AMSA Mobile.rdlc';
+    RDLCLayout = './Source/Report/Layout/Facture AMSA Mobile.rdlc';
     PreviewMode = PrintLayout;
 
     dataset

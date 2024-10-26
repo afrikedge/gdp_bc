@@ -1,7 +1,7 @@
 report 50034 "Bon livraison LUB After Val"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Bon livraison LUB After Val.rdlc';
+    RDLCLayout = './Source/Report/Layout/Bon livraison LUB After Val.rdlc';
     PreviewMode = PrintLayout;
 
     dataset

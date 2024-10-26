@@ -2,10 +2,10 @@ codeunit 50038 "AG1 Master Files Mgt"
 {
     procedure ResetVendorValidation(var Vend: record Vendor)
     var
-        ErrAfk001: Label 'La modification de ce champ va ramener la fiche fournisseur au statut ''En création''. Il devra de nouveau être validé.\Voulez-vous poursuivre la modification ?';
+        ErrAfk0012: Label 'La modification de ce champ va ramener la fiche fournisseur au statut ''En création''. Il devra de nouveau être validé.\Voulez-vous poursuivre la modification ?';
     begin
         if Vend."Validation Status" <> Vend."Validation Status"::Created then
-            if not Confirm(ErrAfk001) then Error('');
+            if not Confirm(ErrAfk0012) then Error('');
         Vend."Validation Status" := Vend."Validation Status"::Created;
         Vend.Modify();
     end;

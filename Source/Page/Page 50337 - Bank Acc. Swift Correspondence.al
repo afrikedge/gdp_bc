@@ -32,9 +32,9 @@ page 50337 "Bank Acc. Swift Correspondence"
 
                 trigger OnAction()
                 var
-                    RepMaj: Report "Set Vendor Bank Accounts";
+                //RepMaj: Report "Set Vendor Bank Accounts";
                 begin
-                    RepMaj.Run;
+                    //RepMaj.Run;
                 end;
             }
         }

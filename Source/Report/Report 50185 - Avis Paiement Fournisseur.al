@@ -1,7 +1,7 @@
 report 50185 "Avis Paiement Fournisseur"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Avis Paiement Fournisseur.rdlc';
+    RDLCLayout = './Source/Report/Layout/Avis Paiement Fournisseur.rdlc';
     PreviewMode = PrintLayout;
 
     dataset

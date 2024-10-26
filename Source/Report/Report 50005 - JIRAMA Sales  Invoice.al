@@ -2,7 +2,7 @@ report 50005 "JIRAMA Sales  Invoice"
 {
     // //JN001 Maj des informations de colonnes pour affiche les infos du BL et non BE
     DefaultLayout = RDLC;
-    RDLCLayout = './JIRAMA Sales  Invoice.rdlc';
+    RDLCLayout = './Source/Report/Layout/JIRAMA Sales  Invoice.rdlc';
 
     Caption = 'JIRAMA Sales - Invoice';
     Permissions = TableData "Sales Shipment Buffer" = rimd;
@@ -1607,7 +1607,7 @@ report 50005 "JIRAMA Sales  Invoice"
                 TempLineFeeNoteOnReportHist.Insert;
             until LineFeeNoteOnReportHist.Next = 0;
         end else begin
-            LineFeeNoteOnReportHist.SetRange("Language Code", Language.GetUserLanguage);
+            //LineFeeNoteOnReportHist.SetRange("Language Code", Language.GetUserLanguage);
             if LineFeeNoteOnReportHist.FindSet then
                 repeat
                     TempLineFeeNoteOnReportHist.Init;

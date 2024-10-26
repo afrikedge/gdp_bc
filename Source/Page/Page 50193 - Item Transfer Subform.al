@@ -128,7 +128,7 @@ page 50193 "Item Transfer Subform"
 
                     trigger OnAction()
                     begin
-                        ShowDimensions;
+                        Rec.ShowDimensions;
                     end;
                 }
             }

@@ -1,106 +1,106 @@
 report 50041 "Feuille Inventaire"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Feuille Inventaire.rdlc';
+    RDLCLayout = './Source/Report/Layout/Feuille Inventaire.rdlc';
     PreviewMode = PrintLayout;
 
     dataset
     {
-        dataitem("Item Journal Batch";"Item Journal Batch")
+        dataitem("Item Journal Batch"; "Item Journal Batch")
         {
-            RequestFilterFields = "Journal Template Name",Name;
-            column(TemplateName_ItemJnlBatch;"Journal Template Name")
+            RequestFilterFields = "Journal Template Name", Name;
+            column(TemplateName_ItemJnlBatch; "Journal Template Name")
             {
             }
-            column(Name_ItemJournalBatch;Name)
+            column(Name_ItemJournalBatch; Name)
             {
             }
-            column(CompanyAddr1;CompanyAddr[1])
+            column(CompanyAddr1; CompanyAddr[1])
             {
             }
-            column(CompanyAddr2;CompanyAddr[2])
+            column(CompanyAddr2; CompanyAddr[2])
             {
             }
-            column(CompanyAddr3;CompanyAddr[3])
+            column(CompanyAddr3; CompanyAddr[3])
             {
             }
-            column(CompanyAddr4;CompanyAddr[4])
+            column(CompanyAddr4; CompanyAddr[4])
             {
             }
-            column(CompanyInfo_Picture;CompanyInfo.Picture)
+            column(CompanyInfo_Picture; CompanyInfo.Picture)
             {
             }
-            column(ItemCaption;ItemCaption)
+            column(ItemCaption; ItemCaption)
             {
             }
-            column(QuantityCaption;QuantityCaption)
+            column(QuantityCaption; QuantityCaption)
             {
             }
-            column(ObservationCaption;ObservationCaption)
+            column(ObservationCaption; ObservationCaption)
             {
             }
-            column(InventoryText;InventoryText)
+            column(InventoryText; InventoryText)
             {
             }
-            column(TotalText;TotalText)
+            column(TotalText; TotalText)
             {
             }
-            column(LocationText;LocationText)
+            column(LocationText; LocationText)
             {
             }
-            column(LocationCaption;LocationCaption)
+            column(LocationCaption; LocationCaption)
             {
             }
-            column(ItemCodeCaption;ItemCodeCaption)
+            column(ItemCodeCaption; ItemCodeCaption)
             {
             }
-            dataitem("Item Journal Line";"Item Journal Line")
+            dataitem("Item Journal Line"; "Item Journal Line")
             {
-                DataItemLink = "Journal Template Name"=FIELD("Journal Template Name"),"Journal Batch Name"=FIELD(Name);
-                DataItemTableView = SORTING("Journal Template Name","Journal Batch Name","Line No.");
-                RequestFilterFields = "Shortcut Dimension 1 Code","Shortcut Dimension 2 Code","Location Code","Bin Code";
-                column(PostingDt_ItemJournalLine;Format("Posting Date"))
+                DataItemLink = "Journal Template Name" = FIELD("Journal Template Name"), "Journal Batch Name" = FIELD(Name);
+                DataItemTableView = SORTING("Journal Template Name", "Journal Batch Name", "Line No.");
+                RequestFilterFields = "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code", "Location Code", "Bin Code";
+                column(PostingDt_ItemJournalLine; Format("Posting Date"))
                 {
                 }
-                column(DocNo_ItemJournalLine;"Document No.")
+                column(DocNo_ItemJournalLine; "Document No.")
                 {
                 }
-                column(ItemNo_ItemJournalLine;"Item No.")
+                column(ItemNo_ItemJournalLine; "Item No.")
                 {
                 }
-                column(Desc_ItemJournalLine;Description)
+                column(Desc_ItemJournalLine; Description)
                 {
                 }
-                column(LocCode_ItemJournalLine;"Location Code")
+                column(LocCode_ItemJournalLine; "Location Code")
                 {
                 }
-                column(QtyCalculated_ItemJnlLin;"Qty. (Calculated)")
+                column(QtyCalculated_ItemJnlLin; "Qty. (Calculated)")
                 {
                 }
-                column(BinCode_ItemJournalLine;"Bin Code")
+                column(BinCode_ItemJournalLine; "Bin Code")
                 {
                 }
-                column(LineNo_ItemJournalLine;"Line No.")
+                column(LineNo_ItemJournalLine; "Line No.")
                 {
                 }
-                column(LocationName;Location.Name)
+                column(LocationName; Location.Name)
                 {
                 }
 
                 trigger OnPreDataItem()
                 begin
-                    if "Item Journal Line"."Bin Code" <>'' then
-                      Location.Get("Item Journal Line"."Bin Code");
+                    if "Item Journal Line"."Bin Code" <> '' then
+                        Location.Get("Item Journal Line"."Bin Code");
                 end;
             }
 
             trigger OnAfterGetRecord()
             begin
                 if ItemJournalTemplate.Get("Journal Template Name") then
-                  if ItemJournalTemplate.Type <> ItemJournalTemplate.Type::"Phys. Inventory" then
-                    CurrReport.Skip;
+                    if ItemJournalTemplate.Type <> ItemJournalTemplate.Type::"Phys. Inventory" then
+                        CurrReport.Skip;
 
-                FormatAddr.Company(CompanyAddr,CompanyInfo);
+                FormatAddr.Company(CompanyAddr, CompanyInfo);
             end;
         }
     }
@@ -144,7 +144,7 @@ report 50041 "Feuille Inventaire"
         TotalText: Label 'TOTAL';
         LocationText: Label 'LOCALITE :';
         CompanyInfo: Record "Company Information";
-        CompanyAddr: array [8] of Text[50];
+        CompanyAddr: array[8] of Text[50];
         FormatAddr: Codeunit "Format Address";
         LocationCaption: Label 'Magasin';
         Location: Record Location;

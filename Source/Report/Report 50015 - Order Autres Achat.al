@@ -1,7 +1,7 @@
 report 50015 "Order Autres Achat"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Order Autres Achat.rdlc';
+    RDLCLayout = './Source/Report/Layout/Order Autres Achat.rdlc';
     Caption = 'Order';
     PreviewMode = PrintLayout;
 

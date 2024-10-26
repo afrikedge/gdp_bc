@@ -1,7 +1,7 @@
 // report 50026 "ND/NC MT After Post"
 // {
 //     DefaultLayout = RDLC;
-//     RDLCLayout = './NDNC MT After Post.rdlc';
+//     RDLCLayout = './Source/Report/Layout/NDNC MT After Post.rdlc';
 //     Caption = 'Debit-Credit Note';
 //     PreviewMode = PrintLayout;
 

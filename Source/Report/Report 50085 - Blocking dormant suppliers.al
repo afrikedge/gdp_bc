@@ -18,7 +18,7 @@ report 50085 "Blocking dormant suppliers"
                 VendLedgEntry.Reset();
                 VendLedgEntry.SetRange("Vendor No.", Vendor."No.");
                 if (VendLedgEntry.FindLast) then begin
-                    NbreMois := CalculCte.NbreOfMonthsInPeriod(VendLedgEntry."Posting Date", Today);
+                    NbreMois := NbreOfMonthsInPeriod(VendLedgEntry."Posting Date", Today);
                     if NbreMois > AddOnSetup."Supplier blocking period Month" then begin
                         if (Vendor.Blocked <> Vendor.Blocked::All) then begin
                             Vendor.Blocked := Vendor.Blocked::All;
@@ -64,6 +64,45 @@ report 50085 "Blocking dormant suppliers"
     begin
         AddOnSetup.Get;
         AddOnSetup.TestField("Supplier blocking period Month");
+    end;
+
+    local procedure NbreOfMonthsInPeriod(Day1: Date; Day2: Date) NoOfMonthsInPeriod: Integer
+    var
+        Wdate: Date;
+        FirstDayinCrntMonth: Date;
+        LastDayinCrntMonth: Date;
+    begin
+        NoOfMonthsInPeriod := 0;
+
+        if Day1 > Day2 then
+            exit(0);
+        if Day1 = 0D then
+            exit(0);
+        if Day2 = 0D then
+            exit(0);
+
+        /*
+        Wdate := Day1;
+        REPEAT
+          FirstDayinCrntMonth := CALCDATE('<-CM>',Wdate);
+          LastDayinCrntMonth := CALCDATE('<CM>',Wdate);
+          IF (Wdate = FirstDayinCrntMonth) AND (LastDayinCrntMonth <= Day2) THEN BEGIN
+            NoOfMonthsInPeriod := NoOfMonthsInPeriod + 1;
+            Wdate := LastDayinCrntMonth + 1;
+          END ELSE BEGIN
+            Wdate := Wdate + 1;
+          END;
+        UNTIL Wdate > Day2;
+        */
+
+
+        Wdate := Day1;
+        repeat
+            Wdate := CalcDate('<1M>', Wdate);
+            if Wdate <= Day2 then
+                NoOfMonthsInPeriod := NoOfMonthsInPeriod + 1;
+        until Wdate > Day2;
+
     end;
 
     var

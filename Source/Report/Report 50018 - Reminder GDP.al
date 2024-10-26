@@ -1,7 +1,7 @@
 report 50018 "Reminder GDP"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Reminder GDP.rdlc';
+    RDLCLayout = './Source/Report/Layout/Reminder GDP.rdlc';
     Caption = 'Reminder Letter N°1';
     PreviewMode = PrintLayout;
 

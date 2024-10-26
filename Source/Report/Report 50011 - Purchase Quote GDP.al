@@ -1,7 +1,7 @@
 report 50011 "Purchase Quote GDP"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Purchase Quote GDP.rdlc';
+    RDLCLayout = './Source/Report/Layout/Purchase Quote GDP.rdlc';
     Caption = 'Purchase Quote';
     PreviewMode = PrintLayout;
 

@@ -1,182 +1,182 @@
 report 50008 "Recap Import MoneyTech"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Recap Import MoneyTech.rdlc';
+    RDLCLayout = './Source/Report/Layout/Recap Import MoneyTech.rdlc';
     Caption = 'MoneyTech Import';
     PreviewMode = PrintLayout;
 
     dataset
     {
-        dataitem("MoneyTech Import";"MoneyTech Import")
+        dataitem("MoneyTech Import"; "MoneyTech Import")
         {
             RequestFilterFields = "No.";
-            column(StartDate;"Starting Date")
+            column(StartDate; "Starting Date")
             {
             }
-            column(EndDate;"Ending Date")
+            column(EndDate; "Ending Date")
             {
             }
-            column(PostDate;"Posting Date")
+            column(PostDate; "Posting Date")
             {
             }
-            column(TotCharg;"Total Charge")
+            column(TotCharg; "Total Charge")
             {
             }
-            column(TotDechar;"Total Decharge")
+            column(TotDechar; "Total Decharge")
             {
             }
-            column(No_MoneyTech;"No.")
+            column(No_MoneyTech; "No.")
             {
             }
-            dataitem("MoneyTech Import Line";"MoneyTech Import Line")
+            dataitem("MoneyTech Import Line"; "MoneyTech Import Line")
             {
                 DataItemTableView = SORTING("Document No.");
                 RequestFilterHeading = 'Import MoneyTech';
-                column(Cust_Name;Cust.Name)
+                column(Cust_Name; Cust.Name)
                 {
                 }
-                column(EMailCaption;EMailCaptionLbl)
+                column(EMailCaption; EMailCaptionLbl)
                 {
                 }
-                column(PhoneNoCaption;PhoneNoCaptionLbl)
+                column(PhoneNoCaption; PhoneNoCaptionLbl)
                 {
                 }
-                column(FaxCaption;FaxCaptionLbl)
+                column(FaxCaption; FaxCaptionLbl)
                 {
                 }
-                column(StationCode;"Station Code")
+                column(StationCode; "Station Code")
                 {
                 }
-                column(CompanyInfo_Picture;CompanyInfo.Picture)
+                column(CompanyInfo_Picture; CompanyInfo.Picture)
                 {
                 }
-                column(CustAddr1;CustAddr[1])
+                column(CustAddr1; CustAddr[1])
                 {
                 }
-                column(CompanyAddr1;CompanyAddr[1])
+                column(CompanyAddr1; CompanyAddr[1])
                 {
                 }
-                column(CustAddr2;CustAddr[2])
+                column(CustAddr2; CustAddr[2])
                 {
                 }
-                column(CompanyAddr2;CompanyAddr[2])
+                column(CompanyAddr2; CompanyAddr[2])
                 {
                 }
-                column(CustAddr3;CustAddr[3])
+                column(CustAddr3; CustAddr[3])
                 {
                 }
-                column(CompanyAddr3;CompanyAddr[3])
+                column(CompanyAddr3; CompanyAddr[3])
                 {
                 }
-                column(CustAddr4;CustAddr[4])
+                column(CustAddr4; CustAddr[4])
                 {
                 }
-                column(CompanyAddr4;CompanyAddr[4])
+                column(CompanyAddr4; CompanyAddr[4])
                 {
                 }
-                column(CustAddr5;CustAddr[5])
+                column(CustAddr5; CustAddr[5])
                 {
                 }
-                column(CustAddr6;CustAddr[6])
+                column(CustAddr6; CustAddr[6])
                 {
                 }
-                column(CompanyInfoEMail;CompanyInfo."E-Mail")
+                column(CompanyInfoEMail; CompanyInfo."E-Mail")
                 {
                 }
-                column(CompanyInfoRCS;' - R.C.S. : '+ CompanyInfo."Trade Register")
+                column(CompanyInfoRCS; ' - R.C.S. : ' + CompanyInfo."Trade Register")
                 {
                 }
-                column(CompanyInfoCA;'S.A. au capital de AR '+CompanyInfo."Stock Capital")
+                column(CompanyInfoCA; 'S.A. au capital de AR ' + CompanyInfo."Stock Capital")
                 {
                 }
-                column(CompanyInfoNIF;'NIF : '+CompanyInfo."Registration No.")
+                column(CompanyInfoNIF; 'NIF : ' + CompanyInfo."Registration No.")
                 {
                 }
-                column(CompanyInfoSTAT;'STAT : ' +CompanyInfo."Legal Form")
+                column(CompanyInfoSTAT; 'STAT : ' + CompanyInfo."Legal Form")
                 {
                 }
-                column(CompanyInfoPhoneNo;CompanyInfo."Phone No.")
+                column(CompanyInfoPhoneNo; CompanyInfo."Phone No.")
                 {
                 }
-                column(CompanyInfoFax;CompanyInfo."Fax No.")
+                column(CompanyInfoFax; CompanyInfo."Fax No.")
                 {
                 }
-                column(CustAddr7;CustAddr[7])
+                column(CustAddr7; CustAddr[7])
                 {
                 }
-                column(CustAddr8;CustAddr[8])
+                column(CustAddr8; CustAddr[8])
                 {
                 }
-                column(CompanyAddr5;CompanyAddr[5])
+                column(CompanyAddr5; CompanyAddr[5])
                 {
                 }
-                column(CompanyAddr6;CompanyAddr[6])
+                column(CompanyAddr6; CompanyAddr[6])
                 {
                 }
-                column(DocumentNo;"Document No.")
+                column(DocumentNo; "Document No.")
                 {
                 }
-                column(SatationCode;"Station Code")
+                column(SatationCode; "Station Code")
                 {
                 }
-                column(CodeClient;"Debitor No.")
+                column(CodeClient; "Debitor No.")
                 {
                 }
-                column(TypeCarte;"Card Type")
+                column(TypeCarte; "Card Type")
                 {
                 }
-                column(TypeTrans;"Transaction Type")
+                column(TypeTrans; "Transaction Type")
                 {
                 }
-                column(DateDebut;Format("MoneyTech Import Line".TransmissionDate))
+                column(DateDebut; Format("MoneyTech Import Line".TransmissionDate))
                 {
                 }
-                column(NumCarte;"MoneyTech Import Line".TransmissionNo)
+                column(NumCarte; "MoneyTech Import Line".TransmissionNo)
                 {
                 }
-                column("MontDebpré";MontDebpré)
+                column("MontDebpré"; MontDebpré)
                 {
                 }
-                column(MontCred;MontCred)
+                column(MontCred; MontCred)
                 {
                 }
-                column(MontDebPost;MontDebPost)
+                column(MontDebPost; MontDebPost)
                 {
                 }
-                column(StatCaption;StatCaption)
+                column(StatCaption; StatCaption)
                 {
                 }
-                column(NumCartCaption;NumCartCaption)
+                column(NumCartCaption; NumCartCaption)
                 {
                 }
-                column(StartCaption;StartCaption)
+                column(StartCaption; StartCaption)
                 {
                 }
-                column(TeleColDateCaption;TeleColDateCaption)
+                column(TeleColDateCaption; TeleColDateCaption)
                 {
                 }
-                column(JournalCaption;JournalCaption)
+                column(JournalCaption; JournalCaption)
                 {
                 }
-                column(EndCaption;EndCaption)
+                column(EndCaption; EndCaption)
                 {
                 }
-                column(DocCaption;DocCaption)
+                column(DocCaption; DocCaption)
                 {
                 }
-                column(DebAmountPre;DebAmountPre)
+                column(DebAmountPre; DebAmountPre)
                 {
                 }
-                column(DebAmountPost;DebAmountPost)
+                column(DebAmountPost; DebAmountPost)
                 {
                 }
-                column(DebAmountTot;DebAmountTot)
+                column(DebAmountTot; DebAmountTot)
                 {
                 }
-                column(CredAmountTot;CredAmountTot)
+                column(CredAmountTot; CredAmountTot)
                 {
                 }
-                column(LineNo;"Line No.")
+                column(LineNo; "Line No.")
                 {
                 }
 
@@ -186,31 +186,31 @@ report 50008 "Recap Import MoneyTech"
                     CondPaiem: Record "Payment Terms";
                 begin
 
-                    FormatAddr.Company(CompanyAddr,CompanyInfo);
+                    FormatAddr.Company(CompanyAddr, CompanyInfo);
 
                     Cust.Get("MoneyTech Import Line"."Station Code");
 
-                    FormatAddr.Customer(CustAddr,Cust);
-                    if ("Transaction Type"="Transaction Type"::Decharge) and("Card Type"="Card Type"::Prepaid)  then begin
-                      MontDebpré:=Amount;
-                      MontDebPost:=0;
-                      MontCred:=0;
+                    FormatAddr.Customer(CustAddr, Cust);
+                    if ("Transaction Type" = "Transaction Type"::Decharge) and ("Card Type" = "Card Type"::Prepaid) then begin
+                        MontDebpré := Amount;
+                        MontDebPost := 0;
+                        MontCred := 0;
                     end
-                    else if ("Transaction Type"="Transaction Type"::Decharge) and("Card Type"="Card Type"::Postpaid) then begin
-                      MontDebpré:=0;
-                      MontDebPost:=Amount;
-                      MontCred:=0;
+                    else if ("Transaction Type" = "Transaction Type"::Decharge) and ("Card Type" = "Card Type"::Postpaid) then begin
+                        MontDebpré := 0;
+                        MontDebPost := Amount;
+                        MontCred := 0;
                     end
-                    else if ("Transaction Type"="Transaction Type"::Recharge) and("Card Type"="Card Type"::Prepaid) then begin
-                      MontDebpré:=0;
-                      MontDebPost:=0;
-                      MontCred:=Amount;
+                    else if ("Transaction Type" = "Transaction Type"::Recharge) and ("Card Type" = "Card Type"::Prepaid) then begin
+                        MontDebpré := 0;
+                        MontDebPost := 0;
+                        MontCred := Amount;
                     end
                 end;
 
                 trigger OnPreDataItem()
                 begin
-                    "MoneyTech Import Line".SetRange("Document No.","MoneyTech Import"."No.");
+                    "MoneyTech Import Line".SetRange("Document No.", "MoneyTech Import"."No.");
                 end;
             }
         }
@@ -258,8 +258,7 @@ report 50008 "Recap Import MoneyTech"
     begin
 
         if not CurrReport.UseRequestPage then
-
-          InitLogInteraction;
+            InitLogInteraction;
     end;
 
     var
@@ -280,8 +279,8 @@ report 50008 "Recap Import MoneyTech"
         TempLineFeeNoteOnReportHist: Record "Line Fee Note on Report Hist." temporary;
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit SegManagement;
-        CustAddr: array [8] of Text[50];
-        CompanyAddr: array [8] of Text[50];
+        CustAddr: array[8] of Text[50];
+        CompanyAddr: array[8] of Text[50];
         TotalText: Text[50];
         MoreLines: Boolean;
         CopyText: Text[30];
@@ -310,7 +309,7 @@ report 50008 "Recap Import MoneyTech"
         UnitofMeasure_Caption: Label 'UNITE';
         Quantity_Caption: Label 'QUANTITE';
         NbTLet: Report Check;
-        TotalAmountLetter: array [2] of Text[80];
+        TotalAmountLetter: array[2] of Text[80];
         PhoneNoCaptionLbl: Label 'Phone No.';
         EMailCaptionLbl: Label 'E-Mail';
         FaxCaptionLbl: Label 'Fax : ';
@@ -341,7 +340,7 @@ report 50008 "Recap Import MoneyTech"
         LogInteraction := SegManagement.FindInteractTmplCode(4) <> '';
     end;
 
-    procedure InitializeRequest(NewNoOfCopies: Integer;NewShowInternalInfo: Boolean;NewLogInteraction: Boolean;IncludeShptNo: Boolean;DisplAsmInfo: Boolean)
+    procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewLogInteraction: Boolean; IncludeShptNo: Boolean; DisplAsmInfo: Boolean)
     begin
         ShowInternalInfo := NewShowInternalInfo;
         LogInteraction := NewLogInteraction;

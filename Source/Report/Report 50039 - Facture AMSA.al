@@ -1,7 +1,7 @@
 report 50039 "Facture AMSA"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Facture AMSA.rdlc';
+    RDLCLayout = './Source/Report/Layout/Facture AMSA.rdlc';
     PreviewMode = PrintLayout;
 
     dataset
@@ -145,7 +145,7 @@ report 50039 "Facture AMSA"
 
                 NbTLet.InitTextVariable;
                 //TODO Montants
-                NbTLet.FormatNoTextFR(TotalAmountLetter, TotalAmount, '');
+                //NbTLet.FormatNoTextFR(TotalAmountLetter, TotalAmount, '');
 
                 if ShipToAddress.Get(Cust."No.", Cust."Ship-to Code2") then;
             end;

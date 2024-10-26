@@ -5,9 +5,9 @@ report 50083 UpdateSO_NewVAT
 
     dataset
     {
-        dataitem("Sales Header";"Sales Header")
+        dataitem("Sales Header"; "Sales Header")
         {
-            DataItemTableView = SORTING("Document Type","No.") ORDER(Ascending) WHERE("Document Type"=CONST(Order));
+            DataItemTableView = SORTING("Document Type", "No.") ORDER(Ascending) WHERE("Document Type" = CONST(Order));
             RequestFilterFields = "No.";
 
             trigger OnAfterGetRecord()
@@ -18,11 +18,11 @@ report 50083 UpdateSO_NewVAT
 
                 BesoinNo := BesoinNo + 1;
                 Window.Update(1,
-                Round(BesoinNo / NbreTotalLignes * 10000,1));
+                Round(BesoinNo / NbreTotalLignes * 10000, 1));
 
 
                 Cust.Get("Sales Header"."Sell-to Customer No.");
-                if Cust."Sales Category Code"<>'PBL' then exit;
+                if Cust."Sales Category Code" <> 'PBL' then exit;
 
                 ReleaseSalesDocument.PerformManualReopen("Sales Header");
 
@@ -31,7 +31,7 @@ report 50083 UpdateSO_NewVAT
                 //IF Cust."Sales Channel Code"='100' THEN
                 //  ChangeUnitPrices("Sales Header");
 
-                Nbres:=Nbres+1;
+                Nbres := Nbres + 1;
             end;
 
             trigger OnPostDataItem()
@@ -42,7 +42,7 @@ report 50083 UpdateSO_NewVAT
                 LineNum: Integer;
             begin
                 Window.Close;
-                Message(TextFin,Nbres);
+                Message(TextFin, Nbres);
             end;
 
             trigger OnPreDataItem()
@@ -52,28 +52,28 @@ report 50083 UpdateSO_NewVAT
             begin
                 AddOnSetup.Get;
                 //AddOnSetup.TESTFIELD(AddOnSetup."Unbilled Revenues Account");
-                
+
                 //GenJrnTableND.GET(ModeleFeuille,NomFeuille);
-                
+
                 /*
                 GenJrnLine.RESET;
                 GenJrnLine.SETRANGE("Journal Template Name",ModeleFeuille);
                 GenJrnLine.SETRANGE("Journal Batch Name",NomFeuille);
                 IF GenJrnLine.FINDFIRST THEN ERROR(Text001,NomFeuille);
                 */
-                BesoinNo :=0;
-                
+                BesoinNo := 0;
+
                 Window.Open(Text008);
-                
+
                 //IF ((DateDeb=0D) OR (DateFin=0D)) THEN ERROR(Text009);
-                StartingDate:=DMY2Date(1,2,2023);
-                EndingDate:=DMY2Date(7,2,2023);
-                
-                "Sales Header".SetFilter("Sales Header"."Requested Delivery Date",'%1..',StartingDate);
-                
-                LineNum:=0;
-                 NbreTotalLignes := "Sales Header".Count;
-                 Nbres:=0;
+                StartingDate := DMY2Date(1, 2, 2023);
+                EndingDate := DMY2Date(7, 2, 2023);
+
+                "Sales Header".SetFilter("Sales Header"."Requested Delivery Date", '%1..', StartingDate);
+
+                LineNum := 0;
+                NbreTotalLignes := "Sales Header".Count;
+                Nbres := 0;
 
             end;
         }
@@ -103,7 +103,7 @@ report 50083 UpdateSO_NewVAT
         AddOnSetup.Get;
         AddOnSetup.TestField("Provision Tmpl Journal");
         ModeleFeuille := AddOnSetup."Provision Tmpl Journal";
-        PostingDate:=WorkDate;
+        PostingDate := WorkDate;
     end;
 
     var
@@ -135,10 +135,10 @@ report 50083 UpdateSO_NewVAT
         Nbres: Integer;
         TextFin: Label '%1 commandes traitées';
 
-    procedure SetFeuille(CodeModele1: Code[10];CodeFeuille1: Code[10])
+    procedure SetFeuille(CodeModele1: Code[10]; CodeFeuille1: Code[10])
     begin
-        ModeleFeuille:=CodeModele1;
-        NomFeuille:=CodeFeuille1;
+        ModeleFeuille := CodeModele1;
+        NomFeuille := CodeFeuille1;
     end;
 
     local procedure ChangeVATPostingGroups(SalesH: Record "Sales Header")
@@ -146,31 +146,31 @@ report 50083 UpdateSO_NewVAT
         SLine: Record "Sales Line";
     begin
         SLine.Reset;
-        SLine.SetRange(SLine."Document Type",SLine."Document Type"::Order);
-        SLine.SetRange(SLine."Document No.",SalesH."No.");
-        SLine.SetFilter(SLine."No.",'%1|%2|%3|%4','31000-0000','34000-0000','REM0002','REM0005');
+        SLine.SetRange(SLine."Document Type", SLine."Document Type"::Order);
+        SLine.SetRange(SLine."Document No.", SalesH."No.");
+        SLine.SetFilter(SLine."No.", '%1|%2|%3|%4', '31000-0000', '34000-0000', 'REM0002', 'REM0005');
         if SLine.FindSet then
-          repeat
+            repeat
 
-            if SLine."No."='31000-0000' then
-              if SLine."VAT Prod. Posting Group"<>'TVAPPI' then
-                SLine.Validate(SLine."VAT Prod. Posting Group",'TVAPPI');
+                if SLine."No." = '31000-0000' then
+                    if SLine."VAT Prod. Posting Group" <> 'TVAPPI' then
+                        SLine.Validate(SLine."VAT Prod. Posting Group", 'TVAPPI');
 
-            if SLine."No."='34000-0000' then
-              if SLine."VAT Prod. Posting Group"<>'TVAPPI' then
-                SLine.Validate(SLine."VAT Prod. Posting Group",'TVAPPI');
+                if SLine."No." = '34000-0000' then
+                    if SLine."VAT Prod. Posting Group" <> 'TVAPPI' then
+                        SLine.Validate(SLine."VAT Prod. Posting Group", 'TVAPPI');
 
-            if SLine."No."='REM0002' then
-              if SLine."VAT Prod. Posting Group"<>'TVAPPI' then
-                SLine.Validate(SLine."VAT Prod. Posting Group",'TVAPPI');
+                if SLine."No." = 'REM0002' then
+                    if SLine."VAT Prod. Posting Group" <> 'TVAPPI' then
+                        SLine.Validate(SLine."VAT Prod. Posting Group", 'TVAPPI');
 
-            if SLine."No."='REM0005' then
-              if SLine."VAT Prod. Posting Group"<>'TVAPPI' then
-                SLine.Validate(SLine."VAT Prod. Posting Group",'TVAPPI');
+                if SLine."No." = 'REM0005' then
+                    if SLine."VAT Prod. Posting Group" <> 'TVAPPI' then
+                        SLine.Validate(SLine."VAT Prod. Posting Group", 'TVAPPI');
 
-            SLine.Modify;
+                SLine.Modify;
 
-          until SLine.Next=0;
+            until SLine.Next = 0;
     end;
 
     procedure ChangeUnitPrices(SalesH: Record "Sales Header")
@@ -180,10 +180,10 @@ report 50083 UpdateSO_NewVAT
         BLHeader: Record pro_enteteBL;
         DocPrepa: Record "Posted Adjustment Header";
     begin
-        
+
         if SalesH."Document Type" <> SalesH."Document Type"::Order then exit;
-        
-        PricesDate:=0D;
+
+        PricesDate := 0D;
         /*
         BLHeader.RESET;
         BLHeader.SETRANGE(BLHeader.NavOrderNo,SalesH."No.");
@@ -205,33 +205,35 @@ report 50083 UpdateSO_NewVAT
           ) THEN
           ERROR(AFK_Text003);
           */
-        
+
         SalesH.TestField("Requested Delivery Date");
         PricesDate := SalesH."Requested Delivery Date";
-        
-        
+
+
         SalesLine1.Reset;
-        SalesLine1.SetRange("Document Type",SalesLine1."Document Type"::Order);
-        SalesLine1.SetRange("Document No.",SalesH."No.");
-        if SalesLine1.FindSet then repeat
-          if ((SalesLine1.Type=SalesLine1.Type::Item) or
-            (SalesLine1.Type=SalesLine1.Type::Resource)) then begin
-        
-            SalesLine1.TestField("Qty. per Unit of Measure");
-        
-            case SalesLine1.Type of
-              SalesLine1.Type::Item,SalesLine1.Type::Resource:
-                begin
-                  PriceCalcMgt.SetSalesPriceDate(PricesDate);
-                  PriceCalcMgt.FindSalesLineLineDisc(SalesH,SalesLine1);
-                  PriceCalcMgt.FindSalesLinePrice(SalesH,SalesLine1,SalesLine1.FieldNo("No."));
+        SalesLine1.SetRange("Document Type", SalesLine1."Document Type"::Order);
+        SalesLine1.SetRange("Document No.", SalesH."No.");
+        if SalesLine1.FindSet then
+            repeat
+                if ((SalesLine1.Type = SalesLine1.Type::Item) or
+                  (SalesLine1.Type = SalesLine1.Type::Resource)) then begin
+
+                    SalesLine1.TestField("Qty. per Unit of Measure");
+
+                    case SalesLine1.Type of
+                        SalesLine1.Type::Item, SalesLine1.Type::Resource:
+                            begin
+                                //TODO Prices here
+                                //PriceCalcMgt.SetSalesPriceDate(PricesDate);
+                                PriceCalcMgt.FindSalesLineLineDisc(SalesH, SalesLine1);
+                                PriceCalcMgt.FindSalesLinePrice(SalesH, SalesLine1, SalesLine1.FieldNo("No."));
+                            end;
+                    end;
+                    SalesLine1.Validate("Unit Price");
+                    SalesLine1.Modify;
+
                 end;
-            end;
-            SalesLine1.Validate("Unit Price");
-            SalesLine1.Modify;
-        
-          end;
-        until SalesLine1.Next=0;
+            until SalesLine1.Next = 0;
 
     end;
 }

@@ -1,7 +1,7 @@
 report 50032 "Bon Enlevement Dispatching"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Bon Enlevement Dispatching.rdlc';
+    RDLCLayout = './Source/Report/Layout/Bon Enlevement Dispatching.rdlc';
     PDFFontEmbedding = Yes;
     PreviewMode = PrintLayout;
 

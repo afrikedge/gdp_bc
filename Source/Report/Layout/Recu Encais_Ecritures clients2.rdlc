@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="Text001">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text001</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text001</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text002">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text002</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text002</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text004">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text004</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text004</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text005">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text005</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text005</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text006">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text006</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text006</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text008">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text008</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text008</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text009">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text009</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text009</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text010">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text010</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text010</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text011">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text011</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text011</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text012">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text012</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text012</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text013">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text013</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text013</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text015">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text015</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text015</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text016">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text016</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text016</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text017">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text017</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text017</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text018">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text018</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text018</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text019">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text019</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text019</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text10">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text10</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text10</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text020">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text020</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text020</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="UserID">
+          <DataField>UserID</DataField>
+        </Field>
+        <Field Name="UserName">
+          <DataField>UserName</DataField>
+        </Field>
+        <Field Name="Devise1">
+          <DataField>Devise1</DataField>
+        </Field>
+        <Field Name="Devise2">
+          <DataField>Devise2</DataField>
+        </Field>
+        <Field Name="PostingDate_GenJnlLine">
+          <DataField>PostingDate_GenJnlLine</DataField>
+        </Field>
+        <Field Name="DocType_GenJnlLine">
+          <DataField>DocType_GenJnlLine</DataField>
+        </Field>
+        <Field Name="DocNo_GenJnlLine">
+          <DataField>DocNo_GenJnlLine</DataField>
+        </Field>
+        <Field Name="AccountNo_GenJnlLine">
+          <DataField>AccountNo_GenJnlLine</DataField>
+        </Field>
+        <Field Name="ModeRG">
+          <DataField>ModeRG</DataField>
+        </Field>
+        <Field Name="Description_GenJnlLine">
+          <DataField>Description_GenJnlLine</DataField>
+        </Field>
+        <Field Name="Amount_GenJnlLine">
+          <DataField>Amount_GenJnlLine</DataField>
+        </Field>
+        <Field Name="Amount_GenJnlLineFormat">
+          <DataField>Amount_GenJnlLineFormat</DataField>
+        </Field>
+        <Field Name="CurrencyCode_GenJnlLine">
+          <DataField>CurrencyCode_GenJnlLine</DataField>
+        </Field>
+        <Field Name="BalAccNo_GenJnlLine">
+          <DataField>BalAccNo_GenJnlLine</DataField>
+        </Field>
+        <Field Name="AmountLCY_GenJnlLine">
+          <DataField>AmountLCY_GenJnlLine</DataField>
+        </Field>
+        <Field Name="AmountLCY_GenJnlLineFormat">
+          <DataField>AmountLCY_GenJnlLineFormat</DataField>
+        </Field>
+        <Field Name="Cust_Name">
+          <DataField>Cust_Name</DataField>
+        </Field>
+        <Field Name="TotalAmountLetter">
+          <DataField>TotalAmountLetter</DataField>
+        </Field>
+        <Field Name="NoTitre">
+          <DataField>NoTitre</DataField>
+        </Field>
+        <Field Name="CompanyInfoEMail">
+          <DataField>CompanyInfoEMail</DataField>
+        </Field>
+        <Field Name="CompanyInfoRCS">
+          <DataField>CompanyInfoRCS</DataField>
+        </Field>
+        <Field Name="CompanyInfoCA">
+          <DataField>CompanyInfoCA</DataField>
+        </Field>
+        <Field Name="CompanyInfoNIF">
+          <DataField>CompanyInfoNIF</DataField>
+        </Field>
+        <Field Name="CompanyInfoSTAT">
+          <DataField>CompanyInfoSTAT</DataField>
+        </Field>
+        <Field Name="CompanyInfoPhoneNo">
+          <DataField>CompanyInfoPhoneNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoFax">
+          <DataField>CompanyInfoFax</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+        <Field Name="PhoneNoCaption">
+          <DataField>PhoneNoCaption</DataField>
+        </Field>
+        <Field Name="FaxCaption">
+          <DataField>FaxCaption</DataField>
+        </Field>
+        <Field Name="CompanyAddr1">
+          <DataField>CompanyAddr1</DataField>
+        </Field>
+        <Field Name="CompanyAddr2">
+          <DataField>CompanyAddr2</DataField>
+        </Field>
+        <Field Name="CompanyAddr3">
+          <DataField>CompanyAddr3</DataField>
+        </Field>
+        <Field Name="CompanyAddr4">
+          <DataField>CompanyAddr4</DataField>
+        </Field>
+        <Field Name="TelCaption">
+          <DataField>TelCaption</DataField>
+        </Field>
+        <Field Name="BPCaption">
+          <DataField>BPCaption</DataField>
+        </Field>
+        <Field Name="EmailCaption">
+          <DataField>EmailCaption</DataField>
+        </Field>
+        <Field Name="DocumentNo">
+          <DataField>DocumentNo</DataField>
+        </Field>
+        <Field Name="DocDate">
+          <DataField>DocDate</DataField>
+        </Field>
+        <Field Name="DocDescrip">
+          <DataField>DocDescrip</DataField>
+        </Field>
+        <Field Name="AmountLCY">
+          <DataField>AmountLCY</DataField>
+        </Field>
+        <Field Name="AmountLCYFormat">
+          <DataField>AmountLCYFormat</DataField>
+        </Field>
+        <Field Name="RefCust">
+          <DataField>RefCust</DataField>
+        </Field>
+        <Field Name="CustNo">
+          <DataField>CustNo</DataField>
+        </Field>
+        <Field Name="OrderNo">
+          <DataField>OrderNo</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

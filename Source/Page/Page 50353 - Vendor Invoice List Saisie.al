@@ -73,7 +73,7 @@ page 50353 "Vendor Invoice List Saisie"
     trigger OnOpenPage()
     begin
         //FILTERGROUP(2);
-        SetRange("Create By", UserId);
+        Rec.SetRange("Create By", UserId);
         //FILTERGROUP(0);
     end;
 }

@@ -1,7 +1,7 @@
 report 50182 AnnexeOV
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './AnnexeOV.rdlc';
+    RDLCLayout = './Source/Report/Layout/AnnexeOV.rdlc';
     PreviewMode = PrintLayout;
 
     dataset

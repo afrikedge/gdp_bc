@@ -1,7 +1,7 @@
 report 50047 "Bon de sortie Ajustement After"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Bon de sortie Ajustement After.rdlc';
+    RDLCLayout = './Source/Report/Layout/Bon de sortie Ajustement After.rdlc';
     Caption = 'Bon de sortie';
     PreviewMode = PrintLayout;
 

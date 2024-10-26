@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="Sign">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Sign</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Sign</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Name">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Name</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Name</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Date">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Date</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Date</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CDG">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CDG</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CDG</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Other">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Other</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Other</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Resp">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Resp</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Resp</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Date_Time">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Date_Time</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Date_Time</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="TemplateName_ItemJnlBatch">
+          <DataField>TemplateName_ItemJnlBatch</DataField>
+        </Field>
+        <Field Name="Name_ItemJournalBatch">
+          <DataField>Name_ItemJournalBatch</DataField>
+        </Field>
+        <Field Name="CompanyAddr1">
+          <DataField>CompanyAddr1</DataField>
+        </Field>
+        <Field Name="CompanyAddr2">
+          <DataField>CompanyAddr2</DataField>
+        </Field>
+        <Field Name="CompanyAddr3">
+          <DataField>CompanyAddr3</DataField>
+        </Field>
+        <Field Name="CompanyAddr4">
+          <DataField>CompanyAddr4</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+        <Field Name="ItemCaption">
+          <DataField>ItemCaption</DataField>
+        </Field>
+        <Field Name="QuantityCaption">
+          <DataField>QuantityCaption</DataField>
+        </Field>
+        <Field Name="ObservationCaption">
+          <DataField>ObservationCaption</DataField>
+        </Field>
+        <Field Name="InventoryText">
+          <DataField>InventoryText</DataField>
+        </Field>
+        <Field Name="TotalText">
+          <DataField>TotalText</DataField>
+        </Field>
+        <Field Name="LocationText">
+          <DataField>LocationText</DataField>
+        </Field>
+        <Field Name="LocationCaption">
+          <DataField>LocationCaption</DataField>
+        </Field>
+        <Field Name="ItemCodeCaption">
+          <DataField>ItemCodeCaption</DataField>
+        </Field>
+        <Field Name="PostingDt_ItemJournalLine">
+          <DataField>PostingDt_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="DocNo_ItemJournalLine">
+          <DataField>DocNo_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="ItemNo_ItemJournalLine">
+          <DataField>ItemNo_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="Desc_ItemJournalLine">
+          <DataField>Desc_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="LocCode_ItemJournalLine">
+          <DataField>LocCode_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="QtyCalculated_ItemJnlLin">
+          <DataField>QtyCalculated_ItemJnlLin</DataField>
+        </Field>
+        <Field Name="QtyCalculated_ItemJnlLinFormat">
+          <DataField>QtyCalculated_ItemJnlLinFormat</DataField>
+        </Field>
+        <Field Name="BinCode_ItemJournalLine">
+          <DataField>BinCode_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="LineNo_ItemJournalLine">
+          <DataField>LineNo_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="LocationName">
+          <DataField>LocationName</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

@@ -1,7 +1,7 @@
 report 50065 "Order Autres Achat archive"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Order Autres Achat archive.rdlc';
+    RDLCLayout = './Source/Report/Layout/Order Autres Achat archive.rdlc';
     Caption = 'Order';
     PreviewMode = PrintLayout;
 
@@ -1054,14 +1054,14 @@ report 50065 "Order Autres Achat archive"
                 if CodeDemand = '' then CodeDemand := TxtNeant;
 
                 if CodeDemand <> '' then begin
+                    //TODO
+                    // if PurchReq.Get(CodeDemand) then
+                    //     if Dept.Get(PurchReq."Department Code") then
+                    //         DepartementDemandeur := Dept.Name;
 
-                    if PurchReq.Get(CodeDemand) then
-                        if Dept.Get(PurchReq."Department Code") then
-                            DepartementDemandeur := Dept.Name;
-
-                    if PostedPurchReq.Get(CodeDemand) then
-                        if Dept.Get(PostedPurchReq."Department Code") then
-                            DepartementDemandeur := Dept.Name;
+                    // if PostedPurchReq.Get(CodeDemand) then
+                    //     if Dept.Get(PostedPurchReq."Department Code") then
+                    //         DepartementDemandeur := Dept.Name;
                 end;
                 //***********************
                 CalcFields("No. of Archived Versions");
@@ -1267,7 +1267,7 @@ report 50065 "Order Autres Achat archive"
         DateCde: Date;
         DepartementDemandeur: Text[50];
         PostedPurchReq: Record "Posted Purchase Requisition";
-        Dept: Record Subdirection;
+        //Dept: Record Subdirection;
         PurchReq: Record "Purchase Requisition";
         PurchLineArch: Record "Purchase Line Archive" temporary;
         PurchaseLineArchiveType: Integer;

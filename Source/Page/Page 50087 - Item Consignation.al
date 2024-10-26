@@ -78,7 +78,7 @@ page 50087 "Item Consignation"
 
                 trigger OnAction()
                 begin
-                    ShowDocDim;
+                    Rec.ShowDocDim;
                     CurrPage.SaveRecord;
                 end;
             }
@@ -150,7 +150,7 @@ page 50087 "Item Consignation"
 
                 trigger OnAction()
                 begin
-                    Navigate;
+                    Rec.Navigate;
                 end;
             }
         }
@@ -218,7 +218,7 @@ page 50087 "Item Consignation"
                 begin
                     //*******************************
                     AdjH.SetRange(AdjH."Document Type", AdjH."Document Type"::Consignation);
-                    AdjH.SetRange(AdjH."No.", "No.");
+                    AdjH.SetRange(AdjH."No.", Rec."No.");
                     REPORT.RunModal(50063, true, false, AdjH);
                 end;
             }

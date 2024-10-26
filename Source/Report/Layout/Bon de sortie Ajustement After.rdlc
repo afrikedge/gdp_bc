@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="BonSort">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>BonSort</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>BonSort</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PrepareBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PrepareBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PrepareBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Client">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Client</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Client</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ApproveBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ApproveBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ApproveBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text10">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text10</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text10</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text1">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text1</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="No_AdjustHeader">
+          <DataField>No_AdjustHeader</DataField>
+        </Field>
+        <Field Name="CustomerNo_AdjustHeader">
+          <DataField>CustomerNo_AdjustHeader</DataField>
+        </Field>
+        <Field Name="CustName_AdjustHeader">
+          <DataField>CustName_AdjustHeader</DataField>
+        </Field>
+        <Field Name="PostingDate_AdjustHeader">
+          <DataField>PostingDate_AdjustHeader</DataField>
+        </Field>
+        <Field Name="CustAddr">
+          <DataField>CustAddr</DataField>
+        </Field>
+        <Field Name="ShipmentNoCaption">
+          <DataField>ShipmentNoCaption</DataField>
+        </Field>
+        <Field Name="NFacture">
+          <DataField>NFacture</DataField>
+        </Field>
+        <Field Name="PhoneNoCaption">
+          <DataField>PhoneNoCaption</DataField>
+        </Field>
+        <Field Name="DocumentNo_AdjustLine">
+          <DataField>DocumentNo_AdjustLine</DataField>
+        </Field>
+        <Field Name="DocumentType_AdjustLine">
+          <DataField>DocumentType_AdjustLine</DataField>
+        </Field>
+        <Field Name="ItemNo_AdjustLine">
+          <DataField>ItemNo_AdjustLine</DataField>
+        </Field>
+        <Field Name="Descript_AdjustLine">
+          <DataField>Descript_AdjustLine</DataField>
+        </Field>
+        <Field Name="Quantity_AdjustLine">
+          <DataField>Quantity_AdjustLine</DataField>
+        </Field>
+        <Field Name="Quantity_AdjustLineFormat">
+          <DataField>Quantity_AdjustLineFormat</DataField>
+        </Field>
+        <Field Name="UOM_AdjustLine">
+          <DataField>UOM_AdjustLine</DataField>
+        </Field>
+        <Field Name="LocationCode_AdjustLine">
+          <DataField>LocationCode_AdjustLine</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+        <Field Name="CompanyAddr1">
+          <DataField>CompanyAddr1</DataField>
+        </Field>
+        <Field Name="CompanyAddr2">
+          <DataField>CompanyAddr2</DataField>
+        </Field>
+        <Field Name="CompanyAddr3">
+          <DataField>CompanyAddr3</DataField>
+        </Field>
+        <Field Name="CompanyAddr4">
+          <DataField>CompanyAddr4</DataField>
+        </Field>
+        <Field Name="CompanyInfoPhoneNo">
+          <DataField>CompanyInfoPhoneNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoHomePage">
+          <DataField>CompanyInfoHomePage</DataField>
+        </Field>
+        <Field Name="CompanyInfoEmail">
+          <DataField>CompanyInfoEmail</DataField>
+        </Field>
+        <Field Name="CompanyInfoFaxNo">
+          <DataField>CompanyInfoFaxNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoFax">
+          <DataField>CompanyInfoFax</DataField>
+        </Field>
+        <Field Name="CompanyInfoRCS">
+          <DataField>CompanyInfoRCS</DataField>
+        </Field>
+        <Field Name="CompanyInfoCA">
+          <DataField>CompanyInfoCA</DataField>
+        </Field>
+        <Field Name="CompanyInfoNIF">
+          <DataField>CompanyInfoNIF</DataField>
+        </Field>
+        <Field Name="CompanyInfoSTAT">
+          <DataField>CompanyInfoSTAT</DataField>
+        </Field>
+        <Field Name="EmailCaption">
+          <DataField>EmailCaption</DataField>
+        </Field>
+        <Field Name="DocumentDateCaption">
+          <DataField>DocumentDateCaption</DataField>
+        </Field>
+        <Field Name="FaxCaption">
+          <DataField>FaxCaption</DataField>
+        </Field>
+        <Field Name="ProductCodeCaption">
+          <DataField>ProductCodeCaption</DataField>
+        </Field>
+        <Field Name="DescriptionCaption">
+          <DataField>DescriptionCaption</DataField>
+        </Field>
+        <Field Name="QuantityCaption">
+          <DataField>QuantityCaption</DataField>
+        </Field>
+        <Field Name="UOMCaption">
+          <DataField>UOMCaption</DataField>
+        </Field>
+        <Field Name="LineNo">
+          <DataField>LineNo</DataField>
+        </Field>
+        <Field Name="LocationCaption">
+          <DataField>LocationCaption</DataField>
+        </Field>
+        <Field Name="MLigne">
+          <DataField>MLigne</DataField>
+        </Field>
+        <Field Name="MLigneFormat">
+          <DataField>MLigneFormat</DataField>
+        </Field>
+        <Field Name="PU">
+          <DataField>PU</DataField>
+        </Field>
+        <Field Name="MontantLigne">
+          <DataField>MontantLigne</DataField>
+        </Field>
+        <Field Name="TotalHT">
+          <DataField>TotalHT</DataField>
+        </Field>
+        <Field Name="TVA">
+          <DataField>TVA</DataField>
+        </Field>
+        <Field Name="MontantTTC">
+          <DataField>MontantTTC</DataField>
+        </Field>
+        <Field Name="Text002">
+          <DataField>Text002</DataField>
+        </Field>
+        <Field Name="FactureCaption">
+          <DataField>FactureCaption</DataField>
+        </Field>
+        <Field Name="TotalAmountLetter">
+          <DataField>TotalAmountLetter</DataField>
+        </Field>
+        <Field Name="MontantTTCC">
+          <DataField>MontantTTCC</DataField>
+        </Field>
+        <Field Name="MontantTTCCFormat">
+          <DataField>MontantTTCCFormat</DataField>
+        </Field>
+        <Field Name="MontantTVA">
+          <DataField>MontantTVA</DataField>
+        </Field>
+        <Field Name="MontantTVAFormat">
+          <DataField>MontantTVAFormat</DataField>
+        </Field>
+        <Field Name="ligne">
+          <DataField>ligne</DataField>
+        </Field>
+        <Field Name="ligneFormat">
+          <DataField>ligneFormat</DataField>
+        </Field>
+        <Field Name="SIHno">
+          <DataField>SIHno</DataField>
+        </Field>
+        <Field Name="SILno">
+          <DataField>SILno</DataField>
+        </Field>
+        <Field Name="totaln">
+          <DataField>totaln</DataField>
+        </Field>
+        <Field Name="totalnFormat">
+          <DataField>totalnFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

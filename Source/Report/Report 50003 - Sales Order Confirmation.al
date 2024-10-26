@@ -1,7 +1,7 @@
 report 50003 "Sales Order Confirmation"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Sales Order Confirmation.rdlc';
+    RDLCLayout = './Source/Report/Layout/Sales Order Confirmation.rdlc';
     Caption = 'Order Confirmation';
     PreviewMode = PrintLayout;
 
@@ -976,7 +976,8 @@ report 50003 "Sales Order Confirmation"
             begin
                 CompanyInfo.Get;
                 CompanyInfo.CalcFields(Picture);
-                CurrReport.Language := Language.GetLanguageID("Language Code");
+                //TODO
+                //CurrReport.Language := Language.GetLanguageID("Language Code");
 
                 /*IF RespCenter.GET("Responsibility Center") THEN BEGIN
                   FormatAddr.RespCenter(CompanyAddr,RespCenter);

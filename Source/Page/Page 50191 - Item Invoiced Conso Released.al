@@ -72,7 +72,7 @@ page 50191 "Item Invoiced Conso Released"
 
                 trigger OnAction()
                 begin
-                    ShowDocDim;
+                    Rec.ShowDocDim;
                     CurrPage.SaveRecord;
                 end;
             }
@@ -119,7 +119,7 @@ page 50191 "Item Invoiced Conso Released"
 
                 trigger OnAction()
                 begin
-                    Navigate;
+                    Rec.Navigate;
                 end;
             }
             action(PrintSortieStock)

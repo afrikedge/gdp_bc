@@ -1,7 +1,7 @@
 report 50053 "Lettrage A zero"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Lettrage A zero.rdlc';
+    RDLCLayout = './Source/Report/Layout/Lettrage A zero.rdlc';
     PreviewMode = PrintLayout;
 
     dataset

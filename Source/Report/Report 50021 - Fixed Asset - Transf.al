@@ -1,99 +1,99 @@
 report 50021 "Fixed Asset - Transf"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Fixed Asset - Transf.rdlc';
+    RDLCLayout = './Source/Report/Layout/Fixed Asset - Transf.rdlc';
     Caption = 'Fixed Asset - Transfert';
 
     dataset
     {
-        dataitem("Fixed Asset";"Fixed Asset")
+        dataitem("Fixed Asset"; "Fixed Asset")
         {
-            RequestFilterFields = "No.","FA Class Code","FA Subclass Code","Budgeted Asset";
-            column(CompanyName;CompanyName)
+            RequestFilterFields = "No.", "FA Class Code", "FA Subclass Code", "Budgeted Asset";
+            column(CompanyName; CompanyName)
             {
             }
-            column(DeprBookText;DeprBookText)
+            column(DeprBookText; DeprBookText)
             {
             }
-            column(FixAssetTableCaptFaFilter;TableCaption + ': ' + FAFilter)
+            column(FixAssetTableCaptFaFilter; TableCaption + ': ' + FAFilter)
             {
             }
-            column(No_FixedAsset;"No.")
+            column(No_FixedAsset; "No.")
             {
             }
-            column(Desc_FixedAsset;Description)
+            column(Desc_FixedAsset; Description)
             {
             }
-            column(LocCode_FixedAsset;"FA Location Name")
+            column(LocCode_FixedAsset; "FA Location Name")
             {
             }
-            column(RespEmp_FixedAsset;"Responsible Employee")
+            column(RespEmp_FixedAsset; "Responsible Employee")
             {
             }
-            column(SerialNo_FixedAsset;"Serial No.")
+            column(SerialNo_FixedAsset; "Serial No.")
             {
             }
-            column(FaDeprBookAcquDate;Format(FADeprBook."Acquisition Date"))
+            column(FaDeprBookAcquDate; Format(FADeprBook."Acquisition Date"))
             {
             }
-            column(FixedAssetAcqListCptn;FixedAssetAcqListCptnLbl)
+            column(FixedAssetAcqListCptn; FixedAssetAcqListCptnLbl)
             {
             }
-            column(CurrReportPageNoCaption;CurrReportPageNoCaptionLbl)
+            column(CurrReportPageNoCaption; CurrReportPageNoCaptionLbl)
             {
             }
-            column(FADeprBkAcquisitionDtCptn;FADeprBkAcquisitionDtCptnLbl)
+            column(FADeprBkAcquisitionDtCptn; FADeprBkAcquisitionDtCptnLbl)
             {
             }
-            column(MarqueCaption;MarqueCaptionLbl)
+            column(MarqueCaption; MarqueCaptionLbl)
             {
             }
-            column(TypeCaption;TypeCaptionLbl)
+            column(TypeCaption; TypeCaptionLbl)
             {
             }
-            column(NbreCaption;NbreCaptionLbl)
+            column(NbreCaption; NbreCaptionLbl)
             {
             }
-            column(DetenteurCaption;DetenteurCaptionLbl)
+            column(DetenteurCaption; DetenteurCaptionLbl)
             {
             }
-            column(OldLocCaption;OldLocCaptionLbl)
+            column(OldLocCaption; OldLocCaptionLbl)
             {
             }
-            column(NewLocCaption;NewLocCaptionLbl)
+            column(NewLocCaption; NewLocCaptionLbl)
             {
             }
-            column(ObservationCaption;ObservationCaptionLbl)
+            column(ObservationCaption; ObservationCaptionLbl)
             {
             }
-            column(CompanyInfo_Picture;CompanyInfo."Administrative Picture")
+            column(CompanyInfo_Picture; CompanyInfo."Administrative Picture")
             {
             }
-            column(Brand_FixedAsset;Brand)
+            column(Brand_FixedAsset; Brand)
             {
             }
-            column(FAType_FixedAsset;"FA Type")
+            column(FAType_FixedAsset; "FA Type")
             {
             }
-            column(FAOwner_FixedAsset;FAOwnerName)
+            column(FAOwner_FixedAsset; FAOwnerName)
             {
             }
-            column(Quantity_FixedAsset;Quantity)
+            column(Quantity_FixedAsset; Quantity)
             {
             }
-            column(StartupDate_FixedAsset;Format("Startup Date"))
+            column(StartupDate_FixedAsset; Format("Startup Date"))
             {
             }
-            column(Desc_FixedAssetCaption;Desc_FixedAssetCaptionLbl)
+            column(Desc_FixedAssetCaption; Desc_FixedAssetCaptionLbl)
             {
             }
-            column(FixedAssetNoCaption;FixedAssetNoCaptionLbl)
+            column(FixedAssetNoCaption; FixedAssetNoCaptionLbl)
             {
             }
-            column(GenerateNum;GenerateNum)
+            column(GenerateNum; GenerateNum)
             {
             }
-            column(Codification_FixedAsset;"Fixed Asset".Codification)
+            column(Codification_FixedAsset; "Fixed Asset".Codification)
             {
             }
 
@@ -111,16 +111,16 @@ report 50021 "Fixed Asset - Transf"
                   END ELSE
                     PrintFA := ("Fixed Asset"."Startup Date"=0D)
                 END;*/
-                
+
                 //PrintFA := ("Fixed Asset"."Startup Date"=0D);
-                
+
                 if not PrintFA then
-                  CurrReport.Skip;
-                
-                if "Fixed Asset"."FA Owner"<>'' then
-                  FAOwner.Get("Fixed Asset"."FA Owner");
+                    CurrReport.Skip;
+
+                if "Fixed Asset"."FA Owner" <> '' then
+                    FAOwner.Get("Fixed Asset"."FA Owner");
                 if FAOwner.FindFirst then
-                  FAOwnerName:=FAOwner.Name;
+                    FAOwnerName := FAOwner.Name;
                 CompanyInfo.Get;
                 CompanyInfo.CalcFields(Picture);
                 CompanyInfo.CalcFields("Administrative Picture");
@@ -130,7 +130,7 @@ report 50021 "Fixed Asset - Transf"
             trigger OnPostDataItem()
             begin
                 if not CurrReport.Preview then
-                  GenerateNum:=FAMgt.GenerateNosTransfer(true);
+                    GenerateNum := FAMgt.GenerateNosTransfer(true);
             end;
 
             trigger OnPreDataItem()
@@ -151,12 +151,12 @@ report 50021 "Fixed Asset - Transf"
                 group(Options)
                 {
                     Caption = 'Options';
-                    field(DeprBookCode;DeprBookCode)
+                    field(DeprBookCode; DeprBookCode)
                     {
                         Caption = 'Depreciation Book';
                         TableRelation = "Depreciation Book";
                     }
-                    field(FAWithoutAcqDate;FAWithoutAcqDate)
+                    field(FAWithoutAcqDate; FAWithoutAcqDate)
                     {
                         Caption = 'Include Fixed Assets Not Yet Acquired';
                     }
@@ -171,8 +171,8 @@ report 50021 "Fixed Asset - Transf"
         trigger OnOpenPage()
         begin
             if DeprBookCode = '' then begin
-              FASetup.Get;
-              DeprBookCode := FASetup."Default Depr. Book";
+                FASetup.Get;
+                DeprBookCode := FASetup."Default Depr. Book";
             end;
         end;
     }
@@ -203,9 +203,9 @@ report 50021 "Fixed Asset - Transf"
 
     trigger OnPreReport()
     begin
-        FAGenReport.AppendFAPostingFilter("Fixed Asset",StartingDate,EndingDate);
+        FAGenReport.AppendFAPostingFilter("Fixed Asset", StartingDate, EndingDate);
         FAFilter := "Fixed Asset".GetFilters;
-        DeprBookText := StrSubstNo('%1%2 %3',DeprBook.TableCaption,':',DeprBookCode);
+        DeprBookText := StrSubstNo('%1%2 %3', DeprBook.TableCaption, ':', DeprBookCode);
         //ValidateDates(StartingDate,EndingDate);
         //FAGenReport.ValidateDates(StartingDate,EndingDate);
     end;
@@ -243,16 +243,16 @@ report 50021 "Fixed Asset - Transf"
         GenerateNum: Code[20];
         FAMgt: Codeunit "FA Mgt";
 
-    local procedure ValidateDates(StartingDate: Date;EndingDate: Date)
+    local procedure ValidateDates(StartingDate: Date; EndingDate: Date)
     begin
         if StartingDate = 0D then
-          Error(Text001);
+            Error(Text001);
 
         if EndingDate = 0D then
-          Error(Text002);
+            Error(Text002);
 
         if StartingDate > EndingDate then
-          Error(Text003);
+            Error(Text003);
     end;
 }
 

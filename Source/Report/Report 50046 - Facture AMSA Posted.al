@@ -1,7 +1,7 @@
 report 50046 "Facture AMSA Posted"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Facture AMSA Posted.rdlc';
+    RDLCLayout = './Source/Report/Layout/Facture AMSA Posted.rdlc';
     PreviewMode = PrintLayout;
 
     dataset

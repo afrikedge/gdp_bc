@@ -1,7 +1,7 @@
 report 50049 "Sales  Cr Memo NC"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Sales  Cr Memo NC.rdlc';
+    RDLCLayout = './Source/Report/Layout/Sales  Cr Memo NC.rdlc';
     Caption = 'Sales - Credit Memo';
     Permissions = TableData "Sales Shipment Buffer" = rimd;
 

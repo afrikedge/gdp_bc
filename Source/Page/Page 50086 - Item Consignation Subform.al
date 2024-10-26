@@ -72,7 +72,7 @@ page 50086 "Item Consignation Subform"
 
                     trigger OnAction()
                     begin
-                        ShowDimensions;
+                        Rec.ShowDimensions;
                     end;
                 }
             }

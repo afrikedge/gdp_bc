@@ -158,9 +158,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                     reportProv.RUN;
                 end;
             }
-            separator()
-            {
-            }
+
             action(GenererProvFraisVente)
             {
                 Caption = 'Generate Sales order provisions';
@@ -283,9 +281,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                     reportProv.RUN;
                 end;
             }
-            separator()
-            {
-            }
+
             action(GenererEcrituresPaie)
             {
                 Caption = 'Import payroll journal';
@@ -318,7 +314,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 begin
                     //**********************************
                     CLEAR(XMLPortCard);
-                    XMLPortCard.SetFeuille(GETRANGEMAX("Journal Template Name"), GETRANGEMAX("Journal Batch Name"));
+                    XMLPortCard.SetFeuille(Rec.GETRANGEMAX("Journal Template Name"), Rec.GETRANGEMAX("Journal Batch Name"));
                     XMLPortCard.RUN;
                     //**********************************
                 end;
@@ -342,14 +338,14 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 end;
             }
         }
-        addafter(Comment)
-        {
-            action(TEST_FR_PASS)
-            {
-                Caption = 'TEST_FR_PASS';
-                RunObject = Report 50184;
-            }
-        }
+        // addafter(Comment)
+        // {
+        //     action(TEST_FR_PASS)
+        //     {
+        //         Caption = 'TEST_FR_PASS';
+        //         RunObject = Report 50184;
+        //     }
+        // }
     }
 }
 

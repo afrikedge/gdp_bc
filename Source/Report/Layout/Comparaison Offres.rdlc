@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="Condition">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Condition</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Condition</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ValOffre">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ValOffre</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ValOffre</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Dispo">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Dispo</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Dispo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PaiementMode">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PaiementMode</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PaiementMode</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Garantie">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Garantie</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Garantie</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Remark">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Remark</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Remark</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ValidationChoice">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ValidationChoice</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ValidationChoice</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Comm">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Comm</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Comm</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Compare">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Compare</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Compare</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Society">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Society</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Society</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Approuve">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Approuve</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Approuve</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PurchDept">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PurchDept</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PurchDept</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AutoriseBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>AutoriseBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>AutoriseBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Date">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Date</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Date</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="No_PurchRequis">
+          <DataField>No_PurchRequis</DataField>
+        </Field>
+        <Field Name="PurchType_PurchRequis">
+          <DataField>PurchType_PurchRequis</DataField>
+        </Field>
+        <Field Name="Descript_PurchRequis">
+          <DataField>Descript_PurchRequis</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+        <Field Name="No_PurchaseCaption">
+          <DataField>No_PurchaseCaption</DataField>
+        </Field>
+        <Field Name="DeptCaption">
+          <DataField>DeptCaption</DataField>
+        </Field>
+        <Field Name="PurchTypeCaption">
+          <DataField>PurchTypeCaption</DataField>
+        </Field>
+        <Field Name="OrderTypeCaption">
+          <DataField>OrderTypeCaption</DataField>
+        </Field>
+        <Field Name="DescriptCaption">
+          <DataField>DescriptCaption</DataField>
+        </Field>
+        <Field Name="VendorCaption">
+          <DataField>VendorCaption</DataField>
+        </Field>
+        <Field Name="QuoteCaption">
+          <DataField>QuoteCaption</DataField>
+        </Field>
+        <Field Name="ItemNameCaption">
+          <DataField>ItemNameCaption</DataField>
+        </Field>
+        <Field Name="QuantityCaption">
+          <DataField>QuantityCaption</DataField>
+        </Field>
+        <Field Name="UOMCaption">
+          <DataField>UOMCaption</DataField>
+        </Field>
+        <Field Name="UnitPriceCaption">
+          <DataField>UnitPriceCaption</DataField>
+        </Field>
+        <Field Name="TotalPriceCaption">
+          <DataField>TotalPriceCaption</DataField>
+        </Field>
+        <Field Name="TotalText">
+          <DataField>TotalText</DataField>
+        </Field>
+        <Field Name="TotalText2">
+          <DataField>TotalText2</DataField>
+        </Field>
+        <Field Name="RemittranceText">
+          <DataField>RemittranceText</DataField>
+        </Field>
+        <Field Name="OrderType">
+          <DataField>OrderType</DataField>
+        </Field>
+        <Field Name="No_PurchHeader">
+          <DataField>No_PurchHeader</DataField>
+        </Field>
+        <Field Name="VendorName">
+          <DataField>VendorName</DataField>
+        </Field>
+        <Field Name="OfferValidity">
+          <DataField>OfferValidity</DataField>
+        </Field>
+        <Field Name="Disponibility">
+          <DataField>Disponibility</DataField>
+        </Field>
+        <Field Name="PaymentTerm">
+          <DataField>PaymentTerm</DataField>
+        </Field>
+        <Field Name="VendorNo">
+          <DataField>VendorNo</DataField>
+        </Field>
+        <Field Name="TypeCommande">
+          <DataField>TypeCommande</DataField>
+        </Field>
+        <Field Name="NomDepartement">
+          <DataField>NomDepartement</DataField>
+        </Field>
+        <Field Name="DocumentNo_PurchLine">
+          <DataField>DocumentNo_PurchLine</DataField>
+        </Field>
+        <Field Name="LineNo_PurchLine">
+          <DataField>LineNo_PurchLine</DataField>
+        </Field>
+        <Field Name="No_PurchLine">
+          <DataField>No_PurchLine</DataField>
+        </Field>
+        <Field Name="Descript_PurchLine">
+          <DataField>Descript_PurchLine</DataField>
+        </Field>
+        <Field Name="Quantity_PurchLine">
+          <DataField>Quantity_PurchLine</DataField>
+        </Field>
+        <Field Name="Quantity_PurchLineFormat">
+          <DataField>Quantity_PurchLineFormat</DataField>
+        </Field>
+        <Field Name="UOM_PurchLine">
+          <DataField>UOM_PurchLine</DataField>
+        </Field>
+        <Field Name="Amount_PurchLine">
+          <DataField>Amount_PurchLine</DataField>
+        </Field>
+        <Field Name="Amount_PurchLineFormat">
+          <DataField>Amount_PurchLineFormat</DataField>
+        </Field>
+        <Field Name="DirectCost_PurchLine">
+          <DataField>DirectCost_PurchLine</DataField>
+        </Field>
+        <Field Name="DirectCost_PurchLineFormat">
+          <DataField>DirectCost_PurchLineFormat</DataField>
+        </Field>
+        <Field Name="LineAmount_PurchLine">
+          <DataField>LineAmount_PurchLine</DataField>
+        </Field>
+        <Field Name="LineAmount_PurchLineFormat">
+          <DataField>LineAmount_PurchLineFormat</DataField>
+        </Field>
+        <Field Name="Disponibility_PurchLine">
+          <DataField>Disponibility_PurchLine</DataField>
+        </Field>
+        <Field Name="Garanti_PurchLine">
+          <DataField>Garanti_PurchLine</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

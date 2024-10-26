@@ -16,7 +16,7 @@ pageextension 50035 pageextension70000075 extends "Item Reclass. Journal"
     {
         addafter("Get Bin Content")
         {
-            action("&Print")
+            action("Print2")
             {
                 Caption = '&Print';
                 Ellipsis = true;

@@ -96,7 +96,7 @@ page 50194 "Item Transfer"
 
                 trigger OnAction()
                 begin
-                    ShowDocDim;
+                    Rec.ShowDocDim;
                     CurrPage.SaveRecord;
                 end;
             }
@@ -133,7 +133,7 @@ page 50194 "Item Transfer"
 
                 trigger OnAction()
                 begin
-                    Navigate;
+                    Rec.navigate;
                 end;
             }
         }
@@ -181,7 +181,7 @@ page 50194 "Item Transfer"
                 begin
                     //*******************************
                     AdjH.SetRange(AdjH."Document Type", AdjH."Document Type"::Transfer);
-                    AdjH.SetRange(AdjH."No.", "No.");
+                    AdjH.SetRange(AdjH."No.", Rec."No.");
                     REPORT.RunModal(50038, true, false, AdjH);
                 end;
             }
@@ -208,7 +208,7 @@ page 50194 "Item Transfer"
     trigger OnAfterGetCurrRecord()
     begin
 
-        CanSeeExpedier := Status = Rec.Status::Open;
+        CanSeeExpedier := Rec.Status = Rec.Status::Open;
         CanSeeReceive := not CanSeeExpedier;
     end;
 

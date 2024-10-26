@@ -71,7 +71,7 @@ page 50100 "Posted Return Consignation"
 
                 trigger OnAction()
                 begin
-                    ShowDocDim;
+                    Rec.ShowDocDim;
                     CurrPage.SaveRecord;
                 end;
             }
@@ -131,7 +131,7 @@ page 50100 "Posted Return Consignation"
 
                 trigger OnAction()
                 begin
-                    Navigate;
+                    Rec.Navigate;
                 end;
             }
         }

@@ -1607,8 +1607,8 @@ page 50273 "Item Card Admin"
 
     local procedure EnableCostingControls()
     begin
-        StandardCostEnable := "Costing Method" = "Costing Method"::Standard;
-        UnitCostEnable := "Costing Method" <> "Costing Method"::Standard;
+        StandardCostEnable := Rec."Costing Method" = "Costing Method"::Standard;
+        UnitCostEnable := Rec."Costing Method" <> "Costing Method"::Standard;
     end;
 
     local procedure SetSocialListeningFactboxVisibility()

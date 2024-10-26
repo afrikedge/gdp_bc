@@ -1,7 +1,7 @@
 report 50020 "ND / NC Before"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './ND  NC Before.rdlc';
+    RDLCLayout = './Source/Report/Layout/ND  NC Before.rdlc';
     Caption = 'Debit-Credit Note';
     PreviewMode = PrintLayout;
 

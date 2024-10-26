@@ -2,57 +2,57 @@ xmlport 50016 "Import Permission Set"
 {
     Encoding = UTF8;
     Format = Xml;
-    TextEncoding = UTF8;
+    //TextEncoding = UTF8;
 
     schema
     {
         textelement(Permissions)
         {
-            tableelement("Permission Set";"Permission Set")
+            tableelement("Permission Set"; "Permission Set")
             {
                 XmlName = 'PermissionSet';
-                fieldattribute(Role;"Permission Set"."Role ID")
+                fieldattribute(Role; "Permission Set"."Role ID")
                 {
                 }
-                fieldattribute(Name;"Permission Set".Name)
+                fieldattribute(Name; "Permission Set".Name)
                 {
                 }
-                tableelement(Permission;Permission)
+                tableelement(Permission; Permission)
                 {
-                    LinkFields = "Role ID"=FIELD("Role ID"),"Role Name"=FIELD(Name);
+                    LinkFields = "Role ID" = FIELD("Role ID"), "Role Name" = FIELD(Name);
                     LinkTable = "Permission Set";
                     XmlName = 'Permissions';
-                    fieldattribute(RoleID;Permission."Role ID")
+                    fieldattribute(RoleID; Permission."Role ID")
                     {
                     }
-                    fieldattribute(RoleName;Permission."Role Name")
+                    fieldattribute(RoleName; Permission."Role Name")
                     {
                     }
-                    fieldattribute(ObjectType;Permission."Object Type")
+                    fieldattribute(ObjectType; Permission."Object Type")
                     {
                     }
-                    fieldattribute(ObjectID;Permission."Object ID")
+                    fieldattribute(ObjectID; Permission."Object ID")
                     {
                     }
-                    fieldattribute(ObjectName;Permission."Object Name")
+                    fieldattribute(ObjectName; Permission."Object Name")
                     {
                     }
-                    fieldattribute(ReadPermission;Permission."Read Permission")
+                    fieldattribute(ReadPermission; Permission."Read Permission")
                     {
                     }
-                    fieldattribute(InsertPermission;Permission."Insert Permission")
+                    fieldattribute(InsertPermission; Permission."Insert Permission")
                     {
                     }
-                    fieldattribute(ModifyPermission;Permission."Modify Permission")
+                    fieldattribute(ModifyPermission; Permission."Modify Permission")
                     {
                     }
-                    fieldattribute(DeletePermission;Permission."Delete Permission")
+                    fieldattribute(DeletePermission; Permission."Delete Permission")
                     {
                     }
-                    fieldattribute(ExecutePermission;Permission."Execute Permission")
+                    fieldattribute(ExecutePermission; Permission."Execute Permission")
                     {
                     }
-                    fieldattribute(SecurityFilter;Permission."Security Filter")
+                    fieldattribute(SecurityFilter; Permission."Security Filter")
                     {
                     }
                 }

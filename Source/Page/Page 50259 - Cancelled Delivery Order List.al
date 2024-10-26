@@ -68,9 +68,9 @@ page 50259 "Cancelled Delivery Order List"
         if UserMgt.GetSalesFilter <> '' then begin
             FiltreMag := SecMgt.GetFiltresMagasinsDispaching(UserMgt.GetSalesFilter);
             if FiltreMag <> '' then begin
-                FilterGroup(2);
-                SetFilter(Rec.depot, FiltreMag);
-                FilterGroup(0);
+                Rec.FilterGroup(2);
+                Rec.SetFilter(Rec.depot, FiltreMag);
+                Rec.FilterGroup(0);
             end;
         end;
     end;

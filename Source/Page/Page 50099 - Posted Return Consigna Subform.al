@@ -62,7 +62,7 @@ page 50099 "Posted Return Consigna Subform"
 
                     trigger OnAction()
                     begin
-                        ShowDimensions;
+                        Rec.ShowDimensions;
                     end;
                 }
             }

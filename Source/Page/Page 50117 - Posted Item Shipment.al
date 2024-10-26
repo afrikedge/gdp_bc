@@ -105,7 +105,7 @@ page 50117 "Posted Item Shipment"
 
                 trigger OnAction()
                 begin
-                    ShowDocDim;
+                    Rec.ShowDocDim;
                     CurrPage.SaveRecord;
                 end;
             }
@@ -150,7 +150,7 @@ page 50117 "Posted Item Shipment"
     var
         NavigateForm: Page Navigate;
     begin
-        NavigateForm.SetDoc("Posting Date", Rec."Posted Doc No");
+        NavigateForm.SetDoc(Rec."Posting Date", Rec."Posted Doc No");
         NavigateForm.Run;
     end;
 }

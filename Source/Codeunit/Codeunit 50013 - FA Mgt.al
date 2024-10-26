@@ -287,11 +287,11 @@ codeunit 50013 "FA Mgt"
         No[1] := No1;
         GenJrnLine1."Shortcut Dimension 1 Code" := '';
         GenJrnLine1."Shortcut Dimension 2 Code" := '';
-
-        exit(
-          DimMgt.GetDefaultDimID(
-            TableID, No, GenJrnLine1."Source Code",
-            GenJrnLine1."Shortcut Dimension 1 Code", GenJrnLine1."Shortcut Dimension 2 Code", 0, 0));
+        //TODO
+        // exit(
+        //   DimMgt.GetDefaultDimID(
+        //     TableID, No, GenJrnLine1."Source Code",
+        //     GenJrnLine1."Shortcut Dimension 1 Code", GenJrnLine1."Shortcut Dimension 2 Code", 0, 0));
     end;
 
     procedure GenerateNosTransfer(Update: Boolean): Code[20]

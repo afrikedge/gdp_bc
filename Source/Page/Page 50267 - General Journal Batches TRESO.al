@@ -204,7 +204,7 @@ page 50267 "General Journal Batches TRESO"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        SetupNewBatch;
+        Rec.SetupNewBatch;
     end;
 
     trigger OnOpenPage()
@@ -223,9 +223,9 @@ page 50267 "General Journal Batches TRESO"
         GenJnlTemplate: Record "Gen. Journal Template";
     begin
         if not CurrPage.LookupMode then
-            if GetFilter("Journal Template Name") <> '' then
-                if GetRangeMin("Journal Template Name") = GetRangeMax("Journal Template Name") then
-                    if GenJnlTemplate.Get(GetRangeMin("Journal Template Name")) then
+            if Rec.GetFilter("Journal Template Name") <> '' then
+                if Rec.GetRangeMin("Journal Template Name") = Rec.GetRangeMax("Journal Template Name") then
+                    if GenJnlTemplate.Get(Rec.GetRangeMin("Journal Template Name")) then
                         exit(GenJnlTemplate.Name + ' ' + GenJnlTemplate.Description);
     end;
 }

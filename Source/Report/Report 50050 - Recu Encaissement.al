@@ -1,7 +1,7 @@
 report 50050 "Recu Encaissement"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Recu Encaissement.rdlc';
+    RDLCLayout = './Source/Report/Layout/Recu Encaissement.rdlc';
     PreviewMode = PrintLayout;
 
     dataset

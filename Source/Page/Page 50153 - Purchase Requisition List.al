@@ -63,7 +63,7 @@ page 50153 "Purchase Requisition List"
 
     trigger OnAfterGetRecord()
     begin
-        ShowShortcutDimCode(ShortcutDimCode);
+        Rec.ShowShortcutDimCode(ShortcutDimCode);
     end;
 
     trigger OnOpenPage()
@@ -71,9 +71,9 @@ page 50153 "Purchase Requisition List"
 
         UserSetup.Get(UserId);
         if not UserSetup."Enlever Filtre Demande Achat" then begin
-            FilterGroup(2);
-            SetFilter(Rec."PR Type", '%1', ReqMgt.GetFiltreTypeDemandeAchat);
-            FilterGroup(0);
+            Rec.FilterGroup(2);
+            Rec.SetFilter(Rec."PR Type", '%1', ReqMgt.GetFiltreTypeDemandeAchat);
+            Rec.FilterGroup(0);
         end;
     end;
 

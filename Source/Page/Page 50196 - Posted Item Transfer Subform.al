@@ -72,7 +72,7 @@ page 50196 "Posted Item Transfer Subform"
 
                     trigger OnAction()
                     begin
-                        ShowDimensions;
+                        Rec.ShowDimensions;
                     end;
                 }
             }

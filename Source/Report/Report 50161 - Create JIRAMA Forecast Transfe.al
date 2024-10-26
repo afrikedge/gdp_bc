@@ -4,18 +4,18 @@ report 50161 "Create JIRAMA Forecast Transfe"
 
     dataset
     {
-        dataitem("Integer";"Integer")
+        dataitem("Integer"; "Integer")
         {
-            DataItemTableView = SORTING(Number) ORDER(Ascending) WHERE(Number=CONST(1));
+            DataItemTableView = SORTING(Number) ORDER(Ascending) WHERE(Number = CONST(1));
 
             trigger OnAfterGetRecord()
             begin
-                JIRAMAMgt.AddNewTransfert(ForecastNum,ToCodeClient,FromCodeClient,Volume,Descr,ToNomClient,FromNomClient,ToSite,FromSite);
+                JIRAMAMgt.AddNewTransfert(ForecastNum, ToCodeClient, FromCodeClient, Volume, Descr, ToNomClient, FromNomClient, ToSite, FromSite);
             end;
 
             trigger OnPreDataItem()
             begin
-                SetRange(Number,1);
+                SetRange(Number, 1);
             end;
         }
     }
@@ -27,7 +27,7 @@ report 50161 "Create JIRAMA Forecast Transfe"
         {
             area(content)
             {
-                field(FromCodeClient;FromCodeClient)
+                field(FromCodeClient; FromCodeClient)
                 {
                     Caption = 'Du code agence';
 
@@ -36,23 +36,22 @@ report 50161 "Create JIRAMA Forecast Transfe"
 
                         Cust.Reset;
                         Cust.SetCurrentKey(Cust."Sales Channel Code");
-                        Cust.SetRange(Cust."Sales Channel Code",AddOnSetup."JIRAMA Sales Channel");
-                        if PAGE.RunModal(22, Cust) = ACTION::LookupOK then
-                        begin
-                          Cust.TestField(Cust."Sales Channel Code",AddOnSetup."JIRAMA Sales Channel");
-                          Cust.TestField(Cust."Sales Category Code",AddOnSetup."PBL Sales Category");
-                          FromCodeClient := Cust."No.";
-                          FromNomClient := Cust.Name;
+                        Cust.SetRange(Cust."Sales Channel Code", AddOnSetup."JIRAMA Sales Channel");
+                        if PAGE.RunModal(22, Cust) = ACTION::LookupOK then begin
+                            Cust.TestField(Cust."Sales Channel Code", AddOnSetup."JIRAMA Sales Channel");
+                            Cust.TestField(Cust."Sales Category Code", AddOnSetup."PBL Sales Category");
+                            FromCodeClient := Cust."No.";
+                            FromNomClient := Cust.Name;
                         end;
                     end;
 
                     trigger OnValidate()
                     begin
                         if Cust.Get(FromCodeClient) then
-                          FromNomClient := Cust.Name;
+                            FromNomClient := Cust.Name;
                     end;
                 }
-                field(FromSite;FromSite)
+                field(FromSite; FromSite)
                 {
                     Caption = 'Du site';
 
@@ -61,26 +60,25 @@ report 50161 "Create JIRAMA Forecast Transfe"
                         ShipToAddress: Record "Ship-to Address";
                     begin
                         ShipToAddress.Reset;
-                        ShipToAddress.SetRange("Customer No.",FromCodeClient);
-                        if PAGE.RunModal(301, ShipToAddress) = ACTION::LookupOK then
-                        begin
-                          //Cust.TESTFIELD(Cust."Sales Channel Code",AddOnSetup."JIRAMA Sales Channel");
-                          //Cust.TESTFIELD(Cust."Sales Category Code",AddOnSetup."PBL Sales Category");
-                          FromSite := ShipToAddress.Code;
+                        ShipToAddress.SetRange("Customer No.", FromCodeClient);
+                        if PAGE.RunModal(301, ShipToAddress) = ACTION::LookupOK then begin
+                            //Cust.TESTFIELD(Cust."Sales Channel Code",AddOnSetup."JIRAMA Sales Channel");
+                            //Cust.TESTFIELD(Cust."Sales Category Code",AddOnSetup."PBL Sales Category");
+                            FromSite := ShipToAddress.Code;
 
                         end;
                     end;
                 }
-                field(FromNomClient;FromNomClient)
+                field(FromNomClient; FromNomClient)
                 {
                     Caption = 'Nom de l''agence (Origine)';
                     Editable = false;
                 }
-                field(Volume;Volume)
+                field(Volume; Volume)
                 {
                     Caption = 'Volume à transférer';
                 }
-                field(ToCodeClient;ToCodeClient)
+                field(ToCodeClient; ToCodeClient)
                 {
                     Caption = 'Vers code agence';
 
@@ -89,23 +87,22 @@ report 50161 "Create JIRAMA Forecast Transfe"
 
                         Cust.Reset;
                         Cust.SetCurrentKey(Cust."Sales Channel Code");
-                        Cust.SetRange(Cust."Sales Channel Code",AddOnSetup."JIRAMA Sales Channel");
-                        if PAGE.RunModal(22, Cust) = ACTION::LookupOK then
-                        begin
-                          Cust.TestField(Cust."Sales Channel Code",AddOnSetup."JIRAMA Sales Channel");
-                          Cust.TestField(Cust."Sales Category Code",AddOnSetup."PBL Sales Category");
-                          ToCodeClient := Cust."No.";
-                          ToNomClient := Cust.Name;
+                        Cust.SetRange(Cust."Sales Channel Code", AddOnSetup."JIRAMA Sales Channel");
+                        if PAGE.RunModal(22, Cust) = ACTION::LookupOK then begin
+                            Cust.TestField(Cust."Sales Channel Code", AddOnSetup."JIRAMA Sales Channel");
+                            Cust.TestField(Cust."Sales Category Code", AddOnSetup."PBL Sales Category");
+                            ToCodeClient := Cust."No.";
+                            ToNomClient := Cust.Name;
                         end;
                     end;
 
                     trigger OnValidate()
                     begin
                         if Cust.Get(ToCodeClient) then
-                          ToNomClient := Cust.Name;
+                            ToNomClient := Cust.Name;
                     end;
                 }
-                field(ToSite;ToSite)
+                field(ToSite; ToSite)
                 {
                     Caption = 'Vers le site';
 
@@ -114,22 +111,21 @@ report 50161 "Create JIRAMA Forecast Transfe"
                         ShipToAddress: Record "Ship-to Address";
                     begin
                         ShipToAddress.Reset;
-                        ShipToAddress.SetRange(ShipToAddress."Customer No.",ToCodeClient);
-                        if PAGE.RunModal(301, ShipToAddress) = ACTION::LookupOK then
-                        begin
-                          //Cust.TESTFIELD(Cust."Sales Channel Code",AddOnSetup."JIRAMA Sales Channel");
-                          //Cust.TESTFIELD(Cust."Sales Category Code",AddOnSetup."PBL Sales Category");
-                          ToSite := ShipToAddress.Code;
+                        ShipToAddress.SetRange(ShipToAddress."Customer No.", ToCodeClient);
+                        if PAGE.RunModal(301, ShipToAddress) = ACTION::LookupOK then begin
+                            //Cust.TESTFIELD(Cust."Sales Channel Code",AddOnSetup."JIRAMA Sales Channel");
+                            //Cust.TESTFIELD(Cust."Sales Category Code",AddOnSetup."PBL Sales Category");
+                            ToSite := ShipToAddress.Code;
 
                         end;
                     end;
                 }
-                field(ToNomClient;ToNomClient)
+                field(ToNomClient; ToNomClient)
                 {
                     Caption = 'Nom de l''agence (Destination)';
                     Editable = false;
                 }
-                field(Descr;Descr)
+                field(Descr; Descr)
                 {
                     Caption = 'Description';
                 }
@@ -144,9 +140,9 @@ report 50161 "Create JIRAMA Forecast Transfe"
                 {
                     Caption = 'Valider le transfert de quota';
                     Image = PostDocument;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedIsBig = true;
+                    // Promoted = true;
+                    // PromotedCategory = Process;
+                    // PromotedIsBig = true;
                 }
             }
         }

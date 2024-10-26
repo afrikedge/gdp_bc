@@ -1,7 +1,7 @@
 report 50031 "Bon livraison Dispatching"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Bon livraison Dispatching.rdlc';
+    RDLCLayout = './Source/Report/Layout/Bon livraison Dispatching.rdlc';
     PDFFontEmbedding = Yes;
     PreviewMode = PrintLayout;
 

@@ -655,13 +655,13 @@ page 50043 "Params Setup"
                 Promoted = false;
                 RunObject = XMLport importRoles;
             }
-            action(UpdateCargoEntries)
-            {
-                Image = Import;
-                Promoted = false;
-                RunObject = Report "Update Cargo Entries1";
-                Visible = false;
-            }
+            // action(UpdateCargoEntries)
+            // {
+            //     Image = Import;
+            //     Promoted = false;
+            //     RunObject = Report "Update Cargo Entries1";
+            //     Visible = false;
+            // }
             action("View Licence Objects")
             {
                 Caption = 'View Licence Objects';

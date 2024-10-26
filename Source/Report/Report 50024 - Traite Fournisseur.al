@@ -1,7 +1,7 @@
 report 50024 "Traite Fournisseur"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Traite Fournisseur.rdlc';
+    RDLCLayout = './Source/Report/Layout/Traite Fournisseur.rdlc';
     EnableExternalImages = true;
     PreviewMode = PrintLayout;
 
@@ -209,7 +209,7 @@ report 50024 "Traite Fournisseur"
                 Vend.Get("Gen. Journal Line"."Account No.");
                 NbTLet.InitTextVariable;
                 //TODO Montants
-                NbTLet.FormatNoTextFR(TotalAmountLetter, "Gen. Journal Line".Amount, "Gen. Journal Line"."Currency Code");
+                //NbTLet.FormatNoTextFR(TotalAmountLetter, "Gen. Journal Line".Amount, "Gen. Journal Line"."Currency Code");
 
                 FormatAddr.Company(CompanyAddr, Company);
 

@@ -63,9 +63,9 @@ page 50155 "Posted Purch Requisition List"
 
         UserSetup.Get(UserId);
         if not UserSetup."Enlever Filtre Demande Achat" then begin
-            FilterGroup(2);
-            SetFilter(Rec."PO Type", '%1', ReqMgt.GetFiltreTypeCommandeAchat);
-            FilterGroup(0);
+            Rec.FilterGroup(2);
+            Rec.SetFilter(Rec."PO Type", '%1', ReqMgt.GetFiltreTypeCommandeAchat);
+            Rec.FilterGroup(0);
         end;
     end;
 

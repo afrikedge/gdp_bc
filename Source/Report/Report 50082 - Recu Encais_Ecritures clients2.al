@@ -1,7 +1,7 @@
 report 50082 "Recu Encais_Ecritures clients2"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Recu Encais_Ecritures clients2.rdlc';
+    RDLCLayout = './Source/Report/Layout/Recu Encais_Ecritures clients2.rdlc';
     PreviewMode = PrintLayout;
 
     dataset

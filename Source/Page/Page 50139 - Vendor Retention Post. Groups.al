@@ -42,7 +42,7 @@ page 50139 "Vendor Retention Post. Groups"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Retention Group" := true;
+        Rec."Retention Group" := true;
     end;
 }
 

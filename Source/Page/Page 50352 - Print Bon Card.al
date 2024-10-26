@@ -68,9 +68,9 @@ page 50352 "Print Bon Card"
                     //EnteteBL.SETRANGE(numBL,Rec.numBL);
                     //REPORT.RUN(REPORT::"Bon livraison Dispatching",TRUE, FALSE,EnteteBL);
 
-                    PrintCrystal.PrintBL(numBL);
+                    PrintCrystal.PrintBL(Rec.numBL);
 
-                    RelatedBL.Get(numBL);
+                    RelatedBL.Get(Rec.numBL);
                     if not RelatedBL.Imprime then begin
                         RelatedBL.Imprime := true;
                         RelatedBL."Last Printed Date" := CreateDateTime(Today, Time);

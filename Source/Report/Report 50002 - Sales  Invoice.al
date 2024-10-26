@@ -1,7 +1,7 @@
 report 50002 "Sales  Invoice"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Sales  Invoice.rdlc';
+    RDLCLayout = './Source/Report/Layout/Sales  Invoice.rdlc';
     Caption = 'Sales - Invoice';
     PDFFontEmbedding = Yes;
     Permissions = TableData "Sales Shipment Buffer" = rimd;
@@ -911,7 +911,8 @@ report 50002 "Sales  Invoice"
                 SalesInvLineLocation: Record "Sales Invoice Line";
                 CondPaiem: Record "Payment Terms";
             begin
-                CurrReport.Language := Language.GetLanguageID("Language Code");
+                //TODO
+                //CurrReport.Language := Language.GetLanguageID("Language Code");
 
                 /*IF RespCenter.GET("Responsibility Center") THEN BEGIN
                   FormatAddr.RespCenter(CompanyAddr,RespCenter);
@@ -1528,7 +1529,7 @@ report 50002 "Sales  Invoice"
                 TempLineFeeNoteOnReportHist.Insert;
             until LineFeeNoteOnReportHist.Next = 0;
         end else begin
-            LineFeeNoteOnReportHist.SetRange("Language Code", Language.GetUserLanguage);
+            //LineFeeNoteOnReportHist.SetRange("Language Code", Language.GetUserLanguage);
             if LineFeeNoteOnReportHist.FindSet then
                 repeat
                     TempLineFeeNoteOnReportHist.Init;

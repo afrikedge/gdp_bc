@@ -1,7 +1,7 @@
 report 50060 "Facture AMSA Fixe"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Facture AMSA Fixe.rdlc';
+    RDLCLayout = './Source/Report/Layout/Facture AMSA Fixe.rdlc';
     PreviewMode = PrintLayout;
 
     dataset

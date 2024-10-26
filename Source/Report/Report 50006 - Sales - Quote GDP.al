@@ -1,7 +1,7 @@
 report 50006 "Sales - Quote GDP"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Sales - Quote GDP.rdlc';
+    RDLCLayout = './Source/Report/Layout/Sales - Quote GDP.rdlc';
     Caption = 'Sales - Quote';
     PreviewMode = PrintLayout;
 

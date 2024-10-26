@@ -1,7 +1,7 @@
 report 50014 "Return Order GDP"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Return Order GDP.rdlc';
+    RDLCLayout = './Source/Report/Layout/Return Order GDP.rdlc';
     Caption = 'Return Order';
     PreviewMode = PrintLayout;
 

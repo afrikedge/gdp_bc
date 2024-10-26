@@ -1,7 +1,7 @@
 report 50040 "Note de Debit Fournisseur"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Note de Debit Fournisseur.rdlc';
+    RDLCLayout = './Source/Report/Layout/Note de Debit Fournisseur.rdlc';
     Caption = 'Vendor Debit Note';
     PreviewMode = PrintLayout;
 
@@ -199,7 +199,7 @@ report 50040 "Note de Debit Fournisseur"
 
                 NbTLet.InitTextVariable;
                 //TODO Montants
-                NbTLet.FormatNoTextFR(TotalAmountLetter, Abs(Amount), "Vendor Ledger Entry"."Currency Code");
+                //NbTLet.FormatNoTextFR(TotalAmountLetter, Abs(Amount), "Vendor Ledger Entry"."Currency Code");
             end;
         }
     }

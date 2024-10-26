@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="BonSort">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>BonSort</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>BonSort</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PrepareBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PrepareBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PrepareBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Client">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Client</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Client</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ApproveBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ApproveBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ApproveBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text10">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text10</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text10</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text1">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text1</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="MagasinierLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>MagasinierLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>MagasinierLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="NomSignCachetLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>NomSignCachetLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>NomSignCachetLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="NumDoclbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>NumDoclbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>NumDoclbl</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="PhoneNoCaption">
+          <DataField>PhoneNoCaption</DataField>
+        </Field>
+        <Field Name="JournalTempName_ItemJournalBatch">
+          <DataField>JournalTempName_ItemJournalBatch</DataField>
+        </Field>
+        <Field Name="Name_ItemJournalBatch">
+          <DataField>Name_ItemJournalBatch</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="TodayFormatted">
+          <DataField>TodayFormatted</DataField>
+        </Field>
+        <Field Name="Time">
+          <DataField>Time</DataField>
+        </Field>
+        <Field Name="ShipmentNoCaption">
+          <DataField>ShipmentNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+        <Field Name="CompanyAddr1">
+          <DataField>CompanyAddr1</DataField>
+        </Field>
+        <Field Name="CompanyAddr2">
+          <DataField>CompanyAddr2</DataField>
+        </Field>
+        <Field Name="CompanyAddr3">
+          <DataField>CompanyAddr3</DataField>
+        </Field>
+        <Field Name="CompanyAddr4">
+          <DataField>CompanyAddr4</DataField>
+        </Field>
+        <Field Name="CompanyInfoPhoneNo">
+          <DataField>CompanyInfoPhoneNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoHomePage">
+          <DataField>CompanyInfoHomePage</DataField>
+        </Field>
+        <Field Name="CompanyInfoEmail">
+          <DataField>CompanyInfoEmail</DataField>
+        </Field>
+        <Field Name="CompanyInfoFaxNo">
+          <DataField>CompanyInfoFaxNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoFax">
+          <DataField>CompanyInfoFax</DataField>
+        </Field>
+        <Field Name="CompanyInfoRCS">
+          <DataField>CompanyInfoRCS</DataField>
+        </Field>
+        <Field Name="CompanyInfoCA">
+          <DataField>CompanyInfoCA</DataField>
+        </Field>
+        <Field Name="CompanyInfoNIF">
+          <DataField>CompanyInfoNIF</DataField>
+        </Field>
+        <Field Name="CompanyInfoSTAT">
+          <DataField>CompanyInfoSTAT</DataField>
+        </Field>
+        <Field Name="EmailCaption">
+          <DataField>EmailCaption</DataField>
+        </Field>
+        <Field Name="DocumentDateCaption">
+          <DataField>DocumentDateCaption</DataField>
+        </Field>
+        <Field Name="FaxCaption">
+          <DataField>FaxCaption</DataField>
+        </Field>
+        <Field Name="ProductCodeCaption">
+          <DataField>ProductCodeCaption</DataField>
+        </Field>
+        <Field Name="DescriptionCaption">
+          <DataField>DescriptionCaption</DataField>
+        </Field>
+        <Field Name="QuantityCaption">
+          <DataField>QuantityCaption</DataField>
+        </Field>
+        <Field Name="UOMCaption">
+          <DataField>UOMCaption</DataField>
+        </Field>
+        <Field Name="LocationCaption">
+          <DataField>LocationCaption</DataField>
+        </Field>
+        <Field Name="StrTitre1">
+          <DataField>StrTitre1</DataField>
+        </Field>
+        <Field Name="AdresseClient1">
+          <DataField>AdresseClient1</DataField>
+        </Field>
+        <Field Name="EnteteSignature">
+          <DataField>EnteteSignature</DataField>
+        </Field>
+        <Field Name="MoyenTransfert">
+          <DataField>MoyenTransfert</DataField>
+        </Field>
+        <Field Name="EnteteClient">
+          <DataField>EnteteClient</DataField>
+        </Field>
+        <Field Name="CodeClient">
+          <DataField>CodeClient</DataField>
+        </Field>
+        <Field Name="NomClient">
+          <DataField>NomClient</DataField>
+        </Field>
+        <Field Name="AdresseClient2">
+          <DataField>AdresseClient2</DataField>
+        </Field>
+        <Field Name="LineNo">
+          <DataField>LineNo</DataField>
+        </Field>
+        <Field Name="JournalTempName_ItemJournalLine">
+          <DataField>JournalTempName_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="JournalBatchName_ItemJournalLine">
+          <DataField>JournalBatchName_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="UOM_ItemJournalLine">
+          <DataField>UOM_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="Qty_ItemJournalLine">
+          <DataField>Qty_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="Qty_ItemJournalLineFormat">
+          <DataField>Qty_ItemJournalLineFormat</DataField>
+        </Field>
+        <Field Name="BinCode_ItemJournalLine">
+          <DataField>BinCode_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="LocationCode_ItemJournalLine">
+          <DataField>LocationCode_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="VariantCode_ItemJournalLine">
+          <DataField>VariantCode_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="Description_ItemJournalLine">
+          <DataField>Description_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="ItemNo_ItemJournalLine">
+          <DataField>ItemNo_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="PostingDate_ItemJournalLine">
+          <DataField>PostingDate_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="EntryType_ItemJournalLine">
+          <DataField>EntryType_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="QuantityBase_ItemJournalLine">
+          <DataField>QuantityBase_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="QuantityBase_ItemJournalLineFormat">
+          <DataField>QuantityBase_ItemJournalLineFormat</DataField>
+        </Field>
+        <Field Name="QuantityFormat">
+          <DataField>QuantityFormat</DataField>
+        </Field>
+        <Field Name="QuantityFormatFormat">
+          <DataField>QuantityFormatFormat</DataField>
+        </Field>
+        <Field Name="NewBinCode_ItemJournalLine">
+          <DataField>NewBinCode_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="NewLocationCode_ItemJournalLine">
+          <DataField>NewLocationCode_ItemJournalLine</DataField>
+        </Field>
+        <Field Name="QuantityBaseFormat">
+          <DataField>QuantityBaseFormat</DataField>
+        </Field>
+        <Field Name="QuantityBaseFormatFormat">
+          <DataField>QuantityBaseFormatFormat</DataField>
+        </Field>
+        <Field Name="DocumentNo_ItemJournalLine">
+          <DataField>DocumentNo_ItemJournalLine</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

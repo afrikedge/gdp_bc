@@ -101,7 +101,7 @@ page 50344 "Cancelled Bon List"
         if UserMgt.GetSalesFilter <> '' then begin
             FiltreMag := SecMgt.GetFiltresMagasinsDispaching(UserMgt.GetSalesFilter);
             if FiltreMag <> '' then begin
-                FRec.ilterGroup(2);
+                Rec.filterGroup(2);
                 Rec.SetFilter(Rec.depot, FiltreMag);
                 Rec.FilterGroup(0);
             end;

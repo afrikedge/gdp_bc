@@ -1,7 +1,7 @@
 report 50048 "Sales  Invoice ND"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Sales  Invoice ND.rdlc';
+    RDLCLayout = './Source/Report/Layout/Sales  Invoice ND.rdlc';
     Caption = 'Sales - ND';
     PDFFontEmbedding = Yes;
     Permissions = TableData "Sales Shipment Buffer" = rimd;
@@ -1529,7 +1529,8 @@ report 50048 "Sales  Invoice ND"
                 TempLineFeeNoteOnReportHist.Insert;
             until LineFeeNoteOnReportHist.Next = 0;
         end else begin
-            LineFeeNoteOnReportHist.SetRange("Language Code", Language.GetUserLanguage);
+            //TODO
+            //LineFeeNoteOnReportHist.SetRange("Language Code", Language.GetUserLanguage);
             if LineFeeNoteOnReportHist.FindSet then
                 repeat
                     TempLineFeeNoteOnReportHist.Init;

@@ -293,7 +293,7 @@ codeunit 50019 "GL Mgt"
     begin
         //********************************************************************
         //TODO
-        OpenFromBatch := true;
+        //OpenFromBatch := true;
         GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
         GenJnlTemplate.TestField("Page ID");
         GenJnlBatch.TestField(Name);
@@ -315,7 +315,7 @@ codeunit 50019 "GL Mgt"
     begin
         //********************************************************************
         //TODO
-        OpenFromBatch := true;
+        //OpenFromBatch := true;
         GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
         GenJnlTemplate.TestField("Page ID");
         GenJnlBatch.TestField(Name);
@@ -337,7 +337,7 @@ codeunit 50019 "GL Mgt"
     begin
         //********************************************************************
         //TODO
-        OpenFromBatch := true;
+        //OpenFromBatch := true;
         GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
         GenJnlTemplate.TestField("Page ID");
         GenJnlBatch.TestField(Name);

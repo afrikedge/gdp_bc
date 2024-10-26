@@ -62,11 +62,11 @@ page 50071 "Complex Transfer Order Subform"
                     var
                         TransRcptLine: Record "Transfer Receipt Line";
                     begin
-                        TestField("Document No.");
-                        TestField("Item No.");
+                        Rec.TestField("Document No.");
+                        Rec.TestField("Item No.");
                         TransRcptLine.SetCurrentKey("Transfer Order No.", "Item No.", "Receipt Date");
-                        TransRcptLine.SetRange("Transfer Order No.", "Document No.");
-                        TransRcptLine.SetRange("Item No.", "Item No.");
+                        TransRcptLine.SetRange("Transfer Order No.", Rec."Document No.");
+                        TransRcptLine.SetRange("Item No.", Rec."Item No.");
                         PAGE.RunModal(0, TransRcptLine);
                     end;
                 }
@@ -119,7 +119,7 @@ page 50071 "Complex Transfer Order Subform"
 
                     trigger OnValidate()
                     begin
-                        ValidateShortcutDimCode(3, ShortcutDimCode[3]);
+                        Rec.ValidateShortcutDimCode(3, ShortcutDimCode[3]);
                     end;
                 }
                 field("ShortcutDimCode[4]"; ShortcutDimCode[4])
@@ -133,7 +133,7 @@ page 50071 "Complex Transfer Order Subform"
 
                     trigger OnValidate()
                     begin
-                        ValidateShortcutDimCode(4, ShortcutDimCode[4]);
+                        Rec.ValidateShortcutDimCode(4, ShortcutDimCode[4]);
                     end;
                 }
                 field("ShortcutDimCode[5]"; ShortcutDimCode[5])
@@ -147,7 +147,7 @@ page 50071 "Complex Transfer Order Subform"
 
                     trigger OnValidate()
                     begin
-                        ValidateShortcutDimCode(5, ShortcutDimCode[5]);
+                        Rec.ValidateShortcutDimCode(5, ShortcutDimCode[5]);
                     end;
                 }
                 field("ShortcutDimCode[6]"; ShortcutDimCode[6])
@@ -161,7 +161,7 @@ page 50071 "Complex Transfer Order Subform"
 
                     trigger OnValidate()
                     begin
-                        ValidateShortcutDimCode(6, ShortcutDimCode[6]);
+                        Rec.ValidateShortcutDimCode(6, ShortcutDimCode[6]);
                     end;
                 }
                 field("ShortcutDimCode[7]"; ShortcutDimCode[7])
@@ -175,7 +175,7 @@ page 50071 "Complex Transfer Order Subform"
 
                     trigger OnValidate()
                     begin
-                        ValidateShortcutDimCode(7, ShortcutDimCode[7]);
+                        Rec.ValidateShortcutDimCode(7, ShortcutDimCode[7]);
                     end;
                 }
                 field("ShortcutDimCode[8]"; ShortcutDimCode[8])
@@ -189,7 +189,7 @@ page 50071 "Complex Transfer Order Subform"
 
                     trigger OnValidate()
                     begin
-                        ValidateShortcutDimCode(8, ShortcutDimCode[8]);
+                        Rec.ValidateShortcutDimCode(8, ShortcutDimCode[8]);
                     end;
                 }
                 field("Qty Ambient Volume"; Rec."Qty Ambient Volume")
@@ -214,8 +214,8 @@ page 50071 "Complex Transfer Order Subform"
 
                     trigger OnAction()
                     begin
-                        Find;
-                        ShowReservation;
+                        Rec.Find;
+                        Rec.ShowReservation;
                     end;
                 }
             }
@@ -288,7 +288,7 @@ page 50071 "Complex Transfer Order Subform"
 
                     trigger OnAction()
                     begin
-                        ShowDimensions;
+                        Rec.ShowDimensions;
                     end;
                 }
                 group("Item &Tracking Lines")
@@ -302,7 +302,7 @@ page 50071 "Complex Transfer Order Subform"
 
                         trigger OnAction()
                         begin
-                            OpenItemTrackingLines(0);
+                            Rec.OpenItemTrackingLines(0);
                         end;
                     }
                     action(Receipt)
@@ -312,7 +312,7 @@ page 50071 "Complex Transfer Order Subform"
 
                         trigger OnAction()
                         begin
-                            OpenItemTrackingLines(1);
+                            Rec.OpenItemTrackingLines(1);
                         end;
                     }
                 }
@@ -322,7 +322,7 @@ page 50071 "Complex Transfer Order Subform"
 
     trigger OnAfterGetRecord()
     begin
-        ShowShortcutDimCode(ShortcutDimCode);
+        Rec.ShowShortcutDimCode(ShortcutDimCode);
     end;
 
     trigger OnDeleteRecord(): Boolean

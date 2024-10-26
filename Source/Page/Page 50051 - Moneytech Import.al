@@ -130,8 +130,8 @@ page 50051 "Moneytech Import"
 
                 trigger OnAction()
                 begin
-                    MoneyTech.SetFilter("No.", Rec."No.");
-                    REPORT.Run(REPORT::"ND/NC MT Before Post", true, false, MoneyTech);
+                    // MoneyTech.SetFilter("No.", Rec."No.");
+                    // REPORT.Run(REPORT::"ND/NC MT Before Post", true, false, MoneyTech);
                 end;
             }
         }

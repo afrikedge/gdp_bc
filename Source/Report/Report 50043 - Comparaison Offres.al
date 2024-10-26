@@ -1,159 +1,160 @@
 report 50043 "Comparaison Offres"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Comparaison Offres.rdlc';
+    RDLCLayout = './Source/Report/Layout/Comparaison Offres.rdlc';
 
     dataset
     {
-        dataitem("Purchase Requisition";"Purchase Requisition")
+        dataitem("Purchase Requisition"; "Purchase Requisition")
         {
             RequestFilterFields = "No.";
-            column(No_PurchRequis;"No.")
+            column(No_PurchRequis; "No.")
             {
             }
-            column(PurchType_PurchRequis;"Purchase Type")
+            column(PurchType_PurchRequis; "Purchase Type")
             {
             }
-            column(Descript_PurchRequis;Description)
+            column(Descript_PurchRequis; Description)
             {
             }
-            column(CompanyInfo_Picture;CompanyInfo.Picture)
+            column(CompanyInfo_Picture; CompanyInfo.Picture)
             {
             }
-            column(No_PurchaseCaption;No_PurchaseCaption)
+            column(No_PurchaseCaption; No_PurchaseCaption)
             {
             }
-            column(DeptCaption;DeptCaption)
+            column(DeptCaption; DeptCaption)
             {
             }
-            column(PurchTypeCaption;PurchTypeCaption)
+            column(PurchTypeCaption; PurchTypeCaption)
             {
             }
-            column(OrderTypeCaption;OrderTypeCaption)
+            column(OrderTypeCaption; OrderTypeCaption)
             {
             }
-            column(DescriptCaption;DescriptCaption)
+            column(DescriptCaption; DescriptCaption)
             {
             }
-            column(VendorCaption;VendorCaption)
+            column(VendorCaption; VendorCaption)
             {
             }
-            column(QuoteCaption;QuoteCaption)
+            column(QuoteCaption; QuoteCaption)
             {
             }
-            column(ItemNameCaption;ItemNameCaption)
+            column(ItemNameCaption; ItemNameCaption)
             {
             }
-            column(QuantityCaption;QuantityCaption)
+            column(QuantityCaption; QuantityCaption)
             {
             }
-            column(UOMCaption;UOMCaption)
+            column(UOMCaption; UOMCaption)
             {
             }
-            column(UnitPriceCaption;UnitPriceCaption)
+            column(UnitPriceCaption; UnitPriceCaption)
             {
             }
-            column(TotalPriceCaption;TotalPriceCaption)
+            column(TotalPriceCaption; TotalPriceCaption)
             {
             }
-            column(TotalText;TotalText)
+            column(TotalText; TotalText)
             {
             }
-            column(TotalText2;TotalText2)
+            column(TotalText2; TotalText2)
             {
             }
-            column(RemittranceText;RemittranceText)
+            column(RemittranceText; RemittranceText)
             {
             }
-            column(OrderType;"Purchase Requisition"."Order Type")
+            column(OrderType; "Purchase Requisition"."Order Type")
             {
             }
-            dataitem("Purchase Header";"Purchase Header")
+            dataitem("Purchase Header"; "Purchase Header")
             {
-                column(No_PurchHeader;"Purchase Header"."Vendor Order No.")
+                column(No_PurchHeader; "Purchase Header"."Vendor Order No.")
                 {
                 }
-                column(VendorName;"Buy-from Vendor Name")
+                column(VendorName; "Buy-from Vendor Name")
                 {
                 }
-                column(OfferValidity;"Validity Offer")
+                column(OfferValidity; "Validity Offer")
                 {
                 }
-                column(Disponibility;"PR Type")
+                column(Disponibility; "PR Type")
                 {
                 }
-                column(PaymentTerm;PaymName)
+                column(PaymentTerm; PaymName)
                 {
                 }
-                column(VendorNo;"Buy-from Vendor No.")
+                column(VendorNo; "Buy-from Vendor No.")
                 {
                 }
-                column(TypeCommande;Format("PO Type"))
+                column(TypeCommande; Format("PO Type"))
                 {
                 }
-                column(NomDepartement;NomDepartement)
+                column(NomDepartement; NomDepartement)
                 {
                 }
-                dataitem("Purchase Line";"Purchase Line")
+                dataitem("Purchase Line"; "Purchase Line")
                 {
-                    DataItemLink = "Document No."=FIELD("No.");
-                    column(DocumentNo_PurchLine;"Document No.")
+                    DataItemLink = "Document No." = FIELD("No.");
+                    column(DocumentNo_PurchLine; "Document No.")
                     {
                     }
-                    column(LineNo_PurchLine;"Line No.")
+                    column(LineNo_PurchLine; "Line No.")
                     {
                     }
-                    column(No_PurchLine;"No.")
+                    column(No_PurchLine; "No.")
                     {
                     }
-                    column(Descript_PurchLine;Description)
+                    column(Descript_PurchLine; Description)
                     {
                     }
-                    column(Quantity_PurchLine;Quantity)
+                    column(Quantity_PurchLine; Quantity)
                     {
                     }
-                    column(UOM_PurchLine;"Unit of Measure")
+                    column(UOM_PurchLine; "Unit of Measure")
                     {
                     }
-                    column(Amount_PurchLine;Amount)
+                    column(Amount_PurchLine; Amount)
                     {
                     }
-                    column(DirectCost_PurchLine;"Direct Unit Cost")
+                    column(DirectCost_PurchLine; "Direct Unit Cost")
                     {
                     }
-                    column(LineAmount_PurchLine;"Line Amount")
+                    column(LineAmount_PurchLine; "Line Amount")
                     {
                     }
-                    column(Disponibility_PurchLine;"Purchase Line"."Disponibility 2")
+                    column(Disponibility_PurchLine; "Purchase Line"."Disponibility 2")
                     {
                     }
-                    column(Garanti_PurchLine;"Starting Warranty")
+                    column(Garanti_PurchLine; "Starting Warranty")
                     {
                     }
                 }
 
                 trigger OnAfterGetRecord()
                 begin
-                    PaymName:='';
-                    if "Payment Terms Code" <>'' then begin
-                      PaymTerm.Get("Payment Terms Code");
-                      PaymName:=PaymTerm.Description;
+                    PaymName := '';
+                    if "Payment Terms Code" <> '' then begin
+                        PaymTerm.Get("Payment Terms Code");
+                        PaymName := PaymTerm.Description;
                     end;
                 end;
 
                 trigger OnPreDataItem()
                 begin
-                    "Purchase Header".SetRange("Code Demande","Purchase Requisition"."No.");
-                    "Purchase Header".SetRange("Document Type","Document Type"::Quote);
+                    "Purchase Header".SetRange("Code Demande", "Purchase Requisition"."No.");
+                    "Purchase Header".SetRange("Document Type", "Document Type"::Quote);
                     if "Purchase Header".FindFirst then;
                 end;
             }
 
             trigger OnAfterGetRecord()
             begin
-                NomDepartement:='';
-                  if Dept.Get("Purchase Requisition"."Department Code") then
-                    NomDepartement := Dept.Name;
+                NomDepartement := '';
+                //TODO
+                //   if Dept.Get("Purchase Requisition"."Department Code") then
+                //     NomDepartement := Dept.Name;
             end;
         }
     }
@@ -215,6 +216,6 @@ report 50043 "Comparaison Offres"
         PaymName: Text;
         NomDepartement: Text[50];
         PurchReq: Record "Purchase Requisition";
-        Dept: Record Subdirection;
+    //Dept: Record Subdirection;
 }
 

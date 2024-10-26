@@ -1,7 +1,7 @@
 report 50007 "Note de Debit/Note de Credit"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Note de DebitNote de Credit.rdlc';
+    RDLCLayout = './Source/Report/Layout/Note de DebitNote de Credit.rdlc';
     Caption = 'Debit-Credit Note';
     PreviewMode = PrintLayout;
 

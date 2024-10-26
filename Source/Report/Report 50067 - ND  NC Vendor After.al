@@ -1,7 +1,7 @@
 report 50067 "ND / NC Vendor After"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './ND  NC Vendor After.rdlc';
+    RDLCLayout = './Source/Report/Layout/ND  NC Vendor After.rdlc';
     Caption = 'Debit-Credit Note';
     PreviewMode = PrintLayout;
 

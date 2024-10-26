@@ -81,8 +81,8 @@ page 50055 "Posted Moneytech Import"
 
                 trigger OnAction()
                 begin
-                    MoneyTech.SetFilter("No.", Rec."No.");
-                    REPORT.Run(REPORT::"ND/NC MT After Post", true, false, MoneyTech);
+                    // MoneyTech.SetFilter("No.", Rec."No.");
+                    // REPORT.Run(REPORT::"ND/NC MT After Post", true, false, MoneyTech);
                 end;
             }
         }

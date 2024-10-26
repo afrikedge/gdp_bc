@@ -124,7 +124,7 @@ page 50130 "Item Cargo Entries List"
 
                 trigger OnAction()
                 begin
-                    Navigate.SetDoc("Posting Date", "Document No.");
+                    Navigate.SetDoc(Rec."Posting Date", Rec."Document No.");
                     Navigate.Run;
                 end;
             }
@@ -199,7 +199,7 @@ page 50130 "Item Cargo Entries List"
 
                 trigger OnAction()
                 begin
-                    ShowDimensions;
+                    Rec.ShowDimensions;
                     CurrPage.SaveRecord;
                 end;
             }
