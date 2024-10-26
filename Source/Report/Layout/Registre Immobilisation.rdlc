@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="code">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>code</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>code</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Desc">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Desc</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Desc</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Acqui_Date">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Acqui_Date</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Acqui_Date</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="TauxCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>TauxCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>TauxCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Cap">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Cap</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Cap</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Amort">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Amort</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Amort</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Val_Res">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Val_Res</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Val_Res</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PerAmort">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PerAmort</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PerAmort</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Adjust">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Adjust</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Adjust</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CpteImmo">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CpteImmo</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CpteImmo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CpteAmort">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CpteAmort</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CpteAmort</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Projet">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Projet</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Projet</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Empl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Empl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Empl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Codif">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Codif</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Codif</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Titre">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Titre</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Titre</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="FA_No">
+          <DataField>FA_No</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="Acquisition_Date">
+          <DataField>Acquisition_Date</DataField>
+        </Field>
+        <Field Name="Acquisition_Cost">
+          <DataField>Acquisition_Cost</DataField>
+        </Field>
+        <Field Name="Acquisition_CostFormat">
+          <DataField>Acquisition_CostFormat</DataField>
+        </Field>
+        <Field Name="Taux">
+          <DataField>Taux</DataField>
+        </Field>
+        <Field Name="TauxFormat">
+          <DataField>TauxFormat</DataField>
+        </Field>
+        <Field Name="Valeur_Comptable">
+          <DataField>Valeur_Comptable</DataField>
+        </Field>
+        <Field Name="Valeur_ComptableFormat">
+          <DataField>Valeur_ComptableFormat</DataField>
+        </Field>
+        <Field Name="Reevaluation">
+          <DataField>Reevaluation</DataField>
+        </Field>
+        <Field Name="ReevaluationFormat">
+          <DataField>ReevaluationFormat</DataField>
+        </Field>
+        <Field Name="Depreciation_Cost">
+          <DataField>Depreciation_Cost</DataField>
+        </Field>
+        <Field Name="Depreciation_CostFormat">
+          <DataField>Depreciation_CostFormat</DataField>
+        </Field>
+        <Field Name="PeriodAmort">
+          <DataField>PeriodAmort</DataField>
+        </Field>
+        <Field Name="PeriodAmortFormat">
+          <DataField>PeriodAmortFormat</DataField>
+        </Field>
+        <Field Name="CptImmo">
+          <DataField>CptImmo</DataField>
+        </Field>
+        <Field Name="CptAmort">
+          <DataField>CptAmort</DataField>
+        </Field>
+        <Field Name="Location_Name">
+          <DataField>Location_Name</DataField>
+        </Field>
+        <Field Name="Codification">
+          <DataField>Codification</DataField>
+        </Field>
+        <Field Name="CurrReportPageNoCaption">
+          <DataField>CurrReportPageNoCaption</DataField>
+        </Field>
+        <Field Name="Code_Projet">
+          <DataField>Code_Projet</DataField>
+        </Field>
+        <Field Name="DateDebutPeriod">
+          <DataField>DateDebutPeriod</DataField>
+        </Field>
+        <Field Name="DateFinPeriod">
+          <DataField>DateFinPeriod</DataField>
+        </Field>
+        <Field Name="AmortissementPeriode">
+          <DataField>AmortissementPeriode</DataField>
+        </Field>
+        <Field Name="AmortissementPeriodeFormat">
+          <DataField>AmortissementPeriodeFormat</DataField>
+        </Field>
+        <Field Name="aff">
+          <DataField>aff</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

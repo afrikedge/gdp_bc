@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="BonRet">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>BonRet</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>BonRet</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PrepareBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PrepareBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PrepareBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="VerifyBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>VerifyBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>VerifyBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AutoriseBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>AutoriseBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>AutoriseBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text10">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text10</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text10</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="No_ReturnShipmentHeader">
+          <DataField>No_ReturnShipmentHeader</DataField>
+        </Field>
+        <Field Name="DocNoCaption">
+          <DataField>DocNoCaption</DataField>
+        </Field>
+        <Field Name="NoCaption">
+          <DataField>NoCaption</DataField>
+        </Field>
+        <Field Name="DocDateCaption">
+          <DataField>DocDateCaption</DataField>
+        </Field>
+        <Field Name="PurchReturnShpCaption">
+          <DataField>PurchReturnShpCaption</DataField>
+        </Field>
+        <Field Name="CompanyAddr1">
+          <DataField>CompanyAddr1</DataField>
+        </Field>
+        <Field Name="CompanyAddr2">
+          <DataField>CompanyAddr2</DataField>
+        </Field>
+        <Field Name="CompanyAddr3">
+          <DataField>CompanyAddr3</DataField>
+        </Field>
+        <Field Name="CompanyAddr4">
+          <DataField>CompanyAddr4</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+        <Field Name="CompanyInfoEmail">
+          <DataField>CompanyInfoEmail</DataField>
+        </Field>
+        <Field Name="CompanyInfoPhoneNo">
+          <DataField>CompanyInfoPhoneNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoFax">
+          <DataField>CompanyInfoFax</DataField>
+        </Field>
+        <Field Name="CompanyInfoRCS">
+          <DataField>CompanyInfoRCS</DataField>
+        </Field>
+        <Field Name="CompanyInfoCA">
+          <DataField>CompanyInfoCA</DataField>
+        </Field>
+        <Field Name="CompanyInfoNIF">
+          <DataField>CompanyInfoNIF</DataField>
+        </Field>
+        <Field Name="CompanyInfoSTAT">
+          <DataField>CompanyInfoSTAT</DataField>
+        </Field>
+        <Field Name="DocDate_ReturnShpHeader">
+          <DataField>DocDate_ReturnShpHeader</DataField>
+        </Field>
+        <Field Name="PurchaserText">
+          <DataField>PurchaserText</DataField>
+        </Field>
+        <Field Name="SalesPurchPersonName">
+          <DataField>SalesPurchPersonName</DataField>
+        </Field>
+        <Field Name="ReferenceText">
+          <DataField>ReferenceText</DataField>
+        </Field>
+        <Field Name="YourReference_ReturnShpHdr">
+          <DataField>YourReference_ReturnShpHdr</DataField>
+        </Field>
+        <Field Name="CompanyAddr5">
+          <DataField>CompanyAddr5</DataField>
+        </Field>
+        <Field Name="CompanyAddr6">
+          <DataField>CompanyAddr6</DataField>
+        </Field>
+        <Field Name="BuyfromVendNo_ReturnShpHdr">
+          <DataField>BuyfromVendNo_ReturnShpHdr</DataField>
+        </Field>
+        <Field Name="BuyfromVendNo_ReturnShpHdrCaption">
+          <DataField>BuyfromVendNo_ReturnShpHdrCaption</DataField>
+        </Field>
+        <Field Name="ShipToAddr1">
+          <DataField>ShipToAddr1</DataField>
+        </Field>
+        <Field Name="ShipToAddr2">
+          <DataField>ShipToAddr2</DataField>
+        </Field>
+        <Field Name="ShipToAddr3">
+          <DataField>ShipToAddr3</DataField>
+        </Field>
+        <Field Name="ShipToAddr4">
+          <DataField>ShipToAddr4</DataField>
+        </Field>
+        <Field Name="ShipToAddr5">
+          <DataField>ShipToAddr5</DataField>
+        </Field>
+        <Field Name="ShipToAddr6">
+          <DataField>ShipToAddr6</DataField>
+        </Field>
+        <Field Name="ShipToAddr7">
+          <DataField>ShipToAddr7</DataField>
+        </Field>
+        <Field Name="ShipToAddr8">
+          <DataField>ShipToAddr8</DataField>
+        </Field>
+        <Field Name="PageCaption">
+          <DataField>PageCaption</DataField>
+        </Field>
+        <Field Name="OutputNo">
+          <DataField>OutputNo</DataField>
+        </Field>
+        <Field Name="PhoneNoCaption">
+          <DataField>PhoneNoCaption</DataField>
+        </Field>
+        <Field Name="FaxCaption">
+          <DataField>FaxCaption</DataField>
+        </Field>
+        <Field Name="EmailCaption">
+          <DataField>EmailCaption</DataField>
+        </Field>
+        <Field Name="DocumentDataCaption">
+          <DataField>DocumentDataCaption</DataField>
+        </Field>
+        <Field Name="VendAddr1">
+          <DataField>VendAddr1</DataField>
+        </Field>
+        <Field Name="VendAddr2">
+          <DataField>VendAddr2</DataField>
+        </Field>
+        <Field Name="VendAddr3">
+          <DataField>VendAddr3</DataField>
+        </Field>
+        <Field Name="VendAddr4">
+          <DataField>VendAddr4</DataField>
+        </Field>
+        <Field Name="VendAddr5">
+          <DataField>VendAddr5</DataField>
+        </Field>
+        <Field Name="VendAddr6">
+          <DataField>VendAddr6</DataField>
+        </Field>
+        <Field Name="VendAddr7">
+          <DataField>VendAddr7</DataField>
+        </Field>
+        <Field Name="VendAddr8">
+          <DataField>VendAddr8</DataField>
+        </Field>
+        <Field Name="PayToVendorNo">
+          <DataField>PayToVendorNo</DataField>
+        </Field>
+        <Field Name="DimText">
+          <DataField>DimText</DataField>
+        </Field>
+        <Field Name="Number_Integer">
+          <DataField>Number_Integer</DataField>
+        </Field>
+        <Field Name="HeaderDimensionsCaption">
+          <DataField>HeaderDimensionsCaption</DataField>
+        </Field>
+        <Field Name="TypeInt">
+          <DataField>TypeInt</DataField>
+        </Field>
+        <Field Name="ShowInternalInfo">
+          <DataField>ShowInternalInfo</DataField>
+        </Field>
+        <Field Name="Description_ReturnShpLine">
+          <DataField>Description_ReturnShpLine</DataField>
+        </Field>
+        <Field Name="UOM_ReturnShpLine">
+          <DataField>UOM_ReturnShpLine</DataField>
+        </Field>
+        <Field Name="Qty_ReturnShipmentLine">
+          <DataField>Qty_ReturnShipmentLine</DataField>
+        </Field>
+        <Field Name="Qty_ReturnShipmentLineFormat">
+          <DataField>Qty_ReturnShipmentLineFormat</DataField>
+        </Field>
+        <Field Name="No_ReturnShipmentLine">
+          <DataField>No_ReturnShipmentLine</DataField>
+        </Field>
+        <Field Name="LineNo_ReturnShipmentLine">
+          <DataField>LineNo_ReturnShipmentLine</DataField>
+        </Field>
+        <Field Name="UOM_ReturnShpLineCaption">
+          <DataField>UOM_ReturnShpLineCaption</DataField>
+        </Field>
+        <Field Name="Qty_ReturnShipmentLineCaption">
+          <DataField>Qty_ReturnShipmentLineCaption</DataField>
+        </Field>
+        <Field Name="Description_ReturnShpLineCaption">
+          <DataField>Description_ReturnShpLineCaption</DataField>
+        </Field>
+        <Field Name="No_ReturnShipmentLineCaption">
+          <DataField>No_ReturnShipmentLineCaption</DataField>
+        </Field>
+        <Field Name="DimText_DimensionLoop2">
+          <DataField>DimText_DimensionLoop2</DataField>
+        </Field>
+        <Field Name="Number_DimensionLoop2">
+          <DataField>Number_DimensionLoop2</DataField>
+        </Field>
+        <Field Name="LineDimensionsCaption">
+          <DataField>LineDimensionsCaption</DataField>
+        </Field>
+        <Field Name="BuyFromVendorNo">
+          <DataField>BuyFromVendorNo</DataField>
+        </Field>
+        <Field Name="PayToVendorNo_Total2">
+          <DataField>PayToVendorNo_Total2</DataField>
+        </Field>
+        <Field Name="PaytoAddressCaption">
+          <DataField>PaytoAddressCaption</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

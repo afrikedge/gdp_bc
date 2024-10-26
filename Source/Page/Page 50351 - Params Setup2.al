@@ -1,0 +1,112 @@
+page 50351 "Params Setup2"
+{
+    DeleteAllowed = false;
+    InsertAllowed = false;
+    PageType = List;
+    SourceTable = "AddOn Setup2";
+
+    layout
+    {
+        area(content)
+        {
+            repeater(Group)
+            {
+                field(PGPExeFileTempPath; Rec.PGPExeFileTempPath)
+                {
+                }
+                field(ActivateDispachingLogging; Rec.ActivateDispachingLogging)
+                {
+                }
+                field("Vendor Inv Doc Series"; Rec."Vendor Inv Doc Series")
+                {
+                }
+                field("User DAF"; Rec."User DAF")
+                {
+                }
+                field("Interim User DAF"; Rec."Interim User DAF")
+                {
+                }
+                field("Activate Interim DAF"; Rec."Activate Interim DAF")
+                {
+                }
+                field("Email Vend Invoice Refusal"; Rec."Email Vend Invoice Refusal")
+                {
+                }
+                field("Desactiver Controle Camion"; Rec."Desactiver Controle Camion")
+                {
+                }
+                field("Email Avis Paiement"; Rec."Email Avis Paiement")
+                {
+                }
+                field("Fee Redevance VAT%"; Rec."Fee Redevance VAT%")
+                {
+                }
+                field("Activate Jirama Site UP"; Rec."Activate Jirama Site UP")
+                {
+                }
+                field("Email CC Relance"; Rec."Email CC Relance")
+                {
+                }
+                field("Def Prepmt. Payment Terms Code"; Rec."Def Prepmt. Payment Terms Code")
+                {
+                }
+                field("Galitt NC Gerant Prepaid"; Rec."Galitt NC Gerant Prepaid")
+                {
+                }
+                field("Galitt ND Gerant Prepaid"; Rec."Galitt ND Gerant Prepaid")
+                {
+                }
+                field("Galitt NC Gerant Postpaid"; Rec."Galitt NC Gerant Postpaid")
+                {
+                }
+                field("Galitt ND Gerant Postpaid"; Rec."Galitt ND Gerant Postpaid")
+                {
+                }
+                field("Galitt NC Gerant GPRO"; Rec."Galitt NC Gerant GPRO")
+                {
+                }
+                field("Galitt ND Gerant GPRO"; Rec."Galitt ND Gerant GPRO")
+                {
+                }
+                field("Desactivate Provisions Ctrl"; Rec."Desactivate Provisions Ctrl")
+                {
+                }
+                field("Galitt Facture Mensue Postpaid"; Rec."Galitt Facture Mensue Postpaid")
+                {
+                }
+                field("Supplier blocking period Month"; Rec."Supplier blocking period Month")
+                {
+                }
+                field("Block zero unit cost"; Rec."Block zero unit cost")
+                {
+                }
+                field("Galitt Fact Men Postpaid GPRO"; Rec."Galitt Fact Men Postpaid GPRO")
+                {
+                }
+            }
+        }
+    }
+
+    actions
+    {
+        area(processing)
+        {
+            action("Solder Commandes Achat (Avec contrôle)")
+            {
+                Caption = 'Solder Commandes Achat (Avec contrôle)';
+                Image = "Action";
+                RunObject = XMLport "Archive SO With Control";
+            }
+            action("Solder Commandes Achat (Sans contrôle)")
+            {
+                Caption = 'Solder Commandes Achat (Sans contrôle)';
+                Image = DeleteAllBreakpoints;
+                RunObject = XMLport "Archive Cdes Achat Force";
+            }
+        }
+    }
+
+    var
+        testAnnulation: Codeunit "SQL Mgt";
+}
+

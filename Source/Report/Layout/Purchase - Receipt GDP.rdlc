@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="BonRec">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>BonRec</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>BonRec</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PrepareBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PrepareBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PrepareBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="VerifyBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>VerifyBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>VerifyBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AutoriseBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>AutoriseBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>AutoriseBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="NbrFact">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>NbrFact</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>NbrFact</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text10">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text10</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text10</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="No_PurchRcptHeader">
+          <DataField>No_PurchRcptHeader</DataField>
+        </Field>
+        <Field Name="DocDateCaption">
+          <DataField>DocDateCaption</DataField>
+        </Field>
+        <Field Name="DescCaption">
+          <DataField>DescCaption</DataField>
+        </Field>
+        <Field Name="QtyCaption">
+          <DataField>QtyCaption</DataField>
+        </Field>
+        <Field Name="UOMCaption">
+          <DataField>UOMCaption</DataField>
+        </Field>
+        <Field Name="PaytoVenNoCaption">
+          <DataField>PaytoVenNoCaption</DataField>
+        </Field>
+        <Field Name="EmailCaption">
+          <DataField>EmailCaption</DataField>
+        </Field>
+        <Field Name="DocNoCaption">
+          <DataField>DocNoCaption</DataField>
+        </Field>
+        <Field Name="NoCaption">
+          <DataField>NoCaption</DataField>
+        </Field>
+        <Field Name="OrderNo">
+          <DataField>OrderNo</DataField>
+        </Field>
+        <Field Name="OrderCaption">
+          <DataField>OrderCaption</DataField>
+        </Field>
+        <Field Name="FirstApprover_FullName">
+          <DataField>FirstApprover_FullName</DataField>
+        </Field>
+        <Field Name="FirstApprover_UserName">
+          <DataField>FirstApprover_UserName</DataField>
+        </Field>
+        <Field Name="FirstApproverDate">
+          <DataField>FirstApproverDate</DataField>
+        </Field>
+        <Field Name="PurchRcptCopyText">
+          <DataField>PurchRcptCopyText</DataField>
+        </Field>
+        <Field Name="CurrentReportPageNo">
+          <DataField>CurrentReportPageNo</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+        <Field Name="CompanyInfoEmail">
+          <DataField>CompanyInfoEmail</DataField>
+        </Field>
+        <Field Name="CompanyInfoPhoneNo">
+          <DataField>CompanyInfoPhoneNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoFax">
+          <DataField>CompanyInfoFax</DataField>
+        </Field>
+        <Field Name="CompanyInfoRCS">
+          <DataField>CompanyInfoRCS</DataField>
+        </Field>
+        <Field Name="CompanyInfoCA">
+          <DataField>CompanyInfoCA</DataField>
+        </Field>
+        <Field Name="CompanyInfoNIF">
+          <DataField>CompanyInfoNIF</DataField>
+        </Field>
+        <Field Name="CompanyInfoSTAT">
+          <DataField>CompanyInfoSTAT</DataField>
+        </Field>
+        <Field Name="ShipToAddr1">
+          <DataField>ShipToAddr1</DataField>
+        </Field>
+        <Field Name="CompanyAddr1">
+          <DataField>CompanyAddr1</DataField>
+        </Field>
+        <Field Name="ShipToAddr2">
+          <DataField>ShipToAddr2</DataField>
+        </Field>
+        <Field Name="CompanyAddr2">
+          <DataField>CompanyAddr2</DataField>
+        </Field>
+        <Field Name="ShipToAddr3">
+          <DataField>ShipToAddr3</DataField>
+        </Field>
+        <Field Name="CompanyAddr3">
+          <DataField>CompanyAddr3</DataField>
+        </Field>
+        <Field Name="ShipToAddr4">
+          <DataField>ShipToAddr4</DataField>
+        </Field>
+        <Field Name="CompanyAddr4">
+          <DataField>CompanyAddr4</DataField>
+        </Field>
+        <Field Name="ShipToAddr5">
+          <DataField>ShipToAddr5</DataField>
+        </Field>
+        <Field Name="ShipToAddr6">
+          <DataField>ShipToAddr6</DataField>
+        </Field>
+        <Field Name="CompanyInfoHomePage">
+          <DataField>CompanyInfoHomePage</DataField>
+        </Field>
+        <Field Name="DocDate_PurchRcptHeader">
+          <DataField>DocDate_PurchRcptHeader</DataField>
+        </Field>
+        <Field Name="PurchaserText">
+          <DataField>PurchaserText</DataField>
+        </Field>
+        <Field Name="SalesPurchPersonName">
+          <DataField>SalesPurchPersonName</DataField>
+        </Field>
+        <Field Name="No1_PurchRcptHeader">
+          <DataField>No1_PurchRcptHeader</DataField>
+        </Field>
+        <Field Name="ReferenceText">
+          <DataField>ReferenceText</DataField>
+        </Field>
+        <Field Name="YourRef_PurchRcptHeader">
+          <DataField>YourRef_PurchRcptHeader</DataField>
+        </Field>
+        <Field Name="ShipToAddr7">
+          <DataField>ShipToAddr7</DataField>
+        </Field>
+        <Field Name="ShipToAddr8">
+          <DataField>ShipToAddr8</DataField>
+        </Field>
+        <Field Name="CompanyAddr5">
+          <DataField>CompanyAddr5</DataField>
+        </Field>
+        <Field Name="CompanyAddr6">
+          <DataField>CompanyAddr6</DataField>
+        </Field>
+        <Field Name="OutputNo">
+          <DataField>OutputNo</DataField>
+        </Field>
+        <Field Name="PhoneNoCaption">
+          <DataField>PhoneNoCaption</DataField>
+        </Field>
+        <Field Name="FaxCaption">
+          <DataField>FaxCaption</DataField>
+        </Field>
+        <Field Name="HomePageCaption">
+          <DataField>HomePageCaption</DataField>
+        </Field>
+        <Field Name="AccNoCaption">
+          <DataField>AccNoCaption</DataField>
+        </Field>
+        <Field Name="ShipmentNoCaption">
+          <DataField>ShipmentNoCaption</DataField>
+        </Field>
+        <Field Name="PaytoVenNo_PurchRcptHeader">
+          <DataField>PaytoVenNo_PurchRcptHeader</DataField>
+        </Field>
+        <Field Name="VendAddr1">
+          <DataField>VendAddr1</DataField>
+        </Field>
+        <Field Name="VendAddr2">
+          <DataField>VendAddr2</DataField>
+        </Field>
+        <Field Name="VendAddr3">
+          <DataField>VendAddr3</DataField>
+        </Field>
+        <Field Name="VendAddr4">
+          <DataField>VendAddr4</DataField>
+        </Field>
+        <Field Name="VendAddr5">
+          <DataField>VendAddr5</DataField>
+        </Field>
+        <Field Name="VendAddr6">
+          <DataField>VendAddr6</DataField>
+        </Field>
+        <Field Name="VendAddr7">
+          <DataField>VendAddr7</DataField>
+        </Field>
+        <Field Name="VendAddr8">
+          <DataField>VendAddr8</DataField>
+        </Field>
+        <Field Name="ShowInternalInfo">
+          <DataField>ShowInternalInfo</DataField>
+        </Field>
+        <Field Name="Type_PurchRcptLine">
+          <DataField>Type_PurchRcptLine</DataField>
+        </Field>
+        <Field Name="Desc_PurchRcptLine">
+          <DataField>Desc_PurchRcptLine</DataField>
+        </Field>
+        <Field Name="Qty_PurchRcptLine">
+          <DataField>Qty_PurchRcptLine</DataField>
+        </Field>
+        <Field Name="Qty_PurchRcptLineFormat">
+          <DataField>Qty_PurchRcptLineFormat</DataField>
+        </Field>
+        <Field Name="UOM_PurchRcptLine">
+          <DataField>UOM_PurchRcptLine</DataField>
+        </Field>
+        <Field Name="No_PurchRcptLine">
+          <DataField>No_PurchRcptLine</DataField>
+        </Field>
+        <Field Name="DocNo_PurchRcptLine">
+          <DataField>DocNo_PurchRcptLine</DataField>
+        </Field>
+        <Field Name="LineNo_PurchRcptLine">
+          <DataField>LineNo_PurchRcptLine</DataField>
+        </Field>
+        <Field Name="No_PurchRcptLineCaption">
+          <DataField>No_PurchRcptLineCaption</DataField>
+        </Field>
+        <Field Name="BuyfromVenNo_PurchRcptHeader">
+          <DataField>BuyfromVenNo_PurchRcptHeader</DataField>
+        </Field>
+        <Field Name="BuyfromVenNo_PurchRcptHeaderCaption">
+          <DataField>BuyfromVenNo_PurchRcptHeaderCaption</DataField>
+        </Field>
+        <Field Name="PaytoAddrCaption">
+          <DataField>PaytoAddrCaption</DataField>
+        </Field>
+        <Field Name="PaytoVenNo_PurchRcptHeaderCaption">
+          <DataField>PaytoVenNo_PurchRcptHeaderCaption</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

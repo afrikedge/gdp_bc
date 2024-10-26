@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="RespAchat">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>RespAchat</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>RespAchat</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Mag">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Mag</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Mag</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Det">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Det</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Det</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CSImm">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CSImm</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CSImm</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CDCom">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CDCom</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CDCom</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Obj">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Obj</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Obj</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Num">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Num</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Num</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Date">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Date</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Date</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Ref">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Ref</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Ref</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text005">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text005</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text005</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text006">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text006</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text006</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text007">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text007</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text007</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text008">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text008</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text008</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text009">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text009</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text009</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Version">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Version</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Version</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DateVersion">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>DateVersion</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>DateVersion</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Page">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Page</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Page</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Code">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Code</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Code</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text010">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text010</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text010</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text011">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text011</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text011</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text012">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text012</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text012</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="No_FixedAssetCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>No_FixedAssetCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>No_FixedAssetCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LocCode_FixedAssetCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LocCode_FixedAssetCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LocCode_FixedAssetCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="RespEmp_FixedAssetCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>RespEmp_FixedAssetCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>RespEmp_FixedAssetCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SerialNo_FixedAssetCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>SerialNo_FixedAssetCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>SerialNo_FixedAssetCaption</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="DeprBookText">
+          <DataField>DeprBookText</DataField>
+        </Field>
+        <Field Name="FixAssetTableCaptFaFilter">
+          <DataField>FixAssetTableCaptFaFilter</DataField>
+        </Field>
+        <Field Name="No_FixedAsset">
+          <DataField>No_FixedAsset</DataField>
+        </Field>
+        <Field Name="Desc_FixedAsset">
+          <DataField>Desc_FixedAsset</DataField>
+        </Field>
+        <Field Name="LocCode_FixedAsset">
+          <DataField>LocCode_FixedAsset</DataField>
+        </Field>
+        <Field Name="RespEmp_FixedAsset">
+          <DataField>RespEmp_FixedAsset</DataField>
+        </Field>
+        <Field Name="SerialNo_FixedAsset">
+          <DataField>SerialNo_FixedAsset</DataField>
+        </Field>
+        <Field Name="FaDeprBookAcquDate">
+          <DataField>FaDeprBookAcquDate</DataField>
+        </Field>
+        <Field Name="FixedAssetAcqListCptn">
+          <DataField>FixedAssetAcqListCptn</DataField>
+        </Field>
+        <Field Name="CurrReportPageNoCaption">
+          <DataField>CurrReportPageNoCaption</DataField>
+        </Field>
+        <Field Name="FADeprBkAcquisitionDtCptn">
+          <DataField>FADeprBkAcquisitionDtCptn</DataField>
+        </Field>
+        <Field Name="MarqueCaption">
+          <DataField>MarqueCaption</DataField>
+        </Field>
+        <Field Name="TypeCaption">
+          <DataField>TypeCaption</DataField>
+        </Field>
+        <Field Name="NbreCaption">
+          <DataField>NbreCaption</DataField>
+        </Field>
+        <Field Name="DetenteurCaption">
+          <DataField>DetenteurCaption</DataField>
+        </Field>
+        <Field Name="EmplacementCaption">
+          <DataField>EmplacementCaption</DataField>
+        </Field>
+        <Field Name="ObservationCaption">
+          <DataField>ObservationCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+        <Field Name="Brand_FixedAsset">
+          <DataField>Brand_FixedAsset</DataField>
+        </Field>
+        <Field Name="FAType_FixedAsset">
+          <DataField>FAType_FixedAsset</DataField>
+        </Field>
+        <Field Name="FAOwner_FixedAsset">
+          <DataField>FAOwner_FixedAsset</DataField>
+        </Field>
+        <Field Name="Quantity_FixedAsset">
+          <DataField>Quantity_FixedAsset</DataField>
+        </Field>
+        <Field Name="Quantity_FixedAssetFormat">
+          <DataField>Quantity_FixedAssetFormat</DataField>
+        </Field>
+        <Field Name="StartupDate_FixedAsset">
+          <DataField>StartupDate_FixedAsset</DataField>
+        </Field>
+        <Field Name="Desc_FixedAssetCaption">
+          <DataField>Desc_FixedAssetCaption</DataField>
+        </Field>
+        <Field Name="GenerateNum">
+          <DataField>GenerateNum</DataField>
+        </Field>
+        <Field Name="Codification">
+          <DataField>Codification</DataField>
+        </Field>
+        <Field Name="ReferenceMES">
+          <DataField>ReferenceMES</DataField>
+        </Field>
+        <Field Name="DateDemande">
+          <DataField>DateDemande</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

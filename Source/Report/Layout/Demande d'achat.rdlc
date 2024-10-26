@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="DemCot">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>DemCot</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>DemCot</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Text10">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Text10</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Text10</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PrepareBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PrepareBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PrepareBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="VerifyBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>VerifyBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>VerifyBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AutoriseBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>AutoriseBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>AutoriseBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Dept">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Dept</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Dept</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Descript">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Descript</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Descript</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Date">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Date</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Date</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Achat">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Achat</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Achat</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Cont">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Cont</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Cont</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Urg">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Urg</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Urg</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Spec">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Spec</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Spec</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="RefCont">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>RefCont</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>RefCont</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Aut">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Aut</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Aut</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Non">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Non</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Non</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Oui">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Oui</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Oui</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ComType">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ComType</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ComType</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Desc_PurchLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Desc_PurchLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Desc_PurchLineCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Qty_PurchLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Qty_PurchLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Qty_PurchLineCaption</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="No_PurchHeader">
+          <DataField>No_PurchHeader</DataField>
+        </Field>
+        <Field Name="DocDate_PurchHeader">
+          <DataField>DocDate_PurchHeader</DataField>
+        </Field>
+        <Field Name="CondTerm">
+          <DataField>CondTerm</DataField>
+        </Field>
+        <Field Name="PhoneNoCaption">
+          <DataField>PhoneNoCaption</DataField>
+        </Field>
+        <Field Name="FaxCaption">
+          <DataField>FaxCaption</DataField>
+        </Field>
+        <Field Name="EmailCaption">
+          <DataField>EmailCaption</DataField>
+        </Field>
+        <Field Name="OrderNoCaption">
+          <DataField>OrderNoCaption</DataField>
+        </Field>
+        <Field Name="MontLetter">
+          <DataField>MontLetter</DataField>
+        </Field>
+        <Field Name="RecptDate">
+          <DataField>RecptDate</DataField>
+        </Field>
+        <Field Name="CodeDem">
+          <DataField>CodeDem</DataField>
+        </Field>
+        <Field Name="ResquetDate">
+          <DataField>ResquetDate</DataField>
+        </Field>
+        <Field Name="UnderContrat">
+          <DataField>UnderContrat</DataField>
+        </Field>
+        <Field Name="ContratRef">
+          <DataField>ContratRef</DataField>
+        </Field>
+        <Field Name="RespCenter">
+          <DataField>RespCenter</DataField>
+        </Field>
+        <Field Name="PurchaseType">
+          <DataField>PurchaseType</DataField>
+        </Field>
+        <Field Name="OrderType">
+          <DataField>OrderType</DataField>
+        </Field>
+        <Field Name="RequiDescript">
+          <DataField>RequiDescript</DataField>
+        </Field>
+        <Field Name="Text012">
+          <DataField>Text012</DataField>
+        </Field>
+        <Field Name="Text013">
+          <DataField>Text013</DataField>
+        </Field>
+        <Field Name="Text014">
+          <DataField>Text014</DataField>
+        </Field>
+        <Field Name="CompanyAddr1">
+          <DataField>CompanyAddr1</DataField>
+        </Field>
+        <Field Name="CompanyAddr2">
+          <DataField>CompanyAddr2</DataField>
+        </Field>
+        <Field Name="CompanyAddr3">
+          <DataField>CompanyAddr3</DataField>
+        </Field>
+        <Field Name="CompanyAddr4">
+          <DataField>CompanyAddr4</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+        <Field Name="CompanyInfoEmail">
+          <DataField>CompanyInfoEmail</DataField>
+        </Field>
+        <Field Name="CompanyInfoPhoneNo">
+          <DataField>CompanyInfoPhoneNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoFax">
+          <DataField>CompanyInfoFax</DataField>
+        </Field>
+        <Field Name="CompanyInfoRCS">
+          <DataField>CompanyInfoRCS</DataField>
+        </Field>
+        <Field Name="CompanyInfoCA">
+          <DataField>CompanyInfoCA</DataField>
+        </Field>
+        <Field Name="CompanyInfoNIF">
+          <DataField>CompanyInfoNIF</DataField>
+        </Field>
+        <Field Name="CompanyInfoSTAT">
+          <DataField>CompanyInfoSTAT</DataField>
+        </Field>
+        <Field Name="LineNo_PurchLine">
+          <DataField>LineNo_PurchLine</DataField>
+        </Field>
+        <Field Name="DocNo_PurchLine">
+          <DataField>DocNo_PurchLine</DataField>
+        </Field>
+        <Field Name="No_PurchLine">
+          <DataField>No_PurchLine</DataField>
+        </Field>
+        <Field Name="Desc_PurchLine">
+          <DataField>Desc_PurchLine</DataField>
+        </Field>
+        <Field Name="Qty_PurchLine">
+          <DataField>Qty_PurchLine</DataField>
+        </Field>
+        <Field Name="Qty_PurchLineFormat">
+          <DataField>Qty_PurchLineFormat</DataField>
+        </Field>
+        <Field Name="UOM_PurchLine">
+          <DataField>UOM_PurchLine</DataField>
+        </Field>
+        <Field Name="Num">
+          <DataField>Num</DataField>
+        </Field>
+        <Field Name="TotalInclVATText">
+          <DataField>TotalInclVATText</DataField>
+        </Field>
+        <Field Name="VATAmountText">
+          <DataField>VATAmountText</DataField>
+        </Field>
+        <Field Name="No_PurchLineCaption">
+          <DataField>No_PurchLineCaption</DataField>
+        </Field>
+        <Field Name="UOM_PurchLineCaption">
+          <DataField>UOM_PurchLineCaption</DataField>
+        </Field>
+        <Field Name="UnitPriceCaption">
+          <DataField>UnitPriceCaption</DataField>
+        </Field>
+        <Field Name="TotaPriceCation">
+          <DataField>TotaPriceCation</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

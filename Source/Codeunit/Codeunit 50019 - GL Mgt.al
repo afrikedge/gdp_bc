@@ -120,7 +120,9 @@ codeunit 50019 "GL Mgt"
         if not AddOnSetup."Activer ajustement Naphta" then exit;
 
         AddOnSetup.TestField("Naphta Fictif Location");
-        if Item1."Product Group Code" <> AddOnSetup."Naphta Product Group" then exit;
+        //TODO Check Product Code Here
+        //if Item1."Product Group Code" <> AddOnSetup."Naphta Product Group" then exit;
+        if Item1."No." <> '70009-0000' then exit;
 
         ItemJnlLine.Init;
         ItemJnlLine."Adjustment Type" := ItemJnlLine."Adjustment Type"::AjustNaphta;
@@ -165,7 +167,7 @@ codeunit 50019 "GL Mgt"
         //**********************************************************
         AddOnSetup.Get;
         if not AddOnSetup."Desactivate Check Nos Control" then
-            if not NoSeriesMgt.AFK_IsInPlage(UseCheckNo, BankAcc2."Starting Check No.", BankAcc2."Ending Check No.") then
+            if not AFK_IsInPlage(UseCheckNo, BankAcc2."Starting Check No.", BankAcc2."Ending Check No.") then
                 Error(StrSubstNo(AFK_Err0001, UseCheckNo, BankAcc2."Starting Check No.", BankAcc2."Ending Check No."));
         //**********************************************************
         //**********************************************************
@@ -283,10 +285,125 @@ codeunit 50019 "GL Mgt"
     end;
 
 
+
+    procedure TemplateSelectionFromBatchCCL(GenJnlManagement: codeunit GenJnlManagement; var GenJnlBatch: Record "Gen. Journal Batch")
+    var
+        GenJnlLine: Record "Gen. Journal Line";
+        GenJnlTemplate: Record "Gen. Journal Template";
+    begin
+        //********************************************************************
+        //TODO
+        //OpenFromBatch := true;
+        GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
+        GenJnlTemplate.TestField("Page ID");
+        GenJnlBatch.TestField(Name);
+
+        GenJnlLine.FilterGroup := 2;
+        GenJnlLine.SetRange("Journal Template Name", GenJnlTemplate.Name);
+        GenJnlLine.FilterGroup := 0;
+
+        GenJnlLine."Journal Template Name" := '';
+        GenJnlLine."Journal Batch Name" := GenJnlBatch.Name;
+        PAGE.Run(50144, GenJnlLine);
+        //********************************************************************
+    end;
+
+    procedure TemplateSelectionFromBatchTRESO(var GenJnlBatch: Record "Gen. Journal Batch")
+    var
+        GenJnlLine: Record "Gen. Journal Line";
+        GenJnlTemplate: Record "Gen. Journal Template";
+    begin
+        //********************************************************************
+        //TODO
+        //OpenFromBatch := true;
+        GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
+        GenJnlTemplate.TestField("Page ID");
+        GenJnlBatch.TestField(Name);
+
+        GenJnlLine.FilterGroup := 2;
+        GenJnlLine.SetRange("Journal Template Name", GenJnlTemplate.Name);
+        GenJnlLine.FilterGroup := 0;
+
+        GenJnlLine."Journal Template Name" := '';
+        GenJnlLine."Journal Batch Name" := GenJnlBatch.Name;
+        PAGE.Run(50268, GenJnlLine);
+        //********************************************************************
+    end;
+
+    procedure TemplateSelectionFromBatchTRESO_VIREMENT(var GenJnlBatch: Record "Gen. Journal Batch")
+    var
+        GenJnlLine: Record "Gen. Journal Line";
+        GenJnlTemplate: Record "Gen. Journal Template";
+    begin
+        //********************************************************************
+        //TODO
+        //OpenFromBatch := true;
+        GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
+        GenJnlTemplate.TestField("Page ID");
+        GenJnlBatch.TestField(Name);
+
+        GenJnlLine.FilterGroup := 2;
+        GenJnlLine.SetRange("Journal Template Name", GenJnlTemplate.Name);
+        GenJnlLine.FilterGroup := 0;
+
+        GenJnlLine."Journal Template Name" := '';
+        GenJnlLine."Journal Batch Name" := GenJnlBatch.Name;
+        PAGE.Run(50200, GenJnlLine);
+        //********************************************************************
+    end;
+
+    procedure AFK_IsInPlage(Number: Code[20]; MinNo: Code[20]; MaxNo: Code[20]): Boolean
+    var
+        DecimalNo: Decimal;
+        StartPos: Integer;
+        EndPos: Integer;
+        NewNo: Text[30];
+        DecimalToCheck: Decimal;
+        DecimalMin: Decimal;
+        DecimalMax: Decimal;
+    begin
+        //**********************************************************
+        //Teste si un numéro est contenu dans la plage MinNo..MaxNo
+        //**********************************************************
+        GetIntegerPos(Number, StartPos, EndPos);
+        Evaluate(DecimalToCheck, CopyStr(Number, StartPos, EndPos - StartPos + 1));
+
+        GetIntegerPos(MinNo, StartPos, EndPos);
+        Evaluate(DecimalMin, CopyStr(MinNo, StartPos, EndPos - StartPos + 1));
+
+        GetIntegerPos(MaxNo, StartPos, EndPos);
+        Evaluate(DecimalMax, CopyStr(MaxNo, StartPos, EndPos - StartPos + 1));
+
+        exit((DecimalToCheck >= DecimalMin) and (DecimalToCheck <= DecimalMax));
+    end;
+
+    local procedure GetIntegerPos(No: Code[20]; var StartPos: Integer; var EndPos: Integer)
+    var
+        IsDigit: Boolean;
+        i: Integer;
+    begin
+        StartPos := 0;
+        EndPos := 0;
+        if No <> '' then begin
+            i := StrLen(No);
+            repeat
+                IsDigit := No[i] in ['0' .. '9'];
+                if IsDigit then begin
+                    if EndPos = 0 then
+                        EndPos := i;
+                    StartPos := i;
+                end;
+                i := i - 1;
+            until (i = 0) or (StartPos <> 0) and not IsDigit;
+        end;
+    end;
+
     procedure VATCorrectionGDP(var SalesH: Record "Sales Header")
     var
         Item1: Record Item;
         Cust2: Record Customer;
+        AddOnSetup2: Record "AddOn Setup2";
+        VATPostingSetup: Record "VAT Posting Setup";
         RDSFees: Decimal;
         FERFees: Decimal;
         OMHFees: Decimal;
@@ -330,7 +447,7 @@ codeunit 50019 "GL Mgt"
                 TauxTVA := 0;
                 Item1.Get(SalesLine."No.");
                 if Item1."VAT Correction" then begin
-                    AfkSalesPost.AfkCalculateFeesRetention(SalesLine, Item1, Cust2, FERFees, OMHFees, ENVFees, RDSFees);
+                    AfkCalculateFeesRetention(SalesLine, Item1, Cust2, FERFees, OMHFees, ENVFees, RDSFees);
                     TotalFeesAmount := OMHFees + FERFees + ENVFees + RDSFees;
                     if (TotalFeesAmount <> 0) then begin
 
@@ -377,67 +494,107 @@ codeunit 50019 "GL Mgt"
         //"VAT %" := ROUND(100 * "VAT Amount" / "VAT Base",0.00001);
     end;
 
-    procedure TemplateSelectionFromBatchCCL(GenJnlManagement: codeunit GenJnlManagement; var GenJnlBatch: Record "Gen. Journal Batch")
+    procedure AfkCalculateFeesRetention(SalesLine1: Record "Sales Line"; Item1: Record Item; Cust2: Record Customer; var FERFees: Decimal; var OMHFees: Decimal; var ENVFees: Decimal; var RDSFees: Decimal)
     var
-        GenJnlLine: Record "Gen. Journal Line";
-        GenJnlTemplate: Record "Gen. Journal Template";
+        RDSUnitPrice: Decimal;
     begin
-        //********************************************************************
-        OpenFromBatch := true;
-        GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
-        GenJnlTemplate.TestField("Page ID");
-        GenJnlBatch.TestField(Name);
 
-        GenJnlLine.FilterGroup := 2;
-        GenJnlLine.SetRange("Journal Template Name", GenJnlTemplate.Name);
-        GenJnlLine.FilterGroup := 0;
+        AddOnSetup.Get;
+        RDSUnitPrice := Item1."RDS Fees Price";
+        if not AddOnSetup."Activate RDS Fees Retention" then
+            RDSUnitPrice := 0;
 
-        GenJnlLine."Journal Template Name" := '';
-        GenJnlLine."Journal Batch Name" := GenJnlBatch.Name;
-        PAGE.Run(50144, GenJnlLine);
-        //********************************************************************
+        if (Cust2."Sales Channel Code" <> AddOnSetup."Station Sales Channel") then //JN201118 Exclure client non reseaux
+            RDSUnitPrice := 0;
+
+        //Calculs
+        if ((Cust2."Sales Channel Code" <> AddOnSetup."Bornage Sales Channel") and
+          (Cust2."Sales Channel Code" <> AddOnSetup."Soute Sales Channel")) then
+            FERFees := Round(Item1."FER Fees Price" * SalesLine1."Qty. to Invoice (Base)", Currency."Amount Rounding Precision");
+        OMHFees := Round(Item1."OMH Fees Price" * SalesLine1."Qty. to Invoice (Base)", Currency."Amount Rounding Precision");
+        ENVFees := Round(Item1."ENV Fees Price" * SalesLine1."Qty. to Invoice (Base)", Currency."Amount Rounding Precision");
+
+        if AddOnSetup."Activate RDS Fees Retention" then
+            RDSFees := Round(RDSUnitPrice * SalesLine1."Qty. to Invoice (Base)", Currency."Amount Rounding Precision");//RDS Fees JN030918
     end;
 
-    procedure TemplateSelectionFromBatchTRESO(var GenJnlBatch: Record "Gen. Journal Batch")
+    procedure CalcBestUnitPrice(var SalesLine: Record "Sales Line"; var TempSalesPrice: Record "Sales Price" temporary; var FoundSalesPrice: Boolean; CalledByFieldNo: Integer)
     var
-        GenJnlLine: Record "Gen. Journal Line";
-        GenJnlTemplate: Record "Gen. Journal Template";
+        SalesPrice: Record "Sales Price";
+        BestSalesPrice: Record "Sales Price";
+        SalesPricesMgt: codeunit "Sales Price Calc. Mgt.";
+        Item: record Item;
+        BestSalesPriceFound: Boolean;
+        IsHandled: Boolean;
     begin
-        //********************************************************************
-        OpenFromBatch := true;
-        GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
-        GenJnlTemplate.TestField("Page ID");
-        GenJnlBatch.TestField(Name);
+        //*************************************************************
+        //Maj prendre les prix les plus recents et les plus spécifiques
+        //*************************************************************
 
-        GenJnlLine.FilterGroup := 2;
-        GenJnlLine.SetRange("Journal Template Name", GenJnlTemplate.Name);
-        GenJnlLine.FilterGroup := 0;
 
-        GenJnlLine."Journal Template Name" := '';
-        GenJnlLine."Journal Batch Name" := GenJnlBatch.Name;
-        PAGE.Run(50268, GenJnlLine);
-        //********************************************************************
+        //Dernier prix spécifique
+        SalesPrice.RESET;
+        SalesPrice.SETCURRENTKEY("Sales Type", "Sales Code", "Item No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity");
+        SalesPrice.SETRANGE(SalesPrice."Sales Type", SalesPrice."Sales Type"::Customer);
+        IF SalesPrice.FINDSET THEN
+            REPEAT
+                IF SalesPrice."Starting Date" >= BestSalesPrice."Starting Date" THEN BEGIN
+                    BestSalesPrice := SalesPrice;
+                    FoundSalesPrice := TRUE;
+                END;
+            UNTIL SalesPrice.NEXT = 0;
+
+        //Dernier prix de groupe
+        IF NOT BestSalesPriceFound THEN BEGIN
+            SalesPrice.RESET;
+            SalesPrice.SETCURRENTKEY("Sales Type", "Sales Code", "Item No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity");
+            SalesPrice.SETRANGE(SalesPrice."Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
+            IF SalesPrice.FINDSET THEN
+                REPEAT
+                    IF SalesPrice."Starting Date" >= BestSalesPrice."Starting Date" THEN BEGIN
+                        BestSalesPrice := SalesPrice;
+                        FoundSalesPrice := TRUE;
+                    END;
+                UNTIL SalesPrice.NEXT = 0;
+        END;
+
+
+        //Dernier prix Tous
+        IF NOT BestSalesPriceFound THEN BEGIN
+            SalesPrice.RESET;
+            SalesPrice.SETCURRENTKEY("Sales Type", "Sales Code", "Item No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity");
+            SalesPrice.SETRANGE(SalesPrice."Sales Type", SalesPrice."Sales Type"::"All Customers");
+            IF SalesPrice.FINDSET THEN
+                REPEAT
+                    IF SalesPrice."Starting Date" >= BestSalesPrice."Starting Date" THEN BEGIN
+                        BestSalesPrice := SalesPrice;
+                        FoundSalesPrice := TRUE;
+                    END;
+                UNTIL SalesPrice.NEXT = 0;
+        END;
+
+        // No price found in agreement
+        if Item.Get(SalesLine."No.") then;
+        if not FoundSalesPrice then begin
+            SalesPricesMgt.ConvertPriceToVAT(
+              Item."Price Includes VAT", Item."VAT Prod. Posting Group",
+              Item."VAT Bus. Posting Gr. (Price)", Item."Unit Price");
+            ConvertPriceToUoM('', Item."Unit Price", SalesLine);
+            SalesPricesMgt.ConvertPriceLCYToFCY('', Item."Unit Price");
+
+            Clear(BestSalesPrice);
+            BestSalesPrice."Unit Price" := Item."Unit Price";
+            BestSalesPrice."Allow Line Disc." := SalesLine."Allow Line Disc.";
+            BestSalesPrice."Allow Invoice Disc." := SalesLine."Allow Invoice Disc.";
+        end;
+
+        TempSalesPrice := BestSalesPrice;
     end;
 
-    procedure TemplateSelectionFromBatchTRESO_VIREMENT(var GenJnlBatch: Record "Gen. Journal Batch")
-    var
-        GenJnlLine: Record "Gen. Journal Line";
-        GenJnlTemplate: Record "Gen. Journal Template";
+    local procedure ConvertPriceToUoM(UnitOfMeasureCode: Code[10]; var UnitPrice: Decimal; SalesLine: record "Sales Line")
     begin
-        //********************************************************************
-        OpenFromBatch := true;
-        GenJnlTemplate.Get(GenJnlBatch."Journal Template Name");
-        GenJnlTemplate.TestField("Page ID");
-        GenJnlBatch.TestField(Name);
-
-        GenJnlLine.FilterGroup := 2;
-        GenJnlLine.SetRange("Journal Template Name", GenJnlTemplate.Name);
-        GenJnlLine.FilterGroup := 0;
-
-        GenJnlLine."Journal Template Name" := '';
-        GenJnlLine."Journal Batch Name" := GenJnlBatch.Name;
-        PAGE.Run(50200, GenJnlLine);
-        //********************************************************************
+        if UnitOfMeasureCode = '' then
+            UnitPrice := UnitPrice * SalesLine."Qty. per Unit of Measure";
     end;
 }
 

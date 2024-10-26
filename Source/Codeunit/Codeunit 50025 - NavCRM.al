@@ -3,48 +3,48 @@ codeunit 50025 NavCRM
 
     trigger OnRun()
     begin
-        TestWS;
+        // TestWS;
     end;
 
     var
-        HttpClient: DotNet BCHttpClient;
-        Uri: DotNet BCUri;
-        null: DotNet BCObject;
-        HttpResponseMessage: DotNet BCHttpResponseMessage;
+    // HttpClient: DotNet BCHttpClient;
+    // Uri: DotNet BCUri;
+    // null: DotNet BCObject;
+    // HttpResponseMessage: DotNet BCHttpResponseMessage;
 
-    local procedure TestWS()
-    begin
-        CallRESTWebService(
-        'http://services.groupkt.com/',
-        StrSubstNo('country/get/iso2code/%1','CM'),
-        'GET',null,
-        HttpResponseMessage);
+    // local procedure TestWS()
+    // begin
+    //     CallRESTWebService(
+    //     'http://services.groupkt.com/',
+    //     StrSubstNo('country/get/iso2code/%1','CM'),
+    //     'GET',null,
+    //     HttpResponseMessage);
 
-        Message('%1', HttpResponseMessage.Content.ReadAsStringAsync.Result);
-    end;
+    //     Message('%1', HttpResponseMessage.Content.ReadAsStringAsync.Result);
+    // end;
 
-    local procedure CallRESTWebService(BaseUrl: Text[100];Method: Text[50];RestMethod: Text;HttpContent: DotNet BCHttpContent;HttpResponseMessage: DotNet BCHttpResponseMessage)
-    begin
+    // local procedure CallRESTWebService(BaseUrl: Text[100];Method: Text[50];RestMethod: Text;HttpContent: DotNet BCHttpContent;HttpResponseMessage: DotNet BCHttpResponseMessage)
+    // begin
 
-        HttpClient := HttpClient.HttpClient();
-        HttpClient.BaseAddress := Uri.Uri(BaseUrl);
+    //     HttpClient := HttpClient.HttpClient();
+    //     HttpClient.BaseAddress := Uri.Uri(BaseUrl);
 
 
-        case RestMethod of
+    //     case RestMethod of
 
-        'GET':
-          HttpResponseMessage := HttpClient.GetAsync(Method).Result;
-        'POST':
-          HttpResponseMessage := HttpClient.PostAsync(Method,HttpContent).Result;
+    //     'GET':
+    //       HttpResponseMessage := HttpClient.GetAsync(Method).Result;
+    //     'POST':
+    //       HttpResponseMessage := HttpClient.PostAsync(Method,HttpContent).Result;
 
-        'PUT':
-          HttpResponseMessage := HttpClient.PutAsync(Method,HttpContent).Result;
+    //     'PUT':
+    //       HttpResponseMessage := HttpClient.PutAsync(Method,HttpContent).Result;
 
-        'DELETE':
-          HttpResponseMessage := HttpClient.DeleteAsync(Method).Result;
+    //     'DELETE':
+    //       HttpResponseMessage := HttpClient.DeleteAsync(Method).Result;
 
-        end;
-        HttpResponseMessage.EnsureSuccessStatusCode(); // Throws an error when no success
-    end;
+    //     end;
+    //     HttpResponseMessage.EnsureSuccessStatusCode(); // Throws an error when no success
+    // end;
 }
 

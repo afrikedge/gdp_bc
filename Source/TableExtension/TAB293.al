@@ -15,6 +15,11 @@ tableextension 50044 "A02 Reminder Level" extends "Reminder Level"
             Editable = false;
             FieldClass = FlowField;
         }
+        field(50002; "AG1 Report Usage"; Enum "Report Selection Usage")
+        {
+            Caption = 'Report Usage';
+            DataClassification = CustomerContent;
+        }
     }
 }
 

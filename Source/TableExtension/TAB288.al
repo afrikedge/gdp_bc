@@ -210,7 +210,6 @@ tableextension 50042 "A02 Vendor Bank Account" extends "Vendor Bank Account"
         field(50000; "RIB Key Text"; Text[2])
         {
             Caption = 'RIB Key Text';
-            Description = 'AFK';
 
             trigger OnValidate()
             begin

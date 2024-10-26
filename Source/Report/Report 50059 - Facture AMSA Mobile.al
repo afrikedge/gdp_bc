@@ -1,0 +1,236 @@
+report 50059 "Facture AMSA Mobile"
+{
+    DefaultLayout = RDLC;
+    RDLCLayout = './Source/Report/Layout/Facture AMSA Mobile.rdlc';
+    PreviewMode = PrintLayout;
+
+    dataset
+    {
+        dataitem("Fuel Statement Header"; "Fuel Statement Header")
+        {
+            column(No_FuelStat; "No.")
+            {
+            }
+            column(CustNo_FuelStat; "Fuel Statement Header"."Grouping Customer")
+            {
+            }
+            column(CustName_FuelStat; Cust."Search Name")
+            {
+            }
+            column(CustAddr1; Cust.Address)
+            {
+            }
+            column(CustAddr2; Cust."Address 2")
+            {
+            }
+            column(ConditionText; PayConditionsTxt)
+            {
+            }
+            column(CustStatCode; 'Id Stat : ' + Cust."STAT Code")
+            {
+            }
+            column(CustCIFCode; 'CIF ' + Cust."CIF/CIS")
+            {
+            }
+            column(CustNIFCode; 'NIF : ' + Cust."VAT Registration No.")
+            {
+            }
+            column(CustRCSCode; 'RCS : ' + Cust."Trade Number")
+            {
+            }
+            column(CustEmail; 'Email : ' + Cust."E-Mail")
+            {
+            }
+            column(RegionClient; Cust.County)
+            {
+            }
+            column(NumFact; "External Document No.")
+            {
+            }
+            column(NumFactText; NumFactText)
+            {
+            }
+            column(NumCmd; "Order No.")
+            {
+            }
+            column(NumContrat; FuelStat."External Document No.")
+            {
+            }
+            column(AdresseLivraisonText; ShipToAddress.Name)
+            {
+            }
+            column(PrintDate; Format(Today))
+            {
+            }
+            column(PeriodTexte; PeriodTexteVar)
+            {
+            }
+            dataitem("AMSA Invoice Line"; "AMSA Invoice Line")
+            {
+                DataItemLink = "Document No." = FIELD("No."), "Document Type" = FIELD("Document Type");
+                DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
+                column(LineNo; "Line No.")
+                {
+                }
+                column(PostingDate; Format("Posting Date"))
+                {
+                }
+                column(Product; "Item Name")
+                {
+                }
+                column(Quantity; "Invoice Qty")
+                {
+                }
+                column(OrderRef; "Order Ref")
+                {
+                }
+                column(InvoiceRef; "Invoice Ref")
+                {
+                }
+                column(UnitPrice; "Unit Price")
+                {
+                }
+                column(AmountHT; Amount)
+                {
+                }
+                column(VATAmount; "VAT Amount")
+                {
+                }
+                column(AmountTTC; "Amount Incl. VAT")
+                {
+                }
+                column(QuantityText; QuantityText)
+                {
+                }
+                column(TotalText; TotalText)
+                {
+                }
+                column(TotalAmountLetter; TotalAmountLetter[1])
+                {
+                }
+                column(ProcessVar; ProcessVar)
+                {
+                }
+
+                trigger OnAfterGetRecord()
+                begin
+                    if "AMSA Invoice Line".Process = "AMSA Invoice Line".Process::Yes then
+                        ProcessVar := 'Process'
+                    else
+                        ProcessVar := 'Non Process'
+                end;
+
+                trigger OnPreDataItem()
+                begin
+                    CurrReport.CreateTotals("Amount Incl. VAT");
+                end;
+            }
+
+            trigger OnAfterGetRecord()
+            begin
+                Cust.Get("Fuel Statement Header"."Customer No");
+                PaymentTerm.Get(Cust."Payment Terms Code");
+
+                PayConditionsTxt := PaymentTerm.Description + ' par ';
+
+                if Cust."Cash payment" or Cust."Credit Note" then
+                    PayConditionsTxt := PayConditionsTxt + 'Espèces,';
+
+                if Cust."Check Set" or Cust."Received Check" then
+                    PayConditionsTxt := PayConditionsTxt + ' Chèque,';
+
+                if Cust."Bank Transfer Bank Stamp" then
+                    PayConditionsTxt := PayConditionsTxt + ' Virement,';
+
+                if Cust.Traite then
+                    PayConditionsTxt := PayConditionsTxt + ' Traite,';
+
+
+
+                AmsaInvoice.SetRange("Document No.", "Fuel Statement Header"."No.");
+                AmsaInvoice.SetRange("Document Type", "Fuel Statement Header"."Document Type");
+                if AmsaInvoice.FindFirst then begin
+                    AmsaInvoice.CalcSums("Amount Incl. VAT");
+                    TotalAmount := AmsaInvoice."Amount Incl. VAT";
+                end;
+
+                FuelStat.SetRange("Document Type", "Document Type"::"Main invoice");
+                FuelStat.SetRange("No.", "Fuel Statement Header"."Parent Invoice No.");
+                if FuelStat.FindFirst then begin
+                    Location.Get(FuelStat."Location Code");
+
+                    PeriodTexteVar := StrSubstNo(PeriodTexte, FuelStat."Starting Date", FuelStat."Ending Date");
+                end;
+
+                NbTLet.InitTextVariable;
+                //TODO Montants
+                //NbTLet.FormatNoTextFR(TotalAmountLetter,TotalAmount,'');
+
+                if ShipToAddress.Get(Cust."No.", Cust."Ship-to Code2") then;
+            end;
+        }
+    }
+
+    requestpage
+    {
+
+        layout
+        {
+        }
+
+        actions
+        {
+        }
+    }
+
+    labels
+    {
+        Date = 'DATE';
+        Reffuel = 'REF FUEL LOG';
+        Prdt = 'Produit';
+        Lit = 'Litrage';
+        Com = 'Com/de';
+        RefFact = 'Réf. Facture';
+        PU = 'PUHTVA(AR/L)';
+        MontHT = 'Montant HT (Ariary)';
+        MontTVA = 'Montant TVA (Ariary)';
+        MontTTC = 'Montant TTC (Ariary)';
+        Letter = 'Facture arrêtée à la somme de';
+        PrGal = 'Pour GALANA';
+        Prepareby = 'Préparée par';
+        Autoriseby = 'Autorisée par';
+        Dat = 'date';
+        Cont = 'CONTRAT';
+        CondPaie = 'Condition de paiement';
+        LieuLiv = 'Lieu de livraison /';
+        Clt = 'CLIENT';
+        PeriodLabel = 'Période';
+        OrderLabel = 'PO N°';
+        ProcessLabel = 'Process';
+    }
+
+    trigger OnPreReport()
+    begin
+        TotalAmount := 0;
+    end;
+
+    var
+        Cust: Record Customer;
+        NbTLet: Report Check;
+        TotalAmountLetter: array[2] of Text[150];
+        QuantityText: Label 'TOTAUX';
+        TotalText: Label 'TOTAL A PAYER';
+        AmsaInvoice: Record "AMSA Invoice Line";
+        TotalAmount: Decimal;
+        AdresseLivraisonText: Label 'SS AMBATOVY';
+        PaymentTerm: Record "Payment Terms";
+        NumFactText: Label 'Facture N° : ';
+        Location: Record Location;
+        FuelStat: Record "Fuel Statement Header";
+        ShipToAddress: Record "Ship-to Address";
+        PeriodTexte: Label 'Du %1 au %2';
+        PeriodTexteVar: Text[80];
+        ProcessVar: Text[50];
+        PayConditionsTxt: Text[150];
+}
+
