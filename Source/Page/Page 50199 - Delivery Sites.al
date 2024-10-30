@@ -3,6 +3,8 @@ page 50199 "Delivery Sites"
     Caption = 'Delivery Sites';
     PageType = List;
     SourceTable = "Delivery Site";
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

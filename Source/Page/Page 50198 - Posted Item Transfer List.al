@@ -4,6 +4,8 @@ page 50198 "Posted Item Transfer List"
     CardPageID = "Posted Item Transfer";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Transfer));
 

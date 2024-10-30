@@ -5,6 +5,8 @@ page 50000 "AddOn Setup Card"
     InsertAllowed = false;
     PageType = Card;
     SourceTable = "AddOn Setup";
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

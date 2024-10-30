@@ -3,6 +3,8 @@ page 50332 Drivers
     AutoSplitKey = true;
     PageType = List;
     SourceTable = Driver;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTableView = SORTING(immatriculation, NumOrdre)
                       ORDER(Descending);
 

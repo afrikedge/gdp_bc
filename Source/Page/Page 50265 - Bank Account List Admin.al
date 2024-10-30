@@ -4,6 +4,8 @@ page 50265 "Bank Account List Admin"
     CardPageID = "Bank Account Card Admin";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "Bank Account";
 
     layout

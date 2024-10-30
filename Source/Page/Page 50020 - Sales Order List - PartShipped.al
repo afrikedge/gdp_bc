@@ -5,6 +5,8 @@ page 50020 "Sales Order List - PartShipped"
     Editable = false;
     PageType = List;
     SourceTable = "Sales Header";
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Delivery Status" = CONST(PartiellementLivree));
 

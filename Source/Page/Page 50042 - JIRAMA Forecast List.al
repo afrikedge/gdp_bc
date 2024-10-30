@@ -4,6 +4,8 @@ page 50042 "JIRAMA Forecast List"
     CardPageID = "JIRAMA Sales Forecast";
     PageType = List;
     SourceTable = "Jirama Sales Forecast";
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTableView = WHERE(Status = FILTER(Created | Validated));
 
     layout

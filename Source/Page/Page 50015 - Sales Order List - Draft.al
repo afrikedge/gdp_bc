@@ -4,6 +4,8 @@ page 50015 "Sales Order List - Draft"
     CardPageID = "Sales Order - Draft";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Sales Header";
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Delivery Status" = CONST(Saisie));

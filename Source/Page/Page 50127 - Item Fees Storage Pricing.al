@@ -4,6 +4,8 @@ page 50127 "Item Fees Storage Pricing"
     PageType = List;
     SourceTable = "Item Charge Pricing";
     SourceTableView = WHERE("Service Type" = CONST(Storage));
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

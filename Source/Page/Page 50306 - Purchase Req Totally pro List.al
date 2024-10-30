@@ -4,6 +4,8 @@ page 50306 "Purchase Req Totally pro List"
     CardPageID = "Purchase Requisition Workflow";
     Editable = false;
     InsertAllowed = false;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     PageType = List;
     SourceTable = "Purchase Requisition";
     SourceTableView = WHERE("Processing Status" = CONST("Totally processed"));

@@ -3,6 +3,8 @@ page 50123 "FA Sub Locations"
     Caption = 'FA Sub Locations';
     PageType = List;
     SourceTable = "FA SubLocation";
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

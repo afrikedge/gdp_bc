@@ -5,6 +5,8 @@ page 50355 "Vendor Invoice List Compta"
     Description = 'WHERE(Status=FILTER(Receptionee|Rejetee|AttenteComptabilisation|Comptabilise|AttenteBAP|Payee))';
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Vendor Invoice Doc";
     SourceTableView = WHERE(Status = FILTER(<> EnSaisie));
 

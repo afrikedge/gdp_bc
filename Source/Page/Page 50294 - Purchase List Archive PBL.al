@@ -4,6 +4,8 @@ page 50294 "Purchase List Archive PBL"
     CardPageID = "Purchase Order Archive PBL";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Purchase Header Archive";
     SourceTableView = WHERE("Purchase Type" = CONST(AchatMarchandise),
                             "Document Type" = CONST(Order));

@@ -3,6 +3,8 @@ page 50184 "General Journal Batches CCL"
     Caption = 'General Journal Batches';
     DataCaptionExpression = DataCaption;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Tasks;
     SourceTable = "Gen. Journal Batch";
 
     layout

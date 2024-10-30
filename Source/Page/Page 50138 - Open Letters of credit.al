@@ -3,6 +3,8 @@ page 50138 "Open Letters of credit"
     Caption = 'Letters of credit (Open)';
     CardPageID = "Letter of Credit";
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Letter of credit";
     SourceTableView = WHERE(Status = CONST(Open));
 

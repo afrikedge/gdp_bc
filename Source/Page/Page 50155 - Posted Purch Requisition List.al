@@ -4,6 +4,8 @@ page 50155 "Posted Purch Requisition List"
     CardPageID = "Posted Purchase Requisition";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Posted Purchase Requisition";
 
     layout

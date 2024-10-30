@@ -4,6 +4,8 @@ page 50274 "Item List Admin"
     CardPageID = "Item Card Admin";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = Item;
 
     layout

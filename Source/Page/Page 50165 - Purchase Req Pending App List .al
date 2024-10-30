@@ -5,6 +5,8 @@ page 50165 "Purchase Req Pending App List "
     Editable = false;
     InsertAllowed = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Purchase Requisition";
     SourceTableView = WHERE(Status = CONST(CDG));
 

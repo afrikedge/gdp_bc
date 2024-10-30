@@ -3,6 +3,8 @@ page 50264 "G/L Registers User"
     Caption = 'G/L Registers';
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "G/L Register";
     SourceTableView = WHERE("No." = FILTER(> 0));
 

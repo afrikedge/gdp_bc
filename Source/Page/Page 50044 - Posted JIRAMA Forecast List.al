@@ -5,6 +5,8 @@ page 50044 "Posted JIRAMA Forecast List"
     Editable = false;
     PageType = List;
     SourceTable = "Jirama Sales Forecast";
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTableView = WHERE(Status = CONST(Archived));
 
     layout

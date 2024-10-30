@@ -3,6 +3,8 @@ page 50267 "General Journal Batches TRESO"
     Caption = 'General Journal Batches';
     DataCaptionExpression = DataCaption;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Tasks;
     SourceTable = "Gen. Journal Batch";
 
     layout

@@ -5,6 +5,8 @@ page 50341 "Confirmed Bon List"
     DeleteAllowed = false;
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     RefreshOnActivate = true;
     SourceTable = pro_enteteBE;
     SourceTableView = SORTING(NumBU)

@@ -4,6 +4,8 @@ page 50032 "Sales Order List - Rupture"
     CardPageID = "Sales Order - workflow";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Sales Header";
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Delivery Status" = CONST(Rupture));

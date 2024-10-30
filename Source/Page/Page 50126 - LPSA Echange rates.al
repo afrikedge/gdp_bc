@@ -3,6 +3,8 @@ page 50126 "LPSA Echange rates"
     Caption = 'LPSA Exchange rates';
     PageType = List;
     SourceTable = "LPSA Exchange Rate";
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

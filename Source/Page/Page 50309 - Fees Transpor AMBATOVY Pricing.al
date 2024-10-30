@@ -3,6 +3,8 @@ page 50309 "Fees Transpor AMBATOVY Pricing"
     Caption = 'Item Fees Transport To Ambatovy Pricing';
     PageType = List;
     SourceTable = "Item Charge Pricing";
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTableView = WHERE("Service Type" = CONST(TransportAmbatovy));
 
     layout

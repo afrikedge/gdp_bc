@@ -4,6 +4,8 @@ page 50024 "Sales Order List - Cancelled"
     CardPageID = "Sales Order Archive";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Sales Header Archive";
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Delivery Status" = CONST(Annulee));

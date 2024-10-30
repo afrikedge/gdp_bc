@@ -5,6 +5,8 @@ page 50019 "Sales Order List - To Ship"
     Editable = false;
     PageType = List;
     SourceTable = "Sales Header";
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Delivery Status" = CONST(AttenteLivraison));
 

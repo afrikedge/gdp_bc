@@ -5,6 +5,8 @@ page 50043 "Params Setup"
     InsertAllowed = false;
     PageType = List;
     SourceTable = "AddOn Setup";
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

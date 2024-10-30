@@ -4,6 +4,8 @@ page 50091 "Posted Item Exchange List"
     CardPageID = "Posted Item Exchange";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Exchange));
 

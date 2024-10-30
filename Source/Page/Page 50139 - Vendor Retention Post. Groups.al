@@ -3,6 +3,8 @@ page 50139 "Vendor Retention Post. Groups"
     Caption = 'Vendor Retention Posting Groups';
     PageType = List;
     SourceTable = "Vendor Posting Group";
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTableView = WHERE("Retention Group" = CONST(true));
 
     layout

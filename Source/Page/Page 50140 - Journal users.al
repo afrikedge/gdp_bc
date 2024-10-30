@@ -3,6 +3,8 @@ page 50140 "Journal users"
     Caption = 'Journal Users';
     PageType = List;
     SourceTable = "Journal User";
+    ApplicationArea = All;
+    UsageCategory = History;
 
     layout
     {

@@ -4,6 +4,8 @@ page 50103 "Posted Item Consignation List"
     CardPageID = "Posted Item Consignation";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Consignation));
 

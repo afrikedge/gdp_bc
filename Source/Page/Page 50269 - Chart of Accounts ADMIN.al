@@ -3,6 +3,8 @@ page 50269 "Chart of Accounts ADMIN"
     Caption = 'Chart of Accounts';
     CardPageID = "G/L Account Card ADMIN";
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     RefreshOnActivate = true;
     SourceTable = "G/L Account";
 

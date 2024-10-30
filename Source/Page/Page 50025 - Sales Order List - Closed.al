@@ -4,6 +4,8 @@ page 50025 "Sales Order List - Closed"
     CardPageID = "Sales Order Archive";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Sales Header Archive";
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Delivery Status" = CONST(Soldee));

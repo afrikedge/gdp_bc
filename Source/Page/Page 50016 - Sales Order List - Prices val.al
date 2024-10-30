@@ -5,6 +5,8 @@ page 50016 "Sales Order List - Prices val"
     Editable = false;
     PageType = List;
     SourceTable = "Sales Header";
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Delivery Status" = CONST(ValidationTarifs));
 

@@ -4,6 +4,8 @@ page 50305 "Purchase Req Partially pr List"
     CardPageID = "Purchase Requisition Workflow";
     Editable = false;
     InsertAllowed = false;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     PageType = List;
     SourceTable = "Purchase Requisition";
     SourceTableView = WHERE("Processing Status" = CONST("Partially processed"));

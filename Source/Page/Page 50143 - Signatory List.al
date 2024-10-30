@@ -5,6 +5,8 @@ page 50143 "Signatory List"
     Editable = false;
     PageType = List;
     SourceTable = Signatory;
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

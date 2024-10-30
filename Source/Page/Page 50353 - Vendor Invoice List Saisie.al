@@ -4,6 +4,8 @@ page 50353 "Vendor Invoice List Saisie"
     CardPageID = "Vendor Invoice Card Saisie";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Vendor Invoice Doc";
     SourceTableView = WHERE(Status = CONST(EnSaisie));
 

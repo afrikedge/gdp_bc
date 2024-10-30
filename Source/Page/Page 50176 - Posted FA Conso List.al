@@ -4,6 +4,8 @@ page 50176 "Posted FA Conso List"
     CardPageID = "Posted FA Conso";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST("FA Conso"));
 

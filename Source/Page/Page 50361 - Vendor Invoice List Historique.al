@@ -3,6 +3,8 @@ page 50361 "Vendor Invoice List Historique"
     Caption = 'Suivi des factures fournisseur';
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Vendor Invoice Doc";
     SourceTableView = WHERE(Status = FILTER(<> EnSaisie));
 

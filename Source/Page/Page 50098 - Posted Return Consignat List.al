@@ -5,6 +5,8 @@ page 50098 "Posted Return Consignat List"
     Editable = false;
     PageType = List;
     SourceTable = "Item Return Header";
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTableView = WHERE("Document Type" = CONST(Consignation));
 
     layout

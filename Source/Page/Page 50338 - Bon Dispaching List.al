@@ -5,6 +5,8 @@ page 50338 "Bon Dispaching List"
     DeleteAllowed = false;
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = pro_enteteBE;
     SourceTableView = SORTING(NumBU)
                       WHERE(IsBon = CONST(true));

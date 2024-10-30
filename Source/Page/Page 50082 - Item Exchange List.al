@@ -4,6 +4,8 @@ page 50082 "Item Exchange List"
     CardPageID = "Item Exchange";
     PageType = List;
     SourceTable = "Adjustment Header";
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTableView = WHERE("Document Type" = CONST(Exchange));
 
     layout

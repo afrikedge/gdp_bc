@@ -2,6 +2,8 @@ page 50322 "Delivery Site Per Axe"
 {
     Caption = 'Delivery Site per axe';
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "Delivery Constraint";
     SourceTableView = WHERE(Type = CONST(PointLivraisonAxe));
 

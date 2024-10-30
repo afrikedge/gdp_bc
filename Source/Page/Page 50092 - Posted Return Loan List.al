@@ -4,6 +4,8 @@ page 50092 "Posted Return Loan List"
     CardPageID = "Posted Return Loan";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Item Return Header";
     SourceTableView = WHERE("Document Type" = CONST(Loan));
 

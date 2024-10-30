@@ -2,6 +2,8 @@ page 50263 "Region Users"
 {
     Caption = 'Region Users';
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "Security Item";
     SourceTableView = WHERE(SecurityType = CONST(Region));
 

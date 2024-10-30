@@ -3,6 +3,8 @@ page 50026 "Information Types"
     Caption = 'Information Type PO Tracking';
     PageType = List;
     SourceTable = "PO Tracking Information";
+    ApplicationArea = All;
+    UsageCategory = Lists;
 
     layout
     {

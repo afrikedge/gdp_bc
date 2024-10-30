@@ -4,6 +4,8 @@ page 50116 "Prepared Item Shipment List"
     CardPageID = "Item Shipment";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Shipment),
                             "Shipment Status" = CONST(Prepared));

@@ -4,6 +4,8 @@ page 50256 "Purchase Req Tracking List"
     Editable = false;
     InsertAllowed = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Purchase Requisition";
 
     layout

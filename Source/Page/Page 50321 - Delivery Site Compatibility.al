@@ -2,6 +2,8 @@ page 50321 "Delivery Site Compatibility"
 {
     Caption = 'Delivery Site Compatibility';
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "Delivery Constraint";
     SourceTableView = WHERE(Type = CONST(PointLivraison));
 

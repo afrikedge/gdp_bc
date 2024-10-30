@@ -4,6 +4,8 @@ page 50287 "Vendor List - Workflow"
     CardPageID = "Vendor Card";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = Vendor;
     SourceTableView = WHERE("Validation Status" = CONST(InWorkflow));
 

@@ -2,6 +2,8 @@ page 50366 "Jirama Sites Item Pricing"
 {
     Caption = 'Prix de vente sites JIRAMA';
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "Item Charge Pricing";
     SourceTableView = WHERE("Service Type" = CONST(JiramaSite));
 

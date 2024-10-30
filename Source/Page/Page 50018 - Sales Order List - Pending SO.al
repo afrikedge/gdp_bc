@@ -5,6 +5,8 @@ page 50018 "Sales Order List - Pending SO"
     Editable = false;
     PageType = List;
     SourceTable = "Sales Header";
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Delivery Status" = CONST(AttenteOrdreLiv));
 

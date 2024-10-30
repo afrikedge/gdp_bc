@@ -4,6 +4,8 @@ page 50292 "Item List - Compta Four"
     CardPageID = "Item Card Admin";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = Item;
     SourceTableView = WHERE("Validation Status" = CONST(InWorkflowFOUR));
 

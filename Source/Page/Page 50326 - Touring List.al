@@ -4,6 +4,8 @@ page 50326 "Touring List"
     CardPageID = "Touring Card";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = Touring;
     SourceTableView = WHERE(Status = FILTER(Created | Dispached | Posted));
 

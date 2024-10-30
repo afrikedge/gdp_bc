@@ -4,6 +4,8 @@ page 50131 "Open Check Warranty"
     PageType = List;
     SourceTable = "Check Warranty";
     SourceTableView = WHERE(Status = CONST(Open));
+    ApplicationArea = All;
+    UsageCategory = Lists;
 
     layout
     {

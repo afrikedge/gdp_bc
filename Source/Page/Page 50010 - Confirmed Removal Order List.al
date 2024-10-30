@@ -5,6 +5,8 @@ page 50010 "Confirmed Removal Order List"
     Editable = false;
     PageType = List;
     SaveValues = true;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = pro_enteteBE;
     SourceTableView = WHERE(isconfirme = CONST(true),
                             IsBon = CONST(false));
