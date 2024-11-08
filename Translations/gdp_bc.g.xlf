@@ -13403,6 +13403,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - NamedType TxtTraitementTerminé</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3209614948 - NamedType 4016145812" size-unit="char" translate="yes" xml:space="preserve">
+          <source>La retenue à la source ne doit pas être activée en cas d'achat au comptant</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method PostVendorDeductions - NamedType TextAFK001</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2004228233 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
           <source>Text Files(*.txt;*.csv)|*.txt;*.csv</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -1027,5 +1027,16 @@ table 50000 "AddOn Setup"
             GLAcc.CheckGLAcc;
         end;
     end;
+
+    var
+        RecordHasBeenRead: Boolean;
+
+    procedure GetRecordOnce()
+    begin
+        if RecordHasBeenRead then
+            exit;
+        Get();
+        RecordHasBeenRead := true;
+    end;
 }
 
