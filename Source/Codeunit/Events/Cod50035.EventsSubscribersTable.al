@@ -462,8 +462,11 @@ codeunit 50035 "EventsSubscribers Table"
             Item.TESTFIELD("Sales Category Code", Cust2."Sales Category Code");
 
 
-        IF AfkLoc.GET(SalesLine."Location Code") THEN
-            Item.TESTFIELD("Item Category Code", AfkLoc."Item Category Code");
+        IF AfkLoc.GET(SalesLine."Location Code") THEN begin
+            Item.CalcFields("Parent Category");
+            Item.TESTFIELD("Parent Category", AfkLoc."Item Category Code");
+        end;
+
 
         SalesLine."FER Fees Price" := Item."FER Fees Price";
         SalesLine."OMH Fees Price" := Item."OMH Fees Price";

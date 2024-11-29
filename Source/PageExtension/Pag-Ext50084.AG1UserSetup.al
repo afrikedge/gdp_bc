@@ -115,6 +115,9 @@ pageextension 50084 "AG1 User Setup" extends "User Setup"
             field("GLAccount on Purchase Order"; Rec."GLAccount on Purchase Order")
             {
             }
+            field("Dispaching Windows User"; Rec."Dispaching Windows User")
+            {
+            }
         }
     }
 }

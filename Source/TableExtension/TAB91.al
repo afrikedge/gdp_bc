@@ -217,6 +217,10 @@ tableextension 50021 "A02 User Setup" extends "User Setup"
         {
             Caption = 'Saisie compte général sur commande';
         }
+        field(50039; "Dispaching Windows User"; Code[50])
+        {
+            Caption = 'Code utilisateur windows (Dispaching)';
+        }
     }
 
     //Unsupported feature: Property Deletion (LookupPageID).

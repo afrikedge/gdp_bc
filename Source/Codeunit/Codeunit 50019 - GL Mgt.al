@@ -518,13 +518,13 @@ codeunit 50019 "GL Mgt"
             RDSFees := Round(RDSUnitPrice * SalesLine1."Qty. to Invoice (Base)", Currency."Amount Rounding Precision");//RDS Fees JN030918
     end;
 
-    procedure CalcBestUnitPrice(var SalesLine: Record "Sales Line"; var TempSalesPrice: Record "Sales Price" temporary; var FoundSalesPrice: Boolean; CalledByFieldNo: Integer)
+    procedure CalcBestUnitPrice(var SalesLine: Record "Sales Line"; var SalesPrice: Record "Sales Price" temporary; var FoundSalesPrice: Boolean; CalledByFieldNo: Integer)
     var
-        SalesPrice: Record "Sales Price";
+        //SalesPrice: Record "Sales Price";
         BestSalesPrice: Record "Sales Price";
         SalesPricesMgt: codeunit "Sales Price Calc. Mgt.";
         Item: record Item;
-        BestSalesPriceFound: Boolean;
+        //BestSalesPriceFound: Boolean;
         IsHandled: Boolean;
     begin
         //*************************************************************
@@ -545,7 +545,7 @@ codeunit 50019 "GL Mgt"
             UNTIL SalesPrice.NEXT = 0;
 
         //Dernier prix de groupe
-        IF NOT BestSalesPriceFound THEN BEGIN
+        IF NOT FoundSalesPrice THEN BEGIN
             SalesPrice.RESET;
             SalesPrice.SETCURRENTKEY("Sales Type", "Sales Code", "Item No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity");
             SalesPrice.SETRANGE(SalesPrice."Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
@@ -560,7 +560,7 @@ codeunit 50019 "GL Mgt"
 
 
         //Dernier prix Tous
-        IF NOT BestSalesPriceFound THEN BEGIN
+        IF NOT FoundSalesPrice THEN BEGIN
             SalesPrice.RESET;
             SalesPrice.SETCURRENTKEY("Sales Type", "Sales Code", "Item No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity");
             SalesPrice.SETRANGE(SalesPrice."Sales Type", SalesPrice."Sales Type"::"All Customers");
@@ -588,7 +588,7 @@ codeunit 50019 "GL Mgt"
             BestSalesPrice."Allow Invoice Disc." := SalesLine."Allow Invoice Disc.";
         end;
 
-        TempSalesPrice := BestSalesPrice;
+        SalesPrice := BestSalesPrice;
     end;
 
     local procedure ConvertPriceToUoM(UnitOfMeasureCode: Code[10]; var UnitPrice: Decimal; SalesLine: record "Sales Line")

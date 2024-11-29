@@ -2783,6 +2783,56 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Compartment - Field Line No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1913173512 - Field 2661231777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordre C1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Compartment - Field Ordre1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1913173512 - Field 4020952033 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordre C10</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Compartment - Field Ordre10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1913173512 - Field 2023535160 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordre C2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Compartment - Field Ordre2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1913173512 - Field 1385838543 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordre C3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Compartment - Field Ordre3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1913173512 - Field 1554747566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordre C4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Compartment - Field Ordre4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1913173512 - Field 917050949 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordre C5</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Compartment - Field Ordre5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1913173512 - Field 279354332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordre C6</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Compartment - Field Ordre6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1913173512 - Field 3936625011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordre C7</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Compartment - Field Ordre7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1913173512 - Field 4105534034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordre C8</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Compartment - Field Ordre8 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1913173512 - Field 3467837417 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordre C9</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Compartment - Field Ordre9 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1913173512 - Field 3715698290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total Capacity</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -22923,6 +22973,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Subform - NamedType Text001</note>
         </trans-unit>
+        <trans-unit id="Page 2939164388 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CompartmentOrderSubform</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CompartmentOrderSubform - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 639899059 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Complex Transfer List</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38667,6 +38722,11 @@
           <source>Compartments</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Truck Card - Control Compartments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3187609593 - Control 3223776427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ordre des compartiments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Truck Card - Control CompartmentsOrder - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3187609593 - Control 3885278358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tracteur</source>
@@ -57573,6 +57633,191 @@
           <note from="Developer" annotates="general" priority="2">%1=Field;%2=Value;%3=Value</note>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort SEPA MT101 - NamedType NoDataToExportErr</note>
         </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 2521573585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Afk Logistique</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1_Logistique - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 4153703659 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Bons d'enlèvement</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 4045409851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Compatibilité transport</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 388139172 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Compatibilité Dern. Livraison</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique11 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1025835789 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Compatibilité d'axes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique12 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1663532406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Compatibilité points de livraison</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique13 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1494623383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Points de livraison par axe</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique14 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 2132320000 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Liste des tournées</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique15 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 2770016617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Cdes en attente de livraison</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique16 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3407713234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Liste des tournées traitées</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique17 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3238804211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Type Données Dispaching</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique18 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3876500828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Statistiques Transporteurs</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique19 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1771826214 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Bons de livraisons</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3785673582 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>	Evènements  Dispaching</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique20 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3147976965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Camions - edition</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique21 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1134129597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Bons (Dispaching)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 2240613808 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Bons d'enlèvement confirmés</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1602917191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>bons de livraison confirmés</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3516007042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Bons confirmés</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 2878310425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>bons d'enlèvement annulés</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3984794636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>bons de livraison annulés</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique8 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3347098019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Bons annulés</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique9 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1749389162 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Afk Sales Order process</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1_SalesProcess - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 4223801706 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Cdes-Suivi</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 2003289170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Cdes- partiellement facturées</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1365592553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Cdes-entièrement facturées</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders11 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 727895936 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Cdes-Annulées</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders12 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 90199319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Cdes-soldées</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders13 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 259108342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Cdes-en rupture de stock</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders14 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 2310711855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Cdes-Prix non conformes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 2948408472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Commandes- En saisie</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1841924261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Commandes- validation tarifs</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 2479620878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Commandes-Bloquées</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 566531027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Cdes- attente ordre de livraison</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1204227644 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Cdes-attente de livraison</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 97743433 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Cdes-partiellement livrées</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders8 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 735440050 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Cdes-Livrées</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Orders9 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2638615208 - Action 2363185391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1714817514">
           <source>Imprimer</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -58687,6 +58932,11 @@
           <source>OMH Fees Price</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Item - Field OMH Fees Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4052574762 - Field 4130717728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Catégorie</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Item - Field Parent Category - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4052574762 - Field 1260480562 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Qty. in Transit</source>
@@ -60882,6 +61132,11 @@
           <source>Direction Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Setup - Field Direction Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 288146863 - Field 2034456814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Code utilisateur windows (Dispaching)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Setup - Field Dispaching Windows User - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 288146863 - Field 565580576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Dispatching Manager Name</source>

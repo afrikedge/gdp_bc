@@ -74,6 +74,11 @@ page 50327 "Truck Card"
                 Caption = 'Compartments';
                 SubPageLink = immatriculation = FIELD(immatriculation);
             }
+            part(CompartmentsOrder; "CompartmentOrderSubform")
+            {
+                Caption = 'Ordre des compartiments';
+                SubPageLink = immatriculation = FIELD(immatriculation);
+            }
             group(Citerne)
             {
                 Caption = 'Citerne';
