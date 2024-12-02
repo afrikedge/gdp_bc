@@ -644,6 +644,7 @@ codeunit 50004 "SQL Mgt"
         // Clear(SQLReader);
         // Clear(SQLCommand2);
         // Clear(SQLConnection2);
+        exit(true);
     end;
 }
 

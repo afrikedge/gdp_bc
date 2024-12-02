@@ -52,75 +52,78 @@ codeunit 50005 "Item Transfer Mgt"
     begin
 
         if not IsBatch then
-          if not Confirm(Text006) then exit;
+            if not Confirm(Text006) then exit;
 
         ItemAdj.TestField(ItemAdj."Location Code");
         ItemAdj.TestField(ItemAdj."In-Transit Code");
         ItemAdj.TestField("Posting Date");
-        ItemAdj.TestField(ItemAdj.Status,ItemAdj.Status::Open);
+        ItemAdj.TestField(ItemAdj.Status, ItemAdj.Status::Open);
 
 
         AddOnsSetup.Get;
         //AddOnSetup.TESTFIELD(AddOnSetup."Partner Location");
 
-        if ItemAdj."External Document No."<>'' then begin
-          PostItemAdj1.Reset;
-          PostItemAdj1.SetRange("Document Type",PostItemAdj1."Document Type"::Transfer);
-          PostItemAdj1.SetRange("External Document No.",ItemAdj."External Document No.");
-          if PostItemAdj1.FindSet then repeat
-            if PostItemAdj1."No."<>ItemAdj."No." then
-              Error(Text019,PostItemAdj1."External Document No.",PostItemAdj1."No.");
-          until PostItemAdj1.Next=0;
+        if ItemAdj."External Document No." <> '' then begin
+            PostItemAdj1.Reset;
+            PostItemAdj1.SetRange("Document Type", PostItemAdj1."Document Type"::Transfer);
+            PostItemAdj1.SetRange("External Document No.", ItemAdj."External Document No.");
+            if PostItemAdj1.FindSet then
+                repeat
+                    if PostItemAdj1."No." <> ItemAdj."No." then
+                        Error(Text019, PostItemAdj1."External Document No.", PostItemAdj1."No.");
+                until PostItemAdj1.Next = 0;
 
-          ItemAdj1.Reset;
-          ItemAdj1.SetRange("Document Type",ItemAdj1."Document Type"::Transfer);
-          ItemAdj1.SetRange("External Document No.",ItemAdj."External Document No.");
-          if ItemAdj1.FindSet then repeat
-            if ItemAdj1."No."<>ItemAdj."No." then
-              Error(Text019,ItemAdj1."External Document No.",ItemAdj1."No.");
-          until ItemAdj1.Next=0;
+            ItemAdj1.Reset;
+            ItemAdj1.SetRange("Document Type", ItemAdj1."Document Type"::Transfer);
+            ItemAdj1.SetRange("External Document No.", ItemAdj."External Document No.");
+            if ItemAdj1.FindSet then
+                repeat
+                    if ItemAdj1."No." <> ItemAdj."No." then
+                        Error(Text019, ItemAdj1."External Document No.", ItemAdj1."No.");
+                until ItemAdj1.Next = 0;
         end;
 
         ItemAdj.Status := ItemAdj.Status::Released;
         ItemAdj.Modify;
 
-        Descr := StrSubstNo(Text007,ItemAdj."No.");
+        Descr := StrSubstNo(Text007, ItemAdj."No.");
 
         AdjustLine.Reset;
-        AdjustLine.SetRange(AdjustLine."Document Type",AdjustLine."Document Type"::Transfer);
-        AdjustLine.SetRange("Document No.",ItemAdj."No.");
-        if AdjustLine.FindSet(true,true) then repeat
+        AdjustLine.SetRange(AdjustLine."Document Type", AdjustLine."Document Type"::Transfer);
+        AdjustLine.SetRange("Document No.", ItemAdj."No.");
+        if AdjustLine.FindSet(true, true) then
+            repeat
 
-          Item1.Get(AdjustLine."Item No.");
+                Item1.Get(AdjustLine."Item No.");
 
-          //AdjustLine.TESTFIELD(AdjustLine."Location Code");
-          //AdjustLine.TESTFIELD(AdjustLine."Item No.");
-          AdjustLine.TestField(AdjustLine.Quantity);
-          AdjustLine.Validate("Qty. in Transit",AdjustLine."Qty. in Transit" + (AdjustLine.Quantity-AdjustLine."Returned Qty"));
-          AdjustLine."Transfer-from Code" := ItemAdj."Location Code";
-          AdjustLine.Status := AdjustLine.Status::Released;
-          AdjustLine.Modify;
+                //AdjustLine.TESTFIELD(AdjustLine."Location Code");
+                //AdjustLine.TESTFIELD(AdjustLine."Item No.");
+                AdjustLine.TestField(AdjustLine.Quantity);
+                AdjustLine.Validate("Qty. in Transit", AdjustLine."Qty. in Transit" + (AdjustLine.Quantity - AdjustLine."Returned Qty"));
+                AdjustLine."Transfer-from Code" := ItemAdj."Location Code";
+                AdjustLine.Status := AdjustLine.Status::Released;
+                AdjustLine.Modify;
 
-          LineExits:=true;
+                LineExits := true;
 
-          //JN141021 : Modif transfert PBL afin de gerer les op sans valorisation (génération ecritures comptables)
-          if(ItemAdj."Item Category Code" = AddOnsSetup."PBL Category Code") then
-            TransfertItemReclass(ItemJnlPostLine,ItemAdj."No.",ItemAdj."Posting Date",AdjustLine."Item No.",
-              ItemAdj."Location Code",ItemAdj."In-Transit Code",Abs(AdjustLine.Quantity),AdjustLine."Unit of Measure Code",
-              AdjustLine."Dimension Set ID",AdjustLine."Dimension Set ID",Descr,ItemJnlLine."Adjustment Type"::Shipment,'')
-          else
-            TransfertItemReclassTransfert(ItemJnlPostLine,ItemAdj."No.",ItemAdj."Posting Date",AdjustLine."Item No.",
-              ItemAdj."Location Code",ItemAdj."In-Transit Code",Abs(AdjustLine.Quantity),AdjustLine."Unit of Measure Code",
-              AdjustLine."Dimension Set ID",AdjustLine."Dimension Set ID",Descr,ItemJnlLine."Adjustment Type"::Shipment,AdjustLine);
+                //JN141021 : Modif transfert PBL afin de gerer les op sans valorisation (génération ecritures comptables)
+                if (ItemAdj."Item Category Code" = AddOnsSetup."PBL Category Code") then
+                    TransfertItemReclass(ItemJnlPostLine, ItemAdj."No.", ItemAdj."Posting Date", AdjustLine."Item No.",
+                      ItemAdj."Location Code", ItemAdj."In-Transit Code", Abs(AdjustLine.Quantity), AdjustLine."Unit of Measure Code",
+                      AdjustLine."Dimension Set ID", AdjustLine."Dimension Set ID", Descr, ItemJnlLine."Adjustment Type"::Shipment, '')
+                else
+                    TransfertItemReclassTransfert(ItemJnlPostLine, ItemAdj."No.", ItemAdj."Posting Date", AdjustLine."Item No.",
+                      ItemAdj."Location Code", ItemAdj."In-Transit Code", Abs(AdjustLine.Quantity), AdjustLine."Unit of Measure Code",
+                      AdjustLine."Dimension Set ID", AdjustLine."Dimension Set ID", Descr, ItemJnlLine."Adjustment Type"::Shipment, AdjustLine);
 
 
-        until AdjustLine.Next=0;
+            until AdjustLine.Next = 0;
 
         if not IsBatch then begin
-          if not LineExits then
-            Error(Text010)
-          else
-            Message(Text009);
+            if not LineExits then
+                Error(Text010)
+            else
+                Message(Text009);
         end;
     end;
 
@@ -143,88 +146,91 @@ codeunit 50005 "Item Transfer Mgt"
     begin
 
         AddOnsSetup.Get;
-        ItemAdj.TestField(ItemAdj.Status,ItemAdj.Status::Released);
+        ItemAdj.TestField(ItemAdj.Status, ItemAdj.Status::Released);
 
-        if ItemAdj."Location Code"=ItemAdj."Transfer-to Code" then Error(Text013);
+        if ItemAdj."Location Code" = ItemAdj."Transfer-to Code" then Error(Text013);
 
 
         if not IsBatch then
-          if not Confirm(StrSubstNo(Text011,ItemAdj."Transfer-to Code")) then exit;
+            if not Confirm(StrSubstNo(Text011, ItemAdj."Transfer-to Code")) then exit;
 
         ItemAdj.TestField(ItemAdj."Transfer-to Code");
         ItemAdj.TestField(ItemAdj."In-Transit Code");
         ItemAdj.TestField(ItemAdj."Receipt Date");
 
-        if ItemAdj."Receipt Date"<ItemAdj."Posting Date" then Error(Text014);
+        if ItemAdj."Receipt Date" < ItemAdj."Posting Date" then Error(Text014);
 
         CloseDocument := true;
 
-        Descr := StrSubstNo(Text008,ItemAdj."No.");
+        Descr := StrSubstNo(Text008, ItemAdj."No.");
 
-        LineExistsToReturn:=false;
+        LineExistsToReturn := false;
         AdjustLine.Reset;
-        AdjustLine.SetRange(AdjustLine."Document Type",AdjustLine."Document Type"::Transfer);
-        AdjustLine.SetRange("Document No.",ItemAdj."No.");
-        if AdjustLine.FindSet then repeat
-          if AdjustLine."Returned Qty" + AdjustLine."Qty to return" > AdjustLine.Quantity then
-            Error(Text012,AdjustLine."Line No.");
-          if AdjustLine."Qty to return"<>0 then LineExistsToReturn:=true;
-        until AdjustLine.Next=0;
+        AdjustLine.SetRange(AdjustLine."Document Type", AdjustLine."Document Type"::Transfer);
+        AdjustLine.SetRange("Document No.", ItemAdj."No.");
+        if AdjustLine.FindSet then
+            repeat
+                if AdjustLine."Returned Qty" + AdjustLine."Qty to return" > AdjustLine.Quantity then
+                    Error(Text012, AdjustLine."Line No.");
+                if AdjustLine."Qty to return" <> 0 then LineExistsToReturn := true;
+            until AdjustLine.Next = 0;
 
 
         if LineExistsToReturn then
-          CodeRemb := AddNewReception(ItemAdj);
+            CodeRemb := AddNewReception(ItemAdj);
 
 
         AdjustLine.Reset;
-        AdjustLine.SetRange(AdjustLine."Document Type",AdjustLine."Document Type"::Transfer);
-        AdjustLine.SetRange("Document No.",ItemAdj."No.");
-        if AdjustLine.FindSet(true,true) then repeat
+        AdjustLine.SetRange(AdjustLine."Document Type", AdjustLine."Document Type"::Transfer);
+        AdjustLine.SetRange("Document No.", ItemAdj."No.");
+        if AdjustLine.FindSet(true, true) then
+            repeat
 
-          Item1.Get(AdjustLine."Item No.");
+                Item1.Get(AdjustLine."Item No.");
 
-          LigneTransfer := AdjustLine;
+                LigneTransfer := AdjustLine;
 
-          if AdjustLine."Returned Qty" + AdjustLine."Qty to return" <> AdjustLine.Quantity then
-            CloseDocument := false;
-
-          if ItemAdj."Item Category Code" = AddOnsSetup."LUBS Item Category" then begin
-            AdjustLine.TestField("Batch Number");
-            AdjustLine.TestField("Expiration Date");
-          end;
-
-          //************************Added 230616 Controle reception PBL
-          if IsBatch then
-            if AdjustLine.Quantity<>AdjustLine."Qty to return" then
-              Error(Text015,ItemAdj."No.");
+                if AdjustLine."Returned Qty" + AdjustLine."Qty to return" <> AdjustLine.Quantity then
+                    CloseDocument := false;
 
 
-          if AdjustLine."Qty to return"<>0 then begin
-            LineExistsToReturn := true;
+                if ItemAdj."Item Category Code" = AddOnsSetup."LUBS Item Category" then begin
+                    AdjustLine.TestField("Batch Number");
+                    AdjustLine.TestField("Expiration Date");
+                end;
 
-          //JN141021 : Modif transfert PBL afin de gerer les op sans valorisation (génération ecritures comptables)
-          if(ItemAdj."Item Category Code" = AddOnsSetup."PBL Category Code") then
-            TransfertItemReclass(ItemJnlPostLine,CodeRemb,ItemAdj."Receipt Date",AdjustLine."Item No.",
-              ItemAdj."In-Transit Code",ItemAdj."Transfer-to Code",Abs(AdjustLine."Qty to return"),AdjustLine."Unit of Measure Code",
-              AdjustLine."Dimension Set ID",AdjustLine."Dimension Set ID",ItemAdj."Posting Description",ItemJnlLine."Adjustment Type"::Reception,
-              '')
-           else
-            TransfertItemReclassTransfert(ItemJnlPostLine,CodeRemb,ItemAdj."Receipt Date",AdjustLine."Item No.",
-              ItemAdj."In-Transit Code",ItemAdj."Transfer-to Code",Abs(AdjustLine."Qty to return"),AdjustLine."Unit of Measure Code",
-              AdjustLine."Dimension Set ID",AdjustLine."Dimension Set ID",ItemAdj."Posting Description",ItemJnlLine."Adjustment Type"::Reception,
-              AdjustLine);
-
-            PostAjustementLines(ItemAdj,AdjustLine,ItemJnlPostLine,CodeRemb);
+                //************************Added 230616 Controle reception PBL
+                if IsBatch then
+                    if AdjustLine.Quantity <> AdjustLine."Qty to return" then
+                        Error(Text015, ItemAdj."No.");
 
 
-            LigneTransfer."Returned Qty" += AdjustLine."Qty to return";
-            LigneTransfer.Validate("Qty. in Transit", (LigneTransfer.Quantity-LigneTransfer."Returned Qty"));
-            LigneTransfer."Qty to return" := LigneTransfer.Quantity-(LigneTransfer."Returned Qty");
-            LigneTransfer."Qty to receive Adj" := LigneTransfer."Qty to return";
-            LigneTransfer.Modify;
-          end;
+                if AdjustLine."Qty to return" <> 0 then begin
+                    LineExistsToReturn := true;
 
-        until AdjustLine.Next=0;
+                    //JN141021 : Modif transfert PBL afin de gerer les op sans valorisation (génération ecritures comptables)
+                    if (ItemAdj."Item Category Code" = AddOnsSetup."PBL Category Code") then
+                        TransfertItemReclass(ItemJnlPostLine, CodeRemb, ItemAdj."Receipt Date", AdjustLine."Item No.",
+                          ItemAdj."In-Transit Code", ItemAdj."Transfer-to Code", Abs(AdjustLine."Qty to return"), AdjustLine."Unit of Measure Code",
+                          AdjustLine."Dimension Set ID", AdjustLine."Dimension Set ID", ItemAdj."Posting Description", ItemJnlLine."Adjustment Type"::Reception,
+                          '')
+                    else
+                        TransfertItemReclassTransfert(ItemJnlPostLine, CodeRemb, ItemAdj."Receipt Date", AdjustLine."Item No.",
+                          ItemAdj."In-Transit Code", ItemAdj."Transfer-to Code", Abs(AdjustLine."Qty to return"), AdjustLine."Unit of Measure Code",
+                          AdjustLine."Dimension Set ID", AdjustLine."Dimension Set ID", ItemAdj."Posting Description", ItemJnlLine."Adjustment Type"::Reception,
+                          AdjustLine);
+
+                    PostAjustementLines(ItemAdj, AdjustLine, ItemJnlPostLine, CodeRemb);
+
+
+                    LigneTransfer."Returned Qty" += AdjustLine."Qty to return";
+                    LigneTransfer.Validate("Qty. in Transit", (LigneTransfer.Quantity - LigneTransfer."Returned Qty"));
+                    LigneTransfer."Qty to return" := LigneTransfer.Quantity - (LigneTransfer."Returned Qty");
+                    LigneTransfer."Qty to receive Adj" := LigneTransfer."Qty to return";
+                    LigneTransfer.Modify;
+                end;
+
+            until AdjustLine.Next = 0;
 
 
 
@@ -232,21 +238,21 @@ codeunit 50005 "Item Transfer Mgt"
 
         if LineExistsToReturn then begin
 
-          //Vider la table des ajustements
-          ListeMotifs.Reset;
-          ListeMotifs.SetRange(ListeMotifs."Document Type",ListeMotifs."Document Type"::Transfer);
-          ListeMotifs.SetRange(ListeMotifs."Document No.",ItemAdj."No.");
-          ListeMotifs.DeleteAll;
+            //Vider la table des ajustements
+            ListeMotifs.Reset;
+            ListeMotifs.SetRange(ListeMotifs."Document Type", ListeMotifs."Document Type"::Transfer);
+            ListeMotifs.SetRange(ListeMotifs."Document No.", ItemAdj."No.");
+            ListeMotifs.DeleteAll;
 
-          //Close Doc
-          if CloseDocument then
-            ArchiveDoc(ItemAdj);
+            //Close Doc
+            if CloseDocument then
+                ArchiveDoc(ItemAdj);
 
-          if not IsBatch then
-            Message(Text009);
+            if not IsBatch then
+                Message(Text009);
         end else begin
-          if not IsBatch then
-            Message(Text010);
+            if not IsBatch then
+                Message(Text010);
         end;
     end;
 
@@ -266,12 +272,12 @@ codeunit 50005 "Item Transfer Mgt"
         ListeMotifs: Record "Transfer Reason Code";
     begin
 
-        ItemAdj.TestField(ItemAdj.Status,ItemAdj.Status::Released);
+        ItemAdj.TestField(ItemAdj.Status, ItemAdj.Status::Released);
 
         if ReceptionExists(ItemAdj) then Error(Text017);
         ItemAdj.TestField("Receipt Date");
 
-        if not Confirm(StrSubstNo(Text016,ItemAdj."Receipt Date")) then exit;
+        if not Confirm(StrSubstNo(Text016, ItemAdj."Receipt Date")) then exit;
 
         ItemAdj.TestField(ItemAdj."Location Code");
         ItemAdj.TestField(ItemAdj."In-Transit Code");
@@ -287,33 +293,34 @@ codeunit 50005 "Item Transfer Mgt"
         ItemAdj."Cancelled By" := UserId;
         ItemAdj.Modify;
 
-        Descr := StrSubstNo(Text018,ItemAdj."No.");
+        Descr := StrSubstNo(Text018, ItemAdj."No.");
 
         AdjustLine.Reset;
-        AdjustLine.SetRange(AdjustLine."Document Type",AdjustLine."Document Type"::Transfer);
-        AdjustLine.SetRange("Document No.",ItemAdj."No.");
-        if AdjustLine.FindSet(true,true) then repeat
+        AdjustLine.SetRange(AdjustLine."Document Type", AdjustLine."Document Type"::Transfer);
+        AdjustLine.SetRange("Document No.", ItemAdj."No.");
+        if AdjustLine.FindSet(true, true) then
+            repeat
 
-          Item1.Get(AdjustLine."Item No.");
+                Item1.Get(AdjustLine."Item No.");
 
-          //AdjustLine.TESTFIELD(AdjustLine."Location Code");
-          //AdjustLine.TESTFIELD(AdjustLine."Item No.");
-          AdjustLine.TestField(AdjustLine.Quantity);
+                //AdjustLine.TESTFIELD(AdjustLine."Location Code");
+                //AdjustLine.TESTFIELD(AdjustLine."Item No.");
+                AdjustLine.TestField(AdjustLine.Quantity);
 
-          LineExits:=true;
-          TransfertItemReclassTransfert(ItemJnlPostLine,ItemAdj."No.",ItemAdj."Receipt Date",AdjustLine."Item No.",
-            ItemAdj."In-Transit Code",ItemAdj."Location Code",Abs(AdjustLine.Quantity),AdjustLine."Unit of Measure Code",
-            AdjustLine."Dimension Set ID",AdjustLine."Dimension Set ID",Descr,ItemJnlLine."Adjustment Type"::Shipment,AdjustLine);
+                LineExits := true;
+                TransfertItemReclassTransfert(ItemJnlPostLine, ItemAdj."No.", ItemAdj."Receipt Date", AdjustLine."Item No.",
+                  ItemAdj."In-Transit Code", ItemAdj."Location Code", Abs(AdjustLine.Quantity), AdjustLine."Unit of Measure Code",
+                  AdjustLine."Dimension Set ID", AdjustLine."Dimension Set ID", Descr, ItemJnlLine."Adjustment Type"::Shipment, AdjustLine);
 
 
-        until AdjustLine.Next=0;
+            until AdjustLine.Next = 0;
 
 
 
         //Vider la table des ajustements
         ListeMotifs.Reset;
-        ListeMotifs.SetRange(ListeMotifs."Document Type",ListeMotifs."Document Type"::Transfer);
-        ListeMotifs.SetRange(ListeMotifs."Document No.",ItemAdj."No.");
+        ListeMotifs.SetRange(ListeMotifs."Document Type", ListeMotifs."Document Type"::Transfer);
+        ListeMotifs.SetRange(ListeMotifs."Document No.", ItemAdj."No.");
         ListeMotifs.DeleteAll;
 
         //Archive Doc
@@ -336,7 +343,7 @@ codeunit 50005 "Item Transfer Mgt"
         ReturnHeader.Init;
         ReturnHeader.TransferFields(ItemAdj);
         ReturnHeader."Document Type" := ReturnHeader."Document Type"::Transfer;
-        ReturnHeader."No." := NoSeriesMgt.GetNextNo(AddOnsSetup."Transfer Receipt Nos.",Today,true);
+        ReturnHeader."No." := NoSeriesMgt.GetNextNo(AddOnsSetup."Transfer Receipt Nos.", Today, true);
         ReturnHeader."Original Doc No" := ItemAdj."No.";
         ReturnHeader."Posting Date" := ItemAdj."Receipt Date";
         ReturnHeader."Transfer-to Code" := ItemAdj."Transfer-to Code";
@@ -344,22 +351,23 @@ codeunit 50005 "Item Transfer Mgt"
         ReturnHeader.Insert;
 
         AdjLine.Reset;
-        AdjLine.SetRange("Document Type",AdjLine."Document Type"::Transfer);
-        AdjLine.SetRange("Document No.",ItemAdj."No.");
-        if AdjLine.FindSet then repeat
-          ReturnLine.Init;
-          ReturnLine.TransferFields(AdjLine);
-          ReturnLine."Document Type" := ReturnLine."Document Type"::Transfer;
-          ReturnLine."Document No.":= ReturnHeader."No.";
-          ReturnLine."Line No." := AdjLine."Line No.";
-          ReturnLine.Quantity := AdjLine."Qty to return";
-          if ReturnLine.Quantity>0 then
-            ReturnLine.Insert;
+        AdjLine.SetRange("Document Type", AdjLine."Document Type"::Transfer);
+        AdjLine.SetRange("Document No.", ItemAdj."No.");
+        if AdjLine.FindSet then
+            repeat
+                ReturnLine.Init;
+                ReturnLine.TransferFields(AdjLine);
+                ReturnLine."Document Type" := ReturnLine."Document Type"::Transfer;
+                ReturnLine."Document No." := ReturnHeader."No.";
+                ReturnLine."Line No." := AdjLine."Line No.";
+                ReturnLine.Quantity := AdjLine."Qty to return";
+                if ReturnLine.Quantity > 0 then
+                    ReturnLine.Insert;
 
 
-          //Ajustement de la ligne
+            //Ajustement de la ligne
 
-        until AdjLine.Next=0;
+            until AdjLine.Next = 0;
 
         exit(ReturnHeader."No.");
     end;
@@ -371,7 +379,7 @@ codeunit 50005 "Item Transfer Mgt"
         ItemAdj.Delete(true);
     end;
 
-    procedure PostAjustementLines(AdjItem: Record "Adjustment Header";var AdjustLine: Record "Adjustment Line";var ItemJnlPostLine2: Codeunit "Item Jnl.-Post Line";CodeRemb: Code[20])
+    procedure PostAjustementLines(AdjItem: Record "Adjustment Header"; var AdjustLine: Record "Adjustment Line"; var ItemJnlPostLine2: Codeunit "Item Jnl.-Post Line"; CodeRemb: Code[20])
     var
         ItemJnlLine: Record "Item Journal Line";
         RemovalLine: Record pro_detailBE;
@@ -387,71 +395,72 @@ codeunit 50005 "Item Transfer Mgt"
         SourceCodeSetup.Get;
         SourceCode := SourceCodeSetup.Transfer;
 
-        Descr := StrSubstNo(Text008,AdjItem."No.");
+        Descr := StrSubstNo(Text008, AdjItem."No.");
 
         Item1.Get(AdjustLine."Item No.");
 
         ListeMotifs.Reset;
-        ListeMotifs.SetRange(ListeMotifs."Document Type",ListeMotifs."Document Type"::Transfer);
-        ListeMotifs.SetRange(ListeMotifs."Document No.",AdjustLine."Document No.");
-        ListeMotifs.SetRange(ListeMotifs."Line No.",AdjustLine."Line No.");
-        if ListeMotifs.FindSet then repeat
+        ListeMotifs.SetRange(ListeMotifs."Document Type", ListeMotifs."Document Type"::Transfer);
+        ListeMotifs.SetRange(ListeMotifs."Document No.", AdjustLine."Document No.");
+        ListeMotifs.SetRange(ListeMotifs."Line No.", AdjustLine."Line No.");
+        if ListeMotifs.FindSet then
+            repeat
 
 
-          PostedAdjustement.Init;
-          PostedAdjustement.TransferFields(ListeMotifs);
-          PostedAdjustement."Document No.":= CodeRemb;
-          PostedAdjustement.Insert;
+                PostedAdjustement.Init;
+                PostedAdjustement.TransferFields(ListeMotifs);
+                PostedAdjustement."Document No." := CodeRemb;
+                PostedAdjustement.Insert;
 
 
-          AdjQty := ListeMotifs."Adjust Qty";
-          if AdjQty=0 then Error(Text005,ListeMotifs."Line No.");
-          PositiveAdj := AdjQty>0;
+                AdjQty := ListeMotifs."Adjust Qty";
+                if AdjQty = 0 then Error(Text005, ListeMotifs."Line No.");
+                PositiveAdj := AdjQty > 0;
 
-          //Dépot d'origine - Ajustement négatif
-          ItemJnlLine.Init;
-          ItemJnlLine."Adjustment Type" := ItemJnlLine."Adjustment Type"::Transfer;
-          ItemJnlLine."Posting Date" := AdjItem."Receipt Date";
-          ItemJnlLine."Document Date" := WorkDate;
-          ItemJnlLine."Document No." := CodeRemb;
-          //ItemJnlLine."Document Type" := ItemJnlLine."Document Type"::"Transfer Receipt";
-          //ItemJnlLine."Document Line No." := TransRcptLine2."Line No.";
-          ItemJnlLine."External Document No." := AdjItem."No.";
+                //Dépot d'origine - Ajustement négatif
+                ItemJnlLine.Init;
+                ItemJnlLine."Adjustment Type" := ItemJnlLine."Adjustment Type"::Transfer;
+                ItemJnlLine."Posting Date" := AdjItem."Receipt Date";
+                ItemJnlLine."Document Date" := WorkDate;
+                ItemJnlLine."Document No." := CodeRemb;
+                //ItemJnlLine."Document Type" := ItemJnlLine."Document Type"::"Transfer Receipt";
+                //ItemJnlLine."Document Line No." := TransRcptLine2."Line No.";
+                ItemJnlLine."External Document No." := AdjItem."No.";
 
-          if PositiveAdj then
-            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt."
-          else
-            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt.";
+                if PositiveAdj then
+                    ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt."
+                else
+                    ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt.";
 
-          ItemJnlLine.Validate("Item No." , AdjustLine."Item No.");
-          ItemJnlLine.Description := Descr;
-          ItemJnlLine."Shortcut Dimension 1 Code" := AdjustLine."Shortcut Dimension 1 Code";
-          //ItemJnlLine."New Shortcut Dimension 1 Code" := AdjustLine."Shortcut Dimension 1 Code";
-          ItemJnlLine."Shortcut Dimension 2 Code" := AdjustLine."Shortcut Dimension 2 Code";
-          //ItemJnlLine."New Shortcut Dimension 2 Code" := TransRcptLine2."Shortcut Dimension 2 Code";
-          ItemJnlLine."Dimension Set ID" := AdjustLine."Dimension Set ID";
-          //ItemJnlLine."New Dimension Set ID" := TransRcptLine2."Dimension Set ID";
-          ItemJnlLine.Validate("Location Code", AdjItem."Transfer-to Code");
-          ItemJnlLine.Validate(Quantity , Abs(AdjQty));
+                ItemJnlLine.Validate("Item No.", AdjustLine."Item No.");
+                ItemJnlLine.Description := Descr;
+                ItemJnlLine."Shortcut Dimension 1 Code" := AdjustLine."Shortcut Dimension 1 Code";
+                //ItemJnlLine."New Shortcut Dimension 1 Code" := AdjustLine."Shortcut Dimension 1 Code";
+                ItemJnlLine."Shortcut Dimension 2 Code" := AdjustLine."Shortcut Dimension 2 Code";
+                //ItemJnlLine."New Shortcut Dimension 2 Code" := TransRcptLine2."Shortcut Dimension 2 Code";
+                ItemJnlLine."Dimension Set ID" := AdjustLine."Dimension Set ID";
+                //ItemJnlLine."New Dimension Set ID" := TransRcptLine2."Dimension Set ID";
+                ItemJnlLine.Validate("Location Code", AdjItem."Transfer-to Code");
+                ItemJnlLine.Validate(Quantity, Abs(AdjQty));
 
-          ItemJnlLine.Validate("Unit of Measure Code" , AdjustLine."Unit of Measure Code");
-          ItemJnlLine."Invoiced Quantity" := Abs(AdjQty);
+                ItemJnlLine.Validate("Unit of Measure Code", AdjustLine."Unit of Measure Code");
+                ItemJnlLine."Invoiced Quantity" := Abs(AdjQty);
 
-          ItemJnlLine."LUB Expiration Date" := AdjustLine."Expiration Date";
-          ItemJnlLine."Batch Number" := AdjustLine."Batch Number";
+                ItemJnlLine."LUB Expiration Date" := AdjustLine."Expiration Date";
+                ItemJnlLine."Batch Number" := AdjustLine."Batch Number";
 
-          ItemJnlLine."Source Code" := SourceCode;
-          ItemJnlLine."Reason Code" := ListeMotifs."Reason Code";
-          ItemJnlLine.AFK_SetDimensionsItem(AdjustLine."Item No.");
+                ItemJnlLine."Source Code" := SourceCode;
+                ItemJnlLine."Reason Code" := ListeMotifs."Reason Code";
+                ItemJnlLine.AFK_SetDimensionsItem(AdjustLine."Item No.");
 
-          //ItemJnlLine.Area := TransRcptHeader2.Area;
-          //ItemJnlLine."Transaction Specification" := TransRcptHeader2."Transaction Specification";
-          ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
+                //ItemJnlLine.Area := TransRcptHeader2.Area;
+                //ItemJnlLine."Transaction Specification" := TransRcptHeader2."Transaction Specification";
+                ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
 
-          if AdjQty<>0 then
-            ItemJnlPostLine2.RunWithCheck(ItemJnlLine);
+                if AdjQty <> 0 then
+                    ItemJnlPostLine2.RunWithCheck(ItemJnlLine);
 
-        until ListeMotifs.Next = 0;
+            until ListeMotifs.Next = 0;
     end;
 
     procedure ProcessHypoReception(var TransHeader: Record "Transfer Header")
@@ -465,9 +474,9 @@ codeunit 50005 "Item Transfer Mgt"
         ResteARecevoir: Decimal;
     begin
 
-        if not Confirm(StrSubstNo(Text001,TransHeader."Receive-to Code")) then exit;
+        if not Confirm(StrSubstNo(Text001, TransHeader."Receive-to Code")) then exit;
 
-        if TransHeader."Receive-to Code"='' then Error(Text003);
+        if TransHeader."Receive-to Code" = '' then Error(Text003);
 
         AddOnsSetup.Get;
         AddOnsSetup.TestField(AddOnsSetup."Transit Location Transfer");
@@ -475,20 +484,20 @@ codeunit 50005 "Item Transfer Mgt"
 
         TransH.Init;
         //TransH.TRANSFERFIELDS(TransHeader);
-        TransH."Posting Date":=WorkDate;
-        TransH."Shipment Date":=WorkDate;
+        TransH."Posting Date" := WorkDate;
+        TransH."Shipment Date" := WorkDate;
 
-        TransH."No." := NoSeriesMgt.GetNextNo(AddOnsSetup."Hypo Transfer Receipt Nos.",Today,true);
+        TransH."No." := NoSeriesMgt.GetNextNo(AddOnsSetup."Hypo Transfer Receipt Nos.", Today, true);
 
         TransH.Insert;
 
 
-        TransH.Validate("Transfer-from Code",AddOnsSetup."Transit Location Transfer");
-        TransH.Validate("Transfer-to Code",TransHeader."Receive-to Code");
-        TransH.Validate("In-Transit Code",TransHeader."In-Transit Code");
+        TransH.Validate("Transfer-from Code", AddOnsSetup."Transit Location Transfer");
+        TransH.Validate("Transfer-to Code", TransHeader."Receive-to Code");
+        TransH.Validate("In-Transit Code", TransHeader."In-Transit Code");
 
-        TransH."Transfer Doc Type":=TransH."Transfer Doc Type"::"Hypothetical Receipt";
-        TransH."Transfer Type":=TransH."Transfer Type"::Hypothetical;
+        TransH."Transfer Doc Type" := TransH."Transfer Doc Type"::"Hypothetical Receipt";
+        TransH."Transfer Type" := TransH."Transfer Type"::Hypothetical;
         TransH."Dimension Set ID" := TransHeader."Dimension Set ID";
         TransH."Original Transfer No" := TransHeader."No.";
         TransH.Modify;
@@ -497,33 +506,34 @@ codeunit 50005 "Item Transfer Mgt"
 
         TransLine.Reset;
         TransLine.SetRange(TransLine."Document No.", TransHeader."No.");
-        if TransLine.FindSet then repeat
-          TransL.Init;
-          //TransL.TRANSFERFIELDS(TransLine);
-          TransL."Document No." := TransH."No.";
-          TransL."Line No.":=TransLine."Line No.";
-          TransL.Validate(TransL."Item No.",TransLine."Item No.");
-          TransL.Validate(Quantity,TransLine."Qty to receive Hypo");
-          TransL.Validate("Unit of Measure Code",TransLine."Unit of Measure Code");
-          TransL.Validate("Qty to receive Adj",TransLine."Qty to receive Hypo Adj");
-          TransL."Reason Code":=TransLine."Reason Code";
-          TransL."Qty to receive Hypo Adj" :=TransLine."Qty to receive Hypo Adj";
+        if TransLine.FindSet then
+            repeat
+                TransL.Init;
+                //TransL.TRANSFERFIELDS(TransLine);
+                TransL."Document No." := TransH."No.";
+                TransL."Line No." := TransLine."Line No.";
+                TransL.Validate(TransL."Item No.", TransLine."Item No.");
+                TransL.Validate(Quantity, TransLine."Qty to receive Hypo");
+                TransL.Validate("Unit of Measure Code", TransLine."Unit of Measure Code");
+                TransL.Validate("Qty to receive Adj", TransLine."Qty to receive Hypo Adj");
+                TransL."Reason Code" := TransLine."Reason Code";
+                TransL."Qty to receive Hypo Adj" := TransLine."Qty to receive Hypo Adj";
 
-          if TransLine."Qty to receive Hypo"<>0 then
-            TransL.Insert;
+                if TransLine."Qty to receive Hypo" <> 0 then
+                    TransL.Insert;
 
-          ResteARecevoir := TransLine.Quantity-TransLine."Qty received Hypo";
-          if TransLine."Qty to receive Hypo">ResteARecevoir then
-            Error(Text002,TransL."Line No.",ResteARecevoir);
+                ResteARecevoir := TransLine.Quantity - TransLine."Qty received Hypo";
+                if TransLine."Qty to receive Hypo" > ResteARecevoir then
+                    Error(Text002, TransL."Line No.", ResteARecevoir);
 
-          TransLine."Qty received Hypo" += TransLine."Qty to receive Hypo";
-          TransLine.Modify;
+                TransLine."Qty received Hypo" += TransLine."Qty to receive Hypo";
+                TransLine.Modify;
 
 
-          if TransLine."Qty received Hypo"<>TransLine.Quantity then
-            CloseTransfer := false;
+                if TransLine."Qty received Hypo" <> TransLine.Quantity then
+                    CloseTransfer := false;
 
-        until TransLine.Next=0;
+            until TransLine.Next = 0;
 
         TransferPostShipment.SetHideValidationDialog(true);
         TransferPostReceipt.SetHideValidationDialog(true);
@@ -531,13 +541,13 @@ codeunit 50005 "Item Transfer Mgt"
         TransferPostReceipt.Run(TransH);
 
         if CloseTransfer then begin
-          TransHeader.SetHideValidationDialog(true);
-          TransHeader.AFK_SetAllowDeletionHypo(true);
-          TransHeader.DeleteOneTransferOrder(TransHeader,TransLine);
+            TransHeader.SetHideValidationDialog(true);
+            TransHeader.AFK_SetAllowDeletionHypo(true);
+            TransHeader.DeleteOneTransferOrder(TransHeader, TransLine);
         end;
     end;
 
-    procedure PostAjustementReception(var TransLine3: Record "Transfer Line";TransRcptHeader2: Record "Transfer Receipt Header";var TransRcptLine2: Record "Transfer Receipt Line";var ItemJnlPostLine2: Codeunit "Item Jnl.-Post Line")
+    procedure PostAjustementReception(var TransLine3: Record "Transfer Line"; TransRcptHeader2: Record "Transfer Receipt Header"; var TransRcptLine2: Record "Transfer Receipt Line"; var ItemJnlPostLine2: Codeunit "Item Jnl.-Post Line")
     var
         ItemJnlLine: Record "Item Journal Line";
         RemovalLine: Record pro_detailBE;
@@ -548,19 +558,19 @@ codeunit 50005 "Item Transfer Mgt"
         ItemJnlPostLine: Codeunit "Item Jnl.-Post Line";
         ListeMotifs: Record "Transfer Reason Code";
     begin
-        
+
         // AddOnSetup.GET;
         // AddOnSetup.TESTFIELD(AddOnSetup."Removal Journal code");
         // AddOnSetup.TESTFIELD(AddOnSetup."Shipment Location");
-        
-        if TransRcptHeader2."Transfer Doc Type"=TransRcptHeader2."Transfer Doc Type"::"Hypothetical Shipment" then
-          exit;
-        
+
+        if TransRcptHeader2."Transfer Doc Type" = TransRcptHeader2."Transfer Doc Type"::"Hypothetical Shipment" then
+            exit;
+
         SourceCodeSetup.Get;
         SourceCode := SourceCodeSetup.Transfer;
-        
+
         //IF TransRcptHeader2."Transfer Type"=TransRcptHeader2."Transfer Type"::Hypothetical THEN BEGIN
-        
+
         /*
         IF TransRcptHeader2."Transfer Doc Type"=TransRcptHeader2."Transfer Doc Type"::"Hypothetical Receipt" THEN BEGIN
         
@@ -574,62 +584,63 @@ codeunit 50005 "Item Transfer Mgt"
         
         END;
         */
-        
-        
-        
+
+
+
         Item1.Get(TransLine3."Item No.");
         //TransLine3.TESTFIELD(TransLine3."Reason Code");
-        
-        
+
+
         ListeMotifs.Reset;
-        ListeMotifs.SetRange(ListeMotifs."Document Type",ListeMotifs."Document Type"::Transfer);
-        ListeMotifs.SetRange(ListeMotifs."Document No.",TransLine3."Document No.");
-        ListeMotifs.SetRange(ListeMotifs."Line No.",TransLine3."Line No.");
-        if ListeMotifs.FindSet then repeat
-        
-          AdjQty := ListeMotifs."Adjust Qty";
-          if AdjQty=0 then Error(Text005,ListeMotifs."Line No.");
-          PositiveAdj := AdjQty>0;
-        
-          //Dépot d'origine - Ajustement négatif
-          ItemJnlLine.Init;
-          ItemJnlLine."Adjustment Type" := ItemJnlLine."Adjustment Type"::Transfer;
-          ItemJnlLine."Posting Date" := TransRcptHeader2."Posting Date";
-          ItemJnlLine."Document Date" := TransRcptHeader2."Posting Date";
-          ItemJnlLine."Document No." := TransRcptHeader2."No.";
-          ItemJnlLine."Document Type" := ItemJnlLine."Document Type"::"Transfer Receipt";
-          ItemJnlLine."Document Line No." := TransRcptLine2."Line No.";
-          ItemJnlLine."External Document No." := TransRcptHeader2."External Document No.";
-        
-          if PositiveAdj then
-            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt."
-          else
-            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt.";
-        
-          ItemJnlLine.Validate("Item No." , TransRcptLine2."Item No.");
-          ItemJnlLine.Description := TransRcptLine2.Description;
-          ItemJnlLine."Shortcut Dimension 1 Code" := TransRcptLine2."Shortcut Dimension 1 Code";
-          ItemJnlLine."New Shortcut Dimension 1 Code" := TransRcptLine2."Shortcut Dimension 1 Code";
-          ItemJnlLine."Shortcut Dimension 2 Code" := TransRcptLine2."Shortcut Dimension 2 Code";
-          ItemJnlLine."New Shortcut Dimension 2 Code" := TransRcptLine2."Shortcut Dimension 2 Code";
-          ItemJnlLine."Dimension Set ID" := TransRcptLine2."Dimension Set ID";
-          ItemJnlLine."New Dimension Set ID" := TransRcptLine2."Dimension Set ID";
-          ItemJnlLine.Validate("Location Code", TransRcptHeader2."Transfer-to Code");
-          ItemJnlLine.Validate(Quantity , Abs(AdjQty));
-        
-          ItemJnlLine.Validate("Unit of Measure Code" , TransRcptLine2."Unit of Measure Code");
-          ItemJnlLine."Invoiced Quantity" := Abs(AdjQty);
-        
-          ItemJnlLine."Source Code" := SourceCode;
-          ItemJnlLine."Reason Code" := ListeMotifs."Reason Code";
-          ItemJnlLine.Area := TransRcptHeader2.Area;
-          ItemJnlLine."Transaction Specification" := TransRcptHeader2."Transaction Specification";
-          ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
-        
-          if AdjQty<>0 then
-            ItemJnlPostLine2.RunWithCheck(ItemJnlLine);
-        
-        until ListeMotifs.Next = 0;
+        ListeMotifs.SetRange(ListeMotifs."Document Type", ListeMotifs."Document Type"::Transfer);
+        ListeMotifs.SetRange(ListeMotifs."Document No.", TransLine3."Document No.");
+        ListeMotifs.SetRange(ListeMotifs."Line No.", TransLine3."Line No.");
+        if ListeMotifs.FindSet then
+            repeat
+
+                AdjQty := ListeMotifs."Adjust Qty";
+                if AdjQty = 0 then Error(Text005, ListeMotifs."Line No.");
+                PositiveAdj := AdjQty > 0;
+
+                //Dépot d'origine - Ajustement négatif
+                ItemJnlLine.Init;
+                ItemJnlLine."Adjustment Type" := ItemJnlLine."Adjustment Type"::Transfer;
+                ItemJnlLine."Posting Date" := TransRcptHeader2."Posting Date";
+                ItemJnlLine."Document Date" := TransRcptHeader2."Posting Date";
+                ItemJnlLine."Document No." := TransRcptHeader2."No.";
+                ItemJnlLine."Document Type" := ItemJnlLine."Document Type"::"Transfer Receipt";
+                ItemJnlLine."Document Line No." := TransRcptLine2."Line No.";
+                ItemJnlLine."External Document No." := TransRcptHeader2."External Document No.";
+
+                if PositiveAdj then
+                    ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt."
+                else
+                    ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt.";
+
+                ItemJnlLine.Validate("Item No.", TransRcptLine2."Item No.");
+                ItemJnlLine.Description := TransRcptLine2.Description;
+                ItemJnlLine."Shortcut Dimension 1 Code" := TransRcptLine2."Shortcut Dimension 1 Code";
+                ItemJnlLine."New Shortcut Dimension 1 Code" := TransRcptLine2."Shortcut Dimension 1 Code";
+                ItemJnlLine."Shortcut Dimension 2 Code" := TransRcptLine2."Shortcut Dimension 2 Code";
+                ItemJnlLine."New Shortcut Dimension 2 Code" := TransRcptLine2."Shortcut Dimension 2 Code";
+                ItemJnlLine."Dimension Set ID" := TransRcptLine2."Dimension Set ID";
+                ItemJnlLine."New Dimension Set ID" := TransRcptLine2."Dimension Set ID";
+                ItemJnlLine.Validate("Location Code", TransRcptHeader2."Transfer-to Code");
+                ItemJnlLine.Validate(Quantity, Abs(AdjQty));
+
+                ItemJnlLine.Validate("Unit of Measure Code", TransRcptLine2."Unit of Measure Code");
+                ItemJnlLine."Invoiced Quantity" := Abs(AdjQty);
+
+                ItemJnlLine."Source Code" := SourceCode;
+                ItemJnlLine."Reason Code" := ListeMotifs."Reason Code";
+                ItemJnlLine.Area := TransRcptHeader2.Area;
+                ItemJnlLine."Transaction Specification" := TransRcptHeader2."Transaction Specification";
+                ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
+
+                if AdjQty <> 0 then
+                    ItemJnlPostLine2.RunWithCheck(ItemJnlLine);
+
+            until ListeMotifs.Next = 0;
 
     end;
 
@@ -641,7 +652,7 @@ codeunit 50005 "Item Transfer Mgt"
         LineNo: Integer;
     begin
 
-        if TransH."Transfer Doc Type"=TransH."Transfer Doc Type"::"Hypothetical Receipt" then exit;
+        if TransH."Transfer Doc Type" = TransH."Transfer Doc Type"::"Hypothetical Receipt" then exit;
 
         if TransArchive.Get(TransH."No.") then exit;
 
@@ -649,21 +660,22 @@ codeunit 50005 "Item Transfer Mgt"
         TransArchive.TransferFields(TransH);
         TransArchive.Insert;
 
-        LineNo:=0;
+        LineNo := 0;
 
         TransLine.Reset;
-        TransLine.SetRange("Document No.",TransH."No.");
-        if TransLine.FindSet then repeat
-          LineNo:=LineNo+1000;
-          TransArchiveLine.Init;
-          TransArchiveLine.TransferFields(TransLine);
-          TransArchiveLine."Document No.":=TransLine."Document No.";
-          TransArchiveLine."Line No." :=LineNo;
-          TransArchiveLine.Insert;
-        until TransLine.Next=0;
+        TransLine.SetRange("Document No.", TransH."No.");
+        if TransLine.FindSet then
+            repeat
+                LineNo := LineNo + 1000;
+                TransArchiveLine.Init;
+                TransArchiveLine.TransferFields(TransLine);
+                TransArchiveLine."Document No." := TransLine."Document No.";
+                TransArchiveLine."Line No." := LineNo;
+                TransArchiveLine.Insert;
+            until TransLine.Next = 0;
     end;
 
-    procedure TransfertItemReclass(var ItemJnlPostLine2: Codeunit "Item Jnl.-Post Line";DocNo: Code[20];PostingDate: Date;ItemNo: Code[20];MagasinOr: Code[20];MagasinDest: Code[20];Qty: Decimal;Unite: Code[10];DimSetIdOr: Integer;DimSetIdDest: Integer;Descr: Text[50];AdjustType: Integer;CargoRef: Code[20])
+    procedure TransfertItemReclass(var ItemJnlPostLine2: Codeunit "Item Jnl.-Post Line"; DocNo: Code[20]; PostingDate: Date; ItemNo: Code[20]; MagasinOr: Code[20]; MagasinDest: Code[20]; Qty: Decimal; Unite: Code[10]; DimSetIdOr: Integer; DimSetIdDest: Integer; Descr: Text[50]; AdjustType: Integer; CargoRef: Code[20])
     var
         ItemJnlLine: Record "Item Journal Line";
         RemovalLine: Record pro_detailBE;
@@ -676,7 +688,7 @@ codeunit 50005 "Item Transfer Mgt"
         SourceCodeSetup.Get;
         SourceCode := SourceCodeSetup."Item Journal";
 
-        if Qty=0 then exit;
+        if Qty = 0 then exit;
 
         Item1.Get(ItemNo);
 
@@ -692,21 +704,21 @@ codeunit 50005 "Item Transfer Mgt"
         ItemJnlLine."External Document No." := DocNo;
         ItemJnlLine."Ref Cargo" := CargoRef;
 
-        ItemJnlLine.Validate("Item No." , Item1."No.");
+        ItemJnlLine.Validate("Item No.", Item1."No.");
         ItemJnlLine.Description := Descr;
 
         ItemJnlLine."Dimension Set ID" := DimSetIdOr;
-        ItemJnlLine.Validate("Location Code",MagasinOr);
+        ItemJnlLine.Validate("Location Code", MagasinOr);
 
-        ItemJnlLine.Validate(Quantity , Abs(Qty));
-        ItemJnlLine.Validate("Unit of Measure Code" , Unite);
+        ItemJnlLine.Validate(Quantity, Abs(Qty));
+        ItemJnlLine.Validate("Unit of Measure Code", Unite);
         ItemJnlLine."Invoiced Quantity" := Abs(Qty);
 
         ItemJnlLine."Source Code" := SourceCode;
         ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
 
-        if DimSetIdOr=0 then
-          ItemJnlLine.AFK_SetDimensionsItem(Item1."No."); //JN120118********************
+        if DimSetIdOr = 0 then
+            ItemJnlLine.AFK_SetDimensionsItem(Item1."No."); //JN120118********************
 
         ItemJnlPostLine2.RunWithCheck(ItemJnlLine);
 
@@ -727,21 +739,21 @@ codeunit 50005 "Item Transfer Mgt"
         ItemJnlLine."External Document No." := DocNo;
         ItemJnlLine."Ref Cargo" := CargoRef;
 
-        ItemJnlLine.Validate("Item No." , Item1."No.");
+        ItemJnlLine.Validate("Item No.", Item1."No.");
         ItemJnlLine.Description := Descr;
 
         ItemJnlLine."Dimension Set ID" := DimSetIdDest;
-        ItemJnlLine.Validate("Location Code",MagasinDest);
+        ItemJnlLine.Validate("Location Code", MagasinDest);
 
-        ItemJnlLine.Validate(Quantity , Abs(Qty));
-        ItemJnlLine.Validate("Unit of Measure Code" , Unite);
+        ItemJnlLine.Validate(Quantity, Abs(Qty));
+        ItemJnlLine.Validate("Unit of Measure Code", Unite);
         ItemJnlLine."Invoiced Quantity" := Abs(Qty);
 
         ItemJnlLine."Source Code" := SourceCode;
         ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
 
-        if DimSetIdDest=0 then
-          ItemJnlLine.AFK_SetDimensionsItem(Item1."No.");//JN120118********************
+        if DimSetIdDest = 0 then
+            ItemJnlLine.AFK_SetDimensionsItem(Item1."No.");//JN120118********************
 
         ItemJnlPostLine2.RunWithCheck(ItemJnlLine);
     end;
@@ -761,22 +773,23 @@ codeunit 50005 "Item Transfer Mgt"
         ItemTransfer: Codeunit "Item Transfer Mgt";
     begin
 
-        if ItemAdj."User ID"<>UserId then exit(false);
+        if ItemAdj."User ID" <> UserId then exit(false);
 
-        if ItemAdj."Location Code"='' then exit (false);
-        if ItemAdj."In-Transit Code"='' then exit (false);
-        if ItemAdj."Posting Date"=0D then exit (false);
-        if ItemAdj.Status<>ItemAdj.Status::Open then exit (false);
+        if ItemAdj."Location Code" = '' then exit(false);
+        if ItemAdj."In-Transit Code" = '' then exit(false);
+        if ItemAdj."Posting Date" = 0D then exit(false);
+        if ItemAdj.Status <> ItemAdj.Status::Open then exit(false);
 
         AdjustLine.Reset;
-        AdjustLine.SetRange(AdjustLine."Document Type",AdjustLine."Document Type"::Transfer);
-        AdjustLine.SetRange("Document No.",ItemAdj."No.");
-        if AdjustLine.FindSet then repeat
+        AdjustLine.SetRange(AdjustLine."Document Type", AdjustLine."Document Type"::Transfer);
+        AdjustLine.SetRange("Document No.", ItemAdj."No.");
+        if AdjustLine.FindSet then
+            repeat
 
-          if not Item1.Get(AdjustLine."Item No.") then exit(false);
-          if AdjustLine.Quantity= 0 then exit(false);
+                if not Item1.Get(AdjustLine."Item No.") then exit(false);
+                if AdjustLine.Quantity = 0 then exit(false);
 
-        until AdjustLine.Next=0;
+            until AdjustLine.Next = 0;
 
         exit(true);
     end;
@@ -799,29 +812,30 @@ codeunit 50005 "Item Transfer Mgt"
         AdjReason: Record "Transfer Reason Code";
     begin
 
-        if ItemAdj."User ID"<>UserId then exit(false);
+        if ItemAdj."User ID" <> UserId then exit(false);
         if ItemAdj.Status <> ItemAdj.Status::Released then exit(false);
         if ItemAdj."Location Code" = ItemAdj."Transfer-to Code" then exit(false);
 
-        if ItemAdj."Transfer-to Code" = '' then exit (false);
-        if ItemAdj."In-Transit Code" = '' then exit (false);
-        if ItemAdj."Receipt Date" = 0D then exit (false);
+        if ItemAdj."Transfer-to Code" = '' then exit(false);
+        if ItemAdj."In-Transit Code" = '' then exit(false);
+        if ItemAdj."Receipt Date" = 0D then exit(false);
 
         AdjustLine.Reset;
-        AdjustLine.SetRange(AdjustLine."Document Type",AdjustLine."Document Type"::Transfer);
-        AdjustLine.SetRange("Document No.",ItemAdj."No.");
-        if AdjustLine.FindSet then repeat
+        AdjustLine.SetRange(AdjustLine."Document Type", AdjustLine."Document Type"::Transfer);
+        AdjustLine.SetRange("Document No.", ItemAdj."No.");
+        if AdjustLine.FindSet then
+            repeat
 
-          if not Item1.Get(AdjustLine."Item No.") then exit(false);
-          if AdjustLine.Quantity = 0 then exit(false);
+                if not Item1.Get(AdjustLine."Item No.") then exit(false);
+                if AdjustLine.Quantity = 0 then exit(false);
 
-          AdjReason.Reset;
-          AdjReason.SetRange(AdjReason."Document Type",AdjReason."Document Type"::Transfer);
-          AdjReason.SetRange(AdjReason."Document No.",ItemAdj."No.");
-          AdjReason.SetRange(AdjReason."Line No.",AdjustLine."Line No.");
-          if not AdjReason.FindFirst then exit(false);
+                AdjReason.Reset;
+                AdjReason.SetRange(AdjReason."Document Type", AdjReason."Document Type"::Transfer);
+                AdjReason.SetRange(AdjReason."Document No.", ItemAdj."No.");
+                AdjReason.SetRange(AdjReason."Line No.", AdjustLine."Line No.");
+                if not AdjReason.FindFirst then exit(false);
 
-        until AdjustLine.Next=0;
+            until AdjustLine.Next = 0;
 
         exit(true);
     end;
@@ -831,7 +845,7 @@ codeunit 50005 "Item Transfer Mgt"
         IsBatch := batch;
     end;
 
-    procedure TransfertItemReclassTransfert(var ItemJnlPostLine2: Codeunit "Item Jnl.-Post Line";DocNo: Code[20];PostingDate: Date;ItemNo: Code[20];MagasinOr: Code[20];MagasinDest: Code[20];Qty: Decimal;Unite: Code[10];DimSetIdOr: Integer;DimSetIdDest: Integer;Descr: Text[50];AdjustType: Integer;AdjustLine1: Record "Adjustment Line")
+    procedure TransfertItemReclassTransfert(var ItemJnlPostLine2: Codeunit "Item Jnl.-Post Line"; DocNo: Code[20]; PostingDate: Date; ItemNo: Code[20]; MagasinOr: Code[20]; MagasinDest: Code[20]; Qty: Decimal; Unite: Code[10]; DimSetIdOr: Integer; DimSetIdDest: Integer; Descr: Text[50]; AdjustType: Integer; AdjustLine1: Record "Adjustment Line")
     var
         ItemJnlLine: Record "Item Journal Line";
         RemovalLine: Record pro_detailBE;
@@ -844,7 +858,7 @@ codeunit 50005 "Item Transfer Mgt"
         SourceCodeSetup.Get;
         SourceCode := SourceCodeSetup.Transfer;
 
-        if Qty=0 then exit;
+        if Qty = 0 then exit;
 
         Item1.Get(ItemNo);
 
@@ -856,7 +870,7 @@ codeunit 50005 "Item Transfer Mgt"
         ItemJnlLine."Document No." := DocNo;
         ItemJnlLine."External Document No." := DocNo;
 
-        ItemJnlLine.Validate("Item No." , Item1."No.");
+        ItemJnlLine.Validate("Item No.", Item1."No.");
         ItemJnlLine.Description := Descr;
 
         //ItemJnlLine."Shortcut Dimension 1 Code" := TransRcptLine2."Shortcut Dimension 1 Code";
@@ -867,11 +881,11 @@ codeunit 50005 "Item Transfer Mgt"
         //ItemJnlLine."New Shortcut Dimension 1 Code" := TransRcptLine2."Shortcut Dimension 1 Code";
         //ItemJnlLine."New Shortcut Dimension 2 Code" := TransRcptLine2."Shortcut Dimension 2 Code";
         ItemJnlLine."New Dimension Set ID" := DimSetIdDest;
-        ItemJnlLine.Validate("New Location Code",MagasinDest);
+        ItemJnlLine.Validate("New Location Code", MagasinDest);
         ItemJnlLine."Adjustment Type" := AdjustType;
 
-        ItemJnlLine.Validate(Quantity , Abs(Qty));
-        ItemJnlLine.Validate("Unit of Measure Code" , Unite);
+        ItemJnlLine.Validate(Quantity, Abs(Qty));
+        ItemJnlLine.Validate("Unit of Measure Code", Unite);
         ItemJnlLine."Invoiced Quantity" := Abs(Qty);
 
         ItemJnlLine."LUB Expiration Date" := AdjustLine1."Expiration Date";
@@ -890,12 +904,12 @@ codeunit 50005 "Item Transfer Mgt"
         ReturnHeader: Record "Item Return Header";
     begin
         ReturnHeader.Reset;
-        ReturnHeader.SetRange("Document Type",ReturnHeader."Document Type"::Transfer);
-        ReturnHeader.SetRange("Original Doc No",ItemAdj."No.");
+        ReturnHeader.SetRange("Document Type", ReturnHeader."Document Type"::Transfer);
+        ReturnHeader.SetRange("Original Doc No", ItemAdj."No.");
         exit(ReturnHeader.FindFirst);
     end;
 
-    procedure TransfertItemReclassTransfertLUBS(var ItemJnlPostLine2: Codeunit "Item Jnl.-Post Line";DocNo: Code[20];PostingDate: Date;ItemNo: Code[20];MagasinOr: Code[20];MagasinDest: Code[20];Qty: Decimal;Unite: Code[10];DimSetIdOr: Integer;DimSetIdDest: Integer;Descr: Text[50];AdjustType: Integer;AdjustLine: Record "Adjustment Line")
+    procedure TransfertItemReclassTransfertLUBS(var ItemJnlPostLine2: Codeunit "Item Jnl.-Post Line"; DocNo: Code[20]; PostingDate: Date; ItemNo: Code[20]; MagasinOr: Code[20]; MagasinDest: Code[20]; Qty: Decimal; Unite: Code[10]; DimSetIdOr: Integer; DimSetIdDest: Integer; Descr: Text[50]; AdjustType: Integer; AdjustLine: Record "Adjustment Line")
     var
         ItemJnlLine: Record "Item Journal Line";
         RemovalLine: Record pro_detailBE;
@@ -908,7 +922,7 @@ codeunit 50005 "Item Transfer Mgt"
         SourceCodeSetup.Get;
         SourceCode := SourceCodeSetup.Transfer;
 
-        if Qty=0 then exit;
+        if Qty = 0 then exit;
 
         Item1.Get(ItemNo);
 
@@ -920,7 +934,7 @@ codeunit 50005 "Item Transfer Mgt"
         ItemJnlLine."Document No." := DocNo;
         ItemJnlLine."External Document No." := DocNo;
 
-        ItemJnlLine.Validate("Item No." , Item1."No.");
+        ItemJnlLine.Validate("Item No.", Item1."No.");
         ItemJnlLine.Description := Descr;
 
         //ItemJnlLine."Shortcut Dimension 1 Code" := TransRcptLine2."Shortcut Dimension 1 Code";
@@ -931,11 +945,11 @@ codeunit 50005 "Item Transfer Mgt"
         //ItemJnlLine."New Shortcut Dimension 1 Code" := TransRcptLine2."Shortcut Dimension 1 Code";
         //ItemJnlLine."New Shortcut Dimension 2 Code" := TransRcptLine2."Shortcut Dimension 2 Code";
         ItemJnlLine."New Dimension Set ID" := DimSetIdDest;
-        ItemJnlLine.Validate("New Location Code",MagasinDest);
+        ItemJnlLine.Validate("New Location Code", MagasinDest);
         ItemJnlLine."Adjustment Type" := AdjustType;
 
-        ItemJnlLine.Validate(Quantity , Abs(Qty));
-        ItemJnlLine.Validate("Unit of Measure Code" , Unite);
+        ItemJnlLine.Validate(Quantity, Abs(Qty));
+        ItemJnlLine.Validate("Unit of Measure Code", Unite);
         ItemJnlLine."Invoiced Quantity" := Abs(Qty);
 
         ItemJnlLine."LUB Expiration Date" := AdjustLine."Expiration Date";
@@ -945,8 +959,8 @@ codeunit 50005 "Item Transfer Mgt"
         //ItemJnlLine."Reason Code" := TransLine3."Reason Code";
         ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
 
-        if DimSetIdOr=0 then
-          ItemJnlLine.AFK_SetDimensionsItem(Item1."No.");
+        if DimSetIdOr = 0 then
+            ItemJnlLine.AFK_SetDimensionsItem(Item1."No.");
 
         //ItemJnlLine.AFK_SetDimensionsItem(Item1."No.");
 

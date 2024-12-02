@@ -721,7 +721,7 @@ codeunit 50035 "EventsSubscribers Table"
         BudgetMgt: Codeunit "Purchase Requisition Mgt";
     begin
         GenJournalLine."Customer Name" := Customer.Name;
-        GenJournalLine.Modify();
+        //GenJournalLine.Modify();
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnModifyOnBeforeTestCheckPrinted', '', true, true)]
