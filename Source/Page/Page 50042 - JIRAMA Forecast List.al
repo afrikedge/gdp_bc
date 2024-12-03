@@ -1,6 +1,6 @@
 page 50042 "JIRAMA Forecast List"
 {
-    Caption = 'JIRAMA Sales Forecast List';
+    Caption = 'Commandes JIRAMA';
     CardPageID = "JIRAMA Sales Forecast";
     PageType = List;
     SourceTable = "Jirama Sales Forecast";

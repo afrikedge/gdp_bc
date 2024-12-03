@@ -546,13 +546,13 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
                 action(GD1Jirama1)
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Prévisions JIRAMA';
+                    Caption = 'Commandes JIRAMA';
                     RunObject = Page "JIRAMA Forecast List";
                 }
                 action(GD1Jirama2)
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Prévisions JIRAMA validées';
+                    Caption = 'Commandes JIRAMA enregistrées';
                     RunObject = Page "Posted JIRAMA Forecast List";
                 }
             }

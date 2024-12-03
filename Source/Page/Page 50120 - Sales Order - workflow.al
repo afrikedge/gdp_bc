@@ -1,6 +1,6 @@
 page 50120 "Sales Order - workflow"
 {
-    Caption = 'Sales Order';
+    Caption = 'Commande vente';
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = Document;
@@ -340,28 +340,35 @@ page 50120 "Sales Order - workflow"
                     trigger OnAction()
                     begin
                         Rec.OpenSalesOrderStatistics;
-                        SalesCalcDiscountByType.ResetRecalculateInvoiceDisc(Rec);
+                        //SalesCalcDiscountByType.ResetRecalculateInvoiceDisc(Rec);
+                        CurrPage.SalesLines.Page.ForceTotalsCalculation();
                     end;
                 }
                 action(Card)
                 {
-                    Caption = 'Card';
-                    Image = EditLines;
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Customer';
+                    Enabled = IsCustomerOrContactNotEmpty;
+                    Image = Customer;
                     RunObject = Page "Customer Card";
-                    RunPageLink = "No." = FIELD("Sell-to Customer No.");
+                    RunPageLink = "No." = field("Sell-to Customer No."),
+                                  "Date Filter" = field("Date Filter");
                     ShortCutKey = 'Shift+F7';
                 }
                 action(Dimensions)
                 {
                     AccessByPermission = TableData Dimension = R;
+                    ApplicationArea = Dimensions;
                     Caption = 'Dimensions';
+                    Enabled = Rec."No." <> '';
                     Image = Dimensions;
-                    ShortCutKey = 'Shift+Ctrl+D';
+                    ShortCutKey = 'Alt+D';
+                    ToolTip = 'View or edit dimensions, such as area, project, or department, that you can assign to sales and purchase documents to distribute costs and analyze transaction history.';
 
                     trigger OnAction()
                     begin
-                        Rec.ShowDocDim;
-                        CurrPage.SaveRecord;
+                        Rec.ShowDocDim();
+                        CurrPage.SaveRecord();
                     end;
                 }
                 action("Co&mments")
@@ -372,6 +379,23 @@ page 50120 "Sales Order - workflow"
                     RunPageLink = "Document Type" = FIELD("Document Type"),
                                   "No." = FIELD("No."),
                                   "Document Line No." = CONST(0);
+                }
+                action(DocAttach)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Attachments';
+                    Image = Attach;
+                    ToolTip = 'Add a file as an attachment. You can attach images as well as documents.';
+
+                    trigger OnAction()
+                    var
+                        DocumentAttachmentDetails: Page "Document Attachment Details";
+                        RecRef: RecordRef;
+                    begin
+                        RecRef.GetTable(Rec);
+                        DocumentAttachmentDetails.OpenForRecRef(RecRef);
+                        DocumentAttachmentDetails.RunModal();
+                    end;
                 }
             }
             group(ActionGroupCRM)
@@ -399,19 +423,29 @@ page 50120 "Sales Order - workflow"
                 Image = Documents;
                 action("S&hipments")
                 {
+                    ApplicationArea = Basic, Suite;
                     Caption = 'S&hipments';
                     Image = Shipment;
                     RunObject = Page "Posted Sales Shipments";
-                    RunPageLink = "Order No." = FIELD("No.");
-                    RunPageView = SORTING("Order No.");
+                    RunPageLink = "Order No." = field("No.");
+                    RunPageView = sorting("Order No.");
+                    ToolTip = 'View related posted sales shipments.';
                 }
                 action(Invoices)
                 {
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Invoices';
                     Image = Invoice;
-                    RunObject = Page "Posted Sales Invoices";
-                    RunPageLink = "Order No." = FIELD("No.");
-                    RunPageView = SORTING("Order No.");
+                    ToolTip = 'View a list of ongoing sales invoices for the order.';
+
+                    trigger OnAction()
+                    var
+                        TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
+                        SalesGetShipment: Codeunit "Sales-Get Shipment";
+                    begin
+                        SalesGetShipment.GetSalesOrderInvoices(TempSalesInvoiceHeader, Rec."No.");
+                        Page.Run(Page::"Posted Sales Invoices", TempSalesInvoiceHeader);
+                    end;
                 }
             }
             action(ListeBonsNonValides)
@@ -649,47 +683,75 @@ page 50120 "Sales Order - workflow"
                 Image = Post;
                 action(Post)
                 {
+                    ApplicationArea = Basic, Suite;
                     Caption = 'P&ost';
                     Ellipsis = true;
                     Image = PostOrder;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedIsBig = true;
                     ShortCutKey = 'F9';
+                    ToolTip = 'Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.';
+
+                    AboutTitle = 'Posting the order';
+                    AboutText = 'Posting will ship or invoice the quantities on the order, or both. **Post** and **Send** can save the order as a file, print it, or attach it to an email, all in one go.';
 
                     trigger OnAction()
                     begin
-                        Post2(CODEUNIT::"Sales-Post (Yes/No)");
+                        PostSalesOrder(CODEUNIT::"Sales-Post (Yes/No)", Enum::"Navigate After Posting"::"Posted Document");
                     end;
                 }
-                action("Post and &Print")
+                action(PostAndSend)
                 {
-                    Caption = 'Post and &Print';
-                    Ellipsis = true;
-                    Image = PostPrint;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedIsBig = true;
-                    ShortCutKey = 'Shift+F9';
-
-                    trigger OnAction()
-                    begin
-                        Post2(CODEUNIT::"Sales-Post + Print");
-                    end;
-                }
-                action("Post and Email")
-                {
-                    Caption = 'Post and Email';
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Post and Send';
                     Ellipsis = true;
                     Image = PostMail;
+                    ToolTip = 'Finalize and prepare to send the document according to the customer''s sending profile, such as attached to an email. The Send document to window opens first so you can confirm or select a sending profile.';
 
                     trigger OnAction()
-                    var
-                        SalesPostPrint: Codeunit "Sales-Post + Print";
                     begin
-                        SalesPostPrint.PostAndEmail(Rec);
+                        PostSalesOrder(CODEUNIT::"Sales-Post and Send", Enum::"Navigate After Posting"::"Do Nothing");
                     end;
                 }
+                action(PreviewPosting)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Preview Posting';
+                    Image = ViewPostedOrder;
+                    ShortCutKey = 'Ctrl+Alt+F9';
+                    ToolTip = 'Review the different types of entries that will be created when you post the document or journal.';
+
+                    trigger OnAction()
+                    begin
+                        ShowPreview();
+                    end;
+                }
+                // action("Post and &Print")
+                // {
+                //     Caption = 'Post and &Print';
+                //     Ellipsis = true;
+                //     Image = PostPrint;
+                //     Promoted = true;
+                //     PromotedCategory = Process;
+                //     PromotedIsBig = true;
+                //     ShortCutKey = 'Shift+F9';
+
+                //     trigger OnAction()
+                //     begin
+                //         Post2(CODEUNIT::"Sales-Post + Print");
+                //     end;
+                // }
+                // action("Post and Email")
+                // {
+                //     Caption = 'Post and Email';
+                //     Ellipsis = true;
+                //     Image = PostMail;
+
+                //     trigger OnAction()
+                //     var
+                //         SalesPostPrint: Codeunit "Sales-Post + Print";
+                //     begin
+                //         SalesPostPrint.PostAndEmail(Rec);
+                //     end;
+                // }
                 action("Test Report")
                 {
                     Caption = 'Test Report';
@@ -701,40 +763,18 @@ page 50120 "Sales Order - workflow"
                         ReportPrint.PrintSalesHeader(Rec);
                     end;
                 }
-                action("Post &Batch")
-                {
-                    Caption = 'Post &Batch';
-                    Ellipsis = true;
-                    Image = PostBatch;
+                // action("Post &Batch")
+                // {
+                //     Caption = 'Post &Batch';
+                //     Ellipsis = true;
+                //     Image = PostBatch;
 
-                    trigger OnAction()
-                    begin
-                        REPORT.RunModal(REPORT::"Batch Post Sales Orders", true, true, Rec);
-                        CurrPage.Update(false);
-                    end;
-                }
-                action("Remove From Job Queue")
-                {
-                    Caption = 'Remove From Job Queue';
-                    Image = RemoveLine;
-                    Visible = JobQueueVisible;
-
-                    trigger OnAction()
-                    begin
-                        //CancelBackgroundPosting;
-                    end;
-                }
-                action("Preview Posting")
-                {
-                    Caption = 'Preview Posting';
-                    Image = ViewPostedOrder;
-                    Visible = false;
-
-                    trigger OnAction()
-                    begin
-                        ShowPreview;
-                    end;
-                }
+                //     trigger OnAction()
+                //     begin
+                //         REPORT.RunModal(REPORT::"Batch Post Sales Orders", true, true, Rec);
+                //         CurrPage.Update(false);
+                //     end;
+                // }
             }
             group("&Order Confirmation")
             {
@@ -869,6 +909,10 @@ page 50120 "Sales Order - workflow"
         SecMgt: Codeunit "Security Mgt";
         Text003: Label 'Fonction non autorisée';
         HeaderIsEditable: Boolean;
+        DocumentIsScheduledForPosting: Boolean;
+        DocumentIsPosted: Boolean;
+        IsCustomerOrContactNotEmpty: Boolean;
+        OpenPostedSalesOrderQst: Label 'The order is posted as number %1 and moved to the Posted Sales Invoices window.\\Do you want to open the posted invoice?', Comment = '%1 = posted document number';
 
     local procedure Post2(PostingCodeunitID: Integer)
     begin
@@ -954,6 +998,7 @@ page 50120 "Sales Order - workflow"
 
         OpenApprovalEntriesExistForCurrUser := ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(Rec.RecordId);
         OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(Rec.RecordId);
+        IsCustomerOrContactNotEmpty := (Rec."Sell-to Customer No." <> '') or (Rec."Sell-to Contact No." <> '');
     end;
 
     local procedure SetFiltreCentreGestion()
@@ -974,6 +1019,72 @@ page 50120 "Sales Order - workflow"
             end;
         end;
 
+    end;
+
+    protected procedure PostSalesOrder(PostingCodeunitID: Integer; Navigate: Enum "Navigate After Posting")
+    var
+        SalesHeader: Record "Sales Header";
+        LinesInstructionMgt: Codeunit "Lines Instruction Mgt.";
+        InstructionMgt: Codeunit "Instruction Mgt.";
+        IsHandled: Boolean;
+    begin
+        //OnBeforePostSalesOrder(Rec, PostingCodeunitID, Navigate);
+        LinesInstructionMgt.SalesCheckAllLinesHaveQuantityAssigned(Rec);
+
+        Rec.SendToPosting(PostingCodeunitID);
+
+        DocumentIsScheduledForPosting := Rec."Job Queue Status" = Rec."Job Queue Status"::"Scheduled for Posting";
+        DocumentIsPosted := (not SalesHeader.Get(Rec."Document Type", Rec."No.")) or DocumentIsScheduledForPosting;
+        //OnPostOnAfterSetDocumentIsPosted(SalesHeader, DocumentIsScheduledForPosting, DocumentIsPosted);
+
+        CurrPage.Update(false);
+
+        //IsHandled := false;
+        //OnPostDocumentBeforeNavigateAfterPosting(Rec, PostingCodeunitID, Navigate, DocumentIsPosted, IsHandled);
+        // if IsHandled then
+        //     exit;
+
+        if PostingCodeunitID <> CODEUNIT::"Sales-Post (Yes/No)" then
+            exit;
+
+        case Navigate of
+            Enum::"Navigate After Posting"::"Posted Document":
+                begin
+                    if InstructionMgt.IsEnabled(InstructionMgt.ShowPostedConfirmationMessageCode()) then
+                        ShowPostedConfirmationMessage();
+
+                    if DocumentIsScheduledForPosting or DocumentIsPosted then
+                        CurrPage.Close();
+                end;
+            Enum::"Navigate After Posting"::"New Document":
+                if DocumentIsPosted then begin
+                    Clear(SalesHeader);
+                    SalesHeader.Init();
+                    SalesHeader.Validate("Document Type", SalesHeader."Document Type"::Order);
+                    //OnPostOnBeforeSalesHeaderInsert(SalesHeader);
+                    SalesHeader.Insert(true);
+                    PAGE.Run(PAGE::"Sales Order", SalesHeader);
+                end;
+        end;
+    end;
+
+    local procedure ShowPostedConfirmationMessage()
+    var
+        OrderSalesHeader: Record "Sales Header";
+        SalesInvoiceHeader: Record "Sales Invoice Header";
+        InstructionMgt: Codeunit "Instruction Mgt.";
+        ICFeedback: Codeunit "IC Feedback";
+    begin
+        if not OrderSalesHeader.Get(Rec."Document Type", Rec."No.") then begin
+            SalesInvoiceHeader.SetRange("No.", Rec."Last Posting No.");
+            if SalesInvoiceHeader.FindFirst() then begin
+                ICFeedback.ShowIntercompanyMessage(Rec, Enum::"IC Transaction Document Type"::Order);
+                if InstructionMgt.ShowConfirm(StrSubstNo(OpenPostedSalesOrderQst, SalesInvoiceHeader."No."),
+                     InstructionMgt.ShowPostedConfirmationMessageCode())
+                then
+                    InstructionMgt.ShowPostedDocument(SalesInvoiceHeader, Page::"Sales Order");
+            end;
+        end;
     end;
 }
 

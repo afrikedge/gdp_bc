@@ -367,6 +367,14 @@ tableextension 50011 "A02 Sales Header" extends "Sales Header"
         field(50077; "GDP Deletion"; Boolean)
         {
         }
+        field(50078; "Credit Notes Amount"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Sales Order Pay Doc"."Paid Amount" WHERE("Customer No." = FIELD("Sell-to Customer No."),
+                                                           "Document No." = FIELD("No.")));
+            Caption = 'Credit Notes Amount';
+            Editable = false;
+        }
     }
     keys
     {

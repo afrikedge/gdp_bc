@@ -175,7 +175,6 @@ tableextension 50005 "A02 Customer" extends Customer
                                                            "Status No." = FILTER(<> 27500 & <> 28750 & <> 40000)));
             Caption = 'Traites non honorées';
             Editable = false;
-
         }
         field(60001; "AMSA Invoice Model"; Option)
         {
@@ -186,6 +185,15 @@ tableextension 50005 "A02 Customer" extends Customer
         field(60002; "Remove JIR Ref on BE"; Boolean)
         {
             Caption = 'Remove JIR Ref on BE';
+        }
+        field(60003; "Traite UnPaid"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("G/L Entry".Amount WHERE("Source Type" = CONST(Customer),
+                                                        "Source No." = FIELD("No."),
+                                                        "G/L Account No." = FILTER('41-6-301|41-6-302')));
+            Caption = 'Traites/chèques impayées';
+            Editable = false;
         }
     }
     keys
