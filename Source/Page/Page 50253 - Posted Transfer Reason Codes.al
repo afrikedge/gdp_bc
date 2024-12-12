@@ -2,6 +2,8 @@ page 50253 "Posted Transfer Reason Codes"
 {
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Posted Transfer Reason Code";
 
     layout

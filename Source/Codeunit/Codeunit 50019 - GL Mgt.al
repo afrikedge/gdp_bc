@@ -518,13 +518,13 @@ codeunit 50019 "GL Mgt"
             RDSFees := Round(RDSUnitPrice * SalesLine1."Qty. to Invoice (Base)", Currency."Amount Rounding Precision");//RDS Fees JN030918
     end;
 
-    procedure CalcBestUnitPrice(var SalesLine: Record "Sales Line"; var TempSalesPrice: Record "Sales Price" temporary; var FoundSalesPrice: Boolean; CalledByFieldNo: Integer)
+    procedure CalcBestUnitPrice(var SalesLine: Record "Sales Line"; var SalesPrice: Record "Sales Price" temporary; var FoundSalesPrice: Boolean; CalledByFieldNo: Integer)
     var
-        SalesPrice: Record "Sales Price";
+        //SalesPrice: Record "Sales Price";
         BestSalesPrice: Record "Sales Price";
         SalesPricesMgt: codeunit "Sales Price Calc. Mgt.";
         Item: record Item;
-        BestSalesPriceFound: Boolean;
+        //BestSalesPriceFound: Boolean;
         IsHandled: Boolean;
     begin
         //*************************************************************
@@ -545,7 +545,7 @@ codeunit 50019 "GL Mgt"
             UNTIL SalesPrice.NEXT = 0;
 
         //Dernier prix de groupe
-        IF NOT BestSalesPriceFound THEN BEGIN
+        IF NOT FoundSalesPrice THEN BEGIN
             SalesPrice.RESET;
             SalesPrice.SETCURRENTKEY("Sales Type", "Sales Code", "Item No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity");
             SalesPrice.SETRANGE(SalesPrice."Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
@@ -560,7 +560,7 @@ codeunit 50019 "GL Mgt"
 
 
         //Dernier prix Tous
-        IF NOT BestSalesPriceFound THEN BEGIN
+        IF NOT FoundSalesPrice THEN BEGIN
             SalesPrice.RESET;
             SalesPrice.SETCURRENTKEY("Sales Type", "Sales Code", "Item No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity");
             SalesPrice.SETRANGE(SalesPrice."Sales Type", SalesPrice."Sales Type"::"All Customers");
@@ -588,7 +588,7 @@ codeunit 50019 "GL Mgt"
             BestSalesPrice."Allow Invoice Disc." := SalesLine."Allow Invoice Disc.";
         end;
 
-        TempSalesPrice := BestSalesPrice;
+        SalesPrice := BestSalesPrice;
     end;
 
     local procedure ConvertPriceToUoM(UnitOfMeasureCode: Code[10]; var UnitPrice: Decimal; SalesLine: record "Sales Line")
@@ -596,5 +596,80 @@ codeunit 50019 "GL Mgt"
         if UnitOfMeasureCode = '' then
             UnitPrice := UnitPrice * SalesLine."Qty. per Unit of Measure";
     end;
+
+
+
+    procedure PostVendorDeductions(PurchHeader: Record "Purchase Header";
+    VendorGenJnlLine: Record "Gen. Journal Line";
+    var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; var TotalPurchLineLCY: Record "Purchase Line"; var TotalPurchLine: Record "Purchase Line")
+    var
+        Currency: Record Currency;
+        AFKVendPostingGroup: record "Vendor Posting Group";
+        GenJnlLine: Record "Gen. Journal Line";
+        SourceDeductionBaseAmt: Decimal;
+        SourceDeductionBaseAmtLCY: Decimal;
+        TextAFK001: Label 'La retenue à la source ne doit pas être activée en cas d''achat au comptant';
+    begin
+
+        IF PurchHeader."Currency Code" = '' THEN
+            Currency.InitRoundingPrecision
+        ELSE BEGIN
+            Currency.GET(PurchHeader."Currency Code");
+            Currency.TESTFIELD("Amount Rounding Precision");
+        end;
+
+        if PurchHeader."Vendor Retention Posting Group" <> '' then begin
+            if PurchHeader."Bal. Account No." <> '' then
+                Error(TextAFK001);
+            AFKVendPostingGroup.Get(PurchHeader."Vendor Retention Posting Group");
+            AFKVendPostingGroup.TestField("Retention Account");
+
+            GenJnlLine.Init;
+            GenJnlLine."Posting Date" := PurchHeader."Posting Date";
+            GenJnlLine."Document Date" := PurchHeader."Document Date";
+            GenJnlLine.Description := PurchHeader."Posting Description";
+            GenJnlLine."Shortcut Dimension 1 Code" := PurchHeader."Shortcut Dimension 1 Code";
+            GenJnlLine."Shortcut Dimension 2 Code" := PurchHeader."Shortcut Dimension 2 Code";
+            GenJnlLine."Dimension Set ID" := PurchHeader."Dimension Set ID";
+            GenJnlLine."Reason Code" := PurchHeader."Reason Code";
+            GenJnlLine."Account Type" := GenJnlLine."Account Type"::Vendor;
+            GenJnlLine."Account No." := PurchHeader."Pay-to Vendor No.";
+            GenJnlLine."Document Type" := GenJnlLine."Document Type"::" ";
+            GenJnlLine."Document No." := VendorGenJnlLine."Document No.";
+            GenJnlLine."External Document No." := VendorGenJnlLine."External Document No.";
+            GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
+            GenJnlLine."Bal. Account No." := AFKVendPostingGroup."Retention Account";
+            GenJnlLine."Currency Code" := PurchHeader."Currency Code";
+            SourceDeductionBaseAmtLCY := TotalPurchLineLCY.Amount;
+            SourceDeductionBaseAmt :=
+              CurrExchRate.ExchangeAmtLCYToFCY(
+                PurchHeader."Posting Date", PurchHeader."Currency Code",
+                SourceDeductionBaseAmtLCY, PurchHeader."Currency Factor");
+
+            GenJnlLine.Amount := Round(SourceDeductionBaseAmt * (AFKVendPostingGroup."Retention %" / 100), Currency."Amount Rounding Precision");
+            GenJnlLine.Correction := PurchHeader.Correction;
+            GenJnlLine."Source Currency Code" := PurchHeader."Currency Code";
+            GenJnlLine."Source Currency Amount" := GenJnlLine.Amount;
+            GenJnlLine.Destinataire := 'AFK_RETENUE';
+
+            GenJnlLine."Amount (LCY)" := Round(SourceDeductionBaseAmtLCY * (AFKVendPostingGroup."Retention %" / 100));
+            if PurchHeader."Currency Code" = '' then
+                GenJnlLine."Currency Factor" := 1
+            else
+                GenJnlLine."Currency Factor" := PurchHeader."Currency Factor";
+            GenJnlLine."Applies-to Doc. Type" := VendorGenJnlLine."Document Type";
+            GenJnlLine."Applies-to Doc. No." := VendorGenJnlLine."Document No.";
+            GenJnlLine."Source Type" := GenJnlLine."Source Type"::Vendor;
+            GenJnlLine."Source No." := PurchHeader."Pay-to Vendor No.";
+            GenJnlLine."Source Code" := VendorGenJnlLine."Source Code";
+            GenJnlLine."Posting No. Series" := PurchHeader."Posting No. Series";
+            GenJnlLine."IC Partner Code" := PurchHeader."Pay-to IC Partner Code";
+            GenJnlLine."Allow Zero-Amount Posting" := true;
+            GenJnlLine."Salespers./Purch. Code" := PurchHeader."Purchaser Code";
+            if GenJnlLine.Amount <> 0 then
+                GenJnlPostLine.RunWithCheck(GenJnlLine);
+        end;
+    end;
+
 }
 

@@ -4,6 +4,8 @@ page 50281 "Currency Purchase provisions"
     Editable = false;
     PageType = List;
     SourceTable = "Expiry Currency Purchase";
+    ApplicationArea = All;
+    UsageCategory = Lists;
 
     layout
     {

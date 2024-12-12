@@ -109,7 +109,8 @@ codeunit 50000 "Logistique Mgt"
             repeat
 
                 Item1.Get(RemovalLine.NavItemCode);
-                Item1.TestField(Item1."Item Category Code", AddOnSetup."PBL Category Code");//************************Added
+                Item1.CalcFields("Parent Category");
+                Item1.TestField("Parent Category", AddOnSetup."PBL Category Code");//************************Added
 
                 if RemovalLine.volumea15 = 0 then
                     Error(Text007, RemovalLine."Line No.");
@@ -310,7 +311,8 @@ codeunit 50000 "Logistique Mgt"
                                 ItemExists := true;
 
                                 Item1.Get(DeliveryLine.NavItemCode);//**************************************************Added
-                                Item1.TestField(Item1."Item Category Code", AddOnSetup."PBL Category Code");//***********Added
+                                Item1.CalcFields("Parent Category");
+                                Item1.TestField("Parent Category", AddOnSetup."PBL Category Code");//***********Added
 
                                 if DeliveryLine.volumelivre = 0 then
                                     Error(Text021, DeliveryLine."Line No.");//*****

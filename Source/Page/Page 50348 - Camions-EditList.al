@@ -3,6 +3,8 @@ page 50348 "Camions-EditList"
     Caption = 'Camions - edition';
     DeleteAllowed = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = pro_moyentransport;
 
     layout

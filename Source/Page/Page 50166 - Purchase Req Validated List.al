@@ -4,6 +4,8 @@ page 50166 "Purchase Req Validated List"
     CardPageID = "Purchase Requisition Workflow";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Purchase Requisition";
     SourceTableView = WHERE(Status = CONST(Validated),
                             "Processing Status" = CONST(" "));

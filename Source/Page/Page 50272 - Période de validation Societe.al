@@ -3,6 +3,8 @@ page 50272 "Période de validation Societe"
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "General Ledger Setup";
 
     layout

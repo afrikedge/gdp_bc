@@ -5,6 +5,7 @@ page 50005 "Delivery Order"
     PageType = Document;
     SourceTable = pro_enteteBL;
     SourceTableView = WHERE(isconfirme = CONST(false));
+    ApplicationArea = All;
 
     layout
     {

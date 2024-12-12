@@ -4,6 +4,8 @@ page 50070 "Transfer List Archive"
     CardPageID = "Transfer Order Archive";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Transfer Header Archive";
     SourceTableView = WHERE("Transfer Type" = CONST(Normal));
 

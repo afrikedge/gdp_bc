@@ -4,6 +4,8 @@ page 50357 "Vendor Invoice List DFI"
     CardPageID = "Vendor Invoice Card Encours";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Vendor Invoice Doc";
     SourceTableView = WHERE(Status = CONST(Validee));
 

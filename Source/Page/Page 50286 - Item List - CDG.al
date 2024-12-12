@@ -4,6 +4,8 @@ page 50286 "Item List - CDG"
     CardPageID = "Item Card Admin";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = Item;
     SourceTableView = WHERE("Validation Status" = CONST(InWorkflowCDG));
 

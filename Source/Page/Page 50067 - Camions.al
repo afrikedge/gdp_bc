@@ -3,6 +3,8 @@ page 50067 Camions
     CardPageID = "Truck Card";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = pro_moyentransport;
 
     layout

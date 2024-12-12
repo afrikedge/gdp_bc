@@ -4,6 +4,8 @@ page 50106 "Posted Return Borrow List"
     CardPageID = "Posted Return Borrow";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Item Return Header";
     SourceTableView = WHERE("Document Type" = CONST(Borrow));
 

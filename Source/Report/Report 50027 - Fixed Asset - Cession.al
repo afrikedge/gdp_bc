@@ -90,11 +90,17 @@ report 50027 "Fixed Asset - Cession"
             column(Codification; Codification)
             {
             }
+            column(FADeprBkDateDebAmort; Format(FADeprBook."Depreciation Starting Date"))
+            {
+            }
+
+
 
             trigger OnAfterGetRecord()
             begin
                 Clear(FADeprBook);
                 PrintFA := true;
+                if FADeprBook.Get("No.", DeprBookCode) then;
                 /*IF NOT FADeprBook.GET("No.",DeprBookCode) THEN BEGIN
                   IF FAWithoutAcqDate THEN
                     PrintFA := TRUE;
@@ -194,6 +200,7 @@ report 50027 "Fixed Asset - Cession"
         Page = 'Page  :';
         Code = 'CODE D''IMMOBILISATION';
         ValRes = 'Valeur résiduelle';
+        FADeprBDateDebAmortissement = 'Date début Amort.';
     }
 
     trigger OnInitReport()
@@ -228,6 +235,7 @@ report 50027 "Fixed Asset - Cession"
         FixedAssetAcqListCptnLbl: Label 'Fixed Asset - Acquisition List';
         CurrReportPageNoCaptionLbl: Label 'Page';
         FADeprBkAcquisitionDtCptnLbl: Label 'Acquisition Date';
+
         MarqueCaptionLbl: Label 'MARQUE';
         TypeCaptionLbl: Label 'TYPE';
         NbreCaptionLbl: Label 'NOMBRE';

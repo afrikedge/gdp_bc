@@ -4,6 +4,8 @@ page 50260 "Cancelled Removal Order List"
     CardPageID = "Cancelled Removal Order";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = pro_enteteBE;
     SourceTableView = WHERE(isAnnule = CONST(true));
 

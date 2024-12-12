@@ -2,6 +2,8 @@ page 50362 "Purchase Workflow Codes"
 {
     Caption = 'Département/Direction Workflow Codes';
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "Purchase Dept Workflow Code";
 
     layout

@@ -4,6 +4,8 @@ page 50356 "Vendor Invoice List Validation"
     CardPageID = "Vendor Invoice Card Encours";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Vendor Invoice Doc";
     SourceTableView = WHERE(Status = FILTER(AttenteValResp1 | AttenteValResp2 | AttenteValResp3 | Litigieuse | Validee | Comptabilise | AttentePaiement | Payee));
 

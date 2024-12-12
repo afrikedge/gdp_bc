@@ -3,6 +3,8 @@ page 50351 "Params Setup2"
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "AddOn Setup2";
 
     layout

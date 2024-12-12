@@ -3,6 +3,8 @@ page 50046 "List of towns"
     Caption = 'List of town';
     PageType = List;
     SourceTable = Town;
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

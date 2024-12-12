@@ -2,6 +2,8 @@ page 50192 "Transfer Reason Codes"
 {
     PageType = List;
     SourceTable = "Transfer Reason Code";
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

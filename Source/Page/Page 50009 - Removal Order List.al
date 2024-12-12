@@ -6,6 +6,8 @@ page 50009 "Removal Order List"
     Editable = false;
     PageType = List;
     RefreshOnActivate = true;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = pro_enteteBE;
     SourceTableView = WHERE(isconfirme = CONST(false),
                             isAnnule = CONST(false),

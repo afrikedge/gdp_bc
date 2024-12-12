@@ -9,6 +9,8 @@ page 50144 "Cash Receipt Journal CCL"
     PageType = Worksheet;
     PromotedActionCategories = 'New,Process,Report,Approve';
     SaveValues = true;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Gen. Journal Line";
 
     layout

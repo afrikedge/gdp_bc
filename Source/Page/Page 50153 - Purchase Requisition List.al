@@ -3,6 +3,8 @@ page 50153 "Purchase Requisition List"
     Caption = 'Purch. Requisition List';
     CardPageID = "Purchase Requisition";
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Purchase Requisition";
     SourceTableView = WHERE(Status = CONST(Open));
 

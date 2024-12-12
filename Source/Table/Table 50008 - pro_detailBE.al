@@ -3,50 +3,50 @@ table 50008 pro_detailBE
 
     fields
     {
-        field(1;numBE;Integer)
+        field(1; numBE; Integer)
         {
             Caption = 'Document No.';
         }
-        field(2;"Line No.";Integer)
+        field(2; "Line No."; Integer)
         {
             Caption = 'Line No.';
         }
-        field(3;NavItemCode;Code[20])
+        field(3; NavItemCode; Code[20])
         {
             Caption = 'Item No.';
             TableRelation = Item;
         }
-        field(4;volumeaenlever;Decimal)
+        field(4; volumeaenlever; Decimal)
         {
             Caption = 'Volume to remove';
-            DecimalPlaces = 0:6;
+            DecimalPlaces = 0 : 6;
         }
-        field(5;volumeenleve;Decimal)
+        field(5; volumeenleve; Decimal)
         {
             Caption = 'Removed Volume';
-            DecimalPlaces = 0:6;
+            DecimalPlaces = 0 : 6;
         }
-        field(6;volumea15;Decimal)
+        field(6; volumea15; Decimal)
         {
             Caption = 'Volume at 15';
-            DecimalPlaces = 0:6;
+            DecimalPlaces = 0 : 6;
 
             trigger OnValidate()
             var
                 Marge: Decimal;
             begin
                 AddOnSetup.Get;
-                if AddOnSetup."BE Adjustement Margin %">0 then begin
-                  Marge := Abs(volumeenleve-volumea15);
-                  if Marge>(volumeenleve*(AddOnSetup."BE Adjustement Margin %"/100)) then
-                    Error(Err001,Marge,AddOnSetup."BE Adjustement Margin %",volumeenleve);
+                if AddOnSetup."BE Adjustement Margin %" > 0 then begin
+                    Marge := Abs(volumeenleve - volumea15);
+                    if Marge > (volumeenleve * (AddOnSetup."BE Adjustement Margin %" / 100)) then
+                        Error(Err001, Marge, AddOnSetup."BE Adjustement Margin %", volumeenleve);
                 end;
             end;
         }
-        field(100;volumealivrer;Decimal)
+        field(100; volumealivrer; Decimal)
         {
             Caption = 'Volume to ship';
-            DecimalPlaces = 0:6;
+            DecimalPlaces = 0 : 6;
             Editable = false;
 
             trigger OnValidate()
@@ -54,14 +54,14 @@ table 50008 pro_detailBE
                 LigneBL: Record pro_detailBL;
             begin
                 EnteteBE.Get(numBE);
-                LigneBL.Get(EnteteBE.numBL,"Line No.");
-                LigneBL.Validate(volumealivrer,volumealivrer);
+                LigneBL.Get(EnteteBE.numBL, "Line No.");
+                LigneBL.Validate(volumealivrer, volumealivrer);
             end;
         }
-        field(101;volumelivre;Decimal)
+        field(101; volumelivre; Decimal)
         {
-            Caption = 'Shipped volume';
-            DecimalPlaces = 0:6;
+            Caption = 'To invoice volume';
+            DecimalPlaces = 0 : 6;
 
             trigger OnValidate()
             var
@@ -77,16 +77,16 @@ table 50008 pro_detailBE
                 END;
                 */
                 EnteteBE.Get(numBE);
-                LigneBL.Get(EnteteBE.numBL,"Line No.");
-                LigneBL.Validate(volumelivre,volumelivre);
+                LigneBL.Get(EnteteBE.numBL, "Line No.");
+                LigneBL.Validate(volumelivre, volumelivre);
                 LigneBL.Modify;
 
             end;
         }
-        field(5407;"Unit of Measure Code";Code[10])
+        field(5407; "Unit of Measure Code"; Code[10])
         {
             Caption = 'Unit of Measure Code';
-            TableRelation = "Item Unit of Measure".Code WHERE ("Item No."=FIELD(NavItemCode));
+            TableRelation = "Item Unit of Measure".Code WHERE("Item No." = FIELD(NavItemCode));
 
             trigger OnValidate()
             var
@@ -95,31 +95,39 @@ table 50008 pro_detailBE
             begin
             end;
         }
-        field(50000;codeproduit;Code[20])
+        field(50000; codeproduit; Code[20])
         {
             Caption = 'Item No.';
             TableRelation = Item;
         }
-        field(50001;"Item Name";Text[50])
+        field(50001; "Item Name"; Text[50])
         {
-            CalcFormula = Min(Item.Description WHERE ("No."=FIELD(NavItemCode)));
+            CalcFormula = Min(Item.Description WHERE("No." = FIELD(NavItemCode)));
             Caption = 'Item Name';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(50002;temperature;Decimal)
+        field(50002; temperature; Decimal)
         {
             Caption = 'Temperature';
         }
-        field(50003;densite;Decimal)
+        field(50003; densite; Decimal)
         {
             Caption = 'Density';
+        }
+        field(50004; "Shipped Volume"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("BonLoading"."Shipped Volume" WHERE(numBE = FIELD(numBE),
+                                                           "Product Code" = FIELD(codeproduit)));
+            Caption = 'Shipped Volume';
+            Editable = false;
         }
     }
 
     keys
     {
-        key(Key1;numBE,"Line No.")
+        key(Key1; numBE, "Line No.")
         {
         }
     }

@@ -4,6 +4,8 @@ page 50085 "Item Loan List"
     CardPageID = "Item Loan";
     PageType = List;
     SourceTable = "Adjustment Header";
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTableView = WHERE("Document Type" = CONST(Loan));
 
     layout

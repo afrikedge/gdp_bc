@@ -7,6 +7,9 @@ pageextension 50069 pageextension70000136 extends "Customer Statistics FactBox"
             field("Traite Amount"; Rec."Traite Amount")
             {
             }
+            field("Traite UnPaid"; Rec."Traite UnPaid")
+            {
+            }
         }
     }
 }

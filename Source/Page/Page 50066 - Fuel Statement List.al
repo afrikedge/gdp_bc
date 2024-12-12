@@ -5,6 +5,8 @@ page 50066 "Fuel Statement List"
     Editable = false;
     PageType = List;
     SourceTable = "Fuel Statement Header";
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTableView = WHERE("Document Type" = CONST(FS));
 
     layout

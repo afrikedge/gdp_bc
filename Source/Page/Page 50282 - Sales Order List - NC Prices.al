@@ -4,6 +4,8 @@ page 50282 "Sales Order List - NC Prices"
     CardPageID = "Sales Order - workflow";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Sales Header";
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Prices Status" = CONST("Prix non conformes"));

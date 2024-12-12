@@ -2,14 +2,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Your own server",
+            "name": "Local server",
             "request": "launch",
             "type": "al",
             "environmentType": "OnPrem",
-            "server": "http://localhost:8085/BC240",
+            "server": "http://localhost:8081/BC240",
             "port": 9049,
             "serverInstance": "BC240",
-            "authentication": "Windows",
+            "authentication": "UserPassword",
             "startupObjectId": 22,
             "startupObjectType": "Page",
             "breakOnError": "All",
@@ -17,8 +17,9 @@
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
             "tenant": "default",
-            "usePublicURLFromServer": true,
-            "schemaUpdateMode": "Synchronize"
+            //"usePublicURLFromServer": true,
+            "schemaUpdateMode": "ForceSync"
+            // "schemaUpdateMode": "Synchronize"
         }
     ]
 }

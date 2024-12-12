@@ -6,6 +6,8 @@ page 50012 "Confirmed Delivery Order List"
     PageType = List;
     SaveValues = true;
     SourceTable = pro_enteteBL;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTableView = WHERE(isconfirme = CONST(true),
                             IsBon = CONST(false));
 

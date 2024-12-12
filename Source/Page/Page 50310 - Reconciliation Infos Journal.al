@@ -37,7 +37,7 @@ page 50310 "Reconciliation Infos Journal"
 
     trigger OnOpenPage()
     begin
-        Rec.FilterGroup(0);
+        //Rec.FilterGroup(0);
     end;
 }
 

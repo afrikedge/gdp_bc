@@ -4,6 +4,8 @@ page 50250 "Posted Reception List"
     CardPageID = "Posted Reception Transfer";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Item Return Header";
     SourceTableView = WHERE("Document Type" = CONST(Transfer));
 

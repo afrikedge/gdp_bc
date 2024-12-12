@@ -4,6 +4,8 @@ page 50293 "Item List - Compta CDC"
     CardPageID = "Item Card Admin";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = Item;
     SourceTableView = WHERE("Validation Status" = CONST(InWorkflowCDC));
 

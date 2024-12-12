@@ -636,7 +636,8 @@ codeunit 50001 "Sales Order Process"
                             SalesLine1.TestField(SalesLine1."Location Code");
 
                             Loc2.Get(SalesLine1."Location Code");
-                            Loc2.TestField(Loc2."Item Category Code", Item1."Item Category Code");
+                            Item1.CalcFields("Parent Category");
+                            Loc2.TestField(Loc2."Item Category Code", Item1."Parent Category");
 
                             exit(true);
                         end;

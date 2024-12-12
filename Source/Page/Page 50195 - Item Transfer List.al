@@ -3,6 +3,8 @@ page 50195 "Item Transfer List"
     Caption = 'Item Transfer List';
     CardPageID = "Item Transfer";
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Transfer));
 

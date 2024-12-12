@@ -879,8 +879,33 @@ codeunit 50032 "EventsSubscribers Code"
             IsHandled := true;
             SingleCU.Set_IsAfkShowItemWarning(false);
         end;
-
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPostVendorEntry', '', true, false)]
+    local procedure OnAfterInitVATAmounts_VendDeductions(var GenJnlLine: Record "Gen. Journal Line"; var PurchHeader: Record "Purchase Header"; var TotalPurchLine: Record "Purchase Line"; var TotalPurchLineLCY: Record "Purchase Line"; CommitIsSupressed: Boolean; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line")
+    var
+        AfkGLMgt: codeunit "GL Mgt";
+    begin
+        AfkGLMgt.PostVendorDeductions(PurchHeader, GenJnlLine, GenJnlPostLine, TotalPurchLineLCY, TotalPurchLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterInvoicePostingBufferAssignAmounts', '', true, false)]
+    local procedure SalesPost_OOnAfterInvoicePostingBufferAssignAmounts(SalesLine: Record "Sales Line"; var TotalAmount: Decimal; var TotalAmountLCY: Decimal; SalesLineACY: Record "Sales Line"; var TotalVAT: Decimal; var TotalVATACY: Decimal; var TotalVATBase: Decimal; var TotalVATBaseACY: Decimal; var TempInvoicePostBuffer: Record "Invoice Post. Buffer" temporary; var InvoicePostBuffer: Record "Invoice Post. Buffer")
+    var
+        SalesPostingMgt: codeunit "SalesPostingMgt";
+    begin
+        SalesPostingMgt.AddGLPostingLinesForRetention(SalesLine, SalesLineACY, InvoicePostBuffer, TotalVAT, TotalVATACY, TotalAmount, TotalAmountLCY, TempInvoicePostBuffer);
+    end;
+
+
+    //OnAfterInvoicePostingBufferAssignAmounts
+    [Obsolete('Moved to Sales Invoice Posting implementation. Use the new event OnPrepareLineOnAfterUpdateInvoicePostingBuffer in codeunit 825 "Sales Post Invoice Events".', '19.0')]
+    [IntegrationEvent(false, false)]
+    local procedure OnFillInvoicePostingBufferOnAfterUpdateInvoicePostBuffer(SalesHeader: Record "Sales Header"; SalesLine: Record "Sales Line"; var InvoicePostBuffer: Record "Invoice Post. Buffer"; var TempInvoicePostBuffer: Record "Invoice Post. Buffer" temporary; var GenJnlLineDocNo: Code[20]; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line")
+    begin
+    end;
+
+
 
 
 

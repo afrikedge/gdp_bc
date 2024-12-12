@@ -3,6 +3,8 @@ page 50049 "Sales Channels"
     Caption = 'Sales channels';
     PageType = List;
     SourceTable = "Sales Channel";
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

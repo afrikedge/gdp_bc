@@ -2,6 +2,8 @@ page 50363 "Sites Fees Transport"
 {
     Caption = 'Prix de transport sur logistique (Sites Dispaching)';
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "Item Charge Pricing";
     SourceTableView = WHERE("Service Type" = CONST(LivraisonSite));
 

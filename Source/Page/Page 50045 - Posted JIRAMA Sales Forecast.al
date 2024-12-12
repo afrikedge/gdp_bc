@@ -1,6 +1,6 @@
 page 50045 "Posted JIRAMA Sales Forecast"
 {
-    Caption = 'Posted JIRAMA Sales Forecast';
+    Caption = 'Commande JIRAMA Enregistrée';
     PageType = Document;
     SourceTable = "Jirama Sales Forecast";
     SourceTableView = WHERE(Status = CONST(Archived));

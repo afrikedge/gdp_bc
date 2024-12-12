@@ -3,6 +3,8 @@ page 50283 "Received Purchase Order List"
     Caption = 'Received Purchase Orders';
     CardPageID = "Purchase Order";
     Editable = false;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     PageType = List;
     SourceTable = "Purchase Header";
     SourceTableView = WHERE("Document Type" = CONST(Order),

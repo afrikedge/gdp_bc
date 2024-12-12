@@ -3,6 +3,8 @@ page 50173 "FA Conso List"
     Caption = 'Item consumption to FA List';
     CardPageID = "FA Conso";
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST("FA Conso"));
 

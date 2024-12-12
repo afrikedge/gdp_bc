@@ -97,6 +97,13 @@ tableextension 50009 "A02 Item" extends Item
         {
             Caption = 'Correction TVA Redevances';
         }
+        field(50025; "Parent Category"; Code[20])
+        {
+            Caption = 'Catégorie';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Item Category"."Parent Category" where(Code = field("Item Category Code")));
+            Editable = false;
+        }
     }
     keys
     {
@@ -106,6 +113,14 @@ tableextension 50009 "A02 Item" extends Item
     }
 
     //Unsupported feature: Property Modification (Fields) on "DropDown(FieldGroup 1)".
+
+    procedure GetParentCategory(): Code[20]
+    var
+        ItemCat: Record "Item Category";
+    begin
+        if (ItemCat.Get(Rec."Item Category Code")) then
+            exit(ItemCat."Parent Category");
+    end;
 
 }
 

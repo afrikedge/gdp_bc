@@ -4,6 +4,8 @@ page 50328 "Confirmed Touring List"
     CardPageID = "Touring Card";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = Touring;
     SourceTableView = WHERE(Status = FILTER(Confirmed));
 

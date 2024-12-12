@@ -4,6 +4,8 @@ page 50023 "Sales Order List - Invoiced"
     CardPageID = "Sales Order Archive";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Sales Header Archive";
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Delivery Status" = CONST(Facturee));

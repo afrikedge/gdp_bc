@@ -64,6 +64,10 @@ table 50045 Cargo
             Caption = 'Coût actualisé';
             Editable = false;
         }
+        field(12; "Exchange Rate"; decimal)
+        {
+            Caption = 'Exchange Rate';
+        }
         field(80; "Cargo Type"; Option)
         {
             OptionCaption = ' ,JOVENNA,Confrere,Fictif,Enlevement,transfers';

@@ -5,6 +5,8 @@ page 50168 "Posted Fuel Statement List"
     DeleteAllowed = false;
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Posted Fuel Statement";
     SourceTableView = WHERE("Document Type" = CONST(FS));
 

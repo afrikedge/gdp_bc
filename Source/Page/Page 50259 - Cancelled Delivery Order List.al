@@ -4,6 +4,8 @@ page 50259 "Cancelled Delivery Order List"
     CardPageID = "Cancelled Delivery Order";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = pro_enteteBL;
     SourceTableView = WHERE(isAnnule = CONST(true));
 

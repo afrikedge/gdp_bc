@@ -31,6 +31,9 @@ page 50128 "Cargo List"
                 field("Vessel Name"; Rec."Vessel Name")
                 {
                 }
+                field("Exchange Rate"; Rec."Exchange Rate")
+                {
+                }
                 field(Closed; Rec.Closed)
                 {
                 }

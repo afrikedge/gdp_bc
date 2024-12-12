@@ -2,6 +2,8 @@ page 50271 "Transporteurs GDP"
 {
     Caption = 'Transporteurs';
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = Vendor;
     SourceTableView = WHERE(Transporter = CONST(true));
 

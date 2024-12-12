@@ -4,6 +4,8 @@ page 50097 "Posted Item Loan List"
     CardPageID = "Posted Item Loan";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Loan));
 

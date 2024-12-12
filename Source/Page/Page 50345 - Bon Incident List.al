@@ -3,6 +3,8 @@ page 50345 "Bon Incident List"
     Caption = 'Incidents sur un bon';
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     ShowFilter = false;
     SourceTable = "Dispaching Incident";
 

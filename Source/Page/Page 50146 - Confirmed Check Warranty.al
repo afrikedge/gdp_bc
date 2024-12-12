@@ -3,6 +3,8 @@ page 50146 "Confirmed Check Warranty"
     Caption = 'Confirmed Check Warranty';
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Check Warranty";
     SourceTableView = WHERE(Status = CONST(Confirmed));
 

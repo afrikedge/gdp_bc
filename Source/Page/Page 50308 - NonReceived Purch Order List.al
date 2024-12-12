@@ -4,6 +4,8 @@ page 50308 "NonReceived Purch Order List"
     CardPageID = "Purchase Order";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Purchase Header";
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Purchase Type" = CONST(AchatAutre),

@@ -1,10 +1,10 @@
 table 50012 "Jirama Sales Forecast"
 {
-    Caption = 'JIRAMA Sales Forecast';
+    Caption = 'Commande JIRAMA';
 
     fields
     {
-        field(1;"No.";Code[20])
+        field(1; "No."; Code[20])
         {
             Caption = 'No.';
 
@@ -12,14 +12,14 @@ table 50012 "Jirama Sales Forecast"
             begin
 
                 if "No." <> xRec."No." then begin
-                  AddOnSetup.Get;
-                  AddOnSetup.TestField(AddOnSetup."Jirama Sales Forecast Nos.");
-                  NoSeriesMgt.TestManual(AddOnSetup."Jirama Sales Forecast Nos.");
-                  "No. Series" := '';
+                    AddOnSetup.Get;
+                    AddOnSetup.TestField(AddOnSetup."Jirama Sales Forecast Nos.");
+                    NoSeriesMgt.TestManual(AddOnSetup."Jirama Sales Forecast Nos.");
+                    "No. Series" := '';
                 end;
             end;
         }
-        field(2;"Sell-to Customer No.";Code[20])
+        field(2; "Sell-to Customer No."; Code[20])
         {
             Caption = 'Sell-to Customer No.';
             TableRelation = Customer;
@@ -27,18 +27,18 @@ table 50012 "Jirama Sales Forecast"
             trigger OnValidate()
             begin
                 if Cust.Get("Sell-to Customer No.") then
-                  "Customer Name" := Cust.Name;
+                    "Customer Name" := Cust.Name;
             end;
         }
-        field(3;"Starting Date";Date)
+        field(3; "Starting Date"; Date)
         {
             Caption = 'Starting Date';
         }
-        field(4;"Ending Date";Date)
+        field(4; "Ending Date"; Date)
         {
             Caption = 'Ending Date';
         }
-        field(5;"Partner No.";Code[20])
+        field(5; "Partner No."; Code[20])
         {
             Caption = 'Partner No.';
             TableRelation = Vendor;
@@ -46,41 +46,41 @@ table 50012 "Jirama Sales Forecast"
             trigger OnValidate()
             begin
                 if Vend.Get("Partner No.") then
-                  "Partner Name" := Vend.Name;
+                    "Partner Name" := Vend.Name;
             end;
         }
-        field(6;Status;Option)
+        field(6; Status; Option)
         {
             Editable = false;
             OptionCaption = 'Created,Validated,Archived';
             OptionMembers = Created,Validated,Archived;
         }
-        field(11;"Jirama Affectation %";Decimal)
+        field(11; "Jirama Affectation %"; Decimal)
         {
             Caption = 'JIRAMA Affecation %';
         }
-        field(12;"JIRAMA Item No.";Code[20])
+        field(12; "JIRAMA Item No."; Code[20])
         {
             Caption = 'Item Code';
             TableRelation = Item;
         }
-        field(13;"Customer Name";Text[50])
+        field(13; "Customer Name"; Text[50])
         {
             Editable = false;
         }
-        field(14;"Partner Name";Text[50])
+        field(14; "Partner Name"; Text[50])
         {
             Caption = 'Partner Name';
         }
-        field(15;"JIRAMA Order Ref";Code[30])
+        field(15; "JIRAMA Order Ref"; Code[30])
         {
             Caption = 'JIRAMA Order Ref.';
         }
-        field(16;"Cargo Date";Date)
+        field(16; "Cargo Date"; Date)
         {
             Caption = 'Cargo Date';
         }
-        field(107;"No. Series";Code[10])
+        field(107; "No. Series"; Code[10])
         {
             Caption = 'No. Series';
             Editable = false;
@@ -90,7 +90,7 @@ table 50012 "Jirama Sales Forecast"
 
     keys
     {
-        key(Key1;"No.")
+        key(Key1; "No.")
         {
         }
     }
@@ -101,7 +101,7 @@ table 50012 "Jirama Sales Forecast"
 
     trigger OnDelete()
     begin
-        TestField(Status,Rec.Status::Created);
+        TestField(Status, Rec.Status::Created);
     end;
 
     trigger OnInsert()
@@ -111,8 +111,8 @@ table 50012 "Jirama Sales Forecast"
 
         AddOnSetup.Get;
         if "No." = '' then begin
-          AddOnSetup.TestField(AddOnSetup."Jirama Sales Forecast Nos.");
-          NoSeriesMgt.InitSeries(AddOnSetup."Jirama Sales Forecast Nos.",xRec."No. Series",Today,"No.","No. Series");
+            AddOnSetup.TestField(AddOnSetup."Jirama Sales Forecast Nos.");
+            NoSeriesMgt.InitSeries(AddOnSetup."Jirama Sales Forecast Nos.", xRec."No. Series", Today, "No.", "No. Series");
         end;
 
         AddOnSetup.TestField("Jirama Partner Code");
@@ -121,22 +121,23 @@ table 50012 "Jirama Sales Forecast"
         AddOnSetup.TestField("JIRAMA Item No.");
 
         Rec."Partner No." := AddOnSetup."Jirama Partner Code";
-        Rec."Sell-to Customer No." :=AddOnSetup."Jirama Customer No";
+        Rec."Sell-to Customer No." := AddOnSetup."Jirama Customer No";
         if Vend.Get(Rec."Partner No.") then
-          Rec."Partner Name" := Vend.Name;
+            Rec."Partner Name" := Vend.Name;
         Rec."Jirama Affectation %" := AddOnSetup."Jirama Affectation %";
         Rec."JIRAMA Item No." := AddOnSetup."JIRAMA Item No.";
 
         //Create Lines
         Cust2.Reset;
-        Cust2.SetRange("Sales Channel Code",AddOnSetup."JIRAMA Sales Channel");
-        Cust2.SetRange("Sales Category Code" , AddOnSetup."PBL Sales Category");
-        if Cust2.FindSet then repeat
-          ForecastLine.Init;
-          ForecastLine."Document No." := "No.";
-          ForecastLine.Validate(ForecastLine."Sell-to Customer No.",Cust2."No.");
-          ForecastLine.Insert(true);
-        until Cust2.Next=0;
+        Cust2.SetRange("Sales Channel Code", AddOnSetup."JIRAMA Sales Channel");
+        Cust2.SetRange("Sales Category Code", AddOnSetup."PBL Sales Category");
+        if Cust2.FindSet then
+            repeat
+                ForecastLine.Init;
+                ForecastLine."Document No." := "No.";
+                ForecastLine.Validate(ForecastLine."Sell-to Customer No.", Cust2."No.");
+                ForecastLine.Insert(true);
+            until Cust2.Next = 0;
     end;
 
     var

@@ -4,6 +4,8 @@ page 50350 "Vendor Emails To Send"
     InsertAllowed = false;
     ModifyAllowed = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Tampon Payment Vendor Email";
 
     layout

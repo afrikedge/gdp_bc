@@ -4,6 +4,8 @@ page 50285 "Customer List Admin"
     CardPageID = "Customer Card Admin";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     PromotedActionCategories = 'New,Process,Report,Approve';
     SourceTable = Customer;
 

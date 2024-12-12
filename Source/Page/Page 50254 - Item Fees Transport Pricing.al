@@ -2,6 +2,8 @@ page 50254 "Item Fees Transport Pricing"
 {
     Caption = 'Item Fees Transport Pricing';
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Item Charge Pricing";
     SourceTableView = WHERE("Service Type" = CONST(Transport));
 

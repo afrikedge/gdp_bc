@@ -4,6 +4,8 @@ page 50119 "Posted Item Shipment List"
     CardPageID = "Posted Item Shipment";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Shipment));
 

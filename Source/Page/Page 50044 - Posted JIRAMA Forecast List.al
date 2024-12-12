@@ -1,10 +1,12 @@
 page 50044 "Posted JIRAMA Forecast List"
 {
-    Caption = 'Posted JIRAMA Sales Forecast List';
+    Caption = 'Commandes JIRAMA Enregistrées';
     CardPageID = "Posted JIRAMA Sales Forecast";
     Editable = false;
     PageType = List;
     SourceTable = "Jirama Sales Forecast";
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTableView = WHERE(Status = CONST(Archived));
 
     layout

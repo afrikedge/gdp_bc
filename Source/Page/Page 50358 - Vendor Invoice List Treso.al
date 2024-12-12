@@ -5,6 +5,8 @@ page 50358 "Vendor Invoice List Treso"
     DeleteAllowed = false;
     Editable = false;
     InsertAllowed = false;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     PageType = List;
     SourceTable = "Vendor Invoice Doc";
     SourceTableView = WHERE(Status = CONST(AttentePaiement));

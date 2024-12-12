@@ -3,6 +3,8 @@ page 50050 "Profit Centers"
     Caption = 'Profit Centers';
     PageType = List;
     SourceTable = "Profit Center";
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

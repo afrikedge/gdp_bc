@@ -16,7 +16,7 @@
       "id": "b1aefffa-6969-4a57-be98-57cb9a6d1c41",
       "name": "gdp_payroll_bc",
       "publisher": "Afrikedge",
-      "version": "1.0.0.0"
+      "version": "2.0.0.3"
     }
   ],
   "screenshots": [],
@@ -43,5 +43,5 @@
     "TranslationFile",
     "GenerateCaptions"
   ],
-  "target": "OnPrem"
+  "target": "Cloud"
 }

@@ -3,6 +3,8 @@ page 50364 "Currencies Treso"
     Caption = 'Currencies';
     CardPageID = "Currency Card Treso";
     Editable = false;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     PageType = List;
     PromotedActionCategories = 'New,Process,Report,Exchange Rate Service';
     SourceTable = Currency;

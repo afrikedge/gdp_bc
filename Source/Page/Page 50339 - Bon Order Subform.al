@@ -39,6 +39,9 @@ page 50339 "Bon Order Subform"
                 field(volumelivre; Rec.volumelivre)
                 {
                 }
+                field("Shipped Volume"; Rec."Shipped Volume")
+                {
+                }
                 field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
                     Editable = IsNotFromDispaching;
@@ -57,7 +60,9 @@ page 50339 "Bon Order Subform"
 
     actions
     {
+
     }
+
 
     trigger OnAfterGetCurrRecord()
     begin

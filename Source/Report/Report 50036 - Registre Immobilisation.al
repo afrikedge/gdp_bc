@@ -105,6 +105,14 @@ report 50036 "Registre Immobilisation"
                 if Dimension.FindFirst then;
 
                 aff := AfficheReclass("FA Depreciation Book");
+
+                if (Bloque = Bloque::Oui) then
+                    if not Immo.Blocked then
+                        CurrReport.Skip();
+
+                if (Bloque = Bloque::Non) then
+                    if Immo.Blocked then
+                        CurrReport.Skip();
             end;
 
             trigger OnPreDataItem()
@@ -136,6 +144,10 @@ report 50036 "Registre Immobilisation"
                 field(DateFinPeriod; DateFinPeriod)
                 {
                     Caption = 'Ending Date';
+                }
+                field(Bloque; Bloque)
+                {
+                    Caption = 'Filtre Bloqué';
                 }
             }
         }
@@ -253,5 +265,8 @@ report 50036 "Registre Immobilisation"
         FAEntry.SetRange(FAEntry."FA Posting Type", FAEntry."FA Posting Type"::Depreciation);
         exit(FAEntry.Count);
     end;
+
+    var
+        Bloque: Option " ","Oui","Non";
 }
 

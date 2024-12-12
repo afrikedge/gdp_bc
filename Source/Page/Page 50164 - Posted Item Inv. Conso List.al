@@ -4,6 +4,8 @@ page 50164 "Posted Item Inv. Conso List"
     CardPageID = "Posted Item Invoiced Conso";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = History;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST("Invoiced Consumption"));
 

@@ -3,6 +3,8 @@ page 50261 "JIRAMA Forecast Transfers"
     Caption = 'Quota Transfers';
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "JIRAMA Forecast Transfer";
 
     layout

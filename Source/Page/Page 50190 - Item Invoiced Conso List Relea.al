@@ -4,6 +4,8 @@ page 50190 "Item Invoiced Conso List Relea"
     CardPageID = "Item Invoiced Conso Released";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST("Invoiced Consumption"),
                             Status = CONST(Released));

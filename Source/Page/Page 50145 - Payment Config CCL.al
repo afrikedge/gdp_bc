@@ -3,6 +3,8 @@ page 50145 "Payment Config CCL"
     Caption = 'Payment document config';
     PageType = List;
     SourceTable = "Payment CC Config";
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

@@ -4,6 +4,8 @@ page 50320 "Axe Compatibility"
     PageType = List;
     SourceTable = "Delivery Constraint";
     SourceTableView = WHERE(Type = CONST(Axe));
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {

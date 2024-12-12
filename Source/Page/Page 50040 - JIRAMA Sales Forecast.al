@@ -1,6 +1,6 @@
 page 50040 "JIRAMA Sales Forecast"
 {
-    Caption = 'JIRAMA Sales Forecast';
+    Caption = 'Commande JIRAMA';
     PageType = Document;
     SourceTable = "Jirama Sales Forecast";
     SourceTableView = WHERE(Status = FILTER(Created | Validated));

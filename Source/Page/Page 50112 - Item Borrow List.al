@@ -3,6 +3,8 @@ page 50112 "Item Borrow List"
     Caption = 'Item Borrow List';
     CardPageID = "Item Borrow";
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Borrow));
 

@@ -219,6 +219,7 @@ report 50022 "Fixed Asset - Rebut"
         DAF = 'DIRECTEUR FINANCIER ET INFORMATIQUE';
         DG = 'DIRECTEUR GENERAL';
         AcDateLib = 'Date d''acquisition';
+        FADeprBDateDebAmortissement = 'Date début Amort.';
     }
 
     trigger OnInitReport()

@@ -2,6 +2,8 @@ page 50360 "Vendor Inv Workflow User"
 {
     Caption = 'Utilisateurs workflow de validation de factures fournisseur';
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "Custom Workflow Config";
 
     layout

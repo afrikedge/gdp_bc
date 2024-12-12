@@ -28,8 +28,7 @@ table 50084 "Touring Sales Order"
                 end;
 
 
-                //TODO Migration 
-                //DispachMgt.CheckNewOrderDispaching(IdTouring,"Order No");
+                DispachMgt.CheckNewOrderDispaching(IdTouring, "Order No");
 
                 Touring.Get(IdTouring);
 
@@ -64,8 +63,7 @@ table 50084 "Touring Sales Order"
                 PL := 0;
                 FO := 0;
 
-                //TODO Migration
-                //DispachMgt.SetVolumeRestantALivrerCde("Order No",GO,SC,PL,FO);
+                DispachMgt.SetVolumeRestantALivrerCde("Order No", GO, SC, PL, FO);
                 Total := GO + SC + PL + FO;
             end;
         }
@@ -163,7 +161,7 @@ table 50084 "Touring Sales Order"
 
     var
         SO: Record "Sales Header";
-        //DispachMgt: Codeunit "Logistique Mgt";
+        DispachMgt: Codeunit "Logistique Mgt";
         Touring: Record Touring;
         DeliveryConstraint: Record "Delivery Constraint";
         Text001: Label 'Vous devez définir un axe pour le point de livraison %1';
@@ -174,5 +172,7 @@ table 50084 "Touring Sales Order"
     begin
         Total := GO + SC + PL + FO;
     end;
+
+
 }
 

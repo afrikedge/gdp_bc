@@ -297,7 +297,7 @@ codeunit 50035 "EventsSubscribers Table"
         SalesHeader."User ID" := USERID;
         SOProcess.InsertNewStep(SalesHeader."No.", 0, FORMAT(SalesHeader."Delivery Status"), '');
         SalesHeader."Dispatching Status" := SalesHeader."Dispatching Status"::NonTraite;
-        SalesHeader.Modify();
+        //SalesHeader.Modify();
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnDeleteOnBeforeArchiveSalesDocument', '', true, true)]
@@ -462,8 +462,11 @@ codeunit 50035 "EventsSubscribers Table"
             Item.TESTFIELD("Sales Category Code", Cust2."Sales Category Code");
 
 
-        IF AfkLoc.GET(SalesLine."Location Code") THEN
-            Item.TESTFIELD("Item Category Code", AfkLoc."Item Category Code");
+        IF AfkLoc.GET(SalesLine."Location Code") THEN begin
+            Item.CalcFields("Parent Category");
+            Item.TESTFIELD("Parent Category", AfkLoc."Item Category Code");
+        end;
+
 
         SalesLine."FER Fees Price" := Item."FER Fees Price";
         SalesLine."OMH Fees Price" := Item."OMH Fees Price";
@@ -479,6 +482,7 @@ codeunit 50035 "EventsSubscribers Table"
     var
         Loc: Record Location;
         EnteteBL: Record pro_enteteBL;
+        ItemCat: record "Item Category";
         AfkItem: record Item;
         AFK_Text003: Label 'Le magasin de ce type ne doit pas être utilisé sur ce document !';
         AFK_Text005: Label 'Le numéro BL %1 a été confirmé pour cette commande, le code magasin ne doit plus être modifié.';
@@ -497,9 +501,13 @@ codeunit 50035 "EventsSubscribers Table"
                 IF Loc."Location Type" <> Loc."Location Type"::Expedition THEN
                     ERROR(AFK_Text005, EnteteBL.numBL);
 
+
             //IF SalesHeader."Document Type"=SalesHeader."Document Type"::Order THEN
-            IF AfkItem.GET(SalesLine."No.") THEN
-                AfkItem.TESTFIELD("Item Category Code", Loc."Item Category Code");
+            IF AfkItem.GET(SalesLine."No.") THEN begin
+                ItemCat.Get(AfkItem."Item Category Code");
+                ItemCat.TestField("Parent Category", Loc."Item Category Code");
+            end;
+            //AfkItem.TESTFIELD("Item Category Code", Loc."Item Category Code");
         END;
     end;
 
@@ -713,7 +721,7 @@ codeunit 50035 "EventsSubscribers Table"
         BudgetMgt: Codeunit "Purchase Requisition Mgt";
     begin
         GenJournalLine."Customer Name" := Customer.Name;
-        GenJournalLine.Modify();
+        //GenJournalLine.Modify();
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnModifyOnBeforeTestCheckPrinted', '', true, true)]

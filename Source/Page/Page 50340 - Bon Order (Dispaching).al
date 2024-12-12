@@ -176,9 +176,34 @@ page 50340 "Bon Order (Dispaching)"
                 Caption = 'Duplicate ';
                 Visible = false;
 
+
                 trigger OnAction()
                 begin
                     StockAdjustMgt.CreateBEFromBE(Rec);
+                end;
+            }
+            action(Loading)
+            {
+                Caption = 'Chargement';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    BonLoading: record BonLoading;
+                    BonLoadingList: page "Bon Loading";
+
+                begin
+                    BonLoading.Reset();
+                    BonLoading.SetRange(numBE, Rec.numBE);
+
+                    BonLoadingList.SetTableView(BonLoading);
+                    BonLoadingList.SetRecord(BonLoading);
+                    BonLoadingList.LookupMode(true);
+                    if (BonLoadingList.RunModal() = Action::OK) then begin
+
+                    end;
                 end;
             }
             action(CreateBL)

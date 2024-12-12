@@ -2,6 +2,8 @@ page 50367 "Dispaching Incident Types"
 {
     Caption = 'Motifs incident Dispaching';
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "Dispaching Incident Type";
 
     layout
