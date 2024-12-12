@@ -22,97 +22,6 @@
       <rd:DataSourceID>cd736fed-a0a4-4735-94d1-071c6942d192</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="FA_No">
-          <DataField>FA_No</DataField>
-        </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-        </Field>
-        <Field Name="Acquisition_Date">
-          <DataField>Acquisition_Date</DataField>
-        </Field>
-        <Field Name="Acquisition_Cost">
-          <DataField>Acquisition_Cost</DataField>
-        </Field>
-        <Field Name="Acquisition_CostFormat">
-          <DataField>Acquisition_CostFormat</DataField>
-        </Field>
-        <Field Name="Taux">
-          <DataField>Taux</DataField>
-        </Field>
-        <Field Name="TauxFormat">
-          <DataField>TauxFormat</DataField>
-        </Field>
-        <Field Name="Valeur_Comptable">
-          <DataField>Valeur_Comptable</DataField>
-        </Field>
-        <Field Name="Valeur_ComptableFormat">
-          <DataField>Valeur_ComptableFormat</DataField>
-        </Field>
-        <Field Name="Reevaluation">
-          <DataField>Reevaluation</DataField>
-        </Field>
-        <Field Name="ReevaluationFormat">
-          <DataField>ReevaluationFormat</DataField>
-        </Field>
-        <Field Name="Depreciation_Cost">
-          <DataField>Depreciation_Cost</DataField>
-        </Field>
-        <Field Name="Depreciation_CostFormat">
-          <DataField>Depreciation_CostFormat</DataField>
-        </Field>
-        <Field Name="PeriodAmort">
-          <DataField>PeriodAmort</DataField>
-        </Field>
-        <Field Name="PeriodAmortFormat">
-          <DataField>PeriodAmortFormat</DataField>
-        </Field>
-        <Field Name="CptImmo">
-          <DataField>CptImmo</DataField>
-        </Field>
-        <Field Name="CptAmort">
-          <DataField>CptAmort</DataField>
-        </Field>
-        <Field Name="Location_Name">
-          <DataField>Location_Name</DataField>
-        </Field>
-        <Field Name="Codification">
-          <DataField>Codification</DataField>
-        </Field>
-        <Field Name="CurrReportPageNoCaption">
-          <DataField>CurrReportPageNoCaption</DataField>
-        </Field>
-        <Field Name="Code_Projet">
-          <DataField>Code_Projet</DataField>
-        </Field>
-        <Field Name="DateDebutPeriod">
-          <DataField>DateDebutPeriod</DataField>
-        </Field>
-        <Field Name="DateFinPeriod">
-          <DataField>DateFinPeriod</DataField>
-        </Field>
-        <Field Name="AmortissementPeriode">
-          <DataField>AmortissementPeriode</DataField>
-        </Field>
-        <Field Name="AmortissementPeriodeFormat">
-          <DataField>AmortissementPeriodeFormat</DataField>
-        </Field>
-        <Field Name="aff">
-          <DataField>aff</DataField>
-        </Field>
-        <Field Name="CompanyInfo_Picture">
-          <DataField>CompanyInfo_Picture</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -2672,4 +2581,95 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>ee06d221-f7ba-4558-af32-ff463c201ec3</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="FA_No">
+          <DataField>FA_No</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="Acquisition_Date">
+          <DataField>Acquisition_Date</DataField>
+        </Field>
+        <Field Name="Acquisition_Cost">
+          <DataField>Acquisition_Cost</DataField>
+        </Field>
+        <Field Name="Acquisition_CostFormat">
+          <DataField>Acquisition_CostFormat</DataField>
+        </Field>
+        <Field Name="Taux">
+          <DataField>Taux</DataField>
+        </Field>
+        <Field Name="TauxFormat">
+          <DataField>TauxFormat</DataField>
+        </Field>
+        <Field Name="Valeur_Comptable">
+          <DataField>Valeur_Comptable</DataField>
+        </Field>
+        <Field Name="Valeur_ComptableFormat">
+          <DataField>Valeur_ComptableFormat</DataField>
+        </Field>
+        <Field Name="Reevaluation">
+          <DataField>Reevaluation</DataField>
+        </Field>
+        <Field Name="ReevaluationFormat">
+          <DataField>ReevaluationFormat</DataField>
+        </Field>
+        <Field Name="Depreciation_Cost">
+          <DataField>Depreciation_Cost</DataField>
+        </Field>
+        <Field Name="Depreciation_CostFormat">
+          <DataField>Depreciation_CostFormat</DataField>
+        </Field>
+        <Field Name="PeriodAmort">
+          <DataField>PeriodAmort</DataField>
+        </Field>
+        <Field Name="PeriodAmortFormat">
+          <DataField>PeriodAmortFormat</DataField>
+        </Field>
+        <Field Name="CptImmo">
+          <DataField>CptImmo</DataField>
+        </Field>
+        <Field Name="CptAmort">
+          <DataField>CptAmort</DataField>
+        </Field>
+        <Field Name="Location_Name">
+          <DataField>Location_Name</DataField>
+        </Field>
+        <Field Name="Codification">
+          <DataField>Codification</DataField>
+        </Field>
+        <Field Name="CurrReportPageNoCaption">
+          <DataField>CurrReportPageNoCaption</DataField>
+        </Field>
+        <Field Name="Code_Projet">
+          <DataField>Code_Projet</DataField>
+        </Field>
+        <Field Name="DateDebutPeriod">
+          <DataField>DateDebutPeriod</DataField>
+        </Field>
+        <Field Name="DateFinPeriod">
+          <DataField>DateFinPeriod</DataField>
+        </Field>
+        <Field Name="AmortissementPeriode">
+          <DataField>AmortissementPeriode</DataField>
+        </Field>
+        <Field Name="AmortissementPeriodeFormat">
+          <DataField>AmortissementPeriodeFormat</DataField>
+        </Field>
+        <Field Name="aff">
+          <DataField>aff</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
