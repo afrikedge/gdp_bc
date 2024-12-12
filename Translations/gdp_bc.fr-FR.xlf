@@ -9803,7 +9803,7 @@
         </trans-unit>
         <trans-unit id="Table 3488870608 - Field 2832374592 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shipped volume</source>
-          <target state="needs-review-translation">Volume expédié</target>
+          <target state="needs-review-translation">Volume à facturer</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_detailBE - Field volumelivre - Property Caption</note>
         </trans-unit>

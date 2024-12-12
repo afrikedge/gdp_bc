@@ -224,6 +224,9 @@ page 50120 "Sales Order - workflow"
                 field(Anticipated; Rec.Anticipated)
                 {
                 }
+                field("GD1 Credit Notes Amount"; Rec."GD1 Credit Notes Amount")
+                {
+                }
                 field(Observations; Rec.Observations)
                 {
                     MultiLine = true;

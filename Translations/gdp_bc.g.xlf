@@ -2313,6 +2313,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table BA Swift Correspondence - Field SWIFT Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2013524559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bon Loading</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BonLoading - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2013524559 - Field 1913173512 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Compartment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BonLoading - Field Compartment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2013524559 - Field 469185003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NumBon</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BonLoading - Field numBE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2013524559 - Field 1137027125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BonLoading - Field Product - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2013524559 - Field 3265714202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BonLoading - Field Product Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2013524559 - Field 3674346685 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipped Volume</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BonLoading - Field Shipped Volume - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1558681476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargo</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2387,6 +2417,11 @@
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cargo - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1558681476 - Field 541734643 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exchange Rate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cargo - Field Exchange Rate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1558681476 - Field 2397643462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item No. Filter</source>
@@ -8138,6 +8173,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_detailBE - Field numBE - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3488870608 - Field 3674346685 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipped Volume</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table pro_detailBE - Field Shipped Volume - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3488870608 - Field 27786920 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Temperature</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8169,7 +8209,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_detailBE - Field volumeenleve - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3488870608 - Field 2832374592 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Shipped volume</source>
+          <source>To invoice volume</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_detailBE - Field volumelivre - Property Caption</note>
         </trans-unit>
@@ -22088,6 +22128,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Bon Incident List - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 465341023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bon Loading</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Bon Loading - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2415739284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bon (Dispaching)</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -22152,6 +22197,11 @@
           <source>Duplicate </source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Bon Order (Dispaching) - Action Dupliquer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2415739284 - Action 1017188834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Chargement</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Bon Order (Dispaching) - Action Loading - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2415739284 - Action 2282416948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>P&amp;ost</source>
@@ -38443,6 +38493,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order List - To Ship - Action Sales Reservation Avail. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3216601273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Order Payments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order Payments - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 919204784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shipped Item Shipment List</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -47318,6 +47373,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Cession - ReportLabel DOP</note>
         </trans-unit>
+        <trans-unit id="Report 1062809799 - ReportLabel 2779245542" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date début Amort.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Cession - ReportLabel FADeprBDateDebAmortissement</note>
+        </trans-unit>
         <trans-unit id="Report 1062809799 - ReportLabel 1425812098" size-unit="char" translate="yes" xml:space="preserve">
           <source>No  :</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -47927,6 +47987,11 @@
           <source>DIRECTEUR GENERAL</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Rebut - ReportLabel DG</note>
+        </trans-unit>
+        <trans-unit id="Report 2252100905 - ReportLabel 2779245542" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date début Amort.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Rebut - ReportLabel FADeprBDateDebAmortissement</note>
         </trans-unit>
         <trans-unit id="Report 2252100905 - ReportLabel 660399397" size-unit="char" translate="yes" xml:space="preserve">
           <source>MAGASIN</source>
@@ -52858,6 +52923,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Registre Immobilisation - ReportLabel Val_Res</note>
         </trans-unit>
+        <trans-unit id="Report 26305633 - Control 2367755732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filtre Bloqué</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Registre Immobilisation - Control Bloque - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 26305633 - Control 4237939053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Starting Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -57703,6 +57773,41 @@
           <note from="Developer" annotates="general" priority="2">%1=Field;%2=Value;%3=Value</note>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort SEPA MT101 - NamedType NoDataToExportErr</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Action 3818210718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Etat de Cession Immo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action EditionCession - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Action 1102409404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Etat de Mise en service</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action EditionMiseEnService - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Action 3397763246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Etat de Mise En rebut</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action EditionMiseRebut - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Action 3201061405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Etat de transfert</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action EditionTransfert - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Action 1519863106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Générate FA Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action GenerateCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Action 761178202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Separator1000000020</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action Separator1000000020 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Action 4224198349 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Transfer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action Transfer - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 758891811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Afk Achats</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -60668,11 +60773,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Created By Doc Type - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1551112472 - Field 2029319206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
-          <source>Credit Notes Amount</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Credit Notes Amount - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 775476300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Processing Status</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -60692,6 +60792,11 @@
           <source> ,Non traitée,Reliquat,Traitée</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Dispatching Status - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1551112472 - Field 563036308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Credit Notes Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field GD1 Credit Notes Amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 3609132889 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>GDP Deletion</source>
@@ -62092,6 +62197,86 @@
           <source>Retention Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Vendor Posting Group - Field Retention Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3747719303 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1 Dispaching Product - EnumValue   - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3747719303 - EnumValue 2528834579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FO</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1 Dispaching Product - EnumValue FO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3747719303 - EnumValue 4051573732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GO</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1 Dispaching Product - EnumValue GO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3747719303 - EnumValue 4230728465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1 Dispaching Product - EnumValue NA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3747719303 - EnumValue 2076901176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PL</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1 Dispaching Product - EnumValue PL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3747719303 - EnumValue 1846706380 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SC</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1 Dispaching Product - EnumValue SC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3565703650 - EnumValue 4043084468 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comp1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1Compartment - EnumValue Comp1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3565703650 - EnumValue 410352268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comp10</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1Compartment - EnumValue Comp10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3565703650 - EnumValue 385813789 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comp2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1Compartment - EnumValue Comp2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3565703650 - EnumValue 1023510406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comp3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1Compartment - EnumValue Comp3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3565703650 - EnumValue 854601383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comp4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1Compartment - EnumValue Comp4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3565703650 - EnumValue 1492298000 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comp5</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1Compartment - EnumValue Comp5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3565703650 - EnumValue 2129994617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comp6</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1Compartment - EnumValue Comp6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3565703650 - EnumValue 2767691234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comp7</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1Compartment - EnumValue Comp7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3565703650 - EnumValue 2598782211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comp8</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1Compartment - EnumValue Comp8 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3565703650 - EnumValue 3236478828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comp9</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum GD1Compartment - EnumValue Comp9 - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 2722947597 - EnumValue 3738554061 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>PurchaseOrderServices</source>

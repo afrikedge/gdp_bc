@@ -2,6 +2,7 @@ table 50003 "Sales Order Pay Doc"
 {
     Caption = 'Sales Order Payment Doc';
     DataClassification = CustomerContent;
+    DrillDownPageId = "Sales Order Payments";
 
     fields
     {
@@ -12,6 +13,17 @@ table 50003 "Sales Order Pay Doc"
         field(2; "Pay Document No."; Code[20])
         {
             Caption = 'Pay Document No.';
+            trigger OnValidate()
+            var
+                CustLedgerEntry: record "Cust. Ledger Entry";
+            begin
+                CustLedgerEntry.SetCurrentKey("Document No.");
+                CustLedgerEntry.SetRange("Document No.", "Pay Document No.");
+                if (CustLedgerEntry.FindFirst()) then begin
+                    CustLedgerEntry.CalcFields("Remaining Amt. (LCY)");
+                    "Paid Amount" := -CustLedgerEntry."Remaining Amt. (LCY)";
+                end;
+            end;
         }
         field(3; "Paid Amount"; Decimal)
         {
