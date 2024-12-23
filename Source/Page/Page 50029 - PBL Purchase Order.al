@@ -301,14 +301,14 @@ page 50029 "PBL Purchase Order"
         {
             group("O&rder")
             {
-                Caption = 'O&rder';
+                Caption = 'Order';
                 Image = "Order";
                 action(Dimensions)
                 {
                     AccessByPermission = TableData Dimension = R;
                     Caption = 'Dimensions';
                     Image = Dimensions;
-                    Promoted = false;
+
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
                     ShortCutKey = 'Shift+Ctrl+D';
@@ -338,7 +338,7 @@ page 50029 "PBL Purchase Order"
                 {
                     Caption = 'Card';
                     Image = EditLines;
-                    Promoted = false;
+
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
                     RunObject = Page "Vendor Card";
@@ -360,7 +360,7 @@ page 50029 "PBL Purchase Order"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Purch. Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
@@ -384,7 +384,7 @@ page 50029 "PBL Purchase Order"
                 {
                     Caption = 'Invoices';
                     Image = Invoice;
-                    Promoted = false;
+
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
                     RunObject = Page "Posted Purchase Invoices";
@@ -393,7 +393,7 @@ page 50029 "PBL Purchase Order"
                 }
                 action("Prepa&yment Invoices")
                 {
-                    Caption = 'Prepa&yment Invoices';
+                    Caption = 'Prepayment Invoices';
                     Image = PrepaymentInvoice;
                     RunObject = Page "Posted Purchase Invoices";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
@@ -401,7 +401,7 @@ page 50029 "PBL Purchase Order"
                 }
                 action("Prepayment Credi&t Memos")
                 {
-                    Caption = 'Prepayment Credi&t Memos';
+                    Caption = 'Prepayment Credit Memos';
                     Image = PrepaymentCreditMemo;
                     RunObject = Page "Posted Purchase Credit Memos";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
@@ -432,23 +432,23 @@ page 50029 "PBL Purchase Order"
                 }
                 group("Dr&op Shipment")
                 {
-                    Caption = 'Dr&op Shipment';
+                    Caption = 'Drop Shipment';
                     Image = Delivery;
                     action("Get &Sales Order")
                     {
-                        Caption = 'Get &Sales Order';
+                        Caption = 'Get Sales Order';
                         Image = "Order";
                         RunObject = Codeunit "Purch.-Get Drop Shpt.";
                     }
                 }
                 group("Speci&al Order")
                 {
-                    Caption = 'Speci&al Order';
+                    Caption = 'Special Order';
                     Image = SpecialOrder;
                     action(Action228)
                     {
                         AccessByPermission = TableData "Sales Shipment Header" = R;
-                        Caption = 'Get &Sales Order';
+                        Caption = 'Get Sales Order';
                         Image = "Order";
 
                         trigger OnAction()
@@ -538,7 +538,7 @@ page 50029 "PBL Purchase Order"
                 }
                 action(Release)
                 {
-                    Caption = 'Re&lease';
+                    Caption = 'Release';
                     Image = ReleaseDoc;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -553,7 +553,7 @@ page 50029 "PBL Purchase Order"
                 }
                 action(Reopen)
                 {
-                    Caption = 'Re&open';
+                    Caption = 'Reopen';
                     Image = ReOpen;
 
                     trigger OnAction()
@@ -569,12 +569,12 @@ page 50029 "PBL Purchase Order"
             }
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action(CalculateInvoiceDiscount)
                 {
                     AccessByPermission = TableData "Vendor Invoice Disc." = R;
-                    Caption = 'Calculate &Invoice Discount';
+                    Caption = 'Calculate Invoice Discount';
                     Image = CalculateInvoiceDiscount;
 
                     trigger OnAction()
@@ -588,7 +588,7 @@ page 50029 "PBL Purchase Order"
                 }
                 action("Get St&d. Vend. Purchase Codes")
                 {
-                    Caption = 'Get St&d. Vend. Purchase Codes';
+                    Caption = 'Get Std. Vend. Purchase Codes';
                     Ellipsis = true;
                     Image = VendorCode;
 
@@ -733,7 +733,7 @@ page 50029 "PBL Purchase Order"
                 Caption = 'Request Approval';
                 action(SendApprovalRequest)
                 {
-                    Caption = 'Send A&pproval Request';
+                    Caption = 'Send Approval Request';
                     Enabled = NOT OpenApprovalEntriesExist;
                     Image = SendApprovalRequest;
                     Promoted = true;
@@ -751,7 +751,7 @@ page 50029 "PBL Purchase Order"
                 }
                 action(CancelApprovalRequest)
                 {
-                    Caption = 'Cancel Approval Re&quest';
+                    Caption = 'Cancel Approval Request';
                     Enabled = OpenApprovalEntriesExist;
                     Image = Cancel;
                     Promoted = true;
@@ -767,11 +767,11 @@ page 50029 "PBL Purchase Order"
             }
             group("P&osting")
             {
-                Caption = 'P&osting';
+                Caption = 'Posting';
                 Image = Post;
                 action(Post2)
                 {
-                    Caption = 'P&ost';
+                    Caption = 'Post';
                     Ellipsis = true;
                     Image = PostOrder;
                     Promoted = true;
@@ -799,7 +799,7 @@ page 50029 "PBL Purchase Order"
                 }
                 action("Post and &Print")
                 {
-                    Caption = 'Post and &Print';
+                    Caption = 'Post and Print';
                     Ellipsis = true;
                     Image = PostPrint;
                     Promoted = true;
@@ -825,7 +825,7 @@ page 50029 "PBL Purchase Order"
                 }
                 action("Post &Batch")
                 {
-                    Caption = 'Post &Batch';
+                    Caption = 'Post Batch';
                     Ellipsis = true;
                     Image = PostBatch;
 
@@ -865,11 +865,11 @@ page 50029 "PBL Purchase Order"
                 }
                 group("Prepa&yment")
                 {
-                    Caption = 'Prepa&yment';
+                    Caption = 'Prepayment';
                     Image = Prepayment;
                     action("Prepayment Test &Report")
                     {
-                        Caption = 'Prepayment Test &Report';
+                        Caption = 'Prepayment Test Report';
                         Ellipsis = true;
                         Image = PrepaymentSimulation;
 
@@ -880,7 +880,7 @@ page 50029 "PBL Purchase Order"
                     }
                     action(PostPrepaymentInvoice)
                     {
-                        Caption = 'Post Prepayment &Invoice';
+                        Caption = 'Post Prepayment Invoice';
                         Ellipsis = true;
                         Image = PrepaymentPost;
 
@@ -895,7 +895,7 @@ page 50029 "PBL Purchase Order"
                     }
                     action("Post and Print Prepmt. Invoic&e")
                     {
-                        Caption = 'Post and Print Prepmt. Invoic&e';
+                        Caption = 'Post and Print Prepmt. Invoice';
                         Ellipsis = true;
                         Image = PrepaymentPostPrint;
 
@@ -910,7 +910,7 @@ page 50029 "PBL Purchase Order"
                     }
                     action(PostPrepaymentCreditMemo)
                     {
-                        Caption = 'Post Prepayment &Credit Memo';
+                        Caption = 'Post Prepayment Credit Memo';
                         Ellipsis = true;
                         Image = PrepaymentPost;
 
@@ -925,7 +925,7 @@ page 50029 "PBL Purchase Order"
                     }
                     action("Post and Print Prepmt. Cr. Mem&o")
                     {
-                        Caption = 'Post and Print Prepmt. Cr. Mem&o';
+                        Caption = 'Post and Print Prepmt. Cr. Memo';
                         Ellipsis = true;
                         Image = PrepaymentPostPrint;
 
@@ -946,7 +946,7 @@ page 50029 "PBL Purchase Order"
                 Image = Print;
                 action("&Print")
                 {
-                    Caption = '&Print';
+                    Caption = 'Print';
                     Ellipsis = true;
                     Image = Print;
                     Promoted = true;

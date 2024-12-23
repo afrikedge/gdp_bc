@@ -53,7 +53,7 @@ codeunit 50000 "Logistique Mgt"
         Text025: Label 'La commande %1 existe déjà sur une tournée non validée : %2';
         Text026: Label 'Le code camion %1 existe déjà sur une tournée non validée : %2';
         Text027: Label 'Voulez-vous confirmer le bon ?';
-        Text028: Label '&Confirmer l''enlèvement,&Confirmer la livraison et facturer';
+        Text028: Label 'Confirmer l''enlèvement,Confirmer la livraison et facturer';
         Selection: Integer;
         Text029: Label 'Le Bon %1 a été créé';
         Text030: Label 'Bon %1';

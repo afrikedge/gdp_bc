@@ -10,17 +10,17 @@ page 50215 "Purchasing Agent GDP-STKD"
             group(Control1900724808)
             {
                 ShowCaption = false;
-                part(Control1000000000;"Whse Ship & Receive Activities")
+                part(Control1000000000; "Whse Ship & Receive Activities")
                 {
                 }
-                part(Control1902476008;"My Vendors")
+                part(Control1902476008; "My Vendors")
                 {
                 }
             }
             group(Control1900724708)
             {
                 ShowCaption = false;
-                systempart(Control1000000001;MyNotes)
+                systempart(Control1000000001; MyNotes)
                 {
                 }
             }
@@ -33,13 +33,13 @@ page 50215 "Purchasing Agent GDP-STKD"
         {
             action("Vendor - T&op 10 List")
             {
-                Caption = 'Vendor - T&op 10 List';
+                Caption = 'Vendor - Top 10 List';
                 Image = "Report";
                 RunObject = Report "Vendor - Top 10 List";
             }
             action("Vendor/&Item Purchases")
             {
-                Caption = 'Vendor/&Item Purchases';
+                Caption = 'Vendor/Item Purchases';
                 Image = "Report";
                 RunObject = Report "Vendor/Item Purchases";
             }
@@ -48,13 +48,13 @@ page 50215 "Purchasing Agent GDP-STKD"
             }
             action("Inventory - &Availability Plan")
             {
-                Caption = 'Inventory - &Availability Plan';
+                Caption = 'Inventory - Availability Plan';
                 Image = ItemAvailability;
                 RunObject = Report "Inventory - Availability Plan";
             }
             action("Inventory - &Vendor Purchases")
             {
-                Caption = 'Inventory - &Vendor Purchases';
+                Caption = 'Inventory - Vendor Purchases';
                 Image = "Report";
                 RunObject = Report "Inventory - Vendor Purchases";
             }
@@ -66,7 +66,7 @@ page 50215 "Purchasing Agent GDP-STKD"
                 Caption = 'Items';
                 Image = Item;
                 RunObject = Page "Item List";
-                RunPageView = WHERE(Type=CONST(Inventory));
+                RunPageView = WHERE(Type = CONST(Inventory));
             }
             action("Validation Factures fournisseur")
             {
@@ -77,37 +77,37 @@ page 50215 "Purchasing Agent GDP-STKD"
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                RunPageView = WHERE(Status = CONST(AttenteValResp1));
             }
             action(Action100000008)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                RunPageView = WHERE(Status = CONST(AttenteValResp2));
             }
             action(Action100000007)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                RunPageView = WHERE(Status = CONST(AttenteValResp3));
             }
             action(Action100000006)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Litigieuse));
+                RunPageView = WHERE(Status = CONST(Litigieuse));
             }
             action(Action100000001)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttentePaiement));
+                RunPageView = WHERE(Status = CONST(AttentePaiement));
             }
             action(Action100000000)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Payee));
+                RunPageView = WHERE(Status = CONST(Payee));
             }
         }
         area(sections)
@@ -124,15 +124,15 @@ page 50215 "Purchasing Agent GDP-STKD"
                 {
                     Caption = 'Item Journals';
                     RunObject = Page "Item Journal Batches";
-                    RunPageView = WHERE("Template Type"=CONST(Item),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST(Item),
+                                        Recurring = CONST(false));
                 }
                 action(Action1000000008)
                 {
                     Caption = 'Item Journals';
                     RunObject = Page "Item Journal Batches";
-                    RunPageView = WHERE("Template Type"=CONST("Phys. Inventory"),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST("Phys. Inventory"),
+                                        Recurring = CONST(false));
                 }
             }
             group("Posted Documents")
@@ -150,9 +150,9 @@ page 50215 "Purchasing Agent GDP-STKD"
         {
             action("T&ransfer Order")
             {
-                Caption = 'T&ransfer Order';
+                Caption = 'Transfer Order';
                 Image = Document;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Transfer Order";
@@ -166,11 +166,11 @@ page 50215 "Purchasing Agent GDP-STKD"
             }
             action("Requisition &Worksheet")
             {
-                Caption = 'Requisition &Worksheet';
+                Caption = 'Requisition Worksheet';
                 Image = Worksheet;
                 RunObject = Page "Req. Wksh. Names";
-                RunPageView = WHERE("Template Type"=CONST("Req."),
-                                    Recurring=CONST(false));
+                RunPageView = WHERE("Template Type" = CONST("Req."),
+                                    Recurring = CONST(false));
             }
             separator(History)
             {
@@ -179,7 +179,7 @@ page 50215 "Purchasing Agent GDP-STKD"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

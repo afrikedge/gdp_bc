@@ -4,24 +4,24 @@ report 50069 "Corr Ajustement Ecart Pompe"
 
     dataset
     {
-        dataitem(pro_enteteBL;pro_enteteBL)
+        dataitem(pro_enteteBL; pro_enteteBL)
         {
-            DataItemTableView = WHERE(IsBon=CONST(false),Source=CONST(" "),isconfirme=CONST(true));
+            DataItemTableView = WHERE(IsBon = CONST(false), Source = CONST(" "), isconfirme = CONST(true));
             RequestFilterFields = datelivraison;
 
             trigger OnAfterGetRecord()
             var
                 EcrArticleId: Integer;
             begin
-                EcrArticleId:=FindItemLedgerEntry(pro_enteteBL);
+                EcrArticleId := FindItemLedgerEntry(pro_enteteBL);
 
-                if TypeAjustement=TypeAjustement::Correction then
-                  if EcrArticleId>0 then
-                    CreateEntryCorr(EcrArticleId,pro_enteteBL);
+                if TypeAjustement = TypeAjustement::Correction then
+                    if EcrArticleId > 0 then
+                        CreateEntryCorr(EcrArticleId, pro_enteteBL);
 
-                if TypeAjustement=TypeAjustement::"Ajustements manquants" then
-                  if EcrArticleId<=0 then
-                    CreateNewAjustements(pro_enteteBL,'');
+                if TypeAjustement = TypeAjustement::"Ajustements manquants" then
+                    if EcrArticleId <= 0 then
+                        CreateNewAjustements(pro_enteteBL, '');
             end;
 
             trigger OnPostDataItem()
@@ -43,7 +43,7 @@ report 50069 "Corr Ajustement Ecart Pompe"
         {
             area(content)
             {
-                field(TypeAjustement;TypeAjustement)
+                field(TypeAjustement; TypeAjustement)
                 {
                     Caption = 'Type ajustement';
                 }
@@ -88,7 +88,7 @@ report 50069 "Corr Ajustement Ecart Pompe"
         Text025: Label 'La commande %1 existe déjà sur une tournée non validée : %2';
         Text026: Label 'Le code camion %1 existe déjà sur une tournée non validée : %2';
         Text027: Label 'Voulez-vous confirmer le bon ?';
-        Text028: Label '&Confirmer l''enlèvement,&Confirmer la livraison et facturer';
+        Text028: Label 'Confirmer l''enlèvement,Confirmer la livraison et facturer';
         Text029: Label 'Le Bon %1 a été créé';
         Text030: Label 'Bon %1';
         Text031: Label 'L''enlèvement a déjà été confirmé';
@@ -101,7 +101,7 @@ report 50069 "Corr Ajustement Ecart Pompe"
         TypeAjustement: Option Correction,"Ajustements manquants";
         LineNo: Integer;
 
-    local procedure PostAdjBLJiramaMgt(EnteteBL: Record pro_enteteBL;CustNo: Code[20]): Boolean
+    local procedure PostAdjBLJiramaMgt(EnteteBL: Record pro_enteteBL; CustNo: Code[20]): Boolean
     var
         DeliveryLine: Record pro_detailBL;
         ItemJnlLine: Record "Item Journal Line";
@@ -115,57 +115,58 @@ report 50069 "Corr Ajustement Ecart Pompe"
 
 
         DeliveryLine.Reset;
-        DeliveryLine.SetRange(DeliveryLine.numBL,EnteteBL.numBL);
-        if DeliveryLine.FindSet then repeat
+        DeliveryLine.SetRange(DeliveryLine.numBL, EnteteBL.numBL);
+        if DeliveryLine.FindSet then
+            repeat
 
-          Item1.Get(DeliveryLine.NavItemCode);
-          if DeliveryLine.volumelivre=0 then
-            Error(Text019,DeliveryLine."Line No.");
+                Item1.Get(DeliveryLine.NavItemCode);
+                if DeliveryLine.volumelivre = 0 then
+                    Error(Text019, DeliveryLine."Line No.");
 
-          DeliveryLine.Validate(volumelivre);
+                DeliveryLine.Validate(volumelivre);
 
-          QtyAjustement := DeliveryLine.volumealivrer-DeliveryLine.volumelivre;
+                QtyAjustement := DeliveryLine.volumealivrer - DeliveryLine.volumelivre;
 
-          //Dépot EXP - Ajustement négatif ou négatif
-          ItemJnlLine.Init;
-          ItemJnlLine."Posting Date" := EnteteBL.datelivraison;
-          ItemJnlLine."Document Date" := EnteteBL.datelivraison;
-          ItemJnlLine."Document No." := EnteteBL.NumBU;
-          ItemJnlLine."Adjustment Type":=ItemJnlLine."Adjustment Type"::AdjBL;
-          //ItemJnlLine."Document Type" := ItemJnlLine."Document Type"::;
-          ItemJnlLine."Document Line No." := DeliveryLine."Line No.";
-          //ItemJnlLine."External Document No." := TransShptHeader2."External Document No.";
-          if QtyAjustement>0 then
-            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt."
-          else
-            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt.";
-          ItemJnlLine.Validate("Item No." , DeliveryLine.NavItemCode);
-          ItemJnlLine.Description := StrSubstNo(Text020, EnteteBL.NumBU,EnteteBL.NavOrderNo,CustNo);
+                //Dépot EXP - Ajustement négatif ou négatif
+                ItemJnlLine.Init;
+                ItemJnlLine."Posting Date" := EnteteBL.datelivraison;
+                ItemJnlLine."Document Date" := EnteteBL.datelivraison;
+                ItemJnlLine."Document No." := EnteteBL.NumBU;
+                ItemJnlLine."Adjustment Type" := ItemJnlLine."Adjustment Type"::AdjBL;
+                //ItemJnlLine."Document Type" := ItemJnlLine."Document Type"::;
+                ItemJnlLine."Document Line No." := DeliveryLine."Line No.";
+                //ItemJnlLine."External Document No." := TransShptHeader2."External Document No.";
+                if QtyAjustement > 0 then
+                    ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt."
+                else
+                    ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt.";
+                ItemJnlLine.Validate("Item No.", DeliveryLine.NavItemCode);
+                ItemJnlLine.Description := StrSubstNo(Text020, EnteteBL.NumBU, EnteteBL.NavOrderNo, CustNo);
 
-          ItemJnlLine.Validate("Location Code", EnteteBL.depot);
-          ItemJnlLine.Validate(Quantity , Abs(QtyAjustement));
+                ItemJnlLine.Validate("Location Code", EnteteBL.depot);
+                ItemJnlLine.Validate(Quantity, Abs(QtyAjustement));
 
-          ItemJnlLine.Validate("Unit of Measure Code" , DeliveryLine."Unit of Measure Code");
-          //ItemJnlLine."Invoiced Quantity" := RemovalLine.volumea15;
-          ItemJnlLine."Reason Code" := AddOnSetup."Jir Shipment Adj Reason Code";
-          ItemJnlLine."Source Code" := AddOnSetup."Removal Journal code";
-          ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
-          ItemJnlLine.AFK_SetDimensionsItem(DeliveryLine.NavItemCode);
+                ItemJnlLine.Validate("Unit of Measure Code", DeliveryLine."Unit of Measure Code");
+                //ItemJnlLine."Invoiced Quantity" := RemovalLine.volumea15;
+                ItemJnlLine."Reason Code" := AddOnSetup."Jir Shipment Adj Reason Code";
+                ItemJnlLine."Source Code" := AddOnSetup."Removal Journal code";
+                ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
+                ItemJnlLine.AFK_SetDimensionsItem(DeliveryLine.NavItemCode);
 
-          //ItemJnlLine.AFK_SetDimensions(RemovalLine.NavItemCode,
+                //ItemJnlLine.AFK_SetDimensions(RemovalLine.NavItemCode,
 
-          if QtyAjustement>DeliveryLine.volumealivrer then
-            Error(Text014);
+                if QtyAjustement > DeliveryLine.volumealivrer then
+                    Error(Text014);
 
-          //IF QtyAjustement<>0 THEN
-          //  ItemJnlPostLine.RunWithCheck(ItemJnlLine);
+                //IF QtyAjustement<>0 THEN
+                //  ItemJnlPostLine.RunWithCheck(ItemJnlLine);
 
-          if QtyAjustement<>0 then
-            ItemJnlLine.Insert(true);
+                if QtyAjustement <> 0 then
+                    ItemJnlLine.Insert(true);
 
 
 
-        until DeliveryLine.Next=0;
+            until DeliveryLine.Next = 0;
     end;
 
     local procedure FindItemLedgerEntry(EnteteBL: Record pro_enteteBL): Integer
@@ -173,15 +174,15 @@ report 50069 "Corr Ajustement Ecart Pompe"
         ItemLedgerEntry: Record "Item Ledger Entry";
     begin
         ItemLedgerEntry.Reset;
-        ItemLedgerEntry.SetRange("Document No.",'BL'+Format(EnteteBL.numBL));
-        ItemLedgerEntry.SetRange(ItemLedgerEntry."Location Code",'EXP1PBF');
-        ItemLedgerEntry.SetRange(ItemLedgerEntry."Adjustment Type",ItemLedgerEntry."Adjustment Type"::AdjBL);
-        ItemLedgerEntry.SetFilter(ItemLedgerEntry."Transaction Date",'>%1',20201123D);
+        ItemLedgerEntry.SetRange("Document No.", 'BL' + Format(EnteteBL.numBL));
+        ItemLedgerEntry.SetRange(ItemLedgerEntry."Location Code", 'EXP1PBF');
+        ItemLedgerEntry.SetRange(ItemLedgerEntry."Adjustment Type", ItemLedgerEntry."Adjustment Type"::AdjBL);
+        ItemLedgerEntry.SetFilter(ItemLedgerEntry."Transaction Date", '>%1', 20201123D);
         if ItemLedgerEntry.FindFirst then
-          exit(ItemLedgerEntry."Entry No.");
+            exit(ItemLedgerEntry."Entry No.");
     end;
 
-    local procedure CreateEntryCorr(ItemLedgerEntryNo: Integer;EnteteBL: Record pro_enteteBL)
+    local procedure CreateEntryCorr(ItemLedgerEntryNo: Integer; EnteteBL: Record pro_enteteBL)
     var
         ItemLedgerEntry: Record "Item Ledger Entry";
         QtyAjustement: Decimal;
@@ -196,83 +197,83 @@ report 50069 "Corr Ajustement Ecart Pompe"
         QtyAjustement := ItemLedgerEntry.Quantity;
         Item1.Get(ItemLedgerEntry."Item No.");
 
-        LineNo:=LineNo+10;
+        LineNo := LineNo + 10;
 
         //Dépot EXP - Ajustement négatif ou négatif
         ItemJnlLine.Init;
         ItemJnlLine."Journal Template Name" := 'ARTICLE';
         ItemJnlLine."Journal Batch Name" := 'MIGRATION';
-        ItemJnlLine."Line No.":=LineNo;
+        ItemJnlLine."Line No." := LineNo;
         ItemJnlLine."Posting Date" := ItemLedgerEntry."Posting Date";
         ItemJnlLine."Document Date" := ItemLedgerEntry."Document Date";
         ItemJnlLine."Document No." := ItemLedgerEntry."Document No.";
-        ItemJnlLine."Adjustment Type":=ItemJnlLine."Adjustment Type"::AdjBL;
+        ItemJnlLine."Adjustment Type" := ItemJnlLine."Adjustment Type"::AdjBL;
         ItemJnlLine."External Document No." := 'CORRAJUSTPOMPE';
 
         ItemJnlLine."Document Line No." := ItemLedgerEntry."Document Line No.";
 
-        if QtyAjustement>0 then
-          ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt."
+        if QtyAjustement > 0 then
+            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt."
         else
-          ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt.";
-        ItemJnlLine.Validate("Item No." , ItemLedgerEntry."Item No.");
+            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt.";
+        ItemJnlLine.Validate("Item No.", ItemLedgerEntry."Item No.");
         ItemJnlLine.Description := StrSubstNo(Text036, ItemLedgerEntry."Document No.");
 
         ItemJnlLine.Validate("Location Code", ItemLedgerEntry."Location Code");
-        ItemJnlLine.Validate(Quantity , Abs(QtyAjustement));
+        ItemJnlLine.Validate(Quantity, Abs(QtyAjustement));
 
-        ItemJnlLine.Validate("Unit of Measure Code" , ItemLedgerEntry."Unit of Measure Code");
+        ItemJnlLine.Validate("Unit of Measure Code", ItemLedgerEntry."Unit of Measure Code");
         ItemJnlLine."Reason Code" := AddOnSetup."Jir Shipment Adj Reason Code";
         ItemJnlLine."Source Code" := AddOnSetup."Removal Journal code";
         ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
-        ItemJnlLine.Validate("Dimension Set ID",ItemLedgerEntry."Dimension Set ID");
+        ItemJnlLine.Validate("Dimension Set ID", ItemLedgerEntry."Dimension Set ID");
 
-        if QtyAjustement<>0 then
-          ItemJnlLine.Insert(true);
+        if QtyAjustement <> 0 then
+            ItemJnlLine.Insert(true);
 
 
 
-        LineNo:=LineNo+10;
+        LineNo := LineNo + 10;
 
         //Nouvelle écriture sur le BE
         ItemJnlLine.Init;
         ItemJnlLine."Journal Template Name" := 'ARTICLE';
         ItemJnlLine."Journal Batch Name" := 'MIGRATION';
-        ItemJnlLine."Line No.":=LineNo;
+        ItemJnlLine."Line No." := LineNo;
         ItemJnlLine."Posting Date" := ItemLedgerEntry."Posting Date";
         ItemJnlLine."Document Date" := ItemLedgerEntry."Document Date";
-        if EnteteBL.NumBU<>'' then
-          NumDoc:=Format(EnteteBL.NumBU)
+        if EnteteBL.NumBU <> '' then
+            NumDoc := Format(EnteteBL.NumBU)
         else
-          NumDoc:='BE'+Format(EnteteBL.numBE);
+            NumDoc := 'BE' + Format(EnteteBL.numBE);
 
         ItemJnlLine."Document No." := NumDoc;
-        ItemJnlLine."Adjustment Type":=ItemJnlLine."Adjustment Type"::AdjBL;
+        ItemJnlLine."Adjustment Type" := ItemJnlLine."Adjustment Type"::AdjBL;
         ItemJnlLine."External Document No." := 'CORRAJUSTPOMPE';
 
         ItemJnlLine."Document Line No." := ItemLedgerEntry."Document Line No.";
 
-        if QtyAjustement<0 then
-          ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt."
+        if QtyAjustement < 0 then
+            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt."
         else
-          ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt.";
-        ItemJnlLine.Validate("Item No." , ItemLedgerEntry."Item No.");
+            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt.";
+        ItemJnlLine.Validate("Item No.", ItemLedgerEntry."Item No.");
         ItemJnlLine.Description := StrSubstNo(Text036, ItemLedgerEntry."Document No.");
 
         ItemJnlLine.Validate("Location Code", EnteteBL.depot);
-        ItemJnlLine.Validate(Quantity , Abs(QtyAjustement));
+        ItemJnlLine.Validate(Quantity, Abs(QtyAjustement));
 
-        ItemJnlLine.Validate("Unit of Measure Code" , ItemLedgerEntry."Unit of Measure Code");
+        ItemJnlLine.Validate("Unit of Measure Code", ItemLedgerEntry."Unit of Measure Code");
         ItemJnlLine."Reason Code" := AddOnSetup."Jir Shipment Adj Reason Code";
         ItemJnlLine."Source Code" := AddOnSetup."Removal Journal code";
         ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
-        ItemJnlLine.Validate("Dimension Set ID",ItemLedgerEntry."Dimension Set ID");
+        ItemJnlLine.Validate("Dimension Set ID", ItemLedgerEntry."Dimension Set ID");
 
-        if QtyAjustement<>0 then
-          ItemJnlLine.Insert(true);
+        if QtyAjustement <> 0 then
+            ItemJnlLine.Insert(true);
     end;
 
-    local procedure CreateNewAjustements(EnteteBL: Record pro_enteteBL;CustNo: Code[20]): Boolean
+    local procedure CreateNewAjustements(EnteteBL: Record pro_enteteBL; CustNo: Code[20]): Boolean
     var
         DeliveryLine: Record pro_detailBL;
         ItemJnlLine: Record "Item Journal Line";
@@ -287,65 +288,66 @@ report 50069 "Corr Ajustement Ecart Pompe"
 
 
         DeliveryLine.Reset;
-        DeliveryLine.SetRange(DeliveryLine.numBL,EnteteBL.numBL);
-        if DeliveryLine.FindSet then repeat
+        DeliveryLine.SetRange(DeliveryLine.numBL, EnteteBL.numBL);
+        if DeliveryLine.FindSet then
+            repeat
 
-          Item1.Get(DeliveryLine.NavItemCode);
-          if DeliveryLine.volumelivre=0 then
-            Error(Text019,DeliveryLine."Line No.");
+                Item1.Get(DeliveryLine.NavItemCode);
+                if DeliveryLine.volumelivre = 0 then
+                    Error(Text019, DeliveryLine."Line No.");
 
-          DeliveryLine.Validate(volumelivre);
+                DeliveryLine.Validate(volumelivre);
 
-          QtyAjustement := DeliveryLine.volumealivrer-DeliveryLine.volumelivre;
+                QtyAjustement := DeliveryLine.volumealivrer - DeliveryLine.volumelivre;
 
-        LineNo:=LineNo+10;
+                LineNo := LineNo + 10;
 
-          //Dépot EXP - Ajustement négatif ou négatif
-          ItemJnlLine.Init;
-          ItemJnlLine."Journal Template Name" := 'ARTICLE';
-          ItemJnlLine."Journal Batch Name" := 'MIGRATION';
-          ItemJnlLine."Line No.":=LineNo;
-          ItemJnlLine."Posting Date" := EnteteBL.datelivraison;
-          ItemJnlLine."Document Date" := EnteteBL.datelivraison;
-          if EnteteBL.NumBU<>'' then
-          NumDoc:=Format(EnteteBL.NumBU)
-        else
-          NumDoc:='BE'+Format(EnteteBL.numBE);
-          ItemJnlLine."Document No." := NumDoc;
-          ItemJnlLine."Adjustment Type":=ItemJnlLine."Adjustment Type"::AdjBL;
-          //ItemJnlLine."Document Type" := ItemJnlLine."Document Type"::;
-          ItemJnlLine."Document Line No." := DeliveryLine."Line No.";
-          ItemJnlLine."External Document No." := 'CORRAJUSTPOMPE';
-          if QtyAjustement>0 then
-            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt."
-          else
-            ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt.";
-          ItemJnlLine.Validate("Item No." , DeliveryLine.NavItemCode);
-          //ItemJnlLine.Description := STRSUBSTNO(Text020, EnteteBL.NumBU,EnteteBL.NavOrderNo,CustNo);
-          ItemJnlLine.Description := StrSubstNo(Text036, EnteteBL.numBE)+' '+Format(EnteteBL.NavOrderNo);
+                //Dépot EXP - Ajustement négatif ou négatif
+                ItemJnlLine.Init;
+                ItemJnlLine."Journal Template Name" := 'ARTICLE';
+                ItemJnlLine."Journal Batch Name" := 'MIGRATION';
+                ItemJnlLine."Line No." := LineNo;
+                ItemJnlLine."Posting Date" := EnteteBL.datelivraison;
+                ItemJnlLine."Document Date" := EnteteBL.datelivraison;
+                if EnteteBL.NumBU <> '' then
+                    NumDoc := Format(EnteteBL.NumBU)
+                else
+                    NumDoc := 'BE' + Format(EnteteBL.numBE);
+                ItemJnlLine."Document No." := NumDoc;
+                ItemJnlLine."Adjustment Type" := ItemJnlLine."Adjustment Type"::AdjBL;
+                //ItemJnlLine."Document Type" := ItemJnlLine."Document Type"::;
+                ItemJnlLine."Document Line No." := DeliveryLine."Line No.";
+                ItemJnlLine."External Document No." := 'CORRAJUSTPOMPE';
+                if QtyAjustement > 0 then
+                    ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Negative Adjmt."
+                else
+                    ItemJnlLine."Entry Type" := ItemJnlLine."Entry Type"::"Positive Adjmt.";
+                ItemJnlLine.Validate("Item No.", DeliveryLine.NavItemCode);
+                //ItemJnlLine.Description := STRSUBSTNO(Text020, EnteteBL.NumBU,EnteteBL.NavOrderNo,CustNo);
+                ItemJnlLine.Description := StrSubstNo(Text036, EnteteBL.numBE) + ' ' + Format(EnteteBL.NavOrderNo);
 
-          ItemJnlLine.Validate("Location Code", EnteteBL.depot);
-          ItemJnlLine.Validate(Quantity , Abs(QtyAjustement));
+                ItemJnlLine.Validate("Location Code", EnteteBL.depot);
+                ItemJnlLine.Validate(Quantity, Abs(QtyAjustement));
 
-          ItemJnlLine.Validate("Unit of Measure Code" , DeliveryLine."Unit of Measure Code");
-          ItemJnlLine."Reason Code" := AddOnSetup."Jir Shipment Adj Reason Code";
-          ItemJnlLine."Source Code" := AddOnSetup."Removal Journal code";
-          ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
-          ItemJnlLine.AFK_SetDimensionsItem(DeliveryLine.NavItemCode);
-
-
-          if QtyAjustement>DeliveryLine.volumealivrer then
-            Error(Text014);
-
-          //IF QtyAjustement<>0 THEN
-          //  ItemJnlPostLine.RunWithCheck(ItemJnlLine);
-
-          if QtyAjustement<>0 then
-            ItemJnlLine.Insert(true);
+                ItemJnlLine.Validate("Unit of Measure Code", DeliveryLine."Unit of Measure Code");
+                ItemJnlLine."Reason Code" := AddOnSetup."Jir Shipment Adj Reason Code";
+                ItemJnlLine."Source Code" := AddOnSetup."Removal Journal code";
+                ItemJnlLine."Gen. Prod. Posting Group" := Item1."Gen. Prod. Posting Group";
+                ItemJnlLine.AFK_SetDimensionsItem(DeliveryLine.NavItemCode);
 
 
+                if QtyAjustement > DeliveryLine.volumealivrer then
+                    Error(Text014);
 
-        until DeliveryLine.Next=0;
+                //IF QtyAjustement<>0 THEN
+                //  ItemJnlPostLine.RunWithCheck(ItemJnlLine);
+
+                if QtyAjustement <> 0 then
+                    ItemJnlLine.Insert(true);
+
+
+
+            until DeliveryLine.Next = 0;
     end;
 }
 

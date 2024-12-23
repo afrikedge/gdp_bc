@@ -37,31 +37,31 @@ page 50217 "Acc. Receivables GDP-CAISSE"
         {
             action("C&ustomer - List")
             {
-                Caption = 'C&ustomer - List';
+                Caption = 'Customer - List';
                 Image = "Report";
                 RunObject = Report "Customer - List";
             }
             action("Customer - &Balance to Date")
             {
-                Caption = 'Customer - &Balance to Date';
+                Caption = 'Customer - Balance to Date';
                 Image = "Report";
                 RunObject = Report "Customer - Balance to Date";
             }
             action("Aged &Accounts Receivable")
             {
-                Caption = 'Aged &Accounts Receivable';
+                Caption = 'Aged Accounts Receivable';
                 Image = "Report";
                 RunObject = Report "Aged Accounts Receivable";
             }
             action("Customer - &Summary Aging Simp.")
             {
-                Caption = 'Customer - &Summary Aging Simp.';
+                Caption = 'Customer - Summary Aging Simp.';
                 Image = "Report";
                 RunObject = Report "Customer - Summary Aging Simp.";
             }
             action("Customer Trial Balan&ce")
             {
-                Caption = 'Customer Trial Balan&ce';
+                Caption = 'Customer Trial Balance';
                 RunObject = Report "Customer - Trial Balance";
             }
             action("Customer Detail Trial Balance")
@@ -72,7 +72,7 @@ page 50217 "Acc. Receivables GDP-CAISSE"
             }
             action("Cus&tomer/Item Sales")
             {
-                Caption = 'Cus&tomer/Item Sales';
+                Caption = 'Customer/Item Sales';
                 Image = "Report";
                 RunObject = Report "Customer/Item Sales";
             }
@@ -114,7 +114,7 @@ page 50217 "Acc. Receivables GDP-CAISSE"
                 Caption = 'Reglement Client';
                 action("<Page General Journal Batches CC>")
                 {
-                    Caption = 'Cas&h Receipt Journal';
+                    Caption = 'Cash Receipt Journal';
                     Image = CashReceiptJournal;
                     RunObject = Page "General Journal Batches CCL";
                     RunPageView = WHERE("Template Type" = CONST("Cash Receipts"),
@@ -154,13 +154,13 @@ page 50217 "Acc. Receivables GDP-CAISSE"
         {
             group("&Sales")
             {
-                Caption = '&Sales';
+                Caption = 'Sales';
                 Image = Sales;
                 action("Sales &Order")
                 {
-                    Caption = 'Sales &Order';
+                    Caption = 'Sales Order';
                     Image = Document;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Page "Sales Order";
@@ -168,9 +168,9 @@ page 50217 "Acc. Receivables GDP-CAISSE"
                 }
                 action("Sales &Invoice")
                 {
-                    Caption = 'Sales &Invoice';
+                    Caption = 'Sales Invoice';
                     Image = Invoice;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Page "Sales Invoice";
@@ -178,9 +178,9 @@ page 50217 "Acc. Receivables GDP-CAISSE"
                 }
                 action("Sales &Credit Memo")
                 {
-                    Caption = 'Sales &Credit Memo';
+                    Caption = 'Sales Credit Memo';
                     Image = CreditMemo;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Page "Sales Credit Memo";
@@ -194,7 +194,7 @@ page 50217 "Acc. Receivables GDP-CAISSE"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

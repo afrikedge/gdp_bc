@@ -10,17 +10,17 @@ page 50204 "Whse. Basic GDP-LIV"
             group(Control1900724808)
             {
                 ShowCaption = false;
-                part(Control1906245608;"Whse Ship & Receive Activities")
+                part(Control1906245608; "Whse Ship & Receive Activities")
                 {
                 }
-                part(Control1907692008;"My Customers")
+                part(Control1907692008; "My Customers")
                 {
                 }
             }
             group(Control1900724708)
             {
                 ShowCaption = false;
-                systempart(Control1901377608;MyNotes)
+                systempart(Control1901377608; MyNotes)
                 {
                 }
             }
@@ -36,7 +36,7 @@ page 50204 "Whse. Basic GDP-LIV"
             }
             action("Customer &Labels")
             {
-                Caption = 'Customer &Labels';
+                Caption = 'Customer Labels';
                 Image = "Report";
                 RunObject = Report "Customer - Labels";
             }
@@ -68,37 +68,37 @@ page 50204 "Whse. Basic GDP-LIV"
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                RunPageView = WHERE(Status = CONST(AttenteValResp1));
             }
             action(Action100000008)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                RunPageView = WHERE(Status = CONST(AttenteValResp2));
             }
             action(Action100000007)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                RunPageView = WHERE(Status = CONST(AttenteValResp3));
             }
             action(Action100000006)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Litigieuse));
+                RunPageView = WHERE(Status = CONST(Litigieuse));
             }
             action(Action100000001)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttentePaiement));
+                RunPageView = WHERE(Status = CONST(AttentePaiement));
             }
             action(Action100000000)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Payee));
+                RunPageView = WHERE(Status = CONST(Payee));
             }
         }
         area(sections)
@@ -136,13 +136,13 @@ page 50204 "Whse. Basic GDP-LIV"
                 {
                     Caption = 'En saisie';
                     RunObject = Page "Touring List";
-                    RunPageView = WHERE(Status=FILTER(Created|Dispached));
+                    RunPageView = WHERE(Status = FILTER(Created | Dispached));
                 }
                 action("A confirmer")
                 {
                     Caption = 'A confirmer';
                     RunObject = Page "Touring List";
-                    RunPageView = WHERE(Status=CONST(Posted));
+                    RunPageView = WHERE(Status = CONST(Posted));
                 }
                 action("<Page Bon Dispaching List>")
                 {
@@ -256,7 +256,7 @@ page 50204 "Whse. Basic GDP-LIV"
             }
             action("Item &Tracing")
             {
-                Caption = 'Item &Tracing';
+                Caption = 'Item Tracing';
                 Image = ItemTracing;
                 RunObject = Page "Item Tracing";
             }

@@ -190,7 +190,7 @@ page 50194 "Item Transfer"
                 Caption = 'Cancel expedition';
                 Ellipsis = true;
                 Image = Cancel;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'

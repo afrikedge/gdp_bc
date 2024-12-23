@@ -35,7 +35,7 @@ codeunit 50001 "Sales Order Process"
         Text017: Label '&Solder la commande';
         ReleaseMgt: Codeunit "Release Sales Document";
         ItemCheckAvail: Codeunit "Item-Check Avail.";
-        Text018: Label 'Valider le stock,&Renvoyer en saisie';
+        Text018: Label 'Valider le stock,Renvoyer en saisie';
         Cust: Record Customer;
         Text019: Label 'Traitement terminé avec succès !';
         AddOnSetup: Record "AddOn Setup";

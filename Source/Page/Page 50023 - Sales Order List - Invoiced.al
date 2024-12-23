@@ -144,7 +144,7 @@ page 50023 "Sales Order List - Invoiced"
         {
             group("Ver&sion")
             {
-                Caption = 'Ver&sion';
+                Caption = 'Version';
                 Image = Versions;
                 action(Dimensions)
                 {
@@ -160,7 +160,7 @@ page 50023 "Sales Order List - Invoiced"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Sales Archive Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),

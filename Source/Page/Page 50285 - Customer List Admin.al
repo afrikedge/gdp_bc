@@ -233,7 +233,7 @@ page 50285 "Customer List Admin"
                 Image = Customer;
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Comment Sheet";
                     RunPageLink = "Table Name" = CONST(Customer),
@@ -295,7 +295,7 @@ page 50285 "Customer List Admin"
                 action("C&ontact")
                 {
                     AccessByPermission = TableData Contact = R;
-                    Caption = 'C&ontact';
+                    Caption = 'Contact';
                     Image = ContactPerson;
                     RunObject = Page "Signatory List";
                     RunPageLink = "Company No." = FIELD("No.");
@@ -307,7 +307,7 @@ page 50285 "Customer List Admin"
                 }
                 action("Cross Re&ferences")
                 {
-                    // Caption = 'Cross Re&ferences';
+                    // Caption = 'Cross References';
                     // Image = Change;
                     // RunObject = Page "Cross References";
                     // RunPageLink = "Cross-Reference Type"=CONST(Customer),
@@ -463,7 +463,7 @@ page 50285 "Customer List Admin"
                 Image = History;
                 action("Ledger E&ntries")
                 {
-                    Caption = 'Ledger E&ntries';
+                    Caption = 'Ledger Entries';
                     Image = CustomerLedger;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -487,7 +487,7 @@ page 50285 "Customer List Admin"
                 }
                 action("S&ales")
                 {
-                    Caption = 'S&ales';
+                    Caption = 'Sales';
                     Image = Sales;
                     RunObject = Page "Customer Sales";
                     RunPageLink = "No." = FIELD("No."),
@@ -506,7 +506,7 @@ page 50285 "Customer List Admin"
                 }
                 action("Statistics by C&urrencies")
                 {
-                    Caption = 'Statistics by C&urrencies';
+                    Caption = 'Statistics by Currencies';
                     Image = Currencies;
                     RunObject = Page "Cust. Stats. by Curr. Lines";
                     RunPageLink = "Customer Filter" = FIELD("No."),
@@ -516,7 +516,7 @@ page 50285 "Customer List Admin"
                 }
                 action("Item &Tracking Entries")
                 {
-                    Caption = 'Item &Tracking Entries';
+                    Caption = 'Item Tracking Entries';
                     Image = ItemTrackingLedger;
 
                     trigger OnAction()
@@ -529,11 +529,11 @@ page 50285 "Customer List Admin"
             }
             group(ActionGroup24)
             {
-                Caption = 'S&ales';
+                Caption = 'Sales';
                 Image = Sales;
                 action("Invoice &Discounts")
                 {
-                    Caption = 'Invoice &Discounts';
+                    Caption = 'Invoice Discounts';
                     Image = CalculateInvoiceDiscount;
                     RunObject = Page "Cust. Invoice Discounts";
                     RunPageLink = Code = FIELD("Invoice Disc. Code");
@@ -559,7 +559,7 @@ page 50285 "Customer List Admin"
                 }
                 action("Prepa&yment Percentages")
                 {
-                    Caption = 'Prepa&yment Percentages';
+                    Caption = 'Prepayment Percentages';
                     Image = PrepaymentPercentages;
                     RunObject = Page "Sales Prepayment Percentages";
                     RunPageLink = "Sales Type" = CONST(Customer),
@@ -598,7 +598,7 @@ page 50285 "Customer List Admin"
                 Visible = false;
                 action(SendApprovalRequest)
                 {
-                    Caption = 'Send A&pproval Request';
+                    Caption = 'Send Approval Request';
                     Enabled = NOT OpenApprovalEntriesExist;
                     Image = SendApprovalRequest;
 
@@ -612,7 +612,7 @@ page 50285 "Customer List Admin"
                 }
                 action(CancelApprovalRequest)
                 {
-                    Caption = 'Cancel Approval Re&quest';
+                    Caption = 'Cancel Approval Request';
                     Enabled = OpenApprovalEntriesExist;
                     Image = Cancel;
 
@@ -634,7 +634,7 @@ page 50285 "Customer List Admin"
                 {
                     Caption = 'Customer List';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Customer - List";
@@ -643,7 +643,7 @@ page 50285 "Customer List Admin"
                 {
                     Caption = 'Customer Register';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Customer Register";
@@ -673,7 +673,7 @@ page 50285 "Customer List Admin"
                 {
                     Caption = 'Customer - Order Detail';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Customer - Order Detail";
@@ -690,7 +690,7 @@ page 50285 "Customer List Admin"
                 {
                     Caption = 'Sales Statistics';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Sales Statistics";
@@ -699,7 +699,7 @@ page 50285 "Customer List Admin"
                 {
                     Caption = 'Customer/Item Sales';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Customer/Item Sales";
@@ -713,7 +713,7 @@ page 50285 "Customer List Admin"
                 {
                     Caption = 'Customer - Detail Trial Bal.';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Customer - Detail Trial Bal.";
@@ -722,7 +722,7 @@ page 50285 "Customer List Admin"
                 {
                     Caption = 'Customer - Summary Aging';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Customer - Summary Aging";
@@ -731,7 +731,7 @@ page 50285 "Customer List Admin"
                 {
                     Caption = 'Customer Detailed Aging';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Customer Detailed Aging";
@@ -748,7 +748,7 @@ page 50285 "Customer List Admin"
                 {
                     Caption = 'Reminder';
                     Image = Reminder;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report Reminder;
@@ -773,7 +773,7 @@ page 50285 "Customer List Admin"
                 {
                     Caption = 'Customer - Trial Balance';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Customer - Trial Balance";

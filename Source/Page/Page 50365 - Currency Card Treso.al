@@ -131,11 +131,11 @@ page 50365 "Currency Card Treso"
         {
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action("Change Payment &Tolerance")
                 {
-                    Caption = 'Change Payment &Tolerance';
+                    Caption = 'Change Payment Tolerance';
                     Image = ChangePaymentTolerance;
                     Promoted = true;
                     PromotedCategory = Process;

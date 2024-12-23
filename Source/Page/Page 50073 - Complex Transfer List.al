@@ -95,7 +95,7 @@ page 50073 "Complex Transfer List"
         {
             group("O&rder")
             {
-                Caption = 'O&rder';
+                Caption = 'Order';
                 Image = "Order";
                 action(Statistics)
                 {
@@ -109,7 +109,7 @@ page 50073 "Complex Transfer List"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Inventory Comment Sheet";
                     RunPageLink = "Document Type" = CONST("Transfer Order"),
@@ -133,16 +133,16 @@ page 50073 "Complex Transfer List"
             {
                 Caption = 'Documents';
                 Image = Documents;
-                action("S&hipments")
+                action("Shipments")
                 {
-                    Caption = 'S&hipments';
+                    Caption = 'Shipments';
                     Image = Shipment;
                     RunObject = Page "Posted Transfer Shipments";
                     RunPageLink = "Transfer Order No." = FIELD("No.");
                 }
                 action("Re&ceipts")
                 {
-                    Caption = 'Re&ceipts';
+                    Caption = 'Receipts';
                     Image = PostedReceipts;
                     RunObject = Page "Posted Transfer Receipts";
                     RunPageLink = "Transfer Order No." = FIELD("No.");
@@ -154,7 +154,7 @@ page 50073 "Complex Transfer List"
                 Image = Warehouse;
                 action("Whse. Shi&pments")
                 {
-                    Caption = 'Whse. Shi&pments';
+                    Caption = 'Whse. Shipments';
                     Image = Shipment;
                     RunObject = Page "Whse. Shipment Lines";
                     RunPageLink = "Source Type" = CONST(5741),
@@ -164,7 +164,7 @@ page 50073 "Complex Transfer List"
                 }
                 action("&Whse. Receipts")
                 {
-                    Caption = '&Whse. Receipts';
+                    Caption = 'Whse. Receipts';
                     Image = Receipt;
                     RunObject = Page "Whse. Receipt Lines";
                     RunPageLink = "Source Type" = CONST(5741),
@@ -174,7 +174,7 @@ page 50073 "Complex Transfer List"
                 }
                 action("In&vt. Put-away/Pick Lines")
                 {
-                    Caption = 'In&vt. Put-away/Pick Lines';
+                    Caption = 'Invt. Put-away/Pick Lines';
                     Image = PickLines;
                     RunObject = Page "Warehouse Activity List";
                     RunPageLink = "Source Document" = FILTER("Inbound Transfer" | "Outbound Transfer"),
@@ -187,7 +187,7 @@ page 50073 "Complex Transfer List"
         {
             action("&Print")
             {
-                Caption = '&Print';
+                Caption = 'Print';
                 Ellipsis = true;
                 Image = Print;
                 Promoted = true;
@@ -206,7 +206,7 @@ page 50073 "Complex Transfer List"
                 Image = ReleaseDoc;
                 action("Re&lease")
                 {
-                    Caption = 'Re&lease';
+                    Caption = 'Release';
                     Image = ReleaseDoc;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -215,7 +215,7 @@ page 50073 "Complex Transfer List"
                 }
                 action("Reo&pen")
                 {
-                    Caption = 'Reo&pen';
+                    Caption = 'Reopen';
                     Image = ReOpen;
 
                     trigger OnAction()
@@ -228,12 +228,12 @@ page 50073 "Complex Transfer List"
             }
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action("Create Whse. S&hipment")
                 {
                     AccessByPermission = TableData "Warehouse Shipment Header" = R;
-                    Caption = 'Create Whse. S&hipment';
+                    Caption = 'Create Whse. Shipment';
                     Image = NewShipment;
 
                     trigger OnAction()
@@ -246,7 +246,7 @@ page 50073 "Complex Transfer List"
                 action("Create &Whse. Receipt")
                 {
                     AccessByPermission = TableData "Warehouse Receipt Header" = R;
-                    Caption = 'Create &Whse. Receipt';
+                    Caption = 'Create Whse. Receipt';
                     Image = NewReceipt;
 
                     trigger OnAction()
@@ -258,7 +258,7 @@ page 50073 "Complex Transfer List"
                 }
                 action("Create Inventor&y Put-away/Pick")
                 {
-                    Caption = 'Create Inventor&y Put-away/Pick';
+                    Caption = 'Create Inventory Put-away/Pick';
                     Ellipsis = true;
                     Image = CreatePutawayPick;
 
@@ -288,11 +288,11 @@ page 50073 "Complex Transfer List"
             }
             group("P&osting")
             {
-                Caption = 'P&osting';
+                Caption = 'Posting';
                 Image = Post;
                 action("P&ost")
                 {
-                    Caption = 'P&ost';
+                    Caption = 'Post';
                     Ellipsis = true;
                     Image = PostOrder;
                     Promoted = true;
@@ -303,7 +303,7 @@ page 50073 "Complex Transfer List"
                 }
                 action("Post and &Print")
                 {
-                    Caption = 'Post and &Print';
+                    Caption = 'Post and Print';
                     Image = PostPrint;
                     Promoted = true;
                     PromotedCategory = Process;

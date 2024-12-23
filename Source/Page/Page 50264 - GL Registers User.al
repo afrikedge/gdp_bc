@@ -80,7 +80,7 @@ page 50264 "G/L Registers User"
                 }
                 action("Customer &Ledger")
                 {
-                    Caption = 'Customer &Ledger';
+                    Caption = 'Customer Ledger';
                     Image = CustomerLedger;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -89,7 +89,7 @@ page 50264 "G/L Registers User"
                 }
                 action("Ven&dor Ledger")
                 {
-                    Caption = 'Ven&dor Ledger';
+                    Caption = 'Vendor Ledger';
                     Image = VendorLedger;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -106,7 +106,7 @@ page 50264 "G/L Registers User"
                 }
                 action("Fixed &Asset Ledger")
                 {
-                    Caption = 'Fixed &Asset Ledger';
+                    Caption = 'Fixed Asset Ledger';
                     Image = FixedAssetLedger;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -142,7 +142,7 @@ page 50264 "G/L Registers User"
         {
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action(ReverseRegister)
                 {
@@ -176,7 +176,7 @@ page 50264 "G/L Registers User"
             {
                 Caption = 'Trial Balance';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report Budget;

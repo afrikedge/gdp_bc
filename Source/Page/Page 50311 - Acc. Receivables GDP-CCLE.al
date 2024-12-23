@@ -37,31 +37,31 @@ page 50311 "Acc. Receivables GDP-CCLE"
         {
             action("C&ustomer - List")
             {
-                Caption = 'C&ustomer - List';
+                Caption = 'Customer - List';
                 Image = "Report";
                 RunObject = Report "Customer - List";
             }
             action("Customer - &Balance to Date")
             {
-                Caption = 'Customer - &Balance to Date';
+                Caption = 'Customer - Balance to Date';
                 Image = "Report";
                 RunObject = Report "Customer - Balance to Date";
             }
             action("Aged &Accounts Receivable")
             {
-                Caption = 'Aged &Accounts Receivable';
+                Caption = 'Aged Accounts Receivable';
                 Image = "Report";
                 RunObject = Report "Aged Accounts Receivable";
             }
             action("Customer - &Summary Aging Simp.")
             {
-                Caption = 'Customer - &Summary Aging Simp.';
+                Caption = 'Customer - Summary Aging Simp.';
                 Image = "Report";
                 RunObject = Report "Customer - Summary Aging Simp.";
             }
             action("Customer Trial Balan&ce")
             {
-                Caption = 'Customer Trial Balan&ce';
+                Caption = 'Customer Trial Balance';
                 RunObject = Report "Customer - Trial Balance";
             }
             action("Customer Detail Trial Balance")
@@ -72,7 +72,7 @@ page 50311 "Acc. Receivables GDP-CCLE"
             }
             action("Cus&tomer/Item Sales")
             {
-                Caption = 'Cus&tomer/Item Sales';
+                Caption = 'Customer/Item Sales';
                 Image = "Report";
                 RunObject = Report "Customer/Item Sales";
             }
@@ -87,19 +87,19 @@ page 50311 "Acc. Receivables GDP-CCLE"
             }
             action("Customer &Document Nos.")
             {
-                Caption = 'Customer &Document Nos.';
+                Caption = 'Customer Document Nos.';
                 Image = "Report";
                 RunObject = Report "Customer Document Nos.";
             }
             action("Sales &Invoice Nos.")
             {
-                Caption = 'Sales &Invoice Nos.';
+                Caption = 'Sales Invoice Nos.';
                 Image = "Report";
                 RunObject = Report "Sales Invoice Nos.";
             }
             action("Sa&les Credit Memo Nos.")
             {
-                Caption = 'Sa&les Credit Memo Nos.';
+                Caption = 'Sales Credit Memo Nos.';
                 Image = "Report";
                 RunObject = Report "Sales Credit Memo Nos.";
             }
@@ -192,10 +192,6 @@ page 50311 "Acc. Receivables GDP-CCLE"
             group("Traitement des commandes")
             {
                 Caption = 'Traitement des commandes';
-                separator("Commande vente")
-                {
-                    Caption = 'Commande vente';
-                }
                 action("<Page Sales Order List - Blocked>")
                 {
                     Caption = 'Commandes vente bloquées';
@@ -254,10 +250,6 @@ page 50311 "Acc. Receivables GDP-CCLE"
             {
                 Caption = 'Posted Documents';
                 Image = FiledPosted;
-                separator("Documents validés")
-                {
-                    Caption = 'Documents validés';
-                }
                 action("Posted Sales Shipments")
                 {
                     Caption = 'Posted Sales Shipments';
@@ -281,10 +273,6 @@ page 50311 "Acc. Receivables GDP-CCLE"
                     Caption = 'Posted Sales Credit Memos';
                     Image = PostedOrder;
                     RunObject = Page "Posted Sales Credit Memos";
-                }
-                separator("Archives Commande")
-                {
-                    Caption = 'Archives Commande';
                 }
                 action("<Page Sales Order List - Invoiced>")
                 {

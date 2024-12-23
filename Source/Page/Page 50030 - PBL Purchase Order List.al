@@ -143,14 +143,14 @@ page 50030 "PBL Purchase Order List"
         {
             group("O&rder")
             {
-                Caption = 'O&rder';
+                Caption = 'Order';
                 Image = "Order";
                 action(Dimensions)
                 {
                     AccessByPermission = TableData Dimension = R;
                     Caption = 'Dimensions';
                     Image = Dimensions;
-                    Promoted = false;
+
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
                     ShortCutKey = 'Shift+Ctrl+D';
@@ -178,7 +178,7 @@ page 50030 "PBL Purchase Order List"
                 {
                     Caption = 'Approvals';
                     Image = Approvals;
-                    Promoted = false;
+
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
 
@@ -192,7 +192,7 @@ page 50030 "PBL Purchase Order List"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Purch. Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
@@ -208,7 +208,7 @@ page 50030 "PBL Purchase Order List"
                 {
                     Caption = 'Receipts';
                     Image = PostedReceipts;
-                    Promoted = false;
+
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
                     RunObject = Page "Posted Purchase Receipts";
@@ -219,7 +219,7 @@ page 50030 "PBL Purchase Order List"
                 {
                     Caption = 'Invoices';
                     Image = Invoice;
-                    Promoted = false;
+
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
                     RunObject = Page "Posted Purchase Invoices";
@@ -228,7 +228,7 @@ page 50030 "PBL Purchase Order List"
                 }
                 action("Prepa&yment Invoices")
                 {
-                    Caption = 'Prepa&yment Invoices';
+                    Caption = 'Prepayment Invoices';
                     Image = PrepaymentInvoice;
                     RunObject = Page "Posted Purchase Invoices";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
@@ -236,7 +236,7 @@ page 50030 "PBL Purchase Order List"
                 }
                 action("Prepayment Credi&t Memos")
                 {
-                    Caption = 'Prepayment Credi&t Memos';
+                    Caption = 'Prepayment Credit Memos';
                     Image = PrepaymentCreditMemo;
                     RunObject = Page "Posted Purchase Credit Memos";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
@@ -300,7 +300,7 @@ page 50030 "PBL Purchase Order List"
                 Image = ReleaseDoc;
                 action(Release)
                 {
-                    Caption = 'Re&lease';
+                    Caption = 'Release';
                     Image = ReleaseDoc;
                     ShortCutKey = 'Ctrl+F9';
 
@@ -313,7 +313,7 @@ page 50030 "PBL Purchase Order List"
                 }
                 action(Reopen)
                 {
-                    Caption = 'Re&open';
+                    Caption = 'Reopen';
                     Image = ReOpen;
 
                     trigger OnAction()
@@ -329,7 +329,7 @@ page 50030 "PBL Purchase Order List"
             }
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action("Send IC Purchase Order")
                 {
@@ -352,7 +352,7 @@ page 50030 "PBL Purchase Order List"
                 Caption = 'Request Approval';
                 action(SendApprovalRequest)
                 {
-                    Caption = 'Send A&pproval Request';
+                    Caption = 'Send Approval Request';
                     Enabled = NOT OpenApprovalEntriesExist;
                     Image = SendApprovalRequest;
 
@@ -368,7 +368,7 @@ page 50030 "PBL Purchase Order List"
                 }
                 action(CancelApprovalRequest)
                 {
-                    Caption = 'Cancel Approval Re&quest';
+                    Caption = 'Cancel Approval Request';
                     Enabled = OpenApprovalEntriesExist;
                     Image = Cancel;
 
@@ -387,7 +387,7 @@ page 50030 "PBL Purchase Order List"
                 action("Create &Whse. Receipt")
                 {
                     AccessByPermission = TableData "Warehouse Receipt Header" = R;
-                    Caption = 'Create &Whse. Receipt';
+                    Caption = 'Create Whse. Receipt';
                     Image = NewReceipt;
 
                     trigger OnAction()
@@ -403,7 +403,7 @@ page 50030 "PBL Purchase Order List"
                 action("Create Inventor&y Put-away/Pick")
                 {
                     AccessByPermission = TableData "Posted Invt. Put-away Header" = R;
-                    Caption = 'Create Inventor&y Put-away/Pick';
+                    Caption = 'Create Inventory Put-away/Pick';
                     Ellipsis = true;
                     Image = CreatePutawayPick;
 
@@ -421,7 +421,7 @@ page 50030 "PBL Purchase Order List"
             }
             group("P&osting")
             {
-                Caption = 'P&osting';
+                Caption = 'Posting';
                 Image = Post;
                 action(TestReport)
                 {
@@ -436,7 +436,7 @@ page 50030 "PBL Purchase Order List"
                 }
                 action(Post)
                 {
-                    Caption = 'P&ost';
+                    Caption = 'Post';
                     Ellipsis = true;
                     Image = PostOrder;
                     Promoted = true;
@@ -463,7 +463,7 @@ page 50030 "PBL Purchase Order List"
                 }
                 action(PostAndPrint)
                 {
-                    Caption = 'Post and &Print';
+                    Caption = 'Post and Print';
                     Ellipsis = true;
                     Image = PostPrint;
                     Promoted = true;
@@ -478,7 +478,7 @@ page 50030 "PBL Purchase Order List"
                 }
                 action(PostBatch)
                 {
-                    Caption = 'Post &Batch';
+                    Caption = 'Post Batch';
                     Ellipsis = true;
                     Image = PostBatch;
                     Promoted = true;

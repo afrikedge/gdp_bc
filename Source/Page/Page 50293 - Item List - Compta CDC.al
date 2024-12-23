@@ -283,7 +283,7 @@ page 50293 "Item List - Compta CDC"
                 action("Items b&y Location")
                 {
                     AccessByPermission = TableData Location = R;
-                    Caption = 'Items b&y Location';
+                    Caption = 'Items by Location';
                     Image = ItemAvailbyLoc;
 
                     trigger OnAction()
@@ -296,7 +296,7 @@ page 50293 "Item List - Compta CDC"
                 }
                 group("&Item Availability by")
                 {
-                    Caption = '&Item Availability by';
+                    Caption = 'Item Availability by';
                     Image = ItemAvailability;
                     action("<Action5>")
                     {
@@ -458,7 +458,7 @@ page 50293 "Item List - Compta CDC"
                 }
                 action("Va&riants")
                 {
-                    Caption = 'Va&riants';
+                    Caption = 'Variants';
                     Image = ItemVariant;
                     RunObject = Page "Item Variants";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -497,7 +497,7 @@ page 50293 "Item List - Compta CDC"
                 }
                 action("Substituti&ons")
                 {
-                    Caption = 'Substituti&ons';
+                    Caption = 'Substitutions';
                     Image = ItemSubstitution;
                     RunObject = Page "Item Substitution Entry";
                     RunPageLink = Type = CONST(Item),
@@ -505,14 +505,14 @@ page 50293 "Item List - Compta CDC"
                 }
                 action("Cross Re&ferences")
                 {
-                    // Caption = 'Cross Re&ferences';
+                    // Caption = 'Cross References';
                     // Image = Change;
                     // RunObject = Page "Item Cross Reference Entries";
                     // RunPageLink = "Item No."=FIELD("No.");
                 }
                 action("E&xtended Texts")
                 {
-                    Caption = 'E&xtended Texts';
+                    Caption = 'Extended Texts';
                     Image = Text;
                     RunObject = Page "Extended Text List";
                     RunPageLink = "Table Name" = CONST(Item),
@@ -529,7 +529,7 @@ page 50293 "Item List - Compta CDC"
                 }
                 action("&Picture")
                 {
-                    Caption = '&Picture';
+                    Caption = 'Picture';
                     Image = Picture;
                     RunObject = Page "Item Picture";
                     RunPageLink = "No." = FIELD("No."),
@@ -582,7 +582,7 @@ page 50293 "Item List - Compta CDC"
                 }
                 group("Assemb&ly")
                 {
-                    Caption = 'Assemb&ly';
+                    Caption = 'Assembly';
                     Image = AssemblyBOM;
                     action("<Action32>")
                     {
@@ -603,7 +603,7 @@ page 50293 "Item List - Compta CDC"
                     action("Calc. Stan&dard Cost")
                     {
                         AccessByPermission = TableData "BOM Component" = R;
-                        Caption = 'Calc. Stan&dard Cost';
+                        Caption = 'Calc. Standard Cost';
                         Image = CalculateCost;
 
                         trigger OnAction()
@@ -651,7 +651,7 @@ page 50293 "Item List - Compta CDC"
                     action(Action24)
                     {
                         AccessByPermission = TableData "Production BOM Header" = R;
-                        Caption = 'Calc. Stan&dard Cost';
+                        Caption = 'Calc. Standard Cost';
                         Image = CalculateCost;
 
                         trigger OnAction()
@@ -667,13 +667,13 @@ page 50293 "Item List - Compta CDC"
                 Image = History;
                 group("E&ntries")
                 {
-                    Caption = 'E&ntries';
+                    Caption = 'Entries';
                     Image = Entries;
                     action("Ledger E&ntries")
                     {
-                        Caption = 'Ledger E&ntries';
+                        Caption = 'Ledger Entries';
                         Image = ItemLedger;
-                        Promoted = false;
+
                         //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                         //PromotedCategory = Process;
                         RunObject = Page "Item Ledger Entries";
@@ -683,7 +683,7 @@ page 50293 "Item List - Compta CDC"
                     }
                     action("&Reservation Entries")
                     {
-                        Caption = '&Reservation Entries';
+                        Caption = 'Reservation Entries';
                         Image = ReservationLedger;
                         RunObject = Page "Reservation Entries";
                         RunPageLink = "Reservation Status" = CONST(Reservation),
@@ -692,7 +692,7 @@ page 50293 "Item List - Compta CDC"
                     }
                     action("&Phys. Inventory Ledger Entries")
                     {
-                        Caption = '&Phys. Inventory Ledger Entries';
+                        Caption = 'Phys. Inventory Ledger Entries';
                         Image = PhysicalInventoryLedger;
                         RunObject = Page "Phys. Inventory Ledger Entries";
                         RunPageLink = "Item No." = FIELD("No.");
@@ -700,7 +700,7 @@ page 50293 "Item List - Compta CDC"
                     }
                     action("&Value Entries")
                     {
-                        Caption = '&Value Entries';
+                        Caption = 'Value Entries';
                         Image = ValueLedger;
                         RunObject = Page "Value Entries";
                         RunPageLink = "Item No." = FIELD("No.");
@@ -708,7 +708,7 @@ page 50293 "Item List - Compta CDC"
                     }
                     action("Item &Tracking Entries")
                     {
-                        Caption = 'Item &Tracking Entries';
+                        Caption = 'Item Tracking Entries';
                         Image = ItemTrackingLedger;
 
                         trigger OnAction()
@@ -720,7 +720,7 @@ page 50293 "Item List - Compta CDC"
                     }
                     action("&Warehouse Entries")
                     {
-                        Caption = '&Warehouse Entries';
+                        Caption = 'Warehouse Entries';
                         Image = BinLedger;
                         RunObject = Page "Warehouse Entries";
                         RunPageLink = "Item No." = FIELD("No.");
@@ -762,7 +762,7 @@ page 50293 "Item List - Compta CDC"
                     }
                     action("T&urnover")
                     {
-                        Caption = 'T&urnover';
+                        Caption = 'Turnover';
                         Image = Turnover;
                         RunObject = Page "Item Turnover";
                         RunPageLink = "No." = FIELD("No."),
@@ -775,7 +775,7 @@ page 50293 "Item List - Compta CDC"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Comment Sheet";
                     RunPageLink = "Table Name" = CONST(Item),
@@ -784,7 +784,7 @@ page 50293 "Item List - Compta CDC"
             }
             group("S&ales")
             {
-                Caption = 'S&ales';
+                Caption = 'Sales';
                 Image = Sales;
                 action(Prices)
                 {
@@ -813,7 +813,7 @@ page 50293 "Item List - Compta CDC"
                 }
                 action("Prepa&yment Percentages")
                 {
-                    Caption = 'Prepa&yment Percentages';
+                    Caption = 'Prepayment Percentages';
                     Image = PrepaymentPercentages;
                     RunObject = Page "Sales Prepayment Percentages";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -839,11 +839,11 @@ page 50293 "Item List - Compta CDC"
             }
             group("&Purchases")
             {
-                Caption = '&Purchases';
+                Caption = 'Purchases';
                 Image = Purchasing;
                 action("Ven&dors")
                 {
-                    Caption = 'Ven&dors';
+                    Caption = 'Vendors';
                     Image = Vendor;
                     RunObject = Page "Item Vendor Catalog";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -867,7 +867,7 @@ page 50293 "Item List - Compta CDC"
                 }
                 action(Action125)
                 {
-                    Caption = 'Prepa&yment Percentages';
+                    Caption = 'Prepayment Percentages';
                     Image = PrepaymentPercentages;
                     RunObject = Page "Purchase Prepmt. Percentages";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -892,7 +892,7 @@ page 50293 "Item List - Compta CDC"
                 }
                 action("Nonstoc&k Items")
                 {
-                    Caption = 'Nonstoc&k Items';
+                    Caption = 'Nonstock Items';
                     Image = NonStockItem;
                     RunObject = Page "Catalog Item List";
                 }
@@ -903,7 +903,7 @@ page 50293 "Item List - Compta CDC"
                 Image = Warehouse;
                 action("&Bin Contents")
                 {
-                    Caption = '&Bin Contents';
+                    Caption = 'Bin Contents';
                     Image = BinContent;
                     RunObject = Page "Item Bin Contents";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -911,7 +911,7 @@ page 50293 "Item List - Compta CDC"
                 }
                 action("Stockkeepin&g Units")
                 {
-                    Caption = 'Stockkeepin&g Units';
+                    Caption = 'Stockkeeping Units';
                     Image = SKU;
                     RunObject = Page "Stockkeeping Unit List";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -925,7 +925,7 @@ page 50293 "Item List - Compta CDC"
                 Visible = false;
                 action("Ser&vice Items")
                 {
-                    Caption = 'Ser&vice Items';
+                    Caption = 'Service Items';
                     Image = ServiceItem;
                     RunObject = Page "Service Items";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -959,11 +959,11 @@ page 50293 "Item List - Compta CDC"
                 Image = Resource;
                 group("R&esource")
                 {
-                    Caption = 'R&esource';
+                    Caption = 'Resource';
                     Image = Resource;
                     action("Resource &Skills")
                     {
-                        Caption = 'Resource &Skills';
+                        Caption = 'Resource Skills';
                         Image = ResourceSkills;
                         RunObject = Page "Resource Skills";
                         RunPageLink = Type = CONST(Item),
@@ -972,7 +972,7 @@ page 50293 "Item List - Compta CDC"
                     action("Skilled R&esources")
                     {
                         AccessByPermission = TableData "Service Header" = R;
-                        Caption = 'Skilled R&esources';
+                        Caption = 'Skilled Resources';
                         Image = ResourceSkills;
 
                         trigger OnAction()
@@ -995,7 +995,7 @@ page 50293 "Item List - Compta CDC"
                 Image = SendApprovalRequest;
                 action(SendApprovalRequest)
                 {
-                    Caption = 'Send A&pproval Request';
+                    Caption = 'Send Approval Request';
                     Enabled = NOT OpenApprovalEntriesExist;
                     Image = SendApprovalRequest;
 
@@ -1009,7 +1009,7 @@ page 50293 "Item List - Compta CDC"
                 }
                 action(CancelApprovalRequest)
                 {
-                    Caption = 'Cancel Approval Re&quest';
+                    Caption = 'Cancel Approval Request';
                     Enabled = OpenApprovalEntriesExist;
                     Image = Cancel;
 
@@ -1023,12 +1023,12 @@ page 50293 "Item List - Compta CDC"
             }
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action("&Create Stockkeeping Unit")
                 {
                     AccessByPermission = TableData "Stockkeeping Unit" = R;
-                    Caption = '&Create Stockkeeping Unit';
+                    Caption = 'Create Stockkeeping Unit';
                     Image = CreateSKU;
 
                     trigger OnAction()
@@ -1042,7 +1042,7 @@ page 50293 "Item List - Compta CDC"
                 action("C&alculate Counting Period")
                 {
                     AccessByPermission = TableData "Phys. Invt. Item Selection" = R;
-                    Caption = 'C&alculate Counting Period';
+                    Caption = 'Calculate Counting Period';
                     Image = CalculateCalendar;
 
                     trigger OnAction()
@@ -1069,7 +1069,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Sales Line Discounts';
                 Image = SalesLineDisc;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Sales Line Discounts";
@@ -1097,7 +1097,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Item Reclassification Journal';
                 Image = Journals;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Item Reclass. Journal";
@@ -1106,7 +1106,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Item Tracing';
                 Image = ItemTracing;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Item Tracing";
@@ -1115,7 +1115,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Adjust Item Cost/Price';
                 Image = AdjustItemCost;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Report "Adjust Item Costs/Prices";
@@ -1135,7 +1135,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Inventory - List';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Inventory - List";
@@ -1144,7 +1144,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Item Register - Quantity';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Item Register - Quantity";
@@ -1153,7 +1153,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Inventory - Transaction Detail';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Inventory - Transaction Detail";
@@ -1170,7 +1170,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Status';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report Status;
@@ -1179,7 +1179,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Inventory - Availability Plan';
                 Image = ItemAvailability;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Inventory - Availability Plan";
@@ -1188,7 +1188,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Inventory Order Details';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Inventory Order Details";
@@ -1197,7 +1197,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Inventory Purchase Orders';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Inventory Purchase Orders";
@@ -1214,7 +1214,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Inventory - Sales Statistics';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Inventory - Sales Statistics";
@@ -1231,7 +1231,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Inventory - Customer Sales';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Inventory - Customer Sales";
@@ -1240,7 +1240,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Inventory - Vendor Purchases';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Inventory - Vendor Purchases";
@@ -1281,7 +1281,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Item/Vendor Catalog';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Item/Vendor Catalog";
@@ -1290,7 +1290,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Inventory - Cost Variance';
                 Image = ItemCosts;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Inventory - Cost Variance";
@@ -1299,7 +1299,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Phys. Inventory List';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Phys. Inventory List";
@@ -1316,7 +1316,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Nonstock Item Sales';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Catalog Item Sales";
@@ -1325,7 +1325,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Item Substitutions';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Item Substitutions";
@@ -1334,7 +1334,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Invt. Valuation - Cost Spec.';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Invt. Valuation - Cost Spec.";
@@ -1343,7 +1343,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Inventory Valuation - WIP';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Inventory Valuation - WIP";
@@ -1352,7 +1352,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Item Register - Value';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Item Register - Value";
@@ -1361,7 +1361,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Item Charges - Specification';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Item Charges - Specification";
@@ -1370,7 +1370,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Item Age Composition - Qty.';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Item Age Composition - Qty.";
@@ -1379,7 +1379,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Item Age Composition - Value';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Item Age Composition - Value";
@@ -1388,7 +1388,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Item Expiration - Quantity';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Item Expiration - Quantity";
@@ -1397,7 +1397,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Cost Shares Breakdown';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Cost Shares Breakdown";
@@ -1406,7 +1406,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Detailed Calculation';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Detailed Calculation";
@@ -1415,7 +1415,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Rolled-up Cost Shares';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Rolled-up Cost Shares";
@@ -1424,7 +1424,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Single-Level Cost Shares';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Single-level Cost Shares";
@@ -1433,7 +1433,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Where-Used (Top Level)';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Where-Used (Top Level)";
@@ -1442,7 +1442,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Quantity Explosion of BOM';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Quantity Explosion of BOM";
@@ -1451,7 +1451,7 @@ page 50293 "Item List - Compta CDC"
             {
                 Caption = 'Compare List';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Compare List";

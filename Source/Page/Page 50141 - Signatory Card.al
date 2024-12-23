@@ -89,7 +89,7 @@ page 50141 "Signatory Card"
             }
             action("Co&mments")
             {
-                Caption = 'Co&mments';
+                Caption = 'Comments';
                 Image = ViewComments;
                 RunObject = Page "Rlshp. Mgt. Comment Sheet";
                 RunPageLink = "Table Name" = CONST(Contact),

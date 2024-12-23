@@ -45,7 +45,7 @@ pageextension 50009 pageextension70000076 extends "Item Journal"
                 Caption = '&Print BE';
                 Ellipsis = true;
                 Image = Print;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
 
@@ -72,7 +72,7 @@ pageextension 50009 pageextension70000076 extends "Item Journal"
                 Caption = '&Print BL';
                 Ellipsis = true;
                 Image = Print;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
 

@@ -231,7 +231,7 @@ page 50069 "Transfer Order Archive"
         {
             group("O&rder")
             {
-                Caption = 'O&rder';
+                Caption = 'Order';
                 Image = "Order";
                 action(Statistics)
                 {
@@ -245,7 +245,7 @@ page 50069 "Transfer Order Archive"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Inventory Comment Sheet";
                     RunPageLink = "Document Type" = CONST("Transfer Order"),
@@ -271,14 +271,14 @@ page 50069 "Transfer Order Archive"
                 Image = Documents;
                 action("S&hipments")
                 {
-                    Caption = 'S&hipments';
+                    Caption = 'Shipments';
                     Image = Shipment;
                     RunObject = Page "Posted Transfer Shipments";
                     RunPageLink = "Transfer Order No." = FIELD("No.");
                 }
                 action("Re&ceipts")
                 {
-                    Caption = 'Re&ceipts';
+                    Caption = 'Receipts';
                     Image = PostedReceipts;
                     RunObject = Page "Posted Transfer Receipts";
                     RunPageLink = "Transfer Order No." = FIELD("No.");

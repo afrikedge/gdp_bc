@@ -10,20 +10,20 @@ page 50225 "Accounting Manager GDP-R-TRESO"
             group(Control1900724808)
             {
                 ShowCaption = false;
-                part(Control1902304208;"Account Manager Activities")
+                part(Control1902304208; "Account Manager Activities")
                 {
                 }
-                part(Control1907692008;"My Customers")
+                part(Control1907692008; "My Customers")
                 {
                 }
             }
             group(Control1900724708)
             {
                 ShowCaption = false;
-                part(Control1902476008;"My Vendors")
+                part(Control1902476008; "My Vendors")
                 {
                 }
-                systempart(Control1901377608;MyNotes)
+                systempart(Control1901377608; MyNotes)
                 {
                 }
             }
@@ -72,19 +72,19 @@ page 50225 "Accounting Manager GDP-R-TRESO"
             }
             action("Aged Accounts &Receivable")
             {
-                Caption = 'Aged Accounts &Receivable';
+                Caption = 'Aged Accounts Receivable';
                 Image = "Report";
                 RunObject = Report "Aged Accounts Receivable";
             }
             action("Aged Accounts Pa&yable")
             {
-                Caption = 'Aged Accounts Pa&yable';
+                Caption = 'Aged Accounts Payable';
                 Image = "Report";
                 RunObject = Report "Aged Accounts Payable";
             }
             action("Reconcile Cus&t. and Vend. Accs")
             {
-                Caption = 'Reconcile Cus&t. and Vend. Accs';
+                Caption = 'Reconcile Cust. and Vend. Accs';
                 Image = "Report";
                 RunObject = Report "Reconcile Cust. and Vend. Accs";
             }
@@ -171,25 +171,25 @@ page 50225 "Accounting Manager GDP-R-TRESO"
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                RunPageView = WHERE(Status = CONST(AttenteValResp1));
             }
             action(Action100000008)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                RunPageView = WHERE(Status = CONST(AttenteValResp2));
             }
             action(Action100000007)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                RunPageView = WHERE(Status = CONST(AttenteValResp3));
             }
             action(Action100000006)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Litigieuse));
+                RunPageView = WHERE(Status = CONST(Litigieuse));
             }
         }
         area(sections)
@@ -208,8 +208,8 @@ page 50225 "Accounting Manager GDP-R-TRESO"
                     Caption = 'Payment Journals';
                     Image = Journals;
                     RunObject = Page "General Journal Batches TRESO";
-                    RunPageView = WHERE("Template Type"=CONST(Payments),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST(Payments),
+                                        Recurring = CONST(false));
                 }
                 action("Payment Slips")
                 {
@@ -240,37 +240,37 @@ page 50225 "Accounting Manager GDP-R-TRESO"
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Validation";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp1));
                 }
                 action(Action100000002)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Validation";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp2));
                 }
                 action(Action100000001)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Validation";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp3));
                 }
                 action(Action100000000)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Validation";
-                    RunPageView = WHERE(Status=CONST(Litigieuse));
+                    RunPageView = WHERE(Status = CONST(Litigieuse));
                 }
                 action(Action100000012)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Validation";
-                    RunPageView = WHERE(Status=CONST(AttentePaiement));
+                    RunPageView = WHERE(Status = CONST(AttentePaiement));
                 }
                 action(Action100000011)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Validation";
-                    RunPageView = WHERE(Status=CONST(Payee));
+                    RunPageView = WHERE(Status = CONST(Payee));
                 }
             }
             group("Posted Documents")
@@ -337,7 +337,7 @@ page 50225 "Accounting Manager GDP-R-TRESO"
             }
             action("Bank Account R&econciliation")
             {
-                Caption = 'Bank Account R&econciliation';
+                Caption = 'Bank Account Reconciliation';
                 Image = BankAccountRec;
                 RunObject = Page "Bank Acc. Reconciliation";
             }
@@ -348,7 +348,7 @@ page 50225 "Accounting Manager GDP-R-TRESO"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

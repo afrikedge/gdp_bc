@@ -10,17 +10,17 @@ page 50223 "Purchasing Agent GDP-DFI"
             group(Control1900724808)
             {
                 ShowCaption = false;
-                part(Control1902476008;"My Vendors")
+                part(Control1902476008; "My Vendors")
                 {
                 }
             }
             group(Control1900724708)
             {
                 ShowCaption = false;
-                part(Control1905989608;"My Items")
+                part(Control1905989608; "My Items")
                 {
                 }
-                systempart(Control43;MyNotes)
+                systempart(Control43; MyNotes)
                 {
                 }
             }
@@ -33,13 +33,13 @@ page 50223 "Purchasing Agent GDP-DFI"
         {
             action("Vendor - T&op 10 List")
             {
-                Caption = 'Vendor - T&op 10 List';
+                Caption = 'Vendor - Top 10 List';
                 Image = "Report";
                 RunObject = Report "Vendor - Top 10 List";
             }
             action("Vendor/&Item Purchases")
             {
-                Caption = 'Vendor/&Item Purchases';
+                Caption = 'Vendor/Item Purchases';
                 Image = "Report";
                 RunObject = Report "Vendor/Item Purchases";
             }
@@ -48,19 +48,19 @@ page 50223 "Purchasing Agent GDP-DFI"
             }
             action("Inventory - &Availability Plan")
             {
-                Caption = 'Inventory - &Availability Plan';
+                Caption = 'Inventory - Availability Plan';
                 Image = ItemAvailability;
                 RunObject = Report "Inventory - Availability Plan";
             }
             action("Inventory &Purchase Orders")
             {
-                Caption = 'Inventory &Purchase Orders';
+                Caption = 'Inventory Purchase Orders';
                 Image = "Report";
                 RunObject = Report "Inventory Purchase Orders";
             }
             action("Inventory - &Vendor Purchases")
             {
-                Caption = 'Inventory - &Vendor Purchases';
+                Caption = 'Inventory - Vendor Purchases';
                 Image = "Report";
                 RunObject = Report "Inventory - Vendor Purchases";
             }
@@ -93,37 +93,37 @@ page 50223 "Purchasing Agent GDP-DFI"
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                RunPageView = WHERE(Status = CONST(AttenteValResp1));
             }
             action(Action100000003)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                RunPageView = WHERE(Status = CONST(AttenteValResp2));
             }
             action(Action100000002)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                RunPageView = WHERE(Status = CONST(AttenteValResp3));
             }
             action(Action100000001)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Litigieuse));
+                RunPageView = WHERE(Status = CONST(Litigieuse));
             }
             action(Action100000007)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttentePaiement));
+                RunPageView = WHERE(Status = CONST(AttentePaiement));
             }
             action(Action100000006)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Payee));
+                RunPageView = WHERE(Status = CONST(Payee));
             }
         }
         area(sections)
@@ -158,14 +158,14 @@ page 50223 "Purchasing Agent GDP-DFI"
                     Caption = 'Items';
                     Image = Item;
                     RunObject = Page "Item List";
-                    RunPageView = WHERE(Type=CONST(Inventory));
+                    RunPageView = WHERE(Type = CONST(Inventory));
                 }
                 action(Action1000000008)
                 {
                     Caption = 'Items';
                     Image = Item;
                     RunObject = Page "Item List";
-                    RunPageView = WHERE(Type=CONST(Service));
+                    RunPageView = WHERE(Type = CONST(Service));
                 }
                 action("<Page Customer Price Groups>")
                 {
@@ -210,7 +210,7 @@ page 50223 "Purchasing Agent GDP-DFI"
             }
             group("Analytique & Budget")
             {
-                Caption = 'Analytique & Budget';
+                Caption = 'Analytique and Budget';
                 action("<Page Dimensions>")
                 {
                     Caption = 'Axes analytiques';
@@ -332,18 +332,10 @@ page 50223 "Purchasing Agent GDP-DFI"
                     Caption = 'Posted Return Shipments';
                     RunObject = Page "Posted Return Shipments";
                 }
-                separator("Archives JIRAMA")
-                {
-                    Caption = 'Archives JIRAMA';
-                }
                 action("<Page Posted JIRAMA Forecast List>")
                 {
                     Caption = 'Prévisions de vente JIRAMA validées';
                     RunObject = Page "Posted JIRAMA Forecast List";
-                }
-                separator("Archives Cartes")
-                {
-                    Caption = 'Archives Cartes';
                 }
                 action("<Page Posted Moneytech Import List>")
                 {

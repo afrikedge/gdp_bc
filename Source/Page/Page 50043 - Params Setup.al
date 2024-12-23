@@ -610,57 +610,57 @@ page 50043 "Params Setup"
             action(ImportStock)
             {
                 Image = Import;
-                Promoted = false;
+
                 RunObject = XMLport "Import Inventaire Stock";
             }
             action(ImportRoles)
             {
                 Image = Import;
-                Promoted = false;
+
                 RunObject = XMLport "Import Permission Set";
             }
             action(ImportTransactions)
             {
                 Image = Import;
-                Promoted = false;
+
                 RunObject = XMLport "Operations CG import2";
             }
             action(ImportTransactionsClient)
             {
                 Image = Import;
-                Promoted = false;
+
                 RunObject = XMLport "Operations CG import Client";
             }
             action(ImportTransactionsFournisseurs)
             {
                 Image = Import;
-                Promoted = false;
+
                 RunObject = XMLport "Operations CG import Fsseur";
             }
             action(ImportTransactionsBanque)
             {
                 Image = Import;
-                Promoted = false;
+
                 RunObject = XMLport "Operations CG Banque";
             }
             action(ImportTransactionsBanqueCorr)
             {
                 Caption = 'Corrections Trans banque';
                 Image = Import;
-                Promoted = false;
+
                 RunObject = XMLport "Operations CG Banque";
                 Visible = false;
             }
             action(ImportRoles2)
             {
                 Image = Import;
-                Promoted = false;
+
                 RunObject = XMLport importRoles;
             }
             // action(UpdateCargoEntries)
             // {
             //     Image = Import;
-            //     Promoted = false;
+            //     
             //     RunObject = Report "Update Cargo Entries1";
             //     Visible = false;
             // }

@@ -85,7 +85,7 @@ page 50315 "General Jrnl Batches TRESO VIR"
             }
             group("P&osting")
             {
-                Caption = 'P&osting';
+                Caption = 'Posting';
                 Image = Post;
                 action(Reconcile)
                 {
@@ -114,7 +114,7 @@ page 50315 "General Jrnl Batches TRESO VIR"
                 }
                 action("P&ost")
                 {
-                    Caption = 'P&ost';
+                    Caption = 'Post';
                     Image = PostOrder;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -124,7 +124,7 @@ page 50315 "General Jrnl Batches TRESO VIR"
                 }
                 action("Post and &Print")
                 {
-                    Caption = 'Post and &Print';
+                    Caption = 'Post and Print';
                     Image = PostPrint;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -186,7 +186,7 @@ page 50315 "General Jrnl Batches TRESO VIR"
             {
                 Caption = 'Trial Balance by Period';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Trial Balance by Period";

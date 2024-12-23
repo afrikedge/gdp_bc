@@ -154,11 +154,11 @@ page 50364 "Currencies Treso"
         {
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action("Change Payment &Tolerance")
                 {
-                    Caption = 'Change Payment &Tolerance';
+                    Caption = 'Change Payment Tolerance';
                     Image = ChangePaymentTolerance;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -223,7 +223,7 @@ page 50364 "Currencies Treso"
             {
                 Caption = 'Foreign Currency Balance';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Foreign Currency Balance";
