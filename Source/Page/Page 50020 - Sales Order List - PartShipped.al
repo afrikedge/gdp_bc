@@ -203,7 +203,7 @@ page 50020 "Sales Order List - PartShipped"
         {
             group("O&rder")
             {
-                Caption = 'O&rder';
+                Caption = 'Order';
                 Image = "Order";
                 action(Dimensions)
                 {
@@ -232,7 +232,7 @@ page 50020 "Sales Order List - PartShipped"
                 }
                 action("A&pprovals")
                 {
-                    Caption = 'A&pprovals';
+                    Caption = 'Approvals';
                     Image = Approvals;
 
                     trigger OnAction()
@@ -245,7 +245,7 @@ page 50020 "Sales Order List - PartShipped"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Sales Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
@@ -257,9 +257,9 @@ page 50020 "Sales Order List - PartShipped"
             {
                 Caption = 'Documents';
                 Image = Documents;
-                action("S&hipments")
+                action("Shipments")
                 {
-                    Caption = 'S&hipments';
+                    Caption = 'Shipments';
                     Image = Shipment;
                     RunObject = Page "Posted Sales Shipments";
                     RunPageLink = "Order No." = FIELD("No.");
@@ -273,17 +273,17 @@ page 50020 "Sales Order List - PartShipped"
                     RunPageLink = "Order No." = FIELD("No.");
                     RunPageView = SORTING("Order No.");
                 }
-                action("Prepa&yment Invoices")
+                action("Prepayment Invoices")
                 {
-                    Caption = 'Prepa&yment Invoices';
+                    Caption = 'Prepayment Invoices';
                     Image = PrepaymentInvoice;
                     RunObject = Page "Posted Sales Invoices";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
                     RunPageView = SORTING("Prepayment Order No.");
                 }
-                action("Prepayment Credi&t Memos")
+                action("Prepayment Credit Memos")
                 {
-                    Caption = 'Prepayment Credi&t Memos';
+                    Caption = 'Prepayment Credit Memos';
                     Image = PrepaymentCreditMemo;
                     RunObject = Page "Posted Sales Credit Memos";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
@@ -343,7 +343,7 @@ page 50020 "Sales Order List - PartShipped"
                 Image = ReleaseDoc;
                 action(Release)
                 {
-                    Caption = 'Re&lease';
+                    Caption = 'Release';
                     Image = ReleaseDoc;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -358,7 +358,7 @@ page 50020 "Sales Order List - PartShipped"
                 }
                 action(Reopen)
                 {
-                    Caption = 'Re&open';
+                    Caption = 'Reopen';
                     Image = ReOpen;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -387,11 +387,11 @@ page 50020 "Sales Order List - PartShipped"
             }
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action("Pla&nning")
                 {
-                    Caption = 'Pla&nning';
+                    Caption = 'Planning';
                     Image = Planning;
 
                     trigger OnAction()
@@ -405,7 +405,7 @@ page 50020 "Sales Order List - PartShipped"
                 action("Order &Promising")
                 {
                     AccessByPermission = TableData "Order Promising Line" = R;
-                    Caption = 'Order &Promising';
+                    Caption = 'Order Promising';
                     Image = OrderPromising;
 
                     trigger OnAction()
@@ -438,7 +438,7 @@ page 50020 "Sales Order List - PartShipped"
                 Caption = 'Request Approval';
                 action(SendApprovalRequest)
                 {
-                    Caption = 'Send A&pproval Request';
+                    Caption = 'Send Approval Request';
                     Enabled = NOT OpenApprovalEntriesExist;
                     Image = SendApprovalRequest;
 
@@ -454,7 +454,7 @@ page 50020 "Sales Order List - PartShipped"
                 }
                 action(CancelApprovalRequest)
                 {
-                    Caption = 'Cancel Approval Re&quest';
+                    Caption = 'Cancel Approval Request';
                     Enabled = OpenApprovalEntriesExist;
                     Image = Cancel;
 
@@ -473,7 +473,7 @@ page 50020 "Sales Order List - PartShipped"
                 action("Create Inventor&y Put-away/Pick")
                 {
                     AccessByPermission = TableData "Posted Invt. Pick Header" = R;
-                    Caption = 'Create Inventor&y Put-away/Pick';
+                    Caption = 'Create Inventory Put-away/Pick';
                     Ellipsis = true;
                     Image = CreatePutawayPick;
 
@@ -488,7 +488,7 @@ page 50020 "Sales Order List - PartShipped"
                 action("Create &Whse. Shipment")
                 {
                     AccessByPermission = TableData "Warehouse Shipment Header" = R;
-                    Caption = 'Create &Whse. Shipment';
+                    Caption = 'Create Whse. Shipment';
                     Image = NewShipment;
 
                     trigger OnAction()
@@ -504,11 +504,11 @@ page 50020 "Sales Order List - PartShipped"
             }
             group("P&osting")
             {
-                Caption = 'P&osting';
+                Caption = 'Posting';
                 Image = Post;
                 action(Post)
                 {
-                    Caption = 'P&ost';
+                    Caption = 'Post';
                     Ellipsis = true;
                     Image = PostOrder;
                     Promoted = true;
@@ -523,7 +523,7 @@ page 50020 "Sales Order List - PartShipped"
                 }
                 action("Post and &Print")
                 {
-                    Caption = 'Post and &Print';
+                    Caption = 'Post and Print';
                     Ellipsis = true;
                     Image = PostPrint;
                     Promoted = true;
@@ -562,7 +562,7 @@ page 50020 "Sales Order List - PartShipped"
                 }
                 action("Post &Batch")
                 {
-                    Caption = 'Post &Batch';
+                    Caption = 'Post Batch';
                     Ellipsis = true;
                     Image = PostBatch;
                     Promoted = true;
@@ -599,7 +599,7 @@ page 50020 "Sales Order List - PartShipped"
             }
             group("&Print")
             {
-                Caption = '&Print';
+                Caption = 'Print';
                 Image = Print;
                 action("Work Order")
                 {
@@ -625,7 +625,7 @@ page 50020 "Sales Order List - PartShipped"
             }
             group("&Order Confirmation")
             {
-                Caption = '&Order Confirmation';
+                Caption = 'Order Confirmation';
                 Image = Email;
                 action("Email Confirmation")
                 {

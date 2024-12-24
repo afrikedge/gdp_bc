@@ -37,31 +37,31 @@ page 50222 "Acc. Receivables GDP-RKC"
         {
             action("C&ustomer - List")
             {
-                Caption = 'C&ustomer - List';
+                Caption = 'Customer - List';
                 Image = "Report";
                 RunObject = Report "Customer - List";
             }
             action("Customer - &Balance to Date")
             {
-                Caption = 'Customer - &Balance to Date';
+                Caption = 'Customer - Balance to Date';
                 Image = "Report";
                 RunObject = Report "Customer - Balance to Date";
             }
             action("Aged &Accounts Receivable")
             {
-                Caption = 'Aged &Accounts Receivable';
+                Caption = 'Aged Accounts Receivable';
                 Image = "Report";
                 RunObject = Report "Aged Accounts Receivable";
             }
             action("Customer - &Summary Aging Simp.")
             {
-                Caption = 'Customer - &Summary Aging Simp.';
+                Caption = 'Customer - Summary Aging Simp.';
                 Image = "Report";
                 RunObject = Report "Customer - Summary Aging Simp.";
             }
             action("Customer Trial Balan&ce")
             {
-                Caption = 'Customer Trial Balan&ce';
+                Caption = 'Customer Trial Balance';
                 RunObject = Report "Customer - Trial Balance";
             }
             action("Customer Detail Trial Balance")
@@ -72,7 +72,7 @@ page 50222 "Acc. Receivables GDP-RKC"
             }
             action("Cus&tomer/Item Sales")
             {
-                Caption = 'Cus&tomer/Item Sales';
+                Caption = 'Customer/Item Sales';
                 Image = "Report";
                 RunObject = Report "Customer/Item Sales";
             }
@@ -163,10 +163,6 @@ page 50222 "Acc. Receivables GDP-RKC"
             {
                 Caption = 'Posted Documents';
                 Image = FiledPosted;
-                separator("Documents validés")
-                {
-                    Caption = 'Documents validés';
-                }
                 action("Issued Reminder List")
                 {
                     Caption = 'Issued Reminder List';
@@ -184,7 +180,7 @@ page 50222 "Acc. Receivables GDP-RKC"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

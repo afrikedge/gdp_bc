@@ -314,7 +314,7 @@ page 50031 "Sales Order - Draft"
         {
             group("O&rder")
             {
-                Caption = 'O&rder';
+                Caption = 'Order';
                 Image = "Order";
                 action(Statistics)
                 {
@@ -353,7 +353,7 @@ page 50031 "Sales Order - Draft"
                 }
                 action("A&pprovals")
                 {
-                    Caption = 'A&pprovals';
+                    Caption = 'Approvals';
                     Image = Approvals;
 
                     trigger OnAction()
@@ -366,7 +366,7 @@ page 50031 "Sales Order - Draft"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Sales Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
@@ -393,7 +393,7 @@ page 50031 "Sales Order - Draft"
                 Image = ReleaseDoc;
                 action(Release)
                 {
-                    Caption = 'Re&lease';
+                    Caption = 'Release';
                     Image = ReleaseDoc;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -419,7 +419,7 @@ page 50031 "Sales Order - Draft"
                 }
                 action("Re&open")
                 {
-                    Caption = 'Re&open';
+                    Caption = 'Reopen';
                     Image = ReOpen;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -434,7 +434,7 @@ page 50031 "Sales Order - Draft"
             }
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action(CopyDocument)
                 {
@@ -480,11 +480,11 @@ page 50031 "Sales Order - Draft"
             }
             group("P&osting")
             {
-                Caption = 'P&osting';
+                Caption = 'Posting';
                 Image = Post;
                 action(Post3)
                 {
-                    Caption = 'P&ost';
+                    Caption = 'Post';
                     Ellipsis = true;
                     Image = PostOrder;
                     Promoted = true;
@@ -500,7 +500,7 @@ page 50031 "Sales Order - Draft"
                 }
                 action("Post and &Print")
                 {
-                    Caption = 'Post and &Print';
+                    Caption = 'Post and Print';
                     Ellipsis = true;
                     Image = PostPrint;
                     Promoted = true;
@@ -541,7 +541,7 @@ page 50031 "Sales Order - Draft"
                 }
                 action("Post &Batch")
                 {
-                    Caption = 'Post &Batch';
+                    Caption = 'Post Batch';
                     Ellipsis = true;
                     Image = PostBatch;
                     Visible = false;
@@ -566,7 +566,7 @@ page 50031 "Sales Order - Draft"
             }
             group("&Order Confirmation")
             {
-                Caption = '&Order Confirmation';
+                Caption = 'Order Confirmation';
                 Image = Email;
                 action("Email Confirmation")
                 {

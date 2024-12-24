@@ -10,20 +10,20 @@ page 50290 "Admin Info RC GDP-ADM-INFO"
             group(Control1900724808)
             {
                 ShowCaption = false;
-                part(Control1907662708;"Purchase Agent Activities")
+                part(Control1907662708; "Purchase Agent Activities")
                 {
                 }
-                part(Control1902476008;"My Vendors")
+                part(Control1902476008; "My Vendors")
                 {
                 }
             }
             group(Control1900724708)
             {
                 ShowCaption = false;
-                part(Control1905989608;"My Items")
+                part(Control1905989608; "My Items")
                 {
                 }
-                systempart(Control43;MyNotes)
+                systempart(Control43; MyNotes)
                 {
                 }
             }
@@ -36,13 +36,13 @@ page 50290 "Admin Info RC GDP-ADM-INFO"
         {
             action("Vendor - T&op 10 List")
             {
-                Caption = 'Vendor - T&op 10 List';
+                Caption = 'Vendor - Top 10 List';
                 Image = "Report";
                 RunObject = Report "Vendor - Top 10 List";
             }
             action("Vendor/&Item Purchases")
             {
-                Caption = 'Vendor/&Item Purchases';
+                Caption = 'Vendor/Item Purchases';
                 Image = "Report";
                 RunObject = Report "Vendor/Item Purchases";
             }
@@ -76,14 +76,14 @@ page 50290 "Admin Info RC GDP-ADM-INFO"
                 Caption = 'Items';
                 Image = Item;
                 RunObject = Page "Item List";
-                RunPageView = WHERE(Type=CONST(Inventory));
+                RunPageView = WHERE(Type = CONST(Inventory));
             }
             action(Action1000000007)
             {
                 Caption = 'Items';
                 Image = Item;
                 RunObject = Page "Item List";
-                RunPageView = WHERE(Type=CONST(Service));
+                RunPageView = WHERE(Type = CONST(Service));
             }
             action("<Page Customer Price Groups>")
             {
@@ -149,32 +149,32 @@ page 50290 "Admin Info RC GDP-ADM-INFO"
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                RunPageView = WHERE(Status = CONST(AttenteValResp1));
             }
             action(Action100000009)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                RunPageView = WHERE(Status = CONST(AttenteValResp2));
             }
             action(Action100000006)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                RunPageView = WHERE(Status = CONST(AttenteValResp3));
             }
             action(Action100000007)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Litigieuse));
+                RunPageView = WHERE(Status = CONST(Litigieuse));
             }
         }
         area(sections)
         {
             group("Analytique & Budget")
             {
-                Caption = 'Analytique & Budget';
+                Caption = 'Analytique and Budget';
                 action("<Page Dimensions>")
                 {
                     Caption = 'Axes analytiques';
@@ -296,18 +296,10 @@ page 50290 "Admin Info RC GDP-ADM-INFO"
                     Caption = 'Posted Return Shipments';
                     RunObject = Page "Posted Return Shipments";
                 }
-                separator("Archives JIRAMA")
-                {
-                    Caption = 'Archives JIRAMA';
-                }
                 action("<Page Posted JIRAMA Forecast List>")
                 {
                     Caption = 'Prévisions de vente JIRAMA validées';
                     RunObject = Page "Posted JIRAMA Forecast List";
-                }
-                separator("Archives Cartes")
-                {
-                    Caption = 'Archives Cartes';
                 }
                 action("<Page Posted Moneytech Import List>")
                 {
@@ -456,7 +448,7 @@ page 50290 "Admin Info RC GDP-ADM-INFO"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

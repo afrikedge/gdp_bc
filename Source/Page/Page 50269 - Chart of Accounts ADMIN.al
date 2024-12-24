@@ -147,13 +147,13 @@ page 50269 "Chart of Accounts ADMIN"
         {
             group("A&ccount")
             {
-                Caption = 'A&ccount';
+                Caption = 'Account';
                 Image = ChartOfAccounts;
                 action("Ledger E&ntries")
                 {
-                    Caption = 'Ledger E&ntries';
+                    Caption = 'Ledger Entries';
                     Image = GLRegisters;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Page "General Ledger Entries";
@@ -163,7 +163,7 @@ page 50269 "Chart of Accounts ADMIN"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Comment Sheet";
                     RunPageLink = "Table Name" = CONST("G/L Account"),
@@ -203,7 +203,7 @@ page 50269 "Chart of Accounts ADMIN"
                 }
                 action("E&xtended Texts")
                 {
-                    Caption = 'E&xtended Texts';
+                    Caption = 'Extended Texts';
                     Image = Text;
                     RunObject = Page "Extended Text List";
                     RunPageLink = "Table Name" = CONST("G/L Account"),
@@ -311,7 +311,7 @@ page 50269 "Chart of Accounts ADMIN"
                 }
                 action("Chart of Accounts &Overview")
                 {
-                    Caption = 'Chart of Accounts &Overview';
+                    Caption = 'Chart of Accounts Overview';
                     Image = Accounts;
                     RunObject = Page "Chart of Accounts Overview";
                 }
@@ -329,7 +329,7 @@ page 50269 "Chart of Accounts ADMIN"
         {
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action(IndentChartOfAccounts)
                 {
@@ -409,7 +409,7 @@ page 50269 "Chart of Accounts ADMIN"
             {
                 Caption = 'Trial Balance by Period';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Trial Balance by Period";

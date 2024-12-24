@@ -10,17 +10,17 @@ page 50227 "Prestataire GDP-RMAG"
             group(Control1900724808)
             {
                 ShowCaption = false;
-                part(Control1000000000;"Whse Ship & Receive Activities")
+                part(Control1000000000; "Whse Ship & Receive Activities")
                 {
                 }
-                part(Control1902476008;"My Vendors")
+                part(Control1902476008; "My Vendors")
                 {
                 }
             }
             group(Control1900724708)
             {
                 ShowCaption = false;
-                systempart(Control1000000001;MyNotes)
+                systempart(Control1000000001; MyNotes)
                 {
                 }
             }
@@ -33,13 +33,13 @@ page 50227 "Prestataire GDP-RMAG"
         {
             action("Vendor - T&op 10 List")
             {
-                Caption = 'Vendor - T&op 10 List';
+                Caption = 'Vendor - Top 10 List';
                 Image = "Report";
                 RunObject = Report "Vendor - Top 10 List";
             }
             action("Vendor/&Item Purchases")
             {
-                Caption = 'Vendor/&Item Purchases';
+                Caption = 'Vendor/Item Purchases';
                 Image = "Report";
                 RunObject = Report "Vendor/Item Purchases";
             }
@@ -51,8 +51,8 @@ page 50227 "Prestataire GDP-RMAG"
                 Caption = 'Items';
                 Image = Item;
                 RunObject = Page "Item List";
-                RunPageView = WHERE(Type=CONST(Inventory),
-                                    "Item Category Code"=CONST('LUB'));
+                RunPageView = WHERE(Type = CONST(Inventory),
+                                    "Item Category Code" = CONST('LUB'));
             }
             action("Validation Factures fournisseur")
             {
@@ -63,37 +63,37 @@ page 50227 "Prestataire GDP-RMAG"
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                RunPageView = WHERE(Status = CONST(AttenteValResp1));
             }
             action(Action100000009)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                RunPageView = WHERE(Status = CONST(AttenteValResp2));
             }
             action(Action100000006)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                RunPageView = WHERE(Status = CONST(AttenteValResp3));
             }
             action(Action100000007)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Litigieuse));
+                RunPageView = WHERE(Status = CONST(Litigieuse));
             }
             action(Action100000001)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttentePaiement));
+                RunPageView = WHERE(Status = CONST(AttentePaiement));
             }
             action(Action100000000)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Payee));
+                RunPageView = WHERE(Status = CONST(Payee));
             }
         }
         area(sections)
@@ -141,7 +141,7 @@ page 50227 "Prestataire GDP-RMAG"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

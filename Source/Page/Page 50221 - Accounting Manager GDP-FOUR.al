@@ -10,20 +10,20 @@ page 50221 "Accounting Manager GDP-FOUR"
             group(Control1900724808)
             {
                 ShowCaption = false;
-                part(Control1902304208;"Account Manager Activities")
+                part(Control1902304208; "Account Manager Activities")
                 {
                 }
-                part(Control1907692008;"My Customers")
+                part(Control1907692008; "My Customers")
                 {
                 }
             }
             group(Control1900724708)
             {
                 ShowCaption = false;
-                part(Control1902476008;"My Vendors")
+                part(Control1902476008; "My Vendors")
                 {
                 }
-                systempart(Control1901377608;MyNotes)
+                systempart(Control1901377608; MyNotes)
                 {
                 }
             }
@@ -78,37 +78,37 @@ page 50221 "Accounting Manager GDP-FOUR"
             }
             action("Bu&dget")
             {
-                Caption = 'Bu&dget';
+                Caption = 'Budget';
                 Image = "Report";
                 RunObject = Report Budget;
             }
             action("Trial Bala&nce/Budget")
             {
-                Caption = 'Trial Bala&nce/Budget';
+                Caption = 'Trial Balance/Budget';
                 Image = "Report";
                 RunObject = Report "Trial Balance/Budget";
             }
             action("Trial Balance by &Period")
             {
-                Caption = 'Trial Balance by &Period';
+                Caption = 'Trial Balance by Period';
                 Image = "Report";
                 RunObject = Report "Trial Balance by Period";
             }
             action("&Fiscal Year Balance")
             {
-                Caption = '&Fiscal Year Balance';
+                Caption = 'Fiscal Year Balance';
                 Image = "Report";
                 RunObject = Report "Fiscal Year Balance";
             }
             action("Balance Comp. - Prev. Y&ear")
             {
-                Caption = 'Balance Comp. - Prev. Y&ear';
+                Caption = 'Balance Comp. - Prev. Year';
                 Image = "Report";
                 RunObject = Report "Balance Comp. - Prev. Year";
             }
             action("&Closing Trial Balance")
             {
-                Caption = '&Closing Trial Balance';
+                Caption = 'Closing Trial Balance';
                 Image = "Report";
                 RunObject = Report "Closing Trial Balance";
             }
@@ -117,7 +117,7 @@ page 50221 "Accounting Manager GDP-FOUR"
             }
             action("Aged Accounts Pa&yable")
             {
-                Caption = 'Aged Accounts Pa&yable';
+                Caption = 'Aged Accounts Payable';
                 Image = "Report";
                 RunObject = Report "Aged Accounts Payable";
             }
@@ -169,7 +169,7 @@ page 50221 "Accounting Manager GDP-FOUR"
                 Caption = 'Balance';
                 Image = Balance;
                 RunObject = Page "Vendor List";
-                RunPageView = WHERE("Balance (LCY)"=FILTER(<>0));
+                RunPageView = WHERE("Balance (LCY)" = FILTER(<> 0));
             }
             action("VAT Statements")
             {
@@ -187,14 +187,14 @@ page 50221 "Accounting Manager GDP-FOUR"
                 Caption = 'Items';
                 Image = Item;
                 RunObject = Page "Item List";
-                RunPageView = WHERE(Type=CONST(Inventory));
+                RunPageView = WHERE(Type = CONST(Inventory));
             }
             action(Action1000000000)
             {
                 Caption = 'Items';
                 Image = Item;
                 RunObject = Page "Item List";
-                RunPageView = WHERE(Type=CONST(Service));
+                RunPageView = WHERE(Type = CONST(Service));
             }
         }
         area(sections)
@@ -232,32 +232,32 @@ page 50221 "Accounting Manager GDP-FOUR"
                 {
                     Caption = 'Purchase Journals';
                     RunObject = Page "General Journal Batches";
-                    RunPageView = WHERE("Template Type"=CONST(Purchases),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST(Purchases),
+                                        Recurring = CONST(false));
                 }
                 action("Payment Journals")
                 {
                     Caption = 'Payment Journals';
                     Image = Journals;
                     RunObject = Page "General Journal Batches";
-                    RunPageView = WHERE("Template Type"=CONST(Payments),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST(Payments),
+                                        Recurring = CONST(false));
                 }
                 action("General Journals")
                 {
                     Caption = 'General Journals';
                     Image = Journal;
                     RunObject = Page "General Journal Batches";
-                    RunPageView = WHERE("Template Type"=CONST(General),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST(General),
+                                        Recurring = CONST(false));
                 }
                 action(Action1000000001)
                 {
                     Caption = 'General Journals';
                     Image = Journal;
                     RunObject = Page "General Journal Batches";
-                    RunPageView = WHERE("Template Type"=CONST(General),
-                                        Recurring=CONST(true));
+                    RunPageView = WHERE("Template Type" = CONST(General),
+                                        Recurring = CONST(true));
                 }
             }
             group("Validation Factures fournisseur")
@@ -277,55 +277,55 @@ page 50221 "Accounting Manager GDP-FOUR"
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Receptionee));
+                    RunPageView = WHERE(Status = CONST(Receptionee));
                 }
                 action(Action100000011)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Rejetee));
+                    RunPageView = WHERE(Status = CONST(Rejetee));
                 }
                 action(Action100000010)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp1));
                 }
                 action(Action100000009)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp2));
                 }
                 action(Action100000008)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp3));
                 }
                 action(Action100000007)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Litigieuse));
+                    RunPageView = WHERE(Status = CONST(Litigieuse));
                 }
                 action(Action100000004)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(AttentePaiement));
+                    RunPageView = WHERE(Status = CONST(AttentePaiement));
                 }
                 action(Action100000000)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Archived));
+                    RunPageView = WHERE(Status = CONST(Archived));
                 }
                 action(Action100000002)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Payee));
+                    RunPageView = WHERE(Status = CONST(Payee));
                 }
             }
             group("Posted Documents")
@@ -380,7 +380,7 @@ page 50221 "Accounting Manager GDP-FOUR"
             {
                 Caption = 'Purchase Invoice';
                 Image = CreditMemo;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Purchase Invoice";
@@ -388,9 +388,9 @@ page 50221 "Accounting Manager GDP-FOUR"
             }
             action("P&urchase Credit Memo")
             {
-                Caption = 'P&urchase Credit Memo';
+                Caption = 'Purchase Credit Memo';
                 Image = CreditMemo;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Purchase Credit Memo";
@@ -406,7 +406,7 @@ page 50221 "Accounting Manager GDP-FOUR"
             }
             action("Pa&yment Journal")
             {
-                Caption = 'Pa&yment Journal';
+                Caption = 'Payment Journal';
                 Image = PaymentJournal;
                 RunObject = Page "Payment Journal";
             }
@@ -420,7 +420,7 @@ page 50221 "Accounting Manager GDP-FOUR"
             }
             action("Calc. and Pos&t VAT Settlement")
             {
-                Caption = 'Calc. and Pos&t VAT Settlement';
+                Caption = 'Calc. and Post VAT Settlement';
                 Image = SettleOpenTransactions;
                 RunObject = Report "Calc. and Post VAT Settlement";
             }
@@ -431,7 +431,7 @@ page 50221 "Accounting Manager GDP-FOUR"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

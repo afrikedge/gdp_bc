@@ -144,7 +144,7 @@ page 50024 "Sales Order List - Cancelled"
         {
             group("Ver&sion")
             {
-                Caption = 'Ver&sion';
+                Caption = 'Version';
                 Image = Versions;
                 action(Dimensions)
                 {
@@ -160,7 +160,7 @@ page 50024 "Sales Order List - Cancelled"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Sales Archive Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),

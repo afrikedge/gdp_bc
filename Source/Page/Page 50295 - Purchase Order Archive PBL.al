@@ -266,7 +266,7 @@ page 50295 "Purchase Order Archive PBL"
         {
             group("Ver&sion")
             {
-                Caption = 'Ver&sion';
+                Caption = 'Version';
                 Image = Versions;
                 action(Card)
                 {
@@ -291,7 +291,7 @@ page 50295 "Purchase Order Archive PBL"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Purch. Archive Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),

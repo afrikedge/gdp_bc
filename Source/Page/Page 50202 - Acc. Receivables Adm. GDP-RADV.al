@@ -37,31 +37,31 @@ page 50202 "Acc. Receivables Adm. GDP-RADV"
         {
             action("C&ustomer - List")
             {
-                Caption = 'C&ustomer - List';
+                Caption = 'Customer - List';
                 Image = "Report";
                 RunObject = Report "Customer - List";
             }
             action("Customer - &Balance to Date")
             {
-                Caption = 'Customer - &Balance to Date';
+                Caption = 'Customer - Balance to Date';
                 Image = "Report";
                 RunObject = Report "Customer - Balance to Date";
             }
             action("Aged &Accounts Receivable")
             {
-                Caption = 'Aged &Accounts Receivable';
+                Caption = 'Aged Accounts Receivable';
                 Image = "Report";
                 RunObject = Report "Aged Accounts Receivable";
             }
             action("Customer - &Summary Aging Simp.")
             {
-                Caption = 'Customer - &Summary Aging Simp.';
+                Caption = 'Customer - Summary Aging Simp.';
                 Image = "Report";
                 RunObject = Report "Customer - Summary Aging Simp.";
             }
             action("Customer Trial Balan&ce")
             {
-                Caption = 'Customer Trial Balan&ce';
+                Caption = 'Customer Trial Balance';
                 RunObject = Report "Customer - Trial Balance";
             }
             action("Customer Detail Trial Balance")
@@ -72,7 +72,7 @@ page 50202 "Acc. Receivables Adm. GDP-RADV"
             }
             action("Cus&tomer/Item Sales")
             {
-                Caption = 'Cus&tomer/Item Sales';
+                Caption = 'Customer/Item Sales';
                 Image = "Report";
                 RunObject = Report "Customer/Item Sales";
             }
@@ -87,19 +87,19 @@ page 50202 "Acc. Receivables Adm. GDP-RADV"
             }
             action("Customer &Document Nos.")
             {
-                Caption = 'Customer &Document Nos.';
+                Caption = 'Customer Document Nos.';
                 Image = "Report";
                 RunObject = Report "Customer Document Nos.";
             }
             action("Sales &Invoice Nos.")
             {
-                Caption = 'Sales &Invoice Nos.';
+                Caption = 'Sales Invoice Nos.';
                 Image = "Report";
                 RunObject = Report "Sales Invoice Nos.";
             }
             action("Sa&les Credit Memo Nos.")
             {
-                Caption = 'Sa&les Credit Memo Nos.';
+                Caption = 'Sales Credit Memo Nos.';
                 Image = "Report";
                 RunObject = Report "Sales Credit Memo Nos.";
             }
@@ -194,10 +194,6 @@ page 50202 "Acc. Receivables Adm. GDP-RADV"
             group("Traitement des commandes")
             {
                 Caption = 'Traitement des commandes';
-                separator("Commande vente")
-                {
-                    Caption = 'Commande vente';
-                }
                 action("<Page Sales Order List - Pending SO>")
                 {
                     Caption = 'Commandes vente en attente ordre de livraison';
@@ -260,10 +256,6 @@ page 50202 "Acc. Receivables Adm. GDP-RADV"
             {
                 Caption = 'Posted Documents';
                 Image = FiledPosted;
-                separator("Documents validés")
-                {
-                    Caption = 'Documents validés';
-                }
                 action("Posted Sales Invoices")
                 {
                     Caption = 'Posted Sales Invoices';
@@ -298,10 +290,6 @@ page 50202 "Acc. Receivables Adm. GDP-RADV"
                     Caption = 'Chèques commandes encours retournés';
                     RunObject = Page "Returned Check Warranty";
                 }
-                separator("Archives Commande")
-                {
-                    Caption = 'Archives Commande';
-                }
                 action("<Page Sales Order List - Invoiced>")
                 {
                     Caption = 'Commandes vente facturées';
@@ -317,18 +305,10 @@ page 50202 "Acc. Receivables Adm. GDP-RADV"
                     Caption = 'Commandes vente soldées';
                     RunObject = Page "Sales Order List - Closed";
                 }
-                separator("Archives JIRAMA")
-                {
-                    Caption = 'Archives JIRAMA';
-                }
                 action("<Page Posted JIRAMA Forecast List>")
                 {
                     Caption = 'Liste des prévisions de vente JIRAMA validées';
                     RunObject = Page "Posted JIRAMA Forecast List";
-                }
-                separator("Archives Cartes")
-                {
-                    Caption = 'Archives Cartes';
                 }
                 action("<Page Posted Moneytech Import List>")
                 {
@@ -347,9 +327,9 @@ page 50202 "Acc. Receivables Adm. GDP-RADV"
         {
             action("Sales &Order")
             {
-                Caption = 'Sales &Order';
+                Caption = 'Sales Order';
                 Image = Document;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Sales Order";
@@ -357,9 +337,9 @@ page 50202 "Acc. Receivables Adm. GDP-RADV"
             }
             action("Sales &Invoice")
             {
-                Caption = 'Sales &Invoice';
+                Caption = 'Sales Invoice';
                 Image = Invoice;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Sales Invoice";
@@ -367,9 +347,9 @@ page 50202 "Acc. Receivables Adm. GDP-RADV"
             }
             action("Sales &Credit Memo")
             {
-                Caption = 'Sales &Credit Memo';
+                Caption = 'Sales Credit Memo';
                 Image = CreditMemo;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Sales Credit Memo";
@@ -377,9 +357,9 @@ page 50202 "Acc. Receivables Adm. GDP-RADV"
             }
             action("Sales &Reminder")
             {
-                Caption = 'Sales &Reminder';
+                Caption = 'Sales Reminder';
                 Image = Reminder;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page Reminder;
@@ -392,7 +372,7 @@ page 50202 "Acc. Receivables Adm. GDP-RADV"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

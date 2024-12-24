@@ -254,7 +254,7 @@ page 50266 "Bank Account Card Admin"
         {
             group("&Bank Acc.")
             {
-                Caption = '&Bank Acc.';
+                Caption = 'Bank Acc.';
                 Image = Bank;
                 action(Statistics)
                 {
@@ -271,7 +271,7 @@ page 50266 "Bank Account Card Admin"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Comment Sheet";
                     RunPageLink = "Table Name" = CONST("Bank Account"),
@@ -297,7 +297,7 @@ page 50266 "Bank Account Card Admin"
                 }
                 action(Statements)
                 {
-                    Caption = 'St&atements';
+                    Caption = 'Statements';
                     Image = "Report";
                     Promoted = true;
                     PromotedCategory = Process;
@@ -306,9 +306,9 @@ page 50266 "Bank Account Card Admin"
                 }
                 action("Ledger E&ntries")
                 {
-                    Caption = 'Ledger E&ntries';
+                    Caption = 'Ledger Entries';
                     Image = BankAccountLedger;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Page "Bank Account Ledger Entries";
@@ -318,7 +318,7 @@ page 50266 "Bank Account Card Admin"
                 }
                 action("Chec&k Ledger Entries")
                 {
-                    Caption = 'Chec&k Ledger Entries';
+                    Caption = 'Check Ledger Entries';
                     Image = CheckLedger;
                     RunObject = Page "Check Ledger Entries";
                     RunPageLink = "Bank Account No." = FIELD("No.");
@@ -326,7 +326,7 @@ page 50266 "Bank Account Card Admin"
                 }
                 action("C&ontact")
                 {
-                    Caption = 'C&ontact';
+                    Caption = 'Contact';
                     Image = ContactPerson;
                     Visible = ContactActionVisible;
 
@@ -427,7 +427,7 @@ page 50266 "Bank Account Card Admin"
             {
                 Caption = 'Receivables-Payables';
                 Image = ReceivablesPayables;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Receivables-Payables";

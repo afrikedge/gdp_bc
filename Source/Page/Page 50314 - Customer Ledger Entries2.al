@@ -209,11 +209,11 @@ page 50314 "Customer Ledger Entries2"
         {
             group("Ent&ry")
             {
-                Caption = 'Ent&ry';
+                Caption = 'Entry';
                 Image = Entry;
                 action("Applied E&ntries")
                 {
-                    Caption = 'Applied E&ntries';
+                    Caption = 'Applied Entries';
                     Image = Approve;
                     RunObject = Page "Applied Customer Entries";
                     RunPageOnRec = true;
@@ -234,7 +234,7 @@ page 50314 "Customer Ledger Entries2"
                 }
                 action("Detailed &Ledger Entries")
                 {
-                    Caption = 'Detailed &Ledger Entries';
+                    Caption = 'Detailed Ledger Entries';
                     Image = View;
                     RunObject = Page "Detailed Cust. Ledg. Entries";
                     RunPageLink = "Cust. Ledger Entry No." = FIELD("Entry No."),
@@ -249,7 +249,7 @@ page 50314 "Customer Ledger Entries2"
         {
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action("Apply Entries")
                 {

@@ -110,7 +110,7 @@ page 50005 "Delivery Order"
         {
             action(Post)
             {
-                Caption = 'P&ost';
+                Caption = 'Post';
                 Ellipsis = true;
                 Image = PostOrder;
                 Promoted = true;

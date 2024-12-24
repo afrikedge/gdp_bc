@@ -422,7 +422,7 @@ page 50200 "Cash Transfer Journal TRESO"
             }
             group("A&ccount")
             {
-                Caption = 'A&ccount';
+                Caption = 'Account';
                 Image = ChartOfAccounts;
                 action(Card)
                 {
@@ -434,9 +434,9 @@ page 50200 "Cash Transfer Journal TRESO"
                 }
                 action("Ledger E&ntries")
                 {
-                    Caption = 'Ledger E&ntries';
+                    Caption = 'Ledger Entries';
                     Image = GLRegisters;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Codeunit "Gen. Jnl.-Show Entries";
@@ -464,7 +464,7 @@ page 50200 "Cash Transfer Journal TRESO"
         {
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action("Renumber Document Numbers")
                 {
@@ -547,7 +547,7 @@ page 50200 "Cash Transfer Journal TRESO"
             }
             group("P&osting")
             {
-                Caption = 'P&osting';
+                Caption = 'Posting';
                 Image = Post;
                 action(Reconcile)
                 {
@@ -577,7 +577,7 @@ page 50200 "Cash Transfer Journal TRESO"
                 }
                 action(Post)
                 {
-                    Caption = 'P&ost';
+                    Caption = 'Post';
                     Image = PostOrder;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -606,7 +606,7 @@ page 50200 "Cash Transfer Journal TRESO"
                 }
                 action("Post and &Print")
                 {
-                    Caption = 'Post and &Print';
+                    Caption = 'Post and Print';
                     Image = PostPrint;
                     Promoted = true;
                     PromotedCategory = Process;

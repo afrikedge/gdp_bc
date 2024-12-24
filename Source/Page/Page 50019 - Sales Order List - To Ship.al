@@ -210,7 +210,7 @@ page 50019 "Sales Order List - To Ship"
         {
             group("O&rder")
             {
-                Caption = 'O&rder';
+                Caption = 'Order';
                 Image = "Order";
                 action(Dimensions)
                 {
@@ -239,7 +239,7 @@ page 50019 "Sales Order List - To Ship"
                 }
                 action("A&pprovals")
                 {
-                    Caption = 'A&pprovals';
+                    Caption = 'Approvals';
                     Image = Approvals;
 
                     trigger OnAction()
@@ -252,7 +252,7 @@ page 50019 "Sales Order List - To Ship"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Sales Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
@@ -276,7 +276,7 @@ page 50019 "Sales Order List - To Ship"
                 Image = Documents;
                 action("S&hipments")
                 {
-                    Caption = 'S&hipments';
+                    Caption = 'Shipments';
                     Image = Shipment;
                     RunObject = Page "Posted Sales Shipments";
                     RunPageLink = "Order No." = FIELD("No.");
@@ -292,7 +292,7 @@ page 50019 "Sales Order List - To Ship"
                 }
                 action("Prepa&yment Invoices")
                 {
-                    Caption = 'Prepa&yment Invoices';
+                    Caption = 'Prepayment Invoices';
                     Image = PrepaymentInvoice;
                     RunObject = Page "Posted Sales Invoices";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
@@ -300,7 +300,7 @@ page 50019 "Sales Order List - To Ship"
                 }
                 action("Prepayment Credi&t Memos")
                 {
-                    Caption = 'Prepayment Credi&t Memos';
+                    Caption = 'Prepayment Credit Memos';
                     Image = PrepaymentCreditMemo;
                     RunObject = Page "Posted Sales Credit Memos";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
@@ -360,7 +360,7 @@ page 50019 "Sales Order List - To Ship"
                 Image = ReleaseDoc;
                 action(Release)
                 {
-                    Caption = 'Re&lease';
+                    Caption = 'Release';
                     Image = ReleaseDoc;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -375,7 +375,7 @@ page 50019 "Sales Order List - To Ship"
                 }
                 action(Reopen)
                 {
-                    Caption = 'Re&open';
+                    Caption = 'Reopen';
                     Image = ReOpen;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -404,11 +404,11 @@ page 50019 "Sales Order List - To Ship"
             }
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action("Pla&nning")
                 {
-                    Caption = 'Pla&nning';
+                    Caption = 'Planning';
                     Image = Planning;
 
                     trigger OnAction()
@@ -422,7 +422,7 @@ page 50019 "Sales Order List - To Ship"
                 action("Order &Promising")
                 {
                     AccessByPermission = TableData "Order Promising Line" = R;
-                    Caption = 'Order &Promising';
+                    Caption = 'Order Promising';
                     Image = OrderPromising;
 
                     trigger OnAction()
@@ -455,7 +455,7 @@ page 50019 "Sales Order List - To Ship"
                 Caption = 'Request Approval';
                 action(SendApprovalRequest)
                 {
-                    Caption = 'Send A&pproval Request';
+                    Caption = 'Send Approval Request';
                     Enabled = NOT OpenApprovalEntriesExist;
                     Image = SendApprovalRequest;
 
@@ -471,7 +471,7 @@ page 50019 "Sales Order List - To Ship"
                 }
                 action(CancelApprovalRequest)
                 {
-                    Caption = 'Cancel Approval Re&quest';
+                    Caption = 'Cancel Approval Request';
                     Enabled = OpenApprovalEntriesExist;
                     Image = Cancel;
 
@@ -487,7 +487,7 @@ page 50019 "Sales Order List - To Ship"
             {
                 Caption = 'Warehouse';
                 Image = Warehouse;
-                action("Create Inventor&y Put-away/Pick")
+                action("Create Inventory Put-away/Pick")
                 {
                     AccessByPermission = TableData "Posted Invt. Pick Header" = R;
                     Caption = 'Create Inventor&y Put-away/Pick';
@@ -505,7 +505,7 @@ page 50019 "Sales Order List - To Ship"
                 action("Create &Whse. Shipment")
                 {
                     AccessByPermission = TableData "Warehouse Shipment Header" = R;
-                    Caption = 'Create &Whse. Shipment';
+                    Caption = 'Create Whse. Shipment';
                     Image = NewShipment;
 
                     trigger OnAction()
@@ -521,11 +521,11 @@ page 50019 "Sales Order List - To Ship"
             }
             group("P&osting")
             {
-                Caption = 'P&osting';
+                Caption = 'Posting';
                 Image = Post;
                 action(Post)
                 {
-                    Caption = 'P&ost';
+                    Caption = 'Post';
                     Ellipsis = true;
                     Image = PostOrder;
                     Promoted = true;
@@ -540,7 +540,7 @@ page 50019 "Sales Order List - To Ship"
                 }
                 action("Post and &Print")
                 {
-                    Caption = 'Post and &Print';
+                    Caption = 'Post and Print';
                     Ellipsis = true;
                     Image = PostPrint;
                     Promoted = true;
@@ -579,7 +579,7 @@ page 50019 "Sales Order List - To Ship"
                 }
                 action("Post &Batch")
                 {
-                    Caption = 'Post &Batch';
+                    Caption = 'Post Batch';
                     Ellipsis = true;
                     Image = PostBatch;
                     Promoted = true;
@@ -642,7 +642,7 @@ page 50019 "Sales Order List - To Ship"
             }
             group("&Order Confirmation")
             {
-                Caption = '&Order Confirmation';
+                Caption = 'Order Confirmation';
                 Image = Email;
                 action("Email Confirmation")
                 {

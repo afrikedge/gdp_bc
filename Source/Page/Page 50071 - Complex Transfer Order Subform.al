@@ -205,7 +205,7 @@ page 50071 "Complex Transfer Order Subform"
         {
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action(Reserve)
                 {
@@ -293,7 +293,7 @@ page 50071 "Complex Transfer Order Subform"
                 }
                 group("Item &Tracking Lines")
                 {
-                    Caption = 'Item &Tracking Lines';
+                    Caption = 'Item Tracking Lines';
                     Image = AllLines;
                     action(Shipment)
                     {

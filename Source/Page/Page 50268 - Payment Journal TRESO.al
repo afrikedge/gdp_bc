@@ -537,7 +537,7 @@ page 50268 "Payment Journal TRESO"
             }
             group("A&ccount")
             {
-                Caption = 'A&ccount';
+                Caption = 'Account';
                 Image = ChartOfAccounts;
                 action(Card)
                 {
@@ -548,9 +548,9 @@ page 50268 "Payment Journal TRESO"
                 }
                 action("Ledger E&ntries")
                 {
-                    Caption = 'Ledger E&ntries';
+                    Caption = 'Ledger Entries';
                     Image = GLRegisters;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Codeunit "Gen. Jnl.-Show Entries";
@@ -581,7 +581,7 @@ page 50268 "Payment Journal TRESO"
                 }
                 action(PreviewCheck)
                 {
-                    Caption = 'P&review Check';
+                    Caption = 'Preview Check';
                     Image = ViewCheck;
                     RunObject = Page "Check Preview";
                     RunPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
@@ -624,7 +624,7 @@ page 50268 "Payment Journal TRESO"
                 }
                 action("Void &All Checks")
                 {
-                    Caption = 'Void &All Checks';
+                    Caption = 'Void All Checks';
                     Image = VoidAllChecks;
 
                     trigger OnAction()
@@ -680,7 +680,7 @@ page 50268 "Payment Journal TRESO"
         {
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action("Renumber Document Numbers")
                 {
@@ -777,7 +777,7 @@ page 50268 "Payment Journal TRESO"
             }
             group("P&osting")
             {
-                Caption = 'P&osting';
+                Caption = 'Posting';
                 Image = Post;
                 action(Reconcile)
                 {
@@ -821,7 +821,7 @@ page 50268 "Payment Journal TRESO"
                 }
                 action(Post)
                 {
-                    Caption = 'P&ost';
+                    Caption = 'Post';
                     Image = PostOrder;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -849,7 +849,7 @@ page 50268 "Payment Journal TRESO"
                 }
                 action("Post and &Print")
                 {
-                    Caption = 'Post and &Print';
+                    Caption = 'Post and Print';
                     Image = PostPrint;
                     Promoted = true;
                     PromotedCategory = Process;

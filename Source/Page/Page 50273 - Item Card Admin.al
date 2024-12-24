@@ -576,7 +576,7 @@ page 50273 "Item Card Admin"
                 }
                 action("Va&riants")
                 {
-                    Caption = 'Va&riants';
+                    Caption = 'Variants';
                     Image = ItemVariant;
                     RunObject = Page "Item Variants";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -597,7 +597,7 @@ page 50273 "Item Card Admin"
                 }
                 action("Substituti&ons")
                 {
-                    Caption = 'Substituti&ons';
+                    Caption = 'Substitutions';
                     Image = ItemSubstitution;
                     RunObject = Page "Item Substitution Entry";
                     RunPageLink = Type = CONST(Item),
@@ -605,14 +605,14 @@ page 50273 "Item Card Admin"
                 }
                 action("Cross Re&ferences")
                 {
-                    // Caption = 'Cross Re&ferences';
+                    // Caption = 'Cross References';
                     // Image = Change;
                     // RunObject = Page "Item Cross Reference Entries";
                     // RunPageLink = "Item No."=FIELD("No.");
                 }
                 action("E&xtended Texts")
                 {
-                    Caption = 'E&xtended Texts';
+                    Caption = 'Extended Texts';
                     Image = Text;
                     RunObject = Page "Extended Text List";
                     RunPageLink = "Table Name" = CONST(Item),
@@ -628,7 +628,7 @@ page 50273 "Item Card Admin"
                 }
                 action("&Picture")
                 {
-                    Caption = '&Picture';
+                    Caption = 'Picture';
                     Image = Picture;
                     RunObject = Page "Item Picture";
                     RunPageLink = "No." = FIELD("No."),
@@ -724,7 +724,7 @@ page 50273 "Item Card Admin"
                 action(ItemsByLocation)
                 {
                     AccessByPermission = TableData Location = R;
-                    Caption = 'Items b&y Location';
+                    Caption = 'Items by Location';
                     Image = ItemAvailbyLoc;
 
                     trigger OnAction()
@@ -737,7 +737,7 @@ page 50273 "Item Card Admin"
                 }
                 group("&Item Availability by")
                 {
-                    Caption = '&Item Availability by';
+                    Caption = 'Item Availability by';
                     Image = ItemAvailability;
                     action("<Action110>")
                     {
@@ -813,13 +813,13 @@ page 50273 "Item Card Admin"
                 Image = History;
                 group("E&ntries")
                 {
-                    Caption = 'E&ntries';
+                    Caption = 'Entries';
                     Image = Entries;
                     action("Ledger E&ntries")
                     {
-                        Caption = 'Ledger E&ntries';
+                        Caption = 'Ledger Entries';
                         Image = ItemLedger;
-                        Promoted = false;
+
                         //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                         //PromotedCategory = Process;
                         RunObject = Page "Item Ledger Entries";
@@ -829,7 +829,7 @@ page 50273 "Item Card Admin"
                     }
                     action("&Reservation Entries")
                     {
-                        Caption = '&Reservation Entries';
+                        Caption = 'Reservation Entries';
                         Image = ReservationLedger;
                         RunObject = Page "Reservation Entries";
                         RunPageLink = "Reservation Status" = CONST(Reservation),
@@ -838,7 +838,7 @@ page 50273 "Item Card Admin"
                     }
                     action("&Phys. Inventory Ledger Entries")
                     {
-                        Caption = '&Phys. Inventory Ledger Entries';
+                        Caption = 'Phys. Inventory Ledger Entries';
                         Image = PhysicalInventoryLedger;
                         RunObject = Page "Phys. Inventory Ledger Entries";
                         RunPageLink = "Item No." = FIELD("No.");
@@ -846,7 +846,7 @@ page 50273 "Item Card Admin"
                     }
                     action("&Value Entries")
                     {
-                        Caption = '&Value Entries';
+                        Caption = 'Value Entries';
                         Image = ValueLedger;
                         RunObject = Page "Value Entries";
                         RunPageLink = "Item No." = FIELD("No.");
@@ -854,7 +854,7 @@ page 50273 "Item Card Admin"
                     }
                     action("Item &Tracking Entries")
                     {
-                        Caption = 'Item &Tracking Entries';
+                        Caption = 'Item Tracking Entries';
                         Image = ItemTrackingLedger;
 
                         trigger OnAction()
@@ -866,7 +866,7 @@ page 50273 "Item Card Admin"
                     }
                     action("&Warehouse Entries")
                     {
-                        Caption = '&Warehouse Entries';
+                        Caption = 'Warehouse Entries';
                         Image = BinLedger;
                         RunObject = Page "Warehouse Entries";
                         RunPageLink = "Item No." = FIELD("No.");
@@ -915,7 +915,7 @@ page 50273 "Item Card Admin"
                     }
                     action("T&urnover")
                     {
-                        Caption = 'T&urnover';
+                        Caption = 'Turnover';
                         Image = Turnover;
                         RunObject = Page "Item Turnover";
                         RunPageLink = "No." = FIELD("No."),
@@ -928,7 +928,7 @@ page 50273 "Item Card Admin"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Comment Sheet";
                     RunPageLink = "Table Name" = CONST(Item),
@@ -937,11 +937,11 @@ page 50273 "Item Card Admin"
             }
             group("&Purchases")
             {
-                Caption = '&Purchases';
+                Caption = 'Purchases';
                 Image = Purchasing;
                 action("Ven&dors")
                 {
-                    Caption = 'Ven&dors';
+                    Caption = 'Vendors';
                     Image = Vendor;
                     RunObject = Page "Item Vendor Catalog";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -964,7 +964,7 @@ page 50273 "Item Card Admin"
                 }
                 action("Prepa&yment Percentages")
                 {
-                    Caption = 'Prepa&yment Percentages';
+                    Caption = 'Prepayment Percentages';
                     Image = PrepaymentPercentages;
                     RunObject = Page "Purchase Prepmt. Percentages";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -992,14 +992,14 @@ page 50273 "Item Card Admin"
                 }
                 action("Nonstoc&k Items")
                 {
-                    Caption = 'Nonstoc&k Items';
+                    Caption = 'Nonstock Items';
                     Image = NonStockItem;
                     RunObject = Page "Catalog Item List";
                 }
             }
             group("S&ales")
             {
-                Caption = 'S&ales';
+                Caption = 'Sales';
                 Image = Sales;
                 action(Action82)
                 {
@@ -1020,7 +1020,7 @@ page 50273 "Item Card Admin"
                 }
                 action(Action300)
                 {
-                    Caption = 'Prepa&yment Percentages';
+                    Caption = 'Prepayment Percentages';
                     Image = PrepaymentPercentages;
                     RunObject = Page "Sales Prepayment Percentages";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -1079,7 +1079,7 @@ page 50273 "Item Card Admin"
                 }
                 group("Assemb&ly")
                 {
-                    Caption = 'Assemb&ly';
+                    Caption = 'Assembly';
                     Image = AssemblyBOM;
                     action("Assembly BOM")
                     {
@@ -1100,7 +1100,7 @@ page 50273 "Item Card Admin"
                     action("Calc. Stan&dard Cost")
                     {
                         AccessByPermission = TableData "BOM Component" = R;
-                        Caption = 'Calc. Stan&dard Cost';
+                        Caption = 'Calc. Standard Cost';
                         Image = CalculateCost;
 
                         trigger OnAction()
@@ -1150,7 +1150,7 @@ page 50273 "Item Card Admin"
                     action(Action5)
                     {
                         AccessByPermission = TableData "Production BOM Header" = R;
-                        Caption = 'Calc. Stan&dard Cost';
+                        Caption = 'Calc. Standard Cost';
                         Image = CalculateCost;
 
                         trigger OnAction()
@@ -1167,7 +1167,7 @@ page 50273 "Item Card Admin"
                 Image = Warehouse;
                 action("&Bin Contents")
                 {
-                    Caption = '&Bin Contents';
+                    Caption = 'Bin Contents';
                     Image = BinContent;
                     RunObject = Page "Item Bin Contents";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -1175,7 +1175,7 @@ page 50273 "Item Card Admin"
                 }
                 action("Stockkeepin&g Units")
                 {
-                    Caption = 'Stockkeepin&g Units';
+                    Caption = 'Stockkeeping Units';
                     Image = SKU;
                     RunObject = Page "Stockkeeping Unit List";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -1188,7 +1188,7 @@ page 50273 "Item Card Admin"
                 Image = ServiceItem;
                 action("Ser&vice Items")
                 {
-                    Caption = 'Ser&vice Items';
+                    Caption = 'Service Items';
                     Image = ServiceItem;
                     RunObject = Page "Service Items";
                     RunPageLink = "Item No." = FIELD("No.");
@@ -1222,7 +1222,7 @@ page 50273 "Item Card Admin"
                 Image = Resource;
                 group("R&esource")
                 {
-                    Caption = 'R&esource';
+                    Caption = 'Resource';
                     Image = Resource;
                     action("Resource Skills")
                     {
@@ -1310,7 +1310,7 @@ page 50273 "Item Card Admin"
                 Visible = false;
                 action(SendApprovalRequest)
                 {
-                    Caption = 'Send A&pproval Request';
+                    Caption = 'Send Approval Request';
                     Enabled = NOT OpenApprovalEntriesExist;
                     Image = SendApprovalRequest;
                     Promoted = true;
@@ -1327,7 +1327,7 @@ page 50273 "Item Card Admin"
                 }
                 action(CancelApprovalRequest)
                 {
-                    Caption = 'Cancel Approval Re&quest';
+                    Caption = 'Cancel Approval Request';
                     Enabled = OpenApprovalEntriesExist;
                     Image = Cancel;
                     Promoted = true;
@@ -1344,12 +1344,12 @@ page 50273 "Item Card Admin"
             }
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action("&Create Stockkeeping Unit")
                 {
                     AccessByPermission = TableData "Stockkeeping Unit" = R;
-                    Caption = '&Create Stockkeeping Unit';
+                    Caption = 'Create Stockkeeping Unit';
                     Image = CreateSKU;
 
                     trigger OnAction()
@@ -1363,7 +1363,7 @@ page 50273 "Item Card Admin"
                 action(CalculateCountingPeriod)
                 {
                     AccessByPermission = TableData "Phys. Invt. Item Selection" = R;
-                    Caption = 'C&alculate Counting Period';
+                    Caption = 'Calculate Counting Period';
                     Image = CalculateCalendar;
 
                     trigger OnAction()

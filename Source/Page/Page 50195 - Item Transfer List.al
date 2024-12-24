@@ -78,7 +78,7 @@ page 50195 "Item Transfer List"
             }
             action("Post &Batch")
             {
-                Caption = 'Post &Batch';
+                Caption = 'Post Batch';
                 Ellipsis = true;
                 Image = PostBatch;
 

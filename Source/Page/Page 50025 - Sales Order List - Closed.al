@@ -144,7 +144,7 @@ page 50025 "Sales Order List - Closed"
         {
             group("Ver&sion")
             {
-                Caption = 'Ver&sion';
+                Caption = 'Version';
                 Image = Versions;
                 action(Dimensions)
                 {
@@ -160,7 +160,7 @@ page 50025 "Sales Order List - Closed"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Sales Archive Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),

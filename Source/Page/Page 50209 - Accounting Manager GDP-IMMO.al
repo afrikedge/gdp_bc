@@ -10,20 +10,20 @@ page 50209 "Accounting Manager GDP-IMMO"
             group(Control1900724808)
             {
                 ShowCaption = false;
-                part(Control1902304208;"Account Manager Activities")
+                part(Control1902304208; "Account Manager Activities")
                 {
                 }
-                part(Control1907692008;"My Customers")
+                part(Control1907692008; "My Customers")
                 {
                 }
             }
             group(Control1900724708)
             {
                 ShowCaption = false;
-                part(Control1902476008;"My Vendors")
+                part(Control1902476008; "My Vendors")
                 {
                 }
-                systempart(Control1901377608;MyNotes)
+                systempart(Control1901377608; MyNotes)
                 {
                 }
             }
@@ -58,7 +58,7 @@ page 50209 "Accounting Manager GDP-IMMO"
                 Caption = 'Items';
                 Image = Item;
                 RunObject = Page "Item List";
-                RunPageView = WHERE(Type=CONST(Inventory));
+                RunPageView = WHERE(Type = CONST(Inventory));
             }
             action("<Page Item ListWorflow>")
             {
@@ -93,8 +93,8 @@ page 50209 "Accounting Manager GDP-IMMO"
                 {
                     Caption = 'Fixed Assets G/L Journals';
                     RunObject = Page "General Journal Batches";
-                    RunPageView = WHERE("Template Type"=CONST(Assets),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST(Assets),
+                                        Recurring = CONST(false));
                 }
                 action("Fixed Assets Reclass. Journals")
                 {
@@ -111,8 +111,8 @@ page 50209 "Accounting Manager GDP-IMMO"
                     Caption = 'General Journals';
                     Image = Journal;
                     RunObject = Page "General Journal Batches";
-                    RunPageView = WHERE("Template Type"=CONST(General),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST(General),
+                                        Recurring = CONST(false));
                 }
                 action("Purchase Orders")
                 {
@@ -132,55 +132,55 @@ page 50209 "Accounting Manager GDP-IMMO"
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Receptionee));
+                    RunPageView = WHERE(Status = CONST(Receptionee));
                 }
                 action(Action100000014)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Rejetee));
+                    RunPageView = WHERE(Status = CONST(Rejetee));
                 }
                 action(Action100000013)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp1));
                 }
                 action(Action100000012)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp2));
                 }
                 action(Action100000011)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp3));
                 }
                 action(Action100000005)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Litigieuse));
+                    RunPageView = WHERE(Status = CONST(Litigieuse));
                 }
                 action(Action100000004)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(AttentePaiement));
+                    RunPageView = WHERE(Status = CONST(AttentePaiement));
                 }
                 action(Action100000003)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Archived));
+                    RunPageView = WHERE(Status = CONST(Archived));
                 }
                 action(Action100000002)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Payee));
+                    RunPageView = WHERE(Status = CONST(Payee));
                 }
             }
             group("Posted Documents")
@@ -304,10 +304,6 @@ page 50209 "Accounting Manager GDP-IMMO"
                     Image = PostedOrder;
                     RunObject = Page "Posted Sales Credit Memos";
                 }
-                separator("Archives Commande")
-                {
-                    Caption = 'Archives Commande';
-                }
                 action("<Page Sales Order List - Invoiced>")
                 {
                     Caption = 'Commandes vente facturées';
@@ -369,7 +365,7 @@ page 50209 "Accounting Manager GDP-IMMO"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

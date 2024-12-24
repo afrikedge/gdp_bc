@@ -10,20 +10,20 @@ page 50211 "Accounting Manager GDP-TRESO"
             group(Control1900724808)
             {
                 ShowCaption = false;
-                part(Control1902304208;"Account Manager Activities")
+                part(Control1902304208; "Account Manager Activities")
                 {
                 }
-                part(Control1907692008;"My Customers")
+                part(Control1907692008; "My Customers")
                 {
                 }
             }
             group(Control1900724708)
             {
                 ShowCaption = false;
-                part(Control1902476008;"My Vendors")
+                part(Control1902476008; "My Vendors")
                 {
                 }
-                systempart(Control1901377608;MyNotes)
+                systempart(Control1901377608; MyNotes)
                 {
                 }
             }
@@ -72,19 +72,19 @@ page 50211 "Accounting Manager GDP-TRESO"
             }
             action("Aged Accounts &Receivable")
             {
-                Caption = 'Aged Accounts &Receivable';
+                Caption = 'Aged Accounts Receivable';
                 Image = "Report";
                 RunObject = Report "Aged Accounts Receivable";
             }
             action("Aged Accounts Pa&yable")
             {
-                Caption = 'Aged Accounts Pa&yable';
+                Caption = 'Aged Accounts Payable';
                 Image = "Report";
                 RunObject = Report "Aged Accounts Payable";
             }
             action("Reconcile Cus&t. and Vend. Accs")
             {
-                Caption = 'Reconcile Cus&t. and Vend. Accs';
+                Caption = 'Reconcile Cust. and Vend. Accs';
                 Image = "Report";
                 RunObject = Report "Reconcile Cust. and Vend. Accs";
             }
@@ -185,8 +185,8 @@ page 50211 "Accounting Manager GDP-TRESO"
                     Caption = 'Payment Journals';
                     Image = Journals;
                     RunObject = Page "General Journal Batches TRESO";
-                    RunPageView = WHERE("Template Type"=CONST(Payments),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST(Payments),
+                                        Recurring = CONST(false));
                 }
                 action("Payment Slips")
                 {
@@ -217,55 +217,55 @@ page 50211 "Accounting Manager GDP-TRESO"
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Receptionee));
+                    RunPageView = WHERE(Status = CONST(Receptionee));
                 }
                 action(Action1000000015)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Rejetee));
+                    RunPageView = WHERE(Status = CONST(Rejetee));
                 }
                 action(Action1000000014)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp1));
                 }
                 action(Action1000000013)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp2));
                 }
                 action(Action1000000012)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp3));
                 }
                 action(Action1000000011)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Litigieuse));
+                    RunPageView = WHERE(Status = CONST(Litigieuse));
                 }
                 action(Action1000000006)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(AttentePaiement));
+                    RunPageView = WHERE(Status = CONST(AttentePaiement));
                 }
                 action(Action1000000005)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Archived));
+                    RunPageView = WHERE(Status = CONST(Archived));
                 }
                 action(Action1000000004)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Compta";
-                    RunPageView = WHERE(Status=CONST(Payee));
+                    RunPageView = WHERE(Status = CONST(Payee));
                 }
             }
             group("Posted Documents")
@@ -322,7 +322,7 @@ page 50211 "Accounting Manager GDP-TRESO"
             }
             action("Bank Account R&econciliation")
             {
-                Caption = 'Bank Account R&econciliation';
+                Caption = 'Bank Account Reconciliation';
                 Image = BankAccountRec;
                 RunObject = Page "Bank Acc. Reconciliation";
             }
@@ -333,7 +333,7 @@ page 50211 "Accounting Manager GDP-TRESO"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

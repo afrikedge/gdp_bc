@@ -102,7 +102,7 @@ page 50007 "Removal Order"
         {
             action(Post)
             {
-                Caption = 'P&ost';
+                Caption = 'Post';
                 Ellipsis = true;
                 Image = PostOrder;
                 Promoted = true;

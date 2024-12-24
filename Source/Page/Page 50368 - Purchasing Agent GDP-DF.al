@@ -10,17 +10,17 @@ page 50368 "Purchasing Agent GDP-DF"
             group(Control1900724808)
             {
                 ShowCaption = false;
-                part(Control1902476008;"My Vendors")
+                part(Control1902476008; "My Vendors")
                 {
                 }
             }
             group(Control1900724708)
             {
                 ShowCaption = false;
-                part(Control1905989608;"My Items")
+                part(Control1905989608; "My Items")
                 {
                 }
-                systempart(Control43;MyNotes)
+                systempart(Control43; MyNotes)
                 {
                 }
             }
@@ -33,13 +33,13 @@ page 50368 "Purchasing Agent GDP-DF"
         {
             action("Vendor - T&op 10 List")
             {
-                Caption = 'Vendor - T&op 10 List';
+                Caption = 'Vendor - Top 10 List';
                 Image = "Report";
                 RunObject = Report "Vendor - Top 10 List";
             }
             action("Vendor/&Item Purchases")
             {
-                Caption = 'Vendor/&Item Purchases';
+                Caption = 'Vendor/Item Purchases';
                 Image = "Report";
                 RunObject = Report "Vendor/Item Purchases";
             }
@@ -48,19 +48,19 @@ page 50368 "Purchasing Agent GDP-DF"
             }
             action("Inventory - &Availability Plan")
             {
-                Caption = 'Inventory - &Availability Plan';
+                Caption = 'Inventory - Availability Plan';
                 Image = ItemAvailability;
                 RunObject = Report "Inventory - Availability Plan";
             }
             action("Inventory &Purchase Orders")
             {
-                Caption = 'Inventory &Purchase Orders';
+                Caption = 'Inventory Purchase Orders';
                 Image = "Report";
                 RunObject = Report "Inventory Purchase Orders";
             }
             action("Inventory - &Vendor Purchases")
             {
-                Caption = 'Inventory - &Vendor Purchases';
+                Caption = 'Inventory - Vendor Purchases';
                 Image = "Report";
                 RunObject = Report "Inventory - Vendor Purchases";
             }
@@ -102,19 +102,19 @@ page 50368 "Purchasing Agent GDP-DF"
             }
             action("Aged Accounts &Receivable")
             {
-                Caption = 'Aged Accounts &Receivable';
+                Caption = 'Aged Accounts Receivable';
                 Image = "Report";
                 RunObject = Report "Aged Accounts Receivable";
             }
             action("Aged Accounts Pa&yable")
             {
-                Caption = 'Aged Accounts Pa&yable';
+                Caption = 'Aged Accounts Payable';
                 Image = "Report";
                 RunObject = Report "Aged Accounts Payable";
             }
             action("Reconcile Cus&t. and Vend. Accs")
             {
-                Caption = 'Reconcile Cus&t. and Vend. Accs';
+                Caption = 'Reconcile Cust. and Vend. Accs';
                 Image = "Report";
                 RunObject = Report "Reconcile Cust. and Vend. Accs";
             }
@@ -211,37 +211,37 @@ page 50368 "Purchasing Agent GDP-DF"
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                RunPageView = WHERE(Status = CONST(AttenteValResp1));
             }
             action(Action100000003)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                RunPageView = WHERE(Status = CONST(AttenteValResp2));
             }
             action(Action100000002)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                RunPageView = WHERE(Status = CONST(AttenteValResp3));
             }
             action(Action100000001)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Litigieuse));
+                RunPageView = WHERE(Status = CONST(Litigieuse));
             }
             action(Action100000007)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttentePaiement));
+                RunPageView = WHERE(Status = CONST(AttentePaiement));
             }
             action(Action100000006)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Payee));
+                RunPageView = WHERE(Status = CONST(Payee));
             }
         }
         area(sections)
@@ -288,14 +288,14 @@ page 50368 "Purchasing Agent GDP-DF"
                     Caption = 'Items';
                     Image = Item;
                     RunObject = Page "Item List";
-                    RunPageView = WHERE(Type=CONST(Inventory));
+                    RunPageView = WHERE(Type = CONST(Inventory));
                 }
                 action(Action1000000008)
                 {
                     Caption = 'Items';
                     Image = Item;
                     RunObject = Page "Item List";
-                    RunPageView = WHERE(Type=CONST(Service));
+                    RunPageView = WHERE(Type = CONST(Service));
                 }
                 action("<Page Customer Price Groups>")
                 {
@@ -340,7 +340,7 @@ page 50368 "Purchasing Agent GDP-DF"
             }
             group("Analytique & Budget")
             {
-                Caption = 'Analytique & Budget';
+                Caption = 'Analytique et Budget';
                 action("<Page Dimensions>")
                 {
                     Caption = 'Axes analytiques';
@@ -391,8 +391,8 @@ page 50368 "Purchasing Agent GDP-DF"
                     Caption = 'Payment Journals';
                     Image = Journals;
                     RunObject = Page "General Journal Batches TRESO";
-                    RunPageView = WHERE("Template Type"=CONST(Payments),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST(Payments),
+                                        Recurring = CONST(false));
                 }
                 action("Payment Slips")
                 {
@@ -423,14 +423,14 @@ page 50368 "Purchasing Agent GDP-DF"
                 {
                     Caption = 'Fixed Assets G/L Journals';
                     RunObject = Page "General Journal Batches";
-                    RunPageView = WHERE("Template Type"=CONST(Assets),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST(Assets),
+                                        Recurring = CONST(false));
                 }
                 action("Fixed Assets Journals")
                 {
                     Caption = 'Fixed Assets Journals';
                     RunObject = Page "FA Journal Batches";
-                    RunPageView = WHERE(Recurring=CONST(false));
+                    RunPageView = WHERE(Recurring = CONST(false));
                 }
                 action("Fixed Assets Reclass. Journals")
                 {
@@ -451,37 +451,37 @@ page 50368 "Purchasing Agent GDP-DF"
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Validation";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp1));
                 }
                 action(Action1000000094)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Validation";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp2));
                 }
                 action(Action1000000093)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Validation";
-                    RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                    RunPageView = WHERE(Status = CONST(AttenteValResp3));
                 }
                 action(Action1000000092)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Validation";
-                    RunPageView = WHERE(Status=CONST(Litigieuse));
+                    RunPageView = WHERE(Status = CONST(Litigieuse));
                 }
                 action(Action1000000091)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Validation";
-                    RunPageView = WHERE(Status=CONST(AttentePaiement));
+                    RunPageView = WHERE(Status = CONST(AttentePaiement));
                 }
                 action(Action1000000090)
                 {
                     Caption = 'Historique Factures fournisseur';
                     RunObject = Page "Vendor Invoice List Validation";
-                    RunPageView = WHERE(Status=CONST(Payee));
+                    RunPageView = WHERE(Status = CONST(Payee));
                 }
             }
             group("Autres Traitement")
@@ -569,18 +569,10 @@ page 50368 "Purchasing Agent GDP-DF"
                     Caption = 'Posted Return Shipments';
                     RunObject = Page "Posted Return Shipments";
                 }
-                separator("Archives JIRAMA")
-                {
-                    Caption = 'Archives JIRAMA';
-                }
                 action("<Page Posted JIRAMA Forecast List>")
                 {
                     Caption = 'Prévisions de vente JIRAMA validées';
                     RunObject = Page "Posted JIRAMA Forecast List";
-                }
-                separator("Archives Cartes")
-                {
-                    Caption = 'Archives Cartes';
                 }
                 action("<Page Posted Moneytech Import List>")
                 {

@@ -10,20 +10,20 @@ page 50205 "Purchasing Agent GDP-APP"
             group(Control1900724808)
             {
                 ShowCaption = false;
-                part(Control1907662708;"Purchase Agent Activities")
+                part(Control1907662708; "Purchase Agent Activities")
                 {
                 }
-                part(Control1902476008;"My Vendors")
+                part(Control1902476008; "My Vendors")
                 {
                 }
             }
             group(Control1900724708)
             {
                 ShowCaption = false;
-                part(Control1905989608;"My Items")
+                part(Control1905989608; "My Items")
                 {
                 }
-                systempart(Control43;MyNotes)
+                systempart(Control43; MyNotes)
                 {
                 }
             }
@@ -36,13 +36,13 @@ page 50205 "Purchasing Agent GDP-APP"
         {
             action("Vendor - T&op 10 List")
             {
-                Caption = 'Vendor - T&op 10 List';
+                Caption = 'Vendor - Top 10 List';
                 Image = "Report";
                 RunObject = Report "Vendor - Top 10 List";
             }
             action("Vendor/&Item Purchases")
             {
-                Caption = 'Vendor/&Item Purchases';
+                Caption = 'Vendor/Item Purchases';
                 Image = "Report";
                 RunObject = Report "Vendor/Item Purchases";
             }
@@ -51,13 +51,13 @@ page 50205 "Purchasing Agent GDP-APP"
             }
             action("Inventory - &Availability Plan")
             {
-                Caption = 'Inventory - &Availability Plan';
+                Caption = 'Inventory - Availability Plan';
                 Image = ItemAvailability;
                 RunObject = Report "Inventory - Availability Plan";
             }
             action("Inventory - &Vendor Purchases")
             {
-                Caption = 'Inventory - &Vendor Purchases';
+                Caption = 'Inventory - Vendor Purchases';
                 Image = "Report";
                 RunObject = Report "Inventory - Vendor Purchases";
             }
@@ -75,7 +75,7 @@ page 50205 "Purchasing Agent GDP-APP"
                 Caption = 'Items';
                 Image = Item;
                 RunObject = Page "Item List";
-                RunPageView = WHERE(Type=CONST(Inventory));
+                RunPageView = WHERE(Type = CONST(Inventory));
             }
             action("<Page Location List>")
             {
@@ -92,37 +92,37 @@ page 50205 "Purchasing Agent GDP-APP"
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp1));
+                RunPageView = WHERE(Status = CONST(AttenteValResp1));
             }
             action(Action100000008)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp2));
+                RunPageView = WHERE(Status = CONST(AttenteValResp2));
             }
             action(Action100000007)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttenteValResp3));
+                RunPageView = WHERE(Status = CONST(AttenteValResp3));
             }
             action(Action100000002)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Litigieuse));
+                RunPageView = WHERE(Status = CONST(Litigieuse));
             }
             action(Action100000001)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(AttentePaiement));
+                RunPageView = WHERE(Status = CONST(AttentePaiement));
             }
             action(Action100000000)
             {
                 Caption = 'Historique Factures fournisseur';
                 RunObject = Page "Vendor Invoice List Validation";
-                RunPageView = WHERE(Status=CONST(Payee));
+                RunPageView = WHERE(Status = CONST(Payee));
             }
         }
         area(sections)
@@ -183,22 +183,22 @@ page 50205 "Purchasing Agent GDP-APP"
                 {
                     Caption = 'Item Journals';
                     RunObject = Page "Item Journal Batches";
-                    RunPageView = WHERE("Template Type"=CONST(Item),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST(Item),
+                                        Recurring = CONST(false));
                 }
                 action(Action1000000004)
                 {
                     Caption = 'Item Journals';
                     RunObject = Page "Item Journal Batches";
-                    RunPageView = WHERE("Template Type"=CONST("Phys. Inventory"),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST("Phys. Inventory"),
+                                        Recurring = CONST(false));
                 }
                 action("Requisition Worksheets")
                 {
                     Caption = 'Requisition Worksheets';
                     RunObject = Page "Req. Wksh. Names";
-                    RunPageView = WHERE("Template Type"=CONST("Req."),
-                                        Recurring=CONST(false));
+                    RunPageView = WHERE("Template Type" = CONST("Req."),
+                                        Recurring = CONST(false));
                 }
                 action("Page Item Invoiced Conso List2")
                 {
@@ -402,9 +402,9 @@ page 50205 "Purchasing Agent GDP-APP"
         {
             action("Purchase &Quote")
             {
-                Caption = 'Purchase &Quote';
+                Caption = 'Purchase Quote';
                 Image = Quote;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Purchase Quote";
@@ -412,9 +412,9 @@ page 50205 "Purchasing Agent GDP-APP"
             }
             action("Purchase &Invoice")
             {
-                Caption = 'Purchase &Invoice';
+                Caption = 'Purchase Invoice';
                 Image = Invoice;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Purchase Invoice";
@@ -422,9 +422,9 @@ page 50205 "Purchasing Agent GDP-APP"
             }
             action("Purchase &Order")
             {
-                Caption = 'Purchase &Order';
+                Caption = 'Purchase Order';
                 Image = Document;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Purchase Order";
@@ -432,9 +432,9 @@ page 50205 "Purchasing Agent GDP-APP"
             }
             action("Purchase &Return Order")
             {
-                Caption = 'Purchase &Return Order';
+                Caption = 'Purchase Return Order';
                 Image = ReturnOrder;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Purchase Return Order";
@@ -442,9 +442,9 @@ page 50205 "Purchasing Agent GDP-APP"
             }
             action("T&ransfer Order")
             {
-                Caption = 'T&ransfer Order';
+                Caption = 'Transfer Order';
                 Image = Document;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Transfer Order";
@@ -460,11 +460,11 @@ page 50205 "Purchasing Agent GDP-APP"
             }
             action("Requisition &Worksheet")
             {
-                Caption = 'Requisition &Worksheet';
+                Caption = 'Requisition Worksheet';
                 Image = Worksheet;
                 RunObject = Page "Req. Wksh. Names";
-                RunPageView = WHERE("Template Type"=CONST("Req."),
-                                    Recurring=CONST(false));
+                RunPageView = WHERE("Template Type" = CONST("Req."),
+                                    Recurring = CONST(false));
             }
             separator(History)
             {
@@ -473,7 +473,7 @@ page 50205 "Purchasing Agent GDP-APP"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

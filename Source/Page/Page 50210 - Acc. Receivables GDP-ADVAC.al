@@ -37,31 +37,31 @@ page 50210 "Acc. Receivables GDP-ADVAC"
         {
             action("C&ustomer - List")
             {
-                Caption = 'C&ustomer - List';
+                Caption = 'Customer - List';
                 Image = "Report";
                 RunObject = Report "Customer - List";
             }
             action("Customer - &Balance to Date")
             {
-                Caption = 'Customer - &Balance to Date';
+                Caption = 'Customer - Balance to Date';
                 Image = "Report";
                 RunObject = Report "Customer - Balance to Date";
             }
             action("Aged &Accounts Receivable")
             {
-                Caption = 'Aged &Accounts Receivable';
+                Caption = 'Aged Accounts Receivable';
                 Image = "Report";
                 RunObject = Report "Aged Accounts Receivable";
             }
             action("Customer - &Summary Aging Simp.")
             {
-                Caption = 'Customer - &Summary Aging Simp.';
+                Caption = 'Customer - Summary Aging Simp.';
                 Image = "Report";
                 RunObject = Report "Customer - Summary Aging Simp.";
             }
             action("Customer Trial Balan&ce")
             {
-                Caption = 'Customer Trial Balan&ce';
+                Caption = 'Customer Trial Balance';
                 RunObject = Report "Customer - Trial Balance";
             }
             action("Customer Detail Trial Balance")
@@ -72,7 +72,7 @@ page 50210 "Acc. Receivables GDP-ADVAC"
             }
             action("Cus&tomer/Item Sales")
             {
-                Caption = 'Cus&tomer/Item Sales';
+                Caption = 'Customer/Item Sales';
                 Image = "Report";
                 RunObject = Report "Customer/Item Sales";
             }
@@ -87,19 +87,19 @@ page 50210 "Acc. Receivables GDP-ADVAC"
             }
             action("Customer &Document Nos.")
             {
-                Caption = 'Customer &Document Nos.';
+                Caption = 'Customer Document Nos.';
                 Image = "Report";
                 RunObject = Report "Customer Document Nos.";
             }
             action("Sales &Invoice Nos.")
             {
-                Caption = 'Sales &Invoice Nos.';
+                Caption = 'Sales Invoice Nos.';
                 Image = "Report";
                 RunObject = Report "Sales Invoice Nos.";
             }
             action("Sa&les Credit Memo Nos.")
             {
-                Caption = 'Sa&les Credit Memo Nos.';
+                Caption = 'Sales Credit Memo Nos.';
                 Image = "Report";
                 RunObject = Report "Sales Credit Memo Nos.";
             }
@@ -212,10 +212,6 @@ page 50210 "Acc. Receivables GDP-ADVAC"
             group("Traitement des commandes")
             {
                 Caption = 'Traitement des commandes';
-                separator("Commande vente")
-                {
-                    Caption = 'Commande vente';
-                }
                 action("<Page Sales Order List>")
                 {
                     Caption = 'Sales Orders';
@@ -308,10 +304,6 @@ page 50210 "Acc. Receivables GDP-ADVAC"
             group(Facturation)
             {
                 Caption = 'Facturation';
-                separator(Separator1000000020)
-                {
-                    Caption = 'Commande vente';
-                }
                 action("Page Sales Order List - PartShipped2")
                 {
                     Caption = 'Sales Orders';
@@ -327,10 +319,6 @@ page 50210 "Acc. Receivables GDP-ADVAC"
                 {
                     Caption = 'Commandes vente partiellement facturées';
                     RunObject = Page "Sales Order List - PartInvoice";
-                }
-                separator(Cartes)
-                {
-                    Caption = 'Cartes';
                 }
                 action("<Page MoneyTech Trans Import List>")
                 {
@@ -377,7 +365,7 @@ page 50210 "Acc. Receivables GDP-ADVAC"
                 Caption = 'Reglement Client';
                 action("<Page General Journal Batches CC>")
                 {
-                    Caption = 'Cas&h Receipt Journal';
+                    Caption = 'Cash Receipt Journal';
                     Image = CashReceiptJournal;
                     RunObject = Page "General Journal Batches CCL";
                     RunPageView = WHERE("Template Type" = CONST("Cash Receipts"),
@@ -393,10 +381,6 @@ page 50210 "Acc. Receivables GDP-ADVAC"
             {
                 Caption = 'Posted Documents';
                 Image = FiledPosted;
-                separator("Documents validés")
-                {
-                    Caption = 'Documents validés';
-                }
                 action("Posted Sales Shipments")
                 {
                     Caption = 'Posted Sales Shipments';
@@ -421,10 +405,6 @@ page 50210 "Acc. Receivables GDP-ADVAC"
                     Image = PostedOrder;
                     RunObject = Page "Posted Sales Credit Memos";
                 }
-                separator("Archives Commande")
-                {
-                    Caption = 'Archives Commande';
-                }
                 action("<Page Sales Order List - Invoiced>")
                 {
                     Caption = 'Commandes vente facturées';
@@ -440,18 +420,10 @@ page 50210 "Acc. Receivables GDP-ADVAC"
                     Caption = 'Commandes vente soldées';
                     RunObject = Page "Sales Order List - Closed";
                 }
-                separator("Archives JIRAMA")
-                {
-                    Caption = 'Archives JIRAMA';
-                }
                 action("<Page Posted JIRAMA Forecast List>")
                 {
                     Caption = 'Prévisions de vente JIRAMA validées';
                     RunObject = Page "Posted JIRAMA Forecast List";
-                }
-                separator("Archives Cartes")
-                {
-                    Caption = 'Archives Cartes';
                 }
                 action("<Page Posted Moneytech Import List>")
                 {
@@ -535,9 +507,9 @@ page 50210 "Acc. Receivables GDP-ADVAC"
             }
             action("C&ustomer")
             {
-                Caption = 'C&ustomer';
+                Caption = 'Customer';
                 Image = Customer;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Customer Card";
@@ -545,13 +517,13 @@ page 50210 "Acc. Receivables GDP-ADVAC"
             }
             group("&Sales")
             {
-                Caption = '&Sales';
+                Caption = 'Sales';
                 Image = Sales;
                 action("Sales &Order")
                 {
-                    Caption = 'Sales &Order';
+                    Caption = 'Sales Order';
                     Image = Document;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Page "Sales Order";
@@ -559,9 +531,9 @@ page 50210 "Acc. Receivables GDP-ADVAC"
                 }
                 action("Sales &Invoice")
                 {
-                    Caption = 'Sales &Invoice';
+                    Caption = 'Sales Invoice';
                     Image = Invoice;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Page "Sales Invoice";
@@ -569,9 +541,9 @@ page 50210 "Acc. Receivables GDP-ADVAC"
                 }
                 action("Sales &Credit Memo")
                 {
-                    Caption = 'Sales &Credit Memo';
+                    Caption = 'Sales Credit Memo';
                     Image = CreditMemo;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Page "Sales Credit Memo";
@@ -581,7 +553,7 @@ page 50210 "Acc. Receivables GDP-ADVAC"
                 {
                     Caption = 'Sales &Fin. Charge Memo';
                     Image = FinChargeMemo;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Page "Finance Charge Memo";
@@ -589,9 +561,9 @@ page 50210 "Acc. Receivables GDP-ADVAC"
                 }
                 action("Sales &Reminder")
                 {
-                    Caption = 'Sales &Reminder';
+                    Caption = 'Sales Reminder';
                     Image = Reminder;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Page Reminder;
@@ -605,7 +577,7 @@ page 50210 "Acc. Receivables GDP-ADVAC"
             }
             action("Cash Receipt &Journal")
             {
-                Caption = 'Cash Receipt &Journal';
+                Caption = 'Cash Receipt Journal';
                 Image = CashReceiptJournal;
                 RunObject = Page "Cash Receipt Journal";
             }
@@ -640,14 +612,14 @@ page 50210 "Acc. Receivables GDP-ADVAC"
             }
             action("Combine Shi&pments")
             {
-                Caption = 'Combine Shi&pments';
+                Caption = 'Combine Shipments';
                 Ellipsis = true;
                 Image = "Action";
                 RunObject = Report "Combine Shipments";
             }
             action("Combine Return S&hipments")
             {
-                Caption = 'Combine Return S&hipments';
+                Caption = 'Combine Return Shipments';
                 Ellipsis = true;
                 Image = "Action";
                 RunObject = Report "Combine Return Receipts";
@@ -666,7 +638,7 @@ page 50210 "Acc. Receivables GDP-ADVAC"
             }
             action("Sales && Recei&vables Setup")
             {
-                Caption = 'Sales && Recei&vables Setup';
+                Caption = 'Sales and Receivables Setup';
                 Image = Setup;
                 RunObject = Page "Sales & Receivables Setup";
             }
@@ -677,7 +649,7 @@ page 50210 "Acc. Receivables GDP-ADVAC"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

@@ -231,7 +231,7 @@ page 50072 "Complex Transfer Order"
         {
             group("O&rder")
             {
-                Caption = 'O&rder';
+                Caption = 'Order';
                 Image = "Order";
                 action(Statistics)
                 {
@@ -245,7 +245,7 @@ page 50072 "Complex Transfer Order"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Inventory Comment Sheet";
                     RunPageLink = "Document Type" = CONST("Transfer Order"),
@@ -271,14 +271,14 @@ page 50072 "Complex Transfer Order"
                 Image = Documents;
                 action("S&hipments")
                 {
-                    Caption = 'S&hipments';
+                    Caption = 'Shipments';
                     Image = Shipment;
                     RunObject = Page "Posted Transfer Shipments";
                     RunPageLink = "Transfer Order No." = FIELD("No.");
                 }
                 action("Re&ceipts")
                 {
-                    Caption = 'Re&ceipts';
+                    Caption = 'Receipts';
                     Image = PostedReceipts;
                     RunObject = Page "Posted Transfer Receipts";
                     RunPageLink = "Transfer Order No." = FIELD("No.");
@@ -289,7 +289,7 @@ page 50072 "Complex Transfer Order"
         {
             action("&Print")
             {
-                Caption = '&Print';
+                Caption = 'Print';
                 Ellipsis = true;
                 Image = Print;
                 Promoted = true;
@@ -308,7 +308,7 @@ page 50072 "Complex Transfer Order"
                 Image = ReleaseDoc;
                 action("Re&lease")
                 {
-                    Caption = 'Re&lease';
+                    Caption = 'Release';
                     Image = ReleaseDoc;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -317,7 +317,7 @@ page 50072 "Complex Transfer Order"
                 }
                 action("Reo&pen")
                 {
-                    Caption = 'Reo&pen';
+                    Caption = 'Reopen';
                     Image = ReOpen;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -332,11 +332,11 @@ page 50072 "Complex Transfer Order"
             }
             group("P&osting")
             {
-                Caption = 'P&osting';
+                Caption = 'Posting';
                 Image = Post;
                 action("P&ost")
                 {
-                    Caption = 'P&ost';
+                    Caption = 'Post';
                     Ellipsis = true;
                     Image = PostOrder;
                     Promoted = true;

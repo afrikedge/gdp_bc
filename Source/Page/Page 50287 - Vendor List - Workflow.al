@@ -186,7 +186,7 @@ page 50287 "Vendor List - Workflow"
         {
             group("Ven&dor")
             {
-                Caption = 'Ven&dor';
+                Caption = 'Vendor';
                 Image = Vendor;
                 group(Dimensions)
                 {
@@ -230,7 +230,7 @@ page 50287 "Vendor List - Workflow"
                 action("C&ontact")
                 {
                     AccessByPermission = TableData Contact = R;
-                    Caption = 'C&ontact';
+                    Caption = 'Contact';
                     Image = ContactPerson;
 
                     trigger OnAction()
@@ -243,14 +243,14 @@ page 50287 "Vendor List - Workflow"
                 }
                 action("Order &Addresses")
                 {
-                    Caption = 'Order &Addresses';
+                    Caption = 'Order Addresses';
                     Image = Addresses;
                     RunObject = Page "Order Address List";
                     RunPageLink = "Vendor No." = FIELD("No.");
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Comment Sheet";
                     RunPageLink = "Table Name" = CONST(Vendor),
@@ -258,7 +258,7 @@ page 50287 "Vendor List - Workflow"
                 }
                 action("Cross Re&ferences")
                 {
-                    // Caption = 'Cross Re&ferences';
+                    // Caption = 'Cross References';
                     // Image = Change;
                     // RunObject = Page "Cross References";
                     // RunPageLink = "Cross-Reference Type"=CONST(Vendor),
@@ -271,7 +271,7 @@ page 50287 "Vendor List - Workflow"
             }
             group("&Purchases")
             {
-                Caption = '&Purchases';
+                Caption = 'Purchases';
                 Image = Purchasing;
                 action(Items)
                 {
@@ -283,7 +283,7 @@ page 50287 "Vendor List - Workflow"
                 }
                 action("Invoice &Discounts")
                 {
-                    Caption = 'Invoice &Discounts';
+                    Caption = 'Invoice Discounts';
                     Image = CalculateInvoiceDiscount;
                     RunObject = Page "Vend. Invoice Discounts";
                     RunPageLink = Code = FIELD("Invoice Disc. Code");
@@ -306,7 +306,7 @@ page 50287 "Vendor List - Workflow"
                 }
                 action("Prepa&yment Percentages")
                 {
-                    Caption = 'Prepa&yment Percentages';
+                    Caption = 'Prepayment Percentages';
                     Image = PrepaymentPercentages;
                     RunObject = Page "Purchase Prepmt. Percentages";
                     RunPageLink = "Vendor No." = FIELD("No.");
@@ -363,7 +363,7 @@ page 50287 "Vendor List - Workflow"
                 Image = History;
                 action("Ledger E&ntries")
                 {
-                    Caption = 'Ledger E&ntries';
+                    Caption = 'Ledger Entries';
                     Image = CustomerLedger;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -406,7 +406,7 @@ page 50287 "Vendor List - Workflow"
                 }
                 action("Statistics by C&urrencies")
                 {
-                    Caption = 'Statistics by C&urrencies';
+                    Caption = 'Statistics by Currencies';
                     Image = Currencies;
                     RunObject = Page "Vend. Stats. by Curr. Lines";
                     RunPageLink = "Vendor Filter" = FIELD("No."),
@@ -416,7 +416,7 @@ page 50287 "Vendor List - Workflow"
                 }
                 action("Item &Tracking Entries")
                 {
-                    Caption = 'Item &Tracking Entries';
+                    Caption = 'Item Tracking Entries';
                     Image = ItemTrackingLedger;
 
                     trigger OnAction()
@@ -434,7 +434,7 @@ page 50287 "Vendor List - Workflow"
             {
                 Caption = 'Blanket Purchase Order';
                 Image = BlanketOrder;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = New;
                 RunObject = Page "Blanket Purchase Order";
@@ -445,7 +445,7 @@ page 50287 "Vendor List - Workflow"
             {
                 Caption = 'Purchase Quote';
                 Image = Quote;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = New;
                 RunObject = Page "Purchase Quote";
@@ -476,7 +476,7 @@ page 50287 "Vendor List - Workflow"
             {
                 Caption = 'Purchase Credit Memo';
                 Image = CreditMemo;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = New;
                 RunObject = Page "Purchase Credit Memo";
@@ -487,7 +487,7 @@ page 50287 "Vendor List - Workflow"
             {
                 Caption = 'Purchase Return Order';
                 Image = ReturnOrder;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = New;
                 RunObject = Page "Purchase Return Order";
@@ -503,7 +503,7 @@ page 50287 "Vendor List - Workflow"
                 Image = SendApprovalRequest;
                 action(SendApprovalRequest)
                 {
-                    Caption = 'Send A&pproval Request';
+                    Caption = 'Send Approval Request';
                     Enabled = NOT OpenApprovalEntriesExist;
                     Image = SendApprovalRequest;
 
@@ -517,7 +517,7 @@ page 50287 "Vendor List - Workflow"
                 }
                 action(CancelApprovalRequest)
                 {
-                    Caption = 'Cancel Approval Re&quest';
+                    Caption = 'Cancel Approval Request';
                     Enabled = OpenApprovalEntriesExist;
                     Image = Cancel;
 
@@ -541,7 +541,7 @@ page 50287 "Vendor List - Workflow"
             {
                 Caption = 'Purchase Journal';
                 Image = Journals;
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 RunObject = Page "Purchase Journal";
@@ -570,7 +570,7 @@ page 50287 "Vendor List - Workflow"
                 {
                     Caption = 'Vendor - List';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Vendor - List";
@@ -579,7 +579,7 @@ page 50287 "Vendor List - Workflow"
                 {
                     Caption = 'Vendor Register';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Vendor Register";
@@ -588,7 +588,7 @@ page 50287 "Vendor List - Workflow"
                 {
                     Caption = 'Vendor Item Catalog';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Vendor Item Catalog";
@@ -597,7 +597,7 @@ page 50287 "Vendor List - Workflow"
                 {
                     Caption = 'Vendor - Labels';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Vendor - Labels";
@@ -627,7 +627,7 @@ page 50287 "Vendor List - Workflow"
                 {
                     Caption = 'Vendor - Order Detail';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Vendor - Order Detail";
@@ -649,7 +649,7 @@ page 50287 "Vendor List - Workflow"
                 {
                     Caption = 'Vendor/Item Purchases';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Vendor/Item Purchases";
@@ -658,7 +658,7 @@ page 50287 "Vendor List - Workflow"
                 {
                     Caption = 'Purchase Statistics';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Purchase Statistics";
@@ -680,7 +680,7 @@ page 50287 "Vendor List - Workflow"
                 {
                     Caption = 'Vendor - Summary Aging';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Vendor - Summary Aging";
@@ -705,7 +705,7 @@ page 50287 "Vendor List - Workflow"
                 {
                     Caption = 'Vendor - Trial Balance';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Vendor - Trial Balance";
@@ -714,7 +714,7 @@ page 50287 "Vendor List - Workflow"
                 {
                     Caption = 'Vendor - Detail Trial Balance';
                     Image = "Report";
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Report "Vendor - Detail Trial Balance";

@@ -330,7 +330,7 @@ page 50120 "Sales Order - workflow"
         {
             group("O&rder")
             {
-                Caption = 'O&rder';
+                Caption = 'Order';
                 Image = "Order";
                 action(Statistics)
                 {
@@ -376,7 +376,7 @@ page 50120 "Sales Order - workflow"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Sales Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
@@ -427,7 +427,7 @@ page 50120 "Sales Order - workflow"
                 action("S&hipments")
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'S&hipments';
+                    Caption = 'Shipments';
                     Image = Shipment;
                     RunObject = Page "Posted Sales Shipments";
                     RunPageLink = "Order No." = field("No.");
@@ -494,7 +494,7 @@ page 50120 "Sales Order - workflow"
                 Image = ReleaseDoc;
                 action(Release)
                 {
-                    Caption = 'Re&lease';
+                    Caption = 'Release';
                     Image = ReleaseDoc;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -520,7 +520,7 @@ page 50120 "Sales Order - workflow"
                 }
                 action("Re&open")
                 {
-                    Caption = 'Re&open';
+                    Caption = 'Reopen';
                     Image = ReOpen;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -548,11 +548,11 @@ page 50120 "Sales Order - workflow"
             }
             group("F&unctions")
             {
-                Caption = 'F&unctions';
+                Caption = 'Functions';
                 Image = "Action";
                 action(CalculateInvoiceDiscount)
                 {
-                    Caption = 'Calculate &Invoice Discount';
+                    Caption = 'Calculate Invoice Discount';
                     Image = CalculateInvoiceDiscount;
 
                     trigger OnAction()
@@ -563,7 +563,7 @@ page 50120 "Sales Order - workflow"
                 }
                 action("Get St&d. Cust. Sales Codes")
                 {
-                    Caption = 'Get St&d. Cust. Sales Codes';
+                    Caption = 'Get Std. Cust. Sales Codes';
                     Ellipsis = false;
                     Image = CustomerCode;
 
@@ -594,7 +594,7 @@ page 50120 "Sales Order - workflow"
                     Caption = 'Copy Document';
                     Ellipsis = true;
                     Image = CopyDocument;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
 
@@ -682,12 +682,12 @@ page 50120 "Sales Order - workflow"
             }
             group("P&osting")
             {
-                Caption = 'P&osting';
+                Caption = 'Posting';
                 Image = Post;
                 action(Post)
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'P&ost';
+                    Caption = 'Post';
                     Ellipsis = true;
                     Image = PostOrder;
                     ShortCutKey = 'F9';
@@ -729,7 +729,7 @@ page 50120 "Sales Order - workflow"
                 }
                 // action("Post and &Print")
                 // {
-                //     Caption = 'Post and &Print';
+                //     Caption = 'Post and Print';
                 //     Ellipsis = true;
                 //     Image = PostPrint;
                 //     Promoted = true;
@@ -768,7 +768,7 @@ page 50120 "Sales Order - workflow"
                 }
                 // action("Post &Batch")
                 // {
-                //     Caption = 'Post &Batch';
+                //     Caption = 'Post Batch';
                 //     Ellipsis = true;
                 //     Image = PostBatch;
 
@@ -781,7 +781,7 @@ page 50120 "Sales Order - workflow"
             }
             group("&Order Confirmation")
             {
-                Caption = '&Order Confirmation';
+                Caption = 'Order Confirmation';
                 Image = Email;
                 action("Email Confirmation")
                 {

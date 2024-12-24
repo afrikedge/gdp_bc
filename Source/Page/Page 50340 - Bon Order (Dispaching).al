@@ -153,7 +153,7 @@ page 50340 "Bon Order (Dispaching)"
         {
             action(Post)
             {
-                Caption = 'P&ost';
+                Caption = 'Post';
                 Ellipsis = true;
                 Image = PostOrder;
                 Promoted = true;

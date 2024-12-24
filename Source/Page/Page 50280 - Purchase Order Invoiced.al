@@ -170,7 +170,7 @@ page 50280 "Purchase Order Invoiced"
         {
             group("Ver&sion")
             {
-                Caption = 'Ver&sion';
+                Caption = 'Version';
                 Image = Versions;
                 action(Dimensions)
                 {
@@ -186,7 +186,7 @@ page 50280 "Purchase Order Invoiced"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Purch. Archive Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),

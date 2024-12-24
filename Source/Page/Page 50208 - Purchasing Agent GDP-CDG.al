@@ -36,13 +36,13 @@ page 50208 "Purchasing Agent GDP-CDG"
         {
             action("Vendor - T&op 10 List")
             {
-                Caption = 'Vendor - T&op 10 List';
+                Caption = 'Vendor - Top 10 List';
                 Image = "Report";
                 RunObject = Report "Vendor - Top 10 List";
             }
             action("Vendor/&Item Purchases")
             {
-                Caption = 'Vendor/&Item Purchases';
+                Caption = 'Vendor/Item Purchases';
                 Image = "Report";
                 RunObject = Report "Vendor/Item Purchases";
             }
@@ -192,7 +192,7 @@ page 50208 "Purchasing Agent GDP-CDG"
         {
             group("Analytique & Budget")
             {
-                Caption = 'Analytique & Budget';
+                Caption = 'Analytique et Budget';
                 action("<Page Dimensions>")
                 {
                     Caption = 'Axes analytiques';
@@ -491,10 +491,6 @@ page 50208 "Purchasing Agent GDP-CDG"
                     Caption = 'Posted Return Shipments';
                     RunObject = Page "Posted Return Shipments";
                 }
-                separator("Archives Commande")
-                {
-                    Caption = 'Archives Commande';
-                }
                 action("<Page Sales Order List - Invoiced>")
                 {
                     Caption = 'Commandes vente facturées';
@@ -577,7 +573,7 @@ page 50208 "Purchasing Agent GDP-CDG"
             }
             action("Navi&gate")
             {
-                Caption = 'Navi&gate';
+                Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }

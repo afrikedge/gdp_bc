@@ -97,7 +97,7 @@ page 50265 "Bank Account List Admin"
         {
             group("&Bank Acc.")
             {
-                Caption = '&Bank Acc.';
+                Caption = 'Bank Acc.';
                 Image = Bank;
                 action(Statistics)
                 {
@@ -114,7 +114,7 @@ page 50265 "Bank Account List Admin"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Comment Sheet";
                     RunPageLink = "Table Name" = CONST("Bank Account"),
@@ -176,16 +176,16 @@ page 50265 "Bank Account List Admin"
                 }
                 action(Statements)
                 {
-                    Caption = 'St&atements';
+                    Caption = 'Statements';
                     Image = List;
                     RunObject = Page "Bank Account Statement List";
                     RunPageLink = "Bank Account No." = FIELD("No.");
                 }
                 action("Ledger E&ntries")
                 {
-                    Caption = 'Ledger E&ntries';
+                    Caption = 'Ledger Entries';
                     Image = BankAccountLedger;
-                    Promoted = false;
+
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
                     RunObject = Page "Bank Account Ledger Entries";
@@ -195,7 +195,7 @@ page 50265 "Bank Account List Admin"
                 }
                 action("Chec&k Ledger Entries")
                 {
-                    Caption = 'Chec&k Ledger Entries';
+                    Caption = 'Check Ledger Entries';
                     Image = CheckLedger;
                     RunObject = Page "Check Ledger Entries";
                     RunPageLink = "Bank Account No." = FIELD("No.");
@@ -203,7 +203,7 @@ page 50265 "Bank Account List Admin"
                 }
                 action("C&ontact")
                 {
-                    Caption = 'C&ontact';
+                    Caption = 'Contact';
                     Image = ContactPerson;
 
                     trigger OnAction()
@@ -235,7 +235,7 @@ page 50265 "Bank Account List Admin"
             {
                 Caption = 'Check Details';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Bank Account - Check Details";
@@ -252,7 +252,7 @@ page 50265 "Bank Account List Admin"
             {
                 Caption = 'Trial Balance';
                 Image = "Report";
-                Promoted = false;
+
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = "Report";
                 RunObject = Report "Trial Balance";

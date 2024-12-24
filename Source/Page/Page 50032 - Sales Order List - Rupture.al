@@ -196,7 +196,7 @@ page 50032 "Sales Order List - Rupture"
         {
             group("O&rder")
             {
-                Caption = 'O&rder';
+                Caption = 'Order';
                 Image = "Order";
                 action(Dimensions)
                 {
@@ -225,7 +225,7 @@ page 50032 "Sales Order List - Rupture"
                 }
                 action("A&pprovals")
                 {
-                    Caption = 'A&pprovals';
+                    Caption = 'Approvals';
                     Image = Approvals;
 
                     trigger OnAction()
@@ -238,7 +238,7 @@ page 50032 "Sales Order List - Rupture"
                 }
                 action("Co&mments")
                 {
-                    Caption = 'Co&mments';
+                    Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Sales Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
@@ -252,7 +252,7 @@ page 50032 "Sales Order List - Rupture"
                 Image = Documents;
                 action("S&hipments")
                 {
-                    Caption = 'S&hipments';
+                    Caption = 'Shipments';
                     Image = Shipment;
                     RunObject = Page "Posted Sales Shipments";
                     RunPageLink = "Order No." = FIELD("No.");
@@ -268,7 +268,7 @@ page 50032 "Sales Order List - Rupture"
                 }
                 action("Prepa&yment Invoices")
                 {
-                    Caption = 'Prepa&yment Invoices';
+                    Caption = 'Prepayment Invoices';
                     Image = PrepaymentInvoice;
                     RunObject = Page "Posted Sales Invoices";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
@@ -276,7 +276,7 @@ page 50032 "Sales Order List - Rupture"
                 }
                 action("Prepayment Credi&t Memos")
                 {
-                    Caption = 'Prepayment Credi&t Memos';
+                    Caption = 'Prepayment Credit Memos';
                     Image = PrepaymentCreditMemo;
                     RunObject = Page "Posted Sales Credit Memos";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
@@ -292,7 +292,7 @@ page 50032 "Sales Order List - Rupture"
                 Image = ReleaseDoc;
                 action(Release)
                 {
-                    Caption = 'Re&lease';
+                    Caption = 'Release';
                     Image = ReleaseDoc;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -307,7 +307,7 @@ page 50032 "Sales Order List - Rupture"
                 }
                 action(Reopen)
                 {
-                    Caption = 'Re&open';
+                    Caption = 'Reopen';
                     Image = ReOpen;
                     Promoted = true;
                     PromotedCategory = Process;
