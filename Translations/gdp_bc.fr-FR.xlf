@@ -2501,7 +2501,7 @@
         </trans-unit>
         <trans-unit id="Table 2856680211 - Field 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AMSA Inv. Post Buffer - Field Process - Property Caption</note>
         </trans-unit>
@@ -2621,7 +2621,7 @@
         </trans-unit>
         <trans-unit id="Table 3605963915 - Field 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AMSA Invoice Line - Field Process - Property Caption</note>
         </trans-unit>
@@ -2693,7 +2693,7 @@
         </trans-unit>
         <trans-unit id="Table 314079622 - Field 3765884392 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Per Process</source>
-          <target state="needs-review-translation">Par Process</target>
+          <target state="needs-review-translation">Par traitement</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AMSA Invoicing Configuration - Field Per Process - Property Caption</note>
         </trans-unit>
@@ -4613,7 +4613,7 @@
         </trans-unit>
         <trans-unit id="Table 1970185060 - Field 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Fuel Statement Header - Field Process - Property Caption</note>
         </trans-unit>
@@ -4781,7 +4781,7 @@
         </trans-unit>
         <trans-unit id="Table 79279051 - Field 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Fuel Statement Line - Field Process - Property Caption</note>
         </trans-unit>
@@ -5141,7 +5141,7 @@
         </trans-unit>
         <trans-unit id="Table 2603743758 - Field 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Import Fuel Statement - Field Process - Property Caption</note>
         </trans-unit>
@@ -8375,7 +8375,7 @@
         </trans-unit>
         <trans-unit id="Table 2085724228 - Field 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted AMSA Invoice Line - Field Process - Property Caption</note>
         </trans-unit>
@@ -8561,7 +8561,7 @@
         </trans-unit>
         <trans-unit id="Table 147240210 - Field 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted Fuel Statement - Field Process - Property Caption</note>
         </trans-unit>
@@ -8729,7 +8729,7 @@
         </trans-unit>
         <trans-unit id="Table 618901012 - Field 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted Fuel Statement Line - Field Process - Property Caption</note>
         </trans-unit>
@@ -9533,7 +9533,7 @@
         </trans-unit>
         <trans-unit id="Table 4248566002 - Field 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted Purchase Requisition - Field Process - Property Caption</note>
         </trans-unit>
@@ -12971,7 +12971,7 @@
         </trans-unit>
         <trans-unit id="Table 3558045537 - Field 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requisition - Field Process - Property Caption</note>
         </trans-unit>
@@ -43787,7 +43787,7 @@
         </trans-unit>
         <trans-unit id="Page 3373396442 - Action 662518577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action TraiterCommande - Property Caption</note>
         </trans-unit>
@@ -44111,7 +44111,7 @@
         </trans-unit>
         <trans-unit id="Page 2802597164 - Action 662518577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action TraiterCommande - Property Caption</note>
         </trans-unit>
@@ -44261,7 +44261,7 @@
         </trans-unit>
         <trans-unit id="Page 1535004187 - Action 662518577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order List - Blocked - Action TraiterCommande - Property Caption</note>
         </trans-unit>
@@ -44393,7 +44393,7 @@
         </trans-unit>
         <trans-unit id="Page 1228872856 - Action 662518577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order List - Draft - Action TraiterCommande - Property Caption</note>
         </trans-unit>
@@ -44507,7 +44507,7 @@
         </trans-unit>
         <trans-unit id="Page 1360462022 - Action 662518577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order List - NC Prices - Action TraiterCommande - Property Caption</note>
         </trans-unit>
@@ -44669,7 +44669,7 @@
         </trans-unit>
         <trans-unit id="Page 3299674521 - Action 662518577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order List - PartInvoice - Action TraiterCommande - Property Caption</note>
         </trans-unit>
@@ -44945,7 +44945,7 @@
         </trans-unit>
         <trans-unit id="Page 780793487 - Action 662518577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order List - PartShipped - Action TraiterCommande - Property Caption</note>
         </trans-unit>
@@ -45149,7 +45149,7 @@
         </trans-unit>
         <trans-unit id="Page 2664479830 - Action 662518577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order List - Pending SO - Action TraiterCommande - Property Caption</note>
         </trans-unit>
@@ -45239,7 +45239,7 @@
         </trans-unit>
         <trans-unit id="Page 228582736 - Action 662518577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order List - Prices val - Action TraiterCommande - Property Caption</note>
         </trans-unit>
@@ -45329,7 +45329,7 @@
         </trans-unit>
         <trans-unit id="Page 2842145876 - Action 662518577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order List - Rupture - Action TraiterCommande - Property Caption</note>
         </trans-unit>
@@ -45491,7 +45491,7 @@
         </trans-unit>
         <trans-unit id="Page 155959798 - Action 662518577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order List - Shipped - Action TraiterCommande - Property Caption</note>
         </trans-unit>
@@ -45773,7 +45773,7 @@
         </trans-unit>
         <trans-unit id="Page 2202734300 - Action 662518577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order List - To Ship - Action TraiterCommande - Property Caption</note>
         </trans-unit>
@@ -46403,7 +46403,7 @@
         </trans-unit>
         <trans-unit id="Page 1547954766 - Action 911461569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice Card Encours - Action TraiterFacture - Property Caption</note>
         </trans-unit>
@@ -46439,7 +46439,7 @@
         </trans-unit>
         <trans-unit id="Page 2240455647 - Action 911461569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice Card Saisie - Action TraiterFacture - Property Caption</note>
         </trans-unit>
@@ -55817,7 +55817,7 @@
         </trans-unit>
         <trans-unit id="Report 2660643946 - ReportLabel 1866770775" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Facture AMSA Fixe - ReportLabel ProcessLabel</note>
         </trans-unit>
@@ -55985,7 +55985,7 @@
         </trans-unit>
         <trans-unit id="Report 2019812048 - ReportLabel 1866770775" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
-          <target state="needs-review-translation">Process</target>
+          <target state="needs-review-translation">Traiter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Facture AMSA Mobile - ReportLabel ProcessLabel</note>
         </trans-unit>
