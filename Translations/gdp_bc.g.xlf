@@ -11239,7 +11239,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Channel - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3127719954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sales Order Payment Doc</source>
+          <source>Credit notes / payment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Property Caption</note>
         </trans-unit>
@@ -47064,7 +47064,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Cession - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 1062809799 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Asset - Acquisition List</source>
+          <source>FICHE DE CESSION D'IMMOBILISATION</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Cession - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>
@@ -47489,7 +47489,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Mise en Serv - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 2975634692 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Asset - Acquisition List</source>
+          <source>FICHE DE DEMANDE DE MISE EN SERVICE IMMOBILISATION</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Mise en Serv - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>
@@ -47679,7 +47679,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Rebut - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 2252100905 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Asset - Acquisition List</source>
+          <source>FICHE DE MISE EN REBUT D'IMMOBILISATION</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Rebut - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>
@@ -47904,7 +47904,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Transf - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 1175044625 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Asset - Acquisition List</source>
+          <source>FICHE DE TRANSFERT D'IMMOBILISATION</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Transf - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>
@@ -60599,7 +60599,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Dispatching Status - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 563036308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
-          <source>Credit Notes Amount</source>
+          <source>Credit notes / payment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field GD1 Credit Notes Amount - Property Caption</note>
         </trans-unit>
