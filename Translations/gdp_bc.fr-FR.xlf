@@ -26405,7 +26405,7 @@
         </trans-unit>
         <trans-unit id="Page 2415739284 - Action 2282416948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Bon Order (Dispaching) - Action Post - Property Caption</note>
         </trans-unit>
@@ -26825,7 +26825,7 @@
         </trans-unit>
         <trans-unit id="Page 3832416084 - Action 2282416948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cash Receipt Journal CCL - Action Post - Property Caption</note>
         </trans-unit>
@@ -27569,7 +27569,7 @@
         </trans-unit>
         <trans-unit id="Page 639899059 - Action 4236135242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Complex Transfer List - Action P&amp;ost - Property Caption</note>
         </trans-unit>
@@ -43511,7 +43511,7 @@
         </trans-unit>
         <trans-unit id="Page 3488146948 - Action 2282416948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Received Purchase Order List - Action Post - Property Caption</note>
         </trans-unit>
@@ -43643,7 +43643,7 @@
         </trans-unit>
         <trans-unit id="Page 3654753196 - Action 2282416948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Removal Order - Action Post - Property Caption</note>
         </trans-unit>
@@ -43871,7 +43871,7 @@
         </trans-unit>
         <trans-unit id="Page 3373396442 - Action 3129426293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Post3 - Property Caption</note>
         </trans-unit>
@@ -44207,7 +44207,7 @@
         </trans-unit>
         <trans-unit id="Page 2802597164 - Action 2282416948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Post - Property Caption</note>
         </trans-unit>
