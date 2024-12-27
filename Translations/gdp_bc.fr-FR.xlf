@@ -13487,7 +13487,7 @@
         </trans-unit>
         <trans-unit id="Table 3127719954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Credit notes / payment</source>
-          <target state="needs-adaptation">Document de paiement de commande client</target>
+          <target state="needs-adaptation">Notes de crédit/Paiement</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Property Caption</note>
         </trans-unit>
@@ -72719,7 +72719,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 563036308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Credit notes / payment</source>
-          <target state="needs-adaptation">Credit Notes Amount</target>
+          <target state="needs-adaptation">Notes de crédit/Paiement</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field GD1 Credit Notes Amount - Property Caption</note>
         </trans-unit>
