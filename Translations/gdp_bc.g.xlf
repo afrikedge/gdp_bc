@@ -11258,6 +11258,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Paid Amount - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3127719954 - Field 231998036 - Method 2126772001 - NamedType 3024544721" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The amount to be paid must not exceed the open amount %1</source>
+          <note from="Developer" annotates="general" priority="2">%1</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Paid Amount - Method OnValidate - NamedType ErrLbl</note>
+        </trans-unit>
         <trans-unit id="Table 3127719954 - Field 4045552997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pay Doc Entry No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -36493,15 +36498,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action ActionGroup21 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3373396442 - Action 530829447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Reopen</source>
+        <trans-unit id="Page 3373396442 - Action 4032263875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Release the document to the next stage of processing. You must reopen the document before you can make changes to it.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Re&amp;open - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Release - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3373396442 - Action 4032263875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Release</source>
+          <source>Re&amp;lease</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Release - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3373396442 - Action 2071937805 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reopen the document to change it after it has been approved. Approved documents have the Released status and must be opened before they can be changed.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Reopen - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3373396442 - Action 2071937805 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Re&amp;open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Reopen - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3373396442 - Action 3106002577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Functions</source>
@@ -36733,15 +36748,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action DebloquerCde - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2802597164 - Action 530829447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Reopen</source>
+        <trans-unit id="Page 2802597164 - Action 4032263875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Release the document to the next stage of processing. You must reopen the document before you can make changes to it.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Re&amp;open - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Release - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2802597164 - Action 4032263875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Release</source>
+          <source>Re&amp;lease</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Release - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 2071937805 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reopen the document to change it after it has been approved. Approved documents have the Released status and must be opened before they can be changed.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Reopen - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 2071937805 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Re&amp;open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Reopen - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2802597164 - Action 3106002577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Functions</source>
