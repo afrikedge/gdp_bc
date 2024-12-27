@@ -475,11 +475,18 @@ codeunit 50032 "EventsSubscribers Code"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterInsertPostedHeaders', '', true, true)]
     local procedure PurchPost_OnAfterInsertPostedHeaders(var PurchaseHeader: Record "Purchase Header"; var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchInvHeader: Record "Purch. Inv. Header"; var PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr."; var ReturnShptHeader: Record "Return Shipment Header"; var PurchSetup: Record "Purchases & Payables Setup"; var Window: Dialog)
     var
+        Cargo: record Cargo;
         AFK_Prov_Mgt: Codeunit "Provisions Cde Mgt";
         AFKVendInvMgt: Codeunit VendorInvoiceMgt;
         TextAFK002: label 'Le code fournisseur à payer %1 ne doit pas être différent de code fournisseur';
     begin
         //AddOnSetup.GET;
+        IF PurchaseHeader.Receive THEN
+            if (Cargo.Get(PurchaseHeader."Ref Cargo")) then
+                if (PurchaseHeader."Currency Factor" <> 0) then begin
+                    Cargo."Exchange Rate" := (1 / PurchaseHeader."Currency Factor");
+                    Cargo.Modify();
+                end;
 
         IF PurchaseHeader."Document Type" = PurchaseHeader."Document Type"::Invoice THEN
             IF PurchaseHeader."Created By Doc Type" = PurchaseHeader."Created By Doc Type"::ProvisionsFA THEN
