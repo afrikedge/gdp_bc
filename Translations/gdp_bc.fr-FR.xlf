@@ -10115,7 +10115,7 @@
         </trans-unit>
         <trans-unit id="Table 259130890 - Field 507920137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tour ID</source>
-          <target state="needs-review-translation">ID visite</target>
+          <target state="needs-review-translation">ID tournée</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_enteteBE - Field idtournee - Property Caption</note>
         </trans-unit>

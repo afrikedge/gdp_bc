@@ -11813,6 +11813,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Touring Product Entry - Field OrderNo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 539616213 - Field 1666719283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Real Shipped Volume</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Touring Product Entry - Field Real Shipped Volume - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 539616213 - Field 199999316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Status</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -22833,6 +22838,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Chart of Accounts ADMIN - Action Trial Balance by Period - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2711635030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Compartment Loading</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Loading - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2711635030 - Control 332802016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Loading - Control ItemNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2711635030 - Control 1666719283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume shipped</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Loading - Control Real Shipped Volume - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2711635030 - Control 1307873908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume to ship</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Loading - Control Volume - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 744255506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Compartment Subform</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -23327,6 +23352,11 @@
           <source>&amp;Navigate</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Confirmed Bon Order - Action &amp;Navigate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 26120338 - Action 1017188834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Chargement</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Confirmed Bon Order - Action Loading - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1991578168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines</source>
