@@ -235,7 +235,7 @@ report 50017 "Fixed Asset - Mise en Serv"
         Text001: Label 'You must specify a Starting Date.';
         Text002: Label 'You must specify an Ending Date.';
         Text003: Label 'You must specify an Ending Date that is later than the Starting Date.';
-        FixedAssetAcqListCptnLbl: Label 'Fixed Asset - Acquisition List';
+        FixedAssetAcqListCptnLbl: Label 'FICHE DE DEMANDE DE MISE EN SERVICE IMMOBILISATION';
         CurrReportPageNoCaptionLbl: Label 'Page';
         FADeprBkAcquisitionDtCptnLbl: Label 'Acquisition Date';
         MarqueCaptionLbl: Label 'MARQUE';

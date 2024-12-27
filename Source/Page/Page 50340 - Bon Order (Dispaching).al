@@ -191,19 +191,30 @@ page 50340 "Bon Order (Dispaching)"
 
                 trigger OnAction()
                 var
-                    BonLoading: record BonLoading;
-                    BonLoadingList: page "Bon Loading";
-
+                    //BonLoading: record BonLoading;
+                    //BonLoadingList: page "Bon Loading";
+                    BonLoading: record "Touring Product Entry";
+                    BonLoadingList: page "Compartment Loading";
                 begin
+                    // BonLoading.Reset();
+                    // BonLoading.SetRange(numBE, Rec.numBE);
+
+                    // BonLoadingList.SetTableView(BonLoading);
+                    // BonLoadingList.SetRecord(BonLoading);
+                    // BonLoadingList.LookupMode(true);
+                    // if (BonLoadingList.RunModal() = Action::OK) then begin
+                    // end;
+
                     BonLoading.Reset();
-                    BonLoading.SetRange(numBE, Rec.numBE);
+                    //IdTouring,OrderNo,Immatriculation
+                    BonLoading.SetRange(BonLoading.IdTouring, Rec.idtournee);
+                    BonLoading.SetRange(BonLoading.OrderNo, Rec.NavOrderNo);
+                    BonLoading.SetRange(BonLoading.Immatriculation, Rec.codemoyentransport);
 
                     BonLoadingList.SetTableView(BonLoading);
                     BonLoadingList.SetRecord(BonLoading);
                     BonLoadingList.LookupMode(true);
-                    if (BonLoadingList.RunModal() = Action::OK) then begin
-
-                    end;
+                    if (BonLoadingList.RunModal() = Action::OK) then;
                 end;
             }
             action(CreateBL)

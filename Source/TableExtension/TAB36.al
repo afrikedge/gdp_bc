@@ -372,7 +372,7 @@ tableextension 50011 "A02 Sales Header" extends "Sales Header"
             FieldClass = FlowField;
             CalcFormula = Sum("Sales Order Pay Doc"."Paid Amount" WHERE("Customer No." = FIELD("Sell-to Customer No."),
                                                            "Document No." = FIELD("No.")));
-            Caption = 'Credit Notes Amount';
+            Caption = 'Credit notes / payment';
             Editable = false;
         }
     }

@@ -10115,7 +10115,7 @@
         </trans-unit>
         <trans-unit id="Table 259130890 - Field 507920137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tour ID</source>
-          <target state="needs-review-translation">ID visite</target>
+          <target state="needs-review-translation">ID tournée</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_enteteBE - Field idtournee - Property Caption</note>
         </trans-unit>
@@ -13486,8 +13486,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Channel - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3127719954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sales Order Payment Doc</source>
-          <target state="needs-review-translation">Document de paiement de commande client</target>
+          <source>Credit notes / payment</source>
+          <target state="needs-adaptation">Notes de crédit/Paiement</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Property Caption</note>
         </trans-unit>
@@ -13508,6 +13508,12 @@
           <target state="needs-review-translation">Montant payé</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Paid Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3127719954 - Field 231998036 - Method 2126772001 - NamedType 3024544721" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The amount to be paid must not exceed the open amount %1</source>
+          <target state="needs-review-translation">Le montant à payer ne doit pas dépasser le montant ouvert du document %1</target>
+          <note from="Developer" annotates="general" priority="2">%1</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Paid Amount - Method OnValidate - NamedType ErrLbl</note>
         </trans-unit>
         <trans-unit id="Table 3127719954 - Field 4045552997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pay Doc Entry No.</source>
@@ -14174,6 +14180,12 @@
           <target state="needs-review-translation">Numéro de commande</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Touring Product Entry - Field OrderNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 539616213 - Field 1666719283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Real Shipped Volume</source>
+          <target state="needs-review-translation">Volume livré réel</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Touring Product Entry - Field Real Shipped Volume - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 539616213 - Field 199999316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Status</source>
@@ -26393,7 +26405,7 @@
         </trans-unit>
         <trans-unit id="Page 2415739284 - Action 2282416948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Bon Order (Dispaching) - Action Post - Property Caption</note>
         </trans-unit>
@@ -26813,7 +26825,7 @@
         </trans-unit>
         <trans-unit id="Page 3832416084 - Action 2282416948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cash Receipt Journal CCL - Action Post - Property Caption</note>
         </trans-unit>
@@ -27399,6 +27411,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Chart of Accounts ADMIN - Action Trial Balance by Period - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2711635030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Compartment Loading</source>
+          <target state="needs-review-translation">Chargement par compartiment</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Loading - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2711635030 - Control 332802016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <target state="needs-review-translation">N° Article</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Loading - Control ItemNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2711635030 - Control 1666719283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume shipped</source>
+          <target state="needs-review-translation">Volume livré</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Loading - Control Real Shipped Volume - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2711635030 - Control 1307873908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume to ship</source>
+          <target state="needs-review-translation">Volume à livrer</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Loading - Control Volume - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 744255506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Compartment Subform</source>
           <target state="needs-review-translation">Compartment Subform</target>
@@ -27533,7 +27569,7 @@
         </trans-unit>
         <trans-unit id="Page 639899059 - Action 4236135242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Complex Transfer List - Action P&amp;ost - Property Caption</note>
         </trans-unit>
@@ -27992,6 +28028,12 @@
           <target state="needs-review-translation">Na&amp;viguer</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Confirmed Bon Order - Action &amp;Navigate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 26120338 - Action 1017188834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Chargement</source>
+          <target state="needs-review-translation">Chargement</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Confirmed Bon Order - Action Loading - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1991578168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines</source>
@@ -43469,7 +43511,7 @@
         </trans-unit>
         <trans-unit id="Page 3488146948 - Action 2282416948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Received Purchase Order List - Action Post - Property Caption</note>
         </trans-unit>
@@ -43601,7 +43643,7 @@
         </trans-unit>
         <trans-unit id="Page 3654753196 - Action 2282416948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Removal Order - Action Post - Property Caption</note>
         </trans-unit>
@@ -43755,17 +43797,29 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action ActionGroup21 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3373396442 - Action 530829447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Reopen</source>
-          <target state="needs-review-translation">Rouvrir</target>
+        <trans-unit id="Page 3373396442 - Action 4032263875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Release the document to the next stage of processing. You must reopen the document before you can make changes to it.</source>
+          <target state="needs-review-translation">Transférez le document vers l'étape suivante du traitement. Vous devez rouvrir le document avant de pouvoir y apporter des modifications.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Re&amp;open - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Release - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3373396442 - Action 4032263875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Release</source>
-          <target state="needs-review-translation">Lancer</target>
+          <source>Re&amp;lease</source>
+          <target state="needs-adaptation">Lancer</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Release - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3373396442 - Action 2071937805 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reopen the document to change it after it has been approved. Approved documents have the Released status and must be opened before they can be changed.</source>
+          <target state="needs-review-translation">Rouvrez le document pour le modifier après son approbation. Les documents approuvés ont le statut Lancé et doivent être ouverts avant de pouvoir être modifiés.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Reopen - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3373396442 - Action 2071937805 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Re&amp;open</source>
+          <target state="needs-review-translation">Rouvrir</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Reopen - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3373396442 - Action 3106002577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Functions</source>
@@ -43817,7 +43871,7 @@
         </trans-unit>
         <trans-unit id="Page 3373396442 - Action 3129426293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Post3 - Property Caption</note>
         </trans-unit>
@@ -44043,17 +44097,29 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action DebloquerCde - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2802597164 - Action 530829447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Reopen</source>
-          <target state="needs-review-translation">Rouvrir</target>
+        <trans-unit id="Page 2802597164 - Action 4032263875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Release the document to the next stage of processing. You must reopen the document before you can make changes to it.</source>
+          <target state="needs-review-translation">Transférez le document vers l'étape suivante du traitement. Vous devez rouvrir le document avant de pouvoir y apporter des modifications.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Re&amp;open - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Release - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2802597164 - Action 4032263875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Release</source>
-          <target state="needs-review-translation">Lancer</target>
+          <source>Re&amp;lease</source>
+          <target state="needs-adaptation">Lancer</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Release - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 2071937805 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reopen the document to change it after it has been approved. Approved documents have the Released status and must be opened before they can be changed.</source>
+          <target state="needs-review-translation">Rouvrez le document pour le modifier après son approbation. Les documents approuvés ont le statut Lancé et doivent être ouverts avant de pouvoir être modifiés.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Reopen - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 2071937805 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Re&amp;open</source>
+          <target state="needs-review-translation">Rouvrir</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Reopen - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2802597164 - Action 3106002577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Functions</source>
@@ -44141,7 +44207,7 @@
         </trans-unit>
         <trans-unit id="Page 2802597164 - Action 2282416948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post</source>
-          <target state="needs-review-translation">Comptabilisation</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Post - Property Caption</note>
         </trans-unit>
@@ -48905,7 +48971,7 @@
         </trans-unit>
         <trans-unit id="Report 2798447097 - NamedType 2939533186" size-unit="char" translate="yes" xml:space="preserve">
           <source>''</source>
-          <target state="needs-review-translation"></target>
+          <target state="needs-review-translation">''</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Calculate Inventory Value BCK - NamedType Text012</note>
         </trans-unit>
@@ -56410,8 +56476,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Cession - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 1062809799 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Asset - Acquisition List</source>
-          <target state="needs-review-translation">Immo. - Liste des acquisitions</target>
+          <source>FICHE DE CESSION D'IMMOBILISATION</source>
+          <target state="needs-adaptation">FICHE DE CESSION D'IMMOBILISATION</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Cession - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>
@@ -56920,8 +56986,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Mise en Serv - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 2975634692 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Asset - Acquisition List</source>
-          <target state="needs-review-translation">Immo. - Liste des acquisitions</target>
+          <source>FICHE DE DEMANDE DE MISE EN SERVICE IMMOBILISATION</source>
+          <target state="needs-adaptation">FICHE DE DEMANDE DE MISE EN SERVICE IMMOBILISATION</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Mise en Serv - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>
@@ -57148,8 +57214,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Rebut - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 2252100905 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Asset - Acquisition List</source>
-          <target state="needs-review-translation">Immo. - Liste des acquisitions</target>
+          <source>FICHE DE MISE EN REBUT D'IMMOBILISATION</source>
+          <target state="needs-adaptation">FICHE DE MISE EN REBUT D'IMMOBILISATION</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Rebut - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>
@@ -57418,8 +57484,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Transf - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 1175044625 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Asset - Acquisition List</source>
-          <target state="needs-review-translation">Immo. - Liste des acquisitions</target>
+          <source>FICHE DE TRANSFERT D'IMMOBILISATION</source>
+          <target state="needs-adaptation">FICHE DE TRANSFERT D'IMMOBILISATION</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Transf - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>
@@ -72652,8 +72718,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Dispatching Status - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 563036308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
-          <source>Credit Notes Amount</source>
-          <target state="needs-review-translation">Credit Notes Amount</target>
+          <source>Credit notes / payment</source>
+          <target state="needs-adaptation">Notes de crédit/Paiement</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field GD1 Credit Notes Amount - Property Caption</note>
         </trans-unit>

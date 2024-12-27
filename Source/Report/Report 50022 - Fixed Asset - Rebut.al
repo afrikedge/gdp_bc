@@ -99,6 +99,9 @@ report 50022 "Fixed Asset - Rebut"
             column(GenerateNum; GenerateNum)
             {
             }
+            column(FormattedNo; FormattedNo)
+            {
+            }
             column(DateAcq; Format(FADeprBook."Depreciation Starting Date"))
             {
             }
@@ -123,6 +126,8 @@ report 50022 "Fixed Asset - Rebut"
                 END;*/
 
                 //PrintFA := ("Fixed Asset"."Startup Date"=0D);
+                FormattedNo := Format(GenerateNum) + '/' + Format(Date2DMY(Today, 2)) + '/' + Format(Date2DMY(Today, 3)) + '/...     ';
+
 
                 if not PrintFA then
                     CurrReport.Skip;
@@ -251,7 +256,7 @@ report 50022 "Fixed Asset - Rebut"
         Text001: Label 'You must specify a Starting Date.';
         Text002: Label 'You must specify an Ending Date.';
         Text003: Label 'You must specify an Ending Date that is later than the Starting Date.';
-        FixedAssetAcqListCptnLbl: Label 'Fixed Asset - Acquisition List';
+        FixedAssetAcqListCptnLbl: Label 'FICHE DE MISE EN REBUT D''IMMOBILISATION';
         CurrReportPageNoCaptionLbl: Label 'Page';
         FADeprBkAcquisitionDtCptnLbl: Label 'Acquisition Date';
         MarqueCaptionLbl: Label 'MARQUE';
@@ -271,6 +276,7 @@ report 50022 "Fixed Asset - Rebut"
         PlanAmort: Record "FA Depreciation Book";
         NomFsseur: Text[50];
         GenerateNum: Code[20];
+        FormattedNo: Text;
         FAMgt: Codeunit "FA Mgt";
 
     local procedure ValidateDates(StartingDate: Date; EndingDate: Date)

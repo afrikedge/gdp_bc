@@ -93,6 +93,9 @@ report 50027 "Fixed Asset - Cession"
             column(FADeprBkDateDebAmort; Format(FADeprBook."Depreciation Starting Date"))
             {
             }
+            column(FormattedNo; FormattedNo)
+            {
+            }
 
 
 
@@ -113,6 +116,8 @@ report 50027 "Fixed Asset - Cession"
                 END;*/
 
                 //PrintFA := ("Fixed Asset"."Startup Date"=0D);
+                FormattedNo := Format(GenerateNum) + '/' + Format(Date2DMY(Today, 2)) + '/' + Format(Date2DMY(Today, 3)) + '/...     ';
+
 
                 if not PrintFA then
                     CurrReport.Skip;
@@ -232,7 +237,7 @@ report 50027 "Fixed Asset - Cession"
         Text001: Label 'You must specify a Starting Date.';
         Text002: Label 'You must specify an Ending Date.';
         Text003: Label 'You must specify an Ending Date that is later than the Starting Date.';
-        FixedAssetAcqListCptnLbl: Label 'Fixed Asset - Acquisition List';
+        FixedAssetAcqListCptnLbl: Label 'FICHE DE CESSION D''IMMOBILISATION';
         CurrReportPageNoCaptionLbl: Label 'Page';
         FADeprBkAcquisitionDtCptnLbl: Label 'Acquisition Date';
 
@@ -255,6 +260,7 @@ report 50027 "Fixed Asset - Cession"
         TaxeCaptionLbl: Label 'TVA 20%';
         TotalPriceCaption: Label 'PRIX DE CESSION TTC';
         GenerateNum: Code[20];
+        FormattedNo: Text;
         FAMgt: Codeunit "FA Mgt";
 
     local procedure ValidateDates(StartingDate: Date; EndingDate: Date)

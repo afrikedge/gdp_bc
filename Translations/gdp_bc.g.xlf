@@ -11239,7 +11239,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Channel - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3127719954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sales Order Payment Doc</source>
+          <source>Credit notes / payment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Property Caption</note>
         </trans-unit>
@@ -11257,6 +11257,11 @@
           <source>Paid Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Paid Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3127719954 - Field 231998036 - Method 2126772001 - NamedType 3024544721" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The amount to be paid must not exceed the open amount %1</source>
+          <note from="Developer" annotates="general" priority="2">%1</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Paid Amount - Method OnValidate - NamedType ErrLbl</note>
         </trans-unit>
         <trans-unit id="Table 3127719954 - Field 4045552997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pay Doc Entry No.</source>
@@ -11812,6 +11817,11 @@
           <source>OrderNo</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Touring Product Entry - Field OrderNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 539616213 - Field 1666719283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Real Shipped Volume</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Touring Product Entry - Field Real Shipped Volume - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 539616213 - Field 199999316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Status</source>
@@ -22833,6 +22843,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Chart of Accounts ADMIN - Action Trial Balance by Period - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2711635030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Compartment Loading</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Loading - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2711635030 - Control 332802016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Loading - Control ItemNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2711635030 - Control 1666719283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume shipped</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Loading - Control Real Shipped Volume - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2711635030 - Control 1307873908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume to ship</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Compartment Loading - Control Volume - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 744255506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Compartment Subform</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -23327,6 +23357,11 @@
           <source>&amp;Navigate</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Confirmed Bon Order - Action &amp;Navigate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 26120338 - Action 1017188834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Chargement</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Confirmed Bon Order - Action Loading - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1991578168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines</source>
@@ -36463,15 +36498,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action ActionGroup21 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3373396442 - Action 530829447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Reopen</source>
+        <trans-unit id="Page 3373396442 - Action 4032263875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Release the document to the next stage of processing. You must reopen the document before you can make changes to it.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Re&amp;open - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Release - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3373396442 - Action 4032263875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Release</source>
+          <source>Re&amp;lease</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Release - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3373396442 - Action 2071937805 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reopen the document to change it after it has been approved. Approved documents have the Released status and must be opened before they can be changed.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Reopen - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3373396442 - Action 2071937805 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Re&amp;open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - Draft - Action Reopen - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3373396442 - Action 3106002577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Functions</source>
@@ -36703,15 +36748,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action DebloquerCde - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2802597164 - Action 530829447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Reopen</source>
+        <trans-unit id="Page 2802597164 - Action 4032263875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Release the document to the next stage of processing. You must reopen the document before you can make changes to it.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Re&amp;open - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Release - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2802597164 - Action 4032263875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Release</source>
+          <source>Re&amp;lease</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Release - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 2071937805 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reopen the document to change it after it has been approved. Approved documents have the Released status and must be opened before they can be changed.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Reopen - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 2071937805 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Re&amp;open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Reopen - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2802597164 - Action 3106002577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Functions</source>
@@ -47009,7 +47064,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Cession - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 1062809799 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Asset - Acquisition List</source>
+          <source>FICHE DE CESSION D'IMMOBILISATION</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Cession - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>
@@ -47434,7 +47489,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Mise en Serv - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 2975634692 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Asset - Acquisition List</source>
+          <source>FICHE DE DEMANDE DE MISE EN SERVICE IMMOBILISATION</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Mise en Serv - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>
@@ -47624,7 +47679,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Rebut - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 2252100905 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Asset - Acquisition List</source>
+          <source>FICHE DE MISE EN REBUT D'IMMOBILISATION</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Rebut - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>
@@ -47849,7 +47904,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Transf - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 1175044625 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Asset - Acquisition List</source>
+          <source>FICHE DE TRANSFERT D'IMMOBILISATION</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Transf - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>
@@ -60544,7 +60599,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Dispatching Status - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 563036308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
-          <source>Credit Notes Amount</source>
+          <source>Credit notes / payment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field GD1 Credit Notes Amount - Property Caption</note>
         </trans-unit>

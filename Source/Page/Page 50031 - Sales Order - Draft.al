@@ -215,6 +215,9 @@ page 50031 "Sales Order - Draft"
                 field("Ref Dossier Cargo"; Rec."Ref Dossier Cargo")
                 {
                 }
+                field("GD1 Credit Notes Amount"; Rec."GD1 Credit Notes Amount")
+                {
+                }
             }
             part(SalesLines; "Sales Order Subform")
             {
@@ -393,42 +396,44 @@ page 50031 "Sales Order - Draft"
                 Image = ReleaseDoc;
                 action(Release)
                 {
-                    Caption = 'Release';
+                    ApplicationArea = Suite;
+                    Caption = 'Re&lease';
                     Image = ReleaseDoc;
-                    Promoted = true;
-                    PromotedCategory = Process;
                     ShortCutKey = 'Ctrl+F9';
+                    ToolTip = 'Release the document to the next stage of processing. You must reopen the document before you can make changes to it.';
 
                     trigger OnAction()
                     var
-                        ReleaseSalesDoc: Codeunit "Release Sales Document";
                         PrepaymentMgt: Codeunit "Prepayment Mgt.";
                     begin
                         if PrepaymentMgt.TestSalesPrepayment(Rec) then
-                            Error(StrSubstNo(Text10800, Rec."Document Type", Rec."No."));
+                            Error(Text10800, Rec."Document Type", Rec."No.");
 
                         if PrepaymentMgt.TestSalesPayment(Rec) then begin
                             if not Confirm(StrSubstNo(Text10801, Rec."Document Type", Rec."No.")) then
                                 exit;
                             Rec.Status := Rec.Status::"Pending Prepayment";
-                            Rec.Modify;
-                            CurrPage.Update;
+                            Rec.Modify();
+                            CurrPage.Update();
                         end else
-                            ReleaseSalesDoc.PerformManualRelease(Rec);
+                            Rec.PerformManualRelease();
+                        CurrPage.SalesLines.PAGE.ClearTotalSalesHeader();
                     end;
                 }
-                action("Re&open")
+                action(Reopen)
                 {
-                    Caption = 'Reopen';
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Re&open';
+                    Enabled = Rec.Status <> Rec.Status::Open;
                     Image = ReOpen;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                    ToolTip = 'Reopen the document to change it after it has been approved. Approved documents have the Released status and must be opened before they can be changed.';
 
                     trigger OnAction()
                     var
                         ReleaseSalesDoc: Codeunit "Release Sales Document";
                     begin
                         ReleaseSalesDoc.PerformManualReopen(Rec);
+                        CurrPage.SalesLines.PAGE.ClearTotalSalesHeader();
                     end;
                 }
             }

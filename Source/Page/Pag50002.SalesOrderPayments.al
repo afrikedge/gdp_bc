@@ -24,6 +24,7 @@ page 50002 "Sales Order Payments"
                 }
                 field("Paid Amount"; Rec."Paid Amount")
                 {
+
                 }
             }
         }

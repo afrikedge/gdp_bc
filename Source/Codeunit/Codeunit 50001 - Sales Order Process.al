@@ -707,12 +707,12 @@ codeunit 50001 "Sales Order Process"
 
 
 
-        if ((IsCdeLUBS(SalesH)) or (IsCdeGPL(SalesH))) then begin
-            AdjustH.Reset;
-            AdjustH.SetRange(AdjustH."Order No.", SalesH."No.");
-            if not AdjustH.FindFirst then
-                Error(Text024);
-        end;
+        // if ((IsCdeLUBS(SalesH)) or (IsCdeGPL(SalesH))) then begin
+        //     AdjustH.Reset;
+        //     AdjustH.SetRange(AdjustH."Order No.", SalesH."No.");
+        //     if not AdjustH.FindFirst then
+        //         Error(Text024);
+        // end;
 
 
         SalesLine1.Reset;
