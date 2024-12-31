@@ -1,7 +1,7 @@
 report 50038 "Transfer Order Product"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Source/Report/Layout/Transfer Order Product.rdlc';
+    RDLCLayout = './Source/Report/Layout/Transfer Order Product.rdl';
     Caption = 'Transfer Order';
     PreviewMode = PrintLayout;
 
@@ -44,7 +44,7 @@ report 50038 "Transfer Order Product"
                 dataitem(PageLoop; "Integer")
                 {
                     DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
-                    column(CopyCaption; StrSubstNo(Text001, CopyText))
+                    column(CopyCaption; StrSubstNo(Text001Lbl, CopyText))
                     {
                     }
                     column(TransferToAddr1; Location1.Name)
@@ -96,7 +96,7 @@ report 50038 "Transfer Order Product"
                     column(TransferFromAddr6; TransferFromAddr[6])
                     {
                     }
-                    column(PageCaption; StrSubstNo(Text002, ''))
+                    column(PageCaption; StrSubstNo(Text002Lbl, ''))
                     {
                     }
                     column(OutputNo; OutputNo)
@@ -105,52 +105,62 @@ report 50038 "Transfer Order Product"
                     column(ShptMethodDesc; ShipmentMethod.Description)
                     {
                     }
-                    column(PrdCaption; PrdCaption)
+                    column(PrdCaption; PrdCaptionLbl)
                     {
                     }
-                    column(CodeCaption; CodeCaption)
+                    column(CodeCaption; CodeCaptionLbl)
                     {
                     }
-                    column(WeightCaption; WeightCaption)
+                    column(WeightCaption; WeightCaptionLbl)
                     {
                     }
-                    column(ObsCaption; ObsCaption)
+                    column(ObsCaption; ObsCaptionLbl)
                     {
                     }
-                    column(ExpCaption; ExpCaption)
+                    column(ExpCaption; ExpCaptionLbl)
                     {
                     }
-                    column(DestCaption; DestCaption)
+                    column(DestCaption; DestCaptionLbl)
                     {
                     }
-                    column(TelCaption; TelCaption)
+                    column(TelCaption; TelCaptionLbl)
                     {
                     }
-                    column(BPCaption; BPCaption)
+                    column(BPCaption; BPCaptionLbl)
                     {
                     }
-                    column(EmailCaption; EmailCaption)
+                    column(BacthCaptionLbl; BacthCaptionLbl)
                     {
                     }
-                    column(NumCaption; NumCaption)
+                    column(PLVCaptionLbl; PLVCaptionLbl)
                     {
                     }
-                    column(TranspCaption; TranspCaption)
+                    column(PCBCaptionLbl; PCBCaptionLbl)
                     {
                     }
-                    column(ChaufNameCaption; ChaufNameCaption)
+
+                    column(EmailCaption; EmailCaptionLbl)
                     {
                     }
-                    column(PermisCaption; PermisCaption)
+                    column(NumCaption; NumCaptionLbl)
                     {
                     }
-                    column(CamionCaption; CamionCaption)
+                    column(TranspCaption; TranspCaptionLbl)
                     {
                     }
-                    column(CartGriseCaption; CartGriseCaption)
+                    column(ChaufNameCaption; ChaufNameCaptionLbl)
                     {
                     }
-                    column(TotalWeightCaption; TotalWeightCaption)
+                    column(PermisCaption; PermisCaptionLbl)
+                    {
+                    }
+                    column(CamionCaption; CamionCaptionLbl)
+                    {
+                    }
+                    column(CartGriseCaption; CartGriseCaptionLbl)
+                    {
+                    }
+                    column(TotalWeightCaption; TotalWeightCaptionLbl)
                     {
                     }
                     column(CompanyInfoEMail; CompanyInfo."E-Mail")
@@ -212,11 +222,11 @@ report 50038 "Transfer Order Product"
                         trigger OnAfterGetRecord()
                         begin
                             if Number = 1 then begin
-                                if not DimSetEntry1.FindSet then
-                                    CurrReport.Break;
+                                if not DimSetEntry1.FindSet() then
+                                    CurrReport.Break();
                             end else
                                 if not Continue then
-                                    CurrReport.Break;
+                                    CurrReport.Break();
 
                             Clear(DimText);
                             Continue := false;
@@ -234,13 +244,13 @@ report 50038 "Transfer Order Product"
                                     Continue := true;
                                     exit;
                                 end;
-                            until DimSetEntry1.Next = 0;
+                            until DimSetEntry1.Next() = 0;
                         end;
 
                         trigger OnPreDataItem()
                         begin
                             if not ShowInternalInfo then
-                                CurrReport.Break;
+                                CurrReport.Break();
                         end;
                     }
                     dataitem("Adjustment Line"; "Adjustment Line")
@@ -294,11 +304,11 @@ report 50038 "Transfer Order Product"
                             trigger OnAfterGetRecord()
                             begin
                                 if Number = 1 then begin
-                                    if not DimSetEntry2.FindSet then
-                                        CurrReport.Break;
+                                    if not DimSetEntry2.FindSet() then
+                                        CurrReport.Break();
                                 end else
                                     if not Continue then
-                                        CurrReport.Break;
+                                        CurrReport.Break();
 
                                 Clear(DimText);
                                 Continue := false;
@@ -316,13 +326,13 @@ report 50038 "Transfer Order Product"
                                         Continue := true;
                                         exit;
                                     end;
-                                until DimSetEntry2.Next = 0;
+                                until DimSetEntry2.Next() = 0;
                             end;
 
                             trigger OnPreDataItem()
                             begin
                                 if not ShowInternalInfo then
-                                    CurrReport.Break;
+                                    CurrReport.Break();
                             end;
                         }
 
@@ -337,7 +347,7 @@ report 50038 "Transfer Order Product"
                 trigger OnAfterGetRecord()
                 begin
                     if Number > 1 then begin
-                        CopyText := Text000;
+                        CopyText := Text000Lbl;
                         OutputNo += 1;
                     end;
                     CurrReport.PageNo := 1;
@@ -363,7 +373,7 @@ report 50038 "Transfer Order Product"
 
 
                 if not ShipmentMethod.Get("Shipment Method Code") then
-                    ShipmentMethod.Init;
+                    ShipmentMethod.Init();
 
                 FormatAddr.Company(CompanyAddr, CompanyInfo);
             end;
@@ -381,13 +391,15 @@ report 50038 "Transfer Order Product"
                 group(Options)
                 {
                     Caption = 'Options';
-                    field(NoOfCopies; NoOfCopies)
+                    field(NoOfCopie; NoOfCopies)
                     {
                         Caption = 'No. of Copies';
+                        ToolTip = 'Specify No. of Copies';
                     }
-                    field(ShowInternalInfo; ShowInternalInfo)
+                    field(ShowInternalInf; ShowInternalInfo)
                     {
                         Caption = 'Show Internal Information';
+                        ToolTip = 'Specify Internal Information';
                     }
                 }
             }
@@ -400,7 +412,7 @@ report 50038 "Transfer Order Product"
 
     labels
     {
-        PostingDateCaption = 'Posting Date';
+        PostingDateCaption = 'Date';
         ShptMethodDescCaption = 'Shipment Method';
         Trans = 'ORDRE DE TRANSFERT';
         PrepareBy = 'Préparé par';
@@ -416,21 +428,24 @@ report 50038 "Transfer Order Product"
         ReceiptBy = 'Produit reçu conforme :';
         Text6 = 'Heure arrivée :';
         Text7 = 'Heure départ :';
+        ValidatedBy = 'Validated by :';
+        Security = 'SECURITY';
     }
 
     trigger OnInitReport()
     begin
-        CompanyInfo.Get;
+        CompanyInfo.Get();
         CompanyInfo.CalcFields(Picture);
     end;
 
     var
-        Text000: Label 'COPY';
-        Text001: Label 'Transfer Order %1';
-        Text002: Label 'Page %1';
         ShipmentMethod: Record "Shipment Method";
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
+        CompanyInfo: Record "Company Information";
+        Location: Record Location;
+        Location1: Record Location;
+        Article: Record Item;
         FormatAddr: Codeunit "Format Address";
         TransferFromAddr: array[8] of Text[50];
         TransferToAddr: array[8] of Text[50];
@@ -444,29 +459,31 @@ report 50038 "Transfer Order Product"
         OutputNo: Integer;
         HdrDimensionsCaptionLbl: Label 'Header Dimensions';
         LineDimensionsCaptionLbl: Label 'Line Dimensions';
-        PrdCaption: Label 'Produit';
-        CodeCaption: Label 'Code';
-        WeightCaption: Label 'Poids (Kg)';
-        ObsCaption: Label 'Observations';
-        ExpCaption: Label 'EXPEDITEUR';
-        DestCaption: Label 'Magasin de destination :  ';
-        TelCaption: Label 'Tél/Fax : ';
-        BPCaption: Label 'BP : ';
-        EmailCaption: Label 'Email : ';
-        NumCaption: Label 'N° : ';
-        TranspCaption: Label 'TRANSPORTEUR :  ';
-        ChaufNameCaption: Label 'NOM DU CHAUFFEUR :  ';
-        PermisCaption: Label 'N° PERMIS : ';
-        CamionCaption: Label 'CAMION : ';
-        CartGriseCaption: Label 'N° CARTE GRISE : ';
-        TotalWeightCaption: Label 'Total Poids';
-        CompanyInfo: Record "Company Information";
+        Text000Lbl: Label 'COPY';
+        Text001Lbl: Label 'Transfer Order %1', Comment = '';
+        Text002Lbl: Label 'Page %1', Comment = '';
+        BacthCaptionLbl: Label 'Batch';
+        PLVCaptionLbl: Label 'PLV';
+        PCBCaptionLbl: Label 'PCB';
+        PrdCaptionLbl: Label 'Produit';
+        CodeCaptionLbl: Label 'Code';
+        WeightCaptionLbl: Label 'Poids (Kg)';
+        ObsCaptionLbl: Label 'Observations';
+        ExpCaptionLbl: Label 'EXPEDITEUR';
+        DestCaptionLbl: Label 'Magasin de destination :  ';
+        TelCaptionLbl: Label 'Tél/Fax : ';
+        BPCaptionLbl: Label 'BP : ';
+        EmailCaptionLbl: Label 'Email : ';
+        NumCaptionLbl: Label 'N° : ';
+        TranspCaptionLbl: Label 'TRANSPORTEUR :  ';
+        ChaufNameCaptionLbl: Label 'NOM DU CHAUFFEUR :  ';
+        PermisCaptionLbl: Label 'N° PERMIS : ';
+        CamionCaptionLbl: Label 'CAMION : ';
+        CartGriseCaptionLbl: Label 'N° CARTE GRISE : ';
+        TotalWeightCaptionLbl: Label 'Total Poids';
         CompanyAddr: array[8] of Text[50];
         PhoneNoCaptionLbl: Label 'Phone No.';
-        EMailCaptionLbl: Label 'E-Mail';
+        // EMailCaptionLbl: Label 'E-Mail';
         FaxCaptionLbl: Label 'Fax : ';
-        Location: Record Location;
-        Location1: Record Location;
-        Article: Record Item;
 }
 
