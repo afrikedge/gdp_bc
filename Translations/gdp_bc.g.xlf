@@ -58329,7 +58329,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Transfer Order Product - NamedType PermisCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 63070978 - NamedType 1928308579" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Phone No.</source>
+          <source>Tel :</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Transfer Order Product - NamedType PhoneNoCaptionLbl</note>
         </trans-unit>

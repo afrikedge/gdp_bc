@@ -485,6 +485,27 @@ report 50192 "Sales Invoice Soutage"
             column(ExternalDocumentNo_Lbl; FieldCaption("External Document No."))
             {
             }
+            column(Foot1; 'Siège social ' + CompanyInfo.Address)
+            {
+            }
+            column(Foot2; CompanyInfo."Post Code" + ' - ' + CompanyInfo.City)
+            {
+            }
+            column(Foot3; Foot3)
+            {
+            }
+            column(Foot4; 'S.A. au capital de AR ' + CompanyInfo."Stock Capital" + ' - ' + 'NIF : ' + CompanyInfo."Registration No.")
+            {
+            }
+            column(Foot5; 'R.C.S. : ' + CompanyInfo."Trade Register" + ' - ' + 'STAT : ' + CompanyInfo."Legal Form")
+            {
+            }
+            column(Foot6; 'Email : ' + CompanyInfo."E-Mail")
+            {
+            }
+            column(CurrencyName; CurrencyName)
+            {
+            }
             column(CompanyPicture; CompanyInfo.Picture)
             {
             }
@@ -904,15 +925,15 @@ report 50192 "Sales Invoice Soutage"
                             TTC := VATP + Line."Line Amount";
                         end;
 
-                        LineAmountFormatted := Format(Round(VATP, 0.001, '<'));
-                        LineVATFormatted := Format(Round(TTC, 0.001, '<'));
-                        LineAmountTTCFormatted := Format(Round(Line.Quantity * PU, 0.001, '<'));
+                        LineAmountFormatted := Format(Round(Line.Quantity * PU, 0.001, '<'), 0, '<Precision,2><Standard Format,0>');
+                        LineVATFormatted := Format(Round(VATP, 0.001, '<'));
+                        LineAmountTTCFormatted := Format(Round(TTC, 0.001, '<'));
                     end;
                     LineQty := Round(Line.Quantity, 0.001, '<');
                     LineUP := Round(PU, 0.000001, '<');
 
-                    LineQtyFormatted := Format(LineQty);
-                    LineUPFormatted := Format(LineUP);
+                    LineQtyFormatted := Format(LineQty, 0, '<Precision,2><Standard Format,0>');
+                    LineUPFormatted := Format(LineUP, 0, '<Precision,2><Standard Format,0>');
 
                     if Type = Type::"G/L Account" then
                         "No." := '';
@@ -934,7 +955,7 @@ report 50192 "Sales Invoice Soutage"
                         TotalAmount += HT;
                         TotalAmountVAT += "Amount Including VAT" - HT;
                         TotalAmountInclVAT += "Amount Including VAT";
-                        TotalPaymentDiscOnVAT += -("Line Amount" - "Inv. Discount Amount" - "Amount Including VAT");
+                        TotalPaymentDiscOnVAT += -(HT - "Inv. Discount Amount" - "Amount Including VAT");
                     end else begin
                         TransHeaderAmount += PrevLineAmount;
                         PrevLineAmount := "Line Amount";
@@ -1391,81 +1412,66 @@ report 50192 "Sales Invoice Soutage"
                 column(FormattedTotalVAT; FormattedTotalVAT)
                 {
                 }
-                column(FormattedTotalTTC; FormattedTotalTTC)
+                column(TotalHT_LCY; TotalHT_LCY)
                 {
                 }
                 column(FormattedTotalHT_LCYText; FormattedTotalHT_LCYText)
                 {
                 }
-                column(FormattedTotalVAT_LCYText; FormattedTotalVAT_LCYText)
+                column(TotalVAT_LCY; TotalVAT_LCY)
                 {
                 }
-                column(FormattedTotalTTC_LCYText; FormattedTotalTTC_LCYText)
+                column(FormattedTotalVAT_LCYText; FormattedTotalVAT_LCYText)
                 {
-                    // AutoFormatExpression = Header."Currency Code";
-                    // AutoFormatType = 2;
                 }
                 column(TotalTTC_LCY; TotalTTC_LCY)
                 {
                 }
-                column(TotalVAT_LCY; TotalVAT_LCY)
+                column(FormattedTotalTTC_LCYText; FormattedTotalTTC_LCYText)
                 {
                 }
-                column(TotalHT_LCY; TotalHT_LCY)
+                column(FormattedTotalTTC; FormattedTotalTTC)
+                {
+                }
+                column(LocalCurrencyName; LocalCurrencyName)
                 {
                 }
                 column(LocalCurrencyText; LocalCurrencyText)
                 {
                 }
-
                 trigger OnPreDataItem()
                 begin
-                    if Header."Prices Including VAT" then begin
-                        TotalAmountExclInclVATTextValue := TotalExclVATText;
-                        TotalAmountExclInclVATValue := TotalAmount;
-                    end else begin
-                        TotalAmountExclInclVATTextValue := TotalInclVATText;
-                        TotalAmountExclInclVATValue := TotalAmountInclVAT;
-                    end;
+                    // if Header."Prices Including VAT" then begin
+                    //     TotalAmountExclInclVATTextValue := TotalExclVATText;
+                    //     TotalAmountExclInclVATValue := TotalAmount;
+                    // end else begin
+                    TotalAmountExclInclVATTextValue := TotalInclVATText;
+                    TotalAmountExclInclVATValue := TotalAmountInclVAT;
+                    // end;
 
-                    FormattedTotalHT :=
-                        Format(TotalAmount, 0,
-                        AutoFormat.ResolveAutoFormat("Auto Format"::AmountFormat, Header."Currency Code"));
-                    FormattedTotalVAT :=
-                        Format(TotalAmountVAT, 0,
-                        AutoFormat.ResolveAutoFormat("Auto Format"::AmountFormat, Header."Currency Code"));
-                    FormattedTotalTTC :=
-                        Format(TotalAmountExclInclVATValue, 0,
-                        AutoFormat.ResolveAutoFormat("Auto Format"::AmountFormat, Header."Currency Code"));
+                    FormattedTotalHT := Format(TotalAmount, 0, AutoFormat.ResolveAutoFormat("Auto Format"::AmountFormat, Header."Currency Code"));
+                    FormattedTotalVAT := Format(TotalAmountVAT, 0, AutoFormat.ResolveAutoFormat("Auto Format"::AmountFormat, Header."Currency Code"));
+                    FormattedTotalTTC := Format(TotalAmountExclInclVATValue, 0, AutoFormat.ResolveAutoFormat("Auto Format"::AmountFormat, Header."Currency Code"));
+                    FormattedTotalTTC := Format(TotalAmountExclInclVATValue, 0, '<Precision,2><Standard Format,0>');
 
-                    TotalHT_LCY := CurrencyExchangeRate.ExchangeAmtFCYToLCY(Header."Posting Date",
-                        Header."Currency Code", TotalAmount, Header."Currency Factor");
-                    TotalVAT_LCY := CurrencyExchangeRate.ExchangeAmtFCYToLCY(Header."Posting Date",
-                        Header."Currency Code", TotalAmountVAT, Header."Currency Factor");
-                    TotalTTC_LCY := CurrencyExchangeRate.ExchangeAmtFCYToLCY(Header."Posting Date",
-                        Header."Currency Code", TotalAmountExclInclVATValue, Header."Currency Factor");
+                    TotalHT_LCY := CurrencyExchangeRate.ExchangeAmtFCYToLCY(Header."Posting Date", Header."Currency Code", TotalAmount, Header."Currency Factor");
+                    TotalVAT_LCY := CurrencyExchangeRate.ExchangeAmtFCYToLCY(Header."Posting Date", Header."Currency Code", TotalAmountVAT, Header."Currency Factor");
+                    TotalTTC_LCY := CurrencyExchangeRate.ExchangeAmtFCYToLCY(Header."Posting Date", Header."Currency Code", TotalAmountExclInclVATValue, Header."Currency Factor");
 
                     TotalTTC_LCY := ROUND(TotalTTC_LCY, LocalCurrency."Amount Rounding Precision");
                     TotalHT_LCY := ROUND(TotalHT_LCY, LocalCurrency."Amount Rounding Precision");
                     TotalVAT_LCY := ROUND(TotalVAT_LCY, LocalCurrency."Amount Rounding Precision");
 
-                    FormattedTotalTTC_LCYText :=
-                        Format(TotalTTC_LCY, 0,
-                        AutoFormat.ResolveAutoFormat("Auto Format"::AmountFormat, LocalCurrency.Code));
-                    FormattedTotalHT_LCYText :=
-                        Format(TotalHT_LCY, 0,
-                        AutoFormat.ResolveAutoFormat("Auto Format"::AmountFormat, LocalCurrency.Code));
-                    FormattedTotalVAT_LCYText :=
-                        Format(TotalVAT_LCY, 0,
-                        AutoFormat.ResolveAutoFormat("Auto Format"::AmountFormat, LocalCurrency.Code));
+                    FormattedTotalTTC_LCYText := Format(TotalTTC_LCY, 0, AutoFormat.ResolveAutoFormat("Auto Format"::AmountFormat, LocalCurrency.Code));
+                    FormattedTotalHT_LCYText := Format(TotalHT_LCY, 0, AutoFormat.ResolveAutoFormat("Auto Format"::AmountFormat, LocalCurrency.Code));
+                    FormattedTotalVAT_LCYText := Format(TotalVAT_LCY, 0, AutoFormat.ResolveAutoFormat("Auto Format"::AmountFormat, LocalCurrency.Code));
 
                     RepCheck.InitTextVariable();
-                    RepCheck.FormatNoText(NoText, TotalAmount, LocalCurrency.code);
+                    RepCheck.FormatNoText(NoText, TotalAmountExclInclVATValue, LocalCurrency.code);
                     NoText[1] := ReplaceString(NoText[1], '****');
                     NoText[1] := ReplaceString(NoText[1], 'AND 0/100');
                     NoText[2] := ReplaceString(NoText[2], '****');
                     NoText[2] := ReplaceString(NoText[2], 'AND 0/100');
-
                     Amount_InWords := NoText[1] + ' ' + NoText[2];
                 end;
             }
@@ -1474,8 +1480,8 @@ report 50192 "Sales Invoice Soutage"
             var
                 CurrencyExchangeRate: Record "Currency Exchange Rate";
                 PaymentServiceSetup: Record "Payment Service Setup";
-                Currency: Record Currency;
-                GeneralLedgerSetup: Record "General Ledger Setup";
+            // Currency: Record Currency;
+            // GeneralLedgerSetup: Record "General Ledger Setup";
             begin
                 CurrReport.Language := LanguageMgt.GetLanguageIdOrDefault("Language Code");
                 CurrReport.FormatRegion := LanguageMgt.GetFormatRegionOrDefault("Format Region");
@@ -1485,6 +1491,9 @@ report 50192 "Sales Invoice Soutage"
 
                 if PaymentTerms.Get(Header."Payment Terms Code") then
                     PaymentTerm := PaymentTerms.Description;
+
+                if CompanyInfos.Get() then
+                    Foot3 := CompanyInfos."Phone No." + ' - Fax : ' + CompanyInfos."Fax No.";
 
                 if CompanyBankAccount.Get(CompanyInfo."Default Bank Account No.") then begin
                     BankAccount := CompanyBankAccount."Bank Account No.";
@@ -1496,6 +1505,19 @@ report 50192 "Sales Invoice Soutage"
                     BankCurrency := CompanyBankAccount."Currency Code";
                     Swift := CompanyBankAccount."SWIFT Code";
                 end;
+
+                GLSetup.Get();
+                GLSetup.TestField("LCY Code");
+                CurrCode := Header."Currency Code";
+                if (CurrCode = '') then
+                    CurrCode := GLSetup."LCY Code";
+
+                CurrencyName := CurrCode;
+                if Currency.Get(CurrCode) then
+                    CurrencyName := Currency.Description;
+
+                if (LocalCurrency.Get(GLSetup."LCY Code") and (CurrCode <> GLSetup."LCY Code")) then
+                    LocalCurrencyName := LocalCurrency.Description;
 
                 if not IsReportInPreviewMode() then
                     CODEUNIT.Run(CODEUNIT::"Sales Inv.-Printed", Header);
@@ -1526,14 +1548,14 @@ report 50192 "Sales Invoice Soutage"
                     CalculatedExchRate :=
                       Round(1 / "Currency Factor" * CurrencyExchangeRate."Exchange Rate Amount", 0.000001);
                     ExchangeRateText := StrSubstNo(ExchangeRateTxt, CalculatedExchRate, CurrencyExchangeRate."Exchange Rate Amount");
-                    CurrCode := "Currency Code";
-                    if Currency.Get("Currency Code") then
-                        CurrSymbol := Currency.GetCurrencySymbol();
-                end else
-                    if GeneralLedgerSetup.Get() then begin
-                        CurrCode := GeneralLedgerSetup."LCY Code";
-                        CurrSymbol := GeneralLedgerSetup.GetCurrencySymbol();
-                    end;
+                    //     CurrCode := "Currency Code";
+                    //     if Currency.Get("Currency Code") then
+                    //         CurrSymbol := Currency.GetCurrencySymbol();
+                    // end else
+                    //     if GeneralLedgerSetup.Get() then begin
+                    //         CurrCode := GeneralLedgerSetup."LCY Code";
+                    //         CurrSymbol := GeneralLedgerSetup.GetCurrencySymbol();
+                end;
 
                 GetLineFeeNoteOnReportHist("No.");
 
@@ -1557,6 +1579,9 @@ report 50192 "Sales Invoice Soutage"
                 TotalAmountVAT := 0;
                 TotalAmountInclVAT := 0;
                 TotalPaymentDiscOnVAT := 0;
+                TotalTTC_LCY := 0;
+                TotalHT_LCY := 0;
+                TotalVAT_LCY := 0;
                 if ("Order No." = '') and "Prepayment Invoice" then
                     "Order No." := "Prepayment Order No.";
             end;
@@ -1694,7 +1719,9 @@ report 50192 "Sales Invoice Soutage"
         Cust: Record Customer;
         CurrencyExchangeRate: Record "Currency Exchange Rate";
         LocalCurrency: Record Currency;
+        Currency: Record Currency;
         RespCenter: Record "Responsibility Center";
+        CompanyInfos: Record "Company Information";
         VATClause: Record "VAT Clause";
         SellToContact: Record Contact;
         BillToContact: Record Contact;
@@ -1710,6 +1737,7 @@ report 50192 "Sales Invoice Soutage"
         LineNumber: Integer;
         LinesNumb: Integer;
         LineNumberText: Code[2];
+        Foot3: Text;
         PaymentTerm: Text[100];
         BankAccount: Text[30];
         BankName: Text[100];
@@ -1739,6 +1767,8 @@ report 50192 "Sales Invoice Soutage"
         FormattedTotalVAT_LCYText: Text;
         FormattedTotalTTC_LCYText: Text;
         LocalCurrencyText: Text[100];
+        CurrencyName: Text;
+        LocalCurrencyName: Text;
         TotalHT_LCY: Decimal;
         TotalVAT_LCY: Decimal;
         TotalTTC_LCY: Decimal;

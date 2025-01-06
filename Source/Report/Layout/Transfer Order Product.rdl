@@ -2571,353 +2571,21 @@ Fields!ShptMethodDesc.Value)</Hidden>
           <Style />
         </PageHeader>
         <PageFooter>
-          <Height>7.06437cm</Height>
+          <Height>6.23534cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Textbox Name="Textbox22">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Parameters!Text10.Value</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox22</rd:DefaultName>
-              <Top>4.58379cm</Top>
-              <Left>0.23432cm</Left>
-              <Height>0.46771cm</Height>
-              <Width>5.69421cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox28">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!CompanyAddr2.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox22</rd:DefaultName>
-              <Top>5.06636cm</Top>
-              <Left>0.23432cm</Left>
-              <Height>0.46771cm</Height>
-              <Width>5.69415cm</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox29">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!CompanyAddr3.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox22</rd:DefaultName>
-              <Top>5.56934cm</Top>
-              <Left>0.23432cm</Left>
-              <Height>0.46771cm</Height>
-              <Width>5.69415cm</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox30">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!CompanyAddr4.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox22</rd:DefaultName>
-              <Top>6.07233cm</Top>
-              <Left>0.23432cm</Left>
-              <Height>0.46771cm</Height>
-              <Width>5.69415cm</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox31">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!PhoneNoCaption.Value, "DataSet_Result")+First(Fields!CompanyInfoPhoneNo.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox22</rd:DefaultName>
-              <Top>5.06636cm</Top>
-              <Left>6.36802cm</Left>
-              <Height>0.43243cm</Height>
-              <Width>5.19104cm</Width>
-              <ZIndex>4</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox32">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!FaxCaption.Value, "DataSet_Result")+First(Fields!CompanyInfoFax.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox22</rd:DefaultName>
-              <Top>5.56934cm</Top>
-              <Left>6.36802cm</Left>
-              <Height>0.46771cm</Height>
-              <Width>5.19104cm</Width>
-              <ZIndex>5</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox35">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!EmailCaption.Value, "DataSet_Result")+First(Fields!CompanyInfoEMail.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox22</rd:DefaultName>
-              <Top>6.10761cm</Top>
-              <Left>6.36802cm</Left>
-              <Height>0.43243cm</Height>
-              <Width>5.19104cm</Width>
-              <ZIndex>6</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
             <Line Name="Line1">
               <Top>4.95709cm</Top>
-              <Left>6.10486cm</Left>
-              <Height>1.73855cm</Height>
+              <Left>6.0457cm</Left>
+              <Height>0.87056cm</Height>
               <Width>0cm</Width>
-              <ZIndex>7</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
                 </Border>
               </Style>
             </Line>
-            <Line Name="Line2">
-              <Top>4.95709cm</Top>
-              <Left>11.73545cm</Left>
-              <Height>1.73855cm</Height>
-              <Width>0cm</Width>
-              <ZIndex>8</ZIndex>
-              <Style>
-                <Border>
-                  <Style>Solid</Style>
-                </Border>
-              </Style>
-            </Line>
-            <Textbox Name="Textbox37">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!CompanyInfoCA.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox22</rd:DefaultName>
-              <Top>5.06636cm</Top>
-              <Left>11.87656cm</Left>
-              <Height>0.43243cm</Height>
-              <Width>5.34385cm</Width>
-              <ZIndex>9</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox40">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!CompanyInfoNIF.Value, "DataSet_Result") + First(Fields!CompanyInfoRCS.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox22</rd:DefaultName>
-              <Top>5.56934cm</Top>
-              <Left>11.87656cm</Left>
-              <Height>0.41164cm</Height>
-              <Width>5.34385cm</Width>
-              <ZIndex>10</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox41">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!CompanyInfoSTAT.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox22</rd:DefaultName>
-              <Top>6.05154cm</Top>
-              <Left>11.87656cm</Left>
-              <Height>0.4885cm</Height>
-              <Width>5.34385cm</Width>
-              <ZIndex>11</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
             <Textbox Name="Textbox34">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -2938,7 +2606,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Top>0.29531cm</Top>
               <Height>0.6cm</Height>
               <Width>8.45983cm</Width>
-              <ZIndex>12</ZIndex>
+              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -2979,7 +2647,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>8.45983cm</Left>
               <Height>0.6cm</Height>
               <Width>9.09429cm</Width>
-              <ZIndex>13</ZIndex>
+              <ZIndex>2</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3033,7 +2701,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Top>0.89531cm</Top>
               <Height>0.60854cm</Height>
               <Width>3.57389cm</Width>
-              <ZIndex>14</ZIndex>
+              <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3073,7 +2741,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Top>1.53913cm</Top>
               <Height>0.38833cm</Height>
               <Width>3.57389cm</Width>
-              <ZIndex>15</ZIndex>
+              <ZIndex>4</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3115,7 +2783,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Top>1.92746cm</Top>
               <Height>0.38834cm</Height>
               <Width>3.57389cm</Width>
-              <ZIndex>16</ZIndex>
+              <ZIndex>5</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3157,7 +2825,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>3.57389cm</Left>
               <Height>0.60854cm</Height>
               <Width>4.88594cm</Width>
-              <ZIndex>17</ZIndex>
+              <ZIndex>6</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3205,7 +2873,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>3.57389cm</Left>
               <Height>0.38833cm</Height>
               <Width>4.88594cm</Width>
-              <ZIndex>18</ZIndex>
+              <ZIndex>7</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3243,7 +2911,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>3.57389cm</Left>
               <Height>0.38834cm</Height>
               <Width>4.88594cm</Width>
-              <ZIndex>19</ZIndex>
+              <ZIndex>8</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3280,7 +2948,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>8.45983cm</Left>
               <Height>0.60854cm</Height>
               <Width>4.62529cm</Width>
-              <ZIndex>20</ZIndex>
+              <ZIndex>9</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3324,7 +2992,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>13.08512cm</Left>
               <Height>0.60854cm</Height>
               <Width>4.469cm</Width>
-              <ZIndex>21</ZIndex>
+              <ZIndex>10</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3365,7 +3033,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>8.45983cm</Left>
               <Height>0.38833cm</Height>
               <Width>4.62529cm</Width>
-              <ZIndex>22</ZIndex>
+              <ZIndex>11</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3403,7 +3071,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>8.45983cm</Left>
               <Height>0.38834cm</Height>
               <Width>4.62529cm</Width>
-              <ZIndex>23</ZIndex>
+              <ZIndex>12</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3438,7 +3106,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>13.08512cm</Left>
               <Height>0.38833cm</Height>
               <Width>4.469cm</Width>
-              <ZIndex>24</ZIndex>
+              <ZIndex>13</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3481,7 +3149,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>13.08514cm</Left>
               <Height>0.38834cm</Height>
               <Width>4.469cm</Width>
-              <ZIndex>25</ZIndex>
+              <ZIndex>14</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3521,7 +3189,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>8.45983cm</Left>
               <Height>0.6cm</Height>
               <Width>9.09429cm</Width>
-              <ZIndex>26</ZIndex>
+              <ZIndex>15</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3558,7 +3226,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>8.45983cm</Left>
               <Height>0.6cm</Height>
               <Width>4.62529cm</Width>
-              <ZIndex>27</ZIndex>
+              <ZIndex>16</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3604,7 +3272,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>13.08512cm</Left>
               <Height>0.6cm</Height>
               <Width>4.469cm</Width>
-              <ZIndex>28</ZIndex>
+              <ZIndex>17</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3645,7 +3313,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>8.45983cm</Left>
               <Height>0.45007cm</Height>
               <Width>4.62529cm</Width>
-              <ZIndex>29</ZIndex>
+              <ZIndex>18</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3683,7 +3351,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>8.45985cm</Left>
               <Height>0.46771cm</Height>
               <Width>4.62529cm</Width>
-              <ZIndex>30</ZIndex>
+              <ZIndex>19</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3723,7 +3391,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>13.08514cm</Left>
               <Height>0.45007cm</Height>
               <Width>4.469cm</Width>
-              <ZIndex>31</ZIndex>
+              <ZIndex>20</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3767,7 +3435,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Left>13.08512cm</Left>
               <Height>0.46771cm</Height>
               <Width>4.46903cm</Width>
-              <ZIndex>32</ZIndex>
+              <ZIndex>21</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3805,7 +3473,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Top>2.3158cm</Top>
               <Height>0.6cm</Height>
               <Width>8.45983cm</Width>
-              <ZIndex>33</ZIndex>
+              <ZIndex>22</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3847,7 +3515,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Top>2.9158cm</Top>
               <Height>0.57326cm</Height>
               <Width>8.45983cm</Width>
-              <ZIndex>34</ZIndex>
+              <ZIndex>23</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3896,7 +3564,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Top>3.96587cm</Top>
               <Height>0.47681cm</Height>
               <Width>8.45983cm</Width>
-              <ZIndex>35</ZIndex>
+              <ZIndex>24</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3946,7 +3614,7 @@ Fields!ShptMethodDesc.Value)</Hidden>
               <Top>3.48906cm</Top>
               <Height>0.47681cm</Height>
               <Width>8.45983cm</Width>
-              <ZIndex>36</ZIndex>
+              <ZIndex>25</ZIndex>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -3967,6 +3635,217 @@ Fields!ShptMethodDesc.Value)</Hidden>
                   <Color>Black</Color>
                   <Width>1pt</Width>
                 </RightBorder>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox22">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Foot1.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontSize>6pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox20</rd:DefaultName>
+              <Top>4.95709cm</Top>
+              <Height>0.4cm</Height>
+              <Width>5.97515cm</Width>
+              <ZIndex>26</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox28">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Foot2.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontSize>6pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox20</rd:DefaultName>
+              <Top>5.39237cm</Top>
+              <Height>0.4cm</Height>
+              <Width>5.97515cm</Width>
+              <ZIndex>27</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox50">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!Foot3.Value</Value>
+                      <Style>
+                        <FontSize>6pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox20</rd:DefaultName>
+              <Top>4.95709cm</Top>
+              <Left>6.0457cm</Left>
+              <Height>0.4cm</Height>
+              <Width>5.53106cm</Width>
+              <ZIndex>28</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox35">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Foot4.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontSize>6pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox20</rd:DefaultName>
+              <Top>4.95709cm</Top>
+              <Left>11.71787cm</Left>
+              <Height>0.4cm</Height>
+              <Width>5.79876cm</Width>
+              <ZIndex>29</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox41">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Foot5.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontSize>6pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox20</rd:DefaultName>
+              <Top>5.39237cm</Top>
+              <Left>11.71787cm</Left>
+              <Height>0.4cm</Height>
+              <Width>5.79876cm</Width>
+              <ZIndex>30</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Line Name="Line2">
+              <Top>4.95709cm</Top>
+              <Left>11.64731cm</Left>
+              <Height>0.87056cm</Height>
+              <Width>0cm</Width>
+              <ZIndex>31</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+            <Textbox Name="Textbox52">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!CompanyInfoEMail.Value</Value>
+                      <Style>
+                        <FontSize>6pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox20</rd:DefaultName>
+              <Top>5.39237cm</Top>
+              <Left>6.0457cm</Left>
+              <Height>0.4cm</Height>
+              <Width>5.53106cm</Width>
+              <ZIndex>32</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
@@ -4597,23 +4476,29 @@ End Function</Code>
         <Field Name="CompanyInfoEMail">
           <DataField>CompanyInfoEMail</DataField>
         </Field>
-        <Field Name="CompanyInfoRCS">
-          <DataField>CompanyInfoRCS</DataField>
+        <Field Name="Foot1">
+          <DataField>Foot1</DataField>
         </Field>
-        <Field Name="CompanyInfoCA">
-          <DataField>CompanyInfoCA</DataField>
+        <Field Name="Foot2">
+          <DataField>Foot2</DataField>
         </Field>
-        <Field Name="CompanyInfoNIF">
-          <DataField>CompanyInfoNIF</DataField>
+        <Field Name="Foot3">
+          <DataField>Foot3</DataField>
         </Field>
-        <Field Name="CompanyInfoSTAT">
-          <DataField>CompanyInfoSTAT</DataField>
+        <Field Name="Foot4">
+          <DataField>Foot4</DataField>
         </Field>
-        <Field Name="CompanyInfoPhoneNo">
-          <DataField>CompanyInfoPhoneNo</DataField>
+        <Field Name="Foot5">
+          <DataField>Foot5</DataField>
         </Field>
-        <Field Name="CompanyInfoFax">
-          <DataField>CompanyInfoFax</DataField>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+        <Field Name="PhoneNoCaption">
+          <DataField>PhoneNoCaption</DataField>
+        </Field>
+        <Field Name="FaxCaption">
+          <DataField>FaxCaption</DataField>
         </Field>
         <Field Name="CompanyAddr1">
           <DataField>CompanyAddr1</DataField>
@@ -4626,15 +4511,6 @@ End Function</Code>
         </Field>
         <Field Name="CompanyAddr4">
           <DataField>CompanyAddr4</DataField>
-        </Field>
-        <Field Name="CompanyInfo_Picture">
-          <DataField>CompanyInfo_Picture</DataField>
-        </Field>
-        <Field Name="PhoneNoCaption">
-          <DataField>PhoneNoCaption</DataField>
-        </Field>
-        <Field Name="FaxCaption">
-          <DataField>FaxCaption</DataField>
         </Field>
         <Field Name="DimText">
           <DataField>DimText</DataField>

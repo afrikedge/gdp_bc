@@ -49,9 +49,6 @@ report 50194 "Posted Sales Shipment"
             column(CompanyPic; DummyCompanyInfo.Picture)
             {
             }
-            column(CompanyPhoneNo; CompanyInfo."Phone No.")
-            {
-            }
             column(CompanyPhoneNo_Lbl; CompanyInfoPhoneNoLbl)
             {
             }
@@ -412,6 +409,27 @@ report 50194 "Posted Sales Shipment"
             {
             }
             column(Agency; Agency)
+            {
+            }
+            column(CompanyInfoName; CompanyInfo.Name)
+            {
+            }
+            column(Foot5; 'R.C.S. : ' + CompanyInfo."Trade Register" + ' - ' + 'STAT : ' + CompanyInfo."Legal Form")
+            {
+            }
+            column(Foot6; 'Email : ' + CompanyInfo."E-Mail")
+            {
+            }
+            column(Foot4; 'S.A. au capital de AR ' + CompanyInfo."Stock Capital" + ' - ' + 'NIF : ' + CompanyInfo."Registration No.")
+            {
+            }
+            column(Foot3; Foot3)
+            {
+            }
+            column(Foot1; 'Siège social ' + CompanyInfo.Address)
+            {
+            }
+            column(Foot2; CompanyInfo."Post Code" + ' - ' + CompanyInfo.City)
             {
             }
             column(Date; Format("Posting Date"))
@@ -799,7 +817,7 @@ report 50194 "Posted Sales Shipment"
 
                 trigger OnPreDataItem()
                 begin
-                    SetRange(Number, 1, 10 - LinesNumb);
+                    SetRange(Number, 1, 12 - LinesNumb);
                 end;
             }
             dataitem(ItemTrackingLine; "Integer")
@@ -917,6 +935,9 @@ report 50194 "Posted Sales Shipment"
 
                 if Location.Get(Header."Location Code") then
                     DepotName := Location.Name;
+
+                if CompanyInfo.Get() then
+                    Foot3 := CompanyInfo."Phone No." + ' - Fax : ' + CompanyInfo."Fax No.";
 
                 if not IsReportInPreviewMode() then
                     CODEUNIT.Run(CODEUNIT::"Sales Shpt.-Printed", Header);
@@ -1106,6 +1127,7 @@ report 50194 "Posted Sales Shipment"
         LineNumberText: Code[2];
         DepotName: Text[100];
         Agency: Text[100];
+        Foot3: Text;
 
         NoFilterSetErr: Label 'You must specify one or more filters to avoid accidently printing all documents.';
         GreetingLbl: Label 'Hello';

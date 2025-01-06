@@ -88,6 +88,24 @@ report 50189 "PBL FO Delivery Note"
             column(AutorisedBy; nomresponsable)
             {
             }
+            column(Foot1; 'Siège social ' + CompanyInfo.Address)
+            {
+            }
+            column(Foot2; CompanyInfo."Post Code" + ' - ' + CompanyInfo.City)
+            {
+            }
+            column(Foot3; Foot3)
+            {
+            }
+            column(Foot4; 'S.A. au capital de AR ' + CompanyInfo."Stock Capital" + ' - ' + 'NIF : ' + CompanyInfo."Registration No.")
+            {
+            }
+            column(Foot5; 'R.C.S. : ' + CompanyInfo."Trade Register" + ' - ' + 'STAT : ' + CompanyInfo."Legal Form")
+            {
+            }
+            column(Foot6; 'Email : ' + CompanyInfo."E-Mail")
+            {
+            }
 
             column(CompanyPicture; CompanyInfo.Picture)
             {
@@ -378,6 +396,9 @@ report 50189 "PBL FO Delivery Note"
 
                 if SalesHeader.Get(Header.NavOrderNo) then
                     DeliveryMode := SalesHeader."Shipment Method Code";
+
+                if CompanyInfos.Get() then
+                    Foot3 := CompanyInfos."Phone No." + ' - Fax : ' + CompanyInfos."Fax No.";
             end;
         }
 
@@ -406,8 +427,10 @@ report 50189 "PBL FO Delivery Note"
         Location: Record Location;
         SalesHeader: Record "Sales Header";
         RespCenter: Record "Responsibility Center";
+        CompanyInfos: Record "Company Information";
         // ShipmentMethod: Record "Shipment Method";
         CustSearchName: Code[100];
+        Foot3: Text;
         DepotName: Text[100];
         CustAddress: Text[100];
         Agency: Text[100];

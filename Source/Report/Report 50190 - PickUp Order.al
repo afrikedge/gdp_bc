@@ -75,6 +75,24 @@ report 50190 "PickUp Order"
             column(AutorisedBy; nomresponsable)
             {
             }
+            column(Foot1; 'Siège social ' + CompanyInfo.Address)
+            {
+            }
+            column(Foot2; CompanyInfo."Post Code" + ' - ' + CompanyInfo.City)
+            {
+            }
+            column(Foot3; Foot3)
+            {
+            }
+            column(Foot4; 'S.A. au capital de AR ' + CompanyInfo."Stock Capital" + ' - ' + 'NIF : ' + CompanyInfo."Registration No.")
+            {
+            }
+            column(Foot5; 'R.C.S. : ' + CompanyInfo."Trade Register" + ' - ' + 'STAT : ' + CompanyInfo."Legal Form")
+            {
+            }
+            column(Foot6; 'Email : ' + CompanyInfo."E-Mail")
+            {
+            }
 
 
             column(CompanyPicture; CompanyInfo.Picture)
@@ -221,6 +239,12 @@ report 50190 "PickUp Order"
             column(TotalFOLbl; TotalFOLbl)
             {
             }
+            column(TotalGO; TotalGO)
+            {
+            }
+            column(TotalSP; TotalSP)
+            {
+            }
             dataitem(Line; pro_detailBE)
             {
                 DataItemTableView = sorting(numBE, "Line No.");
@@ -266,38 +290,16 @@ report 50190 "PickUp Order"
                     column(Shipped_Volume; "Shipped Volume")
                     {
                     }
-                    column(TotalSP; TotalSP)
-                    {
-                    }
-                    column(TotalGO; TotalGO)
-                    {
-                    }
+
                     trigger OnAfterGetRecord()
                     begin
-                        If BonLoading.FindSet() then
+                        If BonLoading.FindFirst() then
                             repeat
                                 BonLoading.Reset();
                                 BonLoading.SetRange(numBE, Line.numBE);
                                 BonLoading.SetRange("Product Code", Line.codeproduit);
+                                CalcSums("Shipped Volume");
                             until BonLoading.Next() = 0;
-
-                        Clear(TotalSP);
-                        BonLoadRec.Reset();
-                        BonLoadRec.SetRange(numBE, Line.numBE);
-                        BonLoadRec.SetRange("Product Code", 'SP');
-                        if BonLoadRec.FindFirst() then
-                            repeat
-                                TotalSP := BonLoadRec."Shipped Volume";
-                            until BonLoadRec.Next() = 0;
-
-                        Clear(TotalGO);
-                        BonLoadRec.Reset();
-                        BonLoadRec.SetRange(numBE, Line.numBE);
-                        BonLoadRec.SetRange("Product Code", 'GO');
-                        if BonLoadRec.FindFirst() then
-                            repeat
-                                TotalSP := BonLoadRec."Shipped Volume";
-                            until BonLoadRec.Next() = 0;
                     end;
                 }
                 trigger OnAfterGetRecord()
@@ -351,6 +353,28 @@ report 50190 "PickUp Order"
 
                 if SalesHeader.Get(Header.NavOrderNo) then
                     DeliveryMode := SalesHeader."Shipment Method Code";
+
+                if CompanyInfos.Get() then
+                    Foot3 := CompanyInfos."Phone No." + ' - Fax : ' + CompanyInfos."Fax No.";
+
+                Clear(TotalGO);
+                Clear(TotalSP);
+                LineRec.Reset();
+                LineRec.SetRange(numBE, Header.numBE);
+                if LineRec.FindFirst() then
+                    if LineRec.codeproduit = 'GO' then
+                        repeat
+                            LineRec.CalcFields("Shipped Volume");
+                            TotalGO := LineRec."Shipped Volume";
+                        until LineRec.Next() = 0;
+
+                LineRec.SetRange(numBE, Header.numBE);
+                if LineRec.codeproduit = 'SC' then
+                    repeat
+                        LineRec.CalcFields("Shipped Volume");
+                        TotalSP := LineRec."Shipped Volume";
+                    until LineRec.Next() = 0;
+
             end;
         }
     }
@@ -379,8 +403,10 @@ report 50190 "PickUp Order"
         LineRec: Record pro_detailBE;
         BonLoadRec: Record BonLoading;
         RespCenter: Record "Responsibility Center";
+        CompanyInfos: Record "Company Information";
         // ShipmentMethod: Record "Shipment Method";
         DepotName: Text[100];
+        Foot3: Text;
         TotalSP: Decimal;
         TotalGO: Decimal;
         Agency: Text[100];
@@ -440,5 +466,4 @@ report 50190 "PickUp Order"
         TotalPLLbl: Label 'TOTAL LAMP OIL';
         TotalGOLbl: Label 'TOTAL GAS OIL';
         TotalFOLbl: Label 'TOTAL FUEL OIL';
-
 }

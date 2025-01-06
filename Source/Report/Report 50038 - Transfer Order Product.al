@@ -163,25 +163,31 @@ report 50038 "Transfer Order Product"
                     column(TotalWeightCaption; TotalWeightCaptionLbl)
                     {
                     }
-                    column(CompanyInfoEMail; CompanyInfo."E-Mail")
+                    column(CompanyInfoEMail; 'Email : ' + CompanyInfo."E-Mail")
                     {
                     }
-                    column(CompanyInfoRCS; ' - R.C.S. : ' + CompanyInfo."Trade Register")
+                    column(Foot1; 'Siège social ' + CompanyInfo.Address)
                     {
                     }
-                    column(CompanyInfoCA; 'S.A. au capital de AR ' + CompanyInfo."Stock Capital")
+                    column(Foot2; CompanyInfo."Post Code" + ' - ' + CompanyInfo.City)
                     {
                     }
-                    column(CompanyInfoNIF; 'NIF : ' + CompanyInfo."Registration No.")
+                    column(Foot3; Foot3)
                     {
                     }
-                    column(CompanyInfoSTAT; 'STAT : ' + CompanyInfo."Legal Form")
+                    column(Foot4; 'S.A. au capital de AR ' + CompanyInfo."Stock Capital" + ' - ' + 'NIF : ' + CompanyInfo."Registration No.")
                     {
                     }
-                    column(CompanyInfoPhoneNo; CompanyInfo."Phone No.")
+                    column(Foot5; 'R.C.S. : ' + CompanyInfo."Trade Register" + ' - ' + 'STAT : ' + CompanyInfo."Legal Form")
                     {
                     }
-                    column(CompanyInfoFax; CompanyInfo."Fax No.")
+                    column(CompanyInfo_Picture; CompanyInfo.Picture)
+                    {
+                    }
+                    column(PhoneNoCaption; PhoneNoCaptionLbl)
+                    {
+                    }
+                    column(FaxCaption; FaxCaptionLbl)
                     {
                     }
                     column(CompanyAddr1; CompanyAddr[1])
@@ -196,15 +202,24 @@ report 50038 "Transfer Order Product"
                     column(CompanyAddr4; CompanyAddr[4])
                     {
                     }
-                    column(CompanyInfo_Picture; CompanyInfo.Picture)
-                    {
-                    }
-                    column(PhoneNoCaption; PhoneNoCaptionLbl)
-                    {
-                    }
-                    column(FaxCaption; FaxCaptionLbl)
-                    {
-                    }
+                    // column(CompanyInfoRCS; ' - R.C.S. : ' + CompanyInfo."Trade Register")
+                    // {
+                    // }
+                    // column(CompanyInfoCA; 'S.A. au capital de AR ' + CompanyInfo."Stock Capital")
+                    // {
+                    // }
+                    // column(CompanyInfoNIF; 'NIF : ' + CompanyInfo."Registration No.")
+                    // {
+                    // }
+                    // column(CompanyInfoSTAT; 'STAT : ' + CompanyInfo."Legal Form")
+                    // {
+                    // }
+                    // column(CompanyInfoPhoneNo; CompanyInfo."Phone No.")
+                    // {
+                    // }
+                    // column(CompanyInfoFax; CompanyInfo."Fax No.")
+                    // {
+                    // }
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Adjustment Header";
@@ -376,6 +391,10 @@ report 50038 "Transfer Order Product"
                     ShipmentMethod.Init();
 
                 FormatAddr.Company(CompanyAddr, CompanyInfo);
+
+                if CompanyInfos.Get() then
+                    Foot3 := CompanyInfos."Phone No." + ' - Fax : ' + CompanyInfos."Fax No.";
+
             end;
         }
     }
@@ -443,6 +462,7 @@ report 50038 "Transfer Order Product"
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
         CompanyInfo: Record "Company Information";
+        CompanyInfos: Record "Company Information";
         Location: Record Location;
         Location1: Record Location;
         Article: Record Item;
@@ -450,6 +470,7 @@ report 50038 "Transfer Order Product"
         TransferFromAddr: array[8] of Text[50];
         TransferToAddr: array[8] of Text[50];
         NoOfCopies: Integer;
+        Foot3: Text;
         NoOfLoops: Integer;
         CopyText: Text[30];
         DimText: Text[120];
@@ -482,7 +503,7 @@ report 50038 "Transfer Order Product"
         CartGriseCaptionLbl: Label 'N° CARTE GRISE : ';
         TotalWeightCaptionLbl: Label 'Total Poids';
         CompanyAddr: array[8] of Text[50];
-        PhoneNoCaptionLbl: Label 'Phone No.';
+        PhoneNoCaptionLbl: Label 'Tel :';
         // EMailCaptionLbl: Label 'E-Mail';
         FaxCaptionLbl: Label 'Fax : ';
 }

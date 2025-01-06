@@ -25,6 +25,24 @@ report 50193 "Posted Whse Shipment"
                 column(CompanyPicture; CompanyInfo.Picture)
                 {
                 }
+                column(Foot1; 'Siège social ' + CompanyInfo.Address)
+                {
+                }
+                column(Foot2; CompanyInfo."Post Code" + ' - ' + CompanyInfo.City)
+                {
+                }
+                column(Foot3; Foot3)
+                {
+                }
+                column(Foot4; 'S.A. au capital de AR ' + CompanyInfo."Stock Capital" + ' - ' + 'NIF : ' + CompanyInfo."Registration No.")
+                {
+                }
+                column(Foot5; 'R.C.S. : ' + CompanyInfo."Trade Register" + ' - ' + 'STAT : ' + CompanyInfo."Legal Form")
+                {
+                }
+                column(Foot6; 'Email : ' + CompanyInfo."E-Mail")
+                {
+                }
                 column(TodayFormatted; Format(Today, 0, 4))
                 {
                 }
@@ -245,7 +263,7 @@ report 50193 "Posted Whse Shipment"
 
                     trigger OnPreDataItem()
                     begin
-                        SetRange(Number, 1, 10 - LinesNumb);
+                        SetRange(Number, 1, 12 - LinesNumb);
                     end;
                 }
             }
@@ -257,6 +275,8 @@ report 50193 "Posted Whse Shipment"
                 if Location.Get(Header."Location Code") then
                     DepotName := Location.Name;
 
+                if CompanyInfos.Get() then
+                    Foot3 := CompanyInfos."Phone No." + ' - Fax : ' + CompanyInfos."Fax No.";
             end;
         }
     }
@@ -283,11 +303,13 @@ report 50193 "Posted Whse Shipment"
     var
         Location: Record Location;
         CompanyInfo: Record "Company Information";
+        CompanyInfos: Record "Company Information";
         Lines: Integer;
         LineNumber: Integer;
         LinesNumb: Integer;
         LineNumberText: Code[2];
         DepotName: Text[100];
+        Foot3: Text;
         // PAGENOCaptionLbl: Label 'Page';
         WhsePostedShipmentCaptionLbl: Label 'DELIVERY NOTE';
         BLNumberCaptionLbl: Label 'B/L N°';
