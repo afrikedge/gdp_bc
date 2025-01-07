@@ -703,7 +703,7 @@ codeunit 50035 "EventsSubscribers Table"
         BudgetMgt: Codeunit "Purchase Requisition Mgt";
     begin
         PurchLine."Purchase Account" := BudgetMgt.GetPurchAcc(PurchLine);
-        PurchLine.Modify();
+        if PurchLine.Modify() then;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterInitOutstandingQty', '', true, true)]
@@ -712,7 +712,7 @@ codeunit 50035 "EventsSubscribers Table"
         BudgetMgt: Codeunit "Purchase Requisition Mgt";
     begin
         PurchaseLine."Partially Received" := (PurchaseLine.Quantity <> 0) AND (PurchaseLine."Outstanding Quantity" <> 0) AND (PurchaseLine."Quantity Received" <> 0);
-        PurchaseLine.Modify();
+        if PurchaseLine.Modify() then;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnGetCustomerAccountOnAfterCustGet', '', true, true)]
@@ -721,7 +721,7 @@ codeunit 50035 "EventsSubscribers Table"
         BudgetMgt: Codeunit "Purchase Requisition Mgt";
     begin
         GenJournalLine."Customer Name" := Customer.Name;
-        //GenJournalLine.Modify();
+        if GenJournalLine.Modify() then;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnModifyOnBeforeTestCheckPrinted', '', true, true)]
@@ -968,7 +968,7 @@ codeunit 50035 "EventsSubscribers Table"
         MasterFilesMgt: codeunit "AG1 Master Files Mgt";
     begin
         Rec.IBAN := MasterFilesMgt.CollectIBAN(Rec);
-        Rec.Modify();
+        if Rec.Modify() then;
 
         MasterFilesMgt.ResetVendorValidation(Rec);
     end;
@@ -979,7 +979,7 @@ codeunit 50035 "EventsSubscribers Table"
         MasterFilesMgt: codeunit "AG1 Master Files Mgt";
     begin
         Rec.IBAN := MasterFilesMgt.CollectIBAN(Rec);
-        Rec.Modify();
+        if Rec.Modify() then;
 
         MasterFilesMgt.ResetVendorValidation(Rec);
     end;
@@ -1014,7 +1014,7 @@ codeunit 50035 "EventsSubscribers Table"
         MasterFilesMgt: codeunit "AG1 Master Files Mgt";
     begin
         Rec.IBAN := MasterFilesMgt.CollectIBAN(Rec);
-        Rec.Modify();
+        if Rec.Modify() then;
 
         MasterFilesMgt.ResetVendorValidation(Rec);
     end;
@@ -1025,7 +1025,7 @@ codeunit 50035 "EventsSubscribers Table"
         MasterFilesMgt: codeunit "AG1 Master Files Mgt";
     begin
         Rec.IBAN := MasterFilesMgt.CollectIBAN(Rec);
-        Rec.Modify();
+        if Rec.Modify() then;
 
         MasterFilesMgt.ResetVendorValidation(Rec);
     end;
@@ -1044,7 +1044,7 @@ codeunit 50035 "EventsSubscribers Table"
         MasterFilesMgt: codeunit "AG1 Master Files Mgt";
     begin
         PaymentExportData.CustRecipientBankAccLongNum := CustomerBankAccount.AFKGetLongAccountNum();
-        PaymentExportData.Modify();
+        if PaymentExportData.Modify() then;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Payment Export Data", 'OnAfterSetVendorAsRecipient', '', true, true)]
@@ -1053,7 +1053,7 @@ codeunit 50035 "EventsSubscribers Table"
         MasterFilesMgt: codeunit "AG1 Master Files Mgt";
     begin
         PaymentExportData.VendRecipientBankAccLongNum := VendorBankAccount.AFKGetLongAccountNum();
-        PaymentExportData.Modify();
+        if PaymentExportData.Modify() then;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Payment Export Data", 'OnAfterSetBankAsRecipient', '', true, true)]
@@ -1062,7 +1062,7 @@ codeunit 50035 "EventsSubscribers Table"
         MasterFilesMgt: codeunit "AG1 Master Files Mgt";
     begin
         PaymentExportData.SenderBankLongAccNum := BankAccount.AFKGetLongAccountNum();
-        PaymentExportData.Modify();
+        if PaymentExportData.Modify() then;
     end;
 
 
