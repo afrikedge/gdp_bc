@@ -71,46 +71,45 @@ page 50329 "Touring Card"
     {
         area(navigation)
         {
-            action(RunDispach)
-            {
-                Caption = 'Dispach';
-                Image = "Where-Used";
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+            // action(RunDispach)
+            // {
+            //     Caption = 'Dispach';
+            //     Image = "Where-Used";
+            //     Promoted = true;
+            //     PromotedCategory = Process;
+            //     PromotedIsBig = true;
 
-                trigger OnAction()
-                var
-                    TourOrder: Record "Touring Sales Order";
-                begin
+            //     trigger OnAction()
+            //     var
+            //         TourOrder: Record "Touring Sales Order";
+            //     begin
 
-                    if Rec.Status <> Rec.Status::Confirmed then begin
+            //         if Rec.Status <> Rec.Status::Confirmed then begin
 
-                        TourOrder.Reset;
-                        TourOrder.SetRange(IdTouring, Rec.IdTouring);
-                        if TourOrder.FindSet then
-                            repeat
-                                DispachMgt.CheckNewOrderDispaching(Rec.IdTouring, TourOrder."Order No");
-                            until TourOrder.Next = 0;
+            //             TourOrder.Reset;
+            //             TourOrder.SetRange(IdTouring, Rec.IdTouring);
+            //             if TourOrder.FindSet then
+            //                 repeat
+            //                     DispachMgt.CheckNewOrderDispaching(Rec.IdTouring, TourOrder."Order No");
+            //                 until TourOrder.Next = 0;
 
-                        Rec.TestField(Description);
-                        Rec.TestField("Touring Date");
-                        Rec.TestField("Validity Date");
-                        Rec.TestField("Location Code");
-                        Rec.CalcFields("Total volume to ship", "Truck capacity");
-                        Rec.TestField("Total volume to ship");
-                        Rec.TestField("Truck capacity");
-                        if (Rec."Validity Date" < (Rec."Creation Date")) then Error(Text037);
-                        if (Rec."Validity Date" < (Rec."Touring Date")) then Error(Text038);
-                    end;
+            //             Rec.TestField(Description);
+            //             Rec.TestField("Touring Date");
+            //             Rec.TestField("Validity Date");
+            //             Rec.TestField("Location Code");
+            //             Rec.CalcFields("Total volume to ship", "Truck capacity");
+            //             Rec.TestField("Total volume to ship");
+            //             Rec.TestField("Truck capacity");
+            //             if (Rec."Validity Date" < (Rec."Creation Date")) then Error(Text037);
+            //             if (Rec."Validity Date" < (Rec."Touring Date")) then Error(Text038);
+            //         end;
 
-                    DispachMgt.RunDispach(Rec.IdTouring);
+            //         //DispachMgt.RunDispach(Rec.IdTouring);
 
-
-                    if Rec.Status <> Rec.Status::Confirmed then
-                        CurrPage.Close;
-                end;
-            }
+            //         // if Rec.Status <> Rec.Status::Confirmed then
+            //         //     CurrPage.Close;
+            //     end;
+            // }
             action(ListeBE)
             {
                 Caption = 'Removal Order List';

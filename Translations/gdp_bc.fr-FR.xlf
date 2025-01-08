@@ -14237,7 +14237,7 @@
         </trans-unit>
         <trans-unit id="Table 1442016390 - Field 4051573732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>GO</source>
-          <target state="needs-review-translation">ALLER</target>
+          <target state="needs-review-translation">GO</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Touring Sales Order - Field GO - Property Caption</note>
         </trans-unit>
@@ -14279,7 +14279,7 @@
         </trans-unit>
         <trans-unit id="Table 1442016390 - Field 1846706380 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>SC</source>
-          <target state="needs-review-translation">FDE</target>
+          <target state="needs-review-translation">SC</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Touring Sales Order - Field SC - Property Caption</note>
         </trans-unit>
