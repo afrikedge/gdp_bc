@@ -400,6 +400,20 @@ report 50189 "PBL FO Delivery Note"
                 if CompanyInfos.Get() then
                     Foot3 := CompanyInfos."Phone No." + ' - Fax : ' + CompanyInfos."Fax No.";
             end;
+
+            trigger OnPostDataItem()
+            var
+                proEnteteBL: record pro_enteteBE;
+            begin
+                if not CurrReport.Preview then
+                    if (proEnteteBL.get(Header.numBL)) then begin
+                        proEnteteBL.Imprime := true;
+                        proEnteteBL."Last Printed Date" := CreateDateTime(Today(), Time());
+                        proEnteteBL."Nos Printed" := proEnteteBL."Nos Printed" + 1;
+                        proEnteteBL.Modify();
+                        Commit();
+                    end;
+            end;
         }
 
     }

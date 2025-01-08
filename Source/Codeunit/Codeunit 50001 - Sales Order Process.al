@@ -698,6 +698,7 @@ codeunit 50001 "Sales Order Process"
                 enteteBE.Reset;
                 enteteBE.SetRange(enteteBE.NavOrderNo, SalesH."No.");
                 enteteBE.SetRange(enteteBE.BonIsConfirme, false);
+                enteteBE.SetRange(enteteBE.isAnnule, false);
                 if enteteBE.FindFirst then
                     if enteteBE.NumBU <> '' then
                         Error(Text032, enteteBE.NumBU);
