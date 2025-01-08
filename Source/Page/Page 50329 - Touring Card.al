@@ -158,14 +158,33 @@ page 50329 "Touring Card"
                         Image = "Report";
 
                         trigger OnAction()
+                        var
+                            Touring: record Touring;
+                            TouringProgram: Report "Touring Program";
                         begin
-                            CRReport.PrintProgrammeTournee(Rec.IdTouring);
+                            Touring.SetRange(IdTouring, Rec.IdTouring);
+                            TouringProgram.SetTableView(Touring);
+                            TouringProgram.RunModal();
+                            //CRReport.PrintProgrammeTournee(Rec.IdTouring);
                         end;
                     }
                 }
             }
         }
+        area(Promoted)
+        {
+            actionref(PrintBERef; PrintBE)
+            {
+            }
+            actionref(PrintBLRef; PrintBL)
+            {
+            }
+            actionref(PrintProgRef; PrintProg)
+            {
+            }
+        }
     }
+
 
     trigger OnAfterGetCurrRecord()
     begin

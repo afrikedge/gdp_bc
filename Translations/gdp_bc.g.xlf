@@ -57628,6 +57628,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Sales Order Confirmation - Control ShowInternalInfo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 4077655036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Touring Program</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Touring Program - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4077655036 - NamedType 3132565919" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LIVRAISON %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Touring Program - NamedType LivraisonLabel</note>
+        </trans-unit>
+        <trans-unit id="Report 4077655036 - NamedType 953135750" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PROGRAMME DU %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Touring Program - NamedType ProgrammeLabel</note>
+        </trans-unit>
+        <trans-unit id="Report 4077655036 - NamedType 3853308832" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TOURNEE N° %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Touring Program - NamedType TourneeLabel</note>
+        </trans-unit>
         <trans-unit id="Report 459386664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Traite Fournisseur</source>
           <note from="Developer" annotates="general" priority="2"></note>
