@@ -35,8 +35,9 @@ page 50352 "Print Bon Card"
                 var
                     EnteteBE: Record pro_enteteBE;
                 begin
-                    //EnteteBE.SETRANGE(numBE,Rec.numBE);
-                    //REPORT.RUN(REPORT::"Bon Enlevement Dispatching",TRUE, FALSE,EnteteBE);
+                    EnteteBE.SETRANGE(numBE, Rec.numBE);
+                    EnteteBE.SetRange(NumBU, Rec.NumBU);
+                    REPORT.RUN(50190, TRUE, FALSE, EnteteBE);
 
 
                     //BonIsEditable:=FALSE;
@@ -63,10 +64,11 @@ page 50352 "Print Bon Card"
 
                 trigger OnAction()
                 var
-                    EnteteBL: Record pro_enteteBL;
+                    EnteteBL: Record pro_enteteBE;
                 begin
-                    //EnteteBL.SETRANGE(numBL,Rec.numBL);
-                    //REPORT.RUN(REPORT::"Bon livraison Dispatching",TRUE, FALSE,EnteteBL);
+                    EnteteBL.SETRANGE(numBL, Rec.numBL);
+                    EnteteBL.SetRange(NumBU, Rec.NumBU);
+                    REPORT.RUN(50189, TRUE, FALSE, EnteteBL);
 
                     PrintCrystal.PrintBL(Rec.numBL);
 

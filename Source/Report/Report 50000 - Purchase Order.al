@@ -219,11 +219,11 @@ report 50000 "Purchase Order"
                         trigger OnAfterGetRecord()
                         begin
                             if Number = 1 then begin
-                                if not DimSetEntry1.FindSet then
-                                    CurrReport.Break;
+                                if not DimSetEntry1.FindSet() then
+                                    CurrReport.Break();
                             end else
                                 if not Continue then
-                                    CurrReport.Break;
+                                    CurrReport.Break();
 
                             Clear(DimText);
                             Continue := false;
@@ -241,13 +241,13 @@ report 50000 "Purchase Order"
                                     Continue := true;
                                     exit;
                                 end;
-                            until DimSetEntry1.Next = 0;
+                            until DimSetEntry1.Next() = 0;
                         end;
 
                         trigger OnPreDataItem()
                         begin
                             if not ShowInternalInfo then
-                                CurrReport.Break;
+                                CurrReport.Break();
                         end;
                     }
                     dataitem("Purchase Line"; "Purchase Line")
@@ -258,7 +258,7 @@ report 50000 "Purchase Order"
 
                         trigger OnPreDataItem()
                         begin
-                            CurrReport.Break;
+                            CurrReport.Break();
                         end;
                     }
                     dataitem(RoundLoop; "Integer")
@@ -334,7 +334,7 @@ report 50000 "Purchase Order"
                         column(TotalInclVATText; TotalInclVATText)
                         {
                         }
-                        column(VATAmountText; VATAmountLine.VATAmountText)
+                        column(VATAmountText; VATAmountLine.VATAmountText())
                         {
                         }
                         column(VATAmount; VATAmount)
@@ -412,11 +412,11 @@ report 50000 "Purchase Order"
                             trigger OnAfterGetRecord()
                             begin
                                 if Number = 1 then begin
-                                    if not DimSetEntry2.FindSet then
-                                        CurrReport.Break;
+                                    if not DimSetEntry2.FindSet() then
+                                        CurrReport.Break();
                                 end else
                                     if not Continue then
-                                        CurrReport.Break;
+                                        CurrReport.Break();
 
                                 Clear(DimText);
                                 Continue := false;
@@ -434,13 +434,13 @@ report 50000 "Purchase Order"
                                         Continue := true;
                                         exit;
                                     end;
-                                until DimSetEntry2.Next = 0;
+                                until DimSetEntry2.Next() = 0;
                             end;
 
                             trigger OnPreDataItem()
                             begin
                                 if not ShowInternalInfo then
-                                    CurrReport.Break;
+                                    CurrReport.Break();
 
                                 DimSetEntry2.SetRange("Dimension Set ID", "Purchase Line"."Dimension Set ID");
                             end;
@@ -451,7 +451,7 @@ report 50000 "Purchase Order"
                             if Number = 1 then
                                 PurchLine.Find('-')
                             else
-                                PurchLine.Next;
+                                PurchLine.Next();
                             "Purchase Line" := PurchLine;
 
                             if not "Purchase Header"."Prices Including VAT" and
@@ -470,7 +470,7 @@ report 50000 "Purchase Order"
 
                         trigger OnPostDataItem()
                         begin
-                            PurchLine.DeleteAll;
+                            PurchLine.DeleteAll();
 
                             //**************************************
                             /*MESSAGE('%1',TotalAmount);
@@ -492,7 +492,7 @@ report 50000 "Purchase Order"
                             do
                                 MoreLines := PurchLine.Next(-1) <> 0;
                             if not MoreLines then
-                                CurrReport.Break;
+                                CurrReport.Break();
                             PurchLine.SetRange("Line No.", 0, PurchLine."Line No.");
                             SetRange(Number, 1, PurchLine.Count);
                             CurrReport.CreateTotals(PurchLine."Line Amount", PurchLine."Inv. Discount Amount");
@@ -542,7 +542,7 @@ report 50000 "Purchase Order"
                         trigger OnPreDataItem()
                         begin
                             if VATAmount = 0 then
-                                CurrReport.Break;
+                                CurrReport.Break();
                             SetRange(Number, 1, VATAmountLine.Count);
                             CurrReport.CreateTotals(
                               VATAmountLine."Line Amount", VATAmountLine."Inv. Disc. Base Amount",
@@ -582,9 +582,9 @@ report 50000 "Purchase Order"
                         begin
                             if (not GLSetup."Print VAT specification in LCY") or
                                ("Purchase Header"."Currency Code" = '') or
-                               (VATAmountLine.GetTotalVATAmount = 0)
+                               (VATAmountLine.GetTotalVATAmount() = 0)
                             then
-                                CurrReport.Break;
+                                CurrReport.Break();
 
                             SetRange(Number, 1, VATAmountLine.Count);
                             CurrReport.CreateTotals(VALVATBaseLCY, VALVATAmountLCY);
@@ -632,7 +632,7 @@ report 50000 "Purchase Order"
                         trigger OnPreDataItem()
                         begin
                             if "Purchase Header"."Buy-from Vendor No." = "Purchase Header"."Pay-to Vendor No." then
-                                CurrReport.Break;
+                                CurrReport.Break();
                         end;
                     }
                     dataitem(Total3; "Integer")
@@ -669,7 +669,7 @@ report 50000 "Purchase Order"
                         trigger OnPreDataItem()
                         begin
                             if ("Purchase Header"."Sell-to Customer No." = '') and (ShipToAddr[1] = '') then
-                                CurrReport.Break;
+                                CurrReport.Break();
                         end;
                     }
                     dataitem(PrepmtLoop; "Integer")
@@ -697,7 +697,7 @@ report 50000 "Purchase Order"
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(PrepmtVATAmountText; PrepmtVATAmountLine.VATAmountText)
+                        column(PrepmtVATAmountText; PrepmtVATAmountLine.VATAmountText())
                         {
                         }
                         column(PrepmtVATAmount; PrepmtVATAmount)
@@ -722,11 +722,11 @@ report 50000 "Purchase Order"
                             trigger OnAfterGetRecord()
                             begin
                                 if Number = 1 then begin
-                                    if not PrepmtDimSetEntry.FindSet then
-                                        CurrReport.Break;
+                                    if not PrepmtDimSetEntry.FindSet() then
+                                        CurrReport.Break();
                                 end else
                                     if not Continue then
-                                        CurrReport.Break;
+                                        CurrReport.Break();
 
                                 Clear(DimText);
                                 Continue := false;
@@ -744,7 +744,7 @@ report 50000 "Purchase Order"
                                         Continue := true;
                                         exit;
                                     end;
-                                until PrepmtDimSetEntry.Next = 0;
+                                until PrepmtDimSetEntry.Next() = 0;
                             end;
                         }
 
@@ -752,10 +752,10 @@ report 50000 "Purchase Order"
                         begin
                             if Number = 1 then begin
                                 if not PrepmtInvBuf.Find('-') then
-                                    CurrReport.Break;
+                                    CurrReport.Break();
                             end else
-                                if PrepmtInvBuf.Next = 0 then
-                                    CurrReport.Break;
+                                if PrepmtInvBuf.Next() = 0 then
+                                    CurrReport.Break();
 
                             if ShowInternalInfo then
                                 PrepmtDimSetEntry.SetRange("Dimension Set ID", PrepmtInvBuf."Dimension Set ID");
@@ -821,28 +821,28 @@ report 50000 "Purchase Order"
                 begin
                     Clear(PurchLine);
                     Clear(PurchPost);
-                    PurchLine.DeleteAll;
-                    VATAmountLine.DeleteAll;
+                    PurchLine.DeleteAll();
+                    VATAmountLine.DeleteAll();
                     PurchPost.GetPurchLines("Purchase Header", PurchLine, 0);
                     PurchLine.CalcVATAmountLines(0, "Purchase Header", PurchLine, VATAmountLine);
                     PurchLine.UpdateVATOnLines(0, "Purchase Header", PurchLine, VATAmountLine);
-                    VATAmount := VATAmountLine.GetTotalVATAmount;
-                    VATBaseAmount := VATAmountLine.GetTotalVATBase;
+                    VATAmount := VATAmountLine.GetTotalVATAmount();
+                    VATBaseAmount := VATAmountLine.GetTotalVATBase();
                     VATDiscountAmount :=
                       VATAmountLine.GetTotalVATDiscount("Purchase Header"."Currency Code", "Purchase Header"."Prices Including VAT");
-                    TotalAmountInclVAT := VATAmountLine.GetTotalAmountInclVAT;
+                    TotalAmountInclVAT := VATAmountLine.GetTotalAmountInclVAT();
 
 
                     //****************************
-                    TotalAvecRemise := VATAmountLine.GetTotalLineAmount(false, "Purchase Header"."Currency Code") - VATAmountLine.GetTotalInvDiscAmount;
-                    NbTLet.InitTextVariable;
+                    TotalAvecRemise := VATAmountLine.GetTotalLineAmount(false, "Purchase Header"."Currency Code") - VATAmountLine.GetTotalInvDiscAmount();
+                    NbTLet.InitTextVariable();
                     //TODO
                     // if TotalAvecRemise <> 0 then
                     //     NbTLet.FormatNoTextFR(TotalAmountLetter2, TotalAvecRemise, "Purchase Header"."Currency Code");
                     //****************************
 
 
-                    PrepmtInvBuf.DeleteAll;
+                    PrepmtInvBuf.DeleteAll();
                     PurchPostPrepmt.GetPurchLines("Purchase Header", 0, PrepmtPurchLine);
                     if not PrepmtPurchLine.IsEmpty then begin
                         PurchPostPrepmt.GetPurchLinesToDeduct("Purchase Header", TempPurchLine);
@@ -853,9 +853,9 @@ report 50000 "Purchase Order"
                     PrepmtVATAmountLine.DeductVATAmountLine(PrePmtVATAmountLineDeduct);
                     PurchPostPrepmt.UpdateVATOnLines("Purchase Header", PrepmtPurchLine, PrepmtVATAmountLine, 0);
                     //PurchPostPrepmt.BuildInvLineBuffer2("Purchase Header", PrepmtPurchLine, 0, PrepmtInvBuf);
-                    PrepmtVATAmount := PrepmtVATAmountLine.GetTotalVATAmount;
-                    PrepmtVATBaseAmount := PrepmtVATAmountLine.GetTotalVATBase;
-                    PrepmtTotalAmountInclVAT := PrepmtVATAmountLine.GetTotalAmountInclVAT;
+                    PrepmtVATAmount := PrepmtVATAmountLine.GetTotalVATAmount();
+                    PrepmtVATBaseAmount := PrepmtVATAmountLine.GetTotalVATBase();
+                    PrepmtTotalAmountInclVAT := PrepmtVATAmountLine.GetTotalAmountInclVAT();
 
                     if Number > 1 then
                         CopyText := Text003;
@@ -886,7 +886,7 @@ report 50000 "Purchase Order"
                 //TODO
                 //CurrReport.Language := Language.GetLanguageID("Language Code");
 
-                CompanyInfo.Get;
+                CompanyInfo.Get();
                 CompanyInfo.CalcFields(Picture);
                 if RespCenter.Get("Responsibility Center") then begin
                     FormatAddr.RespCenter(CompanyAddr, RespCenter);
@@ -904,7 +904,7 @@ report 50000 "Purchase Order"
                 DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
 
                 if "Purchaser Code" = '' then begin
-                    SalesPurchPerson.Init;
+                    SalesPurchPerson.Init();
                     PurchaserText := '';
                 end else begin
                     SalesPurchPerson.Get("Purchaser Code");
@@ -935,19 +935,19 @@ report 50000 "Purchase Order"
                 if "Buy-from Vendor No." <> "Pay-to Vendor No." then
                     FormatAddr.PurchHeaderPayTo(VendAddr, "Purchase Header");
                 if "Payment Terms Code" = '' then
-                    PaymentTerms.Init
+                    PaymentTerms.Init()
                 else begin
                     PaymentTerms.Get("Payment Terms Code");
                     PaymentTerms.TranslateDescription(PaymentTerms, "Language Code");
                 end;
                 if "Prepmt. Payment Terms Code" = '' then
-                    PrepmtPaymentTerms.Init
+                    PrepmtPaymentTerms.Init()
                 else begin
                     PrepmtPaymentTerms.Get("Prepmt. Payment Terms Code");
                     PrepmtPaymentTerms.TranslateDescription(PrepmtPaymentTerms, "Language Code");
                 end;
                 if "Shipment Method Code" = '' then
-                    ShipmentMethod.Init
+                    ShipmentMethod.Init()
                 else begin
                     ShipmentMethod.Get("Shipment Method Code");
                     ShipmentMethod.TranslateDescription(ShipmentMethod, "Language Code");
@@ -1068,19 +1068,12 @@ report 50000 "Purchase Order"
 
     trigger OnInitReport()
     begin
-        GLSetup.Get;
-        PurchSetup.Get;
+        GLSetup.Get();
+        PurchSetup.Get();
         Num := 0;
     end;
 
     var
-        Text000: Label 'Purchaser';
-        Text001: Label 'Total %1';
-        Text002: Label 'Total %1 Incl. VAT';
-        Text003: Label ' COPY';
-        Text004: Label 'Order%1';
-        Text005: Label 'Page %1';
-        Text006: Label 'Total %1 Excl. VAT';
         GLSetup: Record "General Ledger Setup";
         CompanyInfo: Record "Company Information";
         ShipmentMethod: Record "Shipment Method";
@@ -1134,6 +1127,14 @@ report 50000 "Purchase Order"
         VALVATAmountLCY: Decimal;
         VALSpecLCYHeader: Text[80];
         VALExchRate: Text[50];
+
+        Text000: Label 'Purchaser';
+        Text001: Label 'Total %1';
+        Text002: Label 'Total %1 Incl. VAT';
+        Text003: Label ' COPY';
+        Text004: Label 'Order%1';
+        Text005: Label 'Page %1';
+        Text006: Label 'Total %1 Excl. VAT';
         Text007: Label 'VAT Amount Specification in ';
         Text008: Label 'Local Currency';
         Text009: Label 'Exchange rate: %1/%2';
