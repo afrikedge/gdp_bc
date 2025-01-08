@@ -376,6 +376,17 @@ report 50190 "PickUp Order"
                     until LineRec.Next() = 0;
 
             end;
+
+            trigger OnPostDataItem()
+            begin
+                if not CurrReport.Preview then begin
+                    Header.Imprime := true;
+                    Header."Last Printed Date" := CreateDateTime(Today(), Time());
+                    Header."Nos Printed" := Header."Nos Printed" + 1;
+                    Header.Modify();
+                    Commit();
+                end;
+            end;
         }
     }
 
@@ -389,6 +400,7 @@ report 50190 "PickUp Order"
             }
         }
     }
+
 
     trigger OnPreReport()
     begin
