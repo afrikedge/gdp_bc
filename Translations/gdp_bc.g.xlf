@@ -38438,11 +38438,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action PrintProg - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1975951532 - Action 710507135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Dispach</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action RunDispach - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 1087321258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Touring List</source>
           <note from="Developer" annotates="general" priority="2"></note>

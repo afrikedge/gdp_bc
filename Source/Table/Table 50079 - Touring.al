@@ -60,6 +60,7 @@ table 50079 Touring
             trigger OnValidate()
             var
                 Loc: Record Location;
+                SecMgt: Codeunit "Security Mgt";
             begin
                 if ((Status = Rec.Status::Confirmed) or (Status = Rec.Status::Posted)) then
                     Error(Text001);
@@ -71,13 +72,11 @@ table 50079 Touring
                             DeleteTouringData(Rec.IdTouring);
                         end;
 
-
                 if Loc.Get("Location Code") then
                     "Responsibility Center" := Loc."Responsibility Center";
 
-                //TODO Migration
-                //if "Location Code"<>'' then
-                //SecMgt.CheckWarehouseUser("Location Code");
+                if "Location Code" <> '' then
+                    SecMgt.CheckWarehouseUser("Location Code");
             end;
         }
         field(8; "Truck capacity"; Decimal)

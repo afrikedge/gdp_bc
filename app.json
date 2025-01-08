@@ -1,47 +1,47 @@
 {
-  "id": "f4da46eb-f108-4f4c-9235-be1f12de33d6",
-  "name": "gdp_bc",
-  "publisher": "Afrikedge",
-  "version": "2.0.0.2",
-  "brief": "Specific customizations for GDP",
-  "description": "Specific customizations for GDP",
-  "privacyStatement": "https://www.afrikedge.com",
-  "EULA": "https://www.afrikedge.com",
-  "help": "https://www.afrikedge.com",
-  "url": "https://www.afrikedge.com",
-  "contextSensitiveHelpUrl": "https://www.afrikedge.com",
-  "logo": "Logo/ExtensionLogo.jpg",
-  "dependencies": [
-    {
-      "id": "b1aefffa-6969-4a57-be98-57cb9a6d1c41",
-      "name": "gdp_payroll_bc",
-      "publisher": "Afrikedge",
-      "version": "2.0.0.3"
-    }
-  ],
-  "screenshots": [],
-  "platform": "1.0.0.0",
-  "application": "24.0.0.0",
-  "idRanges": [
-    {
-      "from": 50000,
-      "to": 50399
+    "id": "f4da46eb-f108-4f4c-9235-be1f12de33d6",
+    "name": "gdp_bc",
+    "publisher": "Afrikedge",
+    "version": "2.0.0.4",
+    "brief": "Specific customizations for GDP",
+    "description": "Specific customizations for GDP",
+    "privacyStatement": "https://www.afrikedge.com",
+    "EULA": "https://www.afrikedge.com",
+    "help": "https://www.afrikedge.com",
+    "url": "https://www.afrikedge.com",
+    "contextSensitiveHelpUrl": "https://www.afrikedge.com",
+    "logo": "Logo/ExtensionLogo.jpg",
+    "dependencies": [
+        {
+            "id": "b1aefffa-6969-4a57-be98-57cb9a6d1c41",
+            "name": "gdp_payroll_bc",
+            "publisher": "Afrikedge",
+            "version": "1.0.0.0"
+        }
+    ],
+    "screenshots": [],
+    "platform": "1.0.0.0",
+    "application": "14.0.29530.0",
+    "idRanges": [
+        {
+            "from": 50000,
+            "to": 50399
+        },
+        {
+            "from": 60015,
+            "to": 60018
+        }
+    ],
+    "resourceExposurePolicy": {
+        "allowDebugging": true,
+        "allowDownloadingSource": true,
+        "includeSourceInSymbolFile": true
     },
-    {
-      "from": 60015,
-      "to": 60018
-    }
-  ],
-  "resourceExposurePolicy": {
-    "allowDebugging": true,
-    "allowDownloadingSource": true,
-    "includeSourceInSymbolFile": true
-  },
-  "runtime": "13.0",
-  "features": [
-    "NoImplicitWith",
-    "TranslationFile",
-    "GenerateCaptions"
-  ],
-  "target": "Cloud"
+    "runtime": "13.0",
+    "features": [
+        "NoImplicitWith",
+        "TranslationFile",
+        "GenerateCaptions"
+    ],
+    "target": "Cloud"
 }
