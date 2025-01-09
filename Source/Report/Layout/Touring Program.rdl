@@ -22,64 +22,6 @@
       <rd:DataSourceID>f23b1a7e-8efd-4366-912b-64cf4feed984</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="CompanyPicture">
-          <DataField>CompanyPicture</DataField>
-        </Field>
-        <Field Name="ProgrammeText">
-          <DataField>ProgrammeText</DataField>
-        </Field>
-        <Field Name="TourneeText">
-          <DataField>TourneeText</DataField>
-        </Field>
-        <Field Name="LivraisonText">
-          <DataField>LivraisonText</DataField>
-        </Field>
-        <Field Name="CustomerNo">
-          <DataField>CustomerNo</DataField>
-        </Field>
-        <Field Name="CustomerName">
-          <DataField>CustomerName</DataField>
-        </Field>
-        <Field Name="NumBU">
-          <DataField>NumBU</DataField>
-        </Field>
-        <Field Name="nomTransporteur">
-          <DataField>nomTransporteur</DataField>
-        </Field>
-        <Field Name="idtournee">
-          <DataField>idtournee</DataField>
-        </Field>
-        <Field Name="depot">
-          <DataField>depot</DataField>
-        </Field>
-        <Field Name="codemoyentransport">
-          <DataField>codemoyentransport</DataField>
-        </Field>
-        <Field Name="NavOrderNo">
-          <DataField>NavOrderNo</DataField>
-        </Field>
-        <Field Name="AdrLivraisonBL">
-          <DataField>AdrLivraisonBL</DataField>
-        </Field>
-        <Field Name="codeproduit">
-          <DataField>codeproduit</DataField>
-        </Field>
-        <Field Name="volumeaenlever">
-          <DataField>volumeaenlever</DataField>
-        </Field>
-        <Field Name="volumeaenleverFormat">
-          <DataField>volumeaenleverFormat</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -1912,12 +1854,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1957,4 +1893,62 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="CompanyPicture">
+          <DataField>CompanyPicture</DataField>
+        </Field>
+        <Field Name="ProgrammeText">
+          <DataField>ProgrammeText</DataField>
+        </Field>
+        <Field Name="TourneeText">
+          <DataField>TourneeText</DataField>
+        </Field>
+        <Field Name="LivraisonText">
+          <DataField>LivraisonText</DataField>
+        </Field>
+        <Field Name="CustomerNo">
+          <DataField>CustomerNo</DataField>
+        </Field>
+        <Field Name="CustomerName">
+          <DataField>CustomerName</DataField>
+        </Field>
+        <Field Name="NumBU">
+          <DataField>NumBU</DataField>
+        </Field>
+        <Field Name="nomTransporteur">
+          <DataField>nomTransporteur</DataField>
+        </Field>
+        <Field Name="idtournee">
+          <DataField>idtournee</DataField>
+        </Field>
+        <Field Name="depot">
+          <DataField>depot</DataField>
+        </Field>
+        <Field Name="codemoyentransport">
+          <DataField>codemoyentransport</DataField>
+        </Field>
+        <Field Name="NavOrderNo">
+          <DataField>NavOrderNo</DataField>
+        </Field>
+        <Field Name="AdrLivraisonBL">
+          <DataField>AdrLivraisonBL</DataField>
+        </Field>
+        <Field Name="codeproduit">
+          <DataField>codeproduit</DataField>
+        </Field>
+        <Field Name="volumeaenlever">
+          <DataField>volumeaenlever</DataField>
+        </Field>
+        <Field Name="volumeaenleverFormat">
+          <DataField>volumeaenleverFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

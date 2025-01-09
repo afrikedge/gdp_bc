@@ -11,6 +11,307 @@
       <rd:DataSourceID>95a55d0d-b8f1-4636-b91d-64fc04669c94</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="numBE">
+          <DataField>numBE</DataField>
+        </Field>
+        <Field Name="numBL">
+          <DataField>numBL</DataField>
+        </Field>
+        <Field Name="NumBU">
+          <DataField>NumBU</DataField>
+        </Field>
+        <Field Name="datevalidite">
+          <DataField>datevalidite</DataField>
+        </Field>
+        <Field Name="region">
+          <DataField>region</DataField>
+        </Field>
+        <Field Name="depot">
+          <DataField>depot</DataField>
+        </Field>
+        <Field Name="dateBE">
+          <DataField>dateBE</DataField>
+        </Field>
+        <Field Name="Destination">
+          <DataField>Destination</DataField>
+        </Field>
+        <Field Name="Cargo_Name">
+          <DataField>Cargo_Name</DataField>
+        </Field>
+        <Field Name="nomchauffeur">
+          <DataField>nomchauffeur</DataField>
+        </Field>
+        <Field Name="nomTransporteur">
+          <DataField>nomTransporteur</DataField>
+        </Field>
+        <Field Name="permis">
+          <DataField>permis</DataField>
+        </Field>
+        <Field Name="codemoyentransport">
+          <DataField>codemoyentransport</DataField>
+        </Field>
+        <Field Name="DepotName">
+          <DataField>DepotName</DataField>
+        </Field>
+        <Field Name="DeliveryMode">
+          <DataField>DeliveryMode</DataField>
+        </Field>
+        <Field Name="Agency">
+          <DataField>Agency</DataField>
+        </Field>
+        <Field Name="observation">
+          <DataField>observation</DataField>
+        </Field>
+        <Field Name="PreparedBy">
+          <DataField>PreparedBy</DataField>
+        </Field>
+        <Field Name="AutorisedBy">
+          <DataField>AutorisedBy</DataField>
+        </Field>
+        <Field Name="Foot1">
+          <DataField>Foot1</DataField>
+        </Field>
+        <Field Name="Foot2">
+          <DataField>Foot2</DataField>
+        </Field>
+        <Field Name="Foot3">
+          <DataField>Foot3</DataField>
+        </Field>
+        <Field Name="Foot4">
+          <DataField>Foot4</DataField>
+        </Field>
+        <Field Name="Foot5">
+          <DataField>Foot5</DataField>
+        </Field>
+        <Field Name="Foot6">
+          <DataField>Foot6</DataField>
+        </Field>
+        <Field Name="CompanyPicture">
+          <DataField>CompanyPicture</DataField>
+        </Field>
+        <Field Name="PickUpOrderTitleLbl">
+          <DataField>PickUpOrderTitleLbl</DataField>
+        </Field>
+        <Field Name="SalesAgencyLbl">
+          <DataField>SalesAgencyLbl</DataField>
+        </Field>
+        <Field Name="ActivityLbl">
+          <DataField>ActivityLbl</DataField>
+        </Field>
+        <Field Name="AgencyLbl">
+          <DataField>AgencyLbl</DataField>
+        </Field>
+        <Field Name="DateLbl">
+          <DataField>DateLbl</DataField>
+        </Field>
+        <Field Name="BENumberLbl">
+          <DataField>BENumberLbl</DataField>
+        </Field>
+        <Field Name="DeliveryDepotLbl">
+          <DataField>DeliveryDepotLbl</DataField>
+        </Field>
+        <Field Name="ValidUntilLbl">
+          <DataField>ValidUntilLbl</DataField>
+        </Field>
+        <Field Name="DestinationLbl">
+          <DataField>DestinationLbl</DataField>
+        </Field>
+        <Field Name="NavireNameLbl">
+          <DataField>NavireNameLbl</DataField>
+        </Field>
+        <Field Name="RDLbl">
+          <DataField>RDLbl</DataField>
+        </Field>
+        <Field Name="DeliveryModeLbl">
+          <DataField>DeliveryModeLbl</DataField>
+        </Field>
+        <Field Name="CarrierLbl">
+          <DataField>CarrierLbl</DataField>
+        </Field>
+        <Field Name="DriverNameLbl">
+          <DataField>DriverNameLbl</DataField>
+        </Field>
+        <Field Name="LicenseNumberLbl">
+          <DataField>LicenseNumberLbl</DataField>
+        </Field>
+        <Field Name="TruckNumberLbl">
+          <DataField>TruckNumberLbl</DataField>
+        </Field>
+        <Field Name="DesignationLbl">
+          <DataField>DesignationLbl</DataField>
+        </Field>
+        <Field Name="ProductLbl">
+          <DataField>ProductLbl</DataField>
+        </Field>
+        <Field Name="ProductCodeLbl">
+          <DataField>ProductCodeLbl</DataField>
+        </Field>
+        <Field Name="AmbientVolumeLbl">
+          <DataField>AmbientVolumeLbl</DataField>
+        </Field>
+        <Field Name="CompartmentLbl">
+          <DataField>CompartmentLbl</DataField>
+        </Field>
+        <Field Name="Product2Lbl">
+          <DataField>Product2Lbl</DataField>
+        </Field>
+        <Field Name="NoLbl">
+          <DataField>NoLbl</DataField>
+        </Field>
+        <Field Name="ObservationsLbl">
+          <DataField>ObservationsLbl</DataField>
+        </Field>
+        <Field Name="ForGalanaLbl">
+          <DataField>ForGalanaLbl</DataField>
+        </Field>
+        <Field Name="PreparedByLbl">
+          <DataField>PreparedByLbl</DataField>
+        </Field>
+        <Field Name="Name1Lbl">
+          <DataField>Name1Lbl</DataField>
+        </Field>
+        <Field Name="Date1Lbl">
+          <DataField>Date1Lbl</DataField>
+        </Field>
+        <Field Name="AuthorizedByLbl">
+          <DataField>AuthorizedByLbl</DataField>
+        </Field>
+        <Field Name="Name2Lbl">
+          <DataField>Name2Lbl</DataField>
+        </Field>
+        <Field Name="Date2Lbl">
+          <DataField>Date2Lbl</DataField>
+        </Field>
+        <Field Name="ForLogisticLbl">
+          <DataField>ForLogisticLbl</DataField>
+        </Field>
+        <Field Name="DepotLoaderLbl">
+          <DataField>DepotLoaderLbl</DataField>
+        </Field>
+        <Field Name="Name3Lbl">
+          <DataField>Name3Lbl</DataField>
+        </Field>
+        <Field Name="Date3Lbl">
+          <DataField>Date3Lbl</DataField>
+        </Field>
+        <Field Name="DepotcontrolLbl">
+          <DataField>DepotcontrolLbl</DataField>
+        </Field>
+        <Field Name="Name4Lbl">
+          <DataField>Name4Lbl</DataField>
+        </Field>
+        <Field Name="Date4Lbl">
+          <DataField>Date4Lbl</DataField>
+        </Field>
+        <Field Name="ForCarrierLbl">
+          <DataField>ForCarrierLbl</DataField>
+        </Field>
+        <Field Name="Name5Lbl">
+          <DataField>Name5Lbl</DataField>
+        </Field>
+        <Field Name="Date5Lbl">
+          <DataField>Date5Lbl</DataField>
+        </Field>
+        <Field Name="ArrivalTimeLbl">
+          <DataField>ArrivalTimeLbl</DataField>
+        </Field>
+        <Field Name="StartTimeLbl">
+          <DataField>StartTimeLbl</DataField>
+        </Field>
+        <Field Name="TotalSP95Lbl">
+          <DataField>TotalSP95Lbl</DataField>
+        </Field>
+        <Field Name="TotalPLLbl">
+          <DataField>TotalPLLbl</DataField>
+        </Field>
+        <Field Name="TotalGOLbl">
+          <DataField>TotalGOLbl</DataField>
+        </Field>
+        <Field Name="TotalFOLbl">
+          <DataField>TotalFOLbl</DataField>
+        </Field>
+        <Field Name="TotalGO">
+          <DataField>TotalGO</DataField>
+        </Field>
+        <Field Name="TotalGOFormat">
+          <DataField>TotalGOFormat</DataField>
+        </Field>
+        <Field Name="TotalSP">
+          <DataField>TotalSP</DataField>
+        </Field>
+        <Field Name="TotalSPFormat">
+          <DataField>TotalSPFormat</DataField>
+        </Field>
+        <Field Name="TotalPL">
+          <DataField>TotalPL</DataField>
+        </Field>
+        <Field Name="TotalPLFormat">
+          <DataField>TotalPLFormat</DataField>
+        </Field>
+        <Field Name="TotalFO">
+          <DataField>TotalFO</DataField>
+        </Field>
+        <Field Name="TotalFOFormat">
+          <DataField>TotalFOFormat</DataField>
+        </Field>
+        <Field Name="NavItemCode">
+          <DataField>NavItemCode</DataField>
+        </Field>
+        <Field Name="Item_Name">
+          <DataField>Item_Name</DataField>
+        </Field>
+        <Field Name="Unit_Code">
+          <DataField>Unit_Code</DataField>
+        </Field>
+        <Field Name="volumealivrer">
+          <DataField>volumealivrer</DataField>
+        </Field>
+        <Field Name="volumealivrerFormat">
+          <DataField>volumealivrerFormat</DataField>
+        </Field>
+        <Field Name="volumea15">
+          <DataField>volumea15</DataField>
+        </Field>
+        <Field Name="volumea15Format">
+          <DataField>volumea15Format</DataField>
+        </Field>
+        <Field Name="Shipped_Vol">
+          <DataField>Shipped_Vol</DataField>
+        </Field>
+        <Field Name="Shipped_VolFormat">
+          <DataField>Shipped_VolFormat</DataField>
+        </Field>
+        <Field Name="Lines">
+          <DataField>Lines</DataField>
+        </Field>
+        <Field Name="LineNumberText">
+          <DataField>LineNumberText</DataField>
+        </Field>
+        <Field Name="LinesFoot">
+          <DataField>LinesFoot</DataField>
+        </Field>
+        <Field Name="LineNumberFoot">
+          <DataField>LineNumberFoot</DataField>
+        </Field>
+        <Field Name="Product">
+          <DataField>Product</DataField>
+        </Field>
+        <Field Name="Volume">
+          <DataField>Volume</DataField>
+        </Field>
+        <Field Name="VolumeFormat">
+          <DataField>VolumeFormat</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -1782,7 +2083,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value>=iif(ISNOTHING(Fields!LineNumberText.Value),Fields!LineNumberFoot.Value,Fields!LineNumberText.Value)</Value>
+                                                                  <Value>="N°" &amp; iif(ISNOTHING(Fields!LineNumberText.Value),Fields!LineNumberFoot.Value,Fields!LineNumberText.Value)</Value>
                                                                   <Style>
                                                                     <FontSize>9pt</FontSize>
                                                                   </Style>
@@ -1825,7 +2126,7 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value>=Fields!Shipped_Volume.Value &amp; " " &amp; UCase(First(Fields!Unit_Code.Value, "DataSet_Result"))</Value>
+                                                                  <Value>=Fields!Volume.Value &amp; " " &amp; UCase(First(Fields!Unit_Code.Value, "DataSet_Result"))</Value>
                                                                   <Style>
                                                                     <FontSize>9pt</FontSize>
                                                                   </Style>
@@ -3558,7 +3859,7 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value xml:space="preserve">                                                                               </Value>
+                                                                  <Value xml:space="preserve">                                                                           </Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
@@ -3778,14 +4079,26 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value xml:space="preserve">                                                                                    </Value>
+                                                                  <Value xml:space="preserve">                                                                                  </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value>=Fields!TotalPL.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve">            </Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
                                                               <Style>
-                                                                <TextAlign>Left</TextAlign>
+                                                                <TextAlign>Right</TextAlign>
                                                               </Style>
                                                             </Paragraph>
                                                           </Paragraphs>
@@ -3915,7 +4228,7 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value xml:space="preserve">                                                                                   </Value>
+                                                                  <Value xml:space="preserve">                                                                               </Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
@@ -4058,7 +4371,19 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value xml:space="preserve">                                                                                    </Value>
+                                                                  <Value xml:space="preserve">                                                                               </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value>=Fields!TotalFO.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve">           </Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
@@ -4196,7 +4521,7 @@
                                                         <FilterExpression>=Fields!Lines.Value+Fields!LinesFoot.Value</FilterExpression>
                                                         <Operator>Equal</Operator>
                                                         <FilterValues>
-                                                          <FilterValue>N°1</FilterValue>
+                                                          <FilterValue DataType="Integer">1</FilterValue>
                                                         </FilterValues>
                                                       </Filter>
                                                     </Filters>
@@ -4273,7 +4598,6 @@
                                           </Border>
                                         </Style>
                                       </Rectangle>
-                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixCell>
                                 </TablixCells>
@@ -4639,6 +4963,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -4678,296 +5008,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="numBE">
-          <DataField>numBE</DataField>
-        </Field>
-        <Field Name="numBL">
-          <DataField>numBL</DataField>
-        </Field>
-        <Field Name="NumBU">
-          <DataField>NumBU</DataField>
-        </Field>
-        <Field Name="datevalidite">
-          <DataField>datevalidite</DataField>
-        </Field>
-        <Field Name="region">
-          <DataField>region</DataField>
-        </Field>
-        <Field Name="depot">
-          <DataField>depot</DataField>
-        </Field>
-        <Field Name="dateBE">
-          <DataField>dateBE</DataField>
-        </Field>
-        <Field Name="Destination">
-          <DataField>Destination</DataField>
-        </Field>
-        <Field Name="Cargo_Name">
-          <DataField>Cargo_Name</DataField>
-        </Field>
-        <Field Name="nomchauffeur">
-          <DataField>nomchauffeur</DataField>
-        </Field>
-        <Field Name="nomTransporteur">
-          <DataField>nomTransporteur</DataField>
-        </Field>
-        <Field Name="permis">
-          <DataField>permis</DataField>
-        </Field>
-        <Field Name="codemoyentransport">
-          <DataField>codemoyentransport</DataField>
-        </Field>
-        <Field Name="DepotName">
-          <DataField>DepotName</DataField>
-        </Field>
-        <Field Name="DeliveryMode">
-          <DataField>DeliveryMode</DataField>
-        </Field>
-        <Field Name="Agency">
-          <DataField>Agency</DataField>
-        </Field>
-        <Field Name="observation">
-          <DataField>observation</DataField>
-        </Field>
-        <Field Name="PreparedBy">
-          <DataField>PreparedBy</DataField>
-        </Field>
-        <Field Name="AutorisedBy">
-          <DataField>AutorisedBy</DataField>
-        </Field>
-        <Field Name="Foot1">
-          <DataField>Foot1</DataField>
-        </Field>
-        <Field Name="Foot2">
-          <DataField>Foot2</DataField>
-        </Field>
-        <Field Name="Foot3">
-          <DataField>Foot3</DataField>
-        </Field>
-        <Field Name="Foot4">
-          <DataField>Foot4</DataField>
-        </Field>
-        <Field Name="Foot5">
-          <DataField>Foot5</DataField>
-        </Field>
-        <Field Name="Foot6">
-          <DataField>Foot6</DataField>
-        </Field>
-        <Field Name="CompanyPicture">
-          <DataField>CompanyPicture</DataField>
-        </Field>
-        <Field Name="PickUpOrderTitleLbl">
-          <DataField>PickUpOrderTitleLbl</DataField>
-        </Field>
-        <Field Name="SalesAgencyLbl">
-          <DataField>SalesAgencyLbl</DataField>
-        </Field>
-        <Field Name="ActivityLbl">
-          <DataField>ActivityLbl</DataField>
-        </Field>
-        <Field Name="AgencyLbl">
-          <DataField>AgencyLbl</DataField>
-        </Field>
-        <Field Name="DateLbl">
-          <DataField>DateLbl</DataField>
-        </Field>
-        <Field Name="BENumberLbl">
-          <DataField>BENumberLbl</DataField>
-        </Field>
-        <Field Name="DeliveryDepotLbl">
-          <DataField>DeliveryDepotLbl</DataField>
-        </Field>
-        <Field Name="ValidUntilLbl">
-          <DataField>ValidUntilLbl</DataField>
-        </Field>
-        <Field Name="DestinationLbl">
-          <DataField>DestinationLbl</DataField>
-        </Field>
-        <Field Name="NavireNameLbl">
-          <DataField>NavireNameLbl</DataField>
-        </Field>
-        <Field Name="RDLbl">
-          <DataField>RDLbl</DataField>
-        </Field>
-        <Field Name="DeliveryModeLbl">
-          <DataField>DeliveryModeLbl</DataField>
-        </Field>
-        <Field Name="CarrierLbl">
-          <DataField>CarrierLbl</DataField>
-        </Field>
-        <Field Name="DriverNameLbl">
-          <DataField>DriverNameLbl</DataField>
-        </Field>
-        <Field Name="LicenseNumberLbl">
-          <DataField>LicenseNumberLbl</DataField>
-        </Field>
-        <Field Name="TruckNumberLbl">
-          <DataField>TruckNumberLbl</DataField>
-        </Field>
-        <Field Name="DesignationLbl">
-          <DataField>DesignationLbl</DataField>
-        </Field>
-        <Field Name="ProductLbl">
-          <DataField>ProductLbl</DataField>
-        </Field>
-        <Field Name="ProductCodeLbl">
-          <DataField>ProductCodeLbl</DataField>
-        </Field>
-        <Field Name="AmbientVolumeLbl">
-          <DataField>AmbientVolumeLbl</DataField>
-        </Field>
-        <Field Name="CompartmentLbl">
-          <DataField>CompartmentLbl</DataField>
-        </Field>
-        <Field Name="Product2Lbl">
-          <DataField>Product2Lbl</DataField>
-        </Field>
-        <Field Name="NoLbl">
-          <DataField>NoLbl</DataField>
-        </Field>
-        <Field Name="ObservationsLbl">
-          <DataField>ObservationsLbl</DataField>
-        </Field>
-        <Field Name="ForGalanaLbl">
-          <DataField>ForGalanaLbl</DataField>
-        </Field>
-        <Field Name="PreparedByLbl">
-          <DataField>PreparedByLbl</DataField>
-        </Field>
-        <Field Name="Name1Lbl">
-          <DataField>Name1Lbl</DataField>
-        </Field>
-        <Field Name="Date1Lbl">
-          <DataField>Date1Lbl</DataField>
-        </Field>
-        <Field Name="AuthorizedByLbl">
-          <DataField>AuthorizedByLbl</DataField>
-        </Field>
-        <Field Name="Name2Lbl">
-          <DataField>Name2Lbl</DataField>
-        </Field>
-        <Field Name="Date2Lbl">
-          <DataField>Date2Lbl</DataField>
-        </Field>
-        <Field Name="ForLogisticLbl">
-          <DataField>ForLogisticLbl</DataField>
-        </Field>
-        <Field Name="DepotLoaderLbl">
-          <DataField>DepotLoaderLbl</DataField>
-        </Field>
-        <Field Name="Name3Lbl">
-          <DataField>Name3Lbl</DataField>
-        </Field>
-        <Field Name="Date3Lbl">
-          <DataField>Date3Lbl</DataField>
-        </Field>
-        <Field Name="DepotcontrolLbl">
-          <DataField>DepotcontrolLbl</DataField>
-        </Field>
-        <Field Name="Name4Lbl">
-          <DataField>Name4Lbl</DataField>
-        </Field>
-        <Field Name="Date4Lbl">
-          <DataField>Date4Lbl</DataField>
-        </Field>
-        <Field Name="ForCarrierLbl">
-          <DataField>ForCarrierLbl</DataField>
-        </Field>
-        <Field Name="Name5Lbl">
-          <DataField>Name5Lbl</DataField>
-        </Field>
-        <Field Name="Date5Lbl">
-          <DataField>Date5Lbl</DataField>
-        </Field>
-        <Field Name="ArrivalTimeLbl">
-          <DataField>ArrivalTimeLbl</DataField>
-        </Field>
-        <Field Name="StartTimeLbl">
-          <DataField>StartTimeLbl</DataField>
-        </Field>
-        <Field Name="TotalSP95Lbl">
-          <DataField>TotalSP95Lbl</DataField>
-        </Field>
-        <Field Name="TotalPLLbl">
-          <DataField>TotalPLLbl</DataField>
-        </Field>
-        <Field Name="TotalGOLbl">
-          <DataField>TotalGOLbl</DataField>
-        </Field>
-        <Field Name="TotalFOLbl">
-          <DataField>TotalFOLbl</DataField>
-        </Field>
-        <Field Name="TotalGO">
-          <DataField>TotalGO</DataField>
-        </Field>
-        <Field Name="TotalGOFormat">
-          <DataField>TotalGOFormat</DataField>
-        </Field>
-        <Field Name="TotalSP">
-          <DataField>TotalSP</DataField>
-        </Field>
-        <Field Name="TotalSPFormat">
-          <DataField>TotalSPFormat</DataField>
-        </Field>
-        <Field Name="NavItemCode">
-          <DataField>NavItemCode</DataField>
-        </Field>
-        <Field Name="Item_Name">
-          <DataField>Item_Name</DataField>
-        </Field>
-        <Field Name="Unit_Code">
-          <DataField>Unit_Code</DataField>
-        </Field>
-        <Field Name="volumealivrer">
-          <DataField>volumealivrer</DataField>
-        </Field>
-        <Field Name="volumealivrerFormat">
-          <DataField>volumealivrerFormat</DataField>
-        </Field>
-        <Field Name="volumea15">
-          <DataField>volumea15</DataField>
-        </Field>
-        <Field Name="volumea15Format">
-          <DataField>volumea15Format</DataField>
-        </Field>
-        <Field Name="Shipped_Vol">
-          <DataField>Shipped_Vol</DataField>
-        </Field>
-        <Field Name="Shipped_VolFormat">
-          <DataField>Shipped_VolFormat</DataField>
-        </Field>
-        <Field Name="Lines">
-          <DataField>Lines</DataField>
-        </Field>
-        <Field Name="LineNumberText">
-          <DataField>LineNumberText</DataField>
-        </Field>
-        <Field Name="Compartment">
-          <DataField>Compartment</DataField>
-        </Field>
-        <Field Name="Product">
-          <DataField>Product</DataField>
-        </Field>
-        <Field Name="Shipped_Volume">
-          <DataField>Shipped_Volume</DataField>
-        </Field>
-        <Field Name="Shipped_VolumeFormat">
-          <DataField>Shipped_VolumeFormat</DataField>
-        </Field>
-        <Field Name="LinesFoot">
-          <DataField>LinesFoot</DataField>
-        </Field>
-        <Field Name="LineNumberFoot">
-          <DataField>LineNumberFoot</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>

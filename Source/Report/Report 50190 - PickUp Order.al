@@ -245,6 +245,12 @@ report 50190 "PickUp Order"
             column(TotalSP; TotalSP)
             {
             }
+            column(TotalPL; TotalPL)
+            {
+            }
+            column(TotalFO; TotalFO)
+            {
+            }
             dataitem(Line; pro_detailBE)
             {
                 DataItemTableView = sorting(numBE, "Line No.");
@@ -275,39 +281,37 @@ report 50190 "PickUp Order"
                 column(LineNumberText; LineNumberText)
                 {
                 }
-                dataitem(BonLoading; BonLoading)
-                {
-                    DataItemTableView = sorting(numBE, Compartment);
-                    DataItemLinkReference = Line;
-                    DataItemLink = numBE = field(numBE), "Product Code" = field(codeproduit);
+                // dataitem(BonLoading; BonLoading)
+                // {
+                //     DataItemTableView = sorting(numBE, Compartment);
+                //     DataItemLinkReference = Line;
+                //     DataItemLink = numBE = field(numBE), "Product Code" = field(codeproduit);
 
-                    column(Compartment; Compartment)
-                    {
-                    }
-                    column(Product; Product)
-                    {
-                    }
-                    column(Shipped_Volume; "Shipped Volume")
-                    {
-                    }
-
-                    trigger OnAfterGetRecord()
-                    begin
-                        If BonLoading.FindFirst() then
-                            repeat
-                                BonLoading.Reset();
-                                BonLoading.SetRange(numBE, Line.numBE);
-                                BonLoading.SetRange("Product Code", Line.codeproduit);
-                                CalcSums("Shipped Volume");
-                            until BonLoading.Next() = 0;
-                    end;
-                }
+                //     column(Compartment; Compartment)
+                //     {
+                //     }
+                //     column(Product; Product)
+                //     {
+                //     }
+                //     column(Shipped_Volume; "Shipped Volume")
+                //     {
+                //     }
+                //     trigger OnAfterGetRecord()
+                //     begin
+                //         // if BonLoading.FindFirst() then
+                //         //     repeat
+                //         //         BonLoading.SetRange(numBE, Line.numBE);
+                //         //         BonLoading.SetRange("Product Code", Line.codeproduit);
+                //         //         CalcSums("Shipped Volume");
+                //         //     until BonLoading.Next() = 0;
+                //     end;
+                // }
                 trigger OnAfterGetRecord()
                 begin
-                    Lines := 'N°1';
+                    Lines := 1;
                     LineNumber := LineNumber + 1;
                     if (LineNumber < 11) then
-                        LineNumberText := 'N°' + Format(LineNumber)
+                        LineNumberText := Format(LineNumber)
                     else
                         LineNumberText := Format(LineNumber);
                 end;
@@ -328,10 +332,10 @@ report 50190 "PickUp Order"
                 }
                 trigger OnAfterGetRecord()
                 begin
-                    Lines := 'N°1';
+                    Lines := 1;
                     LineNumber := LineNumber + 1;
                     if (LineNumber < 11) then
-                        LineNumberText := 'N°' + Format(LineNumber)
+                        LineNumberText := Format(LineNumber)
                     else
                         LineNumberText := Format(LineNumber);
                 end;
@@ -340,6 +344,18 @@ report 50190 "PickUp Order"
                 begin
                     SetRange(Number, 1, 10 - LinesNumb);
                 end;
+            }
+            dataitem(ProductEntry; "Touring Product Entry")
+            {
+                DataItemTableView = sorting(IdTouring, OrderNo, Immatriculation, IdCompartment);
+                DataItemLinkReference = Header;
+                DataItemLink = IdTouring = field(idtournee), OrderNo = field(NavOrderNo);
+                column(Product; ItemNo)
+                {
+                }
+                column(Volume; Volume)
+                {
+                }
             }
             trigger OnAfterGetRecord()
             begin
@@ -359,33 +375,32 @@ report 50190 "PickUp Order"
 
                 Clear(TotalGO);
                 Clear(TotalSP);
-                LineRec.Reset();
+                Clear(TotalPL);
+                Clear(TotalFO);
                 LineRec.SetRange(numBE, Header.numBE);
-                if LineRec.FindFirst() then
-                    if LineRec.codeproduit = 'GO' then
-                        repeat
-                            LineRec.CalcFields("Shipped Volume");
-                            TotalGO := LineRec."Shipped Volume";
-                        until LineRec.Next() = 0;
-
-                LineRec.SetRange(numBE, Header.numBE);
-                if LineRec.codeproduit = 'SC' then
+                if LineRec.Findset() then
                     repeat
-                        LineRec.CalcFields("Shipped Volume");
-                        TotalSP := LineRec."Shipped Volume";
+                        if LineRec.codeproduit = 'GO' then
+                            TotalGO := TotalGO + LineRec.volumealivrer;
                     until LineRec.Next() = 0;
 
-            end;
+                if LineRec.Findset() then
+                    repeat
+                        if LineRec.codeproduit = 'SC' then
+                            TotalSP := TotalSP + LineRec.volumealivrer;
+                    until LineRec.Next() = 0;
 
-            trigger OnPostDataItem()
-            begin
-                if not CurrReport.Preview then begin
-                    Header.Imprime := true;
-                    Header."Last Printed Date" := CreateDateTime(Today(), Time());
-                    Header."Nos Printed" := Header."Nos Printed" + 1;
-                    Header.Modify();
-                    Commit();
-                end;
+                if LineRec.Findset() then
+                    repeat
+                        if LineRec.codeproduit = 'PL' then
+                            TotalPL := TotalPL + LineRec.volumealivrer;
+                    until LineRec.Next() = 0;
+
+                if LineRec.Findset() then
+                    repeat
+                        if LineRec.codeproduit = 'FO' then
+                            TotalFO := TotalFO + LineRec.volumealivrer;
+                    until LineRec.Next() = 0;
             end;
         }
     }
@@ -401,7 +416,6 @@ report 50190 "PickUp Order"
         }
     }
 
-
     trigger OnPreReport()
     begin
         CompanyInfo.Get();
@@ -413,7 +427,7 @@ report 50190 "PickUp Order"
         Location: Record Location;
         SalesHeader: Record "Sales Header";
         LineRec: Record pro_detailBE;
-        BonLoadRec: Record BonLoading;
+        // BonLoadRec: Record BonLoading;
         RespCenter: Record "Responsibility Center";
         CompanyInfos: Record "Company Information";
         // ShipmentMethod: Record "Shipment Method";
@@ -421,9 +435,11 @@ report 50190 "PickUp Order"
         Foot3: Text;
         TotalSP: Decimal;
         TotalGO: Decimal;
+        TotalFO: Decimal;
+        TotalPL: Decimal;
         Agency: Text[100];
         DeliveryMode: Text[100];
-        Lines: Code[4];
+        Lines: Integer;
         LineNumber: Integer;
         LinesNumb: Integer;
         LineNumberText: Code[4];
