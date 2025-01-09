@@ -32363,6 +32363,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Return Loan Subform - Action Dimensions - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3394060201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Touring List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1092439996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Transfer Reason Codes</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38437,6 +38442,11 @@
           <source>Le programme</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action PrintProg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1975951532 - Action 710507135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dispach</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action RunDispach - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1087321258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Touring List</source>
@@ -60313,13 +60323,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique15 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 995502767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Liste des tournées validées</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique151 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 2770016617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Cdes en attente de livraison</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique16 - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 3407713234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
-          <source>Liste des tournées traitées</source>
+          <source>Liste des tournées confirmées</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Logistique17 - Property Caption</note>
         </trans-unit>
