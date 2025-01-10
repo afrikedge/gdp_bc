@@ -221,6 +221,10 @@ tableextension 50021 "A02 User Setup" extends "User Setup"
         {
             Caption = 'Code utilisateur windows (Dispaching)';
         }
+        field(50040; "Old Nav User"; Code[50])
+        {
+            Caption = 'Ancien code utilisateur';
+        }
     }
 
     //Unsupported feature: Property Deletion (LookupPageID).

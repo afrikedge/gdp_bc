@@ -59818,6 +59818,11 @@
           <note from="Developer" annotates="general" priority="2">%1=Field;%2=Value;%3=Value</note>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort SEPA MT101 - NamedType NoDataToExportErr</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1107699892 - NamedType 1767625888" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1107699892">
+          <source>Vous ne pouvez pas modifier cette quantité car la commande provient d'un document de prévision %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Sales Order Subform - NamedType AFK_Text002</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1649337532 - Action 3818210718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
           <source>Etat de Cession Immo</source>
           <note from="Developer" annotates="general" priority="2"></note>

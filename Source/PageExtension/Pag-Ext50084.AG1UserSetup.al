@@ -4,6 +4,9 @@ pageextension 50084 "AG1 User Setup" extends "User Setup"
     {
         addafter("Time Sheet Admin.")
         {
+            field("Old Nav User"; Rec."Old Nav User")
+            {
+            }
             field("PR Type"; Rec."PR Type")
             {
             }
