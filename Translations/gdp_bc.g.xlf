@@ -64038,6 +64038,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Setup - Field Mail acheteur - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 288146863 - Field 3480410441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Ancien code utilisateur</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Setup - Field Old Nav User - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 288146863 - Field 2780969945 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Purch Order Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
