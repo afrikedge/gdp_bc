@@ -1,6 +1,6 @@
 page 50088 "Item Consignation List"
 {
-    Caption = 'Item Loan List';
+    Caption = 'Item Consignation List';
     CardPageID = "Item Consignation";
     PageType = List;
     ApplicationArea = All;

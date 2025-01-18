@@ -932,6 +932,13 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
                     Caption = 'Factures four en attente paiement';
                     RunObject = Page "Vendor Invoice List Treso";
                 }
+                action(GD1FactureF6)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Suivi des factures fournisseur';
+                    RunObject = Page "Vendor Invoice List Historique";
+                }
+
             }
         }
 

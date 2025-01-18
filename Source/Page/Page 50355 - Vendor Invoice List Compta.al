@@ -1,6 +1,6 @@
 page 50355 "Vendor Invoice List Compta"
 {
-    Caption = 'Vendor Invoice Doc on hold';
+    Caption = 'Documents facture fournisseur';
     CardPageID = "Vendor Invoice Card Encours";
     Description = 'WHERE(Status=FILTER(Receptionee|Rejetee|AttenteComptabilisation|Comptabilise|AttenteBAP|Payee))';
     Editable = false;

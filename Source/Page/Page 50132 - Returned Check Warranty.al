@@ -3,6 +3,7 @@ page 50132 "Returned Check Warranty"
     Caption = 'Returned Check Warranty';
     Editable = false;
     PageType = List;
+    UsageCategory = Lists;
     SourceTable = "Check Warranty";
     SourceTableView = WHERE(Status = CONST(Returned));
 

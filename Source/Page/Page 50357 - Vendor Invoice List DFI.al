@@ -1,6 +1,6 @@
 page 50357 "Vendor Invoice List DFI"
 {
-    Caption = 'Vendor Invoice Doc on hold';
+    Caption = 'Documents facture fournisseur en attente BAP';
     CardPageID = "Vendor Invoice Card Encours";
     Editable = false;
     PageType = List;

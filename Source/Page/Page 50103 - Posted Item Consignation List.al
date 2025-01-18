@@ -1,6 +1,6 @@
 page 50103 "Posted Item Consignation List"
 {
-    Caption = 'Posted Item Loan List';
+    Caption = 'Posted Item consignation List';
     CardPageID = "Posted Item Consignation";
     Editable = false;
     PageType = List;

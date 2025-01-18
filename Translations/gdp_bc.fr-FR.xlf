@@ -31985,7 +31985,7 @@
         </trans-unit>
         <trans-unit id="Page 3437765829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Loan List</source>
-          <target state="needs-review-translation">Liste de prêts de produits</target>
+          <target state="needs-review-translation">Liste de consignation de produits</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Consignation List - Property Caption</note>
         </trans-unit>
@@ -35723,7 +35723,7 @@
         </trans-unit>
         <trans-unit id="Page 201035321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Shipment List</source>
-          <target state="needs-review-translation">Liste des ordres de livraison</target>
+          <target state="needs-review-translation">Liste des documents de préparation (Lubs)</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Shipment List - Property Caption</note>
         </trans-unit>
@@ -38033,7 +38033,7 @@
         </trans-unit>
         <trans-unit id="Page 2792831414 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Item Loan List</source>
-          <target state="needs-review-translation">Liste de prêts de produits enregistrés</target>
+          <target state="needs-review-translation">Liste de consignation de produits enregistrés</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Item Consignation List - Property Caption</note>
         </trans-unit>
@@ -38861,7 +38861,7 @@
         </trans-unit>
         <trans-unit id="Page 2702583182 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prepared Item Shipment List</source>
-          <target state="needs-review-translation">Liste ordres de livraison LUBS préparés</target>
+          <target state="needs-review-translation">Liste ordres de livraison LUBS initiés</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Prepared Item Shipment List - Property Caption</note>
         </trans-unit>
@@ -39167,7 +39167,7 @@
         </trans-unit>
         <trans-unit id="Page 955860108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Order Archives</source>
-          <target state="needs-review-translation">Archives commandes achat</target>
+          <target state="needs-review-translation">Archives commandes achat facturées</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Invoiced - Property Caption</note>
         </trans-unit>
@@ -39215,7 +39215,7 @@
         </trans-unit>
         <trans-unit id="Page 2238036916 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purch. Requisition List</source>
-          <target state="needs-review-translation">Liste des demandes d'achat</target>
+          <target state="needs-review-translation">Suivi des demandes d'achat</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Req Tracking List - Property Caption</note>
         </trans-unit>
@@ -44495,7 +44495,7 @@
         </trans-unit>
         <trans-unit id="Page 1360462022 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Orders - Pending Prices Validation</source>
-          <target state="needs-review-translation">Commandes vente en attente validation tarifs</target>
+          <target state="needs-review-translation">Commandes vente - Prix non conformes</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order List - NC Prices - Property Caption</note>
         </trans-unit>
@@ -46517,13 +46517,13 @@
         </trans-unit>
         <trans-unit id="Page 674664605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Invoice Doc on hold</source>
-          <target state="needs-review-translation">Factures fournisseur en saisie</target>
+          <target state="needs-review-translation">Documents facture fournisseur</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Compta - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2559976696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Invoice Doc on hold</source>
-          <target state="needs-review-translation">Factures fournisseur en saisie</target>
+          <target state="needs-review-translation">Documents facture fournisseur en attente BAP</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List DFI - Property Caption</note>
         </trans-unit>
@@ -46541,7 +46541,7 @@
         </trans-unit>
         <trans-unit id="Page 4275275572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Invoice Doc on hold</source>
-          <target state="needs-review-translation">Factures fournisseur en saisie</target>
+          <target state="needs-review-translation">Documents facture fournisseur en attente paiement</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Treso - Property Caption</note>
         </trans-unit>
@@ -46565,7 +46565,7 @@
         </trans-unit>
         <trans-unit id="Page 3283353504 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Invoice Doc on hold</source>
-          <target state="needs-review-translation">Factures fournisseur en saisie</target>
+          <target state="needs-review-translation">Documents facture fournisseur en validation</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Validation - Property Caption</note>
         </trans-unit>
