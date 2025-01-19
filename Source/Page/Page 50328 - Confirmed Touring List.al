@@ -1,7 +1,7 @@
 page 50328 "Confirmed Touring List"
 {
-    Caption = 'Posted Touring List';
-    CardPageID = "Touring Card";
+    Caption = 'Confirmed Touring List';
+    CardPageID = "Posted Touring Card";
     Editable = false;
     PageType = List;
     ApplicationArea = All;

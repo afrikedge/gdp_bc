@@ -4,6 +4,7 @@ page 50329 "Touring Card"
     PageType = Card;
     RefreshOnActivate = true;
     SourceTable = Touring;
+    Caption = 'Tournée';
 
     layout
     {
@@ -76,7 +77,7 @@ page 50329 "Touring Card"
                 Caption = 'Dispach';
                 //Image = "Where-Used";
                 Image = Approval;
-                Visible = IsEditable;
+                //Visible = IsEditable;
                 // Promoted = true;
                 // PromotedCategory = Process;
                 // PromotedIsBig = true;
@@ -110,98 +111,24 @@ page 50329 "Touring Card"
 
                     // if Rec.Status <> Rec.Status::Confirmed then
                     //     CurrPage.Close;
+                    Message(Text039);
                 end;
             }
-            action(ListeBE)
-            {
-                Caption = 'Removal Order List';
-                Image = ItemSubstitution;
-                RunObject = Page "Bon Dispaching List";
-                RunPageLink = idtournee = FIELD(IdTouring);
-                Visible = CanPrintDocuments;
-            }
-            action(ListeBL)
-            {
-                Caption = 'Delivery Order List';
-                Image = SKU;
-                RunObject = Page "Delivery Order List";
-                RunPageLink = idtournee = FIELD(IdTouring);
-                Visible = false;
-            }
-            group(Print)
-            {
-                Caption = 'Print';
-                group(ActionGroup1000000025)
-                {
-                    Caption = 'Print';
-                    Image = Transactions;
-                    action(PrintBE)
-                    {
-                        Caption = 'Les bons d''enlèvements';
-                        Image = "Report";
-                        Visible = CanPrintDocuments;
 
-                        trigger OnAction()
-                        begin
-                            CRReport.PrintBETournee(Rec.IdTouring);
-                        end;
-                    }
-                    action(PrintBL)
-                    {
-                        Caption = 'Les bons de livraison';
-                        Image = "Report";
-                        Visible = CanPrintDocuments;
-
-                        trigger OnAction()
-                        begin
-                            CRReport.PrintBLTournee(Rec.IdTouring);
-                        end;
-                    }
-                    action(PrintProg)
-                    {
-                        Caption = 'Le programme';
-                        Image = "Report";
-                        Visible = CanPrintDocuments;
-
-                        trigger OnAction()
-                        var
-                            Touring: record Touring;
-                            TouringProgram: Report "Touring Program";
-                        begin
-                            Touring.SetRange(IdTouring, Rec.IdTouring);
-                            TouringProgram.SetTableView(Touring);
-                            TouringProgram.RunModal();
-                            //CRReport.PrintProgrammeTournee(Rec.IdTouring);
-                        end;
-                    }
-                }
-            }
-        }
-        area(Promoted)
-        {
-            actionref(PrintBERef; PrintBE)
-            {
-            }
-            actionref(PrintBLRef; PrintBL)
-            {
-            }
-            actionref(PrintProgRef; PrintProg)
-            {
-            }
         }
     }
 
 
     trigger OnAfterGetCurrRecord()
     begin
-        if not IsRefreshedOnCurr then
-            Refresh;
+        // if not IsRefreshedOnCurr then
+        //     Refresh;
     end;
 
     trigger OnOpenPage()
     begin
-        if not IsRefreshedOnCurr then
-            Refresh;
+        // if not IsRefreshedOnCurr then
+        //     Refresh;
         IsPosted := ((Rec.Status = Rec.Status::Posted) or (Rec.Status = Rec.Status::Confirmed));
         IsEditable := not IsPosted;
         CurrPage.Editable := IsEditable;
@@ -216,16 +143,7 @@ page 50329 "Touring Card"
         IsRefreshedOnCurr: Boolean;
         Text037: Label 'La date de validité doit être postérieure à la date de création';
         Text038: Label 'La date de validité doit être postérieure à la date de début de la tournée';
+        Text039: Label 'Le document n''a pas d''erreurs et peut être dispaché';
         CanPrintDocuments: Boolean;
-
-    local procedure Refresh()
-    var
-    // WshShell: Automation BC;
-    begin
-        // if IsClear(WshShell) then
-        //   Create(WshShell,true,true);
-        // WshShell.SendKeys('{F5}');
-        // IsRefreshedOnCurr:=true;
-    end;
 }
 

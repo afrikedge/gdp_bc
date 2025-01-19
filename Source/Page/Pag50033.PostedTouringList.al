@@ -1,7 +1,7 @@
 page 50033 "Posted Touring List"
 {
     Caption = 'Posted Touring List';
-    CardPageID = "Touring Card";
+    CardPageID = "Posted Touring Card";
     Editable = false;
     PageType = List;
     ApplicationArea = All;

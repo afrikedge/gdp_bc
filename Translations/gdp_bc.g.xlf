@@ -23404,7 +23404,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Confirmed Shipment to invoice - Control numBL - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 561799975 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Posted Touring List</source>
+          <source>Confirmed Touring List</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Confirmed Touring List - Property Caption</note>
         </trans-unit>
@@ -26654,7 +26654,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Consignation - Action ValiderConsignation - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437765829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Loan List</source>
+          <source>Item Consignation List</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Consignation List - Property Caption</note>
         </trans-unit>
@@ -31694,7 +31694,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Item Consignation - Action RetourConsignation - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2792831414 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Posted Item Loan List</source>
+          <source>Posted Item consignation List</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Item Consignation List - Property Caption</note>
         </trans-unit>
@@ -32363,6 +32363,51 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Return Loan Subform - Action Dimensions - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2906373467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Touring Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2906373467 - Control 1889505238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bons List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Control Bons List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2906373467 - Control 1793060472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Orders</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Control SalesOrderSubform - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2906373467 - Control 4052230651 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trucks</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Control TruckSubform - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2906373467 - Action 3353819017 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bon Dispaching List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Action ListeBons - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2906373467 - Action 2933835466 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Imprimer BEs</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Action PrintBE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2906373467 - Action 3102744489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Imprimer BLs</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Action PrintBL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2906373467 - Action 1813186549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Imprimer le programme</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Action PrintProg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2906373467 - Action 2758870376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importation fichier</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Action PrintTransferFile - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3394060201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Touring List</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -32639,7 +32684,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Cancelled - Action Dimensions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 955860108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Purchase Order Archives</source>
+          <source>Archives commandes achat facturées</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Invoiced - Property Caption</note>
         </trans-unit>
@@ -38393,6 +38438,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - NamedType Text038</note>
         </trans-unit>
+        <trans-unit id="Page 1975951532 - NamedType 3999324801" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Le document n'a pas d'erreurs et peut être dispaché</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - NamedType Text039</note>
+        </trans-unit>
         <trans-unit id="Page 1975951532 - Control 1889505238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bons List</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38407,41 +38457,6 @@
           <source>Trucks</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Control TruckSubform - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1975951532 - Action 1260765092 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Removal Order List</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action ListeBE - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1975951532 - Action 4111430131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Delivery Order List</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action ListeBL - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1975951532 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Print</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action Print - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1975951532 - Action 2876165105 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Print</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action ActionGroup1000000025 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1975951532 - Action 2933835466 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Les bons d'enlèvements</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action PrintBE - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1975951532 - Action 3102744489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Les bons de livraison</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action PrintBL - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1975951532 - Action 1813186549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Le programme</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action PrintProg - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1975951532 - Action 710507135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Dispach</source>
@@ -38764,12 +38779,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice Card Saisie - Action TraiterFacture - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 674664605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Invoice Doc on hold</source>
+          <source>Documents facture fournisseur</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Compta - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2559976696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Invoice Doc on hold</source>
+          <source>Documents facture fournisseur en attente BAP</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List DFI - Property Caption</note>
         </trans-unit>
@@ -38784,7 +38799,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Saisie - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4275275572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Invoice Doc on hold</source>
+          <source>Documents facture fournisseur en attente paiement</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Treso - Property Caption</note>
         </trans-unit>
@@ -38804,7 +38819,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Treso - Action Insérer les lignes sélectionnées - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3283353504 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Invoice Doc on hold</source>
+          <source>Documents facture fournisseur en validation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Validation - Property Caption</note>
         </trans-unit>
@@ -57638,6 +57653,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Sales Order Confirmation - Control ShowInternalInfo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 2038543806 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Touring Importation file</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Touring Importation File - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 4077655036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Touring Program</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -60247,6 +60267,11 @@
           <source>Factures four en attente paiement</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1FactureF5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 744104124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Suivi des factures fournisseur</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1FactureF6 - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 2850602371 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Afk Jirama</source>
