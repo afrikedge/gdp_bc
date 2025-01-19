@@ -1,13 +1,13 @@
-page 50328 "Confirmed Touring List"
+page 50033 "Posted Touring List"
 {
-    Caption = 'Confirmed Touring List';
+    Caption = 'Posted Touring List';
     CardPageID = "Posted Touring Card";
     Editable = false;
     PageType = List;
     ApplicationArea = All;
-    UsageCategory = History;
+    UsageCategory = Lists;
     SourceTable = Touring;
-    SourceTableView = WHERE(Status = FILTER(Confirmed));
+    SourceTableView = WHERE(Status = FILTER(Posted));
 
     layout
     {
@@ -70,4 +70,3 @@ page 50328 "Confirmed Touring List"
         Rec.SetRange("User ID", UserId);
     end;
 }
-

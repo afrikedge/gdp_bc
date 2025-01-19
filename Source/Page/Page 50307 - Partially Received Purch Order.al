@@ -4,6 +4,7 @@ page 50307 "Partially Received Purch Order"
     CardPageID = "Purchase Order";
     Editable = false;
     PageType = List;
+    UsageCategory = Lists;
     SourceTable = "Purchase Header";
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Purchase Type" = CONST(AchatAutre),

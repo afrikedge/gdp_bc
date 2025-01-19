@@ -106,6 +106,12 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
                     Caption = 'Liste des tournées';
                     RunObject = Page "Touring List";
                 }
+                action(GD1Logistique151)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Liste des tournées validées';
+                    RunObject = Page "Posted Touring List";
+                }
                 action(GD1Logistique1)
                 {
                     ApplicationArea = Basic, Suite;
@@ -200,7 +206,7 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
                 action(GD1Logistique17)
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Liste des tournées traitées';
+                    Caption = 'Liste des tournées confirmées';
                     RunObject = Page "Confirmed Touring List";
                 }
                 action(GD1Logistique18)
@@ -926,6 +932,13 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
                     Caption = 'Factures four en attente paiement';
                     RunObject = Page "Vendor Invoice List Treso";
                 }
+                action(GD1FactureF6)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Suivi des factures fournisseur';
+                    RunObject = Page "Vendor Invoice List Historique";
+                }
+
             }
         }
 

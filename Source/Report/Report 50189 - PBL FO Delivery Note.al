@@ -314,32 +314,29 @@ report 50189 "PBL FO Delivery Note"
                 column(LineNumberText; LineNumberText)
                 {
                 }
-                dataitem(BonLoading; BonLoading)
-                {
-                    DataItemTableView = sorting(numBE, Compartment);
-                    DataItemLinkReference = Line;
-                    DataItemLink = numBE = field(numBE), "Product Code" = field(codeproduit);
+                // dataitem(TouringEntry; "Touring Product Entry")
+                // {
+                //     DataItemTableView = sorting(IdTouring, OrderNo, Immatriculation, IdCompartment);
+                //     DataItemLinkReference = Header;
+                //     DataItemLink = IdTouring = field(idtournee), OrderNo = field(NavOrderNo);
+                //     column(IdComp; IdCompartment)
+                //     {
+                //     }
+                //     column(Product; ItemNo)
+                //     {
+                //     }
+                //     column(Volume; Volume)
+                //     {
+                //     }
 
-                    column(Compartment; Compartment)
-                    {
-                    }
-                    column(Product; Product)
-                    {
-                    }
-                    column(Shipped_Volume; "Shipped Volume")
-                    {
-                    }
+                //     trigger OnPreDataItem()
+                //     begin
+                //         TouringEntry.Reset();
+                //         TouringEntry.SetRange(IdTouring, Header.idtournee);
+                //         // TouringEntry.SetRange(OrderNo, Header.NavOrderNo);
+                //     end;
+                // }
 
-                    trigger OnAfterGetRecord()
-                    begin
-                        If BonLoading.FindSet() then
-                            repeat
-                                BonLoading.Reset();
-                                BonLoading.SetRange(numBE, Line.numBE);
-                                BonLoading.SetRange("Product Code", Line.codeproduit);
-                            until BonLoading.Next() = 0;
-                    end;
-                }
                 trigger OnAfterGetRecord()
                 begin
                     Lines := 1;
@@ -376,9 +373,32 @@ report 50189 "PBL FO Delivery Note"
 
                 trigger OnPreDataItem()
                 begin
-                    SetRange(Number, 1, 5 - LinesNumb);
+                    SetRange(Number, 1, 10 - LinesNumb);
                 end;
             }
+            dataitem(TouringEntry; "Touring Product Entry")
+            {
+                DataItemTableView = sorting(IdTouring, OrderNo, Immatriculation, IdCompartment);
+                DataItemLinkReference = Header;
+                DataItemLink = IdTouring = field(idtournee), OrderNo = field(NavOrderNo);
+                column(IdComp; IdCompartment)
+                {
+                }
+                column(Product; ItemNo)
+                {
+                }
+                column(Volume; Volume)
+                {
+                }
+
+                trigger OnPreDataItem()
+                begin
+                    TouringEntry.Reset();
+                    TouringEntry.SetRange(IdTouring, Header.idtournee);
+                    // TouringEntry.SetRange(OrderNo, Header.NavOrderNo);
+                end;
+            }
+
             trigger OnAfterGetRecord()
             begin
                 LineNumber := 0;
@@ -399,20 +419,6 @@ report 50189 "PBL FO Delivery Note"
 
                 if CompanyInfos.Get() then
                     Foot3 := CompanyInfos."Phone No." + ' - Fax : ' + CompanyInfos."Fax No.";
-            end;
-
-            trigger OnPostDataItem()
-            var
-                proEnteteBL: record pro_enteteBE;
-            begin
-                if not CurrReport.Preview then
-                    if (proEnteteBL.get(Header.numBL)) then begin
-                        proEnteteBL.Imprime := true;
-                        proEnteteBL."Last Printed Date" := CreateDateTime(Today(), Time());
-                        proEnteteBL."Nos Printed" := proEnteteBL."Nos Printed" + 1;
-                        proEnteteBL.Modify();
-                        Commit();
-                    end;
             end;
         }
 
@@ -443,6 +449,11 @@ report 50189 "PBL FO Delivery Note"
         RespCenter: Record "Responsibility Center";
         CompanyInfos: Record "Company Information";
         // ShipmentMethod: Record "Shipment Method";
+
+        ProdCode_1: Code[20];
+        ProdName_1: Text[50];
+        ProdCode_2: Code[20];
+        ProdName_2: Text[50];
         CustSearchName: Code[100];
         Foot3: Text;
         DepotName: Text[100];

@@ -1782,7 +1782,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value>=iif(ISNOTHING(Fields!LineNumberText.Value),Fields!LineNumberFoot.Value,Fields!LineNumberText.Value)</Value>
+                                                                  <Value>="N°" &amp; iif(ISNOTHING(Fields!LineNumberText.Value),Fields!LineNumberFoot.Value,Fields!LineNumberText.Value)</Value>
                                                                   <Style>
                                                                     <FontSize>9pt</FontSize>
                                                                   </Style>
@@ -1825,7 +1825,7 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value>=Fields!Shipped_Volume.Value &amp; " " &amp; UCase(First(Fields!Unit_Code.Value, "DataSet_Result"))</Value>
+                                                                  <Value>=Fields!Volume.Value &amp; " " &amp; UCase(First(Fields!Unit_Code.Value, "DataSet_Result"))</Value>
                                                                   <Style>
                                                                     <FontSize>9pt</FontSize>
                                                                   </Style>
@@ -3558,7 +3558,7 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value xml:space="preserve">                                                                               </Value>
+                                                                  <Value xml:space="preserve">                                                                           </Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
@@ -3778,14 +3778,26 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value xml:space="preserve">                                                                                    </Value>
+                                                                  <Value xml:space="preserve">                                                                                  </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value>=Fields!TotalPL.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve">            </Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
                                                               <Style>
-                                                                <TextAlign>Left</TextAlign>
+                                                                <TextAlign>Right</TextAlign>
                                                               </Style>
                                                             </Paragraph>
                                                           </Paragraphs>
@@ -3915,7 +3927,7 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value xml:space="preserve">                                                                                   </Value>
+                                                                  <Value xml:space="preserve">                                                                               </Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
@@ -4058,7 +4070,19 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value xml:space="preserve">                                                                                    </Value>
+                                                                  <Value xml:space="preserve">                                                                               </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value>=Fields!TotalFO.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve">           </Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
@@ -4196,7 +4220,7 @@
                                                         <FilterExpression>=Fields!Lines.Value+Fields!LinesFoot.Value</FilterExpression>
                                                         <Operator>Equal</Operator>
                                                         <FilterValues>
-                                                          <FilterValue>N°1</FilterValue>
+                                                          <FilterValue DataType="Integer">1</FilterValue>
                                                         </FilterValues>
                                                       </Filter>
                                                     </Filters>
@@ -4273,7 +4297,6 @@
                                           </Border>
                                         </Style>
                                       </Rectangle>
-                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixCell>
                                 </TablixCells>
@@ -4912,6 +4935,18 @@ End Function
         <Field Name="TotalSPFormat">
           <DataField>TotalSPFormat</DataField>
         </Field>
+        <Field Name="TotalPL">
+          <DataField>TotalPL</DataField>
+        </Field>
+        <Field Name="TotalPLFormat">
+          <DataField>TotalPLFormat</DataField>
+        </Field>
+        <Field Name="TotalFO">
+          <DataField>TotalFO</DataField>
+        </Field>
+        <Field Name="TotalFOFormat">
+          <DataField>TotalFOFormat</DataField>
+        </Field>
         <Field Name="NavItemCode">
           <DataField>NavItemCode</DataField>
         </Field>
@@ -4945,23 +4980,20 @@ End Function
         <Field Name="LineNumberText">
           <DataField>LineNumberText</DataField>
         </Field>
-        <Field Name="Compartment">
-          <DataField>Compartment</DataField>
-        </Field>
-        <Field Name="Product">
-          <DataField>Product</DataField>
-        </Field>
-        <Field Name="Shipped_Volume">
-          <DataField>Shipped_Volume</DataField>
-        </Field>
-        <Field Name="Shipped_VolumeFormat">
-          <DataField>Shipped_VolumeFormat</DataField>
-        </Field>
         <Field Name="LinesFoot">
           <DataField>LinesFoot</DataField>
         </Field>
         <Field Name="LineNumberFoot">
           <DataField>LineNumberFoot</DataField>
+        </Field>
+        <Field Name="Product">
+          <DataField>Product</DataField>
+        </Field>
+        <Field Name="Volume">
+          <DataField>Volume</DataField>
+        </Field>
+        <Field Name="VolumeFormat">
+          <DataField>VolumeFormat</DataField>
         </Field>
       </Fields>
       <Query>

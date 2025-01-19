@@ -4,6 +4,7 @@ page 50255 "Purchase Req Pending Manager"
     CardPageID = "Purchase Requisition Workflow";
     Editable = false;
     InsertAllowed = false;
+    UsageCategory = Lists;
     PageType = List;
     SourceTable = "Purchase Requisition";
     SourceTableView = WHERE(Status = CONST(Manager));

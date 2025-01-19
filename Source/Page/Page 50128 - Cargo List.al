@@ -3,6 +3,7 @@ page 50128 "Cargo List"
     Caption = 'Cargo List';
     PageType = List;
     SourceTable = Cargo;
+    UsageCategory = Lists;
 
     layout
     {

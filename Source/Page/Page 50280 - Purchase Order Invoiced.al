@@ -1,9 +1,10 @@
 page 50280 "Purchase Order Invoiced"
 {
-    Caption = 'Purchase Order Archives';
+    Caption = 'Archives commandes achat facturées';
     CardPageID = "Purchase Order Archive";
     Editable = false;
     PageType = List;
+    UsageCategory = Lists;
     SourceTable = "Purchase Header Archive";
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Processing Status" = CONST(" "));

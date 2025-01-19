@@ -1,6 +1,6 @@
 page 50358 "Vendor Invoice List Treso"
 {
-    Caption = 'Vendor Invoice Doc on hold';
+    Caption = 'Documents facture fournisseur en attente paiement';
     CardPageID = "Vendor Invoice Card Encours";
     DeleteAllowed = false;
     Editable = false;

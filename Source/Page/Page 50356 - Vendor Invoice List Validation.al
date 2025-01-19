@@ -1,6 +1,6 @@
 page 50356 "Vendor Invoice List Validation"
 {
-    Caption = 'Vendor Invoice Doc on hold';
+    Caption = 'Documents facture fournisseur en validation';
     CardPageID = "Vendor Invoice Card Encours";
     Editable = false;
     PageType = List;

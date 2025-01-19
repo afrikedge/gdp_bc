@@ -363,8 +363,8 @@ codeunit 50012 "Item Invoiced Conso Mgt"
                     //SalesOrderLine.Description := CreatedLine.Description;
                     //SalesOrderLine.VALIDATE(SalesOrderLine."Location Code",AddOnSetup."Consignation Location");
                     SalesOrderLine.Validate(SalesOrderLine.Quantity, CreatedLine.Quantity);
-                    //SalesOrderLine.VALIDATE(SalesOrderLine."Unit Price",CreatedLine.AmountToBeInvoice);//040917
-                    SalesOrderLine.VALIDATE(SalesOrderLine.Amount, CreatedLine.AmountToBeInvoice);
+                    SalesOrderLine.VALIDATE(SalesOrderLine."Unit Price", CreatedLine.AmountToBeInvoice / SalesOrderLine.Quantity);//040917
+                    //SalesOrderLine.VALIDATE(SalesOrderLine.Amount, CreatedLine.AmountToBeInvoice);
                     //SalesOrderLine.Validate(SalesOrderLine."Unit Price",GetUnitPrice(ItemAdj."Customer No.",Item1."No."));//The Up calculated auto
 
 

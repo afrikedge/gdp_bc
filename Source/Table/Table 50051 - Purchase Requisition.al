@@ -213,13 +213,13 @@ table 50051 "Purchase Requisition"
         {
             Caption = 'Direction Name';
             //TODO Migration
-            //TableRelation = "Org. Direction";
+            TableRelation = "Org. Direction";
         }
         field(41; "Service Code"; Code[10])
         {
             Caption = 'Service Name';
             //TODO Migration
-            //TableRelation = "Org. Service";
+            TableRelation = "Org. Service";
         }
         field(42; "Department Code"; Code[10])
         {

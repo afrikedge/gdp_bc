@@ -31,7 +31,7 @@ table 50034 "Adjustment Line"
         field(6; "Item No."; Code[20])
         {
             Caption = 'Item Code';
-            TableRelation = Item WHERE(Type = CONST(Inventory));
+            TableRelation = Item;//WHERE(Type = CONST(Inventory));
 
             trigger OnValidate()
             var
