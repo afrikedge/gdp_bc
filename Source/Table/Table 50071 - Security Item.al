@@ -8,22 +8,14 @@ table 50071 "Security Item"
         {
             Caption = 'User ID';
             TableRelation = User."User Name";
-            //This property is currently not supported
-            //TestTableRelation = false;
+            DataClassification = EndUserIdentifiableInformation;
             ValidateTableRelation = false;
-
-            trigger OnLookup()
-            var
-                UserMgt: Codeunit "User Management";
-            begin
-                //UserMgt.LookupUserID("User ID");
-            end;
 
             trigger OnValidate()
             var
-                UserMgt: Codeunit "User Management";
+                UserSelection: Codeunit "User Selection";
             begin
-                // UserMgt.ValidateUserID("User ID");
+                UserSelection.ValidateUserName("User ID");
             end;
         }
         field(2; SecurityType; Option)

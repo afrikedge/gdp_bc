@@ -426,7 +426,8 @@ codeunit 50032 "EventsSubscribers Code"
         AFKErr01: Label 'Option non disponible, sélectionnez Livrer ou Facturer';
     begin
         if (SalesHeader.Ship and SalesHeader.Invoice) then
-            error(AFKErr01);
+            if (SalesHeader."Document Type" = SalesHeader."Document Type"::Order) then
+                error(AFKErr01);
         if SalesHeader.Ship then
             AFK_SalesProcess.CheckCanShipSalesOrder(SalesHeader);
         AFK_SalesProcess.CheckCanPostSalesOrder(SalesHeader);
@@ -439,7 +440,8 @@ codeunit 50032 "EventsSubscribers Code"
         AFKErr01: Label 'Option non disponible, sélectionnez Livrer ou Facturer';
     begin
         if (SalesHeader.Ship and SalesHeader.Invoice) then
-            error(AFKErr01);
+            if (SalesHeader."Document Type" = SalesHeader."Document Type"::Order) then
+                error(AFKErr01);
         if SalesHeader.Ship then
             AFK_SalesProcess.CheckCanShipSalesOrder(SalesHeader);
         AFK_SalesProcess.CheckCanPostSalesOrder(SalesHeader);
@@ -612,7 +614,8 @@ codeunit 50032 "EventsSubscribers Code"
         AFKErr01: Label 'Option non disponible, sélectionnez Livrer ou Facturer';
     begin
         if (PurchaseHeader.Ship and PurchaseHeader.Invoice) then
-            error(AFKErr01);
+            if (PurchaseHeader."Document Type" = PurchaseHeader."Document Type"::Order) then
+                error(AFKErr01);
     end;
 
 
@@ -622,7 +625,8 @@ codeunit 50032 "EventsSubscribers Code"
         AFKErr01: Label 'Option non disponible, sélectionnez Livrer ou Facturer';
     begin
         if (PurchaseHeader.Ship and PurchaseHeader.Invoice) then
-            error(AFKErr01);
+            if (PurchaseHeader."Document Type" = PurchaseHeader."Document Type"::Order) then
+                error(AFKErr01);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Quote to Order", 'OnCreatePurchHeaderOnBeforePurchOrderHeaderModify', '', true, true)]

@@ -166,6 +166,119 @@ tableextension 50005 "A02 Customer" extends Customer
             OptionCaption = ' ,Ancienne SS,Clients sains réseau,Clients sains B2B,ETS Gallois,Trésor,Naphta,Royalties,GD non bouclés,Contentieux,Précontentieux,Compte interne,Jirama,Gallois,Station en GD';
             OptionMembers = " ","Ancienne SS","Clients sains réseau","Clients sains B2B","ETS Gallois","Trésor",Naphta,Royalties,"GD non bouclés",Contentieux,"Précontentieux","Compte interne;Jirama",Gallois,"Station en GD";
         }
+
+
+
+
+        field(50037; "Afk Other Legal Status"; Text[100])
+        {
+            Caption = 'Other Legal Status';
+        }
+        field(50038; "Afk Main Industry"; code[20])
+        {
+            Caption = 'Main Industry';
+            TableRelation = "Afk Reference" where(TableType = const("Main Industry"));
+        }
+        field(50039; "Afk Parent Account No."; code[20])
+        {
+            Caption = 'Parent Account No.';
+            TableRelation = Customer;
+        }
+        field(50040; "Afk Customer Profile"; Enum "Afk Customer Profile")
+        {
+            Caption = 'Customer Profile';
+        }
+
+        field(50041; "Afk PNS ND"; Boolean)
+        {
+            Caption = 'PNS ND';
+        }
+        field(50042; "Afk PNS Orange Money"; Boolean)
+        {
+            Caption = 'PNS Orange Money';
+        }
+        field(50043; "Afk PNS SPE"; Boolean)
+        {
+            Caption = 'PNS SPE';
+        }
+        field(50044; "Afk PNS Airtel Money"; Boolean)
+        {
+            Caption = 'PNS Airtel Money';
+        }
+        field(50045; "Afk PNS MVOLA"; Boolean)
+        {
+            Caption = 'PNS MVOLA';
+        }
+        field(50046; "Afk PNS GPL"; Boolean)
+        {
+            Caption = 'PNS GPL';
+        }
+        field(50047; "Afk PNS Lubrifiants"; Boolean)
+        {
+            Caption = 'PNS Lubrifiants';
+        }
+        field(50048; "Afk PNS Carte"; Boolean)
+        {
+            Caption = 'PNS Carte';
+        }
+        field(50049; "Afk PNS Bornage"; Boolean)
+        {
+            Caption = 'PNS Bornage';
+        }
+        field(50050; "Afk PNS Soutes"; Boolean)
+        {
+            Caption = 'PNS Soutes';
+        }
+        field(50051; "Afk PNS PBL Terre"; Boolean)
+        {
+            Caption = 'PNS PBL Terre';
+        }
+        field(50052; "Afk Description"; Text[300])
+        {
+            Caption = 'Description';
+        }
+        field(50053; "Afk Warranty Status"; enum "Afk Warranty Status")
+        {
+            Caption = 'Warranty Status';
+        }
+        field(50054; "Afk Warranty Due Date"; Date)
+        {
+            Caption = 'Warranty Due Date';
+        }
+        field(50055; "Afk Warranty Pledge"; Boolean)
+        {
+            Caption = 'Warranty Pledge';
+        }
+        field(50056; "Afk Warranty Collateral"; Boolean)
+        {
+            Caption = 'Warranty Collateral';
+        }
+        field(50057; "Afk Warranty Mortgage"; Boolean)
+        {
+            Caption = 'Warranty Mortgage';
+        }
+        field(50058; "Afk Warranty Caution"; Boolean)
+        {
+            Caption = 'Warranty Caution';
+        }
+        field(50059; "Afk Warranty Object"; Text[150])
+        {
+            Caption = 'Warranty Object';
+        }
+        field(50060; "Afk Warranty Value"; Decimal)
+        {
+            Caption = 'Warranty Value';
+        }
+        field(50061; "Afk Warranty Validity"; Date)
+        {
+            Caption = 'Warranty Validity';
+        }
+
+
+
+
+
+
         field(60000; "Traite Amount"; Decimal)
         {
             FieldClass = FlowField;

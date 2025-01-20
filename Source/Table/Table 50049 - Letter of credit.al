@@ -76,17 +76,15 @@ table 50049 "Letter of credit"
         field(21; "User ID"; Code[50])
         {
             Caption = 'User ID';
-            Editable = false;
             TableRelation = User."User Name";
-            //This property is currently not supported
-            //TestTableRelation = false;
+            DataClassification = EndUserIdentifiableInformation;
+            ValidateTableRelation = false;
 
-            trigger OnLookup()
+            trigger OnValidate()
             var
-                UserMgt: Codeunit "User Management";
+                UserSelection: Codeunit "User Selection";
             begin
-                //TODO Migration
-                //UserMgt.LookupUserID("User ID");
+                UserSelection.ValidateUserName("User ID");
             end;
         }
         field(23; "Payment Terms Code"; Code[10])
