@@ -1,2 +1,11 @@
 {
+    "CRS.ObjectNamePrefix": "Afk ",
+    "CRS.AlSubFolderName": "Source",
+    "CRS.ExtensionObjectNamePattern": "<Prefix> <BaseNameShort>",
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.OnSaveAlFileAction": "DoNothing",
+    "CRS.RenameWithGit": false,
+    "CRS.ObjectNameSuffix": "",
 }

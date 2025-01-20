@@ -59,14 +59,14 @@ table 50070 "JIRAMA Forecast Transfer"
         {
             Caption = 'User ID';
             TableRelation = User."User Name";
-            //This property is currently not supported
-            //TestTableRelation = false;
+            DataClassification = EndUserIdentifiableInformation;
+            ValidateTableRelation = false;
 
-            trigger OnLookup()
+            trigger OnValidate()
             var
-                UserMgt: Codeunit "User Management";
+                UserSelection: Codeunit "User Selection";
             begin
-                //UserMgt.LookupUserID("User ID");
+                UserSelection.ValidateUserName("User ID");
             end;
         }
         field(11; "Entry Date"; Date)

@@ -35916,7 +35916,7 @@
         </trans-unit>
         <trans-unit id="Page 562836801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Commande JIRAMA</source>
-          <target state="needs-review-translation">Commandant JIRAMA</target>
+          <target state="needs-review-translation">Commande JIRAMA</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page JIRAMA Sales Forecast - Property Caption</note>
         </trans-unit>

@@ -484,13 +484,6 @@ page 50144 "Cash Receipt Journal CCL"
                     PromotedCategory = Process;
                     RunObject = Codeunit "Gen. Jnl.-Apply";
                     ShortCutKey = 'Shift+F11';
-
-                    trigger OnAction()
-                    var
-                        CodeunitGenJnlApply: Codeunit "Gen. Jnl.-Apply";
-                        ReconInfo: Record "Reconciliation Info";
-                    begin
-                    end;
                 }
                 action("Insert Conv. LCY Rndg. Lines")
                 {
@@ -585,8 +578,9 @@ page 50144 "Cash Receipt Journal CCL"
 
                     trigger OnAction()
                     begin
-                        CODEUNIT.Run(CODEUNIT::"Gen. Jnl.-Post", Rec);
+                        Rec.SendToPosting(Codeunit::"Gen. Jnl.-Post");
                         CurrentJnlBatchName := Rec.GetRangeMax("Journal Batch Name");
+                        //SetJobQueueVisibility();
                         CurrPage.Update(false);
                     end;
                 }
@@ -594,7 +588,7 @@ page 50144 "Cash Receipt Journal CCL"
                 {
                     Caption = 'Preview Posting';
                     Image = ViewPostedOrder;
-                    Visible = false;
+                    //Visible = false;
 
                     trigger OnAction()
                     var

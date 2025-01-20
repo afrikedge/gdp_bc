@@ -776,36 +776,36 @@ codeunit 50035 "EventsSubscribers Table"
         case GenJournalLine."Bal. Account Type" of
             GenJournalLine."Account Type"::"G/L Account":
                 begin
-                    GLAcc.Get(GenJournalLine."Bal. Account No.");
-                    GenJournalLine."Bal. Account Name" := GLAcc.Name;
+                    if GLAcc.Get(GenJournalLine."Bal. Account No.") then
+                        GenJournalLine."Bal. Account Name" := GLAcc.Name;
                 end;
             GenJournalLine."Account Type"::"Bank Account":
                 begin
-                    BankAcc.Get(GenJournalLine."Bal. Account No.");
-                    GenJournalLine."Bal. Account Name" := BankAcc.Name;
+                    if BankAcc.Get(GenJournalLine."Bal. Account No.") then
+                        GenJournalLine."Bal. Account Name" := BankAcc.Name;
                 end;
             GenJournalLine."Account Type"::Customer:
                 begin
-                    Cust.Get(GenJournalLine."Bal. Account No.");
-                    GenJournalLine."Bal. Account Name" := Cust.Name;
+                    if Cust.Get(GenJournalLine."Bal. Account No.") then
+                        GenJournalLine."Bal. Account Name" := Cust.Name;
                 end;
             GenJournalLine."Account Type"::Vendor:
                 begin
-                    Vend.Get(GenJournalLine."Bal. Account No.");
-                    GenJournalLine."Bal. Account Name" := Vend.Name;
+                    if Vend.Get(GenJournalLine."Bal. Account No.") then
+                        GenJournalLine."Bal. Account Name" := Vend.Name;
                 end;
             GenJournalLine."Account Type"::"Fixed Asset":
                 begin
-                    FA.Get(GenJournalLine."Bal. Account No.");
-                    GenJournalLine."Bal. Account Name" := FA.Description;
+                    if FA.Get(GenJournalLine."Bal. Account No.") then
+                        GenJournalLine."Bal. Account Name" := FA.Description;
                 end;
             GenJournalLine."Account Type"::"IC Partner":
                 begin
-                    ICPartner.Get(GenJournalLine."Bal. Account No.");
-                    GenJournalLine."Bal. Account Name" := ICPartner.Name;
+                    if ICPartner.Get(GenJournalLine."Bal. Account No.") then
+                        GenJournalLine."Bal. Account Name" := ICPartner.Name;
                 end;
         end;
-        GenJournalLine.Modify();
+        //GenJournalLine.Modify();
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterValidateAmount', '', true, true)]
