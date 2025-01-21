@@ -17,7 +17,7 @@ report 50190 "PickUp Order"
         dataitem(Header; pro_enteteBE)
         {
             DataItemTableView = sorting(numBE);
-            RequestFilterFields = NumBU, numBE;
+            RequestFilterFields = NumBU, idtournee;
             column(numBE; numBE)
             {
             }
