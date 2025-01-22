@@ -19,6 +19,7 @@ page 50015 "Sales Order List - Draft"
                 ShowCaption = false;
                 field("No."; Rec."No.")
                 {
+
                 }
                 field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                 {

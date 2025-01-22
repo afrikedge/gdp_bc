@@ -147,7 +147,8 @@ codeunit 50031 VendorInvoiceMgt
 
         CheckVendInvoice(VendInvoiceDoc);
 
-        if not VendInvoiceDoc.HasLinks then Error(Text002);
+        CheckIfDocHasLinks(VendInvoiceDoc);
+        //if not VendInvoiceDoc.HasLinks then Error(Text002);
 
         VendInvoiceDoc.Status := VendInvoiceDoc.Status::Receptionee;
         VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::Receptionee;
@@ -165,7 +166,8 @@ codeunit 50031 VendorInvoiceMgt
 
         CheckVendInvoice(VendInvoiceDoc);
 
-        if not VendInvoiceDoc.HasLinks then Error(Text002);
+        CheckIfDocHasLinks(VendInvoiceDoc);
+        //if not VendInvoiceDoc.HasLinks then Error(Text002);
 
         IsFinLitige := VendInvoiceDoc.Status = VendInvoiceDoc.Status::Litigieuse;
 
@@ -193,7 +195,8 @@ codeunit 50031 VendorInvoiceMgt
 
         CheckVendInvoice(VendInvoiceDoc);
 
-        if not VendInvoiceDoc.HasLinks then Error(Text002);
+        CheckIfDocHasLinks(VendInvoiceDoc);
+        //if not VendInvoiceDoc.HasLinks then Error(Text002);
 
         VendInvoiceDoc.Status := VendInvoiceDoc.Status::Receptionee;
         VendInvoiceDoc."Validation Level" := VendInvoiceDoc."Validation Level"::Receptionee;
@@ -672,7 +675,8 @@ codeunit 50031 VendorInvoiceMgt
         VendInvoiceDoc1.SetFilter("Entry No", '<>%1', VendInvoiceDoc."Entry No");
         if VendInvoiceDoc1.FindFirst then Error(Text003, VendInvoiceDoc."Vendor Invoice No.");
 
-        if not VendInvoiceDoc.HasLinks then Error(Text002);
+        CheckIfDocHasLinks(VendInvoiceDoc);
+        //if not VendInvoiceDoc.HasLinks then Error(Text002);
     end;
 
     procedure InsertNewStep(DocType: Integer; EntryID: Integer; InvNo: Code[35]; NewStatus: Text[50]; NewStatusID: Integer; TypeAction: Integer)
@@ -1408,6 +1412,18 @@ codeunit 50031 VendorInvoiceMgt
             Message(Text040)
         else
             Message(Text041);
+    end;
+
+    local procedure CheckIfDocHasLinks(VendInvoiceDoc1: Record "Vendor Invoice Doc")
+    var
+        DocumentAttach: record "Document Attachment";
+    begin
+        DocumentAttach.Reset();
+        DocumentAttach.SetRange("Table ID", Database::"Vendor Invoice Doc");
+        DocumentAttach.SetRange("No.", VendInvoiceDoc1."Reference Number");
+        //DocumentAttach.SetRange("Document Type", DocumentAttach."Document Type"::"VendorInvoice");
+        if (DocumentAttach.IsEmpty) then
+            error(Text002);
     end;
 
     local procedure MarquerCommePayee(var VendInvoiceDoc1: Record "Vendor Invoice Doc")

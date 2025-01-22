@@ -917,6 +917,46 @@ codeunit 50032 "EventsSubscribers Code"
     end;
 
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approvals Mgmt.", 'OnSendPurchaseDocForApproval', '', true, false)]
+    local procedure ApprovalsMgmt_OnSendPurchaseDocForApproval(var PurchaseHeader: Record "Purchase Header")
+    var
+        BudgetMgt: codeunit "Purchase Requisition Mgt";
+    begin
+        if (PurchaseHeader."Document Type" = PurchaseHeader."Document Type"::Order) then
+            BudgetMgt.CheckPurchaseOrderInWflw(PurchaseHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.Header-Printed", 'OnBeforeModify', '', true, false)]
+    local procedure PurchHeaderPrinted_OnBeforeModify(var PurchaseHeader: Record "Purchase Header")
+    var
+        BudgetMgt: codeunit "Purchase Requisition Mgt";
+    begin
+        PurchaseHeader.Printed := TRUE;
+        PurchaseHeader."Printed Date" := TODAY;
+        PurchaseHeader."Printed By" := USERID;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document Attachment Mgmt", 'OnAfterTableHasNumberFieldPrimaryKey', '', true, false)]
+    local procedure DocumentAttachmentMgmt_OnAfterTableHasNumberFieldPrimaryKey(TableNo: Integer; var Result: Boolean; var FieldNo: Integer)
+    var
+        BudgetMgt: codeunit "Purchase Requisition Mgt";
+    begin
+        if (TableNo = Database::"Vendor Invoice Doc") then begin
+            FieldNo := 20;
+            Result := true;
+        end;
+
+    end;
+
+    // [IntegrationEvent(false, false)]
+    // local procedure OnAfterTableHasNumberFieldPrimaryKey(TableNo: Integer; var Result: Boolean; var FieldNo: Integer)
+    // begin
+    // end;
+
+
+
+
+
 
 
 

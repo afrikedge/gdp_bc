@@ -446,7 +446,7 @@ codeunit 50035 "EventsSubscribers Table"
     begin
         SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.");
         Cust2.GET(SalesHeader."Sell-to Customer No.");
-        Cust2.TESTFIELD(Cust2."Sales Category Code");
+        Cust2.TESTFIELD("Sales Category Code");
 
         AFK_AddOnSetup.GET;
         IF Item.Type = Item.Type::Inventory THEN BEGIN
@@ -1064,6 +1064,18 @@ codeunit 50035 "EventsSubscribers Table"
         PaymentExportData.SenderBankLongAccNum := BankAccount.AFKGetLongAccountNum();
         if PaymentExportData.Modify() then;
     end;
+
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnBeforePrintRecords', '', true, true)]
+    local procedure PurchaseHeader_OnBeforePrintRecords(var PurchaseHeader: Record "Purchase Header"; ShowRequestForm: Boolean; var IsHandled: Boolean)
+    var
+    begin
+        if (PurchaseHeader."Document Type" = PurchaseHeader."Document Type"::Order) then
+            IF PurchaseHeader."Purchase Type" = PurchaseHeader."Purchase Type"::AchatAutre THEN
+                IF PurchaseHeader."Prepayment %" = 0 THEN
+                    PurchaseHeader.TESTFIELD(Status, PurchaseHeader.Status::Released);
+    end;
+
 
 
 

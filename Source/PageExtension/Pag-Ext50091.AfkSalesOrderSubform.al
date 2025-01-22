@@ -85,6 +85,13 @@ pageextension 50091 "Afk Sales Order Subform" extends "Sales Order Subform"
         AFK_CanUpdateLineAfterValidated := AFKSOMgt.CanUpdateOrderLineAfterValidation(SalesHeader);
     end;
 
+    trigger OnOpenPage()
+    var
+    //myInt: Integer;
+    begin
+        AFK_CanUpdateLineAfterValidated := true;
+    end;
+
     local procedure GetHeader()
     var
     begin
