@@ -225,6 +225,10 @@ tableextension 50021 "A02 User Setup" extends "User Setup"
         {
             Caption = 'Ancien code utilisateur';
         }
+        // field(50041; "Afk Manager Name"; Code[50])
+        // {
+        //     Caption = 'Nom responsable (Logistique)';
+        // }
     }
 
     //Unsupported feature: Property Deletion (LookupPageID).

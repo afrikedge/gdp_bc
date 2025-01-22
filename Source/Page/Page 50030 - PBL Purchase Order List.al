@@ -289,8 +289,14 @@ page 50030 "PBL Purchase Order List"
                     PromotedCategory = Process;
 
                     trigger OnAction()
+                    var
+                        PurchHeader: record "Purchase Header";
                     begin
-                        DocPrint.PrintPurchHeader(Rec);
+                        PurchHeader.SetRange("Document Type", Rec."Document Type");
+                        PurchHeader.SetRange("No.", Rec."No.");
+                        DocPrint.CalcPurchDisc(PurchHeader);
+                        //DocPrint.PrintPurchHeader(Rec);
+                        REPORT.RUN(50000, TRUE, FALSE, PurchHeader);
                     end;
                 }
             }

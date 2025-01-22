@@ -6,6 +6,7 @@ pageextension 50084 "AG1 User Setup" extends "User Setup"
         {
             field("Old Nav User"; Rec."Old Nav User")
             {
+                ApplicationArea = all;
             }
             field("PR Type"; Rec."PR Type")
             {

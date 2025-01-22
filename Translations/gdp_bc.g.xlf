@@ -39488,6 +39488,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice Card Encours - Control Infos - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1547954766 - Control 1658766258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice Card Encours - Control Attached Documents - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1547954766 - Action 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39518,6 +39523,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice Card Saisie - Control Infos - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2240455647 - Control 1658766258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice Card Saisie - Control Attached Documents - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2240455647 - Action 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39543,6 +39553,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Compta - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 674664605 - Control 1658766258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Compta - Control Attached Documents - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2559976696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents facture fournisseur en attente BAP</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39557,6 +39572,11 @@
           <source>Vendor Invoice Doc on hold</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Saisie - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4262332197 - Control 1658766258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Saisie - Control Attached Documents - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4275275572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents facture fournisseur en attente paiement</source>
@@ -39582,6 +39602,11 @@
           <source>Documents facture fournisseur en validation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Validation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3283353504 - Control 1658766258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Invoice List Validation - Control Attached Documents - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1320663028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor List to validate</source>
@@ -60597,6 +60622,41 @@
           <source>There is no data to export.</source>
           <note from="Developer" annotates="general" priority="2">%1=Field;%2=Value;%3=Value</note>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort SEPA MT101 - NamedType NoDataToExportErr</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2556259635 - Method 1146877244 - NamedType 3337191547" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2556259635">
+          <source>Vous ne disposez pas d'autorisations pour créer des demandes d'achat</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Purchase Order - Method OnNewRecord - NamedType TextErr001</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2556259635 - Action 3883075003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Calculer le budget</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Purchase Order - Action CalculateBudget - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2556259635 - Action 4092107044 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Ecritures provisions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Purchase Order - Action ProvisionsEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2556259635 - Action 2649320813 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Solder la commande</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Purchase Order - Action Solder - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2556259635 - Change 3294270728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Propriétaire du projet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Purchase Order - Change Assigned User ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2556259635 - Control 2033370267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Détail de l'offre</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Purchase Order - Control DetailOffre - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2556259635 - Control 465356002 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Synthèse budgétaire</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Purchase Order - Control SyntheseBudget - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1107699892 - NamedType 1767625888" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1107699892">
           <source>Vous ne pouvez pas modifier cette quantité car la commande provient d'un document de prévision %1</source>

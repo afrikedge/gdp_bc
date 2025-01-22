@@ -59,6 +59,13 @@ page 50353 "Vendor Invoice List Saisie"
         }
         area(factboxes)
         {
+            part("Attached Documents"; "Document Attachment Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Attachments';
+                SubPageLink = "Table ID" = const(Database::"Vendor Invoice Doc"),
+                              "No." = field("Reference Number");
+            }
             systempart(Control16; Links)
             {
             }

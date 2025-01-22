@@ -18,7 +18,8 @@ page 50031 "Sales Order - Draft"
                 field("No."; Rec."No.")
                 {
                     Importance = Promoted;
-                    Visible = DocNoVisible;
+                    //Visible = DocNoVisible;
+                    Visible = false;
 
                     trigger OnAssistEdit()
                     begin

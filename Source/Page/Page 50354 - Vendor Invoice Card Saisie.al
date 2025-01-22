@@ -69,6 +69,13 @@ page 50354 "Vendor Invoice Card Saisie"
         }
         area(factboxes)
         {
+            part("Attached Documents"; "Document Attachment Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Attachments';
+                SubPageLink = "Table ID" = const(Database::"Vendor Invoice Doc"),
+                              "No." = field("Reference Number");
+            }
             systempart(Control15; Links)
             {
             }

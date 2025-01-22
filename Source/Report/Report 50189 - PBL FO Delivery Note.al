@@ -414,7 +414,7 @@ report 50189 "PBL FO Delivery Note"
                 if Location.Get(Header.depot) then
                     DepotName := Location.Name;
 
-                if SalesHeader.Get(Header.NavOrderNo) then
+                if SalesHeader.Get(SalesHeader."Document Type"::Order, Header.NavOrderNo) then
                     DeliveryMode := SalesHeader."Shipment Method Code";
 
                 if CompanyInfos.Get() then

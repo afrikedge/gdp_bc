@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
+  <am:AuthoringMetadata>
+    <am:CreatedBy>
+      <am:Name>MSRB</am:Name>
+      <am:Version>15.0.20283.0</am:Version>
+    </am:CreatedBy>
+    <am:UpdatedBy>
+      <am:Name>MSRB</am:Name>
+      <am:Version>15.0.20283.0</am:Version>
+    </am:UpdatedBy>
+    <am:LastModifiedTimestamp>2025-01-21T23:29:24.9374909Z</am:LastModifiedTimestamp>
+  </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource">
@@ -8,6 +19,7 @@
         <ConnectString />
       </ConnectionProperties>
       <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>6d6434dc-e613-49ba-adb8-fc3f17755739</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <ReportSections>
@@ -2592,7 +2604,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="Imprimé le "&amp;Globals!ExecutionTime</Value>
+                      <Value>="Imprimé le " &amp; FormatDateTime( Globals!ExecutionTime,2)</Value>
                       <Style>
                         <FontStyle>Italic</FontStyle>
                         <FontSize>8pt</FontSize>
@@ -4021,6 +4033,7 @@ PGNtK+Gmi3EsbCQSamZNScODkMPPdwD9AK9PB+CMr3rzX3/8MfM5j9JLgTDL/ZKFes/SMF+d/wCtj8Of
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>93a8871d-adec-4524-9fc7-3ab6f7f0e37b</rd:ReportID>
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
