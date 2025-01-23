@@ -308,6 +308,14 @@ tableextension 50005 "A02 Customer" extends Customer
             Caption = 'Traites/chèques impayées';
             Editable = false;
         }
+        field(60004; "Afk Desactivation Reason"; Text[150])
+        {
+            Caption = 'Motif désactivation';
+        }
+        field(61001; "Afk Customer Level"; enum "Afk Customer Level")
+        {
+            Caption = 'Customer Level';
+        }
     }
     keys
     {

@@ -1,4 +1,4 @@
-pageextension 50087 "GD1 Sales Order" extends "Sales Order"
+pageextension 50087 "Afk Sales Order" extends "Sales Order"
 {
     Editable = false;
     actions
@@ -75,7 +75,6 @@ pageextension 50087 "GD1 Sales Order" extends "Sales Order"
     }
     trigger OnOpenPage()
     var
-    //myInt: Integer;
     begin
         Error('');
     end;

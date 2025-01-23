@@ -2,6 +2,14 @@ pageextension 50084 "AG1 User Setup" extends "User Setup"
 {
     layout
     {
+        addfirst(FactBoxes)
+        {
+            part(UserSignatureFactbox; "Afk User Signature Factbox")
+            {
+                ApplicationArea = All;
+                SubPageLink = "User ID" = field("User ID");
+            }
+        }
         addafter("Time Sheet Admin.")
         {
             field("Old Nav User"; Rec."Old Nav User")
@@ -119,9 +127,114 @@ pageextension 50084 "AG1 User Setup" extends "User Setup"
             field("GLAccount on Purchase Order"; Rec."GLAccount on Purchase Order")
             {
             }
-            field("Dispaching Windows User"; Rec."Dispaching Windows User")
-            {
-            }
+            // field("Dispaching Windows User"; Rec."Dispaching Windows User")
+            // {
+            // }
+            field("Afk Function Name on PO"; Rec."Afk Function Name on PO") { }
+
+
         }
     }
+
+    // actions
+    // {
+    //     addlast(Processing)
+    //     {
+    //         action(ImportSignature)
+    //         {
+    //             ApplicationArea = All;
+    //             Caption = 'Import Signature';
+    //             Image = Import;
+    //             ToolTip = 'Import a signature image';
+
+    //             trigger OnAction()
+    //             begin
+    //                 UploadSignature();
+    //             end;
+    //         }
+    //         action(ExportSignature)
+    //         {
+    //             ApplicationArea = All;
+    //             Caption = 'Export Signature';
+    //             Image = Export;
+    //             ToolTip = 'Export the signature image';
+    //             Enabled = HasSignature();
+
+    //             trigger OnAction()
+    //             begin
+    //                 DownloadSignature();
+    //             end;
+    //         }
+    //         action(ClearSignature)
+    //         {
+    //             ApplicationArea = All;
+    //             Caption = 'Clear Signature';
+    //             Image = Delete;
+    //             ToolTip = 'Remove the signature image';
+    //             Enabled = HasSignature();
+
+    //             trigger OnAction()
+    //             begin
+    //                 if Confirm('Are you sure you want to clear the signature?', false) then
+    //                     ClearSignature();
+    //             end;
+    //         }
+    //     }
 }
+
+// local procedure UploadSignature()
+// var
+//     FileManagement: Codeunit "File Management";
+//     TempBlob: Codeunit "Temp Blob";
+//     FileName: Text;
+//     InStream: InStream;
+//     OutStream: OutStream;
+// begin
+//     FileName := FileManagement.BLOBImport(TempBlob, '');
+//     if FileName = '' then
+//         exit;
+//     TempBlob.CreateInStream(InStream);
+//     Rec."Afk Signature".CreateOutStream(OutStream);
+//     CopyStream(OutStream, InStream);
+//     Rec.Modify(true);
+// end;
+
+// local procedure DownloadSignature()
+// var
+//     FileManagement: Codeunit "File Management";
+//     TempBlob: Codeunit "Temp Blob";
+//     FileName: Text;
+//     InStream: InStream;
+//     OutStream: OutStream;
+// begin
+//     if not HasSignature() then
+//         exit;
+
+//     Rec."Afk Signature".CreateInStream(InStream);
+//     TempBlob.CreateOutStream(OutStream);
+//     CopyStream(OutStream, InStream);
+
+//     FileName := 'Signature.jpg';
+//     FileManagement.BLOBExport(TempBlob, FileName, true);
+// end;
+
+
+
+// local procedure ClearSignature()
+// var
+//     TempBlob: Codeunit "Temp Blob";
+// begin
+//     Clear(Rec."Afk Signature");
+//     Rec.Modify(true);
+// end;
+
+// local procedure HasSignature(): Boolean
+// var
+//     TempBlob: Codeunit "Temp Blob";
+//     InStream: InStream;
+// begin
+//     if Rec."Afk Signature".HasValue() then
+//         exit(true);
+//     exit(false);
+// end;
+

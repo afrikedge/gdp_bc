@@ -22293,6 +22293,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Admin Metier RC GDP-ADM-METIER - Action Posted Sales Invoices - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3715518480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Signature</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk User Signature Factbox - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3715518480 - Control 3765202864 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Signature</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk User Signature Factbox - Control Signature - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3715518480 - Action 4007318597 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remove the signature image</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk User Signature Factbox - Action ClearSignatureAction - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3715518480 - Action 4007318597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clear Signature</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk User Signature Factbox - Action ClearSignatureAction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3715518480 - Action 1203725267 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import a signature image</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk User Signature Factbox - Action ImportSignature - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3715518480 - Action 1203725267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Signature</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk User Signature Factbox - Action ImportSignature - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2263755569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AMSA Invoice</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -24924,7 +24954,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Customer Card Admin - Action Bank Accounts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2529695913 - Action 2025789799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contacts</source>
+          <source>Signataires</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Customer Card Admin - Action C&amp;ontacts - Property Caption</note>
         </trans-unit>
@@ -60663,6 +60693,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Sales Order Subform - NamedType AFK_Text002</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1842217856 - Action 3066689659 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
+          <source>Envoyer en validation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Vendor Card - Action Valider - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1842217856 - Change 966287263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
+          <source>Nom Transporteur Dispaching</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Vendor Card - Change Name 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2969708934 - Change 966287263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
+          <source>Nom Transporteur Dispaching</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Vendor List - Change Name 2 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1649337532 - Action 3818210718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
           <source>Etat de Cession Immo</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -62413,10 +62458,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Cust. Ledger Entry - Field Transaction Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3475545745 - Field 403573546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Customer Level</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Customer Level - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3475545745 - Field 75093949 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Customer Profile</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Customer Profile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3475545745 - Field 411567602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Motif désactivation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Desactivation Reason - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3475545745 - Field 725310550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Description</source>
@@ -65222,6 +65277,16 @@
           <source>Allow Posting To</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Group - Field Allow Posting To - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 288146863 - Field 2666531729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Titre sur le bon de commande</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Setup - Field Afk Function Name on PO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 288146863 - Field 1234337692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Signature</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Setup - Field Afk Signature - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 288146863 - Field 3226697955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Can Reconciliate GL Entries</source>

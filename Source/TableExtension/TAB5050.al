@@ -208,121 +208,121 @@ tableextension 50055 "A02 Contact" extends Contact
 
 
 
-        field(60000; "Afk Responsibility Center"; Code[10])
+        field(61000; "Afk Responsibility Center"; Code[10])
         {
             Caption = 'Responsibility Center';
             TableRelation = "Responsibility Center";
         }
-        field(60001; "Afk Customer Level"; enum "Afk Customer Level")
+        field(61001; "Afk Customer Level"; enum "Afk Customer Level")
         {
             Caption = 'Customer Level';
         }
-        field(60002; "Remove JIR Ref on BE"; Boolean)
+        field(61002; "Remove JIR Ref on BE"; Boolean)
         {
             Caption = 'Remove JIR Ref on BE';
         }
 
-        field(60003; "Afk Approval Status"; enum "Afk Approval Mode")
+        field(61003; "Afk Approval Status"; enum "Afk Approval Mode")
         {
             Caption = 'Approval Status';
         }
-        field(60004; "Afk Currency Code"; Code[20])
+        field(61004; "Afk Currency Code"; Code[20])
         {
             Caption = 'Currency Code';
             TableRelation = Currency;
         }
-        field(60005; "Afk Language Code"; Code[20])
+        field(61005; "Afk Language Code"; Code[20])
         {
             Caption = 'Language Code';
             TableRelation = Language;
         }
-        field(60006; "Afk Customer Posting Group"; Code[20])
+        field(61006; "Afk Customer Posting Group"; Code[20])
         {
             Caption = 'Customer Posting Group';
             TableRelation = "Customer Posting Group";
         }
-        field(60007; "Afk Customer Price Group"; Code[20])
+        field(61007; "Afk Customer Price Group"; Code[20])
         {
             Caption = 'Customer Price Group';
             TableRelation = "Customer Price Group";
         }
-        field(60008; "Afk Gen. Bus. Posting Group"; Code[20])
+        field(61008; "Afk Gen. Bus. Posting Group"; Code[20])
         {
             Caption = 'Gen. Business Posting Group';
             TableRelation = "Gen. Business Posting Group";
         }
-        field(60009; "Afk VAT Bus_ Posting Group"; Code[20])
+        field(61009; "Afk VAT Bus_ Posting Group"; Code[20])
         {
             Caption = 'VAT Business Posting Group';
             TableRelation = "VAT Business Posting Group";
         }
-        field(60010; "Afk Location Code"; Code[10])
+        field(61010; "Afk Location Code"; Code[10])
         {
             Caption = 'Location Code';
             TableRelation = "Location";
         }
-        field(60011; "Afk Ship-to Code"; Code[10])
+        field(61011; "Afk Ship-to Code"; Code[10])
         {
             //TODO lier au contact ?
             Caption = 'Ship-to Code';
             //TableRelation = "Ship-to Address";
         }
-        field(60012; "Afk Bill-to Customer No."; Code[20])
+        field(61012; "Afk Bill-to Customer No."; Code[20])
         {
             Caption = 'Bill-to Customer No';
             TableRelation = "Customer";
         }
-        field(60013; "Afk Primary Contact No."; Code[20])
+        field(61013; "Afk Primary Contact No."; Code[20])
         {
             Caption = 'Primary Contact No.';
             TableRelation = "Contact";
         }
-        field(60014; "Afk Payment Terms Code"; Code[10])
+        field(61014; "Afk Payment Terms Code"; Code[10])
         {
             Caption = 'Payment Terms Code';
             TableRelation = "Payment Terms";
         }
-        field(60015; "Afk Credit Limit (LCY)"; Decimal)
+        field(61015; "Afk Credit Limit (LCY)"; Decimal)
         {
             AutoFormatType = 1;
             Caption = 'Credit Limit (LCY)';
         }
-        field(60016; "Afk Payment Method Code"; Code[10])
+        field(61016; "Afk Payment Method Code"; Code[10])
         {
             Caption = 'Payment Method Code';
             TableRelation = "Payment Method";
         }
-        field(60017; "Afk Balance Amount"; Decimal)
+        field(61017; "Afk Balance Amount"; Decimal)
         {
             Caption = 'Balance Amount';
         }
-        field(60018; "Afk Amount Due"; Decimal)
+        field(61018; "Afk Amount Due"; Decimal)
         {
             Caption = 'Amount Due';
         }
-        field(60019; "Afk Reminder Terms Code"; Code[10])
+        field(61019; "Afk Reminder Terms Code"; Code[10])
         {
             Caption = 'Reminder Terms Code';
             TableRelation = "Reminder Terms";
         }
-        field(60020; "Afk Fin. Charge Terms Code"; Code[10])
+        field(61020; "Afk Fin. Charge Terms Code"; Code[10])
         {
             Caption = 'Fin. Charge Terms Code';
             TableRelation = "Finance Charge Terms";
         }
-        field(60021; "Afk Application Method"; Enum "Application Method")
+        field(61021; "Afk Application Method"; Enum "Application Method")
         {
             Caption = 'Application Method';
         }
-        field(60022; "Afk Disable Blocking"; Boolean)
+        field(61022; "Afk Disable Blocking"; Boolean)
         {
             Caption = 'Disable sales order blocking';
         }
-        field(60023; "Afk Contact Type"; Enum "Afk Contact Type")
+        field(61023; "Afk Contact Type"; Enum "Afk Contact Type")
         {
             Caption = 'Contact Type';
         }
-        field(60024; "Afk Parent Account Type"; enum "Afk CRM Account Type")
+        field(61024; "Afk Parent Account Type"; enum "Afk CRM Account Type")
         {
             Caption = 'Parent Account Type';
         }
