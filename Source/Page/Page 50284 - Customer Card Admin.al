@@ -491,7 +491,7 @@ page 50284 "Customer Card Admin"
                 action("C&ontacts")
                 {
                     AccessByPermission = TableData Contact = R;
-                    Caption = 'Contacts';
+                    Caption = 'Signataires';
                     Image = ContactPerson;
                     RunObject = Page "Signatory List";
                     RunPageLink = "Company No." = FIELD("No.");

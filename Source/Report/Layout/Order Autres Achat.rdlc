@@ -4448,11 +4448,23 @@ Zs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs
         <Field Name="FirstApprover_FullName">
           <DataField>FirstApprover_FullName</DataField>
         </Field>
+        <Field Name="FirstApprover_Signature">
+          <DataField>FirstApprover_Signature</DataField>
+        </Field>
+        <Field Name="FirstApprover_FunctionNamePO">
+          <DataField>FirstApprover_FunctionNamePO</DataField>
+        </Field>
         <Field Name="FirstApproverDate">
           <DataField>FirstApproverDate</DataField>
         </Field>
         <Field Name="SecondApprover_FullName">
           <DataField>SecondApprover_FullName</DataField>
+        </Field>
+        <Field Name="SecondApprover_Signature">
+          <DataField>SecondApprover_Signature</DataField>
+        </Field>
+        <Field Name="SecondApprover_FunctionNamePO">
+          <DataField>SecondApprover_FunctionNamePO</DataField>
         </Field>
         <Field Name="SecondApproverDate">
           <DataField>SecondApproverDate</DataField>

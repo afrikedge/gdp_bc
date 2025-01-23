@@ -70,28 +70,28 @@ report 50015 "Order Autres Achat"
             column(Observations_PurchaseHeader; "Purchase Header".Observations)
             {
             }
-            column(FirstApprover_FullName; FirstApprover."Full Name")
+            column(FirstApprover_FullName; FirstApprover."User Full Name")
             {
             }
             //TODO Signature ici
-            // column(FirstApprover_Signature;FirstApprover.Signature)
-            // {
-            // }
-            // column(FirstApprover_FunctionNamePO;FirstApprover."Function Name on PO")
-            // {
-            // }
+            column(FirstApprover_Signature; FirstApprover."Afk Signature")
+            {
+            }
+            column(FirstApprover_FunctionNamePO; FirstApprover."Afk Function Name on PO")
+            {
+            }
             column(FirstApproverDate; FirstApproverDate)
             {
             }
-            column(SecondApprover_FullName; SecondApprover."Full Name")
+            column(SecondApprover_FullName; SecondApprover."User Full Name")
             {
             }
-            // column(SecondApprover_Signature;SecondApprover.Signature)
-            // {
-            // }
-            // column(SecondApprover_FunctionNamePO;SecondApprover."Function Name on PO")
-            // {
-            // }
+            column(SecondApprover_Signature; SecondApprover."Afk Signature")
+            {
+            }
+            column(SecondApprover_FunctionNamePO; SecondApprover."Afk Function Name on PO")
+            {
+            }
             column(SecondApproverDate; SecondApproverDate)
             {
             }
@@ -865,8 +865,8 @@ report 50015 "Order Autres Achat"
                     TotalAvecRemise := VATAmountLine.GetTotalLineAmount(false, "Purchase Header"."Currency Code") - VATAmountLine.GetTotalInvDiscAmount;
                     NbTLet.InitTextVariable;
                     //TODO Montants
-                    // if TotalAvecRemise<>0 then
-                    //   NbTLet.FormatNoTextFR(TotalAmountLetter2,TotalAvecRemise,"Purchase Header"."Currency Code");
+                    if TotalAvecRemise <> 0 then
+                        NbTLet.FormatNoText(TotalAmountLetter2, TotalAvecRemise, "Purchase Header"."Currency Code");
                     //****************************
 
 
@@ -912,6 +912,7 @@ report 50015 "Order Autres Achat"
             trigger OnAfterGetRecord()
             var
                 ApprovalEntry: Record "Approval Entry";
+                Dept: record Subdirection;
             begin
                 //TODO
                 //CurrReport.Language := Language.GetLanguageID("Language Code");
@@ -1014,13 +1015,13 @@ report 50015 "Order Autres Achat"
                 if CodeDemand <> '' then begin
 
                     //TODO Prendre departement dans l'add de paie
-                    //if PurchReq.Get(CodeDemand) then
-                    // if Dept.Get(PurchReq."Department Code") then
-                    //   DepartementDemandeur := Dept.Name;
+                    if PurchReq.Get(CodeDemand) then
+                        if Dept.Get(PurchReq."Department Code") then
+                            DepartementDemandeur := Dept.Name;
 
-                    //if PostedPurchReq.Get(CodeDemand) then
-                    // if Dept.Get(PostedPurchReq."Department Code") then
-                    //   DepartementDemandeur := Dept.Name;
+                    if PostedPurchReq.Get(CodeDemand) then
+                        if Dept.Get(PostedPurchReq."Department Code") then
+                            DepartementDemandeur := Dept.Name;
                 end;
                 //***********************
 
@@ -1039,23 +1040,25 @@ report 50015 "Order Autres Achat"
                 ApprovalEntry.SetRange("Document No.", "Purchase Header"."No.");
                 ApprovalEntry.SetRange(ApprovalEntry.Status, ApprovalEntry.Status::Approved);
                 if ApprovalEntry.FindLast then begin
-                    SecondApprover.SetFilter("User Name", ApprovalEntry."Approver ID");
+                    SecondApprover.SetFilter("User ID", ApprovalEntry."Approver ID");
                     if SecondApprover.FindFirst then begin
                         SecondApproverDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
-                        //SecondApprover.CalcFields(Signature);//TODO
+                        SecondApprover.CalcFields("Afk Signature");//TODO
+                        SecondApprover.CalcFields("User Full Name");
                     end;
 
                     if (ApprovalEntry."Sequence No." > 2) then begin
                         if ApprovalEntry.Next(-1) <> 0 then begin
-                            FirstApprover.SetFilter("User Name", ApprovalEntry."Approver ID");
+                            FirstApprover.SetFilter("User ID", ApprovalEntry."Approver ID");
                             if FirstApprover.FindFirst then begin
                                 FirstApproverDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
-                                //FirstApprover.CalcFields(Signature);//TODO
+                                FirstApprover.CalcFields("Afk Signature");//TODO
+                                FirstApprover.CalcFields("User Full Name");
                             end;
                         end;
                     end;
 
-                    if FirstApprover."User Name" = SecondApprover."User Name" then begin
+                    if FirstApprover."User ID" = SecondApprover."User ID" then begin
                         FirstApproverDate := 19000101D;
                         FirstApprover.Init;
                     end;
@@ -1266,8 +1269,8 @@ report 50015 "Order Autres Achat"
         //Dept: Record Subdirection;
         PurchReq: Record "Purchase Requisition";
         DevAmount: Text;
-        FirstApprover: Record User;
-        SecondApprover: Record User;
+        FirstApprover: Record "User Setup";
+        SecondApprover: Record "User Setup";
         FirstApproverDate: Date;
         SecondApproverDate: Date;
 
