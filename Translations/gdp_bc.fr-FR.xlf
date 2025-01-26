@@ -33222,7 +33222,7 @@
         </trans-unit>
         <trans-unit id="Page 365697366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item List to validate</source>
-          <target state="needs-review-translation">Liste des articles à valider</target>
+          <target state="needs-review-translation">Liste des articles à valider - CDG</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item List - CDG - Property Caption</note>
         </trans-unit>
@@ -34044,7 +34044,7 @@
         </trans-unit>
         <trans-unit id="Page 3765531422 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item List to validate</source>
-          <target state="needs-review-translation">Liste des articles à valider</target>
+          <target state="needs-review-translation">Liste des articles à valider CDC</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item List - Compta CDC - Property Caption</note>
         </trans-unit>
@@ -34866,7 +34866,7 @@
         </trans-unit>
         <trans-unit id="Page 3590353812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item List to validate</source>
-          <target state="needs-review-translation">Liste des articles à valider</target>
+          <target state="needs-review-translation">Liste des articles à valider Compta Four</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item List - Compta Four - Property Caption</note>
         </trans-unit>

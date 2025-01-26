@@ -1,6 +1,7 @@
 pageextension 50086 "GD1 Sales Order List" extends "Sales Order List"
 {
     Editable = false;
+    Caption = 'Suivi des commandes de vente';
 
     layout
     {

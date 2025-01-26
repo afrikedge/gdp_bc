@@ -1,6 +1,6 @@
 page 50286 "Item List - CDG"
 {
-    Caption = 'Item List to validate';
+    Caption = 'Item List to validate CDG';
     CardPageID = "Item Card Admin";
     Editable = false;
     PageType = List;

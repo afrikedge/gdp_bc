@@ -1,7 +1,8 @@
 table 50045 Cargo
 {
     Caption = 'Cargo';
-    // LookupPageID = "Cargo List";
+    LookupPageID = "Cargo List";
+    DrillDownPageId = "Cargo List";
 
     fields
     {
@@ -88,11 +89,13 @@ table 50045 Cargo
             Caption = 'Closed';
 
             trigger OnValidate()
+            var
+                CargoMgt: codeunit "Item Value Cargo Mgt";
             begin
                 //TODO Migration
-                // if Closed=true then
-                //   if not CargoMgt.CargoIsEmpty(Rec.Code) then
-                //     Error(Text004);
+                if Closed = true then
+                    if not CargoMgt.CargoIsEmpty(Rec.Code) then
+                        Error(Text004);
             end;
         }
     }

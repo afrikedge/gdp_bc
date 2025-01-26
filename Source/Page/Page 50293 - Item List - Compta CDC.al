@@ -1,6 +1,6 @@
 page 50293 "Item List - Compta CDC"
 {
-    Caption = 'Item List to validate';
+    Caption = 'Item List to validate CDC';
     CardPageID = "Item Card Admin";
     Editable = false;
     PageType = List;

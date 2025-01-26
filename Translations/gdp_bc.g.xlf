@@ -27714,7 +27714,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Invoiced Conso Subform - Action Dimensions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 365697366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item List to validate</source>
+          <source>Item List to validate CDG</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item List - CDG - Property Caption</note>
         </trans-unit>
@@ -28399,7 +28399,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Item List - CDG - Action Where-Used (Top Level) - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3765531422 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item List to validate</source>
+          <source>Item List to validate CDC</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item List - Compta CDC - Property Caption</note>
         </trans-unit>
@@ -29084,7 +29084,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Item List - Compta CDC - Action Where-Used (Top Level) - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3590353812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item List to validate</source>
+          <source>Item List to validate Compta Four</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item List - Compta Four - Property Caption</note>
         </trans-unit>
@@ -61517,6 +61517,11 @@
           <source>Sorties à refacturer enregistrées</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Tenues3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3967231778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3332899200">
+          <source>Suivi des commandes de vente</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Sales Order List - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2638615208 - Action 2363185391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1714817514">
           <source>Imprimer</source>
