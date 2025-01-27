@@ -47,7 +47,7 @@ report 50025 "Touring Importation File"
                     {
 
                     }
-                    column(volumeaenlever; pro_detailBE.volumeaenlever * 1000)
+                    column(volumeaenlever; VolumeTotalLigne)
                     {
 
                     }
@@ -63,6 +63,11 @@ report 50025 "Touring Importation File"
                     column(C10; C10) { }
                     trigger OnAfterGetRecord()//DetailBE
                     begin
+                        if (pro_detailBE."Unit of Measure Code" = 'M3') then
+                            VolumeTotalLigne := pro_detailBE.volumeaenlever * 1000
+                        else
+                            VolumeTotalLigne := pro_detailBE.volumeaenlever;
+
 
                         C1 := FindVolumeCompartiment(1, pro_enteteBE, pro_detailBE);
                         C2 := FindVolumeCompartiment(2, pro_enteteBE, pro_detailBE);
@@ -126,7 +131,10 @@ report 50025 "Touring Importation File"
     begin
         if (TouringEntry.Get(EnteteBE.idtournee, EnteteBE.NavOrderNo, EnteteBE.codemoyentransport, index)) then
             if (TouringEntry.ItemNo = BELine.codeproduit) then
-                exit(TouringEntry.Volume * 1000);
+                if (BELine."Unit of Measure Code" = 'M3') then
+                    exit(TouringEntry.Volume * 1000)
+                else
+                    exit(TouringEntry.Volume);
     end;
 
     var
@@ -142,6 +150,7 @@ report 50025 "Touring Importation File"
         C8: Decimal;
         C9: Decimal;
         C10: Decimal;
+        VolumeTotalLigne: Decimal;
 }
 
 

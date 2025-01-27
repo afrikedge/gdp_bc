@@ -19,32 +19,32 @@ codeunit 50016 "Security Mgt"
         Text005: Label 'Vous n''êtes pas autorisé à utiliser cette fonctionnalité.';
         Text006: Label 'Vous n''etes pas autorisé à contrepasser cette opération car sa valeur %1 est supérieure à votre limite : %2 ';
 
-    procedure CheckAccessUserJournal(GenJnlLine: Record "Gen. Journal Line";Edit: Boolean;Validate: Boolean)
+    procedure CheckAccessUserJournal(GenJnlLine: Record "Gen. Journal Line"; Edit: Boolean; Validate: Boolean)
     var
         JournalUser: Record "Journal User";
     begin
-          AddOnSetup.Get;
-          if AddOnSetup."Security on Journal" then begin
-            if ((GenJnlLine."Journal Template Name"<>'') and (GenJnlLine."Journal Batch Name"<>'')) then begin
-               //JournalUser.SETCURRENTKEY(Code,Description,"Journal Template Name","Journal Batch Name");
-               JournalUser.SetRange("User ID",UserId);
-               //JournalUser.SETRANGE(Description,SecurityUser.Description::"1");
-               JournalUser.SetRange("Journal Template Name",GenJnlLine."Journal Template Name");
-               JournalUser.SetRange("Journal Batch Name",GenJnlLine."Journal Batch Name");
-               //IF Edit THEN JournalUser.SETRANGE(JournalUser.Edit,TRUE);
-               //IF Validate THEN JournalUser.SETRANGE(JournalUser.Validate,TRUE);
-               if JournalUser.IsEmpty then begin
-                  Message(TextErr0001,GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name");
-                  Error('');
-               end else begin
-                 JournalUser.FindFirst;
-                 if Edit and not JournalUser.Edit then
-                   Error(StrSubstNo(TextErr0002,GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name"));
-                 if Validate and not JournalUser.Validate then
-                   Error(StrSubstNo(TextErr0003,GenJnlLine."Journal Template Name",GenJnlLine."Journal Batch Name"));
-               end;
-             end;
-          end;
+        AddOnSetup.Get;
+        if AddOnSetup."Security on Journal" then begin
+            if ((GenJnlLine."Journal Template Name" <> '') and (GenJnlLine."Journal Batch Name" <> '')) then begin
+                //JournalUser.SETCURRENTKEY(Code,Description,"Journal Template Name","Journal Batch Name");
+                JournalUser.SetRange("User ID", UserId);
+                //JournalUser.SETRANGE(Description,SecurityUser.Description::"1");
+                JournalUser.SetRange("Journal Template Name", GenJnlLine."Journal Template Name");
+                JournalUser.SetRange("Journal Batch Name", GenJnlLine."Journal Batch Name");
+                //IF Edit THEN JournalUser.SETRANGE(JournalUser.Edit,TRUE);
+                //IF Validate THEN JournalUser.SETRANGE(JournalUser.Validate,TRUE);
+                if JournalUser.IsEmpty then begin
+                    Message(TextErr0001, GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name");
+                    Error('');
+                end else begin
+                    JournalUser.FindFirst;
+                    if Edit and not JournalUser.Edit then
+                        Error(StrSubstNo(TextErr0002, GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name"));
+                    if Validate and not JournalUser.Validate then
+                        Error(StrSubstNo(TextErr0003, GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name"));
+                end;
+            end;
+        end;
     end;
 
     procedure CheckWarehouseUser(CodeMagasin: Code[10])
@@ -56,17 +56,17 @@ codeunit 50016 "Security Mgt"
         AddOnSetup.Get;
         if AddOnSetup."Desactivate Whse Sec" then exit;
 
-        if ((UserId<>'') and (CodeMagasin<>'')) then begin
-          if Loc.Get(CodeMagasin) then begin
-            if Loc."Virtual Location" then exit;
-            if Loc."Transfer Item Transit" then exit;
-            if Loc."Use As In-Transit" then exit;
-            if Loc."Location Type"<>Loc."Location Type"::" " then exit;
-          end;
-          WarehouseUser.Reset;
-          WarehouseUser.SetRange(WarehouseUser."User ID",UserId);
-          WarehouseUser.SetRange(WarehouseUser."Location Code",CodeMagasin);
-          if WarehouseUser.IsEmpty then Error(Text001,CodeMagasin);
+        if ((UserId <> '') and (CodeMagasin <> '')) then begin
+            if Loc.Get(CodeMagasin) then begin
+                if Loc."Virtual Location" then exit;
+                if Loc."Transfer Item Transit" then exit;
+                if Loc."Use As In-Transit" then exit;
+                if Loc."Location Type" <> Loc."Location Type"::" " then exit;
+            end;
+            WarehouseUser.Reset;
+            WarehouseUser.SetRange(WarehouseUser."User ID", UserId);
+            WarehouseUser.SetRange(WarehouseUser."Location Code", CodeMagasin);
+            if WarehouseUser.IsEmpty then Error(Text001, CodeMagasin);
         end;
     end;
 
@@ -75,7 +75,7 @@ codeunit 50016 "Security Mgt"
         UserSetup1: Record "User Setup";
         Location: Record Location;
     begin
-        
+
         /*
         IF CodeRegion='' THEN EXIT('*');
         
@@ -95,23 +95,23 @@ codeunit 50016 "Security Mgt"
         
         IF Rep='' THEN Rep:='#K##+';
         */
-        
-        
+
+
         warehouseEmp.Reset;
-        warehouseEmp.SetRange(warehouseEmp."User ID",UserId);
+        warehouseEmp.SetRange(warehouseEmp."User ID", UserId);
         //Location.SETRANGE(Depot,TRUE);
         if warehouseEmp.FindSet then
-          repeat
-        
-              if StrLen(Rep + warehouseEmp."Location Code") > 1024 then exit('');
-              if Rep='' then
-                Rep := warehouseEmp."Location Code"
-              else
-                Rep := Rep + '|' + warehouseEmp."Location Code";
-        
-          until warehouseEmp.Next=0;
-        
-        if Rep='' then Rep:='#K##+';
+            repeat
+
+                if StrLen(Rep + warehouseEmp."Location Code") > 1024 then exit('');
+                if Rep = '' then
+                    Rep := warehouseEmp."Location Code"
+                else
+                    Rep := Rep + '|' + warehouseEmp."Location Code";
+
+            until warehouseEmp.Next = 0;
+
+        if Rep = '' then Rep := '#K##+';
 
     end;
 
@@ -125,12 +125,12 @@ codeunit 50016 "Security Mgt"
         UserSetup1.TestField(UserSetup1."Sales Resp. Ctr. Filter");
 
         Location.Reset;
-        Location.SetRange("Responsibility Center",UserSetup1."Sales Resp. Ctr. Filter");
-        Location.SetRange(Depot,true);
+        Location.SetRange("Responsibility Center", UserSetup1."Sales Resp. Ctr. Filter");
+        Location.SetRange(Depot, true);
         if Location.FindFirst then
-          exit (Location.Code)
+            exit(Location.Code)
         else
-          Error(Text002);
+            Error(Text002);
     end;
 
     local procedure CheckDepotDispaching(CodeDepot: Code[10])
@@ -143,7 +143,7 @@ codeunit 50016 "Security Mgt"
         UserSetup1.TestField(UserSetup1."Sales Resp. Ctr. Filter");
 
         Location.Get(CodeDepot);
-        Location.TestField(Location."Responsibility Center",UserSetup1."Sales Resp. Ctr. Filter");
+        Location.TestField(Location."Responsibility Center", UserSetup1."Sales Resp. Ctr. Filter");
     end;
 
     procedure CanUpdatePrices(): Boolean
@@ -151,7 +151,7 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet."Can Update Prices");
+            exit(UserSet."Can Update Prices");
     end;
 
     procedure CanUnlockOrders(): Boolean
@@ -159,7 +159,7 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet."Can Unlock Order");
+            exit(UserSet."Can Unlock Order");
     end;
 
     procedure GetFiltresFeuilles(CodeModele: Code[10]) Rep: Text[1024]
@@ -170,21 +170,21 @@ codeunit 50016 "Security Mgt"
     begin
 
         JournalUser.Reset;
-        JournalUser.SetRange("User ID",UserId);
-        JournalUser.SetRange("Journal Template Name",CodeModele);
+        JournalUser.SetRange("User ID", UserId);
+        JournalUser.SetRange("Journal Template Name", CodeModele);
         //JournalUser.SETRANGE("Journal Batch Name",GenJnlLine."Journal Batch Name");
         if JournalUser.FindSet then
-          repeat
+            repeat
 
-              if StrLen(Rep + JournalUser."Journal Batch Name") > 1024 then exit('*');
-              if Rep='' then
-                Rep := JournalUser."Journal Batch Name"
-              else
-                Rep := Rep + '|' + JournalUser."Journal Batch Name";
+                if StrLen(Rep + JournalUser."Journal Batch Name") > 1024 then exit('*');
+                if Rep = '' then
+                    Rep := JournalUser."Journal Batch Name"
+                else
+                    Rep := Rep + '|' + JournalUser."Journal Batch Name";
 
-          until JournalUser.Next=0;
+            until JournalUser.Next = 0;
 
-        if Rep='' then Rep:='#K##+';
+        if Rep = '' then Rep := '#K##+';
     end;
 
     procedure CheckCanUseBankAcc(BankAcc: Code[20])
@@ -196,11 +196,11 @@ codeunit 50016 "Security Mgt"
         if not AddOnSetup."Activate bank Acc Sec" then exit;
 
         UserItem.Reset;
-        UserItem.SetRange("User ID",UserId);
-        UserItem.SetRange(SecurityType,UserItem.SecurityType::BankAcc);
-        UserItem.SetRange("Item Code",BankAcc);
+        UserItem.SetRange("User ID", UserId);
+        UserItem.SetRange(SecurityType, UserItem.SecurityType::BankAcc);
+        UserItem.SetRange("Item Code", BankAcc);
         if not UserItem.FindFirst then
-          Error(Text003,BankAcc);
+            Error(Text003, BankAcc);
     end;
 
     procedure GetFiltresCentresGestion() Rep: Text[1024]
@@ -208,47 +208,47 @@ codeunit 50016 "Security Mgt"
         UserSetup1: Record "User Setup";
         Location: Record Location;
     begin
-        
+
         UserSetup.Get(UserId);
-        
-        if UserSetup."Sales Resp. Ctr. Filter"<>'' then begin
-          if Rep='' then
-            Rep := UserSetup."Sales Resp. Ctr. Filter"
-          else
-            Rep := Rep + '|' + UserSetup."Sales Resp. Ctr. Filter";
+
+        if UserSetup."Sales Resp. Ctr. Filter" <> '' then begin
+            if Rep = '' then
+                Rep := UserSetup."Sales Resp. Ctr. Filter"
+            else
+                Rep := Rep + '|' + UserSetup."Sales Resp. Ctr. Filter";
         end;
-        
-        if UserSetup."Sales Resp. Ctr. Filter2"<>'' then begin
-          if Rep='' then
-            Rep := UserSetup."Sales Resp. Ctr. Filter2"
-          else
-            Rep := Rep + '|' + UserSetup."Sales Resp. Ctr. Filter2";
+
+        if UserSetup."Sales Resp. Ctr. Filter2" <> '' then begin
+            if Rep = '' then
+                Rep := UserSetup."Sales Resp. Ctr. Filter2"
+            else
+                Rep := Rep + '|' + UserSetup."Sales Resp. Ctr. Filter2";
         end;
-        
-        if UserSetup."Sales Resp. Ctr. Filter3"<>'' then begin
-          if Rep='' then
-            Rep := UserSetup."Sales Resp. Ctr. Filter3"
-          else
-            Rep := Rep + '|' + UserSetup."Sales Resp. Ctr. Filter3";
+
+        if UserSetup."Sales Resp. Ctr. Filter3" <> '' then begin
+            if Rep = '' then
+                Rep := UserSetup."Sales Resp. Ctr. Filter3"
+            else
+                Rep := Rep + '|' + UserSetup."Sales Resp. Ctr. Filter3";
         end;
-        
-        if UserSetup."Sales Resp. Ctr. Filter4"<>'' then begin
-          if Rep='' then
-            Rep := UserSetup."Sales Resp. Ctr. Filter4"
-          else
-            Rep := Rep + '|' + UserSetup."Sales Resp. Ctr. Filter4";
+
+        if UserSetup."Sales Resp. Ctr. Filter4" <> '' then begin
+            if Rep = '' then
+                Rep := UserSetup."Sales Resp. Ctr. Filter4"
+            else
+                Rep := Rep + '|' + UserSetup."Sales Resp. Ctr. Filter4";
         end;
-        
-        
-        if UserSetup."Sales Resp. Ctr. Filter5"<>'' then begin
-          if Rep='' then
-            Rep := UserSetup."Sales Resp. Ctr. Filter5"
-          else
-            Rep := Rep + '|' + UserSetup."Sales Resp. Ctr. Filter5";
+
+
+        if UserSetup."Sales Resp. Ctr. Filter5" <> '' then begin
+            if Rep = '' then
+                Rep := UserSetup."Sales Resp. Ctr. Filter5"
+            else
+                Rep := Rep + '|' + UserSetup."Sales Resp. Ctr. Filter5";
         end;
-        
-        if Rep='' then Rep:='#K##+';
-        
+
+        if Rep = '' then Rep := '#K##+';
+
         /*
         warehouseEmp.RESET;
         warehouseEmp.SETRANGE(warehouseEmp."User ID",USERID);
@@ -274,7 +274,7 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet."Can Validate Item");
+            exit(UserSet."Can Validate Item");
     end;
 
     procedure CanDeleteBlockedOrders(): Boolean
@@ -282,7 +282,7 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet."Can delete blocked Orders");
+            exit(UserSet."Can delete blocked Orders");
     end;
 
     procedure CanReverseReconciliation(): Boolean
@@ -290,7 +290,7 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet."Can Reverse Reconciliation");
+            exit(UserSet."Can Reverse Reconciliation");
     end;
 
     procedure CanReverseTransaction(): Boolean
@@ -298,7 +298,7 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet."Can Reverse Transaction");
+            exit(UserSet."Can Reverse Transaction");
     end;
 
     procedure CanCancelSO(): Boolean
@@ -306,25 +306,25 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet."Can Cancel SO");
+            exit(UserSet."Can Cancel SO");
     end;
 
     procedure CheckCanReverseReconciliation()
     begin
         if not CanReverseReconciliation then
-          Error(Text004);
+            Error(Text004);
     end;
 
     procedure CheckCanReverseTransaction()
     begin
         if not CanReverseTransaction then
-          Error(Text004);
+            Error(Text004);
     end;
 
     procedure CheckCanCancelSO()
     begin
         if not CanCancelSO then
-          Error(Text005);
+            Error(Text005);
     end;
 
     procedure CanValidateVendors(): Boolean
@@ -332,7 +332,7 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet."Can Validate Vendor");
+            exit(UserSet."Can Validate Vendor");
     end;
 
     procedure CanUpdateQtyJIRAMA_SO(): Boolean
@@ -340,7 +340,7 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet."Can Update JIRAMA Qty");
+            exit(UserSet."Can Update JIRAMA Qty");
     end;
 
     procedure CanReverseBE_BL(): Boolean
@@ -348,13 +348,13 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet."Can Reverse BE/BL");
+            exit(UserSet."Can Reverse BE/BL");
     end;
 
     procedure CheckCanReverseBE_BL()
     begin
         if not CanReverseBE_BL then
-          Error(Text005);
+            Error(Text005);
     end;
 
     procedure CanReconciliateGLEntries(): Boolean
@@ -362,27 +362,27 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet."Can Apply GLEntries");
+            exit(UserSet."Can Apply GLEntries");
     end;
 
     procedure CheckCanApplyGLEntries()
     begin
         if not CanReconciliateGLEntries then
-          Error(Text005);
+            Error(Text005);
     end;
 
     procedure GetDefaultOrFirstLocation(): Code[10]
     begin
         warehouseEmp.Reset;
-        warehouseEmp.SetRange(warehouseEmp."User ID",UserId);
-        warehouseEmp.SetRange(warehouseEmp.Default,true);
+        warehouseEmp.SetRange(warehouseEmp."User ID", UserId);
+        warehouseEmp.SetRange(warehouseEmp.Default, true);
         if warehouseEmp.FindFirst then
-          exit(warehouseEmp."Location Code");
+            exit(warehouseEmp."Location Code");
 
         warehouseEmp.Reset;
-        warehouseEmp.SetRange(warehouseEmp."User ID",UserId);
+        warehouseEmp.SetRange(warehouseEmp."User ID", UserId);
         if warehouseEmp.FindFirst then
-          exit(warehouseEmp."Location Code");
+            exit(warehouseEmp."Location Code");
     end;
 
     procedure CanUpdateSOAfterValidation(): Boolean
@@ -390,7 +390,7 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet.CanUpdateOrderAfterValidation);
+            exit(UserSet.CanUpdateOrderAfterValidation);
     end;
 
     procedure CanPostVendInvoiceDirectly(): Boolean
@@ -398,7 +398,7 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          exit(UserSet.CanPostDirectPurchInvoice);
+            exit(UserSet.CanPostDirectPurchInvoice);
     end;
 
     procedure CheckReverseAmount(EntryAmt: Decimal)
@@ -406,14 +406,33 @@ codeunit 50016 "Security Mgt"
         UserSet: Record "User Setup";
     begin
         if UserSet.Get(UserId) then
-          if ((UserSet."Reverse Amount Limit">0) and (EntryAmt>UserSet."Reverse Amount Limit")) then
-            Error(Text006,EntryAmt,UserSet."Reverse Amount Limit");
+            if ((UserSet."Reverse Amount Limit" > 0) and (EntryAmt > UserSet."Reverse Amount Limit")) then
+                Error(Text006, EntryAmt, UserSet."Reverse Amount Limit");
     end;
 
     procedure CanAddItemOnSalesInv(): Boolean
     begin
         if UserSetup.Get(UserId) then
-          exit(UserSetup."Item on sales invoice");
+            exit(UserSetup."Item on sales invoice");
+    end;
+
+    procedure FindUser(var UserSetup: record "User Setup"; UserId: code[50])
+    var
+    begin
+        UserSetup.SetRange("User ID", UserId);
+        if (UserSetup.FindFirst) then begin
+            UserSetup.CalcFields("Afk Signature");
+            UserSetup.CalcFields("User Full Name");
+            exit;
+        end;
+
+        UserSetup.Reset();
+        UserSetup.SetRange("Old Nav User", UserId);
+        if (UserSetup.FindFirst) then begin
+            UserSetup.CalcFields("Afk Signature");
+            UserSetup.CalcFields("User Full Name");
+            exit;
+        end;
     end;
 }
 

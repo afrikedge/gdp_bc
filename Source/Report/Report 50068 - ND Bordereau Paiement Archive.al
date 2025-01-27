@@ -219,7 +219,10 @@ report 50068 "ND Bordereau Paiement Archive"
                 "Payment Header Archive".CalcFields(Amount);
                 NbTLet.InitTextVariable;
                 //TODO Montants
-                //NbTLet.FormatNoTextFR(TotalAmountLetter,Abs(Amount),"Currency Code");
+                if ("Currency Code" <> '') then
+                    NbTLet.FormatNoText(TotalAmountLetter, Abs(Amount), "Currency Code")
+                else
+                    NbTLet.FormatNoText(TotalAmountLetter, Abs(Amount), GLSetup."LCY Code");
             end;
         }
     }

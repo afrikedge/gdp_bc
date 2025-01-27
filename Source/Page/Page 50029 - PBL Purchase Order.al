@@ -352,10 +352,9 @@ page 50029 "PBL Purchase Order"
 
                     trigger OnAction()
                     var
-                        ApprovalEntries: Page "Approval Entries";
+                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
-                        // ApprovalEntries.Setfilters(DATABASE::"Purchase Header","Document Type","No.");
-                        // ApprovalEntries.Run;
+                        ApprovalsMgmt.OpenApprovalsPurchase(Rec);
                     end;
                 }
                 action("Co&mments")
@@ -523,10 +522,16 @@ page 50029 "PBL Purchase Order"
                     Promoted = true;
                     PromotedCategory = Category4;
                     RunObject = Page "Approval Comments";
-                    RunPageLink = "Table ID" = CONST(38),
-                                  "Document Type" = FIELD("Document Type"),
-                                  "Document No." = FIELD("No.");
+                    // RunPageLink = "Table ID" = CONST(38),
+                    //               "Document Type" = FIELD("Document Type"),
+                    //               "Document No." = FIELD("No.");
                     Visible = OpenApprovalEntriesExistForCurrUser;
+                    trigger OnAction()
+                    var
+                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                    begin
+                        ApprovalsMgmt.GetApprovalComment(Rec);
+                    end;
                 }
             }
             group(ActionGroup13)
@@ -739,14 +744,21 @@ page 50029 "PBL Purchase Order"
                     Promoted = true;
                     PromotedCategory = Category9;
 
+                    // trigger OnAction()
+                    // var
+                    //     ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                    // begin
+                    //     //MIGRATION***************
+                    //     IF ApprovalsMgmt.CheckPurchaseApprovalsWorkflowEnabled(Rec) THEN
+                    //       ApprovalsMgmt.OnSendPurchaseDocForApproval(Rec);
+                    //     //MIGRATION***************
+                    // end;
                     trigger OnAction()
                     var
                         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
-                        //MIGRATION***************
-                        //IF ApprovalsMgmt.CheckPurchaseApprovalsWorkflowEnabled(Rec) THEN
-                        //  ApprovalsMgmt.OnSendPurchaseDocForApproval(Rec);
-                        //MIGRATION***************
+                        if ApprovalsMgmt.CheckPurchaseApprovalPossible(Rec) then
+                            ApprovalsMgmt.OnSendPurchaseDocForApproval(Rec);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -760,8 +772,10 @@ page 50029 "PBL Purchase Order"
                     trigger OnAction()
                     var
                         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        WorkflowWebhookMgt: Codeunit "Workflow Webhook Management";
                     begin
                         ApprovalsMgmt.OnCancelPurchaseApprovalRequest(Rec);
+                        WorkflowWebhookMgt.FindAndCancel(Rec.RecordId);
                     end;
                 }
             }

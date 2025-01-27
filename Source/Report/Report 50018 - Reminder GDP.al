@@ -415,7 +415,10 @@ report 50018 "Reminder GDP"
                         end;
 
                         NbTLet.InitTextVariable;
-                        NbTLet.FormatNoText(TotalAmountLetter, NNC_TotalInclVAT, "Issued Reminder Header"."Currency Code");
+                        if ("Issued Reminder Header"."Currency Code" <> '') then
+                            NbTLet.FormatNoText(TotalAmountLetter, NNC_TotalInclVAT, "Issued Reminder Header"."Currency Code")
+                        else
+                            NbTLet.FormatNoText(TotalAmountLetter, NNC_TotalInclVAT, GLSetup."LCY Code");
                     end;
 
                     trigger OnPreDataItem()

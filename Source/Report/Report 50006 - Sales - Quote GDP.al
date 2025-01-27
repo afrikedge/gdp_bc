@@ -651,8 +651,11 @@ report 50006 "Sales - Quote GDP"
 
                     NbTLet.InitTextVariable;
                     //TODO format here
-                    // if TotalAmountInclVAT<>0 then
-                    //   NbTLet.FormatNoTextFR(TotalAmountLetter,TotalAmountInclVAT,"Sales Header"."Currency Code")
+                    if TotalAmountInclVAT <> 0 then
+                        if ("Sales Header"."Currency Code" <> '') then
+                            NbTLet.FormatNoText(TotalAmountLetter, TotalAmountInclVAT, "Sales Header"."Currency Code")
+                        else
+                            NbTLet.FormatNoText(TotalAmountLetter, TotalAmountInclVAT, GLSetup."LCY Code");
                 end;
 
                 trigger OnPostDataItem()

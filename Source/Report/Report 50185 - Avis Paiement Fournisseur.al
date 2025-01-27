@@ -177,7 +177,10 @@ report 50185 "Avis Paiement Fournisseur"
                 if VendLedgEntry.FindFirst then;
 
                 NbTLet.InitTextVariable;
-                NbTLet.FormatNoText(TotalAmountLetter, "Gen. Journal Line".Amount, "Gen. Journal Line"."Currency Code");
+                if ("Gen. Journal Line"."Currency Code" <> '') then
+                    NbTLet.FormatNoText(TotalAmountLetter, "Gen. Journal Line".Amount, "Gen. Journal Line"."Currency Code")
+                else
+                    NbTLet.FormatNoText(TotalAmountLetter, "Gen. Journal Line".Amount, GlSetup."LCY Code");
 
                 FormatAddr.Company(CompanyAddr, Company);
                 GenPostingDate := "Gen. Journal Line"."Posting Date";

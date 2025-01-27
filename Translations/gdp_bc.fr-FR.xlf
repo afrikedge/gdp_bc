@@ -33102,7 +33102,7 @@
         </trans-unit>
         <trans-unit id="Page 2234326850 - Action 3337697001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post document</source>
-          <target state="needs-review-translation">Valider le prêt</target>
+          <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Invoiced Conso - Action ValiderSortie - Property Caption</note>
         </trans-unit>
@@ -33222,7 +33222,7 @@
         </trans-unit>
         <trans-unit id="Page 365697366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item List to validate</source>
-          <target state="needs-review-translation">Liste des articles à valider</target>
+          <target state="needs-review-translation">Liste des articles à valider - CDG</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item List - CDG - Property Caption</note>
         </trans-unit>
@@ -34044,7 +34044,7 @@
         </trans-unit>
         <trans-unit id="Page 3765531422 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item List to validate</source>
-          <target state="needs-review-translation">Liste des articles à valider</target>
+          <target state="needs-review-translation">Liste des articles à valider CDC</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item List - Compta CDC - Property Caption</note>
         </trans-unit>
@@ -34866,7 +34866,7 @@
         </trans-unit>
         <trans-unit id="Page 3590353812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item List to validate</source>
-          <target state="needs-review-translation">Liste des articles à valider</target>
+          <target state="needs-review-translation">Liste des articles à valider Compta Four</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item List - Compta Four - Property Caption</note>
         </trans-unit>
@@ -73885,7 +73885,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 756914538 - Action 1609413000 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1727838235">
           <source>Import Cards Invoices</source>
-          <target state="needs-review-translation">Import des factures mensuelles POSTPAID</target>
+          <target state="needs-review-translation">Import des factures mensuelles POSTPAID GPRO</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension pageextension70000056 - Action ImportFacturesCartesGPRO - Property Caption</note>
         </trans-unit>

@@ -163,7 +163,7 @@ report 50060 "Facture AMSA Fixe"
 
                 NbTLet.InitTextVariable;
                 //TODO Montants
-                //NbTLet.FormatNoTextFR(TotalAmountLetter,TotalAmount,'');
+                NbTLet.FormatNoText(TotalAmountLetter, TotalAmount, '');
 
                 if ShipToAddress.Get(Cust."No.", Cust."Ship-to Code2") then;
             end;

@@ -45,14 +45,14 @@ report 50012 "Purchase - Receipt GDP"
             column(OrderCaption; OrderCaptionLbl)
             {
             }
-            column(FirstApprover_FullName; FirstApprover."Full Name")
+            column(FirstApprover_FullName; FirstApprover."User Full Name")
             {
             }
             //TODO
-            // column(FirstApprover_Signature; FirstApprover.Signature)
-            // {
-            // }
-            column(FirstApprover_UserName; FirstApprover."User Name")
+            column(FirstApprover_Signature; FirstApprover."Afk Signature")
+            {
+            }
+            column(FirstApprover_UserName; FirstApprover."User ID")
             {
             }
             column(FirstApproverDate; FirstApproverDate)
@@ -345,10 +345,8 @@ report 50012 "Purchase - Receipt GDP"
                 //Approvers
                 FirstApprover.Init;
                 FirstApproverDate := 19000101D;
-                FirstApprover.SetRange("User Name", "Purch. Rcpt. Header"."User ID");
-                //TODO 
-                // if(FirstApprover.FindFirst) then
-                //   FirstApprover.CalcFields(FirstApprover.Signature);
+                //FirstApprover.SetRange("User ID", "Purch. Rcpt. Header"."User ID");
+                SecMgt.FindUser(FirstApprover, "Purch. Rcpt. Header"."User ID");
                 FirstApproverDate := "Purch. Rcpt. Header"."Posting Date";
 
                 if LogInteraction then
@@ -431,6 +429,7 @@ report 50012 "Purchase - Receipt GDP"
         RespCenter: Record "Responsibility Center";
         RcptCountPrinted: Codeunit "Purch.Rcpt.-Printed";
         SegManagement: Codeunit SegManagement;
+        SecMgt: Codeunit "Security Mgt";
         VendAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];
         CompanyAddr: array[8] of Text[50];
@@ -470,7 +469,7 @@ report 50012 "Purchase - Receipt GDP"
         BuyFromAddr: array[8] of Text[50];
         NoCaptionLbl: Label 'Produit';
         OrderCaptionLbl: Label 'N° Commande : ';
-        FirstApprover: Record User;
+        FirstApprover: Record "User Setup";
         FirstApproverDate: Date;
 
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewLogInteraction: Boolean; NewShowCorrectionLines: Boolean)

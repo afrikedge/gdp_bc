@@ -264,8 +264,10 @@ report 50067 "ND / NC Vendor After"
                 MontantTVA := CalcMontantTVA("Vendor Ledger Entry");
 
                 NbTLet.InitTextVariable;
-                //TODO Montants
-                //NbTLet.FormatNoTextFR(TotalAmountLetter,(MontantTTC),"Currency Code");
+                if ("Currency Code" <> '') then
+                    NbTLet.FormatNoText(TotalAmountLetter, (MontantTTC), "Currency Code")
+                else
+                    NbTLet.FormatNoText(TotalAmountLetter, Abs(Amount), GLSetup."LCY Code");
 
             end;
 

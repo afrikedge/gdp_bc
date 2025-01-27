@@ -42,7 +42,7 @@ pageextension 50029 pageextension70000056 extends "Sales Journal"
             }
             action(ImportFacturesCartesGPRO)
             {
-                Caption = 'Import Cards Invoices';
+                Caption = 'Import Cards Invoices GPRO';
                 Image = Import;
                 Promoted = true;
                 PromotedCategory = Process;

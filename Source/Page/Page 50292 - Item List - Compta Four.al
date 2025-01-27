@@ -1,6 +1,6 @@
 page 50292 "Item List - Compta Four"
 {
-    Caption = 'Item List to validate';
+    Caption = 'Item List to validate Compta Four';
     CardPageID = "Item Card Admin";
     Editable = false;
     PageType = List;
