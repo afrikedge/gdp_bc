@@ -472,15 +472,6 @@ report 50000 "Purchase Order"
                         begin
                             PurchLine.DeleteAll();
 
-                            //**************************************
-                            /*MESSAGE('%1',TotalAmount);
-                            NbTLet.InitTextVariable;
-                            IF TotalAmount<>0 THEN
-                              NbTLet.FormatNoTextFR(TotalAmountLetter2,TotalAmount,"Purchase Header"."Currency Code");
-                            MESSAGE('%1',TotalAmountLetter2[1]);
-                            */
-                            //**************************************
-
                         end;
 
                         trigger OnPreDataItem()
@@ -834,11 +825,16 @@ report 50000 "Purchase Order"
 
 
                     //****************************
+                    GLSetup.Get();
+                    GLSetup.Testfield("LCY Code");
                     TotalAvecRemise := VATAmountLine.GetTotalLineAmount(false, "Purchase Header"."Currency Code") - VATAmountLine.GetTotalInvDiscAmount();
                     NbTLet.InitTextVariable();
                     //TODO
-                    // if TotalAvecRemise <> 0 then
-                    //     NbTLet.FormatNoTextFR(TotalAmountLetter2, TotalAvecRemise, "Purchase Header"."Currency Code");
+                    if TotalAvecRemise <> 0 then
+                        if ("Purchase Header"."Currency Code" <> '') then
+                            NbTLet.FormatNoText(TotalAmountLetter2, TotalAvecRemise, "Purchase Header"."Currency Code")
+                        else
+                            NbTLet.FormatNoText(TotalAmountLetter2, TotalAvecRemise, GLSetup."LCY Code");
                     //****************************
 
 

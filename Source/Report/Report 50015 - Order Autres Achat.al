@@ -499,16 +499,6 @@ report 50015 "Order Autres Achat"
                         trigger OnPostDataItem()
                         begin
                             PurchLine.DeleteAll;
-
-                            //**************************************
-                            /*MESSAGE('%1',TotalAmount);
-                            NbTLet.InitTextVariable;
-                            IF TotalAmount<>0 THEN
-                              NbTLet.FormatNoTextFR(TotalAmountLetter2,TotalAmount,"Purchase Header"."Currency Code");
-                            MESSAGE('%1',TotalAmountLetter2[1]);
-                            */
-                            //**************************************
-
                         end;
 
                         trigger OnPreDataItem()
@@ -860,13 +850,17 @@ report 50015 "Order Autres Achat"
                       VATAmountLine.GetTotalVATDiscount("Purchase Header"."Currency Code", "Purchase Header"."Prices Including VAT");
                     TotalAmountInclVAT := VATAmountLine.GetTotalAmountInclVAT;
 
-
+                    GLSetup.Get();
+                    GLSetup.Testfield("LCY Code");
                     //****************************
                     TotalAvecRemise := VATAmountLine.GetTotalLineAmount(false, "Purchase Header"."Currency Code") - VATAmountLine.GetTotalInvDiscAmount;
                     NbTLet.InitTextVariable;
                     //TODO Montants
                     if TotalAvecRemise <> 0 then
-                        NbTLet.FormatNoText(TotalAmountLetter2, TotalAvecRemise, "Purchase Header"."Currency Code");
+                        if ("Purchase Header"."Currency Code" <> '') then
+                            NbTLet.FormatNoText(TotalAmountLetter2, TotalAvecRemise, "Purchase Header"."Currency Code")
+                        else
+                            NbTLet.FormatNoText(TotalAmountLetter2, TotalAvecRemise, GLSetup."LCY Code");
                     //****************************
 
 
@@ -1040,21 +1034,27 @@ report 50015 "Order Autres Achat"
                 ApprovalEntry.SetRange("Document No.", "Purchase Header"."No.");
                 ApprovalEntry.SetRange(ApprovalEntry.Status, ApprovalEntry.Status::Approved);
                 if ApprovalEntry.FindLast then begin
-                    SecondApprover.SetFilter("User ID", ApprovalEntry."Approver ID");
-                    if SecondApprover.FindFirst then begin
+                    SecMgt.FindUser(SecondApprover, ApprovalEntry."Approver ID");
+                    if (SecondApprover."User ID" <> '') then
                         SecondApproverDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
-                        SecondApprover.CalcFields("Afk Signature");//TODO
-                        SecondApprover.CalcFields("User Full Name");
-                    end;
+                    // SecondApprover.SetFilter("User ID", ApprovalEntry."Approver ID");
+                    // if SecondApprover.FindFirst then begin
+                    //     SecondApproverDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
+                    //     SecondApprover.CalcFields("Afk Signature");
+                    //     SecondApprover.CalcFields("User Full Name");
+                    // end;
 
                     if (ApprovalEntry."Sequence No." > 2) then begin
                         if ApprovalEntry.Next(-1) <> 0 then begin
-                            FirstApprover.SetFilter("User ID", ApprovalEntry."Approver ID");
-                            if FirstApprover.FindFirst then begin
+                            SecMgt.FindUser(FirstApprover, ApprovalEntry."Approver ID");
+                            if (FirstApprover."User ID" <> '') then
                                 FirstApproverDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
-                                FirstApprover.CalcFields("Afk Signature");//TODO
-                                FirstApprover.CalcFields("User Full Name");
-                            end;
+                            // FirstApprover.SetFilter("User ID", ApprovalEntry."Approver ID");
+                            // if FirstApprover.FindFirst then begin
+                            //     FirstApproverDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
+                            //     FirstApprover.CalcFields("Afk Signature");
+                            //     FirstApprover.CalcFields("User Full Name");
+                            // end;
                         end;
                     end;
 
@@ -1177,6 +1177,7 @@ report 50015 "Order Autres Achat"
         PrepmtDimSetEntry: Record "Dimension Set Entry";
         PrepmtInvBuf: Record "Prepayment Inv. Line Buffer" temporary;
         RespCenter: Record "Responsibility Center";
+        SecMgt: Codeunit "Security Mgt";
         Language: Record Language;
         CurrExchRate: Record "Currency Exchange Rate";
         PurchSetup: Record "Purchases & Payables Setup";
@@ -1273,6 +1274,7 @@ report 50015 "Order Autres Achat"
         SecondApprover: Record "User Setup";
         FirstApproverDate: Date;
         SecondApproverDate: Date;
+
 
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)
     begin

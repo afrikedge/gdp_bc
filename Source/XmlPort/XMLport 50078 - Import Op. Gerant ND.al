@@ -12,42 +12,42 @@ xmlport 50078 "Import Op. Gerant ND"
     {
         textelement(Root)
         {
-            tableelement("Import Data";"Import Data")
+            tableelement("Import Data"; "Import Data")
             {
                 AutoSave = false;
                 XmlName = 'InvoiceData';
                 SourceTableView = SORTING(EntryNo) ORDER(Ascending);
-                fieldattribute(PostingDate;"Import Data".PostingDate)
+                fieldattribute(PostingDate; "Import Data".PostingDate)
                 {
                 }
-                fieldattribute(PostingDate2;"Import Data".PostingDate2)
+                fieldattribute(PostingDate2; "Import Data".PostingDate2)
                 {
                 }
-                fieldattribute(NumGerant;"Import Data".ExternalDocNo)
+                fieldattribute(NumGerant; "Import Data".ExternalDocNo)
                 {
                 }
-                fieldattribute(CodeStation;"Import Data".CodeTiers)
+                fieldattribute(CodeStation; "Import Data".CodeTiers)
                 {
                 }
-                fieldattribute(DateTrait;"Import Data".Description)
+                fieldattribute(DateTrait; "Import Data".Description)
                 {
                 }
-                fieldattribute(DateTrans;"Import Data".CodeAnalytique)
+                fieldattribute(DateTrans; "Import Data".CodeAnalytique)
                 {
                 }
-                fieldattribute(HeureTrans;"Import Data".CodeAnalytique2)
+                fieldattribute(HeureTrans; "Import Data".CodeAnalytique2)
                 {
                 }
-                fieldattribute(NomClient;"Import Data".Description2)
+                fieldattribute(NomClient; "Import Data".Description2)
                 {
                 }
-                fieldattribute(NumCarte;"Import Data".CodeAnalytique4)
+                fieldattribute(NumCarte; "Import Data".CodeAnalytique4)
                 {
                 }
-                fieldattribute(NumTicket;"Import Data".DocNum1)
+                fieldattribute(NumTicket; "Import Data".DocNum1)
                 {
                 }
-                fieldattribute(MontantRecharge;"Import Data".Amount)
+                fieldattribute(MontantRecharge; "Import Data".Amount)
                 {
                 }
 
@@ -60,115 +60,115 @@ xmlport 50078 "Import Op. Gerant ND"
 
                     BesoinNo := BesoinNo + 1;
                     Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
+                    Round(BesoinNo / NbreTotalLignes * 10000, 1));
 
-                      //Dette fournisseur
-                      Clear(GenJrnLine);
-                      GenJrnLine."Journal Template Name":= GenJrnTemplate;
-                      GenJrnLine."Journal Batch Name" := GenJrnBatch;
-                      LineNo := LineNo+10000;
-                      GenJrnLine."Line No." := LineNo;
-                      JrnTmplName.Get(GenJrnLine."Journal Template Name");
-                      JrnTmplName.TestField(JrnTmplName."Source Code");
-                      GenJrnLine."Source Code" := JrnTmplName."Source Code";
-                      //GenJrnLine.VALIDATE("Posting Date","Import Data".PostingDate);
+                    //Dette fournisseur
+                    Clear(GenJrnLine);
+                    GenJrnLine."Journal Template Name" := GenJrnTemplate;
+                    GenJrnLine."Journal Batch Name" := GenJrnBatch;
+                    LineNo := LineNo + 10000;
+                    GenJrnLine."Line No." := LineNo;
+                    JrnTmplName.Get(GenJrnLine."Journal Template Name");
+                    JrnTmplName.TestField(JrnTmplName."Source Code");
+                    GenJrnLine."Source Code" := JrnTmplName."Source Code";
+                    //GenJrnLine.VALIDATE("Posting Date","Import Data".PostingDate);
 
-                      GenJrnTable.TestField("No. Series");
-                      if GenJrnTable."No. Series" <> '' then begin
+                    GenJrnTable.TestField("No. Series");
+                    if GenJrnTable."No. Series" <> '' then begin
                         Clear(NoSeriesMgt);
 
-                        if LastDocNo='' then begin
-                          GenJrnLine."Document No." := NoSeriesMgt.GetNextNo(GenJrnTable."No. Series",GenJrnLine."Posting Date",false);
-                          LastDocNo := GenJrnLine."Document No.";
+                        if LastDocNo = '' then begin
+                            GenJrnLine."Document No." := NoSeriesMgt.GetNextNo(GenJrnTable."No. Series", GenJrnLine."Posting Date", false);
+                            LastDocNo := GenJrnLine."Document No.";
                         end else begin
-                          if (LastAmountTotal<>0) then
-                            GenJrnLine."Document No." :=(LastDocNo)
-                          else
-                            GenJrnLine."Document No." :=IncStr(LastDocNo);
-                          LastDocNo := GenJrnLine."Document No.";
+                            if (LastAmountTotal <> 0) then
+                                GenJrnLine."Document No." := (LastDocNo)
+                            else
+                                GenJrnLine."Document No." := IncStr(LastDocNo);
+                            LastDocNo := GenJrnLine."Document No.";
                         end;
-                      end;
+                    end;
 
 
 
-                      if VendorType = VendorType::GALITT then begin
-                        Evaluate(TransactionDate,"Import Data".CodeAnalytique);
+                    if VendorType = VendorType::GALITT then begin
+                        Evaluate(TransactionDate, "Import Data".CodeAnalytique);
                         GenJrnLine."Posting Date" := TransactionDate;
-                      end else
-                        Evaluate(GenJrnLine."Posting Date" ,"Import Data".PostingDate);
+                    end else
+                        Evaluate(GenJrnLine."Posting Date", "Import Data".PostingDate);
 
-                      GenJrnLine."Document Type":=GenJrnLine."Document Type"::Invoice;
+                    GenJrnLine."Document Type" := GenJrnLine."Document Type"::Invoice;
 
 
-                      GenJrnLine."Account Type" := GenJrnLine."Account Type"::Customer;
+                    GenJrnLine."Account Type" := GenJrnLine."Account Type"::Customer;
 
-                      GLAccNo := "Import Data".CodeTiers;
-                      GenJrnLine.Validate("Account No.",GLAccNo);
+                    GLAccNo := "Import Data".CodeTiers;
+                    GenJrnLine.Validate("Account No.", GLAccNo);
 
-                      if VendorType = VendorType::GALITT then
-                        Descr := Text006+' '+Format(TransactionDate)+'..'+Format("Import Data".Description)
-                      else
-                        Descr := Text006+' '+Format("Import Data".PostingDate)+'..'+Format("Import Data".PostingDate2);
-                      GenJrnLine.Description := CopyStr(Descr,1,49);
+                    if VendorType = VendorType::GALITT then
+                        Descr := Text006 + ' ' + Format(TransactionDate) + '..' + Format("Import Data".Description)
+                    else
+                        Descr := Text006 + ' ' + Format("Import Data".PostingDate) + '..' + Format("Import Data".PostingDate2);
+                    GenJrnLine.Description := CopyStr(Descr, 1, 49);
 
-                     //GenJrnLine.Description := COPYSTR("Import Data".Description,1,37)+' - '+COPYSTR("Import Data".InvoiceNo,1,10);
+                    //GenJrnLine.Description := COPYSTR("Import Data".Description,1,37)+' - '+COPYSTR("Import Data".InvoiceNo,1,10);
 
-                      GenJrnLine.Validate("Currency Code",'');
+                    GenJrnLine.Validate("Currency Code", '');
 
-                      GenJrnLine.Amount := "Import Data".Amount;
-                      GenJrnLine.Validate(Amount);
+                    GenJrnLine.Amount := "Import Data".Amount;
+                    GenJrnLine.Validate(Amount);
 
-                      LastAmountTotal := LastAmountTotal + GenJrnLine.Amount;
+                    LastAmountTotal := LastAmountTotal + GenJrnLine.Amount;
 
                     //Contrepartie
                     GenJrnLine."Bal. Account Type" := GenJrnLine."Account Type"::"G/L Account";
 
                     if VendorType = VendorType::Autres then begin
-                      if ImportType = ImportType::Prepaid then
-                          GenJrnLine.Validate("Bal. Account No.",AddOnSetup."CAP DebitNote Gerant Prepaid");
+                        if ImportType = ImportType::Prepaid then
+                            GenJrnLine.Validate("Bal. Account No.", AddOnSetup."CAP DebitNote Gerant Prepaid");
 
-                      if ImportType = ImportType::PostPaid then
-                          GenJrnLine.Validate("Bal. Account No.",AddOnSetup."CAP DebitNote Gerant Postpaid");
+                        if ImportType = ImportType::PostPaid then
+                            GenJrnLine.Validate("Bal. Account No.", AddOnSetup."CAP DebitNote Gerant Postpaid");
 
-                      if ImportType = ImportType::GPRO then
-                          GenJrnLine.Validate("Bal. Account No.",AddOnSetup."CAP DebitNote Gerant GPRO");
+                        if ImportType = ImportType::GPRO then
+                            GenJrnLine.Validate("Bal. Account No.", AddOnSetup."CAP DebitNote Gerant GPRO");
                     end;
 
                     if VendorType = VendorType::GALITT then begin
-                      if ImportType = ImportType::Prepaid then
-                          GenJrnLine.Validate("Bal. Account No.",AddOnSetup2."Galitt ND Gerant Prepaid");
+                        if ImportType = ImportType::Prepaid then
+                            GenJrnLine.Validate("Bal. Account No.", AddOnSetup2."Galitt ND Gerant Prepaid");
 
-                      if ImportType = ImportType::PostPaid then
-                          GenJrnLine.Validate("Bal. Account No.",AddOnSetup2."Galitt ND Gerant Postpaid");
+                        if ImportType = ImportType::PostPaid then
+                            GenJrnLine.Validate("Bal. Account No.", AddOnSetup2."Galitt ND Gerant Postpaid");
 
-                      if ImportType = ImportType::GPRO then
-                          GenJrnLine.Validate("Bal. Account No.",AddOnSetup2."Galitt ND Gerant GPRO");
+                        if ImportType = ImportType::GPRO then
+                            GenJrnLine.Validate("Bal. Account No.", AddOnSetup2."Galitt ND Gerant GPRO");
                     end;
 
-                    GenJrnLine."Bal. Gen. Posting Type":=GenJrnLine."Bal. Gen. Posting Type"::Sale;
+                    GenJrnLine."Bal. Gen. Posting Type" := GenJrnLine."Bal. Gen. Posting Type"::Sale;
                     LastAmountTotal := LastAmountTotal + (-GenJrnLine.Amount);
 
 
-                    GenJrnLine.Validate(GenJrnLine."Bal. VAT Prod. Posting Group",AddOnSetup."CAP VAT Group NDNC Gerant");
+                    GenJrnLine.Validate(GenJrnLine."Bal. VAT Prod. Posting Group", AddOnSetup."CAP VAT Group NDNC Gerant");
 
-                    if GenJrnLine.Amount<>0 then begin
+                    if GenJrnLine.Amount <> 0 then begin
 
-                      Clear(GenJrnLine2);
-                      GenJrnLine2.SetRange("Journal Template Name",GenJrnTemplate);
-                      GenJrnLine2.SetRange("Journal Batch Name", GenJrnBatch);
-                      GenJrnLine2.SetRange("Account No.", GenJrnLine."Account No.");
-                      GenJrnLine2.SetRange("Posting Date", GenJrnLine."Posting Date");
+                        Clear(GenJrnLine2);
+                        GenJrnLine2.SetRange("Journal Template Name", GenJrnTemplate);
+                        GenJrnLine2.SetRange("Journal Batch Name", GenJrnBatch);
+                        GenJrnLine2.SetRange("Account No.", GenJrnLine."Account No.");
+                        GenJrnLine2.SetRange("Posting Date", GenJrnLine."Posting Date");
 
-                      if GenJrnLine2.FindFirst then begin
+                        if GenJrnLine2.FindFirst then begin
 
-                        GenJrnLine2.Validate(Amount , GenJrnLine2.Amount + GenJrnLine.Amount);
-                        GenJrnLine2.Modify;
+                            GenJrnLine2.Validate(Amount, GenJrnLine2.Amount + GenJrnLine.Amount);
+                            GenJrnLine2.Modify;
 
-                      end else begin
+                        end else begin
 
-                        GenJrnLine.Insert(true);
+                            GenJrnLine.Insert(true);
 
-                      end;
+                        end;
                     end;
                 end;
             }
@@ -182,31 +182,32 @@ xmlport 50078 "Import Op. Gerant ND"
         {
             area(content)
             {
-                field(GenJrnTemplate;GenJrnTemplate)
+                field(GenJrnTemplate; GenJrnTemplate)
                 {
                     Caption = 'General journal template';
                     TableRelation = "Gen. Journal Template";
                     Visible = false;
                 }
-                field(GenJrnBatch;GenJrnBatch)
+                field(GenJrnBatch; GenJrnBatch)
                 {
                     Caption = 'Posting journal Batch';
                     TableRelation = "Gen. Journal Batch";
                     Visible = false;
                 }
-                field("N° Document";DocNum)
+                field("N° Document"; DocNum)
                 {
                     Visible = false;
                 }
-                field(VendorType;VendorType)
+                field(VendorType; VendorType)
                 {
                     Caption = 'Type fournisseur cartes';
+
                 }
-                field(ImportType;ImportType)
+                field(ImportType; ImportType)
                 {
                     Caption = 'Import Type';
                 }
-                field(NbreTotalLignes;NbreTotalLignes)
+                field(NbreTotalLignes; NbreTotalLignes)
                 {
                     Caption = 'Total lines';
                 }
@@ -216,6 +217,11 @@ xmlport 50078 "Import Op. Gerant ND"
         actions
         {
         }
+        trigger OnOpenPage()
+        var
+        begin
+            VendorType := VendorType::GALITT;
+        end;
     }
 
     trigger OnInitXmlPort()
@@ -225,10 +231,10 @@ xmlport 50078 "Import Op. Gerant ND"
         AddOnSetup.Get;
         AddOnSetup2.Get;
 
-        if(VendorType = VendorType::Autres) then
+        if (VendorType = VendorType::Autres) then
             AddOnSetup.TestField(AddOnSetup."CAP DebitNote Gerant Prepaid");
 
-        if(VendorType = VendorType::GALITT) then
+        if (VendorType = VendorType::GALITT) then
             AddOnSetup2.TestField("Galitt ND Gerant Prepaid");
 
         AddOnSetup.TestField(AddOnSetup."CAP VAT Group NDNC Gerant");
@@ -246,21 +252,21 @@ xmlport 50078 "Import Op. Gerant ND"
 
 
 
-        if GenJrnTemplate='' then Error(Text003);
-        if GenJrnBatch='' then Error(Text004);
+        if GenJrnTemplate = '' then Error(Text003);
+        if GenJrnBatch = '' then Error(Text004);
         //IF DocNum='' THEN ERROR(Text005);
 
-        GenJrnTable.Get(GenJrnTemplate,GenJrnBatch);
+        GenJrnTable.Get(GenJrnTemplate, GenJrnBatch);
 
         GenJrnLine.Reset;
-        GenJrnLine.SetRange("Journal Template Name",GenJrnTemplate);
-        GenJrnLine.SetRange("Journal Batch Name",GenJrnBatch);
-        if GenJrnLine.FindFirst then Error(Text001,GenJrnBatch);
+        GenJrnLine.SetRange("Journal Template Name", GenJrnTemplate);
+        GenJrnLine.SetRange("Journal Batch Name", GenJrnBatch);
+        if GenJrnLine.FindFirst then Error(Text001, GenJrnBatch);
         LineNo := 0;
 
-        BesoinNo :=0;
-        if   NbreTotalLignes=0 then
-          NbreTotalLignes:=100;
+        BesoinNo := 0;
+        if NbreTotalLignes = 0 then
+            NbreTotalLignes := 100;
         Window.Open(Text008);
     end;
 
@@ -298,7 +304,7 @@ xmlport 50078 "Import Op. Gerant ND"
         VendorType: Option Autres,GALITT;
         AddOnSetup2: Record "AddOn Setup2";
 
-    procedure SetFeuille(Modele: Code[10];NomFeuille: Code[10])
+    procedure SetFeuille(Modele: Code[10]; NomFeuille: Code[10])
     begin
         GenJrnBatch := NomFeuille;
         GenJrnTemplate := Modele;

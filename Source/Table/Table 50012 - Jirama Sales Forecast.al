@@ -131,6 +131,7 @@ table 50012 "Jirama Sales Forecast"
         Cust2.Reset;
         Cust2.SetRange("Sales Channel Code", AddOnSetup."JIRAMA Sales Channel");
         Cust2.SetRange("Sales Category Code", AddOnSetup."PBL Sales Category");
+        Cust2.SetRange(Blocked, Cust2.Blocked::" ");
         if Cust2.FindSet then
             repeat
                 ForecastLine.Init;

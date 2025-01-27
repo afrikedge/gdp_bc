@@ -206,7 +206,10 @@ report 50007 "Note de Debit/Note de Credit"
 
                 NbTLet.InitTextVariable;
                 //TODO
-                //NbTLet.FormatNoTextFR(TotalAmountLetter,Abs(Amount),"Cust. Ledger Entry"."Currency Code");
+                if ("Cust. Ledger Entry"."Currency Code" <> '') then
+                    NbTLet.FormatNoText(TotalAmountLetter, Abs(Amount), "Cust. Ledger Entry"."Currency Code")
+                else
+                    NbTLet.FormatNoText(TotalAmountLetter, Abs(Amount), GLSetup."LCY Code");
 
             end;
 

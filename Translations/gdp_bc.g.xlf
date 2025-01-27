@@ -39215,7 +39215,6 @@
         </trans-unit>
         <trans-unit id="Page 1975951532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tournée</source>
-          <source>Tournée</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Property Caption</note>
         </trans-unit>
@@ -60829,6 +60828,36 @@
           <note from="Developer" annotates="general" priority="2">%1=Field;%2=Value;%3=Value</note>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort SEPA MT101 - NamedType NoDataToExportErr</note>
         </trans-unit>
+        <trans-unit id="PageExtension 624402449 - Action 3639346451 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Print Invoice NC/ND</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Customer Ledger Entries - Action Invoice NC/ND - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 624402449 - Action 3639346451 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Print Invoice NC/ND</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Customer Ledger Entries - Action Invoice NC/ND - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 624402449 - Action 3081714176 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Print receipt</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Customer Ledger Entries - Action Receipt - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 624402449 - Action 3081714176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Print receipt</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Customer Ledger Entries - Action Receipt - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 624402449 - Action 3496436176 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Print zero lettering</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Customer Ledger Entries - Action Zero Lettering - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 624402449 - Action 3496436176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Print zero lettering</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Customer Ledger Entries - Action Zero Lettering - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2556259635 - Method 1146877244 - NamedType 3337191547" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2556259635">
           <source>Vous ne disposez pas d'autorisations pour créer des demandes d'achat</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -60883,36 +60912,6 @@
           <source>Nom Transporteur Dispaching</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Vendor List - Change Name 2 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3335603717 - Action 3639346451 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
-          <source>Print Invoice NC/ND</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerLedgerEntries - Action Invoice NC/ND - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3335603717 - Action 3639346451 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
-          <source>Print Invoice NC/ND</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerLedgerEntries - Action Invoice NC/ND - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3335603717 - Action 3081714176 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
-          <source>Print receipt</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerLedgerEntries - Action Receipt - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3335603717 - Action 3081714176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
-          <source>Print receipt</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerLedgerEntries - Action Receipt - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3335603717 - Action 3496436176 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
-          <source>Print zero lettering</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerLedgerEntries - Action Zero Lettering - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3335603717 - Action 3496436176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
-          <source>Print zero lettering</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerLedgerEntries - Action Zero Lettering - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1649337532 - Action 3818210718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
           <source>Etat de Cession Immo</source>
@@ -61775,7 +61774,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension pageextension70000056 - Action ImportFacturesCartes - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 756914538 - Action 1609413000 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1727838235">
-          <source>Import Cards Invoices</source>
+          <source>Import Cards Invoices GPRO</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension pageextension70000056 - Action ImportFacturesCartesGPRO - Property Caption</note>
         </trans-unit>

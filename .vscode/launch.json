@@ -21,9 +21,10 @@
             "schemaUpdateMode": "ForceSync"
             // "schemaUpdateMode": "Synchronize"
             
-        },
+        }
+        ,
         {
-            "name": "Local server",
+            "name": "Local server ARNOLD",
             "request": "launch",
             "type": "al",
             "environmentType": "OnPrem",

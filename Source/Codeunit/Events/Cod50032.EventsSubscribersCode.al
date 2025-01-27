@@ -503,6 +503,17 @@ codeunit 50032 "EventsSubscribers Code"
             AFKVendInvMgt.ValidationAutoFactureCompta(PurchaseHeader);
     end;
 
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purchase-Post Prepayments", 'OnAfterPurchInvHeaderInsert', '', true, true)]
+    local procedure PurchasePostPrepayments_OnAfterPurchInvHeaderInsert(var PurchInvHeader: Record "Purch. Inv. Header"; PurchHeader: Record "Purchase Header"; CommitIsSupressed: Boolean)
+    var
+        AFKVendInvMgt: Codeunit VendorInvoiceMgt;
+    begin
+        //IF PurchaseHeader.Invoice THEN
+        AFKVendInvMgt.ValidationAutoFactureCompta(PurchHeader);
+    end;
+
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPostInvoice', '', true, true)]
     local procedure PurchPost_OnAfterPostInvoice(var PurchHeader: Record "Purchase Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; TotalPurchLine: Record "Purchase Line"; TotalPurchLineLCY: Record "Purchase Line"; CommitIsSupressed: Boolean; var VendorLedgerEntry: Record "Vendor Ledger Entry")
     var
@@ -889,6 +900,7 @@ codeunit 50032 "EventsSubscribers Code"
         if (SingleCU.Get_IsAfkShowItemWarning()) then begin
             IsHandled := true;
             SingleCU.Set_IsAfkShowItemWarning(false);
+            ShowWarning := true;
         end;
     end;
 

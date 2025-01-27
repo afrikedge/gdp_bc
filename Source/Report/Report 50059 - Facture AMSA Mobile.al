@@ -164,7 +164,7 @@ report 50059 "Facture AMSA Mobile"
 
                 NbTLet.InitTextVariable;
                 //TODO Montants
-                //NbTLet.FormatNoTextFR(TotalAmountLetter,TotalAmount,'');
+                NbTLet.FormatNoText(TotalAmountLetter, TotalAmount, '');
 
                 if ShipToAddress.Get(Cust."No.", Cust."Ship-to Code2") then;
             end;

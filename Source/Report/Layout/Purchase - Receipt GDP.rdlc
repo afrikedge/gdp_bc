@@ -2551,6 +2551,9 @@ End Function
         <Field Name="FirstApprover_FullName">
           <DataField>FirstApprover_FullName</DataField>
         </Field>
+        <Field Name="FirstApprover_Signature">
+          <DataField>FirstApprover_Signature</DataField>
+        </Field>
         <Field Name="FirstApprover_UserName">
           <DataField>FirstApprover_UserName</DataField>
         </Field>

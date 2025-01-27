@@ -1000,8 +1000,11 @@ report 50002 "Sales Invoice"
                 MontFact := "Sales Invoice Header"."Amount Including VAT";
                 NbTLet.InitTextVariable;
                 //TODO format text here
-                // if "Amount Including VAT" <> 0 then
-                //     NbTLet.FormatNoTextFR(TotalAmountLetter, "Amount Including VAT", "Sales Invoice Header"."Currency Code");
+                if "Amount Including VAT" <> 0 then
+                    if ("Sales Invoice Header"."Currency Code" <> '') then
+                        NbTLet.FormatNoText(TotalAmountLetter, "Amount Including VAT", "Sales Invoice Header"."Currency Code")
+                    else
+                        NbTLet.FormatNoText(TotalAmountLetter, "Amount Including VAT", GLSetup."LCY Code");
 
             end;
         }
