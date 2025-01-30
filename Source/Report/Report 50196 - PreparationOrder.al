@@ -1,25 +1,28 @@
 /// <summary>
-/// Report Posted Whse Shipment (ID 50193).
+/// Report Preparation Order (ID 50196).
 /// </summary>
-report 50193 "Posted Whse Shipment"
+report 50196 "Preparation Order"
 {
     Caption = 'Delivery Note';
-    DefaultLayout = RDLC;
+    EnableHyperlinks = true;
+    PreviewMode = PrintLayout;
+    WordMergeDataItem = Header;
     UsageCategory = Documents;
     ApplicationArea = Warehouse;
-    WordMergeDataItem = Header;
-    RDLCLayout = './Source/Report/Layout/PostedWhseShipment.rdl';
-
+    RDLCLayout = './Source/Report/Layout/PreparationOrder.rdl';
     dataset
     {
-        dataitem(Header; "Posted Whse. Shipment Header")
+        dataitem(Header; "Warehouse Shipment Header")
         {
             DataItemTableView = sorting("No.");
             RequestFilterFields = "No.";
-            dataitem(Integer; Integer)
+            column(DocumentNo; "No.")
+            {
+            }
+            dataitem("Integer"; "Integer")
             {
                 DataItemTableView = sorting(Number) where(Number = const(1));
-                column(DocumentNo; Header."No.")
+                column(CompanyName; COMPANYPROPERTY.DisplayName())
                 {
                 }
                 column(CompanyPicture; CompanyInfo.Picture)
@@ -178,7 +181,22 @@ report 50193 "Posted Whse Shipment"
                 column(ObservationsCaptionLbl; ObservationsCaptionLbl)
                 {
                 }
-                dataitem(Line; "Posted Whse. Shipment Line")
+                // column(OrderNo; "Order No.")
+                // {
+                // }
+                // column(RespCenter; "Responsibility Center")
+                // {
+                // }
+                column(Location_Code; Header."Location Code")
+                {
+                }
+                column(Agency; Agency)
+                {
+                }
+                column(CompanyInfoName; CompanyInfo.Name)
+                {
+                }
+                dataitem(Line; "Warehouse Shipment Line")
                 {
                     DataItemLink = "No." = field("No.");
                     DataItemLinkReference = Header;
@@ -222,7 +240,6 @@ report 50193 "Posted Whse Shipment"
                         {
                         }
                     }
-
                     trigger OnAfterGetRecord()
                     begin
                         GetLocation("Location Code");
@@ -278,10 +295,9 @@ report 50193 "Posted Whse Shipment"
             end;
         }
     }
-
     requestpage
     {
-        Caption = 'Warehouse Posted Shipment';
+        Caption = 'Warehouse Shipment';
 
         layout
         {
@@ -292,6 +308,9 @@ report 50193 "Posted Whse Shipment"
         }
     }
 
+    labels
+    {
+    }
     trigger OnPreReport()
     begin
         CompanyInfo.Get();
@@ -303,6 +322,7 @@ report 50193 "Posted Whse Shipment"
         CompanyInfo: Record "Company Information";
         CompanyInfos: Record "Company Information";
         Lines: Integer;
+        Agency: Text[100];
         LineNumber: Integer;
         LinesNumb: Integer;
         LineNumberText: Code[2];
@@ -350,6 +370,7 @@ report 50193 "Posted Whse Shipment"
         Name5CaptionLbl: Label 'Name :';
         Date5CaptionLbl: Label 'Date :';
         ObservationsCaptionLbl: Label 'OBSERVATIONS';
+
 
     local procedure GetLocation(LocationCode: Code[10])
     begin

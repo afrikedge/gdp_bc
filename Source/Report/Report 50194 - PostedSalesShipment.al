@@ -447,8 +447,6 @@ report 50194 "Posted Sales Shipment"
             column(Sell_to_Address; "Sell-to Address")
             {
             }
-
-
             column(PostedSalesShipmentCaptionLbl; PostedSalesShipmentCaptionLbl)
             {
             }

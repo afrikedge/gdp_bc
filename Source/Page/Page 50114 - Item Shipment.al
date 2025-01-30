@@ -169,9 +169,9 @@ page 50114 "Item Shipment"
                 var
                     EnteteBL: Record "Adjustment Header";
                 begin
-                    //EnteteBL.SETRANGE("No.",Rec."No.");
-                    //REPORT.RUN(REPORT::"Bon livraison LUB Before Val",TRUE, FALSE,EnteteBL);
-                    CRReports.PrintBL_Lubs(Rec."No.");
+                    EnteteBL.SETRANGE("No.", Rec."No.");
+                    REPORT.RUN(REPORT::"PreparationOrder Lub", TRUE, FALSE, EnteteBL);
+                    // CRReports.PrintBL_Lubs(Rec."No.");
                 end;
             }
         }

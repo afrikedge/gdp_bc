@@ -551,7 +551,7 @@ report 50190 "PickUp Order"
         DestinationLbl: Label 'Destination :';
         NavireNameLbl: Label 'Navire name :';
         RDLbl: Label 'R.D :';
-        UnitLbl: Label 'M3';
+        UnitLbl: Label 'L';
         DeliveryModeLbl: Label 'Delivery mode :';
         CarrierLbl: Label 'CARRIER :';
         DriverNameLbl: Label 'DRIVER''S NAME :';
@@ -735,7 +735,7 @@ report 50190 "PickUp Order"
                     Vol4 := TouringEntry.Volume * 1000;
                 end;
                 if TouringEntry.IdCompartment = 5 then begin
-                    Comp5 := 'CN°5';
+                    Comp5 := 'N°5';
                     Prod5 := TouringEntry.ItemNo;
                     Vol5 := TouringEntry.Volume * 1000;
                 end;
