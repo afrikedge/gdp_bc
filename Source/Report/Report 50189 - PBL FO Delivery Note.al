@@ -610,52 +610,52 @@ report 50189 "PBL FO Delivery Note"
                 if TouringEntry.IdCompartment = 1 then begin
                     Comp1 := 'C1';
                     Prod1 := TouringEntry.ItemNo;
-                    Vol1 := TouringEntry.Volume;
+                    Vol1 := TouringEntry.Volume * 1000;
                 end;
                 if TouringEntry.IdCompartment = 2 then begin
                     Comp2 := 'C2';
                     Prod2 := TouringEntry.ItemNo;
-                    Vol2 := TouringEntry.Volume;
+                    Vol2 := TouringEntry.Volume * 1000;
                 end;
                 if TouringEntry.IdCompartment = 3 then begin
                     Comp3 := 'C3';
                     Prod3 := TouringEntry.ItemNo;
-                    Vol3 := TouringEntry.Volume;
+                    Vol3 := TouringEntry.Volume * 1000;
                 end;
                 if TouringEntry.IdCompartment = 4 then begin
                     Comp4 := 'C4';
                     Prod4 := TouringEntry.ItemNo;
-                    Vol4 := TouringEntry.Volume;
+                    Vol4 := TouringEntry.Volume * 1000;
                 end;
                 if TouringEntry.IdCompartment = 5 then begin
                     Comp5 := 'C5';
                     Prod5 := TouringEntry.ItemNo;
-                    Vol5 := TouringEntry.Volume;
+                    Vol5 := TouringEntry.Volume * 1000;
                 end;
                 if TouringEntry.IdCompartment = 6 then begin
                     Comp6 := 'C6';
                     Prod6 := TouringEntry.ItemNo;
-                    Vol6 := TouringEntry.Volume;
+                    Vol6 := TouringEntry.Volume * 1000;
                 end;
                 if TouringEntry.IdCompartment = 7 then begin
                     Comp7 := 'C7';
                     Prod7 := TouringEntry.ItemNo;
-                    Vol7 := TouringEntry.Volume;
+                    Vol7 := TouringEntry.Volume * 1000;
                 end;
                 if TouringEntry.IdCompartment = 8 then begin
                     Comp8 := 'C8';
                     Prod8 := TouringEntry.ItemNo;
-                    Vol8 := TouringEntry.Volume;
+                    Vol8 := TouringEntry.Volume * 1000;
                 end;
                 if TouringEntry.IdCompartment = 9 then begin
                     Comp9 := 'C9';
                     Prod9 := TouringEntry.ItemNo;
-                    Vol9 := TouringEntry.Volume;
+                    Vol9 := TouringEntry.Volume * 1000;
                 end;
                 if TouringEntry.IdCompartment = 10 then begin
                     Comp10 := 'C10';
                     Prod10 := TouringEntry.ItemNo;
-                    Vol10 := TouringEntry.Volume;
+                    Vol10 := TouringEntry.Volume * 1000;
                 end;
             until TouringEntry.Next() = 0;
     end;
