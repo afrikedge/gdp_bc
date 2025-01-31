@@ -5,19 +5,7 @@ codeunit 50016 "Security Mgt"
     begin
     end;
 
-    var
-        AddOnSetup: Record "AddOn Setup";
-        TextErr0001: Label 'You are not associate to this general journal\Template : %1\Journal : %2';
-        TextErr0002: Label 'You are not associate to this general journal\Template : %1\Journal : %2';
-        TextErr0003: Label 'You are not associate to this general journal\Template : %1\Journal : %2';
-        Text001: Label 'Vous n''êtes pas autorisé à utiliser le code magasin %1';
-        Text002: Label 'Aucun dépot configuré sur votre région';
-        Text003: Label 'Vous n''êtes pas autorisé à utiliser le compte bancaire %1';
-        warehouseEmp: Record "Warehouse Employee";
-        UserSetup: Record "User Setup";
-        Text004: Label 'Vous n''êtes pas autorisé à utiliser cette fonctionnalité.';
-        Text005: Label 'Vous n''êtes pas autorisé à utiliser cette fonctionnalité.';
-        Text006: Label 'Vous n''etes pas autorisé à contrepasser cette opération car sa valeur %1 est supérieure à votre limite : %2 ';
+
 
     procedure CheckAccessUserJournal(GenJnlLine: Record "Gen. Journal Line"; Edit: Boolean; Validate: Boolean)
     var
@@ -434,5 +422,33 @@ codeunit 50016 "Security Mgt"
             exit;
         end;
     end;
+
+    procedure CreateNewPassword(UserCode: Code[50]; NewPassord: Text; UserMustChangePassword: Boolean)
+    var
+        ExternalUser: Record "Afk FrontDesk User";
+        HashedPass: Text;
+    begin
+        ExternalUser.get(UserCode);
+        HashedPass := CryptoMgt.GenerateHashAsBase64String(NewPassord, 2);//Option MD5,SHA1,SHA256,SHA384,SHA512
+        ExternalUser.Password := CopyStr(HashedPass, 1, 255);
+        ExternalUser.UserMustChangePassword := UserMustChangePassword;
+        ExternalUser.PasswordIsSet := true;
+        ExternalUser.Modify();
+    end;
+
+    var
+        AddOnSetup: Record "AddOn Setup";
+        CryptoMgt: Codeunit "Cryptography Management";
+        TextErr0001: Label 'You are not associate to this general journal\Template : %1\Journal : %2';
+        TextErr0002: Label 'You are not associate to this general journal\Template : %1\Journal : %2';
+        TextErr0003: Label 'You are not associate to this general journal\Template : %1\Journal : %2';
+        Text001: Label 'Vous n''êtes pas autorisé à utiliser le code magasin %1';
+        Text002: Label 'Aucun dépot configuré sur votre région';
+        Text003: Label 'Vous n''êtes pas autorisé à utiliser le compte bancaire %1';
+        warehouseEmp: Record "Warehouse Employee";
+        UserSetup: Record "User Setup";
+        Text004: Label 'Vous n''êtes pas autorisé à utiliser cette fonctionnalité.';
+        Text005: Label 'Vous n''êtes pas autorisé à utiliser cette fonctionnalité.';
+        Text006: Label 'Vous n''etes pas autorisé à contrepasser cette opération car sa valeur %1 est supérieure à votre limite : %2 ';
 }
 

@@ -222,6 +222,9 @@ report 50196 "Preparation Order"
                     column(ShelfNo_PostedWhseShptLine; "Shelf No.")
                     {
                     }
+                    column(QtyConverted; QtyConverted)
+                    {
+                    }
                     dataitem(Customer; Customer)
                     {
                         DataItemLink = "No." = field("Destination No.");
@@ -243,6 +246,8 @@ report 50196 "Preparation Order"
                     trigger OnAfterGetRecord()
                     begin
                         GetLocation("Location Code");
+
+                        QtyConverted := Quantity * 1000;
 
                         Lines := 1;
                         LineNumber := LineNumber + 1;
@@ -322,6 +327,7 @@ report 50196 "Preparation Order"
         CompanyInfo: Record "Company Information";
         CompanyInfos: Record "Company Information";
         Lines: Integer;
+        QtyConverted: Decimal;
         Agency: Text[100];
         LineNumber: Integer;
         LinesNumb: Integer;

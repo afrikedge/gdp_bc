@@ -2185,9 +2185,10 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value />
+                                                                  <Value>=Fields!QtyConverted.Value</Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
+                                                                    <Format>#,0;(#,0)</Format>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -2201,9 +2202,6 @@
                                                             <Border>
                                                               <Style>None</Style>
                                                             </Border>
-                                                            <BottomBorder>
-                                                              <Style>None</Style>
-                                                            </BottomBorder>
                                                             <LeftBorder>
                                                               <Style>Solid</Style>
                                                             </LeftBorder>
@@ -3439,6 +3437,7 @@
                                                           </Style>
                                                         </Textbox>
                                                         <ColSpan>2</ColSpan>
+                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell />
@@ -3497,6 +3496,18 @@
                                                               <TextRuns>
                                                                 <TextRun>
                                                                   <Value>=First(Fields!Date2CaptionLbl.Value, "DataSet_Result")</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve">  </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value>=Fields!Date.Value</Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
@@ -4599,7 +4610,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!PostedSalesShipmentCaptionLbl.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!WhsePostedShipmentCaptionLbl.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontSize>18pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -4612,7 +4623,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.51833cm</Top>
+              <Top>0.56583cm</Top>
               <Left>4.7461cm</Left>
               <Height>0.98806cm</Height>
               <Width>12.15779cm</Width>
@@ -5146,6 +5157,12 @@ End Function
         </Field>
         <Field Name="ShelfNo_PostedWhseShptLine">
           <DataField>ShelfNo_PostedWhseShptLine</DataField>
+        </Field>
+        <Field Name="QtyConverted">
+          <DataField>QtyConverted</DataField>
+        </Field>
+        <Field Name="QtyConvertedFormat">
+          <DataField>QtyConvertedFormat</DataField>
         </Field>
         <Field Name="Customer_No_">
           <DataField>Customer_No_</DataField>
