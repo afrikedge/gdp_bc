@@ -16,7 +16,7 @@ report 50189 "PBL FO Delivery Note"
     {
         dataitem(Header; pro_enteteBE)
         {
-            DataItemTableView = sorting(numBE);
+            DataItemTableView = sorting(numBE) where(IsBon = const(true));
             RequestFilterFields = NumBU, idtournee;
 
             column(numBE; numBE)

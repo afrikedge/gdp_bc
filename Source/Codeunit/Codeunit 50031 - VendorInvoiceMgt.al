@@ -1031,7 +1031,7 @@ codeunit 50031 VendorInvoiceMgt
 
     end;
 
-    local procedure GetWorkflowUser(VendInv: Record "Vendor Invoice Doc"; Level: Integer): Code[20]
+    local procedure GetWorkflowUser(VendInv: Record "Vendor Invoice Doc"; Level: Integer): Code[50]
     var
         WUser: Record "Custom Workflow Config";
     begin
@@ -1263,63 +1263,61 @@ codeunit 50031 VendorInvoiceMgt
         Vendor: Record Vendor;
     begin
 
-        with GenJnlLine do begin
-            Init;
-            //Window2.UPDATE(1,TempPaymentBuffer."Vendor No.");
-            "Journal Template Name" := GenJnlTemplate.Name;
-            "Journal Batch Name" := GenJnlBatch.Name;
-            LastLineNo := LastLineNo + 10000;
-            "Line No." := LastLineNo;
-            "Document Type" := "Document Type"::Payment;
-            "Posting No. Series" := GenJnlBatch."Posting No. Series";
+        GenJnlLine.Init;
+        //Window2.UPDATE(1,TempPaymentBuffer."Vendor No.");
+        GenJnlLine."Journal Template Name" := GenJnlTemplate.Name;
+        GenJnlLine."Journal Batch Name" := GenJnlBatch.Name;
+        LastLineNo := LastLineNo + 10000;
+        GenJnlLine."Line No." := LastLineNo;
+        GenJnlLine."Document Type" := GenJnlLine."Document Type"::Payment;
+        GenJnlLine."Posting No. Series" := GenJnlBatch."Posting No. Series";
 
-            "Document No." := NextDocNo;
-            NextDocNo := IncStr(NextDocNo);
+        GenJnlLine."Document No." := NextDocNo;
+        NextDocNo := IncStr(NextDocNo);
 
-            "Account Type" := "Account Type"::Vendor;
-            SetHideValidation(true);
-            Validate("Posting Date", WorkDate);
-            //ShowPostingDateWarning := ShowPostingDateWarning OR
-            //  SetPostingDate(GenJnlLine,GetApplDueDate(TempPaymentBuffer."Vendor Ledg. Entry No."),PostingDate);
-            Validate("Account No.", PostedVendInvoiceEntry."Vendor No.");
-            Vendor.Get(PostedVendInvoiceEntry."Vendor No.");
-            //IF (Vendor."Pay-to Vendor No." <> '') AND (Vendor."Pay-to Vendor No." <> "Account No.") THEN
-            //  MESSAGE(Text025,Vendor.TABLECAPTION,Vendor."No.",Vendor.FIELDCAPTION("Pay-to Vendor No."),
-            //    Vendor."Pay-to Vendor No.");
-            //"Bal. Account Type" := BalAccType;
-            //VALIDATE("Bal. Account No.",BalAccNo);
-            Validate("Currency Code", PostedVendInvoiceEntry."Currency Code");
-            //"Message to Recipient" := GetMessageToRecipient(SummarizePerVend);
-            //"Bank Payment Type" := BankPmtType;
-            //IF SummarizePerVend THEN BEGIN
-            //  "Applies-to ID" := "Document No.";
-            //  Description := STRSUBSTNO(Text029,TempPaymentBuffer."Vendor No.");
-            //END ELSE
-            PostedVendInvoiceEntry.CalcFields(PostedVendInvoiceEntry."Remaining Amount");
-            Description :=
-              StrSubstNo(
-                Text029,
-                PostedVendInvoiceEntry."Document Type",
-                PostedVendInvoiceEntry."Document No.");
-            "Source Line No." := PostedVendInvoiceEntry."Entry No.";
-            "Shortcut Dimension 1 Code" := PostedVendInvoiceEntry."Global Dimension 1 Code";
-            "Shortcut Dimension 2 Code" := PostedVendInvoiceEntry."Global Dimension 2 Code";
-            "Dimension Set ID" := PostedVendInvoiceEntry."Dimension Set ID";
-            "Source Code" := GenJnlTemplate."Source Code";
-            "Reason Code" := GenJnlBatch."Reason Code";
-            Validate(Amount, -PostedVendInvoiceEntry."Remaining Amount");
-            "Applies-to Doc. Type" := PostedVendInvoiceEntry."Document Type";
-            "Applies-to Doc. No." := PostedVendInvoiceEntry."Document No.";
-            "Payment Method Code" := PostedVendInvoiceEntry."Payment Method Code";
-            "Creditor No." := PostedVendInvoiceEntry."Creditor No.";
-            "Payment Reference" := PostedVendInvoiceEntry."Payment Reference";
-            "Exported to Payment File" := PostedVendInvoiceEntry."Exported to Payment File";
-            "Applies-to Ext. Doc. No." := PostedVendInvoiceEntry."Applies-to Ext. Doc. No.";
+        GenJnlLine."Account Type" := GenJnlLine."Account Type"::Vendor;
+        GenJnlLine.SetHideValidation(true);
+        GenJnlLine.Validate("Posting Date", WorkDate);
+        //ShowPostingDateWarning := ShowPostingDateWarning OR
+        //  SetPostingDate(GenJnlLine,GetApplDueDate(TempPaymentBuffer."Vendor Ledg. Entry No."),PostingDate);
+        GenJnlLine.Validate("Account No.", PostedVendInvoiceEntry."Vendor No.");
+        Vendor.Get(PostedVendInvoiceEntry."Vendor No.");
+        //IF (Vendor."Pay-to Vendor No." <> '') AND (Vendor."Pay-to Vendor No." <> "Account No.") THEN
+        //  MESSAGE(Text025,Vendor.TABLECAPTION,Vendor."No.",Vendor.FIELDCAPTION("Pay-to Vendor No."),
+        //    Vendor."Pay-to Vendor No.");
+        //"Bal. Account Type" := BalAccType;
+        //VALIDATE("Bal. Account No.",BalAccNo);
+        GenJnlLine.Validate("Currency Code", PostedVendInvoiceEntry."Currency Code");
+        //"Message to Recipient" := GetMessageToRecipient(SummarizePerVend);
+        //"Bank Payment Type" := BankPmtType;
+        //IF SummarizePerVend THEN BEGIN
+        //  "Applies-to ID" := "Document No.";
+        //  Description := STRSUBSTNO(Text029,TempPaymentBuffer."Vendor No.");
+        //END ELSE
+        PostedVendInvoiceEntry.CalcFields(PostedVendInvoiceEntry."Remaining Amount");
+        GenJnlLine.Description :=
+          StrSubstNo(
+            Text029,
+            PostedVendInvoiceEntry."Document Type",
+            PostedVendInvoiceEntry."Document No.");
+        GenJnlLine."Source Line No." := PostedVendInvoiceEntry."Entry No.";
+        GenJnlLine."Shortcut Dimension 1 Code" := PostedVendInvoiceEntry."Global Dimension 1 Code";
+        GenJnlLine."Shortcut Dimension 2 Code" := PostedVendInvoiceEntry."Global Dimension 2 Code";
+        GenJnlLine."Dimension Set ID" := PostedVendInvoiceEntry."Dimension Set ID";
+        GenJnlLine."Source Code" := GenJnlTemplate."Source Code";
+        GenJnlLine."Reason Code" := GenJnlBatch."Reason Code";
+        GenJnlLine.Validate(Amount, -PostedVendInvoiceEntry."Remaining Amount");
+        GenJnlLine."Applies-to Doc. Type" := PostedVendInvoiceEntry."Document Type";
+        GenJnlLine."Applies-to Doc. No." := PostedVendInvoiceEntry."Document No.";
+        GenJnlLine."Payment Method Code" := PostedVendInvoiceEntry."Payment Method Code";
+        GenJnlLine."Creditor No." := PostedVendInvoiceEntry."Creditor No.";
+        GenJnlLine."Payment Reference" := PostedVendInvoiceEntry."Payment Reference";
+        GenJnlLine."Exported to Payment File" := PostedVendInvoiceEntry."Exported to Payment File";
+        GenJnlLine."Applies-to Ext. Doc. No." := PostedVendInvoiceEntry."Applies-to Ext. Doc. No.";
 
-            UpdateDimensions(GenJnlLine);
-            Insert;
-            //GenJnlLineInserted := TRUE;
-        end;
+        UpdateDimensions(GenJnlLine);
+        GenJnlLine.Insert;
+        //GenJnlLineInserted := TRUE;
     end;
 
     local procedure UpdateDimensions(var GenJnlLine: Record "Gen. Journal Line")

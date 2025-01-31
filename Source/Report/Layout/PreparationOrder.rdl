@@ -11,229 +11,6 @@
       <rd:DataSourceID>95a55d0d-b8f1-4636-b91d-64fc04669c94</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="DocumentNo">
-          <DataField>DocumentNo</DataField>
-        </Field>
-        <Field Name="CompanyName">
-          <DataField>CompanyName</DataField>
-        </Field>
-        <Field Name="CompanyPicture">
-          <DataField>CompanyPicture</DataField>
-        </Field>
-        <Field Name="Foot1">
-          <DataField>Foot1</DataField>
-        </Field>
-        <Field Name="Foot2">
-          <DataField>Foot2</DataField>
-        </Field>
-        <Field Name="Foot3">
-          <DataField>Foot3</DataField>
-        </Field>
-        <Field Name="Foot4">
-          <DataField>Foot4</DataField>
-        </Field>
-        <Field Name="Foot5">
-          <DataField>Foot5</DataField>
-        </Field>
-        <Field Name="Foot6">
-          <DataField>Foot6</DataField>
-        </Field>
-        <Field Name="TodayFormatted">
-          <DataField>TodayFormatted</DataField>
-        </Field>
-        <Field Name="Date">
-          <DataField>Date</DataField>
-        </Field>
-        <Field Name="LocationCode">
-          <DataField>LocationCode</DataField>
-        </Field>
-        <Field Name="DepotName">
-          <DataField>DepotName</DataField>
-        </Field>
-        <Field Name="WhsePostedShipmentCaptionLbl">
-          <DataField>WhsePostedShipmentCaptionLbl</DataField>
-        </Field>
-        <Field Name="BLNumberCaptionLbl">
-          <DataField>BLNumberCaptionLbl</DataField>
-        </Field>
-        <Field Name="SalesAgencyCaptionLbl">
-          <DataField>SalesAgencyCaptionLbl</DataField>
-        </Field>
-        <Field Name="ActivityCaptionLbl">
-          <DataField>ActivityCaptionLbl</DataField>
-        </Field>
-        <Field Name="AgencyCaptionLbl">
-          <DataField>AgencyCaptionLbl</DataField>
-        </Field>
-        <Field Name="DateCaptionLbl">
-          <DataField>DateCaptionLbl</DataField>
-        </Field>
-        <Field Name="CustomerCaptionLbl">
-          <DataField>CustomerCaptionLbl</DataField>
-        </Field>
-        <Field Name="OrderNumberCaptionLbl">
-          <DataField>OrderNumberCaptionLbl</DataField>
-        </Field>
-        <Field Name="DeliveryDepotCaptionLbl">
-          <DataField>DeliveryDepotCaptionLbl</DataField>
-        </Field>
-        <Field Name="DeliveryPlaceCaptionLbl">
-          <DataField>DeliveryPlaceCaptionLbl</DataField>
-        </Field>
-        <Field Name="DesignationCaptionLbl">
-          <DataField>DesignationCaptionLbl</DataField>
-        </Field>
-        <Field Name="ProductCaptionLbl">
-          <DataField>ProductCaptionLbl</DataField>
-        </Field>
-        <Field Name="ProductCodeCaptionLbl">
-          <DataField>ProductCodeCaptionLbl</DataField>
-        </Field>
-        <Field Name="QtyOrNbCaptionLbl">
-          <DataField>QtyOrNbCaptionLbl</DataField>
-        </Field>
-        <Field Name="BacthCaptionLbl">
-          <DataField>BacthCaptionLbl</DataField>
-        </Field>
-        <Field Name="PLVCaptionLbl">
-          <DataField>PLVCaptionLbl</DataField>
-        </Field>
-        <Field Name="PCBCaptionLbl">
-          <DataField>PCBCaptionLbl</DataField>
-        </Field>
-        <Field Name="ConversionInCM3CaptionLbl">
-          <DataField>ConversionInCM3CaptionLbl</DataField>
-        </Field>
-        <Field Name="CarrierCaptionLbl">
-          <DataField>CarrierCaptionLbl</DataField>
-        </Field>
-        <Field Name="DriverNameCaptionLbl">
-          <DataField>DriverNameCaptionLbl</DataField>
-        </Field>
-        <Field Name="LicenseNumberCaptionLbl">
-          <DataField>LicenseNumberCaptionLbl</DataField>
-        </Field>
-        <Field Name="TruckNumberCaptionLbl">
-          <DataField>TruckNumberCaptionLbl</DataField>
-        </Field>
-        <Field Name="TheCustomerCaptionLbl">
-          <DataField>TheCustomerCaptionLbl</DataField>
-        </Field>
-        <Field Name="Name1CaptionLbl">
-          <DataField>Name1CaptionLbl</DataField>
-        </Field>
-        <Field Name="Date1CaptionLbl">
-          <DataField>Date1CaptionLbl</DataField>
-        </Field>
-        <Field Name="ArrivalTimeCaptionLbl">
-          <DataField>ArrivalTimeCaptionLbl</DataField>
-        </Field>
-        <Field Name="StartTimeCaptionLbl">
-          <DataField>StartTimeCaptionLbl</DataField>
-        </Field>
-        <Field Name="ForGalanaCaptionLbl">
-          <DataField>ForGalanaCaptionLbl</DataField>
-        </Field>
-        <Field Name="AuthorizedByCaptionLbl">
-          <DataField>AuthorizedByCaptionLbl</DataField>
-        </Field>
-        <Field Name="Name2CaptionLbl">
-          <DataField>Name2CaptionLbl</DataField>
-        </Field>
-        <Field Name="Date2CaptionLbl">
-          <DataField>Date2CaptionLbl</DataField>
-        </Field>
-        <Field Name="TheWhseMgrCaptionLbl">
-          <DataField>TheWhseMgrCaptionLbl</DataField>
-        </Field>
-        <Field Name="Name3CaptionLbl">
-          <DataField>Name3CaptionLbl</DataField>
-        </Field>
-        <Field Name="Date3CaptionLbl">
-          <DataField>Date3CaptionLbl</DataField>
-        </Field>
-        <Field Name="TheSecurityCaptionLbl">
-          <DataField>TheSecurityCaptionLbl</DataField>
-        </Field>
-        <Field Name="Name4CaptionLbl">
-          <DataField>Name4CaptionLbl</DataField>
-        </Field>
-        <Field Name="Date4CaptionLbl">
-          <DataField>Date4CaptionLbl</DataField>
-        </Field>
-        <Field Name="TheCarrierCaptionLbl">
-          <DataField>TheCarrierCaptionLbl</DataField>
-        </Field>
-        <Field Name="Name5CaptionLbl">
-          <DataField>Name5CaptionLbl</DataField>
-        </Field>
-        <Field Name="Date5CaptionLbl">
-          <DataField>Date5CaptionLbl</DataField>
-        </Field>
-        <Field Name="ObservationsCaptionLbl">
-          <DataField>ObservationsCaptionLbl</DataField>
-        </Field>
-        <Field Name="Location_Code">
-          <DataField>Location_Code</DataField>
-        </Field>
-        <Field Name="Agency">
-          <DataField>Agency</DataField>
-        </Field>
-        <Field Name="CompanyInfoName">
-          <DataField>CompanyInfoName</DataField>
-        </Field>
-        <Field Name="Lines">
-          <DataField>Lines</DataField>
-        </Field>
-        <Field Name="No_">
-          <DataField>No_</DataField>
-        </Field>
-        <Field Name="Source_No_">
-          <DataField>Source_No_</DataField>
-        </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-        </Field>
-        <Field Name="Quantity">
-          <DataField>Quantity</DataField>
-        </Field>
-        <Field Name="QuantityFormat">
-          <DataField>QuantityFormat</DataField>
-        </Field>
-        <Field Name="LineNumberText">
-          <DataField>LineNumberText</DataField>
-        </Field>
-        <Field Name="ShelfNo_PostedWhseShptLine">
-          <DataField>ShelfNo_PostedWhseShptLine</DataField>
-        </Field>
-        <Field Name="Customer_No_">
-          <DataField>Customer_No_</DataField>
-        </Field>
-        <Field Name="Customer_Name">
-          <DataField>Customer_Name</DataField>
-        </Field>
-        <Field Name="Customer_Name_2">
-          <DataField>Customer_Name_2</DataField>
-        </Field>
-        <Field Name="Sell_to_Address">
-          <DataField>Sell_to_Address</DataField>
-        </Field>
-        <Field Name="LinesFoot">
-          <DataField>LinesFoot</DataField>
-        </Field>
-        <Field Name="LineNumberFoot">
-          <DataField>LineNumberFoot</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -5133,12 +4910,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -5178,4 +4949,227 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="DocumentNo">
+          <DataField>DocumentNo</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="CompanyPicture">
+          <DataField>CompanyPicture</DataField>
+        </Field>
+        <Field Name="Foot1">
+          <DataField>Foot1</DataField>
+        </Field>
+        <Field Name="Foot2">
+          <DataField>Foot2</DataField>
+        </Field>
+        <Field Name="Foot3">
+          <DataField>Foot3</DataField>
+        </Field>
+        <Field Name="Foot4">
+          <DataField>Foot4</DataField>
+        </Field>
+        <Field Name="Foot5">
+          <DataField>Foot5</DataField>
+        </Field>
+        <Field Name="Foot6">
+          <DataField>Foot6</DataField>
+        </Field>
+        <Field Name="TodayFormatted">
+          <DataField>TodayFormatted</DataField>
+        </Field>
+        <Field Name="Date">
+          <DataField>Date</DataField>
+        </Field>
+        <Field Name="LocationCode">
+          <DataField>LocationCode</DataField>
+        </Field>
+        <Field Name="DepotName">
+          <DataField>DepotName</DataField>
+        </Field>
+        <Field Name="WhsePostedShipmentCaptionLbl">
+          <DataField>WhsePostedShipmentCaptionLbl</DataField>
+        </Field>
+        <Field Name="BLNumberCaptionLbl">
+          <DataField>BLNumberCaptionLbl</DataField>
+        </Field>
+        <Field Name="SalesAgencyCaptionLbl">
+          <DataField>SalesAgencyCaptionLbl</DataField>
+        </Field>
+        <Field Name="ActivityCaptionLbl">
+          <DataField>ActivityCaptionLbl</DataField>
+        </Field>
+        <Field Name="AgencyCaptionLbl">
+          <DataField>AgencyCaptionLbl</DataField>
+        </Field>
+        <Field Name="DateCaptionLbl">
+          <DataField>DateCaptionLbl</DataField>
+        </Field>
+        <Field Name="CustomerCaptionLbl">
+          <DataField>CustomerCaptionLbl</DataField>
+        </Field>
+        <Field Name="OrderNumberCaptionLbl">
+          <DataField>OrderNumberCaptionLbl</DataField>
+        </Field>
+        <Field Name="DeliveryDepotCaptionLbl">
+          <DataField>DeliveryDepotCaptionLbl</DataField>
+        </Field>
+        <Field Name="DeliveryPlaceCaptionLbl">
+          <DataField>DeliveryPlaceCaptionLbl</DataField>
+        </Field>
+        <Field Name="DesignationCaptionLbl">
+          <DataField>DesignationCaptionLbl</DataField>
+        </Field>
+        <Field Name="ProductCaptionLbl">
+          <DataField>ProductCaptionLbl</DataField>
+        </Field>
+        <Field Name="ProductCodeCaptionLbl">
+          <DataField>ProductCodeCaptionLbl</DataField>
+        </Field>
+        <Field Name="QtyOrNbCaptionLbl">
+          <DataField>QtyOrNbCaptionLbl</DataField>
+        </Field>
+        <Field Name="BacthCaptionLbl">
+          <DataField>BacthCaptionLbl</DataField>
+        </Field>
+        <Field Name="PLVCaptionLbl">
+          <DataField>PLVCaptionLbl</DataField>
+        </Field>
+        <Field Name="PCBCaptionLbl">
+          <DataField>PCBCaptionLbl</DataField>
+        </Field>
+        <Field Name="ConversionInCM3CaptionLbl">
+          <DataField>ConversionInCM3CaptionLbl</DataField>
+        </Field>
+        <Field Name="CarrierCaptionLbl">
+          <DataField>CarrierCaptionLbl</DataField>
+        </Field>
+        <Field Name="DriverNameCaptionLbl">
+          <DataField>DriverNameCaptionLbl</DataField>
+        </Field>
+        <Field Name="LicenseNumberCaptionLbl">
+          <DataField>LicenseNumberCaptionLbl</DataField>
+        </Field>
+        <Field Name="TruckNumberCaptionLbl">
+          <DataField>TruckNumberCaptionLbl</DataField>
+        </Field>
+        <Field Name="TheCustomerCaptionLbl">
+          <DataField>TheCustomerCaptionLbl</DataField>
+        </Field>
+        <Field Name="Name1CaptionLbl">
+          <DataField>Name1CaptionLbl</DataField>
+        </Field>
+        <Field Name="Date1CaptionLbl">
+          <DataField>Date1CaptionLbl</DataField>
+        </Field>
+        <Field Name="ArrivalTimeCaptionLbl">
+          <DataField>ArrivalTimeCaptionLbl</DataField>
+        </Field>
+        <Field Name="StartTimeCaptionLbl">
+          <DataField>StartTimeCaptionLbl</DataField>
+        </Field>
+        <Field Name="ForGalanaCaptionLbl">
+          <DataField>ForGalanaCaptionLbl</DataField>
+        </Field>
+        <Field Name="AuthorizedByCaptionLbl">
+          <DataField>AuthorizedByCaptionLbl</DataField>
+        </Field>
+        <Field Name="Name2CaptionLbl">
+          <DataField>Name2CaptionLbl</DataField>
+        </Field>
+        <Field Name="Date2CaptionLbl">
+          <DataField>Date2CaptionLbl</DataField>
+        </Field>
+        <Field Name="TheWhseMgrCaptionLbl">
+          <DataField>TheWhseMgrCaptionLbl</DataField>
+        </Field>
+        <Field Name="Name3CaptionLbl">
+          <DataField>Name3CaptionLbl</DataField>
+        </Field>
+        <Field Name="Date3CaptionLbl">
+          <DataField>Date3CaptionLbl</DataField>
+        </Field>
+        <Field Name="TheSecurityCaptionLbl">
+          <DataField>TheSecurityCaptionLbl</DataField>
+        </Field>
+        <Field Name="Name4CaptionLbl">
+          <DataField>Name4CaptionLbl</DataField>
+        </Field>
+        <Field Name="Date4CaptionLbl">
+          <DataField>Date4CaptionLbl</DataField>
+        </Field>
+        <Field Name="TheCarrierCaptionLbl">
+          <DataField>TheCarrierCaptionLbl</DataField>
+        </Field>
+        <Field Name="Name5CaptionLbl">
+          <DataField>Name5CaptionLbl</DataField>
+        </Field>
+        <Field Name="Date5CaptionLbl">
+          <DataField>Date5CaptionLbl</DataField>
+        </Field>
+        <Field Name="ObservationsCaptionLbl">
+          <DataField>ObservationsCaptionLbl</DataField>
+        </Field>
+        <Field Name="Location_Code">
+          <DataField>Location_Code</DataField>
+        </Field>
+        <Field Name="Agency">
+          <DataField>Agency</DataField>
+        </Field>
+        <Field Name="CompanyInfoName">
+          <DataField>CompanyInfoName</DataField>
+        </Field>
+        <Field Name="Lines">
+          <DataField>Lines</DataField>
+        </Field>
+        <Field Name="No_">
+          <DataField>No_</DataField>
+        </Field>
+        <Field Name="Source_No_">
+          <DataField>Source_No_</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+        </Field>
+        <Field Name="QuantityFormat">
+          <DataField>QuantityFormat</DataField>
+        </Field>
+        <Field Name="LineNumberText">
+          <DataField>LineNumberText</DataField>
+        </Field>
+        <Field Name="ShelfNo_PostedWhseShptLine">
+          <DataField>ShelfNo_PostedWhseShptLine</DataField>
+        </Field>
+        <Field Name="Customer_No_">
+          <DataField>Customer_No_</DataField>
+        </Field>
+        <Field Name="Customer_Name">
+          <DataField>Customer_Name</DataField>
+        </Field>
+        <Field Name="Customer_Name_2">
+          <DataField>Customer_Name_2</DataField>
+        </Field>
+        <Field Name="Sell_to_Address">
+          <DataField>Sell_to_Address</DataField>
+        </Field>
+        <Field Name="LinesFoot">
+          <DataField>LinesFoot</DataField>
+        </Field>
+        <Field Name="LineNumberFoot">
+          <DataField>LineNumberFoot</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

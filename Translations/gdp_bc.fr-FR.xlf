@@ -10978,8 +10978,9 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_enteteBE - Field datecreation - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 259130890 - Field 1838475729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Document Date</source>
-          <target state="needs-review-translation">Date document</target>
+          <source>Delivery Date</source>
+          <target state="needs-adaptation">Date de livraison</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_enteteBE - Field datelivraison - Property Caption</note>
         </trans-unit>
@@ -18986,6 +18987,12 @@
           <target state="needs-review-translation">La livraison directe ne doit pas se faire à partir du magasin d'expédition</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Sales Order Process - NamedType Text033</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 951221247 - Method 3261755595 - NamedType 2389671375" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The order %1 is now in status: %2</source>
+          <target>La commande %1 se trouve desormais au statut : %2</target>
+          <note from="Developer" annotates="general" priority="2">%1=cde,%2=nst</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Sales Order Process - Method InsertNewStep - NamedType LablNewOrderStatus</note>
         </trans-unit>
         <trans-unit id="Codeunit 2221573140 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vous n'êtes pas autorisé à utiliser le code magasin %1</source>
@@ -39785,31 +39792,31 @@
         </trans-unit>
         <trans-unit id="Page 2906373467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Touring Card</source>
-          <target state="needs-translation"/>
+          <target>Fiche tournée</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2906373467 - Control 1889505238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bons List</source>
-          <target state="needs-translation"/>
+          <target>Liste des bons</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Control Bons List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2906373467 - Control 1793060472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Orders</source>
-          <target state="needs-translation"/>
+          <target>Commandes de vente</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Control SalesOrderSubform - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2906373467 - Control 4052230651 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Trucks</source>
-          <target state="needs-translation"/>
+          <target>Camions</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Control TruckSubform - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2906373467 - Action 3353819017 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bon Dispaching List</source>
-          <target state="needs-translation"/>
+          <target>Liste des bons (Dispaching)</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Touring Card - Action ListeBons - Property Caption</note>
         </trans-unit>
@@ -73544,6 +73551,48 @@
           <target state="needs-review-translation">Imprimer le lettrage zéro</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Customer Ledger Entries - Action Zero Lettering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 848071777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Post and email to vendor</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action PostAndEmail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 2420847860 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Imprimer Récapitulatif des OV</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action AnnexeOV - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 2921533600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Imprimer Avis Factures du paiement</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action Avis Paiement Factures frs - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 1551147523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Imprimer Factures du paiement</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action Factures - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 2847120297 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Imprimer Traite</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action Traite - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 1332253670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Imprimer OV</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action Virement - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Control 4167494053 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Specifies the recipient information</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Control Destinataire - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2556259635 - Method 1146877244 - NamedType 3337191547" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2556259635">
           <source>Vous ne disposez pas d'autorisations pour créer des demandes d'achat</source>
