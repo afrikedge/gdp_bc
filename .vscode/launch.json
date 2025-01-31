@@ -21,8 +21,7 @@
             "schemaUpdateMode": "ForceSync"
             // "schemaUpdateMode": "Synchronize"
             
-        }
-        ,
+        },
         {
             "name": "Local server ARNOLD",
             "request": "launch",

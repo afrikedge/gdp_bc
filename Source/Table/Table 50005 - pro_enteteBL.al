@@ -30,7 +30,7 @@ table 50005 pro_enteteBL
             trigger OnValidate()
             begin
                 //TODO Migration
-                //AFK_SecMgt.CheckWarehouseUser(depot);
+                AFK_SecMgt.CheckWarehouseUser(depot);
                 /*
                 TESTFIELD(Status,Status::Open);
                 IF ("Location Code" <> xRec."Location Code") AND
@@ -339,18 +339,20 @@ table 50005 pro_enteteBL
     end;
 
     trigger OnInsert()
+    var
+        UserSetup: Record "User Setup";
     begin
+        UserSetup.Get(UserId);
         User.SetRange(User."User Name", UserId);
         if User.FindFirst then begin
             nom := User."Full Name";
-            //TODO Migration
-            //nomresponsable := User."Manager Name";
+            nomresponsable := UserSetup."Dispatching Manager Name";
         end;
         idtournee := -1;
     end;
 
     var
-        //AFK_SecMgt: Codeunit "Security Mgt";
+        AFK_SecMgt: Codeunit "Security Mgt";
         User: Record User;
         Text001: Label 'Suppression non autorisée';
         camion: Record pro_moyentransport;

@@ -790,6 +790,7 @@ codeunit 50001 "Sales Order Process"
     var
         StepEntry: Record "Document Step History";
         NextStepId: Integer;
+        LablNewOrderStatus: Label 'The order %1 is now in status: %2', Comment = '%1=cde,%2=nst';
     begin
         /*
         0=Creation,
@@ -819,6 +820,9 @@ codeunit 50001 "Sales Order Process"
         StepEntry.UserID := UserId;
         StepEntry."Action Date" := CreateDateTime(Today, Time);
         StepEntry.Insert;
+
+        if (Action = 1) then
+            Message(StrSubstNo(LablNewOrderStatus, OrderNo, NewStatus));
 
     end;
 

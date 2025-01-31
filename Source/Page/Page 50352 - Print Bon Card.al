@@ -37,6 +37,7 @@ page 50352 "Print Bon Card"
                 begin
                     EnteteBE.SETRANGE(numBE, Rec.numBE);
                     EnteteBE.SetRange(NumBU, Rec.NumBU);
+                    EnteteBE.SetRange(idtournee, Rec.idtournee);
                     REPORT.RUN(50190, TRUE, FALSE, EnteteBE);
 
 
@@ -68,6 +69,7 @@ page 50352 "Print Bon Card"
                 begin
                     EnteteBL.SETRANGE(numBL, Rec.numBL);
                     EnteteBL.SetRange(NumBU, Rec.NumBU);
+                    EnteteBL.SetRange(idtournee, Rec.idtournee);
                     REPORT.RUN(50189, TRUE, FALSE, EnteteBL);
 
                     PrintCrystal.PrintBL(Rec.numBL);

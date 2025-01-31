@@ -200,7 +200,7 @@ table 50033 "Adjustment Header"
                 if Rec."Document Type" = Rec."Document Type"::Transfer then
                     TestStatusOpen;
                 //TODO Migration
-                //AFK_SecMgt.CheckWarehouseUser("Location Code");
+                AFK_SecMgt.CheckWarehouseUser("Location Code");
             end;
         }
         field(30; "Shipment Status"; Option)
@@ -261,7 +261,7 @@ table 50033 "Adjustment Header"
                 Confirmed: Boolean;
             begin
                 //TODO Migration
-                //AFK_SecMgt.CheckWarehouseUser("Transfer-to Code");
+                AFK_SecMgt.CheckWarehouseUser("Transfer-to Code");
                 UpdateLinesTransfer;
             end;
         }
@@ -479,7 +479,7 @@ table 50033 "Adjustment Header"
 
         if ((Rec."Document Type" = Rec."Document Type"::Transfer)) then begin
             //TODO Migration
-            //DefaultLoc := AFK_SecMgt.GetDefaultOrFirstLocation();
+            DefaultLoc := AFK_SecMgt.GetDefaultOrFirstLocation();
             if (Loc1.Get(DefaultLoc)) then begin
                 if ((DefaultLoc <> '') and (Loc1."Item Category Code" = Rec."Item Category Code")) then
                     Validate("Location Code", DefaultLoc);
@@ -575,7 +575,7 @@ table 50033 "Adjustment Header"
         Camion: Record pro_moyentransport;
         IsArchive: Boolean;
         //TODO Migration
-        //AFK_SecMgt: Codeunit "Security Mgt";
+        AFK_SecMgt: Codeunit "Security Mgt";
         SalesOrderHeader: Record "Sales Header";
         Text011Err: Label 'La note de débit %1 existe déjà pour cette sortie';
 

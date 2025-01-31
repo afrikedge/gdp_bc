@@ -77,7 +77,7 @@ table 50034 "Adjustment Line"
                 TestStatusOpen;
 
                 //TODO Migration
-                //AFK_SecMgt.CheckWarehouseUser("Location Code");
+                AFK_SecMgt.CheckWarehouseUser("Location Code");
 
                 //IF Rec."Document Type" IN [Rec."Document Type"::Borrow,Rec."Document Type"::Loan,Rec."Document Type"::Exchange] THEN
                 if Loc1.Get("Location Code") then
@@ -467,7 +467,7 @@ table 50034 "Adjustment Line"
         Text003: Label 'La quantité a déjà été expédiée';
         FA: Record "Fixed Asset";
         Loc1: Record Location;
-    //AFK_SecMgt: Codeunit "Security Mgt";
+        AFK_SecMgt: Codeunit "Security Mgt";
 
     procedure SetSalesHeader(NewSalesHeader: Record "Sales Header")
     begin

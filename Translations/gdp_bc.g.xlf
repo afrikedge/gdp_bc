@@ -9149,7 +9149,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_enteteBE - Field datecreation - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 259130890 - Field 1838475729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Document Date</source>
+          <source>Delivery Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_enteteBE - Field datelivraison - Property Caption</note>
         </trans-unit>
@@ -15822,6 +15822,11 @@
           <source>La livraison directe ne doit pas se faire à partir du magasin d'expédition</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Sales Order Process - NamedType Text033</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 951221247 - Method 3261755595 - NamedType 2389671375" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The order %1 is now in status: %2</source>
+          <note from="Developer" annotates="general" priority="2">%1=cde,%2=nst</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Sales Order Process - Method InsertNewStep - NamedType LablNewOrderStatus</note>
         </trans-unit>
         <trans-unit id="Codeunit 2221573140 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vous n'êtes pas autorisé à utiliser le code magasin %1</source>
@@ -52569,7 +52574,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PickUp Order - NamedType TruckNumberLbl</note>
         </trans-unit>
         <trans-unit id="Report 2645749542 - NamedType 984818344" size-unit="char" translate="yes" xml:space="preserve">
-          <source>M3</source>
+          <source>L</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PickUp Order - NamedType UnitLbl</note>
         </trans-unit>
@@ -53762,6 +53767,436 @@
           <source>Warehouse Posted Shipment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Whse Shipment - RequestPage RequestOptionsPage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 3787345379" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ACTIVITY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType ActivityCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 517087821" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AGENCY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType AgencyCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 3291233198" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Arrival time :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType ArrivalTimeCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 3763808196" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Authorized by :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType AuthorizedByCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 3009252756" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BATCH</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType BacthCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 3387762379" size-unit="char" translate="yes" xml:space="preserve">
+          <source>B/L N°</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType BLNumberCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 1835732828" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CARRIER :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType CarrierCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 439128746" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CONVERSION in M3 or T</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType ConversionInCM3CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 2486251868" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CUSTOMER</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType CustomerCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 2410603" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType Date1CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 202334390" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType Date2CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 298592733" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType Date3CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 718522656" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType Date4CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 300927943" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType Date5CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 35837468" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DATE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType DateCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 643828502" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELIVERY DEPOT :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType DeliveryDepotCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 2191030437" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELIVERY PLACE :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType DeliveryPlaceCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 3773549293" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DESIGNATION</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType DesignationCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 2984183279" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DRIVER'S NAME :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType DriverNameCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 559218021" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FOR GALANA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType ForGalanaCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 3411633488" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LICENSE N° :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType LicenseNumberCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 1860426998" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType Name1CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 4080771755" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType Name2CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 2130552196" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType Name3CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 2004146425" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType Name4CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 2559227986" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType Name5CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 3543468159" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OBSERVATIONS</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType ObservationsCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 3112779451" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order N° :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType OrderNumberCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 3980744655" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PCB</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType PCBCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 1247811546" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PLV</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType PLVCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 3218398825" size-unit="char" translate="yes" xml:space="preserve">
+          <source>product</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType ProductCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 22530230" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType ProductCodeCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 3324556747" size-unit="char" translate="yes" xml:space="preserve">
+          <source>QUANTITY or NUMBER</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType QtyOrNbCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 946957853" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SALES AGENCY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType SalesAgencyCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 4263263795" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start time :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType StartTimeCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 1976466987" size-unit="char" translate="yes" xml:space="preserve">
+          <source>THE CARRIER</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType TheCarrierCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 1520880243" size-unit="char" translate="yes" xml:space="preserve">
+          <source>THE CUSTOMER</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType TheCustomerCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 240192405" size-unit="char" translate="yes" xml:space="preserve">
+          <source>THE SECURITY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType TheSecurityCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 32904248" size-unit="char" translate="yes" xml:space="preserve">
+          <source>THE WAREHOUSE MANAGER</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType TheWhseMgrCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 1093005632" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TRUCK N° :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType TruckNumberCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - NamedType 1663833184" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELIVERY NOTE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - NamedType WhsePostedShipmentCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 973832945 - RequestPage 2516438534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse Shipment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Preparation Order - RequestPage RequestOptionsPage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 3787345379" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ACTIVITY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType ActivityCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 517087821" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AGENCY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType AgencyCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 3291233198" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Arrival time :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType ArrivalTimeCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 3763808196" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Authorized by :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType AuthorizedByCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 3009252756" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BATCH</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType BacthCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 3387762379" size-unit="char" translate="yes" xml:space="preserve">
+          <source>B/L N°</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType BLNumberCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 1835732828" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CARRIER :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType CarrierCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 439128746" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CONVERSION in M3 or T</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType ConversionInCM3CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 2486251868" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CUSTOMER</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType CustomerCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 2410603" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType Date1CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 202334390" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType Date2CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 298592733" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType Date3CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 718522656" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType Date4CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 300927943" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType Date5CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 35837468" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DATE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType DateCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 643828502" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELIVERY DEPOT :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType DeliveryDepotCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 2191030437" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELIVERY PLACE :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType DeliveryPlaceCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 3773549293" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DESIGNATION</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType DesignationCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 2984183279" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DRIVER'S NAME :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType DriverNameCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 559218021" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FOR GALANA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType ForGalanaCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 3411633488" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LICENSE N° :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType LicenseNumberCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 1860426998" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType Name1CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 4080771755" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType Name2CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 2130552196" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType Name3CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 2004146425" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType Name4CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 2559227986" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType Name5CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 3543468159" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OBSERVATIONS</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType ObservationsCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 3112779451" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order N° :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType OrderNumberCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 3980744655" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PCB</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType PCBCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 1247811546" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PLV</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType PLVCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 3218398825" size-unit="char" translate="yes" xml:space="preserve">
+          <source>product</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType ProductCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 22530230" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType ProductCodeCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 3324556747" size-unit="char" translate="yes" xml:space="preserve">
+          <source>QUANTITY or NUMBER</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType QtyOrNbCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 946957853" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SALES AGENCY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType SalesAgencyCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 4263263795" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start time :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType StartTimeCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 1976466987" size-unit="char" translate="yes" xml:space="preserve">
+          <source>THE CARRIER</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType TheCarrierCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 1520880243" size-unit="char" translate="yes" xml:space="preserve">
+          <source>THE CUSTOMER</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType TheCustomerCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 240192405" size-unit="char" translate="yes" xml:space="preserve">
+          <source>THE SECURITY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType TheSecurityCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 32904248" size-unit="char" translate="yes" xml:space="preserve">
+          <source>THE WAREHOUSE MANAGER</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType TheWhseMgrCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 2400181256" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELIVERY NOTE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType TitleCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 1093005632" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TRUCK N° :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType TruckNumberCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3260171944 - RequestPage 2516438534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - RequestPage RequestOptionsPage - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4185628423 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process Affectation Cargo</source>
@@ -60857,6 +61292,41 @@
           <source>Print zero lettering</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Customer Ledger Entries - Action Zero Lettering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 848071777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Post and email to vendor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action PostAndEmail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 2420847860 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Imprimer Récapitulatif des OV</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action AnnexeOV - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 2921533600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Imprimer Avis Factures du paiement</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action Avis Paiement Factures frs - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 1551147523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Imprimer Factures du paiement</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action Factures - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 2847120297 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Imprimer Traite</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action Traite - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 1332253670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Imprimer OV</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action Virement - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Control 4167494053 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Specifies the recipient information</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Control Destinataire - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2556259635 - Method 1146877244 - NamedType 3337191547" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2556259635">
           <source>Vous ne disposez pas d'autorisations pour créer des demandes d'achat</source>

@@ -238,7 +238,7 @@ table 50007 pro_enteteBE
         }
         field(101; datelivraison; Date)
         {
-            Caption = 'Document Date';
+            Caption = 'Delivery Date';
 
             trigger OnValidate()
             begin

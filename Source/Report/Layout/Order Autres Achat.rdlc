@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
+  <am:AuthoringMetadata>
+    <am:CreatedBy>
+      <am:Name>MSRB</am:Name>
+      <am:Version>15.0.20283.0</am:Version>
+    </am:CreatedBy>
+    <am:UpdatedBy>
+      <am:Name>MSRB</am:Name>
+      <am:Version>15.0.20283.0</am:Version>
+    </am:UpdatedBy>
+    <am:LastModifiedTimestamp>2025-01-31T01:53:06.0251947Z</am:LastModifiedTimestamp>
+  </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource">
@@ -8,6 +19,7 @@
         <ConnectString />
       </ConnectionProperties>
       <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>5fa0257f-4e3c-4168-a9e1-906159f27db4</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <ReportSections>
@@ -2574,7 +2586,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="Imprimé le "&amp;Globals!ExecutionTime</Value>
+                      <Value>=First(Fields!TextImprimeLe.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontStyle>Italic</FontStyle>
                         <FontSize>8pt</FontSize>
@@ -4385,6 +4397,7 @@ Zs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>2df795d3-92c3-48d8-bcb9-b165a6b26988</rd:ReportID>
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
@@ -4468,6 +4481,9 @@ Zs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs
         </Field>
         <Field Name="SecondApproverDate">
           <DataField>SecondApproverDate</DataField>
+        </Field>
+        <Field Name="TextImprimeLe">
+          <DataField>TextImprimeLe</DataField>
         </Field>
         <Field Name="ReportTitleCopyText">
           <DataField>ReportTitleCopyText</DataField>

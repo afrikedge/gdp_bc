@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-01-21T23:29:24.9374909Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-01-31T02:00:54.8518384Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -2604,7 +2604,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="Imprimé le " &amp; FormatDateTime( Globals!ExecutionTime,2)</Value>
+                      <Value>=First(Fields!TextImprimeLe.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontStyle>Italic</FontStyle>
                         <FontSize>8pt</FontSize>
@@ -4093,6 +4093,9 @@ PGNtK+Gmi3EsbCQSamZNScODkMPPdwD9AK9PB+CMr3rzX3/8MfM5j9JLgTDL/ZKFes/SMF+d/wCtj8Of
         </Field>
         <Field Name="Observations_PurchaseHeader">
           <DataField>Observations_PurchaseHeader</DataField>
+        </Field>
+        <Field Name="TextImprimeLe">
+          <DataField>TextImprimeLe</DataField>
         </Field>
         <Field Name="ReportTitleCopyText">
           <DataField>ReportTitleCopyText</DataField>

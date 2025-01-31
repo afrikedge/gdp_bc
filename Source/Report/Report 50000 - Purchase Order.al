@@ -70,6 +70,9 @@ report 50000 "Purchase Order"
             column(Observations_PurchaseHeader; "Purchase Header".Observations)
             {
             }
+            column(TextImprimeLe; TextImprimeLe)
+            {
+            }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);
@@ -891,7 +894,7 @@ report 50000 "Purchase Order"
                 end else
                     FormatAddr.Company(CompanyAddr, CompanyInfo);
 
-
+                TextImprimeLe := 'Imprime le ' + Format(Today);
                 //*****************
                 if Pays.Get(CompanyInfo."Country/Region Code") then
                     NomPays := Pays.Name;
@@ -1181,6 +1184,7 @@ report 50000 "Purchase Order"
         NomPays: Text[50];
         DateCde: Date;
         DevAmount: Text;
+        TextImprimeLe: Text;
 
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)
     begin

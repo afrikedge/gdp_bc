@@ -3560,6 +3560,7 @@
                                                             <PaddingBottom>2pt</PaddingBottom>
                                                           </Style>
                                                         </Textbox>
+                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell>
@@ -4207,7 +4208,6 @@
                                                             <PaddingBottom>2pt</PaddingBottom>
                                                           </Style>
                                                         </Textbox>
-                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                   </TablixCells>
@@ -4374,6 +4374,13 @@
                                                           <Paragraphs>
                                                             <Paragraph>
                                                               <TextRuns>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve"> </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                    <Format>#,0;(#,0)</Format>
+                                                                  </Style>
+                                                                </TextRun>
                                                                 <TextRun>
                                                                   <Value>=IIf(Fields!Vol10.Value = 0, " ", Fields!Vol10.Value)</Value>
                                                                   <Style>
