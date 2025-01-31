@@ -243,6 +243,10 @@ report 50197 "PreparationOrder Lub"
                 column(LineNumberText; LineNumberText)
                 {
                 }
+                column(QtyConverted; QtyConverted)
+                {
+                }
+
                 // column(Source_No_; "Source No.")
                 // {
                 // }
@@ -251,6 +255,8 @@ report 50197 "PreparationOrder Lub"
                 // }
                 trigger OnAfterGetRecord()
                 begin
+                    QtyConverted := Quantity * 1000;
+
                     Lines := 1;
                     LineNumber := LineNumber + 1;
                     if (LineNumber < 10) then
@@ -335,6 +341,7 @@ report 50197 "PreparationOrder Lub"
         CompanyInfo: Record "Company Information";
         CompanyInfos: Record "Company Information";
         Lines: Integer;
+        QtyConverted: Decimal;
         // Agency: Text[100];
         LineNumber: Integer;
         LinesNumb: Integer;
