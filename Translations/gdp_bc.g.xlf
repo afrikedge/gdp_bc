@@ -2488,6 +2488,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk FrontDesk User - Field Password - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1907769039 - Field 2696294185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Password Exists</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk FrontDesk User - Field PasswordIsSet - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1907769039 - Field 131416759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Profile Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -40413,6 +40418,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Whse. Basic GDP-R-LIV - Action RetousEnreg - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1770635294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create or reset password</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk CreateResetPassword - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1770635294 - NamedType 2912804189" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Please fill all the fields</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk CreateResetPassword - NamedType ErrMissingField</note>
+        </trans-unit>
+        <trans-unit id="Report 1770635294 - NamedType 725326258" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The two passwords are not identical</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk CreateResetPassword - NamedType ErrNotSamePasswords</note>
+        </trans-unit>
+        <trans-unit id="Report 1770635294 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk CreateResetPassword - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1770635294 - Control 3890586100 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Confirm password</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk CreateResetPassword - Control ConfirmNewPasswordCtrl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1770635294 - Control 146127814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New password</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk CreateResetPassword - Control NewPasswordCtrl - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 2420847860 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AnnexeOV</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -61383,6 +61418,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Vendor List - Change Name 2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Action 1117227473 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Historique déplacements</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action FATransfers - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Action 3101950625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Ecritures de mise en service</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action StartupEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Action 3451801934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Startup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action MiseEnServiceImmo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1649337532 - Action 3818210718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
           <source>Etat de Cession Immo</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -61408,15 +61458,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action GenerateCode - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1649337532 - Action 761178202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
-          <source>Separator1000000020</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action Separator1000000020 - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 1649337532 - Action 4224198349 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
           <source>Transfer</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Action Transfer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Control 3450403007 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Specifies the name of the fixed asset location.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Control FA Location Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Control 4123679298 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Specifies the sub-location of the fixed asset.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Control FA Sub Location - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1649337532 - Control 1543012891 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Specifies the name of the fixed asset sub-location.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Control FA Sub Location Name - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 758891811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Afk Achats</source>

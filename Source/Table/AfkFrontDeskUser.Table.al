@@ -101,6 +101,11 @@ table 50099 "Afk FrontDesk User"
         {
             Caption = 'Can Approve As CDBO';
         }
+        field(25; PasswordIsSet; Boolean)
+        {
+            Editable = false;
+            Caption = 'Password Exists';
+        }
     }
     keys
     {
