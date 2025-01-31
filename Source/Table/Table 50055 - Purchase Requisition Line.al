@@ -154,7 +154,7 @@ table 50055 "Purchase Requisition Line"
                 //*************************************************
                 //Budget Mgt***************************************
                 //TODO Migration
-                //"Purchase Account":=BudgetMgt.GetPurchAccFromReq(Rec,ServRequest);
+                "Purchase Account" := BudgetMgt.GetPurchAccFromReq(Rec, ServRequest);
                 //*************************************************Jn0001
             end;
         }
@@ -558,7 +558,7 @@ table 50055 "Purchase Requisition Line"
         DimMgt: Codeunit DimensionManagement;
         proSetup: Record "AddOn Setup";
         UOMMgt: Codeunit "Unit of Measure Management";
-        //BudgetMgt: Codeunit "Purchase Requisition Mgt";
+        BudgetMgt: Codeunit "Purchase Requisition Mgt";
         Text001: Label 'La demande ne peut plus être modifiée car elle a déjà été validée';
 
     local procedure CalcBaseQty(Qty: Decimal): Decimal

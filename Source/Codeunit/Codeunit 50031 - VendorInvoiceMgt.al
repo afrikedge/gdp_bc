@@ -716,7 +716,7 @@ codeunit 50031 VendorInvoiceMgt
         Commentaires: Text[150];
         ToAdress: Text;
         CCAdress: Text;
-        Sender: Text[80];
+        Sender: Text[150];
         SendDate: Text[50];
         DocType: Text[30];
         UserSetup: Record "User Setup";
@@ -1418,12 +1418,13 @@ codeunit 50031 VendorInvoiceMgt
     var
         DocumentAttach: record "Document Attachment";
     begin
-        DocumentAttach.Reset();
-        DocumentAttach.SetRange("Table ID", Database::"Vendor Invoice Doc");
-        DocumentAttach.SetRange("No.", VendInvoiceDoc1."Reference Number");
-        //DocumentAttach.SetRange("Document Type", DocumentAttach."Document Type"::"VendorInvoice");
-        if (DocumentAttach.IsEmpty) then
-            error(Text002);
+        if not VendInvoiceDoc1.HasLinks then Error(Text002);
+        // DocumentAttach.Reset();
+        // DocumentAttach.SetRange("Table ID", Database::"Vendor Invoice Doc");
+        // DocumentAttach.SetRange("No.", VendInvoiceDoc1."Reference Number");
+        // //DocumentAttach.SetRange("Document Type", DocumentAttach."Document Type"::"VendorInvoice");
+        // if (DocumentAttach.IsEmpty) then
+        //     error(Text002);
     end;
 
     local procedure MarquerCommePayee(var VendInvoiceDoc1: Record "Vendor Invoice Doc")

@@ -587,7 +587,9 @@ codeunit 50011 "Item Shipment Mgt"
     begin
         Item1.Get(ShipLine."Item No.");
         Loc1.Get(ShipLine."Location Code");
-        Item1.TestField(Item1."Item Category Code", Loc1."Item Category Code");
+        Item1.CalcFields("Parent Category");
+        Item1.TESTFIELD("Parent Category", Loc1."Item Category Code");
+        //Item1.TestField(Item1."Item Category Code", Loc1."Item Category Code");
     end;
 }
 

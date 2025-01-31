@@ -95,6 +95,10 @@ report 50015 "Order Autres Achat"
             column(SecondApproverDate; SecondApproverDate)
             {
             }
+            column(TextImprimeLe; TextImprimeLe)
+            {
+            }
+
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);
@@ -921,7 +925,7 @@ report 50015 "Order Autres Achat"
                 end else
                     FormatAddr.Company(CompanyAddr, CompanyInfo);
 
-
+                TextImprimeLe := 'Imprime le ' + Format(Today);
                 //*****************
 
                 if Pays.Get(CompanyInfo."Country/Region Code") then
@@ -1274,6 +1278,7 @@ report 50015 "Order Autres Achat"
         SecondApprover: Record "User Setup";
         FirstApproverDate: Date;
         SecondApproverDate: Date;
+        TextImprimeLe: Text;
 
 
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)

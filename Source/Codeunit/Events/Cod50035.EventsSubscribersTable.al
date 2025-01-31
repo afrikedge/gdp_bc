@@ -461,11 +461,11 @@ codeunit 50035 "EventsSubscribers Table"
         IF SalesHeader."Document Type" = SalesHeader."Document Type"::Order THEN
             Item.TESTFIELD("Sales Category Code", Cust2."Sales Category Code");
 
-
-        IF AfkLoc.GET(SalesLine."Location Code") THEN begin
-            Item.CalcFields("Parent Category");
-            Item.TESTFIELD("Parent Category", AfkLoc."Item Category Code");
-        end;
+        IF Item.Type = Item.Type::Inventory THEN
+            IF AfkLoc.GET(SalesLine."Location Code") THEN begin
+                Item.CalcFields("Parent Category");
+                Item.TESTFIELD("Parent Category", AfkLoc."Item Category Code");
+            end;
 
 
         SalesLine."FER Fees Price" := Item."FER Fees Price";
