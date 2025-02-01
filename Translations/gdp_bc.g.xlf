@@ -22303,6 +22303,41 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Admin Metier RC GDP-ADM-METIER - Action Posted Sales Invoices - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 426249556 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Afk External User</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk External User - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 426249556 - Control 1413140515 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Autorisations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk External User - Control Autorisations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 426249556 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk External User - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 426249556 - Action 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Process</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk External User - Action Process - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 426249556 - Action 4190224549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create or reset password</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk External User - Action CreatePassword - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3225256085 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Afk External Users</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk External Users - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1937760828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Afk SO Unblocking List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk SO Unblocking List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3715518480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Signature</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -61477,6 +61512,16 @@
           <source>Specifies the name of the fixed asset sub-location.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Fixed Asset Card - Control FA Sub Location Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 2885435000 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Afk Front Desk</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkFrontDesk - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3376788125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Utilisateurs externes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkExternalUsers - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 758891811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Afk Achats</source>
