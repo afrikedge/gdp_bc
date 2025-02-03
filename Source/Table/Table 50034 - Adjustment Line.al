@@ -68,7 +68,7 @@ table 50034 "Adjustment Line"
         field(7; "Location Code"; Code[10])
         {
             Caption = 'Location Code';
-            TableRelation = Location WHERE("Use As In-Transit" = CONST(false),),
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(false),
                                             "Location Type" = CONST(" "));
             // TableRelation = Location WHERE("Use As In-Transit" = CONST(false),
             // "Item Category Code" = FIELD("Item Category Code"),
