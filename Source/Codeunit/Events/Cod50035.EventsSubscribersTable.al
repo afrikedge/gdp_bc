@@ -1087,9 +1087,17 @@ codeunit 50035 "EventsSubscribers Table"
                     PurchaseHeader.TESTFIELD(Status, PurchaseHeader.Status::Released);
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnBeforeInitHeaderLocactionCode', '', true, true)]
+    local procedure SalesLine_OnBeforeInitHeaderLocactionCode(var SalesLine: Record "Sales Line"; var IsHandled: Boolean)
+    var
+    begin
+        if (SalesLine.IsServiceItem()) then
+            IsHandled := true;
+    end;
+
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeSetSecurityFilterOnRespCenter(var SalesInvoiceHeader: Record "Sales Invoice Header"; var IsHandled: Boolean)
+    local procedure OnBeforeInitHeaderLocactionCode(var SalesLine: Record "Sales Line"; var IsHandled: Boolean)
     begin
     end;
 

@@ -608,6 +608,7 @@ codeunit 50032 "EventsSubscribers Code"
         AddOnSetup: Record "AddOn Setup";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
     begin
+        AddOnSetup.GetRecordOnce();
         IF (PurchaseLine.GetParentCategory() = AddOnSetup."LUBS Item Category") THEN
             IF PurchaseHeader."Purchase Type" = PurchaseHeader."Purchase Type"::AchatMarchandise THEN BEGIN
                 PurchaseLine.TESTFIELD("Expiration Date");

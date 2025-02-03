@@ -938,5 +938,17 @@ tableextension 50012 "A02 Sales Line" extends "Sales Line"
     // AFK_Text007: Label 'Impossible de mettre à jour cette quantité lors de la facturation JIRAMA car la ligne provient d''une expédition enregistrée.';
     // AFK_Text008: Label 'Vous n''etes pas autorisé à supprimer cette ligne.';
     // AfkReleaseSales: Codeunit "414";
+
+    procedure IsServiceItem(): Boolean
+    var
+        Item: record Item;
+    begin
+        IF Type <> Type::Item THEN
+            EXIT(FALSE);
+        IF "No." = '' THEN
+            EXIT(FALSE);
+        Item.Get("No.");
+        EXIT(Item.Type = Item.Type::Service);
+    end;
 }
 

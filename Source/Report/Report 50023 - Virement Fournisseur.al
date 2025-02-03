@@ -146,20 +146,20 @@ report 50023 "Virement Fournisseur"
                     VendBank.SetRange("Vendor No.", "Gen. Journal Line"."Account No.");
                     VendBank.SetRange(Code, "Gen. Journal Line"."Recipient Bank Account");
                     if VendBank.FindFirst then begin
-                        /*
-                        IF COPYSTR("Gen. Journal Line"."Document No.",1,3) <> 'ETR' THEN BEGIN
-                          IF (VendBank."Bank Account No." ='') THEN
-                            ERROR(Text026,"Gen. Journal Line"."Recipient Bank Account")
-                          ELSE
-                            VendBankCode:= VendBank."Bank Branch No."+'.'+VendBank."Agency Code"+'.'+VendBank."Bank Account No."+'.'+FORMAT(VendBank."RIB Key Text");
+
+                        IF COPYSTR("Gen. Journal Line"."Document No.", 1, 3) <> 'ETR' THEN BEGIN
+                            IF (VendBank."Bank Account No." = '') THEN
+                                ERROR(Text026, "Gen. Journal Line"."Recipient Bank Account")
+                            ELSE
+                                VendBankCode := VendBank."Bank Branch No." + '.' + VendBank."Agency Code" + '.' + VendBank."Bank Account No." + '.' + FORMAT(VendBank."RIB Key Text");
                         END ELSE BEGIN
-                          IF VendBank.IBAN='' THEN
-                            ERROR(Text028,"Gen. Journal Line"."Recipient Bank Account")
-                          ELSE
-                            VendBankCode:= VendBank.IBAN;
+                            IF VendBank.IBAN = '' THEN
+                                ERROR(Text028, "Gen. Journal Line"."Recipient Bank Account")
+                            ELSE
+                                VendBankCode := VendBank.IBAN;
                         END;
-                        */
-                        VendBankCode := VendBank."Bank Account No.";//***
+
+                        //VendBankCode := VendBank."Bank Account No.";//***
                         NomDestinataire := Vend.Name;
                         NomBeneficiaire := VendBank."Name 2";
                         NomBanqueDestinataire := VendBank.Name;
@@ -196,7 +196,7 @@ report 50023 "Virement Fournisseur"
 
                 NbTLet.InitTextVariable;
                 //TODO Montants
-                //NbTLet.FormatNoTextFR(TotalAmountLetter,"Gen. Journal Line".Amount,"Gen. Journal Line"."Currency Code");
+                NbTLet.FormatNoText(TotalAmountLetter, "Gen. Journal Line".Amount, "Gen. Journal Line"."Currency Code");
 
             end;
 
