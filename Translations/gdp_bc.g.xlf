@@ -2708,6 +2708,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk SalesOrder Unblocking - Field Gross exposure - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 248387188 - Field 596019230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk SalesOrder Unblocking - Field Modified By - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 248387188 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13812,6 +13817,21 @@
           <source>Requestor Service</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Invoice Doc - Field Workflow Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 415505521 - NamedType 2982778573" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unkwnown parameter : %1</source>
+          <note from="Developer" annotates="general" priority="2">%1 = parameter</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Afk Api Interface Mgt - NamedType LblUnknownParameter</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 815577707 - Method 1478402379 - NamedType 1939652121" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demande de déblocage commande %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Afk FrontDeskValidation Mgt - Method CreateDdeDeblocage - NamedType LblDde</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 815577707 - Method 53462367 - NamedType 3569009679" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The document is still in draft</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Afk FrontDeskValidation Mgt - Method ModifyBlockingStatus - NamedType ErrDocNonTraite</note>
         </trans-unit>
         <trans-unit id="Codeunit 740950900 - Method 491525128 - NamedType 3810525201" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cette facture ne peut pas être modifiée car elle provient d'un document MFiles</source>

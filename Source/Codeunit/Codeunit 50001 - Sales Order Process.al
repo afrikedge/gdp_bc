@@ -180,6 +180,8 @@ codeunit 50001 "Sales Order Process"
     end;
 
     local procedure ValidationStock(var SalesH: Record "Sales Header")
+    var
+        DdeDelocageMgt: Codeunit "Afk FrontDeskValidation Mgt";
     begin
         if BloquerCde(SalesH) then begin
             SalesH."Delivery Status" := SalesH."Delivery Status"::Bloquee;
@@ -188,8 +190,8 @@ codeunit 50001 "Sales Order Process"
 
 
             //JN0001  ********************
-            Commit;//*********************
-            CRMInteg.CreateDdeDeblocage(SalesH."No.", SalesH."Sell-to Customer No.");
+            //Commit;//*********************
+            DdeDelocageMgt.CreateDdeDeblocage(SalesH);
             //****************************
             //****************************
         end else begin
@@ -637,7 +639,7 @@ codeunit 50001 "Sales Order Process"
 
                             Loc2.Get(SalesLine1."Location Code");
                             Item1.CalcFields("Parent Category");
-                            Loc2.TestField(Loc2."Item Category Code", Item1."Parent Category");
+                            //Loc2.TestField(Loc2."Item Category Code", Item1."Parent Category");
 
                             exit(true);
                         end;
@@ -730,7 +732,8 @@ codeunit 50001 "Sales Order Process"
 
                                 //Controle des quantités à expédier en fonction des qtés livrées
                                 rep := 0;
-                                if Item1."Item Category Code" = 'PBL' then begin
+                                Item1.CalcFields("Parent Category");
+                                if Item1."Parent Category" = 'PBL' then begin
 
                                     //IF (Loc1."Location Type"=Loc1."Location Type"::Expedition) THEN
                                     //  ERROR(Text033);
@@ -756,7 +759,7 @@ codeunit 50001 "Sales Order Process"
                                                 until detailBL.Next = 0;
                                         until enteteBL.Next = 0;
                                 end
-                                else if (Item1."Item Category Code" = 'GPL') or (Item1."Item Category Code" = 'LUB') then begin
+                                else if (Item1."Parent Category" = 'GPL') or (Item1."Parent Category" = 'LUB') then begin
                                     AdjustH.Reset;
                                     AdjustH.SetRange(AdjustH."Order No.", SalesLine1."Document No.");
                                     if AdjustH.FindSet then

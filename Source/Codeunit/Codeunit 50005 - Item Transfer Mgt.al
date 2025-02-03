@@ -106,6 +106,7 @@ codeunit 50005 "Item Transfer Mgt"
 
                 LineExits := true;
 
+
                 //JN141021 : Modif transfert PBL afin de gerer les op sans valorisation (génération ecritures comptables)
                 if (ItemAdj."Item Category Code" = AddOnsSetup."PBL Category Code") then
                     TransfertItemReclass(ItemJnlPostLine, ItemAdj."No.", ItemAdj."Posting Date", AdjustLine."Item No.",

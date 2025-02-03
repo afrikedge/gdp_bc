@@ -466,5 +466,13 @@ table 50038 "Posted Adjustment Line"
         if "Item No." <> Item1."No." then
             Item1.Get("Item No.");
     end;
+
+    procedure GetParentCategory(): Code[20]
+    var
+        ItemCat: Record "Item Category";
+    begin
+        if (ItemCat.Get(Rec."Item Category Code")) then
+            exit(ItemCat."Parent Category");
+    end;
 }
 

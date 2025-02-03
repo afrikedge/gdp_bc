@@ -3,11 +3,11 @@ tableextension 50014 "A01 Purchase Line" extends "Purchase Line"
     // 121017  MFiles Interface Mgt
     fields
     {
-        modify("Location Code")
-        {
-            TableRelation = Location WHERE("Use As In-Transit" = CONST(false),
-                                            "Item Category Code" = FIELD("Item Category Code"));
-        }
+        // modify("Location Code")
+        // {
+        //     TableRelation = Location WHERE("Use As In-Transit" = CONST(false),
+        //                                     "Item Category Code" = FIELD("Item Category Code"));
+        // }
 
         //Unsupported feature: Property Insertion (Editable) on ""Line Amount"(Field 103)".
 
@@ -859,6 +859,14 @@ tableextension 50014 "A01 Purchase Line" extends "Purchase Line"
     procedure AFK_SetIsSolderCommande(val: Boolean)
     begin
         AFK_IsSolderCommande := val;
+    end;
+
+    procedure GetParentCategory(): Code[20]
+    var
+        ItemCat: Record "Item Category";
+    begin
+        if (ItemCat.Get(Rec."Item Category Code")) then
+            exit(ItemCat."Parent Category");
     end;
 
     var

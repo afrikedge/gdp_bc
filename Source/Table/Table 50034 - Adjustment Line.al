@@ -45,7 +45,7 @@ table 50034 "Adjustment Line"
                 AdjustHeader.TestField("Item Category Code");
 
                 GetItem1();
-                Item1.TestField("Item Category Code", AdjustHeader."Item Category Code");
+                //Item1.TestField("Item Category Code", AdjustHeader."Item Category Code");
                 Item1.TestField(Blocked, false);
                 Item1.TestField("Gen. Prod. Posting Group");
                 if Item1.Type = Item1.Type::Inventory then begin
@@ -68,9 +68,11 @@ table 50034 "Adjustment Line"
         field(7; "Location Code"; Code[10])
         {
             Caption = 'Location Code';
-            TableRelation = Location WHERE("Use As In-Transit" = CONST(false),
-                                            "Item Category Code" = FIELD("Item Category Code"),
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(false),),
                                             "Location Type" = CONST(" "));
+            // TableRelation = Location WHERE("Use As In-Transit" = CONST(false),
+            // "Item Category Code" = FIELD("Item Category Code"),
+            // "Location Type" = CONST(" "));
 
             trigger OnValidate()
             begin
@@ -80,8 +82,8 @@ table 50034 "Adjustment Line"
                 AFK_SecMgt.CheckWarehouseUser("Location Code");
 
                 //IF Rec."Document Type" IN [Rec."Document Type"::Borrow,Rec."Document Type"::Loan,Rec."Document Type"::Exchange] THEN
-                if Loc1.Get("Location Code") then
-                    Loc1.TestField(Loc1."Item Category Code", Rec."Item Category Code");
+                // if Loc1.Get("Location Code") then
+                //     Loc1.TestField(Loc1."Item Category Code", Rec."Item Category Code");
             end;
         }
         field(11; Description; Text[50])
@@ -288,8 +290,9 @@ table 50034 "Adjustment Line"
         field(80; "Exchange Transit Location"; Code[10])
         {
             Caption = 'Exchange Transit Location';
-            TableRelation = Location WHERE("Use As In-Transit" = CONST(false),
-                                            "Item Category Code" = FIELD("Item Category Code"));
+            // TableRelation = Location WHERE("Use As In-Transit" = CONST(false),
+            //                                 "Item Category Code" = FIELD("Item Category Code"));
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(false));
         }
         field(81; "Exch Transit Transfer Fee"; Boolean)
         {
@@ -587,8 +590,16 @@ table 50034 "Adjustment Line"
         if "Document No." <> '' then begin
             GetDocumentHeader;
             AdjustHeader.TestField(AdjustHeader."Item Category Code");
-            "Item Category Code" := AdjustHeader."Item Category Code";
+            //"Item Category Code" := AdjustHeader."Item Category Code";
         end;
+    end;
+
+    procedure GetParentCategory(): Code[20]
+    var
+        ItemCat: Record "Item Category";
+    begin
+        if (ItemCat.Get(Rec."Item Category Code")) then
+            exit(ItemCat."Parent Category");
     end;
 }
 

@@ -464,7 +464,7 @@ codeunit 50035 "EventsSubscribers Table"
         IF Item.Type = Item.Type::Inventory THEN
             IF AfkLoc.GET(SalesLine."Location Code") THEN begin
                 Item.CalcFields("Parent Category");
-                Item.TESTFIELD("Parent Category", AfkLoc."Item Category Code");
+                //Item.TESTFIELD("Parent Category", AfkLoc."Item Category Code");
             end;
 
 

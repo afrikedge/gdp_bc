@@ -3,11 +3,11 @@ tableextension 50012 "A02 Sales Line" extends "Sales Line"
     // //170216 Redevence Fees Mgt
     fields
     {
-        modify("Location Code")
-        {
-            TableRelation = Location WHERE("Use As In-Transit" = CONST(false),
-                                            "Item Category Code" = FIELD("Item Category Code"));
-        }
+        // modify("Location Code")
+        // {
+        //     TableRelation = Location WHERE("Use As In-Transit" = CONST(false),
+        //                                     "Item Category Code" = FIELD("Item Category Code"));
+        // }
 
         //Unsupported feature: Property Insertion (Editable) on ""Line Amount"(Field 103)".
 
@@ -659,6 +659,13 @@ tableextension 50012 "A02 Sales Line" extends "Sales Line"
         }
     }
 
+    procedure GetParentCategory(): Code[20]
+    var
+        ItemCat: Record "Item Category";
+    begin
+        if (ItemCat.Get(Rec."Item Category Code")) then
+            exit(ItemCat."Parent Category");
+    end;
 
     //Unsupported feature: Code Modification on "OnDelete".
 

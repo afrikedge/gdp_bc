@@ -21,7 +21,7 @@ pageextension 50011 pageextension70000090 extends "Sales Invoice Subform"
         AFK_IsAMSA := AFK_SalesProcess.IsCdeAMSA(SalesHeader);
         CanEditPrices := TRUE;
         IF ((NOT AFK_SalesProcess.IsCdeJIRAMA(SalesHeader)
-          AND (Rec."Item Category Code" = AddOnSetup."PBL Category Code"))) THEN
+          AND (Rec.GetParentCategory() = AddOnSetup."PBL Category Code"))) THEN
             CanEditPrices := FALSE;
 
         AFK_CanUpdatePrice := AFK_SecMgt.CanUpdatePrices;

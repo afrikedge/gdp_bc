@@ -690,7 +690,7 @@ codeunit 50022 "Provisions Item Mgt"
         AddOnSetup.TestField(AddOnSetup."Transport Item Category");
         AddOnSetup.TestField(AddOnSetup."Provisions LPSA");
 
-        if LigneFV."Item Category Code" <> AddOnSetup."Transport Item Category" then exit;
+        if LigneFV.GetParentCategory() <> AddOnSetup."Transport Item Category" then exit;
 
 
         Cust2.Get(EnteteFV."Sell-to Customer No.");
