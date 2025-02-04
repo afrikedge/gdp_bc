@@ -1,6 +1,5 @@
 codeunit 50033 "EventsSubscribers Page"
 {
-
     [EventSubscriber(ObjectType::Page, Page::"Document Attachment Factbox", 'OnBeforeDrillDown', '', true, true)]
     local procedure DocumentAttachmentFactbox_OnBeforeDrillDown(DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef)
     var
@@ -13,6 +12,4 @@ codeunit 50033 "EventsSubscribers Page"
                 RecRef.GetTable(VendInvoice);
         end;
     end;
-
-
 }

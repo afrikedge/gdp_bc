@@ -400,9 +400,12 @@ codeunit 50035 "EventsSubscribers Table"
     local procedure SalesHeader_OnBeforeSetSecurityFilterOnRespCenter(var SalesHeader: Record "Sales Header"; var IsHandled: Boolean)
     var
         Loc: Record Location;
+        SecMgt: Codeunit "Security Mgt";
         AFK_ERR003: Label 'Vous ne devez pas seléctionner un magasin de ce type';
     begin
-        SalesHeader.SETRANGE("User ID", USERID);
+        SecMgt.SetFiltresCentresGestion(SalesHeader);
+        //SalesHeader.SETRANGE("User ID", USERID);
+        IsHandled := true;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnDeleteOnBeforeTestStatusOpen', '', true, true)]
@@ -464,7 +467,7 @@ codeunit 50035 "EventsSubscribers Table"
         IF Item.Type = Item.Type::Inventory THEN
             IF AfkLoc.GET(SalesLine."Location Code") THEN begin
                 Item.CalcFields("Parent Category");
-                Item.TESTFIELD("Parent Category", AfkLoc."Item Category Code");
+                //Item.TESTFIELD("Parent Category", AfkLoc."Item Category Code");
             end;
 
 
@@ -863,8 +866,12 @@ codeunit 50035 "EventsSubscribers Table"
     [EventSubscriber(ObjectType::Table, Database::"Sales Invoice Header", 'OnBeforeSetSecurityFilterOnRespCenter', '', true, true)]
     local procedure SalesInvoiceHeader_OnBeforeSetSecurityFilterOnRespCenter(var SalesInvoiceHeader: Record "Sales Invoice Header"; var IsHandled: Boolean)
     var
+        SecMgt: Codeunit "Security Mgt";
     begin
-        SalesInvoiceHeader.SETRANGE("User ID", USERID);
+        // SalesInvoiceHeader.SETRANGE("User ID", USERID);
+        SecMgt.SetFiltresCentresGestion(SalesInvoiceHeader);
+        // //SalesInvoiceHeader.SETRANGE("User ID", USERID);
+        IsHandled := true;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Invoice Line", 'OnAfterInitFromSalesLine', '', true, true)]
@@ -885,8 +892,12 @@ codeunit 50035 "EventsSubscribers Table"
     [EventSubscriber(ObjectType::Table, Database::"Sales Cr.Memo Header", 'OnBeforeSetSecurityFilterOnRespCenter', '', true, true)]
     local procedure SalesCrMemoHeader_OnBeforeSetSecurityFilterOnRespCenter(var SalesCrMemoHeader: Record "Sales Cr.Memo Header"; var IsHandled: Boolean)
     var
+        SecMgt: Codeunit "Security Mgt";
     begin
-        SalesCrMemoHeader.SETRANGE("User ID", USERID);
+        //SalesCrMemoHeader.SETRANGE("User ID", USERID);
+        SecMgt.SetFiltresCentresGestion(SalesCrMemoHeader);
+        //SalesInvoiceHeader.SETRANGE("User ID", USERID);
+        IsHandled := true;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Cr.Memo Line", 'OnAfterInitFromSalesLine', '', true, true)]
@@ -1075,6 +1086,21 @@ codeunit 50035 "EventsSubscribers Table"
                 IF PurchaseHeader."Prepayment %" = 0 THEN
                     PurchaseHeader.TESTFIELD(Status, PurchaseHeader.Status::Released);
     end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnBeforeInitHeaderLocactionCode', '', true, true)]
+    local procedure SalesLine_OnBeforeInitHeaderLocactionCode(var SalesLine: Record "Sales Line"; var IsHandled: Boolean)
+    var
+    begin
+        if (SalesLine.IsServiceItem()) then
+            IsHandled := true;
+    end;
+
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeInitHeaderLocactionCode(var SalesLine: Record "Sales Line"; var IsHandled: Boolean)
+    begin
+    end;
+
 
 
 

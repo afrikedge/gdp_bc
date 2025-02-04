@@ -99,6 +99,13 @@ tableextension 50027 "A02 Sales Invoice Line" extends "Sales Invoice Line"
         // {
         // }
     }
+    procedure GetParentCategory(): Code[20]
+    var
+        ItemCat: Record "Item Category";
+    begin
+        if (ItemCat.Get(Rec."Item Category Code")) then
+            exit(ItemCat."Parent Category");
+    end;
 
     //Unsupported feature: Variable Insertion (Variable: AFKItem1) (VariableCollection) on "InitFromSalesLine(PROCEDURE 12)".
 

@@ -436,6 +436,63 @@ codeunit 50016 "Security Mgt"
         ExternalUser.Modify();
     end;
 
+    procedure SetFiltresCentresGestion(var SalesHeader: record "Sales Header")
+    var
+        FiltreCG: Text;
+    begin
+        IF GetSalesFilter() <> '' THEN BEGIN
+
+            FiltreCG := GetFiltresCentresGestion;
+            IF FiltreCG <> '' THEN BEGIN
+                SalesHeader.FILTERGROUP(2);
+                SalesHeader.SETFILTER("Responsibility Center", FiltreCG);
+                SalesHeader.FILTERGROUP(0);
+            END;
+        END;
+    end;
+
+    procedure SetFiltresCentresGestion(var SalesHeader: record "Sales Cr.Memo Header")
+    var
+        FiltreCG: Text;
+    begin
+        IF GetSalesFilter() <> '' THEN BEGIN
+            FiltreCG := GetFiltresCentresGestion;
+            IF FiltreCG <> '' THEN BEGIN
+                SalesHeader.FILTERGROUP(2);
+                SalesHeader.SETFILTER("Responsibility Center", FiltreCG);
+                SalesHeader.FILTERGROUP(0);
+            END;
+        END;
+    end;
+
+    procedure SetFiltresCentresGestion(var SalesHeader: record "Sales Invoice Header")
+    var
+        FiltreCG: Text;
+    begin
+        IF GetSalesFilter() <> '' THEN BEGIN
+            FiltreCG := GetFiltresCentresGestion;
+            IF FiltreCG <> '' THEN BEGIN
+                SalesHeader.FILTERGROUP(2);
+                SalesHeader.SETFILTER("Responsibility Center", FiltreCG);
+                SalesHeader.FILTERGROUP(0);
+            END;
+        END;
+    end;
+
+    procedure GetSalesFilter(): Code[10]
+    var
+        CompanyInfo: record "Company Information";
+        SalesUserRespCenter: Code[10];
+    begin
+        CompanyInfo.GetRecordOnce();
+        SalesUserRespCenter := CompanyInfo."Responsibility Center";
+        //UserLocation := CompanyInfo."Location Code";
+        IF UserSetup.GET(UserId) AND (UserId <> '') THEN
+            IF UserSetup."Sales Resp. Ctr. Filter" <> '' THEN
+                SalesUserRespCenter := UserSetup."Sales Resp. Ctr. Filter";
+        exit(SalesUserRespCenter);
+    end;
+
     var
         AddOnSetup: Record "AddOn Setup";
         CryptoMgt: Codeunit "Cryptography Management";

@@ -9,7 +9,7 @@ tableextension 50002 "A02 Location" extends Location
         field(50001; "Item Category Code"; Code[10])
         {
             Caption = 'Item Category Code';
-            TableRelation = "Item Category";
+            //TableRelation = "Item Category";
         }
         field(50004; "Transfer Item Transit"; Boolean)
         {

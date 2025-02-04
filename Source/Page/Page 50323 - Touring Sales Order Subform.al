@@ -52,7 +52,7 @@ page 50323 "Touring Sales Order Subform"
                         SalesH.FilterGroup(0);
 
 
-                        SalesH.SetRange(SalesH."Requested Delivery Date", Today, CalcDate('<+1D>', Today));
+                        //SalesH.SetRange(SalesH."Requested Delivery Date", Today, CalcDate('<+1D>', Today));
 
 
                         /*

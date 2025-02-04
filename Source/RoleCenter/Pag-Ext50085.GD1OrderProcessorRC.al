@@ -940,6 +940,17 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
                 }
 
             }
+            group(AfkFrontDesk)
+            {
+                Caption = 'Afk Front Desk';
+                Image = Sales;
+                action(AfkExternalUsers)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Utilisateurs externes';
+                    RunObject = Page "Afk External Users";
+                }
+            }
         }
 
     }

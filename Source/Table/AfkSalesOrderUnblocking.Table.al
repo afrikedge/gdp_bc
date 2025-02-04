@@ -22,7 +22,7 @@ table 50102 "Afk SalesOrder Unblocking"
         {
             Caption = 'Object';
         }
-        field(5; "Approval Status"; Enum "Afk Approval Mode")
+        field(5; "Approval Status"; Enum "Afk CRM Approval Status")
         {
             Caption = 'Approval Status';
         }
@@ -87,6 +87,11 @@ table 50102 "Afk SalesOrder Unblocking"
             Caption = 'Unblocking justified';
         }
         field(21; "Created By"; Code[50])
+        {
+            Caption = 'Created By';
+            TableRelation = "Afk FrontDesk User";
+        }
+        field(22; "Modified By"; Code[50])
         {
             Caption = 'Created By';
             TableRelation = "Afk FrontDesk User";

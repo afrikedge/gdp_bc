@@ -52,7 +52,7 @@ page 50227 "Prestataire GDP-RMAG"
                 Image = Item;
                 RunObject = Page "Item List";
                 RunPageView = WHERE(Type = CONST(Inventory),
-                                    "Item Category Code" = CONST('LUB'));
+                                    "Parent Category" = CONST('LUB'));
             }
             action("Validation Factures fournisseur")
             {

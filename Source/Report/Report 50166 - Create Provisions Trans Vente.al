@@ -5,20 +5,20 @@ report 50166 "Create Provisions Trans Vente"
 
     dataset
     {
-        dataitem("Sales Invoice Header";"Sales Invoice Header")
+        dataitem("Sales Invoice Header"; "Sales Invoice Header")
         {
             DataItemTableView = SORTING("Posting Date") ORDER(Ascending);
-            dataitem("Sales Invoice Line";"Sales Invoice Line")
+            dataitem("Sales Invoice Line"; "Sales Invoice Line")
             {
-                DataItemLink = "Document No."=FIELD("No.");
-                DataItemTableView = SORTING("Document No.","Line No.") ORDER(Ascending);
+                DataItemLink = "Document No." = FIELD("No.");
+                DataItemTableView = SORTING("Document No.", "Line No.") ORDER(Ascending);
 
                 trigger OnAfterGetRecord()
                 begin
 
-                    if ("Sales Invoice Line"."Item Category Code"=AddOnSetup."Transport Item Category") then
-                      ProvisionsItemMgt.TraiterProvisionTransportVente("Sales Invoice Header",ModeleFeuille,NomFeuille,PostingDate,
-                        LastDocNo,DateDeb,DateFin,LineNum,"Sales Invoice Line");
+                    if ("Sales Invoice Line".GetParentCategory() = AddOnSetup."Transport Item Category") then
+                        ProvisionsItemMgt.TraiterProvisionTransportVente("Sales Invoice Header", ModeleFeuille, NomFeuille, PostingDate,
+                          LastDocNo, DateDeb, DateFin, LineNum, "Sales Invoice Line");
                 end;
 
                 trigger OnPostDataItem()
@@ -33,26 +33,26 @@ report 50166 "Create Provisions Trans Vente"
                 CreateEntry: Boolean;
             begin
 
-                    BesoinNo := BesoinNo + 1;
-                    Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
+                BesoinNo := BesoinNo + 1;
+                Window.Update(1,
+                Round(BesoinNo / NbreTotalLignes * 10000, 1));
 
-                    "Sales Invoice Header".CalcFields("Sales Invoice Header".Cancelled);
-                    if "Sales Invoice Header".Cancelled then CurrReport.Skip;
-
-
-                    Clear(NoSeriesMgt);
-
-                    if LastDocNo='' then
-                        LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",false);
-                    //END ELSE BEGIN
-                    //    LastDocNo := INCSTR(LastDocNo);
-                    //END;
+                "Sales Invoice Header".CalcFields("Sales Invoice Header".Cancelled);
+                if "Sales Invoice Header".Cancelled then CurrReport.Skip;
 
 
-                   //CreateEntry := GLMgt.TraiterProvisionCdeAchat("Purchase Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+                Clear(NoSeriesMgt);
 
-                   //IF CreateEntry THEN
+                if LastDocNo = '' then
+                    LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series", GenJrnLine."Posting Date", false);
+                //END ELSE BEGIN
+                //    LastDocNo := INCSTR(LastDocNo);
+                //END;
+
+
+                //CreateEntry := GLMgt.TraiterProvisionCdeAchat("Purchase Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+
+                //IF CreateEntry THEN
             end;
 
             trigger OnPostDataItem()
@@ -71,26 +71,26 @@ report 50166 "Create Provisions Trans Vente"
                 AddOnSetup.Get;
                 //AddOnSetup.TESTFIELD(AddOnSetup."Invoice To Receive Account");
 
-                GenJrnTableND.Get(ModeleFeuille,NomFeuille);
+                GenJrnTableND.Get(ModeleFeuille, NomFeuille);
 
-                if DateDeb=0D then Error(Text008);
-                if DateFin=0D then Error(Text008);
+                if DateDeb = 0D then Error(Text008);
+                if DateFin = 0D then Error(Text008);
 
                 "Sales Invoice Header".SetCurrentKey("Sales Invoice Header"."Posting Date");
-                "Sales Invoice Header".SetRange("Sales Invoice Header"."Posting Date",DateDeb,DateFin);
+                "Sales Invoice Header".SetRange("Sales Invoice Header"."Posting Date", DateDeb, DateFin);
 
 
                 GenJrnLine.Reset;
-                GenJrnLine.SetRange("Journal Template Name",ModeleFeuille);
-                GenJrnLine.SetRange("Journal Batch Name",NomFeuille);
-                if GenJrnLine.FindFirst then Error(Text001,NomFeuille);
+                GenJrnLine.SetRange("Journal Template Name", ModeleFeuille);
+                GenJrnLine.SetRange("Journal Batch Name", NomFeuille);
+                if GenJrnLine.FindFirst then Error(Text001, NomFeuille);
 
-                BesoinNo :=0;
+                BesoinNo := 0;
 
                 Window.Open(Text008);
 
-                LineNum:=0;
-                 NbreTotalLignes := "Sales Invoice Header".Count;
+                LineNum := 0;
+                NbreTotalLignes := "Sales Invoice Header".Count;
 
                 GenJrnTableND.TestField("No. Series");
             end;
@@ -104,11 +104,11 @@ report 50166 "Create Provisions Trans Vente"
         {
             area(content)
             {
-                field(DateDeb;DateDeb)
+                field(DateDeb; DateDeb)
                 {
                     Caption = 'Starting Date';
                 }
-                field(DateFin;DateFin)
+                field(DateFin; DateFin)
                 {
                     Caption = 'Ending Date';
 
@@ -117,16 +117,16 @@ report 50166 "Create Provisions Trans Vente"
                         PostingDate := DateFin;
                     end;
                 }
-                field(PostingDate;PostingDate)
+                field(PostingDate; PostingDate)
                 {
                     Caption = 'Posting Date';
                 }
-                field(ModeleFeuille;ModeleFeuille)
+                field(ModeleFeuille; ModeleFeuille)
                 {
                     Caption = 'Journal Template';
                     Visible = false;
                 }
-                field(NomFeuille;NomFeuille)
+                field(NomFeuille; NomFeuille)
                 {
                     Caption = 'Gen. Journal';
                     Visible = false;
@@ -137,11 +137,10 @@ report 50166 "Create Provisions Trans Vente"
                         GenJournalBatchPage: Page "General Journal Batches";
                     begin
                         GenJournalBatch.Reset;
-                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name",ModeleFeuille);
-                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then
-                        begin
-                          NomFeuille := GenJournalBatch.Name;
-                          //NewFASubLocationName := FASubLoc.Name;
+                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name", ModeleFeuille);
+                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then begin
+                            NomFeuille := GenJournalBatch.Name;
+                            //NewFASubLocationName := FASubLoc.Name;
                         end;
                     end;
                 }
@@ -164,7 +163,7 @@ report 50166 "Create Provisions Trans Vente"
         //AddOnSetup.TESTFIELD(AddOnSetup."Prov Transport Vente");
         AddOnSetup.TestField(AddOnSetup."Transport Item Category");
         ModeleFeuille := AddOnSetup."Provision Tmpl Journal";
-        PostingDate:=WorkDate;
+        PostingDate := WorkDate;
     end;
 
     var
@@ -191,10 +190,10 @@ report 50166 "Create Provisions Trans Vente"
         Text010: Label 'Veuillez entrer la date fin';
         ProvisionsItemMgt: Codeunit "Provisions Item Mgt";
 
-    procedure SetFeuille(CodeModele1: Code[10];CodeFeuille1: Code[10])
+    procedure SetFeuille(CodeModele1: Code[10]; CodeFeuille1: Code[10])
     begin
-        ModeleFeuille:=CodeModele1;
-        NomFeuille:=CodeFeuille1;
+        ModeleFeuille := CodeModele1;
+        NomFeuille := CodeFeuille1;
     end;
 }
 

@@ -285,7 +285,7 @@ table 50033 "Adjustment Header"
         {
             Caption = 'Item Category Code';
             NotBlank = true;
-            TableRelation = "Item Category";
+            //TableRelation = "Item Category";
 
             trigger OnValidate()
             begin
@@ -800,17 +800,17 @@ table 50033 "Adjustment Header"
 
     local procedure UpdateItemCategory()
     begin
-        SalesLine.Reset;
-        SalesLine.SetRange("Document Type", "Document Type");
-        SalesLine.SetRange("Document No.", "No.");
-        SalesLine.LockTable;
-        if SalesLine.FindSet then
-            repeat
-                if SalesLine."Item Category Code" <> Rec."Item Category Code" then begin
-                    SalesLine."Item Category Code" := Rec."Item Category Code";
-                    SalesLine.Modify;
-                end;
-            until SalesLine.Next = 0;
+        // SalesLine.Reset;
+        // SalesLine.SetRange("Document Type", "Document Type");
+        // SalesLine.SetRange("Document No.", "No.");
+        // SalesLine.LockTable;
+        // if SalesLine.FindSet then
+        //     repeat
+        //         if SalesLine."Item Category Code" <> Rec."Item Category Code" then begin
+        //             SalesLine."Item Category Code" := Rec."Item Category Code";
+        //             SalesLine.Modify;
+        //         end;
+        //     until SalesLine.Next = 0;
     end;
 
     local procedure UpdateLinesTransfer()

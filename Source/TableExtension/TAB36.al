@@ -629,6 +629,8 @@ tableextension 50011 "A02 Sales Header" extends "Sales Header"
     //     MESSAGE(AFK_Text001);
     // end;
 
+
+
     var
         Loc: Record "14";
 

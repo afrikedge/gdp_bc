@@ -524,7 +524,8 @@ codeunit 50019 "GL Mgt"
         BestSalesPrice: Record "Sales Price";
         SalesPricesMgt: codeunit "Sales Price Calc. Mgt.";
         Item: record Item;
-        //BestSalesPriceFound: Boolean;
+        FromSalesPrice: Record "Sales Price";
+        CustomBestSalesPriceFound: Boolean;
         IsHandled: Boolean;
     begin
         //*************************************************************
@@ -532,20 +533,18 @@ codeunit 50019 "GL Mgt"
         //*************************************************************
 
 
-        //Dernier prix spécifique
-        SalesPrice.RESET;
         SalesPrice.SETCURRENTKEY("Sales Type", "Sales Code", "Item No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity");
         SalesPrice.SETRANGE(SalesPrice."Sales Type", SalesPrice."Sales Type"::Customer);
         IF SalesPrice.FINDSET THEN
             REPEAT
                 IF SalesPrice."Starting Date" >= BestSalesPrice."Starting Date" THEN BEGIN
                     BestSalesPrice := SalesPrice;
-                    FoundSalesPrice := TRUE;
+                    CustomBestSalesPriceFound := TRUE;
                 END;
             UNTIL SalesPrice.NEXT = 0;
 
         //Dernier prix de groupe
-        IF NOT FoundSalesPrice THEN BEGIN
+        IF NOT CustomBestSalesPriceFound THEN BEGIN
             SalesPrice.RESET;
             SalesPrice.SETCURRENTKEY("Sales Type", "Sales Code", "Item No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity");
             SalesPrice.SETRANGE(SalesPrice."Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
@@ -553,14 +552,14 @@ codeunit 50019 "GL Mgt"
                 REPEAT
                     IF SalesPrice."Starting Date" >= BestSalesPrice."Starting Date" THEN BEGIN
                         BestSalesPrice := SalesPrice;
-                        FoundSalesPrice := TRUE;
+                        CustomBestSalesPriceFound := TRUE;
                     END;
                 UNTIL SalesPrice.NEXT = 0;
         END;
 
 
         //Dernier prix Tous
-        IF NOT FoundSalesPrice THEN BEGIN
+        IF NOT CustomBestSalesPriceFound THEN BEGIN
             SalesPrice.RESET;
             SalesPrice.SETCURRENTKEY("Sales Type", "Sales Code", "Item No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity");
             SalesPrice.SETRANGE(SalesPrice."Sales Type", SalesPrice."Sales Type"::"All Customers");
@@ -568,14 +567,14 @@ codeunit 50019 "GL Mgt"
                 REPEAT
                     IF SalesPrice."Starting Date" >= BestSalesPrice."Starting Date" THEN BEGIN
                         BestSalesPrice := SalesPrice;
-                        FoundSalesPrice := TRUE;
+                        CustomBestSalesPriceFound := TRUE;
                     END;
                 UNTIL SalesPrice.NEXT = 0;
         END;
 
         // No price found in agreement
         if Item.Get(SalesLine."No.") then;
-        if not FoundSalesPrice then begin
+        if not CustomBestSalesPriceFound then begin
             SalesPricesMgt.ConvertPriceToVAT(
               Item."Price Includes VAT", Item."VAT Prod. Posting Group",
               Item."VAT Bus. Posting Gr. (Price)", Item."Unit Price");
@@ -589,6 +588,7 @@ codeunit 50019 "GL Mgt"
         end;
 
         SalesPrice := BestSalesPrice;
+        FoundSalesPrice := CustomBestSalesPriceFound;
     end;
 
     local procedure ConvertPriceToUoM(UnitOfMeasureCode: Code[10]; var UnitPrice: Decimal; SalesLine: record "Sales Line")
