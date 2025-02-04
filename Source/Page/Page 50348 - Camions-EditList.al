@@ -6,6 +6,7 @@ page 50348 "Camions-EditList"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = pro_moyentransport;
+    CardPageId = "Truck Card";
 
     layout
     {
