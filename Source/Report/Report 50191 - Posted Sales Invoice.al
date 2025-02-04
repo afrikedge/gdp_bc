@@ -997,6 +997,9 @@ report 50191 "Posted Sales Invoice"
                         JobTaskNoLbl := '';
                     end;
 
+                    if Line.Quantity = 0 then
+                        CurrReport.Skip();
+
                     if JobNo <> '' then
                         JobNoLbl := JobNo2Lbl
                     else
