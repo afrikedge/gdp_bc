@@ -1,7 +1,7 @@
 report 50000 "Purchase Order"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Source/Report/Layout/Purchase Order.rdlc';
+    RDLCLayout = './Source/Report/Layout/Purchase Order.rdl';
     Caption = 'Order';
     PreviewMode = PrintLayout;
 

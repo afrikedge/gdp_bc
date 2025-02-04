@@ -982,6 +982,9 @@ report 50192 "Sales Invoice Soutage"
                         JobTaskNoLbl := '';
                     end;
 
+                    if Line.Quantity = 0 then
+                        CurrReport.Skip();
+
                     if JobNo <> '' then
                         JobNoLbl := JobNo2Lbl
                     else
