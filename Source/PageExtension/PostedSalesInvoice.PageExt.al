@@ -48,6 +48,30 @@ pageextension 50089 "Posted Sales Invoice" extends "Posted Sales Invoice"
                     Report.Run(50005, true, false, SalesInvRec);
                 end;
             }
+            action("Note debit")
+            {
+                // ToolTip = 'Note de debit';
+                Image = PrintForm;
+                Caption = 'Imprimer la Note de débit';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    SalesInvRec: Record "Sales Invoice Header";
+                    SalesInvReport: Report "Posted Sales Invoice";
+                begin
+                    SalesInvReport.SetIsDebitNote(true);
+
+                    SalesInvRec.SetRange("No.", Rec."No.");
+                    SalesInvRec.SetRange("Sell-to Customer No.", Rec."Sell-to Customer No.");
+                    SalesInvReport.SetTableView(SalesInvRec);
+                    SalesInvReport.Run();
+                    // Report.Run(, true, false, SalesInvRec);
+                end;
+            }
+
         }
     }
 }

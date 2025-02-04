@@ -1,7 +1,7 @@
 report 50049 "Sales  Cr Memo NC"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Source/Report/Layout/Sales  Cr Memo NC.rdlc';
+    RDLCLayout = './Source/Report/Layout/Sales Cr Memo NC.rdl';
     Caption = 'Sales - Credit Memo';
     Permissions = TableData "Sales Shipment Buffer" = rimd;
 
@@ -55,6 +55,106 @@ report 50049 "Sales  Cr Memo NC"
             {
             }
             column(TotalAmountLetter; TotalAmountLetter[1])
+            {
+            }
+            column(Due_Date; "Due Date")
+            {
+            }
+
+            column(Observations; Observations)
+            {
+            }
+            column(InvoicetitleLbl; InvoicetitleLbl)
+            {
+            }
+            column(ActivityLbl; ActivityLbl)
+            {
+            }
+            column(AgencyLbl; AgencyLbl)
+            {
+            }
+            column(DateLbl; DateLbl)
+            {
+            }
+            column(CustomerLbl; CustomerLbl)
+            {
+            }
+            column(DeliveryDepotLbl; DeliveryDepotLbl)
+            {
+            }
+            column(InvoiceNumberLbl; InvoiceNumberLbl)
+            {
+            }
+            column(ObservationsLbl; ObservationsLbl)
+            {
+            }
+            column(PaymentTermsLbl; PaymentTermsLbl)
+            {
+            }
+            column(DueDateLbl; DueDateLbl)
+            {
+            }
+            column(DesignationLbl; DesignationLbl)
+            {
+            }
+            column(ProductLbl; ProductLbl)
+            {
+            }
+            column(ProdRefLbl; ProdRefLbl)
+            {
+            }
+            column(ProductCodeLbl; ProductCodeLbl)
+            {
+            }
+            column(ProductUnitLbl; ProductUnitLbl)
+            {
+            }
+            column(QtyOrNbLbl; QtyOrNbLbl)
+            {
+            }
+            column(UnitPriceLbl; UnitPriceLbl)
+            {
+            }
+            column(AmountHTLbl; AmountHTLbl)
+            {
+            }
+            column(NetPayableLbl; NetPayableLbl)
+            {
+            }
+            column(InvoiceArrestedLbl; InvoiceArrestedLbl)
+            {
+            }
+            column(ForGalanaLbl; ForGalanaLbl)
+            {
+            }
+            column(NameLbl; NameLbl)
+            {
+            }
+            column(Date1Lbl; Date1Lbl)
+            {
+            }
+            column(Foot1; 'Siège social ' + CompanyInfo.Address)
+            {
+            }
+            column(Foot2; CompanyInfo."Post Code" + ' - ' + CompanyInfo.City)
+            {
+            }
+            column(Foot3; Foot3)
+            {
+            }
+            column(Foot4; 'S.A. au capital de AR ' + CompanyInfo."Stock Capital" + ' - ' + 'NIF : ' + CompanyInfo."Registration No.")
+            {
+            }
+            column(Foot5; 'R.C.S. : ' + CompanyInfo."Trade Register" + ' - ' + 'STAT : ' + CompanyInfo."Legal Form")
+            {
+            }
+            column(Foot6; 'Email : ' + CompanyInfo."E-Mail")
+            {
+            }
+            column(CompanyPicture; CompanyInfo.Picture)
+            {
+            }
+            column(DocumentNo; "No.")
             {
             }
             dataitem(CopyLoop; "Integer")
@@ -171,7 +271,7 @@ report 50049 "Sales  Cr Memo NC"
                     column(RespCent; "Sales Cr.Memo Header"."Responsibility Center")
                     {
                     }
-                    column(DocDt_SalesCrMemoHeader; Format("Sales Cr.Memo Header"."Document Date", 0, 4))
+                    column(DocDt_SalesCrMemoHeader; Format("Sales Cr.Memo Header"."Document Date"))
                     {
                     }
                     column(PriceInclVAT_SalesCrMemoHeader; "Sales Cr.Memo Header"."Prices Including VAT")
@@ -285,6 +385,12 @@ report 50049 "Sales  Cr Memo NC"
                         DataItemLinkReference = "Sales Cr.Memo Header";
                         DataItemTableView = SORTING("Document No.", "Line No.");
                         column(DocNo_SalesCrMemoLine; "Document No.")
+                        {
+                        }
+                        column(Lines; Lines)
+                        {
+                        }
+                        column(LineNumberText; LineNumberText)
                         {
                         }
                         column(LineAmt_SalesCrMemoLine; "Line Amount")
@@ -476,6 +582,13 @@ report 50049 "Sales  Cr Memo NC"
 
                         trigger OnAfterGetRecord()
                         begin
+                            Lines := 1;
+                            LineNumber := LineNumber + 1;
+                            if (LineNumber < 10) then
+                                LineNumberText := '0' + Format(LineNumber)
+                            else
+                                LineNumberText := Format(LineNumber);
+
                             NNC_TotalLineAmount += "Line Amount";
                             NNC_TotalAmountInclVat += "Amount Including VAT";
                             NNC_TotalInvDiscAmount += "Inv. Discount Amount";
@@ -517,6 +630,30 @@ report 50049 "Sales  Cr Memo NC"
                                 CurrReport.Break;
                             SetRange("Line No.", 0, "Line No.");
                             CurrReport.CreateTotals(Amount, "Amount Including VAT", "Inv. Discount Amount");
+                        end;
+                    }
+                    dataitem(LineFooter; "Integer")
+                    {
+                        DataItemTableView = sorting(Number);
+                        column(LinesFoot; Lines)
+                        {
+                        }
+                        column(LineNumberFoot; LineNumberText)
+                        {
+                        }
+                        trigger OnAfterGetRecord()
+                        begin
+                            Lines := 1;
+                            LineNumber := LineNumber + 1;
+                            if (LineNumber < 10) then
+                                LineNumberText := '0' + Format(LineNumber)
+                            else
+                                LineNumberText := Format(LineNumber);
+                        end;
+
+                        trigger OnPreDataItem()
+                        begin
+                            SetRange(Number, 1, 14 - LinesNumb);
                         end;
                     }
                     dataitem(VATCounter; "Integer")
@@ -767,8 +904,12 @@ report 50049 "Sales  Cr Memo NC"
                 CondPaiem: Record "Payment Terms";
             begin
                 //CurrReport.Language := Language.GetLanguageID("Language Code");
+                LineNumber := 0;
 
-                CompanyInfo.Get;
+                CompanyInfo.Get();
+
+                if CompanyInfos.Get() then
+                    Foot3 := CompanyInfos."Phone No." + ' - Fax : ' + CompanyInfos."Fax No.";
 
                 if RespCenter.Get("Responsibility Center") then begin
                     FormatAddr.RespCenter(CompanyAddr, RespCenter);
@@ -926,11 +1067,45 @@ report 50049 "Sales  Cr Memo NC"
 
     trigger OnPreReport()
     begin
+        CompanyInfo.Get();
+        CompanyInfo.CalcFields(Picture);
+
         if not CurrReport.UseRequestPage then
             InitLogInteraction;
     end;
 
     var
+        CompanyInfos: Record "Company Information";
+
+        Foot3: Text;
+        Lines: Integer;
+        LineNumber: Integer;
+        LinesNumb: Integer;
+        LineNumberText: Code[2];
+        InvoicetitleLbl: Label 'NOTE DE CREDIT';
+        ActivityLbl: Label 'ACTIVITY';
+        AgencyLbl: Label 'AGENCY';
+        DateLbl: Label 'DATE';
+        CustomerLbl: Label 'CUSTOMER';
+        DeliveryDepotLbl: Label 'DELIVERY DEPOT';
+        InvoiceNumberLbl: Label 'Document N°';
+        ObservationsLbl: Label 'OBSERVATIONS';
+        PaymentTermsLbl: Label 'Condition de paiement :';
+        DueDateLbl: Label 'Date d''écheance :';
+        DesignationLbl: Label 'DESIGNATION';
+        ProductLbl: Label 'ProduIt';
+        ProductCodeLbl: Label 'Code';
+        ProdRefLbl: Label 'REFERENCE PRODUIT';
+        ProductUnitLbl: Label 'Unité';
+        QtyOrNbLbl: Label 'QUANTITE ou NOMBRE';
+        UnitPriceLbl: Label 'PRIX UNITAIRE';
+        AmountHTLbl: Label 'MONTANT (HT)';
+        NetPayableLbl: Label 'TOTAL (TTC)';
+        InvoiceArrestedLbl: Label 'Avoir arrêtée à la somme de :';
+        ForGalanaLbl: Label 'POUR GALANA';
+        NameLbl: Label 'Nom :';
+        Date1Lbl: Label 'Date :';
+
         Text000: Label 'Salesperson';
         Text001: Label 'Total %1';
         Text002: Label 'Total %1 Incl. VAT';

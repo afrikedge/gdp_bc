@@ -560,7 +560,10 @@ report 50191 "Posted Sales Invoice"
             {
             }
 
-            column(InvoicetitleLbl; InvoicetitleLbl)
+            // column(InvoicetitleLbl; InvoicetitleLbl)
+            // {
+            // }
+            column(InvTitle; InvTitle)
             {
             }
             column(ActivityLbl; ActivityLbl)
@@ -651,6 +654,9 @@ report 50191 "Posted Sales Invoice"
             {
             }
             column(Date1Lbl; Date1Lbl)
+            {
+            }
+            column(ShipmentRef; ShipmentRef)
             {
             }
             dataitem(Line; "Sales Invoice Line")
@@ -1504,6 +1510,13 @@ report 50191 "Posted Sales Invoice"
 
                 LineNumber := 0;
 
+                if IsNoteDebit then
+                    InvTitle := DebitTitleLbl
+                else
+                    InvTitle := InvoicetitleLbl;
+
+                ShipmentRef := ReturnShipmentRef();
+
                 if RespCenter.Get(Header."Responsibility Center") then
                     Agency := RespCenter.Name;
 
@@ -1810,6 +1823,8 @@ report 50191 "Posted Sales Invoice"
         CalculatedExchRate: Decimal;
         PaymentInstructionsTxt: Text;
         ExchangeRateText: Text;
+        IsNoteDebit: Boolean;
+        InvTitle: Text;
         PrevLineAmount: Decimal;
         SalespersonLbl: Label 'Salesperson';
         CompanyInfoBankAccNoLbl: Label 'Account No.';
@@ -1875,6 +1890,7 @@ report 50191 "Posted Sales Invoice"
         IncludesGoodsAndServicesLbl: Label 'Sales invoice includes goods and services.';
 
         InvoicetitleLbl: Label 'INVOICE';
+        DebitTitleLbl: Label 'NOTE DE DEBIT';
         ActivityLbl: Label 'ACTIVITY';
         AgencyLbl: Label 'AGENCY';
         DateLbl: Label 'DATE';
@@ -1932,6 +1948,7 @@ report 50191 "Posted Sales Invoice"
         TotalInclVATText: Text[50];
         TotalSubTotal: Decimal;
         VATBaseLCY: Decimal;
+        ShipmentRef: Text;
         VATAmountLCY: Decimal;
         DisplayAssemblyInformation: Boolean;
         DisplayShipmentInformation: Boolean;
@@ -2352,5 +2369,19 @@ report 50191 "Posted Sales Invoice"
         if (pos >= 1) then
             Rep := DelStr(OriginString, pos, StrLen(ReplaceStr));
         exit(Rep);
+    end;
+
+    procedure SetIsDebitNote(Invoice: Boolean)
+    begin
+        IsNoteDebit := Invoice;
+    end;
+
+    local procedure ReturnShipmentRef(): Code[20]
+    var
+        ShipmentInv: Record "Shipment Invoiced";
+    begin
+        ShipmentInv.SetRange("Invoice No.", Header."No.");
+        if ShipmentInv.FindFirst() then
+            exit(ShipmentInv."Shipment No.");
     end;
 }

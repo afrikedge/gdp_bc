@@ -654,6 +654,9 @@ report 50192 "Sales Invoice Soutage"
             column(ValidatedByLbl; ValidatedByLbl)
             {
             }
+            column(Observations; Observations)
+            {
+            }
             dataitem(Line; "Sales Invoice Line")
             {
                 DataItemLink = "Document No." = field("No.");
@@ -836,6 +839,9 @@ report 50192 "Sales Invoice Soutage"
                 column(PricePer_Lbl; PricePerLbl)
                 {
                 }
+                column(Descrip; Descrip)
+                {
+                }
                 dataitem(ShipmentLine; "Sales Shipment Buffer")
                 {
                     DataItemTableView = sorting("Document No.", "Line No.", "Entry No.");
@@ -937,6 +943,9 @@ report 50192 "Sales Invoice Soutage"
 
                     if Type = Type::"G/L Account" then
                         "No." := '';
+
+                    // If Line.FindFirst() then
+                    //     Descrip := Line.Description + ' - ' + 'SOUTAGE';
 
                     OnBeforeLineOnAfterGetRecord(Header, Line);
 
@@ -1741,6 +1750,7 @@ report 50192 "Sales Invoice Soutage"
         LinesNumb: Integer;
         LineNumberText: Code[2];
         Foot3: Text;
+        Descrip: Text;
         PaymentTerm: Text[100];
         BankAccount: Text[30];
         BankName: Text[100];
