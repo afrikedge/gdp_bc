@@ -234,6 +234,12 @@ report 50197 "PreparationOrder Lub"
                 column(Quantity; Quantity)
                 {
                 }
+                column(Batch_Number; "Batch Number")
+                {
+                }
+                column(Expiration_Date; Format("Expiration Date"))
+                {
+                }
                 column(Unit_of_Measure_Code; "Unit of Measure Code")
                 {
                 }

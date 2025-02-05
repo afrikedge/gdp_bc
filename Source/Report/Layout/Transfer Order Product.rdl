@@ -825,11 +825,10 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Fields!Batch_Number.Value</Value>
                                                     <Style>
                                                       <FontFamily>Times New Roman</FontFamily>
                                                       <FontSize>8pt</FontSize>
-                                                      <Format>#,0.00;(#,0.00)</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -864,7 +863,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Fields!Expiration_Date.Value</Value>
                                                     <Style>
                                                       <FontFamily>Times New Roman</FontFamily>
                                                       <FontSize>8pt</FontSize>
@@ -4556,6 +4555,12 @@ End Function</Code>
         </Field>
         <Field Name="Weight_TransLineFormat">
           <DataField>Weight_TransLineFormat</DataField>
+        </Field>
+        <Field Name="Batch_Number">
+          <DataField>Batch_Number</DataField>
+        </Field>
+        <Field Name="Expiration_Date">
+          <DataField>Expiration_Date</DataField>
         </Field>
         <Field Name="DimText2">
           <DataField>DimText2</DataField>

@@ -303,6 +303,12 @@ report 50038 "Transfer Order Product"
                         column(Weight_TransLine; Article."Gross Weight" * Quantity)
                         {
                         }
+                        column(Batch_Number; "Batch Number")
+                        {
+                        }
+                        column(Expiration_Date; Format("Expiration Date"))
+                        {
+                        }
                         dataitem(DimensionLoop2; "Integer")
                         {
                             DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
