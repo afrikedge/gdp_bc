@@ -50133,6 +50133,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report NC ND Invoice - NamedType NameLbl</note>
         </trans-unit>
+        <trans-unit id="Report 175708258 - NamedType 714256421" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NOTE DE CREDIT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report NC ND Invoice - NamedType NClabel</note>
+        </trans-unit>
+        <trans-unit id="Report 175708258 - NamedType 1249671056" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NOTE DE DEBIT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report NC ND Invoice - NamedType NDLabel</note>
+        </trans-unit>
         <trans-unit id="Report 175708258 - NamedType 1869968017" size-unit="char" translate="yes" xml:space="preserve">
           <source>NET PAYABLE (TTC)</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -52793,6 +52803,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Sales Invoice - NamedType DateLbl</note>
         </trans-unit>
+        <trans-unit id="Report 2420212404 - NamedType 1147895256" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NOTE DE DEBIT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Sales Invoice - NamedType DebitTitleLbl</note>
+        </trans-unit>
         <trans-unit id="Report 2420212404 - NamedType 101999088" size-unit="char" translate="yes" xml:space="preserve">
           <source>DELIVERY DEPOT</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -53167,6 +53182,11 @@
           <source>Log Interaction</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Sales Invoice - Control LogInteractione - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2420212404 - Control 1909832434 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Note de débit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Sales Invoice - Control NoteDebit - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3373253667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delivery Note</source>
@@ -56953,10 +56973,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 2160707481" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ACTIVITY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType ActivityLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 898401247" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AGENCY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType AgencyLbl</note>
+        </trans-unit>
         <trans-unit id="Report 2335667834 - NamedType 976774305" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType AmountCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 2683966222" size-unit="char" translate="yes" xml:space="preserve">
+          <source>MONTANT (HT)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType AmountHTLbl</note>
         </trans-unit>
         <trans-unit id="Report 2335667834 - NamedType 175863088" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account No.</source>
@@ -56993,10 +57028,45 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType CompanyInfoVATRegNoCptnLbl</note>
         </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 76061626" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CUSTOMER</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType CustomerLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 282961201" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType Date1Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 1542941690" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DATE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType DateLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 101999088" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELIVERY DEPOT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType DeliveryDepotLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 3125672063" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DESIGNATION</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType DesignationLbl</note>
+        </trans-unit>
         <trans-unit id="Report 2335667834 - NamedType 1155328579" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType DocumentDateLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 481445982" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date d'écheance :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType DueDateLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 2634089383" size-unit="char" translate="yes" xml:space="preserve">
+          <source>POUR GALANA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType ForGalanaLbl</note>
         </trans-unit>
         <trans-unit id="Report 2335667834 - NamedType 3652186792" size-unit="char" translate="yes" xml:space="preserve">
           <source>Header Dimensions</source>
@@ -57008,6 +57078,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType InvDiscAmt_SalesCrMemoLineCptnLbl</note>
         </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 4269429291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Avoir arrêtée à la somme de :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType InvoiceArrestedLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 3451923796" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document N°</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType InvoiceNumberLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 3411184541" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NOTE DE CREDIT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType InvoicetitleLbl</note>
+        </trans-unit>
         <trans-unit id="Report 2335667834 - NamedType 1820188381" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Discount on VAT</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -57018,20 +57103,65 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType LineDimCptnLbl</note>
         </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 1981706351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nom :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType NameLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 1869968017" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TOTAL (TTC)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType NetPayableLbl</note>
+        </trans-unit>
         <trans-unit id="Report 2335667834 - NamedType 1457731004" size-unit="char" translate="yes" xml:space="preserve">
           <source>Credit Memo No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType No1_SalesCrMemoHeaderCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 1366325405" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OBSERVATIONS</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType ObservationsLbl</note>
         </trans-unit>
         <trans-unit id="Report 2335667834 - NamedType 4022464961" size-unit="char" translate="yes" xml:space="preserve">
           <source>Page %1 of %2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType PageCaptionCap</note>
         </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 2694455927" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Condition de paiement :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType PaymentTermsLbl</note>
+        </trans-unit>
         <trans-unit id="Report 2335667834 - NamedType 4256140942" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Return Receipt Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType PostedReceiptDateCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 3647455590" size-unit="char" translate="yes" xml:space="preserve">
+          <source>REFERENCE PRODUIT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType ProdRefLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 1775621264" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType ProductCodeLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 1104486499" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ProduIt</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType ProductLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 358192545" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unité</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType ProductUnitLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 2577878161" size-unit="char" translate="yes" xml:space="preserve">
+          <source>QUANTITE ou NOMBRE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType QtyOrNbLbl</note>
         </trans-unit>
         <trans-unit id="Report 2335667834 - NamedType 2869466049" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Date</source>
@@ -57122,6 +57252,11 @@
           <source>Unit Price</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType UnitPriceCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2335667834 - NamedType 2786556803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PRIX UNITAIRE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales  Cr Memo NC - NamedType UnitPriceLbl</note>
         </trans-unit>
         <trans-unit id="Report 2335667834 - NamedType 3729099473" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Discount Base Amount</source>
@@ -62593,6 +62728,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice - Action JIRAMA Sales Invoice - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2420212404 - Action 3956552522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Imprimer la Note de débit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice - Action Note debit - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2420212404 - Action 1953554049 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Sales Invoice Soutage</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -62612,6 +62752,11 @@
           <source>Print - JIRAMA Sales Invoice</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice List - Action JIRAMA Sales Invoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3923308998 - Action 3956552522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Imprimer la Note de débit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice List - Action Note debit - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3923308998 - Action 1953554049 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Sales Invoice Soutage</source>

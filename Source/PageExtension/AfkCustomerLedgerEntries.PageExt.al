@@ -1,5 +1,15 @@
 pageextension 50095 "Afk Customer Ledger Entries" extends "Customer Ledger Entries"
 {
+    layout
+    {
+        addafter(Description)
+        {
+            field("Customer Name2"; Rec."Customer Name2")
+            {
+                ApplicationArea = All;
+            }
+        }
+    }
 
     actions
     {
