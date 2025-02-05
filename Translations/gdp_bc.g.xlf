@@ -50133,6 +50133,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report NC ND Invoice - NamedType NameLbl</note>
         </trans-unit>
+        <trans-unit id="Report 175708258 - NamedType 714256421" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NOTE DE CREDIT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report NC ND Invoice - NamedType NClabel</note>
+        </trans-unit>
+        <trans-unit id="Report 175708258 - NamedType 1249671056" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NOTE DE DEBIT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report NC ND Invoice - NamedType NDLabel</note>
+        </trans-unit>
         <trans-unit id="Report 175708258 - NamedType 1869968017" size-unit="char" translate="yes" xml:space="preserve">
           <source>NET PAYABLE (TTC)</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -53172,6 +53182,11 @@
           <source>Log Interaction</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Sales Invoice - Control LogInteractione - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2420212404 - Control 1909832434 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Note de débit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Sales Invoice - Control NoteDebit - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3373253667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delivery Note</source>

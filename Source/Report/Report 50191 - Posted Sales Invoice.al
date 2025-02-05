@@ -1634,12 +1634,18 @@ report 50191 "Posted Sales Invoice"
                 group(Options)
                 {
                     Caption = 'Options';
+                    field(NoteDebit; IsNoteDebit)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Note de débit';
+                    }
                     field(LogInteractione; LogInteraction)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Log Interaction';
                         Enabled = LogInteractionEnable;
                         ToolTip = 'Specifies that interactions with the contact are logged.';
+                        Visible = false;
                     }
                     // field(DisplayAsmInformation; DisplayAssemblyInformation)
                     // {
@@ -2371,9 +2377,9 @@ report 50191 "Posted Sales Invoice"
         exit(Rep);
     end;
 
-    procedure SetIsDebitNote(Invoice: Boolean)
+    procedure SetIsDebitNote(Invoice1: Boolean)
     begin
-        IsNoteDebit := Invoice;
+        IsNoteDebit := Invoice1;
     end;
 
     local procedure ReturnShipmentRef(): Code[20]

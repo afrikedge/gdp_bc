@@ -202,6 +202,9 @@ report 50195 "NC ND Invoice"
             column(ChannelCode; "Shortcut Dimension 3 Code")
             {
             }
+            column(ReportTitle; ReportTitle)
+            {
+            }
             trigger OnAfterGetRecord()
             begin
 
@@ -242,8 +245,13 @@ report 50195 "NC ND Invoice"
                     ExchangeRateText := StrSubstNo(ExchangeRateTxt, CalculatedExchRate, CurrencyExchangeRate."Exchange Rate Amount");
                 end;
 
+                if (Line."Amount (LCY)" > 0) then
+                    ReportTitle := NDLabel
+                else
+                    ReportTitle := NCLabel;
+
                 RepCheck.InitTextVariable();
-                RepCheck.FormatNoText(NoText, "Amount (LCY)", LocalCurrency.code);
+                RepCheck.FormatNoText(NoText, ABS("Amount (LCY)"), LocalCurrency.code);
                 NoText[1] := ReplaceString(NoText[1], '****');
                 NoText[1] := ReplaceString(NoText[1], 'AND 0/100');
                 NoText[2] := ReplaceString(NoText[2], '****');
@@ -343,6 +351,10 @@ report 50195 "NC ND Invoice"
         CustomerGeneralTermsLbl: Label 'The customer accepts the general terms and conditions of sale described overleaf';
         InvoiceArrestedLbl: Label 'Invoice arrested at the sum of :';
         ForGalanaLbl: Label 'FOR GALANA';
+
+        NDLabel: Label 'NOTE DE DEBIT';
+        NClabel: Label 'NOTE DE CREDIT';
+        ReportTitle: Text;
         NameLbl: Label 'Name :';
         Date1Lbl: Label 'Date :';
 

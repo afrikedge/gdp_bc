@@ -245,7 +245,7 @@ report 50050 "Recu Encaissement"
                 if CustLedgEntry.FindFirst then;
                 NbTLet.InitTextVariable;
                 //TODO Montants
-                // NbTLet.FormatNoTextFR(TotalAmountLetter, Abs("Gen. Journal Line".Amount), "Gen. Journal Line"."Currency Code");
+                NbTLet.FormatNoText(TotalAmountLetter, Abs("Gen. Journal Line".Amount), "Gen. Journal Line"."Currency Code");
             end;
 
             trigger OnPreDataItem()

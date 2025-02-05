@@ -63,7 +63,6 @@ pageextension 50090 "Posted Sales Invoice List" extends "Posted Sales Invoices"
                     SalesInvReport: Report "Posted Sales Invoice";
                 begin
                     SalesInvReport.SetIsDebitNote(true);
-
                     SalesInvRec.SetRange("No.", Rec."No.");
                     SalesInvRec.SetRange("Sell-to Customer No.", Rec."Sell-to Customer No.");
                     SalesInvReport.SetTableView(SalesInvRec);
