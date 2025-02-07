@@ -1178,6 +1178,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Adjustment Header - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 535805036 - NamedType 1648455990" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Voulez vous modifier les axes analytiques?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Adjustment Header - NamedType DoYouWantToKeepExistingDimensionsQst</note>
+        </trans-unit>
         <trans-unit id="Table 535805036 - NamedType 4056101549" size-unit="char" translate="yes" xml:space="preserve">
           <source>This order must be a complete shipment.</source>
           <note from="Developer" annotates="general" priority="2"></note>

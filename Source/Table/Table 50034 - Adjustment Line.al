@@ -59,7 +59,8 @@ table 50034 "Adjustment Line"
 
                 Validate(Quantity);
 
-                //TODO Migration
+
+                CreateDimFromDefaultDim(FieldNo("Item No."));
                 // CreateDim(DATABASE::"Fixed Asset",Rec."FA Code",
                 //   DimMgt.TypeToTableID3(2),"Item No.",
                 //DATABASE::"Responsibility Center","Responsibility Center");
@@ -77,8 +78,6 @@ table 50034 "Adjustment Line"
             trigger OnValidate()
             begin
                 TestStatusOpen;
-
-                //TODO Migration
                 AFK_SecMgt.CheckWarehouseUser("Location Code");
 
                 //IF Rec."Document Type" IN [Rec."Document Type"::Borrow,Rec."Document Type"::Loan,Rec."Document Type"::Exchange] THEN
@@ -254,11 +253,8 @@ table 50034 "Adjustment Line"
 
             trigger OnValidate()
             begin
-                //TODO Migration
-                // if FA.Get("FA Code") then "FA Name" := FA.Description;
-                // CreateDim(
-                //   DATABASE::"Responsibility Center","Responsibility Center",
-                //   DATABASE::"Fixed Asset","FA Code",DimMgt.TypeToTableID3(2),"Item No.");
+                if FA.Get("FA Code") then "FA Name" := FA.Description;
+                CreateDimFromDefaultDim(FieldNo("FA Code"));
             end;
         }
         field(74; "FA Name"; Text[50])
@@ -355,7 +351,7 @@ table 50034 "Adjustment Line"
 
             trigger OnValidate()
             begin
-                //TODO Migration
+                CreateDimFromDefaultDim(Rec.FieldNo("Responsibility Center"));
                 // CreateDim(
                 //   DATABASE::"Responsibility Center","Responsibility Center",
                 //   DimMgt.TypeToTableID3(2),"Item No.",
@@ -493,30 +489,43 @@ table 50034 "Adjustment Line"
         DimMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
     end;
 
-    procedure CreateDim(Type1: Integer; No1: Code[20]; Type2: Integer; No2: Code[20]; Type3: Integer; No3: Code[20])
+    procedure CreateDimFromDefaultDim(FieldNo: Integer)
+    var
+        DefaultDimSource: List of [Dictionary of [Integer, Code[20]]];
+        ShouldCreateDim: Boolean;
+    begin
+        InitDefaultDimensionSources(DefaultDimSource, FieldNo);
+        CreateDim(DefaultDimSource);
+    end;
+
+    procedure CreateDim(DefaultDimSource: List of [Dictionary of [Integer, Code[20]]])
     var
         SourceCodeSetup: Record "Source Code Setup";
-        TableID: array[10] of Integer;
-        No: array[10] of Code[20];
+        IsHandled: Boolean;
     begin
-        //TODO Migration
-        // SourceCodeSetup.Get;
-        // TableID[1] := Type1;
-        // No[1] := No1;
-        // TableID[2] := Type2;
-        // No[2] := No2;
-        // TableID[3] := Type3;
-        // No[3] := No3;
-        // "Shortcut Dimension 1 Code" := '';
-        // "Shortcut Dimension 2 Code" := '';
-        // GetDocumentHeader;
-        // "Dimension Set ID" :=
-        //   DimMgt.GetDefaultDimID(
-        //     TableID,No,SourceCodeSetup.Sales,
-        //     "Shortcut Dimension 1 Code","Shortcut Dimension 2 Code",
-        //     AdjustHeader."Dimension Set ID",DATABASE::Customer);
-        // DimMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID","Shortcut Dimension 1 Code","Shortcut Dimension 2 Code");
-        // //ATOLink.UpdateAsmDimFromSalesLine(Rec);
+
+        SourceCodeSetup.Get();
+
+        "Shortcut Dimension 1 Code" := '';
+        "Shortcut Dimension 2 Code" := '';
+        GetDocumentHeader();
+        "Dimension Set ID" :=
+          DimMgt.GetRecDefaultDimID(
+            Rec, CurrFieldNo, DefaultDimSource, SourceCodeSetup.Sales,
+            "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code", AdjustHeader."Dimension Set ID", Database::Customer);
+
+        DimMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
+
+    end;
+
+    procedure InitDefaultDimensionSources(var DefaultDimSource: List of [Dictionary of [Integer, Code[20]]]; FieldNo: Integer)
+    begin
+        //DimMgt.AddDimSource(DefaultDimSource, DimMgt.SalesLineTypeToTableID(Type), Rec."No.", FieldNo = Rec.FieldNo("No."));
+        DimMgt.AddDimSource(DefaultDimSource, Database::"Responsibility Center", Rec."Responsibility Center", FieldNo = Rec.FieldNo("Responsibility Center"));
+        DimMgt.AddDimSource(DefaultDimSource, Database::Job, Rec."Job No.", FieldNo = Rec.FieldNo("Job No."));
+        //DimMgt.AddDimSource(DefaultDimSource, Database::Location, Rec."Location Code", FieldNo = Rec.FieldNo("Location Code"));
+        DimMgt.AddDimSource(DefaultDimSource, Database::Item, Rec."Item No.", FieldNo = Rec.FieldNo("Item No."));
+        DimMgt.AddDimSource(DefaultDimSource, Database::"Fixed Asset", Rec."FA Code", FieldNo = Rec.FieldNo("FA Code"));
     end;
 
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])

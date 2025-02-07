@@ -125,8 +125,7 @@ table 50033 "Adjustment Header"
                     if Cust.Get("Customer No.") then
                         Cust.TestField(Cust."GDP Partner");
 
-                CreateDim(DATABASE::Customer, "Customer No.", DATABASE::Vendor, "Vendor No.",
-                DATABASE::"Responsibility Center", "Responsibility Center", 0, '', 0, '');
+                CreateDimFromDefaultDim(FieldNo("Customer No."));
 
 
                 if Rec."Document Type" = Rec."Document Type"::"Invoiced Consumption" then begin
@@ -155,8 +154,7 @@ table 50033 "Adjustment Header"
                         Vend.TestField("GDP Partner");
 
 
-                CreateDim(DATABASE::Customer, "Customer No.", DATABASE::Vendor, "Vendor No.",
-                DATABASE::"Responsibility Center", "Responsibility Center", 0, '', 0, '');
+                CreateDimFromDefaultDim(FieldNo("Vendor No."));
             end;
         }
         field(15; "Order No."; Code[20])
@@ -199,8 +197,9 @@ table 50033 "Adjustment Header"
             begin
                 if Rec."Document Type" = Rec."Document Type"::Transfer then
                     TestStatusOpen;
-                //TODO Migration
+
                 AFK_SecMgt.CheckWarehouseUser("Location Code");
+                CreateDimFromDefaultDim(FieldNo("Location Code"));
             end;
         }
         field(30; "Shipment Status"; Option)
@@ -260,7 +259,6 @@ table 50033 "Adjustment Header"
                 Location: Record Location;
                 Confirmed: Boolean;
             begin
-                //TODO Migration
                 AFK_SecMgt.CheckWarehouseUser("Transfer-to Code");
                 UpdateLinesTransfer;
             end;
@@ -449,10 +447,10 @@ table 50033 "Adjustment Header"
     begin
         if not IsArchive then TestStatusOpen;
 
-        SalesLine.Reset;
-        SalesLine.SetRange("Document Type", "Document Type");
-        SalesLine.SetRange("Document No.", "No.");
-        SalesLine.DeleteAll;
+        AdjLine.Reset;
+        AdjLine.SetRange("Document Type", "Document Type");
+        AdjLine.SetRange("Document No.", "No.");
+        AdjLine.DeleteAll;
     end;
 
     trigger OnInsert()
@@ -478,7 +476,6 @@ table 50033 "Adjustment Header"
         Rec."Item Category Code" := AddOnSetup."PBL Category Code";
 
         if ((Rec."Document Type" = Rec."Document Type"::Transfer)) then begin
-            //TODO Migration
             DefaultLoc := AFK_SecMgt.GetDefaultOrFirstLocation();
             if (Loc1.Get(DefaultLoc)) then begin
                 if ((DefaultLoc <> '') and (Loc1."Item Category Code" = Rec."Item Category Code")) then
@@ -532,7 +529,7 @@ table 50033 "Adjustment Header"
         SalesSetup: Record "Sales & Receivables Setup";
         GLSetup: Record "General Ledger Setup";
         SalesHeader: Record "Adjustment Header";
-        SalesLine: Record "Adjustment Line";
+        AdjLine: Record "Adjustment Line";
         Cust: Record Customer;
         SalesCommentLine: Record "Sales Comment Line";
         NoSeriesMgt: Codeunit NoSeriesManagement;
@@ -574,7 +571,6 @@ table 50033 "Adjustment Header"
         Vend: Record Vendor;
         Camion: Record pro_moyentransport;
         IsArchive: Boolean;
-        //TODO Migration
         AFK_SecMgt: Codeunit "Security Mgt";
         SalesOrderHeader: Record "Sales Header";
         Text011Err: Label 'La note de débit %1 existe déjà pour cette sortie';
@@ -605,36 +601,6 @@ table 50033 "Adjustment Header"
 
     end;
 
-    procedure CreateDim(Type1: Integer; No1: Code[20]; Type2: Integer; No2: Code[20]; Type3: Integer; No3: Code[20]; Type4: Integer; No4: Code[20]; Type5: Integer; No5: Code[20])
-    var
-        SourceCodeSetup: Record "Source Code Setup";
-        TableID: array[10] of Integer;
-        No: array[10] of Code[20];
-        OldDimSetID: Integer;
-    begin
-        //TODO Migration
-        // SourceCodeSetup.Get;
-        // TableID[1] := Type1;
-        // No[1] := No1;
-        // TableID[2] := Type2;
-        // No[2] := No2;
-        // TableID[3] := Type3;
-        // No[3] := No3;
-        // TableID[4] := Type4;
-        // No[4] := No4;
-        // TableID[5] := Type5;
-        // No[5] := No5;
-        // "Shortcut Dimension 1 Code" := '';
-        // "Shortcut Dimension 2 Code" := '';
-        // OldDimSetID := "Dimension Set ID";
-        // "Dimension Set ID" :=
-        //   DimMgt.GetDefaultDimID(TableID,No,SourceCodeSetup.Sales,"Shortcut Dimension 1 Code","Shortcut Dimension 2 Code",0,0);
-
-        // if (OldDimSetID <> "Dimension Set ID") and SalesLinesExist then begin
-        //   Modify;
-        //   UpdateAllLineDim("Dimension Set ID",OldDimSetID);
-        // end;
-    end;
 
     local procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     var
@@ -652,22 +618,104 @@ table 50033 "Adjustment Header"
         end;
     end;
 
+    // procedure ShowDocDim()
+    // var
+    //     OldDimSetID: Integer;
+    // begin
+    //     // OldDimSetID := "Dimension Set ID";
+    //     // "Dimension Set ID" :=
+    //     //   DimMgt.EditDimensionSet2(
+    //     //     "Dimension Set ID",StrSubstNo('%1 %2',"Document Type","Posting Date"),
+    //     //     "Shortcut Dimension 1 Code","Shortcut Dimension 2 Code");
+    //     // if OldDimSetID <> "Dimension Set ID" then begin
+    //     //   Modify;
+    //     //   if SalesLinesExist then
+    //     //     UpdateAllLineDim("Dimension Set ID",OldDimSetID);
+    //     // end;
+    // end;
     procedure ShowDocDim()
     var
         OldDimSetID: Integer;
+        IsHandled: Boolean;
     begin
-        //TODO Migration
-        // OldDimSetID := "Dimension Set ID";
-        // "Dimension Set ID" :=
-        //   DimMgt.EditDimensionSet2(
-        //     "Dimension Set ID",StrSubstNo('%1 %2',"Document Type","Posting Date"),
-        //     "Shortcut Dimension 1 Code","Shortcut Dimension 2 Code");
-        // if OldDimSetID <> "Dimension Set ID" then begin
-        //   Modify;
-        //   if SalesLinesExist then
-        //     UpdateAllLineDim("Dimension Set ID",OldDimSetID);
-        // end;
+
+        OldDimSetID := "Dimension Set ID";
+        "Dimension Set ID" :=
+          DimMgt.EditDimensionSet(
+            Rec, "Dimension Set ID", StrSubstNo('%1 %2', "Document Type", "No."),
+            "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
+        if OldDimSetID <> "Dimension Set ID" then begin
+            Modify();
+            if SalesLinesExist() then
+                UpdateAllLineDim("Dimension Set ID", OldDimSetID);
+        end;
     end;
+
+    procedure CreateDimFromDefaultDim(FieldNo: Integer)
+    var
+        DefaultDimSource: List of [Dictionary of [Integer, Code[20]]];
+        ShouldCreateDim: Boolean;
+    begin
+        InitDefaultDimensionSources(DefaultDimSource, FieldNo);
+        CreateDim(DefaultDimSource);
+    end;
+
+    procedure CreateDim(DefaultDimSource: List of [Dictionary of [Integer, Code[20]]])
+    var
+        SourceCodeSetup: Record "Source Code Setup";
+        OldDimSetID: Integer;
+        IsHandled: Boolean;
+    begin
+        SourceCodeSetup.Get();
+
+        "Shortcut Dimension 1 Code" := '';
+        "Shortcut Dimension 2 Code" := '';
+        OldDimSetID := "Dimension Set ID";
+        "Dimension Set ID" :=
+          DimMgt.GetRecDefaultDimID(
+            Rec, CurrFieldNo, DefaultDimSource, SourceCodeSetup.Sales, "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code", 0, 0);
+
+        if (OldDimSetID <> "Dimension Set ID") and (OldDimSetID <> 0) and GuiAllowed then
+            if CouldDimensionsBeKept() then
+                if not ConfirmKeepExistingDimensions(OldDimSetID) then begin
+                    "Dimension Set ID" := OldDimSetID;
+                    DimMgt.UpdateGlobalDimFromDimSetID(Rec."Dimension Set ID", Rec."Shortcut Dimension 1 Code", Rec."Shortcut Dimension 2 Code");
+                end;
+
+        if (OldDimSetID <> "Dimension Set ID") and SalesLinesExist() then begin
+            Modify();
+            UpdateAllLineDim("Dimension Set ID", OldDimSetID);
+        end;
+    end;
+
+    local procedure ConfirmKeepExistingDimensions(OldDimSetID: Integer) Confirmed: Boolean
+    var
+    begin
+        Confirmed := Confirm(DoYouWantToKeepExistingDimensionsQst);
+    end;
+
+    local procedure CouldDimensionsBeKept() Result: Boolean;
+    var
+    begin
+        if (xRec."Customer No." <> '') and (xRec."Customer No." <> Rec."Customer No.") then
+            exit(false);
+        if (xRec."Vendor No." <> '') and (xRec."Vendor No." <> Rec."Vendor No.") then
+            exit(false);
+        if (xRec."Location Code" <> Rec."Location Code") then
+            exit(true);
+        if (xRec."Responsibility Center" <> '') and (xRec."Responsibility Center" <> Rec."Responsibility Center") then
+            exit(true);
+    end;
+
+    procedure InitDefaultDimensionSources(var DefaultDimSource: List of [Dictionary of [Integer, Code[20]]]; FieldNo: Integer)
+    begin
+        //DimMgt.AddDimSource(DefaultDimSource, DimMgt.SalesLineTypeToTableID(Type), Rec."No.", FieldNo = Rec.FieldNo("No."));
+        DimMgt.AddDimSource(DefaultDimSource, Database::"Responsibility Center", Rec."Responsibility Center", FieldNo = Rec.FieldNo("Responsibility Center"));
+        DimMgt.AddDimSource(DefaultDimSource, Database::Location, Rec."Location Code", FieldNo = Rec.FieldNo("Location Code"));
+        DimMgt.AddDimSource(DefaultDimSource, Database::Customer, Rec."Customer No.", FieldNo = Rec.FieldNo("Customer No."));
+        DimMgt.AddDimSource(DefaultDimSource, Database::Vendor, Rec."Vendor No.", FieldNo = Rec.FieldNo("Vendor No."));
+    end;
+
 
     local procedure UpdateAllLineDim(NewParentDimSetID: Integer; OldParentDimSetID: Integer)
     var
@@ -682,29 +730,29 @@ table 50033 "Adjustment Header"
             if not Confirm(Text064) then
                 exit;
 
-        SalesLine.Reset;
-        SalesLine.SetRange("Document Type", "Document Type");
-        SalesLine.SetRange("Document No.", "No.");
-        SalesLine.LockTable;
-        if SalesLine.Find('-') then
+        AdjLine.Reset;
+        AdjLine.SetRange("Document Type", "Document Type");
+        AdjLine.SetRange("Document No.", "No.");
+        AdjLine.LockTable;
+        if AdjLine.Find('-') then
             repeat
-                NewDimSetID := DimMgt.GetDeltaDimSetID(SalesLine."Dimension Set ID", NewParentDimSetID, OldParentDimSetID);
-                if SalesLine."Dimension Set ID" <> NewDimSetID then begin
-                    SalesLine."Dimension Set ID" := NewDimSetID;
+                NewDimSetID := DimMgt.GetDeltaDimSetID(AdjLine."Dimension Set ID", NewParentDimSetID, OldParentDimSetID);
+                if AdjLine."Dimension Set ID" <> NewDimSetID then begin
+                    AdjLine."Dimension Set ID" := NewDimSetID;
                     DimMgt.UpdateGlobalDimFromDimSetID(
-                      SalesLine."Dimension Set ID", SalesLine."Shortcut Dimension 1 Code", SalesLine."Shortcut Dimension 2 Code");
-                    SalesLine.Modify;
+                      AdjLine."Dimension Set ID", AdjLine."Shortcut Dimension 1 Code", AdjLine."Shortcut Dimension 2 Code");
+                    AdjLine.Modify;
                     //ATOLink.UpdateAsmDimFromSalesLine(SalesLine);
                 end;
-            until SalesLine.Next = 0;
+            until AdjLine.Next = 0;
     end;
 
     procedure SalesLinesExist(): Boolean
     begin
-        SalesLine.Reset;
-        SalesLine.SetRange("Document Type", "Document Type");
-        SalesLine.SetRange("Document No.", "No.");
-        exit(SalesLine.FindFirst);
+        AdjLine.Reset;
+        AdjLine.SetRange("Document Type", "Document Type");
+        AdjLine.SetRange("Document No.", "No.");
+        exit(AdjLine.FindFirst);
     end;
 
     procedure Navigate()
@@ -830,5 +878,9 @@ table 50033 "Adjustment Header"
             //TransfertLine.VALIDATE("Receipt Date",Rec."Receipt Date");
             until TransfertLine.Next = 0;
     end;
+
+    var
+        DoYouWantToKeepExistingDimensionsQst: Label 'Voulez vous modifier les axes analytiques?';
+
 }
 

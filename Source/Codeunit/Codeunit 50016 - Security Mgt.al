@@ -121,6 +121,14 @@ codeunit 50016 "Security Mgt"
             Error(Text002);
     end;
 
+    procedure GetOldUser(): Code[50]
+    var
+        UserSetup1: Record "User Setup";
+    begin
+        UserSetup1.SetRange("User ID", UserId);
+        exit(UserSetup1."Old Nav User")
+    end;
+
     local procedure CheckDepotDispaching(CodeDepot: Code[10])
     var
         UserSetup1: Record "User Setup";

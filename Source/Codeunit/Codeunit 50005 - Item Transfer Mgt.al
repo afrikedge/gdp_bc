@@ -25,6 +25,7 @@ codeunit 50005 "Item Transfer Mgt"
         Text012: Label 'Vous ne pouvez pas retourner une quantité supérieure à la quantité expédiée sur la ligne %1';
         Descr: Text[50];
         ItemAdjustMgt: Codeunit "Item Adjustment Mgt";
+        SecMgt: Codeunit "Security Mgt";
         Text013: Label 'Les codes magasin d''expédition et de réception ne peuvent pas être identiques';
         IsBatch: Boolean;
         Text014: Label 'La date de réception doit être postérieure à la date d''expédition';
@@ -774,7 +775,8 @@ codeunit 50005 "Item Transfer Mgt"
         ItemTransfer: Codeunit "Item Transfer Mgt";
     begin
 
-        if ItemAdj."User ID" <> UserId then exit(false);
+        if (ItemAdj."User ID" <> UserId) and (ItemAdj."User ID" <> SecMgt.GetOldUser()) then
+            exit(false);
 
         if ItemAdj."Location Code" = '' then exit(false);
         if ItemAdj."In-Transit Code" = '' then exit(false);
@@ -813,7 +815,8 @@ codeunit 50005 "Item Transfer Mgt"
         AdjReason: Record "Transfer Reason Code";
     begin
 
-        if ItemAdj."User ID" <> UserId then exit(false);
+        if (ItemAdj."User ID" <> UserId) and (ItemAdj."User ID" <> SecMgt.GetOldUser()) then
+            exit(false);
         if ItemAdj.Status <> ItemAdj.Status::Released then exit(false);
         if ItemAdj."Location Code" = ItemAdj."Transfer-to Code" then exit(false);
 
