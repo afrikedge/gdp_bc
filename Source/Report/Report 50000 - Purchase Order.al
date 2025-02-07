@@ -267,7 +267,7 @@ report 50000 "Purchase Order"
                     dataitem(RoundLoop; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
-                        column(LineAmt_PurchLine; PurchLine."Line Amount")
+                        column(LineAmt_PurchLine; PurchLineTemp."Line Amount")
                         {
                             AutoFormatExpression = "Purchase Line"."Currency Code";
                             AutoFormatType = 1;
@@ -321,7 +321,7 @@ report 50000 "Purchase Order"
                         column(VATIdentifier_PurchLine; "Purchase Line"."VAT Identifier")
                         {
                         }
-                        column(InvDiscAmt_PurchLine; -PurchLine."Inv. Discount Amount")
+                        column(InvDiscAmt_PurchLine; -PurchLineTemp."Inv. Discount Amount")
                         {
                             AutoFormatExpression = "Purchase Line"."Currency Code";
                             AutoFormatType = 1;
@@ -329,7 +329,7 @@ report 50000 "Purchase Order"
                         column(Num; Num)
                         {
                         }
-                        column(TotalInclVAT; PurchLine."Line Amount" - PurchLine."Inv. Discount Amount")
+                        column(TotalInclVAT; PurchLineTemp."Line Amount" - PurchLineTemp."Inv. Discount Amount")
                         {
                             AutoFormatExpression = "Purchase Header"."Currency Code";
                             AutoFormatType = 1;
@@ -452,17 +452,17 @@ report 50000 "Purchase Order"
                         trigger OnAfterGetRecord()
                         begin
                             if Number = 1 then
-                                PurchLine.Find('-')
+                                PurchLineTemp.Find('-')
                             else
-                                PurchLine.Next();
-                            "Purchase Line" := PurchLine;
+                                PurchLineTemp.Next();
+                            "Purchase Line" := PurchLineTemp;
 
                             if not "Purchase Header"."Prices Including VAT" and
-                               (PurchLine."VAT Calculation Type" = PurchLine."VAT Calculation Type"::"Full VAT")
+                               (PurchLineTemp."VAT Calculation Type" = PurchLineTemp."VAT Calculation Type"::"Full VAT")
                             then
-                                PurchLine."Line Amount" := 0;
+                                PurchLineTemp."Line Amount" := 0;
 
-                            if (PurchLine.Type = PurchLine.Type::"G/L Account") and (not ShowInternalInfo) then
+                            if (PurchLineTemp.Type = PurchLineTemp.Type::"G/L Account") and (not ShowInternalInfo) then
                                 "Purchase Line"."No." := '';
                             AllowInvDisctxt := Format("Purchase Line"."Allow Invoice Disc.");
                             TotalSubTotal += "Purchase Line"."Line Amount";
@@ -473,23 +473,23 @@ report 50000 "Purchase Order"
 
                         trigger OnPostDataItem()
                         begin
-                            PurchLine.DeleteAll();
+                            PurchLineTemp.DeleteAll();
 
                         end;
 
                         trigger OnPreDataItem()
                         begin
-                            MoreLines := PurchLine.Find('+');
-                            while MoreLines and (PurchLine.Description = '') and (PurchLine."Description 2" = '') and
-                                  (PurchLine."No." = '') and (PurchLine.Quantity = 0) and
-                                  (PurchLine.Amount = 0)
+                            MoreLines := PurchLineTemp.Find('+');
+                            while MoreLines and (PurchLineTemp.Description = '') and (PurchLineTemp."Description 2" = '') and
+                                  (PurchLineTemp."No." = '') and (PurchLineTemp.Quantity = 0) and
+                                  (PurchLineTemp.Amount = 0)
                             do
-                                MoreLines := PurchLine.Next(-1) <> 0;
+                                MoreLines := PurchLineTemp.Next(-1) <> 0;
                             if not MoreLines then
                                 CurrReport.Break();
-                            PurchLine.SetRange("Line No.", 0, PurchLine."Line No.");
-                            SetRange(Number, 1, PurchLine.Count);
-                            CurrReport.CreateTotals(PurchLine."Line Amount", PurchLine."Inv. Discount Amount");
+                            PurchLineTemp.SetRange("Line No.", 0, PurchLineTemp."Line No.");
+                            SetRange(Number, 1, PurchLineTemp.Count);
+                            CurrReport.CreateTotals(PurchLineTemp."Line Amount", PurchLineTemp."Inv. Discount Amount");
                         end;
                     }
                     dataitem(VATCounter; "Integer")
@@ -813,13 +813,13 @@ report 50000 "Purchase Order"
                     TempPurchLine: Record "Purchase Line" temporary;
                     Test: Decimal;
                 begin
-                    Clear(PurchLine);
+                    Clear(PurchLineTemp);
                     Clear(PurchPost);
-                    PurchLine.DeleteAll();
+                    PurchLineTemp.DeleteAll();
                     VATAmountLine.DeleteAll();
-                    PurchPost.GetPurchLines("Purchase Header", PurchLine, 0);
-                    PurchLine.CalcVATAmountLines(0, "Purchase Header", PurchLine, VATAmountLine);
-                    PurchLine.UpdateVATOnLines(0, "Purchase Header", PurchLine, VATAmountLine);
+                    PurchPost.GetPurchLines("Purchase Header", PurchLineTemp, 0);
+                    PurchLineTemp.CalcVATAmountLines(0, "Purchase Header", PurchLineTemp, VATAmountLine);
+                    PurchLineTemp.UpdateVATOnLines(0, "Purchase Header", PurchLineTemp, VATAmountLine);
                     VATAmount := VATAmountLine.GetTotalVATAmount();
                     VATBaseAmount := VATAmountLine.GetTotalVATBase();
                     VATDiscountAmount :=
@@ -1082,7 +1082,7 @@ report 50000 "Purchase Order"
         VATAmountLine: Record "VAT Amount Line" temporary;
         PrepmtVATAmountLine: Record "VAT Amount Line" temporary;
         PrePmtVATAmountLineDeduct: Record "VAT Amount Line" temporary;
-        PurchLine: Record "Purchase Line" temporary;
+        PurchLineTemp: Record "Purchase Line" temporary;
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
         PrepmtDimSetEntry: Record "Dimension Set Entry";
