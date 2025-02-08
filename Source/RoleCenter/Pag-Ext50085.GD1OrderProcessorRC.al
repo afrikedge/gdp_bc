@@ -950,6 +950,12 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
                     Caption = 'Utilisateurs externes';
                     RunObject = Page "Afk External Users";
                 }
+                action(AfkUnblockingList)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Demandes de déblocage';
+                    RunObject = Page "Afk SO Unblocking List";
+                }
             }
         }
 

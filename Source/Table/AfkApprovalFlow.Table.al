@@ -39,7 +39,7 @@ table 50108 "Afk Approval Flow"
         {
             Caption = 'Actual Status';
         }
-        field(9; "Next Status"; Enum "Afk Approval Mode")
+        field(9; "Next Status"; Enum "Afk CRM Approval Status")
         {
             Caption = 'Next Status';
         }

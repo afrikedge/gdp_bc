@@ -3,6 +3,7 @@ codeunit 50041 "Afk Api Interface Mgt"
 
     var
         WS: codeunit "Afk Api Mgt";
+        DdeDeblocageMgt: codeunit "Afk FrontDeskValidation Mgt";
         LblUnknownParameter: Label 'Unkwnown parameter : %1', Comment = '%1 = parameter';
     /// <summary>
     /// 
@@ -20,8 +21,8 @@ codeunit 50041 "Afk Api Interface Mgt"
 
         case param of
 
-            // 'quotes_insert':
-            //     exit(QuotesMgt.Run(input, false));
+            'SOUnblocking_updateApprovalFlow':
+                exit(DdeDeblocageMgt.Run_ModifyBlockingStatus(input));
             // 'quotes_modify':
             //     exit(QuotesMgt.Run(input, false));
             // 'quotes_delete':
@@ -142,5 +143,8 @@ codeunit 50041 "Afk Api Interface Mgt"
         end;
 
     end;
+
+
+    //{"inputJson":"{\"Parameter\":\"SOUnblocking_updateApprovalFlow\",\"webUserName\":\"GERALD\",\"Approval Status\":7,\"ApprovalFlow\":[{\"Record Type\":2,\"Record No_\":\"469658\",\"Sequence No_\":1,\"Approval Mode\":0,\"Approved On\":\"2025-02-02T13:21:35.542Z\",\"Approved by\":\"GERALD\",\"Approved as\":\"GERALD\",\"Actual Status\":5,\"Next Status\":7,\"Comments\":\"rien à signaler\"}]}"}
 }
 

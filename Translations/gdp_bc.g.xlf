@@ -61828,6 +61828,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkExternalUsers - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1459027600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Demandes de déblocage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkUnblockingList - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 758891811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Afk Achats</source>
           <note from="Developer" annotates="general" priority="2"></note>
