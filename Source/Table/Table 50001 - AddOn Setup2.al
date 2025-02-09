@@ -119,6 +119,11 @@ table 50001 "AddOn Setup2"
             Caption = 'Compte factures mensuelles PostPaid Galitt GPRO';
             TableRelation = "G/L Account" WHERE("Account Type" = CONST(Posting));
         }
+        field(27; "Cust Revision Nos Series"; Code[20])
+        {
+            Caption = 'Nos Demandes revision client';
+            TableRelation = "No. Series".Code;
+        }
     }
 
     keys

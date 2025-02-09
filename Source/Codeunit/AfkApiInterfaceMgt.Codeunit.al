@@ -21,37 +21,58 @@ codeunit 50041 "Afk Api Interface Mgt"
 
         case param of
 
+            'changeUserPassword':
+                exit(DdeDeblocageMgt.RunUpdatePassword(input));
+
             'SOUnblocking_updateApprovalFlow':
                 exit(DdeDeblocageMgt.Run_ModifyBlockingStatus(input));
-            // 'quotes_modify':
-            //     exit(QuotesMgt.Run(input, false));
-            // 'quotes_delete':
-            //     exit(QuotesMgt.Run(input, true));
-            // 'quotes_makeorder':
-            //     exit(QuotesMgt.MakeOrder(input));
-            // 'salesQuotes_reopen':
-            //     exit(QuotesMgt.Run_Open(input));
-            // 'quotes_item_getPrice':
-            //     exit(QuotesMgt.GetUnitPrice(input));
-            // 'quotes_requestApproval':
-            //     exit(QuotesMgt.RequestApproval(input));
-            // 'creditRequests_insert':
-            //     exit(QuotesMgt.RunCreditRequest(input, false));
-            // 'creditRequests_modify':
-            //     exit(QuotesMgt.RunCreditRequest(input, false));
-            // 'creditRequests_reject':
-            //     exit(QuotesMgt.RunRejectCreditRequest(input));
 
-            // 'orders_insert':
-            //     exit(OrdersMgt.Run(input, false));
-            // 'orders_modify':
-            //     exit(OrdersMgt.Run(input, false));
-            // 'orders_delete':
-            //     exit(OrdersMgt.Run(input, true));
-            // 'salesOrders_reopen':
-            //     exit(OrdersMgt.Run_Open(input));
-            // 'orders_requestApproval':
-            //     exit(OrdersMgt.ValidateDraft(input));
+            'revisionRequest_insert':
+                exit(DdeDeblocageMgt.RunCustRevision(input, false));
+
+            'revisionRequest_modify':
+                exit(DdeDeblocageMgt.RunCustRevision(input, false));
+
+            'revisionRequest_delete':
+                exit(DdeDeblocageMgt.RunCustRevision(input, true));
+
+            'RevisionRequest_updateApprovalFlow':
+                exit(DdeDeblocageMgt.Run_ModifyCustRevisionStatus(input));
+
+            'lead_insert':
+                exit(DdeDeblocageMgt.RunLeads(input, false));
+
+            'lead_modify':
+                exit(DdeDeblocageMgt.RunLeads(input, false));
+
+            'lead_delete':
+                exit(DdeDeblocageMgt.RunLeads(input, true));
+
+            'lead_updateApprovalFlow':
+                exit(DdeDeblocageMgt.Run_ModifyLeadStatus(input));
+
+            'shipToAddress_insert':
+                exit(DdeDeblocageMgt.RunShipToAddress(input, false));
+
+            'shipToAddress_modify':
+                exit(DdeDeblocageMgt.RunShipToAddress(input, false));
+
+            'shipToAddress_delete':
+                exit(DdeDeblocageMgt.RunShipToAddress(input, true));
+
+
+            'contact_insert':
+                exit(DdeDeblocageMgt.RunContacts(input, false));
+
+            'contact_modify':
+                exit(DdeDeblocageMgt.RunContacts(input, false));
+
+            'contact_delete':
+                exit(DdeDeblocageMgt.RunContacts(input, true));
+
+            'customer_modify':
+                exit(DdeDeblocageMgt.RunCustomers(input, false));
+
             // 'orders_item_getPrice':
             //     exit(OrdersMgt.GetUnitPrice(input));
             // 'orders_payment_save':
@@ -123,8 +144,7 @@ codeunit 50041 "Afk Api Interface Mgt"
             //     exit(MasterFilesMgt.RunLinkDocument(input, true));
 
 
-            // 'changeUserPassword':
-            //     exit(MasterFilesMgt.RunUpdatePassword(input));
+
 
             // 'serviceRequest_modify':
             //     exit(SAVMgt.RunServiceRequest(input, false));

@@ -85,6 +85,9 @@ page 50351 "Params Setup2"
                 field("Galitt Fact Men Postpaid GPRO"; Rec."Galitt Fact Men Postpaid GPRO")
                 {
                 }
+                field("Cust Revision Nos Series"; Rec."Cust Revision Nos Series")
+                {
+                }
             }
         }
     }

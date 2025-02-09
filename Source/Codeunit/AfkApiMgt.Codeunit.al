@@ -247,7 +247,7 @@ codeunit 50040 "Afk Api Mgt"
         exit(response);
     end;
 
-    procedure ValidateField(MyRecordRef: RecordRef; MyFieldName: Text; input: JsonObject; jsonKey: Text)
+    procedure ValidateField(MyRecordRef: RecordRef; MyFieldNo: integer; input: JsonObject; jsonKey: Text)
     var
         field: record Field;
         fieldRef: FieldRef;
@@ -262,9 +262,9 @@ codeunit 50040 "Afk Api Mgt"
         if (not KeyExists(jsonKey, input)) then
             exit;
 
-        field.SetRange(TableNo, MyRecordRef.Number);
-        field.SetRange(FieldName, MyFieldName);
-        if (field.FindFirst()) then begin
+        // field.SetRange(TableNo, MyRecordRef.Number);
+        // field.SetRange("No.", MyFieldNo);
+        if (field.Get(MyRecordRef.Number, MyFieldNo)) then begin
             fieldRef := MyRecordRef.field(field."No.");
             case fieldRef.Type of
                 fieldType::Date:
@@ -314,6 +314,41 @@ codeunit 50040 "Afk Api Mgt"
         end;
     end;
 
+    // procedure AssignValueToField(var Rec: Record "Afk Customer Revision"; FieldNo: Integer; Value: Variant)
+    // var
+    //     RecRef: RecordRef;
+    //     FldRef: FieldRef;
+    // begin
+    //     RecRef.GetTable(Rec);
+    //     FldRef := RecRef.Field(FieldNo);
+
+    //     case FldRef.Type of
+    //         FieldType::Text, FieldType::Code:
+    //             FldRef.Value := Value;
+    //         FieldType::Option
+    //             FldRef.Validate(Value);
+    //     end;
+
+    //     RecRef.SetTable(Rec);
+    // end;
+
+    // procedure AssignValueToField(RecordId: Integer; FieldNo: Integer; Value: Variant)
+    // var
+    //     RecRef: RecordRef;
+    //     FldRef: FieldRef;
+    // begin
+    //     RecRef.Open(RecordId);
+    //     FldRef := RecRef.Field(FieldNo);
+
+    //     case FldRef.Type of
+    //         FieldType::Text, FieldType::Code:
+    //             FldRef.Value := Value;
+    //         FieldType::Enum:
+    //             FldRef.Validate(Value);
+    //     end;
+
+    //     RecRef.Modify();
+    // end;
 
 }
 

@@ -273,12 +273,31 @@ tableextension 50005 "A02 Customer" extends Customer
         {
             Caption = 'Warranty Validity';
         }
+        field(50062; "Afk Modified By"; Code[50])
+        {
+            Caption = 'Modified By';
+            TableRelation = "Afk FrontDesk User";
+        }
+        field(50063; "Afk Approval Status"; enum "Afk Approval Mode")
+        {
+            Caption = 'Approval Status';
+        }
+        //**fin champs identiques avec Contact
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+        //**debut champs spécifiques client
         field(60000; "Traite Amount"; Decimal)
         {
             FieldClass = FlowField;
