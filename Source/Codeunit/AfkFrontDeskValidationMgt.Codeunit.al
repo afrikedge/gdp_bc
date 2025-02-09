@@ -550,7 +550,23 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, ApprovalFlow.FieldNo(ApprovalFlow."Next Status"), input, 'Next Status');
         WS.ValidateField(RecRef, ApprovalFlow.FieldNo(ApprovalFlow.Comments), input, 'Comments');
 
+        RecRef.SetTable(ApprovalFlow);
     end;
+
+    // local procedure PopulateValuesApprovalFlow(var ApprovalFlow: record "Afk Approval Flow";)
+    // var
+    //     RecRef: RecordRef;
+    //     field: record Field;
+    //     fieldRef: FieldRef;
+    // begin
+
+    //     RecRef.GetTable(ApprovalFlow);
+    //     field.Get(RecRef.Number, 10);
+    //     fieldRef := RecRef.field(field."No.");
+
+    //     fieldRef.Validate('comments');
+
+    // end;
 
     //\"CustomerRequirement\":[{\"Account Type\":0,\"Customer No_\":\"C00001\",\"Lead No_\":\"L00001\",
     //\"Criteria\":\"Criteria01\",\"Criteria Description\":\"Criteria01 Description\",\"Value Type\":0,
@@ -579,7 +595,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, CustRequirement.FieldNo(CustRequirement."Document Link"), input, 'Document Link');
         WS.ValidateField(RecRef, CustRequirement.FieldNo(CustRequirement."Updated on"), input, 'Updated on');
         WS.ValidateField(RecRef, CustRequirement.FieldNo(CustRequirement."Updated by"), input, 'Updated by');
-
+        RecRef.SetTable(CustRequirement);
     end;
 
     //{"inputJson":"{\"Parameter\":\"shipToAddress_insert\",\"webUserName\":\"GERALD\",\"Customer No_\":\"C000,
@@ -605,7 +621,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, ShipToCode.FieldNo(ShipToCode."E-Mail"), input, 'E-Mail');
         WS.ValidateField(RecRef, ShipToCode.FieldNo(ShipToCode."Location Code"), input, 'Location Code');
         WS.ValidateField(RecRef, ShipToCode.FieldNo(ShipToCode."Responsibility Center"), input, 'Responsibility Center');
-
+        RecRef.SetTable(ShipToCode);
     end;
 
     local procedure GenerateShipToCode(CustNo: code[20]): Code[10]
@@ -650,7 +666,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Contact.FieldNo(Contact."Job Title"), input, 'Job Title');
         WS.ValidateField(RecRef, Contact.FieldNo(Contact."Afk Contact Type"), input, 'Contact Type');
         WS.ValidateField(RecRef, Contact.FieldNo(Contact.Signataire), input, 'Signator');
-
+        RecRef.SetTable(Contact);
     end;
 
     //{"inputJson":"{\"Parameter\":\"lead_insert\",\"webUserName\":\"GERALD\",\"Approval Status\":0,\"Name\":\"gerald\",
@@ -759,7 +775,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Object"), input, 'Warranty Object');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Value"), input, 'Warranty Value');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Validity"), input, 'Warranty Validity');
-
+        RecRef.SetTable(Lead);
     end;
 
 
@@ -877,7 +893,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Warranty Object"), input, 'Warranty Object');
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Warranty Value"), input, 'Warranty Value');
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Warranty Validity"), input, 'Warranty Validity');
-
+        RecRef.SetTable(Cust);
     end;
 
 
