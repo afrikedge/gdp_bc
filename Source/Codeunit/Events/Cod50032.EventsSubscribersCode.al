@@ -503,16 +503,29 @@ codeunit 50032 "EventsSubscribers Code"
             AFKVendInvMgt.ValidationAutoFactureCompta(PurchaseHeader);
     end;
 
-
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purchase-Post Prepayments", 'OnAfterPurchInvHeaderInsert', '', true, true)]
-    local procedure PurchasePostPrepayments_OnAfterPurchInvHeaderInsert(var PurchInvHeader: Record "Purch. Inv. Header"; PurchHeader: Record "Purchase Header"; CommitIsSupressed: Boolean)
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostVendorEntry', '', true, true)]
+    local procedure PurchPost_OnBeforePostVendorEntry(var GenJnlLine: Record "Gen. Journal Line"; var PurchHeader: Record "Purchase Header"; var TotalPurchLine: Record "Purchase Line"; var TotalPurchLineLCY: Record "Purchase Line"; PreviewMode: Boolean; CommitIsSupressed: Boolean; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; var IsHandled: Boolean)
     var
         AFKVendInvMgt: Codeunit VendorInvoiceMgt;
     begin
+
         //IF PurchaseHeader.Invoice THEN
-        AFKVendInvMgt.ValidationAutoFactureCompta(PurchHeader);
+        AFKVendInvMgt.ValidationAutoFactureCompta(PurchHeader, Abs(TotalPurchLine."Amount Including VAT"), abs(TotalPurchLine.Amount));
     end;
 
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforePostVendorEntry(var GenJnlLine: Record "Gen. Journal Line"; var PurchHeader: Record "Purchase Header"; var TotalPurchLine: Record "Purchase Line"; var TotalPurchLineLCY: Record "Purchase Line"; PreviewMode: Boolean; CommitIsSupressed: Boolean; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; var IsHandled: Boolean)
+    begin
+    end;
+
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purchase-Post Prepayments", 'OnBeforePostVendorEntry', '', true, true)]
+    // local procedure PurchasePostPrepayments_OnBeforePostVendorEntry(var GenJnlLine: Record "Gen. Journal Line"; TotalPrepmtInvLineBuffer: Record "Prepayment Inv. Line Buffer"; TotalPrepmtInvLineBufferLCY: Record "Prepayment Inv. Line Buffer"; CommitIsSupressed: Boolean; PurchaseHeader: Record "Purchase Header"; DocumentType: Option)
+    // var
+    //     AFKVendInvMgt: Codeunit VendorInvoiceMgt;
+    // begin
+    //     //IF PurchaseHeader.Invoice THEN
+    //     AFKVendInvMgt.ValidationAutoFactureCompta(PurchaseHeader, abs(TotalPrepmtInvLineBuffer."Amount Incl. VAT"), abs(TotalPrepmtInvLineBuffer.Amount));
+    // end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPostInvoice', '', true, true)]
     local procedure PurchPost_OnAfterPostInvoice(var PurchHeader: Record "Purchase Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; TotalPurchLine: Record "Purchase Line"; TotalPurchLineLCY: Record "Purchase Line"; CommitIsSupressed: Boolean; var VendorLedgerEntry: Record "Vendor Ledger Entry")

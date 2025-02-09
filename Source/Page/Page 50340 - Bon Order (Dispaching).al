@@ -253,6 +253,7 @@ page 50340 "Bon Order (Dispaching)"
                     //EnteteBE.SETRANGE(numBE,Rec.numBE);
                     //REPORT.RUN(REPORT::"Bon Enlevement Dispatching",TRUE, FALSE,EnteteBE);
 
+                    Rec.TestField(codemoyentransport);
                     PAGE.RunModal(50352, Rec);
 
                     /*
@@ -286,7 +287,7 @@ page 50340 "Bon Order (Dispaching)"
                 begin
                     //EnteteBL.SETRANGE(numBL,Rec.numBL);
                     //REPORT.RUN(REPORT::"Bon livraison Dispatching",TRUE, FALSE,EnteteBL);
-
+                    Rec.TestField(codemoyentransport);
                     PAGE.RunModal(50352, Rec);
                     /*
                     PrintCrystal.PrintBL(numBL);
