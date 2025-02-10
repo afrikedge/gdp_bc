@@ -431,10 +431,25 @@ report 50189 "PBL FO Delivery Note"
                 if CompanyInfos.Get() then
                     Foot3 := CompanyInfos."Phone No." + ' - Fax : ' + CompanyInfos."Fax No.";
 
-                if Imprime then
-                    Duplicata := 'DUPLICATA' + ' ' + Format("Nos Printed");
+
+                proEnteteBL.Reset;
+                proEnteteBL.SetRange(numBE, Header.numBE);
+                if proEnteteBL.FindFirst() then
+                    if proEnteteBL.Imprime then
+                        Duplicata := 'DUPLICATA' + ' ' + Format(proEnteteBL."Nos Printed");
 
                 FindTouringProduct(Header);
+
+
+                proEnteteBL.Reset;
+                proEnteteBL.SetRange(numBE, Header.numBE);
+                if proEnteteBL.FindFirst() then
+                    IF not CurrReport.Preview then begin
+                        proEnteteBL.Imprime := true;
+                        proEnteteBL."Nos Printed" := proEnteteBL."Nos Printed" + 1;
+                        proEnteteBL."Last Printed Date" := CreateDateTime(today, time);
+                        proEnteteBL.Modify();
+                    end;
             end;
         }
 
@@ -458,6 +473,7 @@ report 50189 "PBL FO Delivery Note"
     end;
 
     var
+        proEnteteBL: Record pro_enteteBL;
         CompanyInfo: Record "Company Information";
         Customer: Record Customer;
         Location: Record Location;

@@ -12,19 +12,19 @@ codeunit 50027 CRReports
         AddSetup: Record "AddOn Setup";
         Text001: Label 'Une demande de déblocage a été créée sur le CRM pour la commande %1';
 
-    procedure PrintBE(NumBE: Integer)
-    var
-    begin
+    // procedure PrintBE(NumBE: Integer)
+    // var
+    // begin
 
 
-    end;
+    // end;
 
-    procedure PrintBL(NumBE: Integer)
-    var
+    // procedure PrintBL(NumBE: Integer)
+    // var
 
-    begin
+    // begin
 
-    end;
+    //end;
 
     procedure PrintFactureVente(NumBE: Code[20])
     var

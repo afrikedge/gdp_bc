@@ -44,15 +44,15 @@ page 50352 "Print Bon Card"
                     //BonIsEditable:=FALSE;
                     //CurrPage.ACTIVATE;
 
-                    PrintCrystal.PrintBE(Rec.numBE);
+                    //PrintCrystal.PrintBE(Rec.numBE);
 
-                    if not Rec.Imprime then begin
-                        Rec.Imprime := true;
-                        Rec."Nos Printed" := Rec."Nos Printed" + 1;
-                        Rec."Last Printed Date" := CreateDateTime(Today, Time);
-                        Rec.Modify;
-                        //COMMIT;//********
-                    end;
+                    // if not Rec.Imprime then begin
+                    //     Rec.Imprime := true;
+                    //     Rec."Nos Printed" := Rec."Nos Printed" + 1;
+                    //     Rec."Last Printed Date" := CreateDateTime(Today, Time);
+                    //     Rec.Modify;
+                    //     //COMMIT;//********
+                    // end;
                 end;
             }
             action(Imprimer)
@@ -72,14 +72,14 @@ page 50352 "Print Bon Card"
                     EnteteBL.SetRange(idtournee, Rec.idtournee);
                     REPORT.RUN(50189, TRUE, FALSE, EnteteBL);
 
-                    PrintCrystal.PrintBL(Rec.numBL);
+                    //PrintCrystal.PrintBL(Rec.numBL);
 
-                    RelatedBL.Get(Rec.numBL);
-                    if not RelatedBL.Imprime then begin
-                        RelatedBL.Imprime := true;
-                        RelatedBL."Last Printed Date" := CreateDateTime(Today, Time);
-                        RelatedBL.Modify;
-                    end;
+                    // RelatedBL.Get(Rec.numBL);
+                    // if not RelatedBL.Imprime then begin
+                    //     RelatedBL.Imprime := true;
+                    //     RelatedBL."Last Printed Date" := CreateDateTime(Today, Time);
+                    //     RelatedBL.Modify;
+                    // end;
                 end;
             }
         }

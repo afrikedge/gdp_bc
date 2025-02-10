@@ -601,6 +601,9 @@ codeunit 50035 "EventsSubscribers Table"
             ServRequisitionMgt.RefreshRemainingQtyReqByCode(PurchaseHeader."Code Demande");
 
         if (SingleInstanceCU.Get_IsSolderCommande()) then begin
+            PurchLine.Reset();
+            PurchLine.SetRange("Document Type", PurchaseHeader."Document Type");
+            PurchLine.SetRange("Document No.", PurchaseHeader."No.");
             if PurchLine.FindSet() then begin
                 ReservMgt.DeleteDocumentReservation(
                     Database::"Purchase Line", PurchaseHeader."Document Type".AsInteger(), PurchaseHeader."No.", PurchaseHeader.GetHideValidationDialog());

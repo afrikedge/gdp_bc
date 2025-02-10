@@ -408,7 +408,7 @@ codeunit 50031 VendorInvoiceMgt
         EnvoiEmailRefus_Facture(VendInvoiceDoc);
     end;
 
-    procedure ValidationAutoFactureCompta(PurchH: Record "Purchase Header")
+    procedure ValidationAutoFactureCompta(PurchH: Record "Purchase Header"; VendorAmountTTC: decimal; VendorAmountHT: decimal)
     var
         VendInvoiceDoc1: Record "Vendor Invoice Doc";
         NveauStatus: Text[30];
@@ -445,7 +445,7 @@ codeunit 50031 VendorInvoiceMgt
             Error(Text030, VendInvoiceDoc1."Reference Number", VendInvoiceDoc1."Vendor Invoice No.");
 
 
-        ControlMontantAFacturer(PurchH, VendInvoiceDoc1);
+        ControlMontantAFacturer(PurchH, VendInvoiceDoc1, VendorAmountTTC, VendorAmountHT);
         /*
         PurchH.CALCFIELDS(Amount);
         PurchH.CALCFIELDS("Amount Including VAT");
@@ -564,12 +564,12 @@ codeunit 50031 VendorInvoiceMgt
           VendInvoiceDoc1."Reference Number", NveauStatus, IdStatut, TypeAction::" ");
     end;
 
-    local procedure ControlMontantAFacturer(PurchH: Record "Purchase Header"; VendInvoiceDoc1: Record "Vendor Invoice Doc")
+    local procedure ControlMontantAFacturer(PurchH: Record "Purchase Header"; VendInvoiceDoc1: Record "Vendor Invoice Doc"; MontantTTC: Decimal; MontantHT: Decimal)
     var
         MontantAfacturer: Decimal;
         PurchLine: Record "Purchase Line";
-        MontantHT: Decimal;
-        MontantTTC: Decimal;
+    // MontantHT: Decimal;
+    // MontantTTC: Decimal;
     begin
 
         /*MontantAfacturer:=0;
@@ -582,7 +582,7 @@ codeunit 50031 VendorInvoiceMgt
           UNTIL PurchLine.NEXT=0;
           */
 
-        CalcInvAmounts(PurchH, MontantHT, MontantTTC);
+        //CalcInvAmounts(PurchH, MontantHT, MontantTTC);
 
         UserSetup.Get(UserId);
         if not UserSetup.CanPostDirectPurchInvNoControl then begin

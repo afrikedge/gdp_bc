@@ -48947,19 +48947,19 @@
         </trans-unit>
         <trans-unit id="Report 1193640787 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting orders  #1########## @2@@@@@@@@@@@@@</source>
-          <target state="needs-review-translation">Validation des commandes #1########## @2@@@@@@@@@@@@@</target>
+          <target state="needs-review-translation">Validation des transferts #1########## @2@@@@@@@@@@@@@</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Batch Post item Transfers - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Report 1193640787 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>%1 orders out of a total of %2 have now been posted.</source>
-          <target state="needs-review-translation">%1 commande(s) sur %2 enregistrée(s).</target>
+          <target state="needs-review-translation">%1 transfert(s) sur %2 validé(s).</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Batch Post item Transfers - NamedType Text002</note>
         </trans-unit>
         <trans-unit id="Report 1193640787 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
           <source>%1 orders out of a total of %2 have now been posted.</source>
-          <target state="needs-review-translation">%1 commande(s) sur %2 enregistrée(s).</target>
+          <target state="needs-review-translation">%1 transfert(s) sur %2 validé(s).</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Batch Post item Transfers - NamedType Text003</note>
         </trans-unit>

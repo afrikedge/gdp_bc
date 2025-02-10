@@ -728,11 +728,11 @@ table 50007 pro_enteteBE
     local procedure RefreshNumBEClient()
     var
         RefClientBE: Code[35];
+        JIRAMAMgt: Codeunit "JIRAMA Sales Mgt";
     begin
-        //TODO Migration
-        // RefClientBE := JIRAMAMgt.GetRefJIRAMA(Rec);
-        // if RefClientBE<>'' then
-        //   "Customer BE" := RefClientBE;
+        RefClientBE := JIRAMAMgt.GetRefJIRAMA(Rec);
+        if RefClientBE <> '' then
+            "Customer BE" := RefClientBE;
     end;
 
     procedure IsBEJIRAMA(): Boolean
