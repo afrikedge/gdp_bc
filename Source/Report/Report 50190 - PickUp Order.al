@@ -449,7 +449,17 @@ report 50190 "PickUp Order"
 
                 FindLineProduct(Header);
                 FindTouringProduct(Header);
+
+                IF not CurrReport.Preview then begin
+                    Header.Imprime := true;
+                    Header."Nos Printed" := Header."Nos Printed" + 1;
+                    Header."Last Printed Date" := CreateDateTime(today, time);
+                    Header.Modify();
+                end;
+
+
             end;
+
         }
     }
 

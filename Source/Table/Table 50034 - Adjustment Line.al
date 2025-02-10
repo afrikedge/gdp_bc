@@ -22,7 +22,7 @@ table 50034 "Adjustment Line"
         field(3; "Document No."; Code[20])
         {
             Caption = 'Document No.';
-            TableRelation = "Sales Header"."No." WHERE("Document Type" = FIELD("Document Type"));
+            //TableRelation = "Sales Header"."No." WHERE("Document Type" = FIELD("Document Type"));
         }
         field(4; "Line No."; Integer)
         {

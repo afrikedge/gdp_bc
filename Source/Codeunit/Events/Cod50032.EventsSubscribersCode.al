@@ -499,8 +499,8 @@ codeunit 50032 "EventsSubscribers Code"
         //       (PurchaseHeader."Document Type"=PurchaseHeader."Document Type"::Order))THEN
         //         AFK_MFilesMgt.CheckMFilesOrder(PurchaseHeader);
 
-        IF PurchaseHeader.Invoice THEN
-            AFKVendInvMgt.ValidationAutoFactureCompta(PurchaseHeader);
+        // IF PurchaseHeader.Invoice THEN
+        //     AFKVendInvMgt.ValidationAutoFactureCompta(PurchaseHeader);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostVendorEntry', '', true, true)]
@@ -973,6 +973,19 @@ codeunit 50032 "EventsSubscribers Code"
         end;
 
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post Line", 'OnAfterPostItemJnlLine', '', true, false)]
+    local procedure ItemJnlPostLine_OnAfterPostItemJnlLine(var ItemJournalLine: Record "Item Journal Line"; ItemLedgerEntry: Record "Item Ledger Entry"; var ValueEntryNo: Integer; var InventoryPostingToGL: Codeunit "Inventory Posting To G/L"; CalledFromAdjustment: Boolean; CalledFromInvtPutawayPick: Boolean; var ItemRegister: Record "Item Register"; var ItemLedgEntryNo: Integer; var ItemApplnEntryNo: Integer; var WhseJnlRegisterLine: Codeunit "Whse. Jnl.-Register Line")
+    var
+        signeCU: codeunit SingleInstance;
+    begin
+        signeCU.Set_InventoryPostingToGL(InventoryPostingToGL);
+    end;
+
+    //  [IntegrationEvent(true, false)]
+    // local procedure OnAfterPostItemJnlLine(var ItemJournalLine: Record "Item Journal Line"; ItemLedgerEntry: Record "Item Ledger Entry"; var ValueEntryNo: Integer; var InventoryPostingToGL: Codeunit "Inventory Posting To G/L"; CalledFromAdjustment: Boolean; CalledFromInvtPutawayPick: Boolean; var ItemRegister: Record "Item Register"; var ItemLedgEntryNo: Integer; var ItemApplnEntryNo: Integer; var WhseJnlRegisterLine: Codeunit "Whse. Jnl.-Register Line")
+    // begin
+    // end;
 
     // [IntegrationEvent(false, false)]
     // local procedure OnAfterTableHasNumberFieldPrimaryKey(TableNo: Integer; var Result: Boolean; var FieldNo: Integer)

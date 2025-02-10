@@ -357,31 +357,31 @@ page 50314 "Customer Ledger Entries2"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
 
-                    trigger OnAction()
-                    begin
+                    // trigger OnAction()
+                    // begin
 
-                        if (Rec."Document Type" = Rec."Document Type"::Invoice) then begin
-                            if PostedSalesInv.Get(Rec."Document No.") then begin
-                                AFK_CReports.PrintFactureVente(Rec."Document No.");
-                                exit;
-                            end;
-                        end;
+                    //     if (Rec."Document Type" = Rec."Document Type"::Invoice) then begin
+                    //         if PostedSalesInv.Get(Rec."Document No.") then begin
+                    //             AFK_CReports.PrintFactureVente(Rec."Document No.");
+                    //             exit;
+                    //         end;
+                    //     end;
 
-                        if (Rec."Document Type" = Rec."Document Type"::"Credit Memo") then begin
-                            if PostedCRMemo.Get(Rec."Document No.") then begin
-                                AFK_CReports.PrintNoteCredit_Avoir(Rec."Document No.");
-                                exit;
-                            end;
-                        end;
-
-
+                    //     if (Rec."Document Type" = Rec."Document Type"::"Credit Memo") then begin
+                    //         if PostedCRMemo.Get(Rec."Document No.") then begin
+                    //             AFK_CReports.PrintNoteCredit_Avoir(Rec."Document No.");
+                    //             exit;
+                    //         end;
+                    //     end;
 
 
-                        AFK_CReports.PrintNoteDebitCredit_Ecriture(Rec."Entry No.");
-                        //*********************************************************
-                        //REPORT.RUN(50007,TRUE,FALSE,Rec);
-                        //*********************************************************
-                    end;
+
+
+                    //     AFK_CReports.PrintNoteDebitCredit_Ecriture(Rec."Entry No.");
+                    //     //*********************************************************
+                    //     //REPORT.RUN(50007,TRUE,FALSE,Rec);
+                    //     //*********************************************************
+                    // end;
                 }
             }
             action("&Navigate")

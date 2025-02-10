@@ -102,6 +102,7 @@ codeunit 50021 "Item Conso to FA Mgt"
                 AmountToInvoice := ItemJnlLine.Amount;
 
                 SingleCodeunit.Set_IsPostingSortieImmo(true);
+
                 ItemJnlPostLine.RunWithCheck(ItemJnlLine);
 
 
