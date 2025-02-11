@@ -106,8 +106,6 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         DdeDeblocage.Insert();
     end;
 
-
-
     procedure Run_ModifyBlockingStatus(input: JsonObject): Text
     var
         c: JsonToken;
@@ -157,6 +155,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     var
         ApprovalFlow: Record "Afk Approval Flow";
         DdeDeblocage: Record "Afk SalesOrder Unblocking";
+        RecRef: RecordRef;
     begin
 
         ApprovalFlow.Init();
@@ -166,13 +165,19 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         ApprovalFlow.Insert();
 
         DdeDeblocage.Get(ApprovalFlow."Record No.");
+
+        RecRef.GetTable(DdeDeblocage);
+
+        WS.ValidateField(RecRef, DdeDeblocage.FieldNo(DdeDeblocage."Unblocking justified"), input, 'Unblocking justified');
+
+        RecRef.SetTable(DdeDeblocage);
+
+
         ModifyBlockingStatus(DdeDeblocage, ApprovalFlow."Approved by", ApprovalFlow."Next Status");
 
         exit(Ws.CreateResponseSuccess(DdeDeblocage."No."));
 
     end;
-
-
 
     local procedure ModifyBlockingStatus(var Request: Record "Afk SalesOrder Unblocking"; WebUser: Text; NewStatus: Enum "Afk CRM Approval Status"): Code[20]
     var
@@ -195,6 +200,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     var
         ApprovalFlow: Record "Afk Approval Flow";
         CustRevision: Record "Afk Customer Revision";
+        Cust: record Customer;
+        RecRef: RecordRef;
     begin
 
         ApprovalFlow.Init();
@@ -205,7 +212,56 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
         CustRevision.Get(ApprovalFlow."Record No.");
         CustRevision."Approval Status" := ApprovalFlow."Next Status";
+
+        RecRef.GetTable(CustRevision);
+
+        WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."Approved Payment Terms Code"), input, 'Approved Payment Terms Code');
+        WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."Approved Credit limit (LCY)"), input, 'Approved Credit limit (LCY)');
+        WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."Approved Risk Level"), input, 'Approved Risk Level');
+        WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."Approved Payment Method"), input, 'Approved Payment Method');
+
+        RecRef.SetTable(CustRevision);
+
         CustRevision.Modify();
+
+        if (CustRevision."Approval Status" = CustRevision."Approval Status"::"Validé") then begin
+            if (Cust.Get(CustRevision."Customer No.")) then begin
+                if (CustRevision."Approved Payment Terms Code") then
+                    Cust.Validate("Payment Method Code", CustRevision."New Payment Terms Code");
+                if (CustRevision."Approved Credit limit (LCY)") then
+                    Cust.Validate("Credit Amount (LCY)", CustRevision."New Credit limit (LCY)");
+                if (CustRevision."Approved Risk Level") then
+                    Cust.Validate("Risk Level", CustRevision."New Risk Level");
+                if (CustRevision."Approved Payment Method") then
+                    Cust.Validate(Cust."Cash payment", CustRevision."New Cash payment");
+                Cust."Check Set" := CustRevision."New Check Set";
+                Cust."Bank Transfer Bank Stamp" := CustRevision."New Bank Transfer Bank Stamp";
+                Cust.Traite := CustRevision."New Traite";
+                Cust."Received Check" := CustRevision."New Received Check";
+                Cust."Credit Note" := CustRevision."New Credit Note";
+                Cust."Automatic Debit" := CustRevision."New Automatic Debit";
+                Cust."Mobile Banking" := CustRevision."New Mobile Banking";
+                Cust.Modify();
+            end;
+        end;
+
+        // If [CustomerRevision].[Approval Status] = 7
+        // If  [Approved Payment Terms Code] = True  Then
+        //  [Customer]. [Payment Terms Code] = [CustomerRevision].[New Payment Terms Code]
+        // If  [Approved Credit limit (LCY)] = True  Then
+        //  [Customer].[Credit limit (LCY)] = [CustomerRevision].[New Credit limit (LCY)]
+        // If  [Approved Risk Level] = True  Then
+        //  [Customer].[Risk Level] = [CustomerRevision].[New Risk Level]
+        // If  [Approved Payment Method] = True  Then
+        //  [Customer].[Cash payment] = [CustomerRevision].[New Cash payment]
+        // [Customer].[Check Set] = [CustomerRevision].[New Check Set]
+        // [Customer].[Bank Transfer Bank Stamp] = [CustomerRevision].[New Bank Transfer Bank Stamp]
+        // [Customer].[Traite] = [CustomerRevision].[New Traite]
+        // [Customer].[Received Check] = [CustomerRevision].[New Received Check]
+        // [Customer].[Credit Note] = [CustomerRevision].[New Credit Note]
+        // [Customer].[Automatic Debit] = [CustomerRevision].[New Automatic Debit]
+        // [Customer].[Mobile Banking] = [CustomerRevision].[New Mobile Banking]
+
 
         exit(Ws.CreateResponseSuccess(CustRevision."No."));
 
@@ -215,6 +271,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     var
         ApprovalFlow: Record "Afk Approval Flow";
         Lead: Record "Contact";
+        Cont: Record "Contact";
+    //RecRef: RecordRef;
     begin
 
         ApprovalFlow.Init();
@@ -225,10 +283,41 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
         Lead.Get(ApprovalFlow."Record No.");
         Lead."Afk Approval Status" := ApprovalFlow."Next Status";
+
         Lead.Modify();
+
+        if (Lead."Afk Approval Status" = Lead."Afk Approval Status"::"Validé") then begin
+            AfkSetup.Get();
+            if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::Holding) then begin
+                AfkSetup.TestField(AfkSetup."Holding Cust Templ");
+                Lead.CreateCustomerFromTemplate(AfkSetup."Holding Cust Templ");
+            end;
+            if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Opération") then begin
+                AfkSetup.TestField(AfkSetup."Operation Cust Templ");
+                Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
+            end;
+            if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Société") then begin
+                AfkSetup.TestField(AfkSetup."Company Cust Templ");
+                Lead.CreateCustomerFromTemplate(AfkSetup."Company Cust Templ");
+            end;
+
+            Cont.SetRange(Cont."Afk Parent Account No.", Lead."No.");
+            if Cont.FindSet() then
+                repeat
+                    Cont.CreateCustomerFromTemplate('');
+                until Cont.Next() < 1;
+        end;
 
         exit(Ws.CreateResponseSuccess(Lead."No."));
 
+    end;
+
+    local procedure ConvertLeadToCustomer(LeadNo: Code[20]; CustTemplateCode: Code[20]): Code[20]
+    var
+        Cont: record Contact;
+    begin
+        Cont.get(LeadNo);
+        exit(Cont.CreateCustomerFromTemplate(CustTemplateCode));
     end;
 
     procedure RunUpdatePassword(input: JsonObject): Text
@@ -241,8 +330,6 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         NewPassWd := ws.GetText('Password', input);
         SecMgt.CreateNewPassword(webUserName, NewPassWd, false);
     end;
-
-
 
     local procedure DeleteCustRevision(OrderNo: Text): Text
     var
@@ -327,12 +414,16 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     local procedure AddLead(input: JsonObject): Text
     var
         Lead: Record Contact;
+        AddOnSetup: Record "AddOn Setup2";
         ApprovalFlow: record "Afk Approval Flow";
         SalesQuoteLine: Record "Sales Line";
     begin
 
         Lead.Init();
-        Lead."No." := '';
+
+        AddOnSetup.Get();
+        AddOnSetup.TestField("Lead Nos Series");
+        Lead."No." := NoSeriesMgt.GetNextNo(AddOnSetup."Lead Nos Series", Today, true);
 
         Lead.Insert(true);
 
@@ -473,8 +564,12 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."New Credit Note"), input, 'New Credit Note');
         WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."New Automatic Debit"), input, 'New Automatic Debit');
         WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."New Mobile Banking"), input, 'New Mobile Banking');
+        WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."New Credit limit (LCY)"), input, 'New Credit limit (LCY)');
+        WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision.Object), input, 'Object');
+
         //WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision.ve), input, 'Salesperson Code');
 
+        RecRef.SetTable(CustRevision);
     end;
 
     // local procedure processApprovalFlows(RecordType: enum "Afk Record Type"; RecordNo: Code[20]; input: JsonObject)
@@ -595,6 +690,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, CustRequirement.FieldNo(CustRequirement."Document Link"), input, 'Document Link');
         WS.ValidateField(RecRef, CustRequirement.FieldNo(CustRequirement."Updated on"), input, 'Updated on');
         WS.ValidateField(RecRef, CustRequirement.FieldNo(CustRequirement."Updated by"), input, 'Updated by');
+
         RecRef.SetTable(CustRequirement);
     end;
 
@@ -621,6 +717,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, ShipToCode.FieldNo(ShipToCode."E-Mail"), input, 'E-Mail');
         WS.ValidateField(RecRef, ShipToCode.FieldNo(ShipToCode."Location Code"), input, 'Location Code');
         WS.ValidateField(RecRef, ShipToCode.FieldNo(ShipToCode."Responsibility Center"), input, 'Responsibility Center');
+
         RecRef.SetTable(ShipToCode);
     end;
 
@@ -666,6 +763,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Contact.FieldNo(Contact."Job Title"), input, 'Job Title');
         WS.ValidateField(RecRef, Contact.FieldNo(Contact."Afk Contact Type"), input, 'Contact Type');
         WS.ValidateField(RecRef, Contact.FieldNo(Contact.Signataire), input, 'Signator');
+
         RecRef.SetTable(Contact);
     end;
 
@@ -775,6 +873,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Object"), input, 'Warranty Object');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Value"), input, 'Warranty Value');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Validity"), input, 'Warranty Validity');
+
         RecRef.SetTable(Lead);
     end;
 
@@ -893,10 +992,13 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Warranty Object"), input, 'Warranty Object');
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Warranty Value"), input, 'Warranty Value');
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Warranty Validity"), input, 'Warranty Validity');
+
         RecRef.SetTable(Cust);
     end;
 
 
     var
+        AfkSetup: record "AddOn Setup2";
         WS: codeunit "Afk Api Mgt";
+        NoSeriesMgt: Codeunit "No. Series";
 }

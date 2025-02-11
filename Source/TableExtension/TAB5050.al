@@ -210,6 +210,10 @@ tableextension 50055 "A02 Contact" extends Contact
         {
             Caption = 'Approval Status';
         }
+        field(50064; "Afk Disable Blocking"; Boolean)
+        {
+            Caption = 'Disable sales order blocking';
+        }
         //**fin champs identiques avec client
 
 
@@ -328,10 +332,7 @@ tableextension 50055 "A02 Contact" extends Contact
         {
             Caption = 'Application Method';
         }
-        field(61022; "Afk Disable Blocking"; Boolean)
-        {
-            Caption = 'Disable sales order blocking';
-        }
+
         field(61023; "Afk Contact Type"; Enum "Afk Contact Type")
         {
             Caption = 'Contact Type';

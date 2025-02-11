@@ -88,6 +88,9 @@ page 50351 "Params Setup2"
                 field("Cust Revision Nos Series"; Rec."Cust Revision Nos Series")
                 {
                 }
+                field("Lead Nos Series"; Rec."Lead Nos Series")
+                {
+                }
             }
         }
     }

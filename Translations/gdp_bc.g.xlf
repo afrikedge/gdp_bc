@@ -1068,6 +1068,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Block zero unit cost - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 154566986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company Cust Templ</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Company Cust Templ - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 586566725 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nos Demandes revision client</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1148,10 +1153,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Galitt ND Gerant Prepaid - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 4194645922 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Holding Cust Templ</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Holding Cust Templ - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 2380425486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Intérimaire DFI</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Interim User DAF - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 1630584367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nos Prospects</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Lead Nos Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 3958441496 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Cust template</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Operation Cust Templ - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3242877383 - Field 1606399812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Chemin fichier temporaire pgp</source>

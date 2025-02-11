@@ -124,6 +124,27 @@ table 50001 "AddOn Setup2"
             Caption = 'Nos Demandes revision client';
             TableRelation = "No. Series".Code;
         }
+        field(28; "Lead Nos Series"; Code[20])
+        {
+            Caption = 'Nos Prospects';
+            TableRelation = "No. Series".Code;
+        }
+
+        field(29; "Operation Cust Templ"; Code[20])
+        {
+            Caption = 'Operation Cust template';
+            TableRelation = "Customer Templ.".Code;
+        }
+        field(30; "Company Cust Templ"; Code[20])
+        {
+            Caption = 'Company Cust Templ';
+            TableRelation = "Customer Templ.".Code;
+        }
+        field(31; "Holding Cust Templ"; Code[20])
+        {
+            Caption = 'Holding Cust Templ';
+            TableRelation = "Customer Templ.".Code;
+        }
     }
 
     keys
