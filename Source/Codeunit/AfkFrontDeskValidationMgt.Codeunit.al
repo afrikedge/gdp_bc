@@ -113,6 +113,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         LineInput: JsonObject;
     begin
 
+        SetOrderIfValidated(input);
+
         input.Get('ApprovalFlow', c);
         LinesArray := c.AsArray();
         foreach c in LinesArray do begin
@@ -138,23 +140,29 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
     procedure Run_ModifyCustRevisionStatus(input: JsonObject): Text
     var
+
         c: JsonToken;
         LinesArray: JsonArray;
         LineInput: JsonObject;
     begin
 
+
+        SetCustomerIfRrevisionIsValidated(input);
+
+
         input.Get('ApprovalFlow', c);
         LinesArray := c.AsArray();
         foreach c in LinesArray do begin
             LineInput := c.AsObject();
-            exit(SetDdeRevisionStatus(LineInput));
+            exit(SetDdeRevision_InsertApprovalFlow(LineInput));
         end;
+
+        exit(Ws.CreateResponseSuccess(''));
     end;
 
     local procedure SetDdeDeblocageStatus(input: JsonObject): Text
     var
         ApprovalFlow: Record "Afk Approval Flow";
-        DdeDeblocage: Record "Afk SalesOrder Unblocking";
         RecRef: RecordRef;
     begin
 
@@ -164,18 +172,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
         ApprovalFlow.Insert();
 
-        DdeDeblocage.Get(ApprovalFlow."Record No.");
 
-        RecRef.GetTable(DdeDeblocage);
-
-        WS.ValidateField(RecRef, DdeDeblocage.FieldNo(DdeDeblocage."Unblocking justified"), input, 'Unblocking justified');
-
-        RecRef.SetTable(DdeDeblocage);
-
-
-        ModifyBlockingStatus(DdeDeblocage, ApprovalFlow."Approved by", ApprovalFlow."Next Status");
-
-        exit(Ws.CreateResponseSuccess(DdeDeblocage."No."));
 
     end;
 
@@ -185,22 +182,13 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         SalesProcessMgt: Codeunit "Sales Order Process";
         ErrDocNonTraite: Label 'The document is still in draft';
     begin
-        Request."Approval Status" := NewStatus;
-        Request."Modified By" := CopyStr(WebUser, 1, 50);
-        Request.Modify();
 
-        if (Request."Approval Status" = Request."Approval Status"::"Validé") then
-            if (SalesOrder.get(SalesOrder."Document Type"::Order, Request."No.")) then
-                SalesProcessMgt.ValidationDeblocage(SalesOrder);
-
-        exit(Request."No.");
     end;
 
-    local procedure SetDdeRevisionStatus(input: JsonObject): Text
+    local procedure SetDdeRevision_InsertApprovalFlow(input: JsonObject): Text
     var
         ApprovalFlow: Record "Afk Approval Flow";
         CustRevision: Record "Afk Customer Revision";
-        Cust: record Customer;
         RecRef: RecordRef;
     begin
 
@@ -210,60 +198,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
         ApprovalFlow.Insert();
 
-        CustRevision.Get(ApprovalFlow."Record No.");
-        CustRevision."Approval Status" := ApprovalFlow."Next Status";
-
-        RecRef.GetTable(CustRevision);
-
-        WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."Approved Payment Terms Code"), input, 'Approved Payment Terms Code');
-        WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."Approved Credit limit (LCY)"), input, 'Approved Credit limit (LCY)');
-        WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."Approved Risk Level"), input, 'Approved Risk Level');
-        WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."Approved Payment Method"), input, 'Approved Payment Method');
-
-        RecRef.SetTable(CustRevision);
-
-        CustRevision.Modify();
-
-        if (CustRevision."Approval Status" = CustRevision."Approval Status"::"Validé") then begin
-            if (Cust.Get(CustRevision."Customer No.")) then begin
-                if (CustRevision."Approved Payment Terms Code") then
-                    Cust.Validate("Payment Method Code", CustRevision."New Payment Terms Code");
-                if (CustRevision."Approved Credit limit (LCY)") then
-                    Cust.Validate("Credit Amount (LCY)", CustRevision."New Credit limit (LCY)");
-                if (CustRevision."Approved Risk Level") then
-                    Cust.Validate("Risk Level", CustRevision."New Risk Level");
-                if (CustRevision."Approved Payment Method") then
-                    Cust.Validate(Cust."Cash payment", CustRevision."New Cash payment");
-                Cust."Check Set" := CustRevision."New Check Set";
-                Cust."Bank Transfer Bank Stamp" := CustRevision."New Bank Transfer Bank Stamp";
-                Cust.Traite := CustRevision."New Traite";
-                Cust."Received Check" := CustRevision."New Received Check";
-                Cust."Credit Note" := CustRevision."New Credit Note";
-                Cust."Automatic Debit" := CustRevision."New Automatic Debit";
-                Cust."Mobile Banking" := CustRevision."New Mobile Banking";
-                Cust.Modify();
-            end;
-        end;
-
-        // If [CustomerRevision].[Approval Status] = 7
-        // If  [Approved Payment Terms Code] = True  Then
-        //  [Customer]. [Payment Terms Code] = [CustomerRevision].[New Payment Terms Code]
-        // If  [Approved Credit limit (LCY)] = True  Then
-        //  [Customer].[Credit limit (LCY)] = [CustomerRevision].[New Credit limit (LCY)]
-        // If  [Approved Risk Level] = True  Then
-        //  [Customer].[Risk Level] = [CustomerRevision].[New Risk Level]
-        // If  [Approved Payment Method] = True  Then
-        //  [Customer].[Cash payment] = [CustomerRevision].[New Cash payment]
-        // [Customer].[Check Set] = [CustomerRevision].[New Check Set]
-        // [Customer].[Bank Transfer Bank Stamp] = [CustomerRevision].[New Bank Transfer Bank Stamp]
-        // [Customer].[Traite] = [CustomerRevision].[New Traite]
-        // [Customer].[Received Check] = [CustomerRevision].[New Received Check]
-        // [Customer].[Credit Note] = [CustomerRevision].[New Credit Note]
-        // [Customer].[Automatic Debit] = [CustomerRevision].[New Automatic Debit]
-        // [Customer].[Mobile Banking] = [CustomerRevision].[New Mobile Banking]
-
-
-        exit(Ws.CreateResponseSuccess(CustRevision."No."));
+        //exit(Ws.CreateResponseSuccess(CustRevision."No."));
 
     end;
 
@@ -994,6 +929,73 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Warranty Validity"), input, 'Warranty Validity');
 
         RecRef.SetTable(Cust);
+    end;
+
+    local procedure SetCustomerIfRrevisionIsValidated(var input: JsonObject)
+    var
+        Cust: record Customer;
+        CustRevision: Record "Afk Customer Revision";
+    begin
+
+        CustRevision.Get(ws.GetText('No_', input));
+        //CustRevision."Approval Status" := ApprovalFlow."Next Status";
+        CustRevision.validate("Approval Status", ws.GetInt('Approval Status', input));
+        CustRevision."Approved Payment Terms Code" := ws.GetBool('Approved Payment Terms Code', input);
+        CustRevision."Approved Credit limit (LCY)" := ws.GetBool('Approved Credit limit (LCY)', input);
+        CustRevision."Approved Risk Level" := ws.GetBool('Approved Risk Level', input);
+        CustRevision."Approved Payment Method" := ws.GetBool('Approved Payment Method', input);
+
+        // CustRevision."Approved Payment Method" := ws.GetBool('Approved Payment Method', input);
+        // CustRevision."Approved Payment Method" := ws.GetBool('Approved Payment Method', input);
+        // CustRevision."Approved Payment Method" := ws.GetBool('Approved Payment Method', input);
+        // CustRevision."Approved Payment Method" := ws.GetBool('Approved Payment Method', input);
+
+        CustRevision.Modify();
+
+        if (CustRevision."Approval Status" = CustRevision."Approval Status"::"Validé") then begin
+            if (Cust.Get(CustRevision."Customer No.")) then begin
+                if (CustRevision."Approved Payment Terms Code") then
+                    Cust.Validate("Payment Terms Code", CustRevision."New Payment Terms Code");
+                if (CustRevision."Approved Credit limit (LCY)") then
+                    Cust.Validate("Credit Limit (LCY)", CustRevision."New Credit limit (LCY)");
+                if (CustRevision."Approved Risk Level") then
+                    Cust.Validate("Risk Level", CustRevision."New Risk Level");
+                if (CustRevision."Approved Payment Method") then begin
+                    Cust.Validate(Cust."Cash payment", CustRevision."New Cash payment");
+                    Cust."Check Set" := CustRevision."New Check Set";
+                    Cust."Bank Transfer Bank Stamp" := CustRevision."New Bank Transfer Bank Stamp";
+                    Cust.Traite := CustRevision."New Traite";
+                    Cust."Received Check" := CustRevision."New Received Check";
+                    Cust."Credit Note" := CustRevision."New Credit Note";
+                    Cust."Automatic Debit" := CustRevision."New Automatic Debit";
+                    Cust."Mobile Banking" := CustRevision."New Mobile Banking";
+                end;
+
+                Cust.Modify();
+            end;
+        end;
+    end;
+
+    local procedure SetOrderIfValidated(var input: JsonObject): Text
+    var
+        DdeDeblocage: Record "Afk SalesOrder Unblocking";
+        SalesOrder: Record "Sales Header";
+        SalesProcessMgt: Codeunit "Sales Order Process";
+    begin
+        DdeDeblocage.Get(ws.GetText('No_', input));
+        DdeDeblocage."Unblocking justified" := ws.GetBool('Unblocking justified', input);
+        DdeDeblocage.validate("Approval Status", ws.GetInt('Approval Status', input));
+        DdeDeblocage."Modified By" := CopyStr(ws.GetText('webUserName', input), 1, 50);
+        DdeDeblocage.Modify();
+
+        if (DdeDeblocage."Approval Status" = DdeDeblocage."Approval Status"::"Validé") then
+            if (SalesOrder.get(SalesOrder."Document Type"::Order, DdeDeblocage."No.")) then
+                SalesProcessMgt.ValidationDeblocage(SalesOrder);
+
+        exit(DdeDeblocage."No.");
+        //ModifyBlockingStatus(DdeDeblocage, ApprovalFlow."Approved by", ApprovalFlow."Next Status");
+
+        //exit(Ws.CreateResponseSuccess(DdeDeblocage."No."));
     end;
 
 

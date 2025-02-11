@@ -91,6 +91,15 @@ page 50351 "Params Setup2"
                 field("Lead Nos Series"; Rec."Lead Nos Series")
                 {
                 }
+                field("Operation Cust Templ"; Rec."Operation Cust Templ")
+                {
+                }
+                field("Holding Cust Templ"; Rec."Holding Cust Templ")
+                {
+                }
+                field("Company Cust Templ"; Rec."Company Cust Templ")
+                {
+                }
             }
         }
     }
