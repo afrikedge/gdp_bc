@@ -249,26 +249,21 @@ report 50197 "PreparationOrder Lub"
                 column(LineNumberText; LineNumberText)
                 {
                 }
-                column(QtyConverted; QtyConverted)
+                column(TonneConversion; TonneConversion)
                 {
                 }
-
-                // column(Source_No_; "Source No.")
-                // {
-                // }
-                // column(ShelfNo_PostedWhseShptLine; "Shelf No.")
-                // {
-                // }
                 trigger OnAfterGetRecord()
                 begin
-                    QtyConverted := Quantity * 1000;
-
                     Lines := 1;
                     LineNumber := LineNumber + 1;
                     if (LineNumber < 10) then
                         LineNumberText := '0' + Format(LineNumber)
                     else
                         LineNumberText := Format(LineNumber);
+
+                    if ItemUnitMeasure.Get(Line."Item No.", Line."Unit of Measure Code") then
+                        if ItemUnitMeasure.Get(Line."Item No.", 'TONNE') then
+                            TonneConversion := Line.Quantity / ItemUnitMeasure."Qty. per Unit of Measure";
                 end;
 
                 trigger OnPreDataItem()
@@ -346,8 +341,9 @@ report 50197 "PreparationOrder Lub"
         RespCenter: Record "Responsibility Center";
         CompanyInfo: Record "Company Information";
         CompanyInfos: Record "Company Information";
+        ItemUnitMeasure: Record "Item Unit of Measure";
+        TonneConversion: Decimal;
         Lines: Integer;
-        QtyConverted: Decimal;
         // Agency: Text[100];
         LineNumber: Integer;
         LinesNumb: Integer;
