@@ -57833,7 +57833,7 @@
         </trans-unit>
         <trans-unit id="Report 452389318 - NamedType 570636160" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fixed Asset - Acquisition List</source>
-          <target state="needs-review-translation">Immo. - Liste des acquisitions</target>
+          <target state="needs-review-translation">FICHE D'INVENTAIRE D'IMMOBILISATION</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Inventaire - NamedType FixedAssetAcqListCptnLbl</note>
         </trans-unit>

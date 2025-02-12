@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+	<CstmrCdtTrfInitn>
+		<GrpHdr>
+			<MsgId>1392</MsgId>
+			<CreDtTm>2025-01-31T05:49:35</CreDtTm>
+			<NbOfTxs>4</NbOfTxs>
+			<CtrlSum>76831604.61</CtrlSum>
+			<InitgPty>
+				<Nm>Galana Distribution Petroliere S.A</Nm>
+				<PstlAdr>
+					<StrtNm>Immeuble PRADON TRADE CENTER - 8e Etage</StrtNm>
+					<PstCd>BP : 60118</PstCd>
+					<TwnNm>Antananarivo</TwnNm>
+					<Ctry>MG</Ctry>
+				</PstlAdr>
+				<Id>
+					<OrgId>
+						<Othr>
+							<Id>2000004458</Id>
+						</Othr>
+					</OrgId>
+				</Id>
+			</InitgPty>
+		</GrpHdr>
+		<PmtInf>
+			<PmtInfId>1392/1</PmtInfId>
+			<PmtMtd>TRF</PmtMtd>
+			<BtchBookg>false</BtchBookg>
+			<NbOfTxs>4</NbOfTxs>
+			<CtrlSum>76831604.61</CtrlSum>
+			<PmtTpInf>
+				<InstrPrty>NORM</InstrPrty>
+			</PmtTpInf>
+			<ReqdExctnDt>2025-01-31</ReqdExctnDt>
+			<Dbtr>
+				<Nm>Galana Distribution Petroliere S.A</Nm>
+				<PstlAdr>
+					<StrtNm>Immeuble PRADON TRADE CENTER - 8e Etage</StrtNm>
+					<PstCd>BP : 60118</PstCd>
+					<TwnNm>Antananarivo</TwnNm>
+					<Ctry>MG</Ctry>
+				</PstlAdr>
+				<Id>
+					<OrgId><!--Modified by CLT : The element "Othr" is expected here-->
+						<Othr><!--Modified by CLT : The element 'Id' should be added here instead of 'BICOrBEI'							<BICOrBEI>BFAVMGMG</BICOrBEI>-->
+							<Id>BFAVMGMGXXX</Id>
+						</Othr>
+					</OrgId>
+				</Id>
+			</Dbtr>
+			<DbtrAcct>
+				<Id>
+					<Othr><!--Modified by CLT : The RIB on 24 caracters should be added inside the 'Id' field. We have put below an example 						<Id />-->
+						<Id>00008123451234567891012</Id>
+					</Othr>
+				</Id>
+			</DbtrAcct>
+			<DbtrAgt>
+				<FinInstnId>
+					<BIC>BFAVMGMG</BIC>
+				</FinInstnId>
+			</DbtrAgt><!--Modified by CLT : The value 'SLEV' is used for SEPA transfers. For Madagascar, DEBT(the debtor), CRED(the creditor) or SHAR(shared charges) should be added		<ChrgBr>SLEV</ChrgBr>-->
+			<ChrgBr>SHAR</ChrgBr>
+			<CdtTrfTxInf>
+				<PmtId>
+					<EndToEndId>1392/1</EndToEndId>
+				</PmtId>
+				<Amt>
+					<InstdAmt Ccy="MGA">48107907.60</InstdAmt>
+				</Amt>
+				<CdtrAgt>
+					<FinInstnId>
+						<BIC>BMOIMGMG</BIC>
+					</FinInstnId>
+				</CdtrAgt>
+				<Cdtr>
+					<Nm>CONSTRUCT SARL</Nm>
+					<PstlAdr>
+						<StrtNm>PROPRIETE SIKKIM ANDRAHARO BP 35 </StrtNm>
+					</PstlAdr>
+				</Cdtr>
+				<CdtrAcct>
+					<Id>
+						<Othr>
+							<Id>00004000040152740010132</Id>
+						</Othr>
+					</Id>
+				</CdtrAcct>
+				<RmtInf>
+					<Ustrd>CONSTRUCT SARL</Ustrd>
+				</RmtInf>
+			</CdtTrfTxInf>
+			<CdtTrfTxInf>
+				<PmtId>
+					<EndToEndId>1392/2</EndToEndId>
+				</PmtId>
+				<Amt>
+					<InstdAmt Ccy="MGA">27095995.20</InstdAmt>
+				</Amt>
+				<CdtrAgt>
+					<FinInstnId>
+						<BIC>AFRIMGMG</BIC>
+					</FinInstnId>
+				</CdtrAgt>
+				<Cdtr>
+					<Nm>TELMA GLOBAL NET  </Nm>
+					<PstlAdr>
+						<StrtNm>ALAROBIA BP 4095   ANTANANARIVO 101  </StrtNm>
+					</PstlAdr>
+				</Cdtr>
+				<CdtrAcct>
+					<Id>
+						<Othr>
+							<Id>00009070001570330001659</Id>
+						</Othr>
+					</Id>
+				</CdtrAcct>
+				<RmtInf>
+					<Ustrd>TELMA GLOBAL NET  </Ustrd>
+				</RmtInf>
+			</CdtTrfTxInf>
+			<CdtTrfTxInf>
+				<PmtId>
+					<EndToEndId>1392/3</EndToEndId>
+				</PmtId>
+				<Amt>
+					<InstdAmt Ccy="MGA">1107701.81</InstdAmt>
+				</Amt>
+				<CdtrAgt>
+					<FinInstnId>
+						<BIC>BFAVMGMG</BIC>
+					</FinInstnId>
+				</CdtrAgt>
+				<Cdtr>
+					<Nm>QUALIBAT </Nm>
+					<PstlAdr>
+						<StrtNm>AB 461 BIS ANTANIMENAKELY AMPITATAFIKA </StrtNm>
+					</PstlAdr>
+				</Cdtr>
+				<CdtrAcct>
+					<Id>
+						<Othr>
+							<Id>00008000050500301156543</Id>
+						</Othr>
+					</Id>
+				</CdtrAcct>
+				<RmtInf>
+					<Ustrd>QUALIBAT </Ustrd>
+				</RmtInf>
+			</CdtTrfTxInf>
+			<CdtTrfTxInf>
+				<PmtId>
+					<EndToEndId>1392/4</EndToEndId>
+				</PmtId>
+				<Amt>
+					<InstdAmt Ccy="MGA">520000.00</InstdAmt>
+				</Amt>
+				<CdtrAgt>
+					<FinInstnId>
+						<BIC>BFAVMGMG</BIC>
+					</FinInstnId>
+				</CdtrAgt>
+				<Cdtr>
+					<Nm>QUALIBAT </Nm>
+					<PstlAdr>
+						<StrtNm>AB 461 BIS ANTANIMENAKELY AMPITATAFIKA </StrtNm>
+					</PstlAdr>
+				</Cdtr>
+				<CdtrAcct>
+					<Id>
+						<Othr>
+							<Id>00008000050500301156543</Id>
+						</Othr>
+					</Id>
+				</CdtrAcct>
+				<RmtInf>
+					<Ustrd>QUALIBAT </Ustrd>
+				</RmtInf>
+			</CdtTrfTxInf>
+		</PmtInf>
+	</CstmrCdtTrfInitn>
+</Document>

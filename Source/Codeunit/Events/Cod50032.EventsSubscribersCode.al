@@ -992,6 +992,16 @@ codeunit 50032 "EventsSubscribers Code"
     // begin
     // end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"SEPA CT-Fill Export Buffer", 'OnAfterFillExportBuffer', '', true, false)]
+    local procedure ItemJnlPostLine_OnAfterFillExportBuffer(var PaymentExportData: Record "Payment Export Data"; BankExportImportSetup: Record "Bank Export/Import Setup")
+    var
+        signeCU: codeunit SingleInstance;
+    begin
+        PaymentExportData."SEPA Charge Bearer Text" := 'CHAR';
+    end;
+
+
+
 
 
 

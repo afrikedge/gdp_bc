@@ -3,6 +3,231 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="gdp_bc">
     <body>
       <group id="body">
+        <trans-unit id="Report 1264407366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comptes Bancaire - Grand Livre</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - NamedType 1581304311" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Solde</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - NamedType BankAccBalanceCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - NamedType 3241057237" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Solde DS</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - NamedType BankAccBalanceLCYCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - NamedType 410060933" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Banque : Grand livre</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - NamedType BankAccDetailTrialBalCapLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - NamedType 786048535" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date comptabilisation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - NamedType BankAccLedgPostingDateCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - NamedType 4036938315" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Suite</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - NamedType ContinuedCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - NamedType 684809554" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - NamedType CurrReportPageNoCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - NamedType 903051421" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ouvert</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - NamedType OpenFormatCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - NamedType 3562743174" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cet état inclut aussi les comptes bancaires ne présentent que des soldes.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - NamedType RepInclBankAcchavingBalLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Période: %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - Control 1108204736 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si vous ne souhaitez pas que l'état inclue les écritures des comptes bancaires qui ont un solde, mais qui n'ont pas de solde période pour la période sélectionnée.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - Control ExcludeBalanceOnly - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - Control 1108204736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exclure seulement les comptes bancaires qui ont un solde ouvert</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - Control ExcludeBalanceOnly - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - Control 2536010183 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si vous souhaitez imprimer chaque compte bancaire sur une page distincte.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - Control PrintOnlyOnePerPage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - Control 2536010183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nouvelle page par banque</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - Control PrintOnlyOnePerPage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - Control 2521269985 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si vous souhaitez inclure les écritures contrepassées dans l'état.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - Control PrintReversedEntries - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 1264407366 - Control 2521269985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inclure écritures contrepasées</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkCpteBancaireGrdLivre - Control PrintReversedEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Grand livre</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Property 3863440606" size-unit="char" translate="yes" xml:space="preserve">
+          <source>payment due,order status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Property AdditionalSearchTerms</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - NamedType 1653612302" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cela inclut aussi les comptes généraux ne présentant qu'un solde.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - NamedType BalanceCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - NamedType 3050590124" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Grand livre</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - NamedType DetailTrialBalCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - NamedType 4271586908" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Solde</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - NamedType GLBalCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - NamedType 4073918050" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crédit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - NamedType GLEntryCreditAmtCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - NamedType 1557897815" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Débit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - NamedType GLEntryDebitAmtCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - NamedType 2171017903" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Solde période</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - NamedType NetChangeCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - NamedType 3034285687" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Only corrections are included.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - NamedType OnlyCorrectionsCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - NamedType 650077689" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - NamedType PageCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - NamedType 2716332507" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This report also includes closing entries within the period.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - NamedType PeriodCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Période: %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - ReportLabel 567180089" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - ReportLabel DescCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - ReportLabel 4204010505" size-unit="char" translate="yes" xml:space="preserve">
+          <source>N° document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - ReportLabel DocNoCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - ReportLabel 326179949" size-unit="char" translate="yes" xml:space="preserve">
+          <source>N° sequence</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - ReportLabel EntryNoCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - ReportLabel 2020178030" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date compta</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - ReportLabel PostingDateCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - ReportLabel 3822561807" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Montant TVA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - ReportLabel VATAmtCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Control 3183705145 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si vous ne souhaitez pas que l'état comprenne les écritures des comptes généraux avec solde, mais sans solde période pour la période sélectionnée.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Control ExcludeGLAccsHaveBalanceOnly - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Control 3183705145 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exclure seulement les comptes généraux qui ont un solde ouvert</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Control ExcludeGLAccsHaveBalanceOnly - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Control 3201262307 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si vous souhaitez que l'état comprenne les écritures de clôture. C'est utile si l'état couvre un exercice entier. Les écritures de clôture sont listées à une date fictive située entre le dernier jour d'un exercice et le premier jour de l'exercice suivant; elles sont précédées d'un C, par exemple C123194. Si vous n'activez pas ce champ, aucune écriture de clôture n'est affichée.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Control InclClosingEntriesWithinPeriod - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Control 3201262307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inclure les écritures de cloture dans la période</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Control InclClosingEntriesWithinPeriod - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Control 3414096222 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si vous souhaitez inclure les écritures contrepassées dans l’état.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Control IncludeReversedEntries - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Control 3414096222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inclure écritures contrepasées</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Control IncludeReversedEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Control 3214291206 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Spécifie si les informations propres à chaque compte général sont imprimées sur une nouvelle page si vous avez choisi plusieurs comptes généraux à inclure dans l'état, activez ce champ pour imprimer le solde de chaque client sur une page distincte.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Control NewPageperGLAcc - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Control 3214291206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nouvelle page par compte général</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Control NewPageperGLAcc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Control 4258595164 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si vous souhaitez que l'état contienne uniquement les écritures qui ont été contrepassées et leurs écritures de correction correspondantes.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Control PrintCorrectionsOnly - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 246052002 - Control 4258595164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Imprimer corrections uniquement</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Control PrintCorrectionsOnly - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1526680249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AddOn Setup</source>
           <note from="Developer" annotates="general" priority="2"></note>

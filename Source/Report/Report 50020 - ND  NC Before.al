@@ -282,8 +282,7 @@ report 50020 "ND / NC Before"
 
 
                 NbTLet.InitTextVariable;
-                //TODO
-                //NbTLet.FormatNoTextFR(TotalAmountLetter,(MontantTTC),"Currency Code");
+                NbTLet.FormatNoText(TotalAmountLetter, (MontantTTC), "Currency Code");
 
             end;
 

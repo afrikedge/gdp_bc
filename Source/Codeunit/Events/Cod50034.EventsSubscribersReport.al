@@ -21,19 +21,22 @@ codeunit 50034 "EventsSubscribers Report"
     var
         FA: record "Fixed Asset";
     begin
+        AddOnSetup.GetRecordOnce();
         IF AddOnSetup."Activer libelles Immos" THEN
             if (FA.Get(FAJournalLine."FA No.")) then
                 FAJournalLine.Description := COPYSTR(FA.Description, 1, 75) + '-' + FA."No.";
     end;
 
-    // [EventSubscriber(ObjectType::Report, Report::"Calculate Depreciation", 'OnAfterFAInsertGLAccGetBalAcc', '', true, true)]
-    // local procedure CalculateDepreciation_OnAfterFAInsertGLAccGetBalAcc(var GenJnlLine: Record "Gen. Journal Line"; var GenJnlNextLineNo: Integer; var BalAccount: Boolean; var TempGenJnlLine: Record "Gen. Journal Line")
-    // var
-    //     FA: record "Fixed Asset";
-    // begin
-    //     IF AddOnSetup."Activer libelles Immos" THEN
-    //         GenJnlLine.Description := TempGenJnlLine.Description;
-    // end;
+    [EventSubscriber(ObjectType::Report, Report::"Calculate Depreciation", 'OnBeforeGenJnlLineInsert', '', true, true)]
+    local procedure CalculateDepreciation_OnBeforeGenJnlLineInsert(var TempGenJournalLine: Record "Gen. Journal Line" temporary; var GenJournalLine: Record "Gen. Journal Line")
+    var
+        FA: record "Fixed Asset";
+    begin
+        AddOnSetup.GetRecordOnce();
+        IF AddOnSetup."Activer libelles Immos" THEN
+            if (FA.Get(GenJournalLine."Account No.")) then
+                GenJournalLine.Description := COPYSTR(FA.Description, 1, 75) + '-' + FA."No.";
+    end;
 
     var
         AddOnSetup: record "AddOn Setup";
