@@ -105,7 +105,7 @@ tableextension 50055 "A02 Contact" extends Contact
         field(50038; "Afk Main Industry"; code[20])
         {
             Caption = 'Main Industry';
-            TableRelation = "Afk Reference" where(TableType = const("Main Industry"));
+            TableRelation = "Afk Reference".Code where(TableType = const("Main Industry"));
         }
         field(50039; "Afk Parent Account No."; code[20])
         {

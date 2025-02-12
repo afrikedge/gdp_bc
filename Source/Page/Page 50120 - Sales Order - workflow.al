@@ -613,8 +613,7 @@ page 50120 "Sales Order - workflow"
 
                     trigger OnAction()
                     begin
-                        //TODO
-                        //Rec.AFK_RefreshSalesLinePrices();
+                        Rec.AFK_RefreshSalesLinePrices();
                     end;
                 }
                 action(CopyDocument)

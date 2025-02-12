@@ -956,6 +956,42 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
                     Caption = 'Demandes de déblocage';
                     RunObject = Page "Afk SO Unblocking List";
                 }
+                action(AfkFDProfiles)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Profiles';
+                    RunObject = Page "Afk Frontdesk Profiles";
+                }
+                action(AfkFDPermissions)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Permissions';
+                    RunObject = Page "Afk Frontdesk Permissions";
+                }
+                action(AfkFDRequirementList)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Requirements Criteria';
+                    RunObject = Page "Afk Requirement Criteria List";
+                }
+                action(AfkFDequirementMatrix)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Requirement Matrix';
+                    RunObject = Page "Afk Requirement Matrix";
+                }
+                action(AfkFDFunctionnalities)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Functionnalities';
+                    RunObject = Page "Afk Frontdesk Functionnalities";
+                }
+                action(AfkFDMainIndustries)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Main industries';
+                    RunObject = Page "Afk Main Industry List";
+                }
             }
         }
 

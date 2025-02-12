@@ -5,14 +5,8 @@ enum 50021 "Afk Table Type"
     {
         Caption = 'Secteur Principal';
     }
-    value(1; "FrontDesk Profile")
-    {
-        Caption = 'Profil FrontDesk';
-    }
-    value(2; "FrontDesk Feature")
+    value(1; "FrontDesk Feature")
     {
         Caption = 'Fonctionnalité FrontDesk';
     }
-
-
 }

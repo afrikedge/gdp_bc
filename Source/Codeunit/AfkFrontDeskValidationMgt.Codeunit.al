@@ -123,6 +123,21 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         end;
     end;
 
+    procedure RunLinkDocument(input: JsonObject; IsDeletion: Boolean): Text
+    var
+    begin
+        //RecNo := ws.GetText('No_', input);
+        //CustNo := ws.GetText('Customer No_', input);
+        //if (RecNo <> '') then begin
+        if (IsDeletion) then
+            exit(DeleteLinkDocument(input))
+        else
+            exit(AddLinkDocument(input));
+
+        // end else
+        //     exit(AddLinkDocument(CustNo, input));
+    end;
+
     procedure Run_ModifyLeadStatus(input: JsonObject): Text
     var
         c: JsonToken;
@@ -699,6 +714,10 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Contact.FieldNo(Contact."Afk Contact Type"), input, 'Contact Type');
         WS.ValidateField(RecRef, Contact.FieldNo(Contact.Signataire), input, 'Signator');
 
+        WS.ValidateField(RecRef, Contact.FieldNo(Contact."Afk Bill-to Customer No."), input, 'Customer No_');
+        WS.ValidateField(RecRef, Contact.FieldNo(Contact.Address), input, 'Address');
+        WS.ValidateField(RecRef, Contact.FieldNo(Contact."Address 2"), input, 'Address 2');
+
         RecRef.SetTable(Contact);
     end;
 
@@ -809,6 +828,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Value"), input, 'Warranty Value');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Validity"), input, 'Warranty Validity');
 
+
+
         RecRef.SetTable(Lead);
     end;
 
@@ -844,7 +865,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         RecRef.GetTable(Cust);
 
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Modified By"), input, 'webUserName');
-        WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Approval Status"), input, 'Customer Status');
+        WS.ValidateField(RecRef, Cust.FieldNo(Cust."Customer Status"), input, 'Customer Status');
         WS.ValidateField(RecRef, Cust.FieldNo(Cust.Name), input, 'Name');
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Name 2"), input, 'Name 2');
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Salesperson Code"), input, 'Salesperson Code');
@@ -927,6 +948,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Warranty Object"), input, 'Warranty Object');
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Warranty Value"), input, 'Warranty Value');
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Warranty Validity"), input, 'Warranty Validity');
+        WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Desactivation Reason"), input, 'Deactivation Reason');
 
         RecRef.SetTable(Cust);
     end;
@@ -996,6 +1018,52 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         //ModifyBlockingStatus(DdeDeblocage, ApprovalFlow."Approved by", ApprovalFlow."Next Status");
 
         //exit(Ws.CreateResponseSuccess(DdeDeblocage."No."));
+    end;
+
+    local procedure AddLinkDocument(input: JsonObject): Text
+    var
+        LinkDoc: Record "Afk Web Link Document";
+    begin
+
+        LinkDoc.Init();
+
+        if (LinkDoc."Document No." <> WS.GetText('No_', input)) then
+            LinkDoc.Validate("Document No.", WS.GetText('No_', input));
+
+        if (LinkDoc."Function Code" <> WS.GetText('Function', input)) then
+            LinkDoc.Validate("Function Code", WS.GetText('Function', input));
+
+        if (LinkDoc."Document Name" <> WS.GetText('Document Name', input)) then
+            LinkDoc.Validate("Document Name", WS.GetText('Document Name', input));
+
+        if (LinkDoc.Link <> WS.GetText('Link', input)) then
+            LinkDoc.Validate(Link, WS.GetText('Link', input));
+
+        if (LinkDoc."Created By" <> WS.GetText('webUserName', input)) then
+            LinkDoc.Validate("Created By", WS.GetText('webUserName', input));
+
+        LinkDoc.Insert(true);
+
+        exit(Ws.CreateResponseSuccess(LinkDoc."Document No."));
+
+    end;
+
+    local procedure DeleteLinkDocument(input: JsonObject): Text
+    var
+        LinkDoc: Record "Afk Web Link Document";
+        DocNo: Code[20];
+        FunctionNo: Code[20];
+        DocName: Text[100];
+    begin
+        DocNo := CopyStr(WS.GetText('No_', input), 1, 20);
+        FunctionNo := CopyStr(WS.GetText('Function', input), 1, 20);
+        DocName := CopyStr(WS.GetText('Document Name', input), 1, 20);
+
+        if (LinkDoc.Get(FunctionNo, DocNo, DocName)) then
+            LinkDoc.Delete(true);
+
+        exit(Ws.CreateResponseSuccess(LinkDoc."Document No."));
+
     end;
 
 

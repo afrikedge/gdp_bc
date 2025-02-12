@@ -174,7 +174,7 @@ tableextension 50005 "A02 Customer" extends Customer
         field(50038; "Afk Main Industry"; code[20])
         {
             Caption = 'Main Industry';
-            TableRelation = "Afk Reference" where(TableType = const("Main Industry"));
+            TableRelation = "Afk Reference".Code where(TableType = const("Main Industry"));
         }
         field(50039; "Afk Parent Account No."; code[20])
         {

@@ -8,10 +8,12 @@ table 50101 "Afk FrontDeskProfilePermission"
         field(1; "FrontDesk Profile"; Code[20])
         {
             Caption = 'FrontDesk Profile';
+            TableRelation = "Afk FrontDesk Profile";
         }
         field(2; "FrontDesk Features"; Code[20])
         {
             Caption = 'FrontDesk Features';
+            TableRelation = "Afk Reference".Code where(TableType = const("FrontDesk Feature"));
         }
         field(3; Insertion; Boolean)
         {

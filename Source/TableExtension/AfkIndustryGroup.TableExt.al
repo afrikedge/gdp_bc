@@ -6,7 +6,7 @@ tableextension 50079 "Afk Industry Group" extends "Industry Group"
         {
             Caption = 'Main Industry';
             DataClassification = CustomerContent;
-            TableRelation = "Afk Reference" where(TableType = const("Main Industry"));
+            TableRelation = "Afk Reference".Code where(TableType = const("Main Industry"));
         }
     }
 }
