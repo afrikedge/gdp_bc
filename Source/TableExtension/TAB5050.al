@@ -201,6 +201,20 @@ tableextension 50055 "A02 Contact" extends Contact
             Caption = 'Warranty Validity';
         }
 
+        field(50062; "Afk Modified By"; Code[50])
+        {
+            Caption = 'Modified By';
+            TableRelation = "Afk FrontDesk User";
+        }
+        field(50063; "Afk Approval Status"; enum "Afk CRM Approval Status")
+        {
+            Caption = 'Approval Status';
+        }
+        field(50064; "Afk Disable Blocking"; Boolean)
+        {
+            Caption = 'Disable sales order blocking';
+        }
+        //**fin champs identiques avec client
 
 
 
@@ -208,6 +222,13 @@ tableextension 50055 "A02 Contact" extends Contact
 
 
 
+
+
+
+
+
+
+        //**debut champs spécifiques contact
         field(61000; "Afk Responsibility Center"; Code[10])
         {
             Caption = 'Responsibility Center';
@@ -222,10 +243,7 @@ tableextension 50055 "A02 Contact" extends Contact
             Caption = 'Remove JIR Ref on BE';
         }
 
-        field(61003; "Afk Approval Status"; enum "Afk Approval Mode")
-        {
-            Caption = 'Approval Status';
-        }
+
         field(61004; "Afk Currency Code"; Code[20])
         {
             Caption = 'Currency Code';
@@ -314,10 +332,7 @@ tableextension 50055 "A02 Contact" extends Contact
         {
             Caption = 'Application Method';
         }
-        field(61022; "Afk Disable Blocking"; Boolean)
-        {
-            Caption = 'Disable sales order blocking';
-        }
+
         field(61023; "Afk Contact Type"; Enum "Afk Contact Type")
         {
             Caption = 'Contact Type';
@@ -325,6 +340,12 @@ tableextension 50055 "A02 Contact" extends Contact
         field(61024; "Afk Parent Account Type"; enum "Afk CRM Account Type")
         {
             Caption = 'Parent Account Type';
+        }
+        field(61025; "Afk Shipment Method Code"; Code[10])
+        {
+            Caption = 'Shipment Method Code';
+            TableRelation = "Shipment Method";
+
         }
 
 

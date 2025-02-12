@@ -647,6 +647,20 @@ page 50000 "AddOn Setup Card"
                 Caption = 'Archiver Cdes Achats';
                 RunObject = XMLport "Archive Cdes Achat Force";
             }
+            action(CreatePasswordTest)
+            {
+                ApplicationArea = All;
+                Image = Create;
+                Caption = 'TestJP';
+                //Promoted = true;
+                //PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    ApiMgt: Codeunit "Afk Api Mgt";
+                begin
+                    ApiMgt.DebugApiFunction();
+                end;
+            }
         }
     }
 

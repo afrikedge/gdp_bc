@@ -220,7 +220,8 @@ codeunit 50001 "Sales Order Process"
 
 
         SalesH.Modify;
-        Message(Text019);
+        if GuiAllowed then
+            Message(Text019);
     end;
 
     procedure ValidationOrdreLivraison(var SalesH: Record "Sales Header")
@@ -825,7 +826,8 @@ codeunit 50001 "Sales Order Process"
         StepEntry.Insert;
 
         if (Action = 1) then
-            Message(StrSubstNo(LablNewOrderStatus, OrderNo, NewStatus));
+            if GuiAllowed then
+                Message(StrSubstNo(LablNewOrderStatus, OrderNo, NewStatus));
 
     end;
 

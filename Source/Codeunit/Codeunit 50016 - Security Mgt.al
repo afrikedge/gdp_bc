@@ -444,6 +444,7 @@ codeunit 50016 "Security Mgt"
         ExternalUser.Modify();
     end;
 
+
     procedure SetFiltresCentresGestion(var SalesHeader: record "Sales Header")
     var
         FiltreCG: Text;

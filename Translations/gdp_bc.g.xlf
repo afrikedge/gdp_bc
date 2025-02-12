@@ -1293,6 +1293,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Block zero unit cost - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 154566986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company Cust Templ</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Company Cust Templ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 586566725 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nos Demandes revision client</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Cust Revision Nos Series - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 2944887935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prepmt. Payment Terms Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1368,10 +1378,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Galitt ND Gerant Prepaid - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 4194645922 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Holding Cust Templ</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Holding Cust Templ - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 2380425486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Intérimaire DFI</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Interim User DAF - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 1630584367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nos Prospects</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Lead Nos Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 3958441496 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Cust template</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Operation Cust Templ - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3242877383 - Field 1606399812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Chemin fichier temporaire pgp</source>
@@ -2388,6 +2413,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Customer Requirement - Field Updated by - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4079426417 - Field 780716528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Updated on</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Customer Requirement - Field Updated on - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4079426417 - Field 901461814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Validity</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2542,6 +2572,11 @@
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Customer Revision - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2831768765 - Field 1351594800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Customer Revision - Field No. Series - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2831768765 - Field 2123958759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Object</source>
@@ -21577,6 +21612,11 @@
           <source>Archiver Cdes Achats</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AddOn Setup Card - Action Archiver Cdes Achats - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1992829477 - Action 75761367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TestJP</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AddOn Setup Card - Action CreatePasswordTest - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3996182183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Role Center</source>
@@ -62053,6 +62093,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkExternalUsers - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1459027600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Demandes de déblocage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkUnblockingList - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 758891811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Afk Achats</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -63513,6 +63558,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Contact - Field Afk Mobile Banking - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2478494885 - Field 2106544914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Contact - Field Afk Modified By - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2478494885 - Field 3478707081 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Other Legal Status</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -63637,6 +63687,11 @@
           <source>Ship-to Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Contact - Field Afk Ship-to Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2478494885 - Field 457977666 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Shipment Method Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Contact - Field Afk Shipment Method Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2478494885 - Field 328024325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Traite</source>
@@ -63783,6 +63838,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Cust. Ledger Entry - Field Transaction Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3475545745 - Field 513798753 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Approval Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Approval Status - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3475545745 - Field 403573546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Customer Level</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -63807,6 +63867,11 @@
           <source>Main Industry</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Main Industry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3475545745 - Field 2106544914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Modified By - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3475545745 - Field 3478707081 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Other Legal Status</source>
@@ -66327,6 +66392,11 @@
           <source>Your Reference</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Line - Field Your Reference - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 611707355 - Field 2106544914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1187003046">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Ship-to Address - Field Afk Modified By - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 611707355 - Field 2247850105 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1187003046">
           <source>Responsibility Center</source>
