@@ -109,6 +109,9 @@ report 50029 "Fixed Asset - Inventaire"
             column(NomFseur; NomFseur)
             {
             }
+            column(NumReference; NumReference)
+            {
+            }
 
             trigger OnAfterGetRecord()
             var
@@ -135,6 +138,8 @@ report 50029 "Fixed Asset - Inventaire"
                 NomFseur := '';
                 if Vend.Get("Fixed Asset"."Vendor No.") then
                     NomFseur := Vend.Name;
+
+                NumReference := GenerateNum + '/' + Format(Date2DMY(Today, 2)) + '/' + Format(Date2DMY(Today, 3)) + '/...     ';
             end;
 
             trigger OnPostDataItem()
@@ -274,6 +279,7 @@ report 50029 "Fixed Asset - Inventaire"
         FAMgt: Codeunit "FA Mgt";
         NomFseur: Text[100];
         ProjectCode: Code[20];
+        NumReference: Text;
 
     local procedure ValidateDates(StartingDate: Date; EndingDate: Date)
     begin
