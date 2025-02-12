@@ -409,7 +409,10 @@ report 50189 "PBL FO Delivery Note"
                 }
                 trigger OnAfterGetRecord()
                 begin
-                    ConvertedVolume := Line.volumeaenlever * 1000;
+                    if Line."Unit of Measure Code" = 'LITRE' then
+                        ConvertedVolume := Line.volumeaenlever
+                    else
+                        ConvertedVolume := Line.volumeaenlever * 1000;
                 end;
             }
             trigger OnAfterGetRecord()
