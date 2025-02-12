@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+  <CstmrCdtTrfInitn>
+    <GrpHdr>
+      <MsgId>1422</MsgId>
+      <CreDtTm>2025-02-10T07:04:35</CreDtTm>
+      <NbOfTxs>8</NbOfTxs>
+      <CtrlSum>98785284.58</CtrlSum>
+      <InitgPty>
+        <Nm>Galana Distribution Petroliere S.A</Nm>
+        <PstlAdr>
+          <StrtNm>Immeuble PRADON TRADE CENTER - 8e Etage</StrtNm>
+          <PstCd>BP : 60118</PstCd>
+          <TwnNm>Antananarivo</TwnNm>
+          <Ctry>MG</Ctry>
+        </PstlAdr>
+        <Id>
+          <OrgId>
+            <Othr>
+              <Id>2000004458</Id>
+            </Othr>
+          </OrgId>
+        </Id>
+      </InitgPty>
+    </GrpHdr>
+    <PmtInf>
+      <PmtInfId>1422/1</PmtInfId>
+      <PmtMtd>TRF</PmtMtd>
+      <BtchBookg>false</BtchBookg>
+      <NbOfTxs>8</NbOfTxs>
+      <CtrlSum>98785284.58</CtrlSum>
+      <PmtTpInf>
+        <InstrPrty>NORM</InstrPrty>
+      </PmtTpInf>
+      <ReqdExctnDt>2025-02-10</ReqdExctnDt>
+      <Dbtr>
+        <Nm>Galana Distribution Petroliere S.A</Nm>
+        <PstlAdr>
+          <StrtNm>Immeuble PRADON TRADE CENTER - 8e Etage</StrtNm>
+          <PstCd>BP : 60118</PstCd>
+          <TwnNm>Antananarivo</TwnNm>
+          <Ctry>MG</Ctry>
+        </PstlAdr>
+        <Id>
+          <OrgId>
+            <BICOrBEI>BFAVMGMG</BICOrBEI>
+          </OrgId>
+        </Id>
+      </Dbtr>
+      <DbtrAcct>
+        <Id>
+          <Othr>
+            <Id />
+          </Othr>
+        </Id>
+      </DbtrAcct>
+      <DbtrAgt>
+        <FinInstnId>
+          <BIC>BFAVMGMG</BIC>
+        </FinInstnId>
+      </DbtrAgt>
+      <ChrgBr>SLEV</ChrgBr>
+      <CdtTrfTxInf>
+        <PmtId>
+          <EndToEndId>1422/1</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="MGA">1610000.00</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>MCBLMGMG</BIC>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>BLUE BERRY TRAVEL  SARL</Nm>
+          <PstlAdr>
+            <StrtNm>EX SICAM ANALAKELY</StrtNm>
+            <PstCd>101</PstCd>
+            <TwnNm>ANTANANARIVO</TwnNm>
+            <Ctry>MG</Ctry>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>00006000010000013999849</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+        <RmtInf>
+          <Ustrd>BLUE BERRY TRAVEL  SARL</Ustrd>
+        </RmtInf>
+      </CdtTrfTxInf>
+      <CdtTrfTxInf>
+        <PmtId>
+          <EndToEndId>1422/2</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="MGA">590000.00</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>BFAVMGMG</BIC>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>CT MOTORS</Nm>
+          <PstlAdr>
+            <StrtNm>LOT 59 BIS IVV ANDRAHARO</StrtNm>
+            <PstCd>101</PstCd>
+            <TwnNm>ANTANANARIVO</TwnNm>
+            <Ctry>MG</Ctry>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>00008000150200101042013</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+        <RmtInf>
+          <Ustrd>CT MOTORS</Ustrd>
+        </RmtInf>
+      </CdtTrfTxInf>
+      <CdtTrfTxInf>
+        <PmtId>
+          <EndToEndId>1422/3</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="MGA">66443520.00</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>BFAVMGMG</BIC>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>FIRST INVESTISSEMENT</Nm>
+          <PstlAdr>
+            <StrtNm>LOT 062 B BIS AMBOHIBAO</StrtNm>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>00008000210200101156577</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+        <RmtInf>
+          <Ustrd>FIRST INVESTISSEMENT</Ustrd>
+        </RmtInf>
+      </CdtTrfTxInf>
+      <CdtTrfTxInf>
+        <PmtId>
+          <EndToEndId>1422/4</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="MGA">1620000.00</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>BMOIMGMG</BIC>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>MADAUTO LOCATION</Nm>
+          <PstlAdr>
+            <StrtNm>RUE DR RASETA ANDRAHARO ANTANANARIVO</StrtNm>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>00004000040150020013732</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+        <RmtInf>
+          <Ustrd>MADAUTO LOCATION</Ustrd>
+        </RmtInf>
+      </CdtTrfTxInf>
+      <CdtTrfTxInf>
+        <PmtId>
+          <EndToEndId>1422/5</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="MGA">2386966.13</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>BMOIMGMG</BIC>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>OPTIME PARTNER SARL</Nm>
+          <PstlAdr>
+            <StrtNm>LOT III K 8 BIS ANKADITOHO MAROHOHO</StrtNm>
+            <PstCd>101</PstCd>
+            <TwnNm>ANTANANARIVO</TwnNm>
+            <Ctry>MG</Ctry>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>00004000110501032010390</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+        <RmtInf>
+          <Ustrd>OPTIME PARTNER SARL</Ustrd>
+        </RmtInf>
+      </CdtTrfTxInf>
+      <CdtTrfTxInf>
+        <PmtId>
+          <EndToEndId>1422/6</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="MGA">25173970.45</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>BFAVMGMG</BIC>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>ORANGE MADAGASCAR </Nm>
+          <PstlAdr>
+            <StrtNm>IMM. GALAXY PLAZA RUE DR RASETA  ANDRAHARO ANTANAN</StrtNm>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>00008000050200100753976</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+        <RmtInf>
+          <Ustrd>ORANGE MADAGASCAR </Ustrd>
+        </RmtInf>
+      </CdtTrfTxInf>
+      <CdtTrfTxInf>
+        <PmtId>
+          <EndToEndId>1422/7</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="MGA">358428.00</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>BMOIMGMG</BIC>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>SOCIETE MYE SARL</Nm>
+          <PstlAdr>
+            <StrtNm>16 RUE DR RAHARINOSY ANDOHALO</StrtNm>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>00004000010207650014132</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+        <RmtInf>
+          <Ustrd>SOCIETE MYE SARL</Ustrd>
+        </RmtInf>
+      </CdtTrfTxInf>
+      <CdtTrfTxInf>
+        <PmtId>
+          <EndToEndId>1422/8</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="MGA">602400.00</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>CLMDMGMG</BIC>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>TOYOTA RASSETA</Nm>
+          <PstlAdr>
+            <StrtNm>LOT IVE 92 BEHORIRIKA </StrtNm>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>00005000010180694010087</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+        <RmtInf>
+          <Ustrd>TOYOTA RASSETA</Ustrd>
+        </RmtInf>
+      </CdtTrfTxInf>
+    </PmtInf>
+  </CstmrCdtTrfInitn>
+</Document>

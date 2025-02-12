@@ -1064,19 +1064,36 @@ codeunit 50035 "EventsSubscribers Table"
     [EventSubscriber(ObjectType::Table, Database::"Payment Export Data", 'OnAfterSetVendorAsRecipient', '', true, true)]
     local procedure PaymentExportData_OnAfterSetSetVendorAsRecipient(var PaymentExportData: Record "Payment Export Data"; var Vendor: Record Vendor; var VendorBankAccount: Record "Vendor Bank Account")
     var
+        BankAcc: record "Bank Account";
         MasterFilesMgt: codeunit "AG1 Master Files Mgt";
     begin
+        if (BankAcc.get(PaymentExportData."Sender Bank Account Code")) then
+            PaymentExportData.SenderBankLongAccNum := BankAcc.AFKGetLongAccountNum();
         PaymentExportData.VendRecipientBankAccLongNum := VendorBankAccount.AFKGetLongAccountNum();
         if PaymentExportData.Modify() then;
     end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Payment Export Data", 'OnAfterSetBankAsRecipient', '', true, true)]
-    local procedure PaymentExportData_OnAfterSetBankAsRecipient(var PaymentExportData: Record "Payment Export Data"; var BankAccount: Record "Bank Account")
-    var
-        MasterFilesMgt: codeunit "AG1 Master Files Mgt";
+    // [EventSubscriber(ObjectType::Table, Database::"Payment Export Data", 'OnAfterSetBankAsRecipient', '', true, true)]
+    // local procedure PaymentExportData_OnAfterSetBankAsRecipient(var PaymentExportData: Record "Payment Export Data"; var BankAccount: Record "Bank Account")
+    // var
+    //     MasterFilesMgt: codeunit "AG1 Master Files Mgt";
+    // begin
+    //     PaymentExportData.SenderBankLongAccNum := BankAccount.AFKGetLongAccountNum();
+    //     if PaymentExportData.Modify() then;
+    // end;
+
+    // [EventSubscriber(ObjectType::Table, Database::"Payment Export Data", 'OnAfterSetBankAsSenderBank', '', true, true)]
+    // local procedure PaymentExportData_OnAfterSetBankAsSenderBank(BankAccount: Record "Bank Account")
+    // var
+    //     MasterFilesMgt: codeunit "AG1 Master Files Mgt";
+    // begin
+    //     PaymentExportData.SenderBankLongAccNum := BankAccount.AFKGetLongAccountNum();
+    //     if PaymentExportData.Modify() then;
+    // end;
+
+    [IntegrationEvent(true, false)]
+    local procedure OnAfterSetBankAsSenderBank(BankAccount: Record "Bank Account")
     begin
-        PaymentExportData.SenderBankLongAccNum := BankAccount.AFKGetLongAccountNum();
-        if PaymentExportData.Modify() then;
     end;
 
 
@@ -1100,7 +1117,7 @@ codeunit 50035 "EventsSubscribers Table"
 
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeInitHeaderLocactionCode(var SalesLine: Record "Sales Line"; var IsHandled: Boolean)
+    local procedure OnAfterSetCustomerAsRecipient(var PaymentExportData: Record "Payment Export Data"; var Customer: Record Customer; var CustomerBankAccount: Record "Customer Bank Account");
     begin
     end;
 
