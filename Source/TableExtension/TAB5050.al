@@ -110,7 +110,7 @@ tableextension 50055 "A02 Contact" extends Contact
         field(50039; "Afk Parent Account No."; code[20])
         {
             Caption = 'Parent Account No.';
-            TableRelation = Customer;
+            //TableRelation = Customer;
         }
         field(50040; "Afk Customer Profile"; Enum "Afk Customer Profile")
         {

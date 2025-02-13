@@ -3,6 +3,61 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="gdp_bc">
     <body>
       <group id="body">
+        <trans-unit id="Page 3043324616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Permissions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Frontdesk Permissions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2055117640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Profiles</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Frontdesk Profiles - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1884925449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Afk Main industry list</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Main Industry List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 641096118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requirement Criteria List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Criteria List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 120542316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requirement Matrix</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 120542316 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 120542316 - Control 3662228450 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Criteria Code field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control Criteria Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 120542316 - Control 3478782985 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Legal Status field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control Legal Status - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 120542316 - Control 1769411827 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Requirement Level field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control Requirement Level - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 120542316 - Control 3900461607 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sales Category Code field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control Sales Category Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 120542316 - Control 1503714101 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sales Channel field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control Sales Channel - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Report 1264407366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comptes Bancaire - Grand Livre</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3042,6 +3097,36 @@
           <source>Unpaid bills</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk SalesOrder Unblocking - Field Unpaid bills - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 392974541 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Web Link Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Web Link Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 392974541 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Web Link Document - Field Created By - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 392974541 - Field 1451970916 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Web Link Document - Field Document Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 392974541 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Web Link Document - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 392974541 - Field 2190072985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Function Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Web Link Document - Field Function Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 392974541 - Field 3817506388 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Link</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Web Link Document - Field Link - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2856680211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AMSA Inv. Post Buffer</source>
@@ -22622,6 +22707,11 @@
           <source>Afk External Users</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Afk External Users - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 793119409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Frontdesk Functionnalities</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Frontdesk Functionnalities - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1937760828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Afk SO Unblocking List</source>
@@ -62093,6 +62183,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkExternalUsers - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 377240444 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Requirement Matrix</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkFDequirementMatrix - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 1633860071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Functionnalities</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkFDFunctionnalities - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3405271507 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Main industries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkFDMainIndustries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 4096674914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Permissions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkFDPermissions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 2423731122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Profiles</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkFDProfiles - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3048902989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Requirements Criteria</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkFDRequirementList - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 1459027600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Demandes de déblocage</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -67527,11 +67647,6 @@
           <source>Fonctionnalité FrontDesk</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Table Type - EnumValue FrontDesk Feature - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 3759309350 - EnumValue 1578228781 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Profil FrontDesk</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Table Type - EnumValue FrontDesk Profile - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3759309350 - EnumValue 1549126907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Secteur Principal</source>

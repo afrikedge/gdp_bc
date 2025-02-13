@@ -801,7 +801,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Credit Limit (LCY)"), input, 'Credit Limit (LCY)');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Risk Level"), input, 'Risk Level');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Payment Method Code"), input, 'Payment Method Code');
-        WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Cash payment"), input, '"Cash payment');
+        WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Cash payment"), input, 'Cash payment');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Check Set"), input, 'Check Set');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Bank Transfer Bank Stamp"), input, 'Bank Transfer Bank Stamp');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Traite"), input, 'Traite');
@@ -827,6 +827,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Object"), input, 'Warranty Object');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Value"), input, 'Warranty Value');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Validity"), input, 'Warranty Validity');
+        //WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Currency Code"), input, 'Currency Code');
+        WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Language Code"), input, 'Language Code');
 
 
 
