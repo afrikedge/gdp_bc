@@ -283,6 +283,14 @@ tableextension 50005 "A02 Customer" extends Customer
         {
             Caption = 'Disable sales order blocking';
         }
+        field(50065; "Afk Customer Level"; enum "Afk Customer Level")
+        {
+            Caption = 'Customer Level';
+        }
+        field(50066; "Remove JIR Ref on BE"; Boolean)
+        {
+            Caption = 'Remove JIR Ref on BE';
+        }
         //**fin champs identiques avec Contact
 
 
@@ -315,10 +323,7 @@ tableextension 50005 "A02 Customer" extends Customer
             OptionCaption = 'Fixe,Mobile';
             OptionMembers = Fixe,Mobile;
         }
-        field(60002; "Remove JIR Ref on BE"; Boolean)
-        {
-            Caption = 'Remove JIR Ref on BE';
-        }
+
         field(60003; "Traite UnPaid"; Decimal)
         {
             FieldClass = FlowField;
@@ -332,10 +337,7 @@ tableextension 50005 "A02 Customer" extends Customer
         {
             Caption = 'Motif désactivation';
         }
-        field(61001; "Afk Customer Level"; enum "Afk Customer Level")
-        {
-            Caption = 'Customer Level';
-        }
+
     }
     keys
     {

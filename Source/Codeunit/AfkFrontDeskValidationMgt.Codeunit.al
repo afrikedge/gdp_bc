@@ -145,6 +145,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         LineInput: JsonObject;
     begin
 
+        ModifyLeadStatusAndConvertCustomer(input);
+
         input.Get('ApprovalFlow', c);
         LinesArray := c.AsArray();
         foreach c in LinesArray do begin
@@ -221,9 +223,10 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     var
         ApprovalFlow: Record "Afk Approval Flow";
         Lead: Record "Contact";
-        Cont: Record "Contact";
     //RecRef: RecordRef;
     begin
+
+
 
         ApprovalFlow.Init();
 
@@ -231,32 +234,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
         ApprovalFlow.Insert();
 
-        Lead.Get(ApprovalFlow."Record No.");
-        Lead."Afk Approval Status" := ApprovalFlow."Next Status";
 
-        Lead.Modify();
-
-        if (Lead."Afk Approval Status" = Lead."Afk Approval Status"::"Validé") then begin
-            AfkSetup.Get();
-            if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::Holding) then begin
-                AfkSetup.TestField(AfkSetup."Holding Cust Templ");
-                Lead.CreateCustomerFromTemplate(AfkSetup."Holding Cust Templ");
-            end;
-            if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Opération") then begin
-                AfkSetup.TestField(AfkSetup."Operation Cust Templ");
-                Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
-            end;
-            if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Société") then begin
-                AfkSetup.TestField(AfkSetup."Company Cust Templ");
-                Lead.CreateCustomerFromTemplate(AfkSetup."Company Cust Templ");
-            end;
-
-            Cont.SetRange(Cont."Afk Parent Account No.", Lead."No.");
-            if Cont.FindSet() then
-                repeat
-                    Cont.CreateCustomerFromTemplate('');
-                until Cont.Next() < 1;
-        end;
 
         exit(Ws.CreateResponseSuccess(Lead."No."));
 
@@ -829,8 +807,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Validity"), input, 'Warranty Validity');
         //WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Currency Code"), input, 'Currency Code');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Language Code"), input, 'Language Code');
-
-
+        WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Contact Type"), input, 'Contact Type');
+        WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Blocked"), input, 'Blocked');
 
         RecRef.SetTable(Lead);
     end;
@@ -1066,6 +1044,43 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
         exit(Ws.CreateResponseSuccess(LinkDoc."Document No."));
 
+    end;
+
+    local procedure ModifyLeadStatusAndConvertCustomer(input: JsonObject)
+    var
+        Lead: Record "Contact";
+        Cont: Record "Contact";
+    begin
+
+        Lead.Get(ws.GetText('No_', input));
+        Lead.validate("Afk Approval Status", ws.GetInt('Approval Status', input));
+        //CustRevision."Approved Payment Terms Code" := ws.GetBool('Approved Payment Terms Code', input);
+
+        Lead.Modify();
+
+        if (Lead."Afk Approval Status" = Lead."Afk Approval Status"::"Validé") then begin
+            AfkSetup.Get();
+            if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::Holding) then begin
+                AfkSetup.TestField(AfkSetup."Holding Cust Templ");
+                Lead.CreateCustomerFromTemplate(AfkSetup."Holding Cust Templ");
+            end;
+            if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Opération") then begin
+                AfkSetup.TestField(AfkSetup."Operation Cust Templ");
+                Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
+            end;
+            if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Société") then begin
+                AfkSetup.TestField(AfkSetup."Company Cust Templ");
+                Lead.CreateCustomerFromTemplate(AfkSetup."Company Cust Templ");
+            end;
+
+            Cont.SetRange(Cont."Afk Parent Account No.", Lead."No.");
+            if Cont.FindSet(true) then
+                repeat
+                    Cont.CreateCustomerFromTemplate('');
+                    Cont."Afk Parent Account Type" := Cont."Afk Parent Account Type"::Client;
+                    Cont.Modify();
+                until Cont.Next() < 1;
+        end;
     end;
 
 

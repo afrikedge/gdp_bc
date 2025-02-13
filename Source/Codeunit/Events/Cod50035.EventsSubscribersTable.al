@@ -1116,9 +1116,58 @@ codeunit 50035 "EventsSubscribers Table"
     end;
 
 
-    [IntegrationEvent(false, false)]
-    local procedure OnAfterSetCustomerAsRecipient(var PaymentExportData: Record "Payment Export Data"; var Customer: Record Customer; var CustomerBankAccount: Record "Customer Bank Account");
+    [EventSubscriber(ObjectType::Table, Database::"Contact", 'OnAfterCreateCustomer', '', true, true)]
+    local procedure OnAfterCreateCustomer_Contact(var Customer: Record Customer; Contact: Record Contact)
+    var
     begin
+
+
+        if (Contact."Afk Responsibility Center" <> '') then
+            Customer."Responsibility Center" := Contact."Afk Responsibility Center";
+
+        if (Contact."Afk Customer Posting Group" <> '') then
+            Customer.Validate("Customer Posting Group", Contact."Afk Customer Posting Group");
+
+        if (Contact."Afk Customer Price Group" <> '') then
+            Customer.Validate("Customer Price Group", Contact."Afk Customer Price Group");
+
+        if (Contact."Afk Gen. Bus. Posting Group" <> '') then
+            Customer.Validate("Gen. Bus. Posting Group", Contact."Afk Gen. Bus. Posting Group");
+
+        if (Contact."Afk VAT Bus_ Posting Group" <> '') then
+            Customer.Validate("VAT Bus. Posting Group", Contact."Afk VAT Bus_ Posting Group");
+
+        if (Contact."Afk Location Code" <> '') then
+            Customer.Validate("Location Code", Contact."Afk Location Code");
+
+        if (Contact."Afk Ship-to Code" <> '') then begin
+            Customer.Validate(Customer."Ship-to Code", Contact."Afk Ship-to Code");
+            Customer.Validate(Customer."Ship-to Code2", Contact."Afk Ship-to Code");
+        end;
+        if (Contact."Afk Bill-to Customer No." <> '') then
+            Customer.Validate(Customer."Bill-to Customer No.", Contact."Afk Bill-to Customer No.");
+        if (Contact."Afk Primary Contact No." <> '') then
+            Customer.Validate("Primary Contact No.", Contact."Afk Primary Contact No.");
+
+        if (Contact."Afk Payment Terms Code" <> '') then
+            Customer.Validate("Payment Terms Code", Contact."Afk Payment Terms Code");
+        if (Contact."Afk Credit Limit (LCY)" <> 0) then
+            Customer.Validate("Credit Limit (LCY)", Contact."Afk Credit Limit (LCY)");
+        if (Contact."Afk Payment Method Code" <> '') then
+            Customer.Validate("Payment Method Code", Contact."Afk Payment Method Code");
+        if (Contact."Afk Reminder Terms Code" <> '') then
+            Customer.Validate("Reminder Terms Code", Contact."Afk Reminder Terms Code");
+        if (Contact."Afk Fin. Charge Terms Code" <> '') then
+            Customer.Validate("Fin. Charge Terms Code", Contact."Afk Fin. Charge Terms Code");
+        Customer.Validate("Application Method", Contact."Afk Application Method");
+        Customer.Validate("Contact Type", Contact."Afk Contact Type");
+        if (Contact."Afk Shipment Method Code" <> '') then
+            Customer.Validate("Shipment Method Code", Contact."Afk Shipment Method Code");
+        Customer.Validate(Blocked, Contact."Afk Blocked");
+
+
+
+        Customer.Modify();
     end;
 
 

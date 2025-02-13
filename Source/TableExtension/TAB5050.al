@@ -214,12 +214,15 @@ tableextension 50055 "A02 Contact" extends Contact
         {
             Caption = 'Disable sales order blocking';
         }
+        field(50065; "Afk Customer Level"; enum "Afk Customer Level")
+        {
+            Caption = 'Customer Level';
+        }
+        field(50066; "Remove JIR Ref on BE"; Boolean)
+        {
+            Caption = 'Remove JIR Ref on BE';
+        }
         //**fin champs identiques avec client
-
-
-
-
-
 
 
 
@@ -234,26 +237,20 @@ tableextension 50055 "A02 Contact" extends Contact
             Caption = 'Responsibility Center';
             TableRelation = "Responsibility Center";
         }
-        field(61001; "Afk Customer Level"; enum "Afk Customer Level")
-        {
-            Caption = 'Customer Level';
-        }
-        field(61002; "Remove JIR Ref on BE"; Boolean)
-        {
-            Caption = 'Remove JIR Ref on BE';
-        }
 
 
-        field(61004; "Afk Currency Code"; Code[20])
-        {
-            Caption = 'Currency Code';
-            TableRelation = Currency;
-        }
-        field(61005; "Afk Language Code"; Code[20])
-        {
-            Caption = 'Language Code';
-            TableRelation = Language;
-        }
+
+
+        // field(61004; "Afk Currency Code"; Code[20])
+        // {
+        //     Caption = 'Currency Code';
+        //     TableRelation = Currency;
+        // }
+        // field(61005; "Afk Language Code"; Code[20])
+        // {
+        //     Caption = 'Language Code';
+        //     TableRelation = Language;
+        // }
         field(61006; "Afk Customer Posting Group"; Code[20])
         {
             Caption = 'Customer Posting Group';
@@ -310,14 +307,14 @@ tableextension 50055 "A02 Contact" extends Contact
             Caption = 'Payment Method Code';
             TableRelation = "Payment Method";
         }
-        field(61017; "Afk Balance Amount"; Decimal)
-        {
-            Caption = 'Balance Amount';
-        }
-        field(61018; "Afk Amount Due"; Decimal)
-        {
-            Caption = 'Amount Due';
-        }
+        // field(61017; "Afk Balance Amount"; Decimal)
+        // {
+        //     Caption = 'Balance Amount';
+        // }
+        // field(61018; "Afk Amount Due"; Decimal)
+        // {
+        //     Caption = 'Amount Due';
+        // }
         field(61019; "Afk Reminder Terms Code"; Code[10])
         {
             Caption = 'Reminder Terms Code';
@@ -345,7 +342,10 @@ tableextension 50055 "A02 Contact" extends Contact
         {
             Caption = 'Shipment Method Code';
             TableRelation = "Shipment Method";
-
+        }
+        field(61026; "Afk Blocked"; Enum "Customer Blocked")
+        {
+            Caption = 'Blocked';
         }
 
 
