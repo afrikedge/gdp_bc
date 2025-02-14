@@ -2186,10 +2186,10 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value />
+                                                                  <Value>=Fields!TonneConversion.Value</Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
-                                                                    <Format>#,0;(#,0)</Format>
+                                                                    <Format>#,0.00000;(#,0.00000)</Format>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -2203,9 +2203,6 @@
                                                             <Border>
                                                               <Style>None</Style>
                                                             </Border>
-                                                            <BottomBorder>
-                                                              <Style>None</Style>
-                                                            </BottomBorder>
                                                             <LeftBorder>
                                                               <Style>Solid</Style>
                                                             </LeftBorder>
@@ -5209,11 +5206,11 @@ End Function
         <Field Name="LineNumberText">
           <DataField>LineNumberText</DataField>
         </Field>
-        <Field Name="QtyConverted">
-          <DataField>QtyConverted</DataField>
+        <Field Name="TonneConversion">
+          <DataField>TonneConversion</DataField>
         </Field>
-        <Field Name="QtyConvertedFormat">
-          <DataField>QtyConvertedFormat</DataField>
+        <Field Name="TonneConversionFormat">
+          <DataField>TonneConversionFormat</DataField>
         </Field>
         <Field Name="LinesFoot">
           <DataField>LinesFoot</DataField>

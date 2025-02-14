@@ -17,7 +17,7 @@ table 50107 "Afk Customer Requirement"
         field(3; "Lead No."; Code[20])
         {
             Caption = 'Lead No.';
-            TableRelation = Contact where("Afk Contact Type" = const(Prospect));
+            TableRelation = Contact;//where("Afk Contact Type" = const(Prospect));
         }
         field(4; Criteria; Code[20])
         {
@@ -70,10 +70,14 @@ table 50107 "Afk Customer Requirement"
             Caption = 'Updated by';
             TableRelation = "Afk FrontDesk User";
         }
+        field(16; "Updated on"; Date)
+        {
+            Caption = 'Updated on';
+        }
     }
     keys
     {
-        key(PK; "Account Type")
+        key(PK; "Account Type", "Customer No.", "Lead No.", Criteria)
         {
             Clustered = true;
         }

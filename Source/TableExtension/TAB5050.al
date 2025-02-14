@@ -105,12 +105,12 @@ tableextension 50055 "A02 Contact" extends Contact
         field(50038; "Afk Main Industry"; code[20])
         {
             Caption = 'Main Industry';
-            TableRelation = "Afk Reference" where(TableType = const("Main Industry"));
+            TableRelation = "Afk Reference".Code where(TableType = const("Main Industry"));
         }
         field(50039; "Afk Parent Account No."; code[20])
         {
             Caption = 'Parent Account No.';
-            TableRelation = Customer;
+            //TableRelation = Customer;
         }
         field(50040; "Afk Customer Profile"; Enum "Afk Customer Profile")
         {
@@ -201,6 +201,28 @@ tableextension 50055 "A02 Contact" extends Contact
             Caption = 'Warranty Validity';
         }
 
+        field(50062; "Afk Modified By"; Code[50])
+        {
+            Caption = 'Modified By';
+            TableRelation = "Afk FrontDesk User";
+        }
+        field(50063; "Afk Approval Status"; enum "Afk CRM Approval Status")
+        {
+            Caption = 'Approval Status';
+        }
+        field(50064; "Afk Disable Blocking"; Boolean)
+        {
+            Caption = 'Disable sales order blocking';
+        }
+        field(50065; "Afk Customer Level"; enum "Afk Customer Level")
+        {
+            Caption = 'Customer Level';
+        }
+        field(50066; "Remove JIR Ref on BE"; Boolean)
+        {
+            Caption = 'Remove JIR Ref on BE';
+        }
+        //**fin champs identiques avec client
 
 
 
@@ -208,34 +230,27 @@ tableextension 50055 "A02 Contact" extends Contact
 
 
 
+
+        //**debut champs spécifiques contact
         field(61000; "Afk Responsibility Center"; Code[10])
         {
             Caption = 'Responsibility Center';
             TableRelation = "Responsibility Center";
         }
-        field(61001; "Afk Customer Level"; enum "Afk Customer Level")
-        {
-            Caption = 'Customer Level';
-        }
-        field(61002; "Remove JIR Ref on BE"; Boolean)
-        {
-            Caption = 'Remove JIR Ref on BE';
-        }
 
-        field(61003; "Afk Approval Status"; enum "Afk Approval Mode")
-        {
-            Caption = 'Approval Status';
-        }
-        field(61004; "Afk Currency Code"; Code[20])
-        {
-            Caption = 'Currency Code';
-            TableRelation = Currency;
-        }
-        field(61005; "Afk Language Code"; Code[20])
-        {
-            Caption = 'Language Code';
-            TableRelation = Language;
-        }
+
+
+
+        // field(61004; "Afk Currency Code"; Code[20])
+        // {
+        //     Caption = 'Currency Code';
+        //     TableRelation = Currency;
+        // }
+        // field(61005; "Afk Language Code"; Code[20])
+        // {
+        //     Caption = 'Language Code';
+        //     TableRelation = Language;
+        // }
         field(61006; "Afk Customer Posting Group"; Code[20])
         {
             Caption = 'Customer Posting Group';
@@ -292,14 +307,14 @@ tableextension 50055 "A02 Contact" extends Contact
             Caption = 'Payment Method Code';
             TableRelation = "Payment Method";
         }
-        field(61017; "Afk Balance Amount"; Decimal)
-        {
-            Caption = 'Balance Amount';
-        }
-        field(61018; "Afk Amount Due"; Decimal)
-        {
-            Caption = 'Amount Due';
-        }
+        // field(61017; "Afk Balance Amount"; Decimal)
+        // {
+        //     Caption = 'Balance Amount';
+        // }
+        // field(61018; "Afk Amount Due"; Decimal)
+        // {
+        //     Caption = 'Amount Due';
+        // }
         field(61019; "Afk Reminder Terms Code"; Code[10])
         {
             Caption = 'Reminder Terms Code';
@@ -314,10 +329,7 @@ tableextension 50055 "A02 Contact" extends Contact
         {
             Caption = 'Application Method';
         }
-        field(61022; "Afk Disable Blocking"; Boolean)
-        {
-            Caption = 'Disable sales order blocking';
-        }
+
         field(61023; "Afk Contact Type"; Enum "Afk Contact Type")
         {
             Caption = 'Contact Type';
@@ -325,6 +337,15 @@ tableextension 50055 "A02 Contact" extends Contact
         field(61024; "Afk Parent Account Type"; enum "Afk CRM Account Type")
         {
             Caption = 'Parent Account Type';
+        }
+        field(61025; "Afk Shipment Method Code"; Code[10])
+        {
+            Caption = 'Shipment Method Code';
+            TableRelation = "Shipment Method";
+        }
+        field(61026; "Afk Blocked"; Enum "Customer Blocked")
+        {
+            Caption = 'Blocked';
         }
 
 

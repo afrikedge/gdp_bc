@@ -557,88 +557,86 @@ tableextension 50011 "A02 Sales Header" extends "Sales Header"
         SingleCU.Set_AllowDeletionSalesHeader(false);
     end;
 
+    procedure AFK_RefreshSalesLinePrices()
+    var
+        SalesLine1: Record "Sales Line";
+        PricesDate: Date;
+        JiramaSitePricing: Codeunit "Provisions Pricing Mgt";
+        SingleCU: Codeunit SingleInstance;
+        BLHeader: Record "50005";
+        DocPrepa: Record "50037";
+        JiramaSitePrice: Decimal;
+    begin
+        AddOnSetup2.GET;
+        IF Rec."Document Type" <> Rec."Document Type"::Order THEN EXIT;
 
-    //TODO Migration
-    // procedure AFK_RefreshSalesLinePrices()
-    // var
-    //     SalesLine1: Record "37";
-    //     PricesDate: Date;
-    //     BLHeader: Record "50005";
-    //     DocPrepa: Record "50037";
-    //     JiramaSitePrice: Decimal;
-    // begin
-    //     AddOnSetup2.GET;
-    //     IF Rec."Document Type" <> Rec."Document Type"::Order THEN EXIT;
+        PricesDate := 0D;
 
-    //     PricesDate := 0D;
+        BLHeader.RESET;
+        BLHeader.SETRANGE(BLHeader.NavOrderNo, Rec."No.");
+        BLHeader.SETRANGE(isconfirme, TRUE);
+        IF BLHeader.FINDLAST THEN
+            PricesDate := BLHeader.datelivraison;
 
-    //     BLHeader.RESET;
-    //     BLHeader.SETRANGE(BLHeader.NavOrderNo, Rec."No.");
-    //     BLHeader.SETRANGE(isconfirme, TRUE);
-    //     IF BLHeader.FINDLAST THEN
-    //         PricesDate := BLHeader.datelivraison;
+        IF PricesDate = 0D THEN BEGIN
+            DocPrepa.RESET;
+            DocPrepa.SETRANGE(DocPrepa."Document Type", DocPrepa."Document Type"::Shipment);
+            DocPrepa.SETRANGE(DocPrepa."Order No.", Rec."No.");
+            IF DocPrepa.FINDLAST THEN
+                PricesDate := DocPrepa."Posting Date";
+        END;
 
-    //     IF PricesDate = 0D THEN BEGIN
-    //         DocPrepa.RESET;
-    //         DocPrepa.SETRANGE(DocPrepa."Document Type", DocPrepa."Document Type"::Shipment);
-    //         DocPrepa.SETRANGE(DocPrepa."Order No.", Rec."No.");
-    //         IF DocPrepa.FINDLAST THEN
-    //             PricesDate := DocPrepa."Posting Date";
-    //     END;
+        IF PricesDate = 0D THEN ERROR(AFK_Text003);
 
-    //     IF PricesDate = 0D THEN ERROR(AFK_Text003);
+        //PricesDate := Rec."Requested Delivery Date";
+        IF NOT CONFIRM(STRSUBSTNO(AFK_Text002, PricesDate)) THEN EXIT;
 
-    //     //PricesDate := Rec."Requested Delivery Date";
-    //     IF NOT CONFIRM(STRSUBSTNO(AFK_Text002, PricesDate)) THEN EXIT;
+        SalesLine1.RESET;
+        SalesLine1.SETRANGE("Document Type", SalesLine1."Document Type"::Order);
+        SalesLine1.SETRANGE("Document No.", Rec."No.");
+        IF SalesLine1.FINDSET THEN
+            REPEAT
+                IF ((SalesLine1.Type = SalesLine1.Type::Item) OR
+                  (SalesLine1.Type = SalesLine1.Type::Resource)) THEN BEGIN
 
-    //     SalesLine1.RESET;
-    //     SalesLine1.SETRANGE("Document Type", SalesLine1."Document Type"::Order);
-    //     SalesLine1.SETRANGE("Document No.", Rec."No.");
-    //     IF SalesLine1.FINDSET THEN
-    //         REPEAT
-    //             IF ((SalesLine1.Type = SalesLine1.Type::Item) OR
-    //               (SalesLine1.Type = SalesLine1.Type::Resource)) THEN BEGIN
+                    SalesLine1.TESTFIELD("Qty. per Unit of Measure");
 
-    //                 SalesLine1.TESTFIELD("Qty. per Unit of Measure");
+                    CASE SalesLine1.Type OF
+                        SalesLine1.Type::Item, SalesLine1.Type::Resource:
+                            BEGIN
+                                SingleCU.Set_SalesPriceDate(PricesDate);
+                                //PriceCalcMgt.SetSalesPriceDate(PricesDate);
+                                PriceCalcMgt.FindSalesLineLineDisc(Rec, SalesLine1);
+                                PriceCalcMgt.FindSalesLinePrice(Rec, SalesLine1, SalesLine1.FIELDNO("No."));
+                            END;
+                    END;
 
-    //                 CASE SalesLine1.Type OF
-    //                     SalesLine1.Type::Item, SalesLine1.Type::Resource:
-    //                         BEGIN
-    //                             PriceCalcMgt.SetSalesPriceDate(PricesDate);
-    //                             PriceCalcMgt.FindSalesLineLineDisc(Rec, SalesLine1);
-    //                             PriceCalcMgt.FindSalesLinePrice(Rec, SalesLine1, SalesLine1.FIELDNO("No."));
-    //                         END;
-    //                 END;
+                    //*****************Prix par site Jirama
+                    IF AddOnSetup2."Activate Jirama Site UP" THEN BEGIN
+                        JiramaSitePrice := JiramaSitePricing.GetJiramaSiteUnitPrice("Sell-to Customer No.", "Ship-to Code", PricesDate, SalesLine1."No.");
+                        IF (JiramaSitePrice > 0) THEN
+                            SalesLine1."Unit Price" := JiramaSitePrice;
+                    END;
+                    //*****************Prix par site Jirama
 
-    //                 //*****************Prix par site Jirama
-    //                 //TODO Migration
-    //                 /*
-    //                   IF AddOnSetup2."Activate Jirama Site UP" THEN BEGIN
-    //                   JiramaSitePrice := JiramaSitePricing.GetJiramaSiteUnitPrice("Sell-to Customer No.","Ship-to Code",PricesDate,SalesLine1."No.");
-    //                   IF(JiramaSitePrice > 0) THEN
-    //                     SalesLine1."Unit Price" := JiramaSitePrice;
-    //                 END;
-    //                 */
-    //                 //*****************Prix par site Jirama
+                    SalesLine1.VALIDATE("Unit Price");
+                    SalesLine1.MODIFY;
 
-    //                 SalesLine1.VALIDATE("Unit Price");
-    //                 SalesLine1.MODIFY;
-
-    //             END;
-    //         UNTIL SalesLine1.NEXT = 0;
-    //     MESSAGE(AFK_Text001);
-    // end;
+                END;
+            UNTIL SalesLine1.NEXT = 0;
+        MESSAGE(AFK_Text001);
+    end;
 
 
 
     var
-        Loc: Record "14";
+        Loc: Record Location;
 
     var
         AFK_AllowDeletionVar: Boolean;
         //AFK_SecMgt: Codeunit "50016";
-        SalesHeaderArchive: Record "5107";
-        SalesInvHeader2: Record "112";
+        // SalesHeaderArchive: Record "5107";
+        // SalesInvHeader2: Record "112";
         AFK_ERR001: Label 'Ce numéro a déjà été utilisé pour une commande';
         AFK_ERR002: Label 'Ce numéro a déjà été utilisé pour une facture';
         AFK_ERR003: Label 'Vous ne devez pas seléctionner un magasin de ce type';

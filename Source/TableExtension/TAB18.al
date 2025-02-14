@@ -10,10 +10,7 @@ tableextension 50005 "A02 Customer" extends Customer
         {
             Caption = 'Responsibility Center';
         }
-        field(50000; "Disable Blocking"; Boolean)
-        {
-            Caption = 'Disable sales order blocking';
-        }
+
         field(50001; "Disable Shipment Autorisation"; Boolean)
         {
             Caption = 'Disable Shipment Validation';
@@ -177,7 +174,7 @@ tableextension 50005 "A02 Customer" extends Customer
         field(50038; "Afk Main Industry"; code[20])
         {
             Caption = 'Main Industry';
-            TableRelation = "Afk Reference" where(TableType = const("Main Industry"));
+            TableRelation = "Afk Reference".Code where(TableType = const("Main Industry"));
         }
         field(50039; "Afk Parent Account No."; code[20])
         {
@@ -273,12 +270,43 @@ tableextension 50005 "A02 Customer" extends Customer
         {
             Caption = 'Warranty Validity';
         }
+        field(50062; "Afk Modified By"; Code[50])
+        {
+            Caption = 'Modified By';
+            TableRelation = "Afk FrontDesk User";
+        }
+        field(50063; "Afk Approval Status"; enum "Afk Approval Mode")
+        {
+            Caption = 'Approval Status';
+        }
+        field(50064; "Disable Blocking"; Boolean)
+        {
+            Caption = 'Disable sales order blocking';
+        }
+        field(50065; "Afk Customer Level"; enum "Afk Customer Level")
+        {
+            Caption = 'Customer Level';
+        }
+        field(50066; "Remove JIR Ref on BE"; Boolean)
+        {
+            Caption = 'Remove JIR Ref on BE';
+        }
+        //**fin champs identiques avec Contact
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+        //**debut champs spécifiques client
         field(60000; "Traite Amount"; Decimal)
         {
             FieldClass = FlowField;
@@ -295,10 +323,7 @@ tableextension 50005 "A02 Customer" extends Customer
             OptionCaption = 'Fixe,Mobile';
             OptionMembers = Fixe,Mobile;
         }
-        field(60002; "Remove JIR Ref on BE"; Boolean)
-        {
-            Caption = 'Remove JIR Ref on BE';
-        }
+
         field(60003; "Traite UnPaid"; Decimal)
         {
             FieldClass = FlowField;
@@ -312,10 +337,7 @@ tableextension 50005 "A02 Customer" extends Customer
         {
             Caption = 'Motif désactivation';
         }
-        field(61001; "Afk Customer Level"; enum "Afk Customer Level")
-        {
-            Caption = 'Customer Level';
-        }
+
     }
     keys
     {

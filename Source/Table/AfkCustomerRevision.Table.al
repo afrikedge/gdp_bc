@@ -8,6 +8,7 @@ table 50103 "Afk Customer Revision"
         field(1; "No."; Code[20])
         {
             Caption = 'No.';
+            Editable = false;
         }
         field(2; "Customer No."; Code[20])
         {
@@ -32,7 +33,7 @@ table 50103 "Afk Customer Revision"
         {
             Caption = 'Object';
         }
-        field(7; "Approval Status"; Enum "Afk Approval Mode")
+        field(7; "Approval Status"; Enum "Afk CRM Approval Status")
         {
             Caption = 'Approval Status';
         }
@@ -165,6 +166,12 @@ table 50103 "Afk Customer Revision"
             Caption = 'Created By';
             TableRelation = "Afk FrontDesk User";
         }
+        field(39; "No. Series"; Code[10])
+        {
+            Caption = 'No. Series';
+            Editable = false;
+            TableRelation = "No. Series";
+        }
     }
     keys
     {
@@ -173,4 +180,31 @@ table 50103 "Afk Customer Revision"
             Clustered = true;
         }
     }
+    trigger OnInsert()
+    var
+    begin
+        AddOnSetup.Get;
+        if "No." = '' then begin
+            AddOnSetup.TestField("Cust Revision Nos Series");
+            "No. Series" := AddOnSetup."Cust Revision Nos Series";
+            if (NoSeriesMgt.AreRelated(AddOnSetup."Cust Revision Nos Series", xRec."No. Series")) then
+                "No. Series" := xRec."No. Series";
+            "No." := NoSeriesMgt.GetNextNo("No. Series");
+        end;
+    end;
+
+    trigger OnDelete()
+    var
+        ApprovalFlow: Record "Afk Approval Flow";
+    begin
+        ApprovalFlow.Reset();
+        ApprovalFlow.SetRange("Record Type", ApprovalFlow."Record Type"::"Révision compte");
+        ApprovalFlow.SetRange("Record No.", Rec."No.");
+        if (not ApprovalFlow.IsEmpty) then
+            ApprovalFlow.DeleteAll();
+    end;
+
+    var
+        AddOnSetup: Record "AddOn Setup2";
+        NoSeriesMgt: Codeunit "No. Series";
 }

@@ -464,7 +464,11 @@ table 50033 "Adjustment Header"
         AddOnSetup.Get;
         if "No." = '' then begin
             TestNoSeries;
-            NoSeriesMgt.InitSeries(GetNoSeriesCode, xRec."No. Series", "Posting Date", "No.", "No. Series");
+            "No. Series" := GetNoSeriesCode();
+            if (NoSeriesMgt.AreRelated(GetNoSeriesCode(), xRec."No. Series")) then
+                "No. Series" := xRec."No. Series";
+            "No." := NoSeriesMgt.GetNextNo("No. Series");
+            //NoSeriesMgt.InitSeries(GetNoSeriesCode, xRec."No. Series", "Posting Date", "No.", "No. Series");
         end;
 
 
@@ -532,7 +536,7 @@ table 50033 "Adjustment Header"
         AdjLine: Record "Adjustment Line";
         Cust: Record Customer;
         SalesCommentLine: Record "Sales Comment Line";
-        NoSeriesMgt: Codeunit NoSeriesManagement;
+        NoSeriesMgt: Codeunit "No. Series";
         DimMgt: Codeunit DimensionManagement;
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ArchiveManagement: Codeunit ArchiveManagement;
