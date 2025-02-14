@@ -56,7 +56,7 @@ codeunit 50017 "Provisions Cde Mgt"
         Text024: Label 'Prov. var stock';
         AddOnSetup2: Record "AddOn Setup2";
 
-    procedure TraiterProvisionCdeVente(SalesH: Record "Sales Header";ModeleFeuille: Code[20];CodeFeuille: Code[20];PostingDate: Date;DocumentNo: Code[20];var LineNo: Integer;DateDeb: Date;DateFin: Date): Boolean
+    procedure TraiterProvisionCdeVente(SalesH: Record "Sales Header"; ModeleFeuille: Code[20]; CodeFeuille: Code[20]; PostingDate: Date; DocumentNo: Code[20]; var LineNo: Integer; DateDeb: Date; DateFin: Date): Boolean
     var
         BesoinNo: Integer;
         NbreTotalLignes: Integer;
@@ -79,137 +79,137 @@ codeunit 50017 "Provisions Cde Mgt"
         QteLivreeNonFacturee: Decimal;
         QteCdeNonFacturee: Decimal;
     begin
-        
+
         AddOnSetup.Get;
         AddOnSetup.TestField(AddOnSetup."JIRAMA Sales Channel");
-        
+
         if Cust2.Get(SalesH."Sell-to Customer No.") then;
-        
+
         ResetProvisions(SalesH."No.");
-        
+
         LigneCde.Reset();
-        LigneCde.SetRange("Document Type",LigneCde."Document Type"::Order);
-        LigneCde.SetRange("Document No.",SalesH."No.");
-        LigneCde.SetFilter(LigneCde."No.",'<>%1','');
-        LigneCde.SetFilter(LigneCde.Type,'<>%1',LigneCde.Type::" ");
+        LigneCde.SetRange("Document Type", LigneCde."Document Type"::Order);
+        LigneCde.SetRange("Document No.", SalesH."No.");
+        LigneCde.SetFilter(LigneCde."No.", '<>%1', '');
+        LigneCde.SetFilter(LigneCde.Type, '<>%1', LigneCde.Type::" ");
         //LigneCde.SETFILTER(LigneCde."Shipped Not Invoiced",'<>%1',0);
         if LigneCde.FindSet then begin
-          NbreTotalLignes:=LigneCde.Count;
+            NbreTotalLignes := LigneCde.Count;
             repeat
-        
-            Clear(GenJrnLine);
-            GenJrnLine."Journal Template Name":= ModeleFeuille;
-            GenJrnLine."Journal Batch Name" := CodeFeuille;
-        
-            LineNo := LineNo + 10;
-            GenJrnLine."Line No." := LineNo;
-            JrnTmplName.Get(GenJrnLine."Journal Template Name");
-            JrnTmplName.TestField("Source Code");
-            GenJrnLine."Source Code" := JrnTmplName."Source Code";
-            GenJrnLine.Validate("Posting Date",PostingDate);
-        
-            GenJrnLine."Document No." := DocumentNo;
-            GenJrnLine."External Document No." := SalesH."No.";
-        
-            GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
-            GLAccNo := PurchReq.GetSalesAcc(LigneCde);
-        
-            GLMgt.CheckParamsGLAcc(GLAccNo);
-            GenJrnLine.Validate("Account No.",GLAccNo);
-            GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-        
-            //GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text005,SalesH."No."),1,49);
-            GenJrnLine.Description := BuildDescriptionProvision(SalesH."No.",SalesH."Sell-to Customer Name");
-            GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::Order;
-        
-            GenJrnLine.CodeArticleProvisions := LigneCde."No.";
-        
-            QteProvisionNonFacturee := LigneCde."Provision Qty" - LigneCde."Quantity Invoiced";
-            QteProvisionNonFacturee := GetPosOrZero(QteProvisionNonFacturee);
-        
-            QteLivreeNonFacturee := GetQteLivreeNonFacturee_Ventes(DateDeb,DateFin,LigneCde);
-            QteCdeNonFacturee := GetQteCdeeNonFacturee_Ventes(DateDeb,DateFin,SalesH, LigneCde);
-        
-            /*IF ((Cust2."Sales Channel Code" = AddOnSetup."JIRAMA Sales Channel") OR (SalesH.Anticipated)) THEN
-              QteAProvisionner := QteCdeNonFacturee - QteProvisionNonFacturee
-            ELSE
-              QteAProvisionner := QteLivreeNonFacturee - QteProvisionNonFacturee;*/
-        
-            if (SalesH.Anticipated) then
-              QteAProvisionner := QteCdeNonFacturee - QteProvisionNonFacturee
-            else
-              QteAProvisionner := QteLivreeNonFacturee - QteProvisionNonFacturee;
-        
-            QteAProvisionner := GetPosOrZero(QteAProvisionner);
-            GenJrnLine.VolumeProvisions := QteAProvisionner;
-            LineAmount := -LigneCde."Unit Price" * (QteAProvisionner);
-        
-        
-            if LigneCde."Currency Code"<>'' then begin
-              //Currency.GET(LigneCde."Currency Code");
-              LineAmount := ConvertInLocalCurr(LigneCde."Currency Code",PostingDate,LineAmount);
-            end;
-        
-            GenJrnLine.Validate(GenJrnLine.Amount, LineAmount);
-            GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
-            GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
-            GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
-        
-        
-        
-            GenJrnLine.Validate("Currency Code",'');
-            if GenJrnLine.Amount<>0 then begin
-              GenJrnLine.Insert(true);
-              GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
-              GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
-              GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
-              GenJrnLine.Modify;
-        
-              MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
-            end;
-        
-          until LigneCde.Next=0
+
+                Clear(GenJrnLine);
+                GenJrnLine."Journal Template Name" := ModeleFeuille;
+                GenJrnLine."Journal Batch Name" := CodeFeuille;
+
+                LineNo := LineNo + 10;
+                GenJrnLine."Line No." := LineNo;
+                JrnTmplName.Get(GenJrnLine."Journal Template Name");
+                JrnTmplName.TestField("Source Code");
+                GenJrnLine."Source Code" := JrnTmplName."Source Code";
+                GenJrnLine.Validate("Posting Date", PostingDate);
+
+                GenJrnLine."Document No." := DocumentNo;
+                GenJrnLine."External Document No." := SalesH."No.";
+
+                GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
+                GLAccNo := PurchReq.GetSalesAcc(LigneCde);
+
+                GLMgt.CheckParamsGLAcc(GLAccNo);
+                GenJrnLine.Validate("Account No.", GLAccNo);
+                GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
+
+                //GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text005,SalesH."No."),1,49);
+                GenJrnLine.Description := BuildDescriptionProvision(SalesH."No.", SalesH."Sell-to Customer Name");
+                GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::Order;
+
+                GenJrnLine.CodeArticleProvisions := LigneCde."No.";
+
+                QteProvisionNonFacturee := LigneCde."Provision Qty" - LigneCde."Quantity Invoiced";
+                QteProvisionNonFacturee := GetPosOrZero(QteProvisionNonFacturee);
+
+                QteLivreeNonFacturee := GetQteLivreeNonFacturee_Ventes(DateDeb, DateFin, LigneCde);
+                QteCdeNonFacturee := GetQteCdeeNonFacturee_Ventes(DateDeb, DateFin, SalesH, LigneCde);
+
+                /*IF ((Cust2."Sales Channel Code" = AddOnSetup."JIRAMA Sales Channel") OR (SalesH.Anticipated)) THEN
+                  QteAProvisionner := QteCdeNonFacturee - QteProvisionNonFacturee
+                ELSE
+                  QteAProvisionner := QteLivreeNonFacturee - QteProvisionNonFacturee;*/
+
+                if (SalesH.Anticipated) then
+                    QteAProvisionner := QteCdeNonFacturee - QteProvisionNonFacturee
+                else
+                    QteAProvisionner := QteLivreeNonFacturee - QteProvisionNonFacturee;
+
+                QteAProvisionner := GetPosOrZero(QteAProvisionner);
+                GenJrnLine.VolumeProvisions := QteAProvisionner;
+                LineAmount := -LigneCde."Unit Price" * (QteAProvisionner);
+
+
+                if LigneCde."Currency Code" <> '' then begin
+                    //Currency.GET(LigneCde."Currency Code");
+                    LineAmount := ConvertInLocalCurr(LigneCde."Currency Code", PostingDate, LineAmount);
+                end;
+
+                GenJrnLine.Validate(GenJrnLine.Amount, LineAmount);
+                GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
+                GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
+                GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
+
+
+
+                GenJrnLine.Validate("Currency Code", '');
+                if GenJrnLine.Amount <> 0 then begin
+                    GenJrnLine.Insert(true);
+                    GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
+                    GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
+                    GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
+                    GenJrnLine.Modify;
+
+                    MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
+                end;
+
+            until LigneCde.Next = 0
         end;
-        
-        
+
+
         //Contrepartie
         Clear(GenJrnLine);
-        GenJrnLine."Journal Template Name":= ModeleFeuille;
+        GenJrnLine."Journal Template Name" := ModeleFeuille;
         GenJrnLine."Journal Batch Name" := CodeFeuille;
-        
-        LineNo := LineNo+10;
+
+        LineNo := LineNo + 10;
         GenJrnLine."Line No." := LineNo;
         JrnTmplName.Get(GenJrnLine."Journal Template Name");
         JrnTmplName.TestField(JrnTmplName."Source Code");
         GenJrnLine."Source Code" := JrnTmplName."Source Code";
-        GenJrnLine.Validate("Posting Date",PostingDate);
-        
+        GenJrnLine.Validate("Posting Date", PostingDate);
+
         GenJrnLine."Document No." := DocumentNo;
         GenJrnLine."External Document No." := SalesH."No.";
-        
+
         GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
         GLAccNo := AddOnSetup."Unbilled Revenues Account";
         GLMgt.CheckParamsGLAcc(GLAccNo);
-        
-        GenJrnLine.Validate("Account No.",GLAccNo);
-        GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-        
-        GenJrnLine.Description := BuildDescriptionProvision(SalesH."No.",SalesH."Sell-to Customer Name");
+
+        GenJrnLine.Validate("Account No.", GLAccNo);
+        GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
+
+        GenJrnLine.Description := BuildDescriptionProvision(SalesH."No.", SalesH."Sell-to Customer Name");
         GenJrnLine.Validate(GenJrnLine.Amount, -MontantTotalCde);
-        GenJrnLine.TypeProvision:=GenJrnLine.TypeProvision::Order;
-        GenJrnLine."Gen. Posting Type":=GenJrnLine."Gen. Posting Type"::Sale;
-        
-        GenJrnLine.Validate("Currency Code",'');
-        
-        if GenJrnLine.Amount<>0 then begin
-          GenJrnLine.Insert(true);
-          exit(true);
+        GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::Order;
+        GenJrnLine."Gen. Posting Type" := GenJrnLine."Gen. Posting Type"::Sale;
+
+        GenJrnLine.Validate("Currency Code", '');
+
+        if GenJrnLine.Amount <> 0 then begin
+            GenJrnLine.Insert(true);
+            exit(true);
         end;
         exit(false);
 
     end;
 
-    procedure TraiterProvisionCdeAchat(PurchH: Record "Purchase Header";ModeleFeuille: Code[20];CodeFeuille: Code[20];PostingDate: Date;DocumentNo: Code[20];var LineNo: Integer;DateDeb: Date;DateFin: Date): Boolean
+    procedure TraiterProvisionCdeAchat(PurchH: Record "Purchase Header"; ModeleFeuille: Code[20]; CodeFeuille: Code[20]; PostingDate: Date; DocumentNo: Code[20]; var LineNo: Integer; DateDeb: Date; DateFin: Date): Boolean
     var
         BesoinNo: Integer;
         NbreTotalLignes: Integer;
@@ -239,91 +239,91 @@ codeunit 50017 "Provisions Cde Mgt"
         if Vend.Get(PurchH."Buy-from Vendor No.") then;
 
         LigneCde.Reset();
-        LigneCde.SetRange("Document Type",LigneCde."Document Type"::Order);
-        LigneCde.SetRange("Document No.",PurchH."No.");
-        LigneCde.SetFilter(LigneCde.Type,'<>%1',LigneCde.Type::" ");
-        LigneCde.SetFilter(LigneCde."No.",'<>%1','');
+        LigneCde.SetRange("Document Type", LigneCde."Document Type"::Order);
+        LigneCde.SetRange("Document No.", PurchH."No.");
+        LigneCde.SetFilter(LigneCde.Type, '<>%1', LigneCde.Type::" ");
+        LigneCde.SetFilter(LigneCde."No.", '<>%1', '');
         //LigneCde.SETFILTER(LigneCde."Qty. Rcd. Not Invoiced",'<>%1',0);
         if LigneCde.FindSet then begin
             repeat
 
-            Clear(GenJrnLine);
-            GenJrnLine."Journal Template Name" := ModeleFeuille;
-            GenJrnLine."Journal Batch Name" := CodeFeuille;
+                Clear(GenJrnLine);
+                GenJrnLine."Journal Template Name" := ModeleFeuille;
+                GenJrnLine."Journal Batch Name" := CodeFeuille;
 
-            LineNo := LineNo + 10;
-            GenJrnLine."Line No." := LineNo;
-            JrnTmplName.Get(GenJrnLine."Journal Template Name");
-            JrnTmplName.TestField("Source Code");
-            GenJrnLine."Source Code" := JrnTmplName."Source Code";
-            GenJrnLine.Validate("Posting Date",PostingDate);
+                LineNo := LineNo + 10;
+                GenJrnLine."Line No." := LineNo;
+                JrnTmplName.Get(GenJrnLine."Journal Template Name");
+                JrnTmplName.TestField("Source Code");
+                GenJrnLine."Source Code" := JrnTmplName."Source Code";
+                GenJrnLine.Validate("Posting Date", PostingDate);
 
-            GenJrnLine."Document No." := DocumentNo;
-            GenJrnLine."External Document No." := PurchH."No.";
+                GenJrnLine."Document No." := DocumentNo;
+                GenJrnLine."External Document No." := PurchH."No.";
 
-            GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
-            GLAccNo := PurchReq.GetPurchAcc(LigneCde);
-            GLMgt.CheckParamsGLAcc(GLAccNo);
-            GenJrnLine.Validate("Account No.",GLAccNo);
-            GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
+                GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
+                GLAccNo := PurchReq.GetPurchAcc(LigneCde);
+                GLMgt.CheckParamsGLAcc(GLAccNo);
+                GenJrnLine.Validate("Account No.", GLAccNo);
+                GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
 
-            if PurchH.Anticipated then
-              GenJrnLine.Description := CopyStr(StrSubstNo(Text023,LigneCde.Description),1,49)
-            else
-              GenJrnLine.Description := CopyStr(StrSubstNo(Text022,LigneCde.Description),1,49);
-            //GenJrnLine.Description := BuildDescriptionProvision(PurchH."No.",PurchH."Buy-from Vendor Name");
+                if PurchH.Anticipated then
+                    GenJrnLine.Description := CopyStr(StrSubstNo(Text023, LigneCde.Description), 1, 49)
+                else
+                    GenJrnLine.Description := CopyStr(StrSubstNo(Text022, LigneCde.Description), 1, 49);
+                //GenJrnLine.Description := BuildDescriptionProvision(PurchH."No.",PurchH."Buy-from Vendor Name");
 
-            GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::Order;
-
-
-
-            QteProvisionNonFacturee := LigneCde."Provision Qty" - LigneCde."Quantity Invoiced";
-            if QteProvisionNonFacturee<0 then
-              QteProvisionNonFacturee:=0;
-
-            //QteRecuNonFacturee := LigneCde."Qty. Rcd. Not Invoiced";
-            QteRecuNonFacturee := GetQteLivreeNonFacturee_Achats(DateDeb,DateFin,LigneCde);
-            //QteCdeNonFacturee := LigneCde.Quantity - LigneCde."Quantity Invoiced";
-            QteCdeNonFacturee := GetQteCdeeNonFacturee_Achats(DateDeb,DateFin,PurchH,LigneCde);
-
-            if not PurchH.Anticipated then
-              QteAProvisionner := QteRecuNonFacturee - QteProvisionNonFacturee
-            else
-              QteAProvisionner := QteCdeNonFacturee - QteProvisionNonFacturee;
-
-            QteAProvisionner := GetPosOrZero(QteAProvisionner);
-
-            GenJrnLine.VolumeProvisions := QteAProvisionner;
-            LineAmount := LigneCde."Direct Unit Cost"*(QteAProvisionner);
-
-            if LigneCde."Currency Code"<>'' then begin
-              //Currency.GET(LigneCde."Currency Code");
-              LineAmount:= ConvertInLocalCurr(LigneCde."Currency Code",PostingDate,LineAmount);
-            end;
-
-            GenJrnLine.Validate(GenJrnLine.Amount, LineAmount);
-
-            GenJrnLine.VendorCodeProvisions := PurchH."Buy-from Vendor No.";
+                GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::Order;
 
 
 
-            GenJrnLine.Validate("Currency Code",'');
+                QteProvisionNonFacturee := LigneCde."Provision Qty" - LigneCde."Quantity Invoiced";
+                if QteProvisionNonFacturee < 0 then
+                    QteProvisionNonFacturee := 0;
 
-            GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
+                //QteRecuNonFacturee := LigneCde."Qty. Rcd. Not Invoiced";
+                QteRecuNonFacturee := GetQteLivreeNonFacturee_Achats(DateDeb, DateFin, LigneCde);
+                //QteCdeNonFacturee := LigneCde.Quantity - LigneCde."Quantity Invoiced";
+                QteCdeNonFacturee := GetQteCdeeNonFacturee_Achats(DateDeb, DateFin, PurchH, LigneCde);
 
-            if (CopyStr(GLAccNo,1,1)<>'2') then begin
-              if GenJrnLine.Amount<>0 then begin
-                GenJrnLine.Insert(true);
-                GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
-                GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
+                if not PurchH.Anticipated then
+                    QteAProvisionner := QteRecuNonFacturee - QteProvisionNonFacturee
+                else
+                    QteAProvisionner := QteCdeNonFacturee - QteProvisionNonFacturee;
+
+                QteAProvisionner := GetPosOrZero(QteAProvisionner);
+
+                GenJrnLine.VolumeProvisions := QteAProvisionner;
+                LineAmount := LigneCde."Direct Unit Cost" * (QteAProvisionner);
+
+                if LigneCde."Currency Code" <> '' then begin
+                    //Currency.GET(LigneCde."Currency Code");
+                    LineAmount := ConvertInLocalCurr(LigneCde."Currency Code", PostingDate, LineAmount);
+                end;
+
+                GenJrnLine.Validate(GenJrnLine.Amount, LineAmount);
+
+                GenJrnLine.VendorCodeProvisions := PurchH."Buy-from Vendor No.";
+
+
+
+                GenJrnLine.Validate("Currency Code", '');
+
                 GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
-                GenJrnLine.Modify;
 
-                MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
-              end;
-            end;
+                if (CopyStr(GLAccNo, 1, 1) <> '2') then begin
+                    if GenJrnLine.Amount <> 0 then begin
+                        GenJrnLine.Insert(true);
+                        GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
+                        GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
+                        GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
+                        GenJrnLine.Modify;
 
-          until LigneCde.Next=0
+                        MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
+                    end;
+                end;
+
+            until LigneCde.Next = 0
         end;
 
 
@@ -332,37 +332,37 @@ codeunit 50017 "Provisions Cde Mgt"
         GenJrnLine."Journal Template Name" := ModeleFeuille;
         GenJrnLine."Journal Batch Name" := CodeFeuille;
 
-        LineNo := LineNo+10;
+        LineNo := LineNo + 10;
         GenJrnLine."Line No." := LineNo;
         JrnTmplName.Get(GenJrnLine."Journal Template Name");
         JrnTmplName.TestField(JrnTmplName."Source Code");
         GenJrnLine."Source Code" := JrnTmplName."Source Code";
-        GenJrnLine.Validate("Posting Date",PostingDate);
+        GenJrnLine.Validate("Posting Date", PostingDate);
 
         GenJrnLine."Document No." := DocumentNo;
         GenJrnLine."External Document No." := PurchH."No.";
 
         GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
 
-        if AddOnSetup."JOVENNA Vendor Code"=PurchH."Buy-from Vendor No." then
-          GLAccNo := AddOnSetup."Inv To Receive Acc JOVENNA"
+        if AddOnSetup."JOVENNA Vendor Code" = PurchH."Buy-from Vendor No." then
+            GLAccNo := AddOnSetup."Inv To Receive Acc JOVENNA"
         else
-          GLAccNo := AddOnSetup."Invoice To Receive Account";
+            GLAccNo := AddOnSetup."Invoice To Receive Account";
 
         GLMgt.CheckParamsGLAcc(GLAccNo);
-        GenJrnLine.Validate("Account No.",GLAccNo);
-        GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
+        GenJrnLine.Validate("Account No.", GLAccNo);
+        GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
 
-        GenJrnLine.Description := BuildDescriptionProvision(PurchH."No.",PurchH."Buy-from Vendor Name");
+        GenJrnLine.Description := BuildDescriptionProvision(PurchH."No.", PurchH."Buy-from Vendor Name");
         GenJrnLine.Validate(GenJrnLine.Amount, -MontantTotalCde);
         GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::Order;
         GenJrnLine."Gen. Posting Type" := GenJrnLine."Gen. Posting Type"::Purchase;
 
-        GenJrnLine.Validate("Currency Code",'');
+        GenJrnLine.Validate("Currency Code", '');
 
-        if GenJrnLine.Amount<>0 then begin
-          GenJrnLine.Insert(true);
-          exit(true);
+        if GenJrnLine.Amount <> 0 then begin
+            GenJrnLine.Insert(true);
+            exit(true);
         end;
         exit(false);
     end;
@@ -395,21 +395,21 @@ codeunit 50017 "Provisions Cde Mgt"
         if not Confirm(Text012) then exit;
 
         LigneFraisAnn.Reset();
-        LigneFraisAnn.SetRange("Document Type",LigneFraisAnn."Document Type"::Order);
-        LigneFraisAnn.SetRange("Document No.",PurchH."No.");
-        LigneFraisAnn.SetRange(LigneFraisAnn."Data Type",LigneFraisAnn."Data Type"::FraisAnnexe);
-        LigneFraisAnn.SetRange(LigneFraisAnn."Provision Invoice",'');
+        LigneFraisAnn.SetRange("Document Type", LigneFraisAnn."Document Type"::Order);
+        LigneFraisAnn.SetRange("Document No.", PurchH."No.");
+        LigneFraisAnn.SetRange(LigneFraisAnn."Data Type", LigneFraisAnn."Data Type"::FraisAnnexe);
+        LigneFraisAnn.SetRange(LigneFraisAnn."Provision Invoice", '');
         if LigneFraisAnn.FindSet then begin
-        repeat
-          LigneFraisAnn.TestField(LigneFraisAnn."FA Amount");
-          LigneFraisAnn.TestField(LigneFraisAnn."FA Code");
-          CodeFact := CreatePurchInvoiceFraisAnn(PurchH,LigneFraisAnn);
+            repeat
+                LigneFraisAnn.TestField(LigneFraisAnn."FA Amount");
+                LigneFraisAnn.TestField(LigneFraisAnn."FA Code");
+                CodeFact := CreatePurchInvoiceFraisAnn(PurchH, LigneFraisAnn);
 
-          LigneFraisAnn."Provision Invoice" := CodeFact;
-          LigneFraisAnn.Modify;
+                LigneFraisAnn."Provision Invoice" := CodeFact;
+                LigneFraisAnn.Modify;
 
-          NbreFact:=NbreFact+1;
-        until LigneFraisAnn.Next=0
+                NbreFact := NbreFact + 1;
+            until LigneFraisAnn.Next = 0
         end;
 
 
@@ -417,10 +417,10 @@ codeunit 50017 "Provisions Cde Mgt"
         //PurchH.ProvisionValide:=TRUE;
         //PurchH.MODIFY;
 
-        Message(StrSubstNo( Text013,NbreFact));
+        Message(StrSubstNo(Text013, NbreFact));
     end;
 
-    procedure TraiterProvisionCdeVenteVarStockJIRAMA(SalesH: Record "Sales Header";ModeleFeuille: Code[20];CodeFeuille: Code[20];PostingDate: Date;DocumentNo: Code[20];var LineNo: Integer): Boolean
+    procedure TraiterProvisionCdeVenteVarStockJIRAMA(SalesH: Record "Sales Header"; ModeleFeuille: Code[20]; CodeFeuille: Code[20]; PostingDate: Date; DocumentNo: Code[20]; var LineNo: Integer): Boolean
     var
         BesoinNo: Integer;
         NbreTotalLignes: Integer;
@@ -442,102 +442,102 @@ codeunit 50017 "Provisions Cde Mgt"
         QteLivreeNonFacturee: Decimal;
         QteCdeNonLivree: Decimal;
     begin
-        
+
         AddOnSetup.Get;
         //AddOnSetup.TESTFIELD(AddOnSetup."JIRAMA Sales Channel");
-        
+
         if SalesH.ProvisionValideVarStock then Error(Text020);
-        
+
         if not Confirm(Text021) then exit;
-        
+
         if Cust2.Get(SalesH."Sell-to Customer No.") then;
-        
+
         //ResetProvisions(SalesH."No.");
         //DEBIT COMPTE DE VARIATION DE STOCK
         LigneCde.Reset();
-        LigneCde.SetRange("Document Type",LigneCde."Document Type"::Order);
-        LigneCde.SetRange("Document No.",SalesH."No.");
-        LigneCde.SetFilter(LigneCde."No.",'<>%1','');
-        LigneCde.SetRange(LigneCde.Type,LigneCde.Type::Item);
+        LigneCde.SetRange("Document Type", LigneCde."Document Type"::Order);
+        LigneCde.SetRange("Document No.", SalesH."No.");
+        LigneCde.SetFilter(LigneCde."No.", '<>%1', '');
+        LigneCde.SetRange(LigneCde.Type, LigneCde.Type::Item);
         //LigneCde.SETFILTER(LigneCde."Shipped Not Invoiced",'<>%1',0);
         if LigneCde.FindSet then begin
-          NbreTotalLignes:=LigneCde.Count;
+            NbreTotalLignes := LigneCde.Count;
             repeat
-        
-            Item1.Get(LigneCde."No.");
-            if (Item1.Type=Item1.Type::Inventory) then begin
-        
-                Clear(GenJrnLine);
-                GenJrnLine."Journal Template Name":= ModeleFeuille;
-                GenJrnLine."Journal Batch Name" := CodeFeuille;
-        
-                LineNo := LineNo + 10;
-                GenJrnLine."Line No." := LineNo;
-                JrnTmplName.Get(GenJrnLine."Journal Template Name");
-                JrnTmplName.TestField("Source Code");
-                GenJrnLine."Source Code" := JrnTmplName."Source Code";
-                GenJrnLine.Validate("Posting Date",PostingDate);
-        
-                GenJrnLine."Document No." := DocumentNo;
-                GenJrnLine."External Document No." := SalesH."No.";
-        
-                GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
-        
-                GLAccNo := GetCOGSAccount(LigneCde."Gen. Bus. Posting Group",LigneCde."Gen. Prod. Posting Group");
-        
-                GLMgt.CheckParamsGLAcc(GLAccNo);
-                GenJrnLine.Validate("Account No.",GLAccNo);
-                GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-        
-                //GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text005,SalesH."No."),1,49);
-                GenJrnLine.Description := BuildDescriptionProvisionVarStock(SalesH."No.",SalesH."Sell-to Customer Name");
-                GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::VarStock;
-        
-                GenJrnLine.CodeArticleProvisions := LigneCde."No.";
-        
-                QteProvisioneeNonLivree := LigneCde."Provision Var Stock Qty" - LigneCde."Quantity Shipped";
-                if QteProvisioneeNonLivree<0 then
-                  QteProvisioneeNonLivree:=0;
-        
-                QteCdeNonLivree := LigneCde.Quantity - LigneCde."Quantity Shipped";
-        
-                QteAProvisionner := QteCdeNonLivree - QteProvisioneeNonLivree;
-                QteAProvisionner := GetPosOrZero(QteAProvisionner);
-        
-                GenJrnLine.VolumeProvisions := QteAProvisionner;
-                LineAmount := LigneCde."Unit Cost (LCY)" * (QteAProvisionner);
-        
-                /*IF LigneCde."Currency Code"<>'' THEN BEGIN
-                  //Currency.GET(LigneCde."Currency Code");
-                  LineAmount := ConvertInLocalCurr(LigneCde."Currency Code",PostingDate,LineAmount);
-                END;*/
-        
-                GenJrnLine.Validate(GenJrnLine.Amount, LineAmount);
-        
-        
-                MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
-                GenJrnLine.Validate("Currency Code",'');
-        
-        
-        
-                GenJrnLine."Bal. Account Type" := GenJrnLine."Bal. Account Type"::"G/L Account";
-                GLAccNo := GetInvAccount(LigneCde."Location Code",Item1."Inventory Posting Group");
-                GLMgt.CheckParamsGLAcc(GLAccNo);
-                GenJrnLine.Validate(GenJrnLine."Bal. Account No.",GLAccNo);
-                GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-        
-                if GenJrnLine.Amount<>0 then begin
-                  GenJrnLine.Insert(true);
-                  GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
-                  GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
-                  GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
-                  GenJrnLine.Modify;
+
+                Item1.Get(LigneCde."No.");
+                if (Item1.Type = Item1.Type::Inventory) then begin
+
+                    Clear(GenJrnLine);
+                    GenJrnLine."Journal Template Name" := ModeleFeuille;
+                    GenJrnLine."Journal Batch Name" := CodeFeuille;
+
+                    LineNo := LineNo + 10;
+                    GenJrnLine."Line No." := LineNo;
+                    JrnTmplName.Get(GenJrnLine."Journal Template Name");
+                    JrnTmplName.TestField("Source Code");
+                    GenJrnLine."Source Code" := JrnTmplName."Source Code";
+                    GenJrnLine.Validate("Posting Date", PostingDate);
+
+                    GenJrnLine."Document No." := DocumentNo;
+                    GenJrnLine."External Document No." := SalesH."No.";
+
+                    GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
+
+                    GLAccNo := GetCOGSAccount(LigneCde."Gen. Bus. Posting Group", LigneCde."Gen. Prod. Posting Group");
+
+                    GLMgt.CheckParamsGLAcc(GLAccNo);
+                    GenJrnLine.Validate("Account No.", GLAccNo);
+                    GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
+
+                    //GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text005,SalesH."No."),1,49);
+                    GenJrnLine.Description := BuildDescriptionProvisionVarStock(SalesH."No.", SalesH."Sell-to Customer Name");
+                    GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::VarStock;
+
+                    GenJrnLine.CodeArticleProvisions := LigneCde."No.";
+
+                    QteProvisioneeNonLivree := LigneCde."Provision Var Stock Qty" - LigneCde."Quantity Shipped";
+                    if QteProvisioneeNonLivree < 0 then
+                        QteProvisioneeNonLivree := 0;
+
+                    QteCdeNonLivree := LigneCde.Quantity - LigneCde."Quantity Shipped";
+
+                    QteAProvisionner := QteCdeNonLivree - QteProvisioneeNonLivree;
+                    QteAProvisionner := GetPosOrZero(QteAProvisionner);
+
+                    GenJrnLine.VolumeProvisions := QteAProvisionner;
+                    LineAmount := LigneCde."Unit Cost (LCY)" * (QteAProvisionner);
+
+                    /*IF LigneCde."Currency Code"<>'' THEN BEGIN
+                      //Currency.GET(LigneCde."Currency Code");
+                      LineAmount := ConvertInLocalCurr(LigneCde."Currency Code",PostingDate,LineAmount);
+                    END;*/
+
+                    GenJrnLine.Validate(GenJrnLine.Amount, LineAmount);
+
+
+                    MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
+                    GenJrnLine.Validate("Currency Code", '');
+
+
+
+                    GenJrnLine."Bal. Account Type" := GenJrnLine."Bal. Account Type"::"G/L Account";
+                    GLAccNo := GetInvAccount(LigneCde."Location Code", Item1."Inventory Posting Group");
+                    GLMgt.CheckParamsGLAcc(GLAccNo);
+                    GenJrnLine.Validate(GenJrnLine."Bal. Account No.", GLAccNo);
+                    GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
+
+                    if GenJrnLine.Amount <> 0 then begin
+                        GenJrnLine.Insert(true);
+                        GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
+                        GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
+                        GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
+                        GenJrnLine.Modify;
+                    end;
+
                 end;
-        
-            end;
-          until LigneCde.Next=0
+            until LigneCde.Next = 0
         end;
-        
+
         /*
         //Contrepartie
         CLEAR(GenJrnLine);
@@ -568,16 +568,16 @@ codeunit 50017 "Provisions Cde Mgt"
         
         GenJrnLine.VALIDATE("Currency Code",'');
         */
-        
-        if MontantTotalCde<>0 then begin
-          //GenJrnLine.INSERT(TRUE);
-          exit(true);
+
+        if MontantTotalCde <> 0 then begin
+            //GenJrnLine.INSERT(TRUE);
+            exit(true);
         end;
         exit(false);
 
     end;
 
-    procedure TraiterProvisionCdeVenteVarStock_CdeNormale(SalesH: Record "Sales Header";ModeleFeuille: Code[20];CodeFeuille: Code[20];PostingDate: Date;DocumentNo: Code[20];var LineNo: Integer;DateDeb: Date;DateFin: Date): Boolean
+    procedure TraiterProvisionCdeVenteVarStock_CdeNormale(SalesH: Record "Sales Header"; ModeleFeuille: Code[20]; CodeFeuille: Code[20]; PostingDate: Date; DocumentNo: Code[20]; var LineNo: Integer; DateDeb: Date; DateFin: Date): Boolean
     var
         BesoinNo: Integer;
         NbreTotalLignes: Integer;
@@ -601,103 +601,103 @@ codeunit 50017 "Provisions Cde Mgt"
         QteProvisionNonFacturee: Decimal;
         QteCdeNonFacturee: Decimal;
     begin
-        
+
         AddOnSetup.Get;
         //AddOnSetup.TESTFIELD(AddOnSetup."JIRAMA Sales Channel");
-        
+
         //IF SalesH.ProvisionValideVarStock THEN ERROR(Text020);
         ResetProvisionsVarStock(SalesH."No.");
-        
+
         //IF NOT CONFIRM(Text021) THEN EXIT; 180817
-        
+
         if Cust2.Get(SalesH."Sell-to Customer No.") then;
-        
+
         //ResetProvisions(SalesH."No.");
         //DEBIT COMPTE DE VARIATION DE STOCK
         LigneCde.Reset();
-        LigneCde.SetRange("Document Type",LigneCde."Document Type"::Order);
-        LigneCde.SetRange("Document No.",SalesH."No.");
-        LigneCde.SetFilter(LigneCde."No.",'<>%1','');
-        LigneCde.SetRange(LigneCde.Type,LigneCde.Type::Item);
+        LigneCde.SetRange("Document Type", LigneCde."Document Type"::Order);
+        LigneCde.SetRange("Document No.", SalesH."No.");
+        LigneCde.SetFilter(LigneCde."No.", '<>%1', '');
+        LigneCde.SetRange(LigneCde.Type, LigneCde.Type::Item);
         //LigneCde.SETFILTER(LigneCde."Shipped Not Invoiced",'<>%1',0);
         if LigneCde.FindSet then begin
-          NbreTotalLignes:=LigneCde.Count;
+            NbreTotalLignes := LigneCde.Count;
             repeat
-        
-            Item1.Get(LigneCde."No.");
-            if (Item1.Type=Item1.Type::Inventory) then begin
-        
-                Clear(GenJrnLine);
-                GenJrnLine."Journal Template Name":= ModeleFeuille;
-                GenJrnLine."Journal Batch Name" := CodeFeuille;
-        
-                LineNo := LineNo + 10;
-                GenJrnLine."Line No." := LineNo;
-                JrnTmplName.Get(GenJrnLine."Journal Template Name");
-                JrnTmplName.TestField("Source Code");
-                GenJrnLine."Source Code" := JrnTmplName."Source Code";
-                GenJrnLine.Validate("Posting Date",PostingDate);
-        
-                GenJrnLine."Document No." := DocumentNo;
-                GenJrnLine."External Document No." := SalesH."No.";
-        
-                GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
-        
-                GLAccNo := GetCOGSAccount(LigneCde."Gen. Bus. Posting Group",LigneCde."Gen. Prod. Posting Group");
-        
-                GLMgt.CheckParamsGLAcc(GLAccNo);
-                GenJrnLine.Validate("Account No.",GLAccNo);
-                GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-        
-                //GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text005,SalesH."No."),1,49);
-                GenJrnLine.Description := BuildDescriptionProvisionVarStock(SalesH."No.",SalesH."Sell-to Customer Name");
-                GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::VarStock;
-        
-                GenJrnLine.CodeArticleProvisions := LigneCde."No.";
-        
-                QteProvisionNonFacturee := LigneCde."Provision Var Stock Qty" - LigneCde."Quantity Invoiced";
-                QteProvisionNonFacturee := GetPosOrZero(QteProvisionNonFacturee);
-        
-                QteLivreeNonFacturee := GetQteLivreeNonFacturee_Ventes(DateDeb,DateFin,LigneCde);
-                //QteCdeNonFacturee := GetQteCdeeNonFacturee_Ventes(DateDeb,DateFin,SalesH, LigneCde);
-        
-                QteAProvisionner := QteLivreeNonFacturee - QteProvisionNonFacturee;
-                QteAProvisionner := GetPosOrZero(QteAProvisionner);
-        
-                GenJrnLine.VolumeProvisions := QteAProvisionner;
-                LineAmount := LigneCde."Unit Cost (LCY)" * (QteAProvisionner);
-        
-                /*IF LigneCde."Currency Code"<>'' THEN BEGIN
-                  //Currency.GET(LigneCde."Currency Code");
-                  LineAmount := ConvertInLocalCurr(LigneCde."Currency Code",PostingDate,LineAmount);
-                END;*/
-        
-                GenJrnLine.Validate(GenJrnLine.Amount, LineAmount);
-        
-        
-                MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
-                GenJrnLine.Validate("Currency Code",'');
-        
-        
-        
-                GenJrnLine."Bal. Account Type" := GenJrnLine."Bal. Account Type"::"G/L Account";
-                GLAccNo := GetInvAccount(LigneCde."Location Code",Item1."Inventory Posting Group");
-                GLMgt.CheckParamsGLAcc(GLAccNo);
-                GenJrnLine.Validate(GenJrnLine."Bal. Account No.",GLAccNo);
-                GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-        
-                if GenJrnLine.Amount<>0 then begin
-                  GenJrnLine.Insert(true);
-                  GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
-                  GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
-                  GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
-                  GenJrnLine.Modify;
+
+                Item1.Get(LigneCde."No.");
+                if (Item1.Type = Item1.Type::Inventory) then begin
+
+                    Clear(GenJrnLine);
+                    GenJrnLine."Journal Template Name" := ModeleFeuille;
+                    GenJrnLine."Journal Batch Name" := CodeFeuille;
+
+                    LineNo := LineNo + 10;
+                    GenJrnLine."Line No." := LineNo;
+                    JrnTmplName.Get(GenJrnLine."Journal Template Name");
+                    JrnTmplName.TestField("Source Code");
+                    GenJrnLine."Source Code" := JrnTmplName."Source Code";
+                    GenJrnLine.Validate("Posting Date", PostingDate);
+
+                    GenJrnLine."Document No." := DocumentNo;
+                    GenJrnLine."External Document No." := SalesH."No.";
+
+                    GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
+
+                    GLAccNo := GetCOGSAccount(LigneCde."Gen. Bus. Posting Group", LigneCde."Gen. Prod. Posting Group");
+
+                    GLMgt.CheckParamsGLAcc(GLAccNo);
+                    GenJrnLine.Validate("Account No.", GLAccNo);
+                    GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
+
+                    //GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text005,SalesH."No."),1,49);
+                    GenJrnLine.Description := BuildDescriptionProvisionVarStock(SalesH."No.", SalesH."Sell-to Customer Name");
+                    GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::VarStock;
+
+                    GenJrnLine.CodeArticleProvisions := LigneCde."No.";
+
+                    QteProvisionNonFacturee := LigneCde."Provision Var Stock Qty" - LigneCde."Quantity Invoiced";
+                    QteProvisionNonFacturee := GetPosOrZero(QteProvisionNonFacturee);
+
+                    QteLivreeNonFacturee := GetQteLivreeNonFacturee_Ventes(DateDeb, DateFin, LigneCde);
+                    //QteCdeNonFacturee := GetQteCdeeNonFacturee_Ventes(DateDeb,DateFin,SalesH, LigneCde);
+
+                    QteAProvisionner := QteLivreeNonFacturee - QteProvisionNonFacturee;
+                    QteAProvisionner := GetPosOrZero(QteAProvisionner);
+
+                    GenJrnLine.VolumeProvisions := QteAProvisionner;
+                    LineAmount := LigneCde."Unit Cost (LCY)" * (QteAProvisionner);
+
+                    /*IF LigneCde."Currency Code"<>'' THEN BEGIN
+                      //Currency.GET(LigneCde."Currency Code");
+                      LineAmount := ConvertInLocalCurr(LigneCde."Currency Code",PostingDate,LineAmount);
+                    END;*/
+
+                    GenJrnLine.Validate(GenJrnLine.Amount, LineAmount);
+
+
+                    MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
+                    GenJrnLine.Validate("Currency Code", '');
+
+
+
+                    GenJrnLine."Bal. Account Type" := GenJrnLine."Bal. Account Type"::"G/L Account";
+                    GLAccNo := GetInvAccount(LigneCde."Location Code", Item1."Inventory Posting Group");
+                    GLMgt.CheckParamsGLAcc(GLAccNo);
+                    GenJrnLine.Validate(GenJrnLine."Bal. Account No.", GLAccNo);
+                    GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
+
+                    if GenJrnLine.Amount <> 0 then begin
+                        GenJrnLine.Insert(true);
+                        GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
+                        GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
+                        GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
+                        GenJrnLine.Modify;
+                    end;
+
                 end;
-        
-            end;
-          until LigneCde.Next=0
+            until LigneCde.Next = 0
         end;
-        
+
         /*
         //Contrepartie
         CLEAR(GenJrnLine);
@@ -728,16 +728,16 @@ codeunit 50017 "Provisions Cde Mgt"
         
         GenJrnLine.VALIDATE("Currency Code",'');
         */
-        
-        if MontantTotalCde<>0 then begin
-          //GenJrnLine.INSERT(TRUE);
-          exit(true);
+
+        if MontantTotalCde <> 0 then begin
+            //GenJrnLine.INSERT(TRUE);
+            exit(true);
         end;
         exit(false);
 
     end;
 
-    procedure TraiterProvisionCdeVenteVarStockCargo(SalesH: Record "Sales Header";ModeleFeuille: Code[20];CodeFeuille: Code[20];PostingDate: Date;DocumentNo: Code[20];var LineNo: Integer): Boolean
+    procedure TraiterProvisionCdeVenteVarStockCargo(SalesH: Record "Sales Header"; ModeleFeuille: Code[20]; CodeFeuille: Code[20]; PostingDate: Date; DocumentNo: Code[20]; var LineNo: Integer): Boolean
     var
         BesoinNo: Integer;
         NbreTotalLignes: Integer;
@@ -762,114 +762,115 @@ codeunit 50017 "Provisions Cde Mgt"
         CargoEntry: Record "Item Cargo Entry";
         LigneCde: Record "Sales Line";
     begin
-        
+
         AddOnSetup.Get;
         //AddOnSetup.TESTFIELD(AddOnSetup."JIRAMA Sales Channel");
-        
+
         //IF SalesH.ProvisionValideVarStock THEN ERROR(Text020);
-        
+
         if IsCommandeProvisionneeVarStock(SalesH."No.") then exit;
-        
+
         //IF NOT CONFIRM(Text021) THEN EXIT;
-        
+
         if Cust2.Get(SalesH."Sell-to Customer No.") then;
-        
-        
+
+
         CargoEntry.Reset;//TODO UPDATE HERE ***********************************************************************
         //CargoEntry.SETCURRENTKEY(Source,"Document No.");
         //CargoEntry.SETRANGE(CargoEntry.Source,CargoEntry.Source::Anticipated);
-        CargoEntry.SetRange(CargoEntry."Document No.",SalesH."No.");
-        if CargoEntry.FindSet then repeat
-        
-          Item1.Get(CargoEntry."Item No.");
-          Clear(GenJrnLine);
-            GenJrnLine."Journal Template Name":= ModeleFeuille;
-            GenJrnLine."Journal Batch Name" := CodeFeuille;
-        
-            LineNo := LineNo + 10;
-            GenJrnLine."Line No." := LineNo;
-            JrnTmplName.Get(GenJrnLine."Journal Template Name");
-            JrnTmplName.TestField("Source Code");
-            GenJrnLine."Source Code" := JrnTmplName."Source Code";
-            GenJrnLine.Validate("Posting Date",PostingDate);
-        
-            GenJrnLine."Document No." := DocumentNo;
-            GenJrnLine."External Document No." := SalesH."No.";
-        
-            GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
-        
-            GLAccNo := GetCOGSAccount(Cust2."Gen. Bus. Posting Group",Item1."Gen. Prod. Posting Group");
-        
-            GLMgt.CheckParamsGLAcc(GLAccNo);
-            GenJrnLine.Validate("Account No.",GLAccNo);
-            GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-        
-            //GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text005,SalesH."No."),1,49);
-            GenJrnLine.Description := BuildDescriptionProvisionVarStock(SalesH."No.",SalesH."Sell-to Customer Name");
-            GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::VarStock;
-        
-            GenJrnLine.CodeArticleProvisions := Item1."No.";
-        
-            //QteProvisioneeNonLivree := LigneCde."Provision Var Stock Qty" - LigneCde."Quantity Shipped";
-            QteProvisioneeNonLivree := 0;
-            if QteProvisioneeNonLivree<0 then
-              QteProvisioneeNonLivree:=0;
-        
-            QteCdeNonLivree := Abs(CargoEntry.Quantity);
-        
-            QteAProvisionner := QteCdeNonLivree - QteProvisioneeNonLivree;
-            QteAProvisionner := GetPosOrZero(QteAProvisionner);
-        
-            GenJrnLine.VolumeProvisions := QteAProvisionner;
-            LineAmount := CargoEntry."Unit Cost" * (QteAProvisionner);
-        
-            /*IF LigneCde."Currency Code"<>'' THEN BEGIN
-              //Currency.GET(LigneCde."Currency Code");
-              LineAmount := ConvertInLocalCurr(LigneCde."Currency Code",PostingDate,LineAmount);
-            END;*/
-        
-            GenJrnLine.Validate(GenJrnLine.Amount, LineAmount);
-        
-        
-            MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
-            GenJrnLine.Validate("Currency Code",'');
-        
-        
-        
-            GenJrnLine."Bal. Account Type" := GenJrnLine."Bal. Account Type"::"G/L Account";
-            GLAccNo := GetInvAccount(AddOnSetup."GRT Location Code",Item1."Inventory Posting Group");
-            GLMgt.CheckParamsGLAcc(GLAccNo);
-            GenJrnLine.Validate(GenJrnLine."Bal. Account No.",GLAccNo);
-            GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-        
-            if GenJrnLine.Amount<>0 then begin
-              GenJrnLine.Insert(true);
-        
-              LigneCde.Reset;
-              LigneCde.SetRange(LigneCde."Document No.",SalesH."No.");
-              LigneCde.SetRange(LigneCde."No.",CargoEntry."Item No.");
-              if LigneCde.FindFirst then
-                GenJrnLine.Validate("Dimension Set ID" , LigneCde."Dimension Set ID");
-              //GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
-              //GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
-        
-              GenJrnLine.Modify;
-            end;
-        
-        
-        until CargoEntry.Next=0;
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        CargoEntry.SetRange(CargoEntry."Document No.", SalesH."No.");
+        if CargoEntry.FindSet then
+            repeat
+
+                Item1.Get(CargoEntry."Item No.");
+                Clear(GenJrnLine);
+                GenJrnLine."Journal Template Name" := ModeleFeuille;
+                GenJrnLine."Journal Batch Name" := CodeFeuille;
+
+                LineNo := LineNo + 10;
+                GenJrnLine."Line No." := LineNo;
+                JrnTmplName.Get(GenJrnLine."Journal Template Name");
+                JrnTmplName.TestField("Source Code");
+                GenJrnLine."Source Code" := JrnTmplName."Source Code";
+                GenJrnLine.Validate("Posting Date", PostingDate);
+
+                GenJrnLine."Document No." := DocumentNo;
+                GenJrnLine."External Document No." := SalesH."No.";
+
+                GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
+
+                GLAccNo := GetCOGSAccount(Cust2."Gen. Bus. Posting Group", Item1."Gen. Prod. Posting Group");
+
+                GLMgt.CheckParamsGLAcc(GLAccNo);
+                GenJrnLine.Validate("Account No.", GLAccNo);
+                GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
+
+                //GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text005,SalesH."No."),1,49);
+                GenJrnLine.Description := BuildDescriptionProvisionVarStock(SalesH."No.", SalesH."Sell-to Customer Name");
+                GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::VarStock;
+
+                GenJrnLine.CodeArticleProvisions := Item1."No.";
+
+                //QteProvisioneeNonLivree := LigneCde."Provision Var Stock Qty" - LigneCde."Quantity Shipped";
+                QteProvisioneeNonLivree := 0;
+                if QteProvisioneeNonLivree < 0 then
+                    QteProvisioneeNonLivree := 0;
+
+                QteCdeNonLivree := Abs(CargoEntry.Quantity);
+
+                QteAProvisionner := QteCdeNonLivree - QteProvisioneeNonLivree;
+                QteAProvisionner := GetPosOrZero(QteAProvisionner);
+
+                GenJrnLine.VolumeProvisions := QteAProvisionner;
+                LineAmount := CargoEntry."Unit Cost" * (QteAProvisionner);
+
+                /*IF LigneCde."Currency Code"<>'' THEN BEGIN
+                  //Currency.GET(LigneCde."Currency Code");
+                  LineAmount := ConvertInLocalCurr(LigneCde."Currency Code",PostingDate,LineAmount);
+                END;*/
+
+                GenJrnLine.Validate(GenJrnLine.Amount, LineAmount);
+
+
+                MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
+                GenJrnLine.Validate("Currency Code", '');
+
+
+
+                GenJrnLine."Bal. Account Type" := GenJrnLine."Bal. Account Type"::"G/L Account";
+                GLAccNo := GetInvAccount(AddOnSetup."GRT Location Code", Item1."Inventory Posting Group");
+                GLMgt.CheckParamsGLAcc(GLAccNo);
+                GenJrnLine.Validate(GenJrnLine."Bal. Account No.", GLAccNo);
+                GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
+
+                if GenJrnLine.Amount <> 0 then begin
+                    GenJrnLine.Insert(true);
+
+                    LigneCde.Reset;
+                    LigneCde.SetRange(LigneCde."Document No.", SalesH."No.");
+                    LigneCde.SetRange(LigneCde."No.", CargoEntry."Item No.");
+                    if LigneCde.FindFirst then
+                        GenJrnLine.Validate("Dimension Set ID", LigneCde."Dimension Set ID");
+                    //GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
+                    //GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
+
+                    GenJrnLine.Modify;
+                end;
+
+
+            until CargoEntry.Next = 0;
+
+
+
+
+
+
+
+
+
+
+
+
         /*
         //ResetProvisions(SalesH."No.");
         //DEBIT COMPTE DE VARIATION DE STOCK
@@ -958,16 +959,16 @@ codeunit 50017 "Provisions Cde Mgt"
         END;
         
         */
-        
-        if MontantTotalCde<>0 then begin
-          //GenJrnLine.INSERT(TRUE);
-          exit(true);
+
+        if MontantTotalCde <> 0 then begin
+            //GenJrnLine.INSERT(TRUE);
+            exit(true);
         end;
         exit(false);
 
     end;
 
-    procedure TraiterProvisionCdeAchatVarStockAnticipee(PurchH: Record "Purchase Header";ModeleFeuille: Code[20];CodeFeuille: Code[20];PostingDate: Date;DocumentNo: Code[20];var LineNo: Integer): Boolean
+    procedure TraiterProvisionCdeAchatVarStockAnticipee(PurchH: Record "Purchase Header"; ModeleFeuille: Code[20]; CodeFeuille: Code[20]; PostingDate: Date; DocumentNo: Code[20]; var LineNo: Integer): Boolean
     var
         BesoinNo: Integer;
         NbreTotalLignes: Integer;
@@ -989,150 +990,152 @@ codeunit 50017 "Provisions Cde Mgt"
         QteLivreeNonFacturee: Decimal;
         QteCdeNonLivree: Decimal;
     begin
-        
+
         AddOnSetup.Get;
         //AddOnSetup.TESTFIELD(AddOnSetup."JIRAMA Sales Channel");
-        
+
         //IF SalesH.ProvisionValideVarStock THEN ERROR(Text020);
-        
+
         if IsCommandeProvisionneeVarStock(PurchH."No.") then exit;
-        
+
         //IF NOT CONFIRM(Text021) THEN EXIT;
-        
+
         if Vend2.Get(PurchH."Buy-from Vendor No.") then;
-        
+
         //ResetProvisions(SalesH."No.");
         //CREDITER COMPTE DE VARIATION DE STOCK
         LigneCde.Reset();
-        LigneCde.SetRange("Document Type",LigneCde."Document Type"::Order);
-        LigneCde.SetRange("Document No.",PurchH."No.");
-        LigneCde.SetFilter(LigneCde."No.",'<>%1','');
-        LigneCde.SetRange(LigneCde.Type,LigneCde.Type::Item);
+        LigneCde.SetRange("Document Type", LigneCde."Document Type"::Order);
+        LigneCde.SetRange("Document No.", PurchH."No.");
+        LigneCde.SetFilter(LigneCde."No.", '<>%1', '');
+        LigneCde.SetRange(LigneCde.Type, LigneCde.Type::Item);
         //LigneCde.SETFILTER(LigneCde."Shipped Not Invoiced",'<>%1',0);
         if LigneCde.FindSet then begin
-          NbreTotalLignes:=LigneCde.Count;
+            NbreTotalLignes := LigneCde.Count;
             repeat
-        
-            Item1.Get(LigneCde."No.");
-            if (Item1.Type=Item1.Type::Inventory) then begin
-        
-                Clear(GenJrnLine);
-                GenJrnLine."Journal Template Name":= ModeleFeuille;
-                GenJrnLine."Journal Batch Name" := CodeFeuille;
-        
-                LineNo := LineNo + 10;
-                GenJrnLine."Line No." := LineNo;
-                JrnTmplName.Get(GenJrnLine."Journal Template Name");
-                JrnTmplName.TestField("Source Code");
-                GenJrnLine."Source Code" := JrnTmplName."Source Code";
-                GenJrnLine.Validate("Posting Date",PostingDate);
-        
-                GenJrnLine."Document No." := DocumentNo;
-                GenJrnLine."External Document No." := Vend2."No.";
-        
-                GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
-        
-                GLAccNo := GetCOGSAccount(LigneCde."Gen. Bus. Posting Group",LigneCde."Gen. Prod. Posting Group");
-        
-                GLMgt.CheckParamsGLAcc(GLAccNo);
-                GenJrnLine.Validate("Account No.",GLAccNo);
-                GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-        
-                //GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text005,SalesH."No."),1,49);
-                GenJrnLine.Description := BuildDescriptionProvisionVarStock(PurchH."No.",PurchH."Buy-from Vendor No.");
-                GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::VarStock;
-        
-                GenJrnLine.CodeArticleProvisions := LigneCde."No.";
-        
-                QteProvisioneeNonLivree := LigneCde."Provision Var Stock Qty" - LigneCde."Quantity Invoiced";
-                if QteProvisioneeNonLivree<0 then
-                  QteProvisioneeNonLivree:=0;
-        
-                QteCdeNonLivree := LigneCde.Quantity - LigneCde."Quantity Invoiced";
-        
-                QteAProvisionner := QteCdeNonLivree - QteProvisioneeNonLivree;
-                QteAProvisionner := GetPosOrZero(QteAProvisionner);
-        
-                GenJrnLine.VolumeProvisions := QteAProvisionner;
-                LineAmount := LigneCde."Direct Unit Cost" * (QteAProvisionner);
-        
-                /*IF LigneCde."Currency Code"<>'' THEN BEGIN
-                  //Currency.GET(LigneCde."Currency Code");
-                  LineAmount := ConvertInLocalCurr(LigneCde."Currency Code",PostingDate,LineAmount);
-                END;*/
-        
-                GenJrnLine.Validate(GenJrnLine.Amount, -LineAmount);
-        
-        
-                MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
-                GenJrnLine.Validate("Currency Code",'');
-        
-        
-        
-                GenJrnLine."Bal. Account Type" := GenJrnLine."Bal. Account Type"::"G/L Account";
-                GLAccNo := GetInvAccount(LigneCde."Location Code",Item1."Inventory Posting Group");
-                GLMgt.CheckParamsGLAcc(GLAccNo);
-                GenJrnLine.Validate(GenJrnLine."Bal. Account No.",GLAccNo);
-                GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-        
-                if GenJrnLine.Amount<>0 then begin
-                  GenJrnLine.Insert(true);
-                  GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
-                  GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
-                  GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
-                  GenJrnLine.Modify;
+
+                Item1.Get(LigneCde."No.");
+                if (Item1.Type = Item1.Type::Inventory) then begin
+
+                    Clear(GenJrnLine);
+                    GenJrnLine."Journal Template Name" := ModeleFeuille;
+                    GenJrnLine."Journal Batch Name" := CodeFeuille;
+
+                    LineNo := LineNo + 10;
+                    GenJrnLine."Line No." := LineNo;
+                    JrnTmplName.Get(GenJrnLine."Journal Template Name");
+                    JrnTmplName.TestField("Source Code");
+                    GenJrnLine."Source Code" := JrnTmplName."Source Code";
+                    GenJrnLine.Validate("Posting Date", PostingDate);
+
+                    GenJrnLine."Document No." := DocumentNo;
+                    GenJrnLine."External Document No." := Vend2."No.";
+
+                    GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
+
+                    GLAccNo := GetCOGSAccount(LigneCde."Gen. Bus. Posting Group", LigneCde."Gen. Prod. Posting Group");
+
+                    GLMgt.CheckParamsGLAcc(GLAccNo);
+                    GenJrnLine.Validate("Account No.", GLAccNo);
+                    GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
+
+                    //GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text005,SalesH."No."),1,49);
+                    GenJrnLine.Description := BuildDescriptionProvisionVarStock(PurchH."No.", PurchH."Buy-from Vendor No.");
+                    GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::VarStock;
+
+                    GenJrnLine.CodeArticleProvisions := LigneCde."No.";
+
+                    QteProvisioneeNonLivree := LigneCde."Provision Var Stock Qty" - LigneCde."Quantity Invoiced";
+                    if QteProvisioneeNonLivree < 0 then
+                        QteProvisioneeNonLivree := 0;
+
+                    QteCdeNonLivree := LigneCde.Quantity - LigneCde."Quantity Invoiced";
+
+                    QteAProvisionner := QteCdeNonLivree - QteProvisioneeNonLivree;
+                    QteAProvisionner := GetPosOrZero(QteAProvisionner);
+
+                    GenJrnLine.VolumeProvisions := QteAProvisionner;
+                    LineAmount := LigneCde."Direct Unit Cost" * (QteAProvisionner);
+
+                    /*IF LigneCde."Currency Code"<>'' THEN BEGIN
+                      //Currency.GET(LigneCde."Currency Code");
+                      LineAmount := ConvertInLocalCurr(LigneCde."Currency Code",PostingDate,LineAmount);
+                    END;*/
+
+                    GenJrnLine.Validate(GenJrnLine.Amount, -LineAmount);
+
+
+                    MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
+                    GenJrnLine.Validate("Currency Code", '');
+
+
+
+                    GenJrnLine."Bal. Account Type" := GenJrnLine."Bal. Account Type"::"G/L Account";
+                    GLAccNo := GetInvAccount(LigneCde."Location Code", Item1."Inventory Posting Group");
+                    GLMgt.CheckParamsGLAcc(GLAccNo);
+                    GenJrnLine.Validate(GenJrnLine."Bal. Account No.", GLAccNo);
+                    GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
+
+                    if GenJrnLine.Amount <> 0 then begin
+                        GenJrnLine.Insert(true);
+                        GenJrnLine."Shortcut Dimension 1 Code" := LigneCde."Shortcut Dimension 1 Code";
+                        GenJrnLine."Shortcut Dimension 2 Code" := LigneCde."Shortcut Dimension 2 Code";
+                        GenJrnLine."Dimension Set ID" := LigneCde."Dimension Set ID";
+                        GenJrnLine.Modify;
+                    end;
+
                 end;
-        
-            end;
-          until LigneCde.Next=0
+            until LigneCde.Next = 0
         end;
-        
-        
-        if MontantTotalCde<>0 then begin
-          //GenJrnLine.INSERT(TRUE);
-          exit(true);
+
+
+        if MontantTotalCde <> 0 then begin
+            //GenJrnLine.INSERT(TRUE);
+            exit(true);
         end;
         exit(false);
 
     end;
 
-    procedure ConfirmProvisions(CodeCde: Code[20];QteAProvisionner: Decimal)
+    procedure ConfirmProvisions(CodeCde: Code[20]; QteAProvisionner: Decimal)
     var
         SalesL: Record "Sales Line";
         PurchLine: Record "Purchase Line";
         Cust2: Record Customer;
     begin
-        
-        
+
+
         AddOnSetup.Get;
-        
+
         SalesL.Reset;
-        SalesL.SetRange("Document Type",SalesL."Document Type"::Order);
-        SalesL.SetRange("Document No.",CodeCde);
-        SalesL.SetFilter(Type,'<>%1',SalesL.Type::" ");
-        if SalesL.FindSet(true,true) then repeat
-          //Cust2.GET(SalesL."Sell-to Customer No.");
-          /*IF (Cust2."Sales Channel Code" = AddOnSetup."JIRAMA Sales Channel") THEN
-            SalesL."Provision Qty" := SalesL.Quantity - SalesL."Quantity Invoiced"
-          ELSE
-            SalesL."Provision Qty" := SalesL."Qty. Shipped Not Invoiced";*/
-          SalesL."Provision Qty" := SalesL."Provision Qty" + QteAProvisionner;
-          SalesL.Modify;
-        until SalesL.Next=0;
-        
+        SalesL.SetRange("Document Type", SalesL."Document Type"::Order);
+        SalesL.SetRange("Document No.", CodeCde);
+        SalesL.SetFilter(Type, '<>%1', SalesL.Type::" ");
+        if SalesL.FindSet(true, true) then
+            repeat
+                //Cust2.GET(SalesL."Sell-to Customer No.");
+                /*IF (Cust2."Sales Channel Code" = AddOnSetup."JIRAMA Sales Channel") THEN
+                  SalesL."Provision Qty" := SalesL.Quantity - SalesL."Quantity Invoiced"
+                ELSE
+                  SalesL."Provision Qty" := SalesL."Qty. Shipped Not Invoiced";*/
+                SalesL."Provision Qty" := SalesL."Provision Qty" + QteAProvisionner;
+                SalesL.Modify;
+            until SalesL.Next = 0;
+
         PurchLine.Reset;
-        PurchLine.SetRange("Document Type",SalesL."Document Type"::Order);
-        PurchLine.SetRange("Document No.",CodeCde);
-        PurchLine.SetFilter(Type,'<>%1',PurchLine.Type::" ");
-        if PurchLine.FindSet(true,true) then repeat
-          //PurchLine."Provision Qty":=PurchLine."Qty. Rcd. Not Invoiced";
-          PurchLine."Provision Qty" := PurchLine."Provision Qty" + QteAProvisionner;
-          PurchLine.Modify;
-        until PurchLine.Next=0;
+        PurchLine.SetRange("Document Type", SalesL."Document Type"::Order);
+        PurchLine.SetRange("Document No.", CodeCde);
+        PurchLine.SetFilter(Type, '<>%1', PurchLine.Type::" ");
+        if PurchLine.FindSet(true, true) then
+            repeat
+                //PurchLine."Provision Qty":=PurchLine."Qty. Rcd. Not Invoiced";
+                PurchLine."Provision Qty" := PurchLine."Provision Qty" + QteAProvisionner;
+                PurchLine.Modify;
+            until PurchLine.Next = 0;
 
     end;
 
-    procedure ConfirmProvisionsVarStock(CodeCde: Code[20];QteAProvisionner: Decimal)
+    procedure ConfirmProvisionsVarStock(CodeCde: Code[20]; QteAProvisionner: Decimal)
     var
         PurchH1: Record "Purchase Header";
         SalesH1: Record "Sales Header";
@@ -1144,15 +1147,16 @@ codeunit 50017 "Provisions Cde Mgt"
         AddOnSetup.Get;
 
         SalesL.Reset;
-        SalesL.SetRange("Document Type",SalesL."Document Type"::Order);
-        SalesL.SetRange("Document No.",CodeCde);
-        SalesL.SetFilter(Type,'<>%1',SalesL.Type::" ");
-        if SalesL.FindSet(true,true) then repeat
-          //Cust2.GET(SalesL."Sell-to Customer No.");
+        SalesL.SetRange("Document Type", SalesL."Document Type"::Order);
+        SalesL.SetRange("Document No.", CodeCde);
+        SalesL.SetFilter(Type, '<>%1', SalesL.Type::" ");
+        if SalesL.FindSet(true, true) then
+            repeat
+                //Cust2.GET(SalesL."Sell-to Customer No.");
 
-          SalesL."Provision Var Stock Qty" := SalesL."Provision Var Stock Qty" + QteAProvisionner;
-          SalesL.Modify;
-        until SalesL.Next=0;
+                SalesL."Provision Var Stock Qty" := SalesL."Provision Var Stock Qty" + QteAProvisionner;
+                SalesL.Modify;
+            until SalesL.Next = 0;
     end;
 
     procedure CheckEcrituresProvisions(CodeCde: Code[20])
@@ -1162,23 +1166,23 @@ codeunit 50017 "Provisions Cde Mgt"
 
         AddOnSetup2.Get;
         if not AddOnSetup2."Desactivate Provisions Ctrl" then
-          if IsCommandeProvisionnee(CodeCde) then
-              Error(Text016);
+            if IsCommandeProvisionnee(CodeCde) then
+                Error(Text016);
     end;
 
-    procedure ConvertInLocalCurr(CodeDevise: Code[20];PostingDate: Date;AmountToConvert: Decimal) Reponse: Decimal
+    procedure ConvertInLocalCurr(CodeDevise: Code[20]; PostingDate: Date; AmountToConvert: Decimal) Reponse: Decimal
     begin
-        if CodeDevise='' then
-          Reponse := AmountToConvert
+        if CodeDevise = '' then
+            Reponse := AmountToConvert
         else
-          Reponse :=
-                Round(
-                  CurrExchRate.ExchangeAmtFCYToLCY(
-                    PostingDate,CodeDevise,AmountToConvert,
-                    CurrExchRate.ExchangeRate(PostingDate,CodeDevise)));
+            Reponse :=
+                  Round(
+                    CurrExchRate.ExchangeAmtFCYToLCY(
+                      PostingDate, CodeDevise, AmountToConvert,
+                      CurrExchRate.ExchangeRate(PostingDate, CodeDevise)));
     end;
 
-    procedure CreatePurchInvoiceFraisAnn(var PurchOrder: Record "Purchase Header";LigneFraisAnn: Record "Purchase Order Tracking"): Code[20]
+    procedure CreatePurchInvoiceFraisAnn(var PurchOrder: Record "Purchase Header"; LigneFraisAnn: Record "Purchase Order Tracking"): Code[20]
     var
         LineNum: Integer;
         PurchLine: Record "Purchase Line";
@@ -1196,15 +1200,15 @@ codeunit 50017 "Provisions Cde Mgt"
         PurchOrderLine.LockTable;
         PurchOrderHeader.Insert(true);
 
-        PurchOrderHeader.Validate(PurchOrderHeader."Buy-from Vendor No.",AddOnSetup."Charge Item Vendor");
+        PurchOrderHeader.Validate(PurchOrderHeader."Buy-from Vendor No.", AddOnSetup."Charge Item Vendor");
         PurchOrderHeader."Buy-from Vendor Name" := LigneFraisAnn."Vendor Name";
-        PurchOrderHeader."Posting Description" := BuildDescriptionProvisionFraisAnn(PurchOrder."No.",LigneFraisAnn."Vendor Name");
+        PurchOrderHeader."Posting Description" := BuildDescriptionProvisionFraisAnn(PurchOrder."No.", LigneFraisAnn."Vendor Name");
 
         PurchOrderHeader."Order Date" := WorkDate;
         PurchOrderHeader."Created By Doc Type" := PurchOrderHeader."Created By Doc Type"::ProvisionsFA;
         PurchOrderHeader."Created By Doc No." := PurchOrder."No.";
 
-        PurchOrderHeader.Validate(PurchOrderHeader."Posting No. Series",AddOnSetup."Facture Prov FA Nos.");
+        PurchOrderHeader.Validate(PurchOrderHeader."Posting No. Series", AddOnSetup."Facture Prov FA Nos.");
 
         //IF "Order Date" = 0D THEN
         //  SalesOrderHeader."Order Date" := WORKDATE
@@ -1214,7 +1218,7 @@ codeunit 50017 "Provisions Cde Mgt"
         //IF "Posting Date" <> 0D THEN
         PurchOrderHeader."Posting Date" := 0D;
         PurchOrderHeader."Document Date" := WorkDate;
-        PurchOrderHeader."Vendor Invoice No." := PurchOrderHeader."No."+'_'+Format(LigneFraisAnn."FA Code");
+        PurchOrderHeader."Vendor Invoice No." := PurchOrderHeader."No." + '_' + Format(LigneFraisAnn."FA Code");
         //PurchOrderHeader."Shipment Date" := 0D;
         //SalesOrderHeader."Shortcut Dimension 1 Code" := "Shortcut Dimension 1 Code";
         //SalesOrderHeader."Shortcut Dimension 2 Code" := "Shortcut Dimension 2 Code";
@@ -1224,8 +1228,8 @@ codeunit 50017 "Provisions Cde Mgt"
         //  SalesOrderHeader."Posting Date" := WORKDATE;
 
         if PurchSetup."Default Posting Date" = PurchSetup."Default Posting Date"::"No Date" then begin
-          PurchOrderHeader."Posting Date" := 0D;
-          //SalesOrderHeader.MODIFY;
+            PurchOrderHeader."Posting Date" := 0D;
+            //SalesOrderHeader.MODIFY;
         end;
 
         PurchOrderHeader.Modify;
@@ -1233,76 +1237,76 @@ codeunit 50017 "Provisions Cde Mgt"
 
 
 
-        LineNum:=0;
+        LineNum := 0;
         //PurchLine.RESET();
         //PurchLine.SETRANGE("Document No.",PurchOrder."No.");
         //IF PurchLine.FINDSET THEN REPEAT
 
-          //Ligne
-          PurchOrderLine.Init;
-          PurchOrderLine."Document Type"  := PurchOrderLine."Document Type"::Invoice;
-          PurchOrderLine."Document No." := PurchOrderHeader."No.";
-          LineNum := LineNum + 10000;
-          PurchOrderLine."Line No." := LineNum;
-          PurchOrderLine.Insert(true);
+        //Ligne
+        PurchOrderLine.Init;
+        PurchOrderLine."Document Type" := PurchOrderLine."Document Type"::Invoice;
+        PurchOrderLine."Document No." := PurchOrderHeader."No.";
+        LineNum := LineNum + 10000;
+        PurchOrderLine."Line No." := LineNum;
+        PurchOrderLine.Insert(true);
 
 
 
-          PurchOrderLine.Type := PurchOrderLine.Type::"Charge (Item)";
-          PurchOrderLine.Validate(PurchOrderLine."No.",LigneFraisAnn."FA Code");
-          PurchOrderLine.Validate(PurchOrderLine.Quantity,1);
-          PurchOrderLine.Validate(PurchOrderLine."Direct Unit Cost",LigneFraisAnn."FA Amount");
-          //IF Cust.GET(JiramaForecastLine."Sell-to Customer No.") THEN
-          //  PurchOrderLine.VALIDATE(PurchOrderLine."Location Code",Cust."Location Code");
+        PurchOrderLine.Type := PurchOrderLine.Type::"Charge (Item)";
+        PurchOrderLine.Validate(PurchOrderLine."No.", LigneFraisAnn."FA Code");
+        PurchOrderLine.Validate(PurchOrderLine.Quantity, 1);
+        PurchOrderLine.Validate(PurchOrderLine."Direct Unit Cost", LigneFraisAnn."FA Amount");
+        //IF Cust.GET(JiramaForecastLine."Sell-to Customer No.") THEN
+        //  PurchOrderLine.VALIDATE(PurchOrderLine."Location Code",Cust."Location Code");
 
-          PurchOrderLine.Modify;
+        PurchOrderLine.Modify;
 
-          //JiramaForecastLine."Purchase Order No" := PurchOrderHeader."No.";
-          //JiramaForecastLine."Purchase Order Line No" := LineNum;
-          //JiramaForecastLine.MODIFY;
+        //JiramaForecastLine."Purchase Order No" := PurchOrderHeader."No.";
+        //JiramaForecastLine."Purchase Order Line No" := LineNum;
+        //JiramaForecastLine.MODIFY;
 
-          //SalesOrderLine."Shortcut Dimension 1 Code" := BlanketOrderSalesLine."Shortcut Dimension 1 Code";
-          //SalesOrderLine."Shortcut Dimension 2 Code" := BlanketOrderSalesLine."Shortcut Dimension 2 Code";
-          //SalesOrderLine."Dimension Set ID" := BlanketOrderSalesLine."Dimension Set ID";
+        //SalesOrderLine."Shortcut Dimension 1 Code" := BlanketOrderSalesLine."Shortcut Dimension 1 Code";
+        //SalesOrderLine."Shortcut Dimension 2 Code" := BlanketOrderSalesLine."Shortcut Dimension 2 Code";
+        //SalesOrderLine."Dimension Set ID" := BlanketOrderSalesLine."Dimension Set ID";
 
         //UNTIL PurchLine.NEXT=0;
 
         exit(PurchOrderHeader."No.");
     end;
 
-    local procedure BuildDescriptionProvision(CodeCde: Code[20];NomClient: Text[50]): Text[50]
+    local procedure BuildDescriptionProvision(CodeCde: Code[20]; NomClient: Text[50]): Text[50]
     var
         rep: Text[100];
     begin
-        rep := Text014+' '+CodeCde+'-'+NomClient;
-        exit(CopyStr(rep,1,49));
+        rep := Text014 + ' ' + CodeCde + '-' + NomClient;
+        exit(CopyStr(rep, 1, 49));
     end;
 
-    local procedure BuildDescriptionProvisionFraisAnn(CodeCde: Code[20];NomClient: Text[50]): Text[50]
+    local procedure BuildDescriptionProvisionFraisAnn(CodeCde: Code[20]; NomClient: Text[50]): Text[50]
     var
         rep: Text[100];
     begin
-        rep := Text015+' '+CodeCde+'-'+NomClient;
-        exit(CopyStr(rep,1,49));
+        rep := Text015 + ' ' + CodeCde + '-' + NomClient;
+        exit(CopyStr(rep, 1, 49));
     end;
 
-    local procedure BuildDescriptionProvisionVarStock(CodeCde: Code[20];NomClient: Text[50]): Text[50]
+    local procedure BuildDescriptionProvisionVarStock(CodeCde: Code[20]; NomClient: Text[50]): Text[50]
     var
         rep: Text[100];
     begin
-        rep := Text019+' '+CodeCde+'-'+NomClient;
-        exit(CopyStr(rep,1,49));
+        rep := Text019 + ' ' + CodeCde + '-' + NomClient;
+        exit(CopyStr(rep, 1, 49));
     end;
 
-    local procedure BuildDescriptionProvisionVarStockCargo(CodeCde: Code[20];NomClient: Text[50]): Text[50]
+    local procedure BuildDescriptionProvisionVarStockCargo(CodeCde: Code[20]; NomClient: Text[50]): Text[50]
     var
         rep: Text[100];
     begin
-        rep := Text019+' '+CodeCde+'-'+NomClient;
-        exit(CopyStr(rep,1,49));
+        rep := Text019 + ' ' + CodeCde + '-' + NomClient;
+        exit(CopyStr(rep, 1, 49));
     end;
 
-    procedure GetPostingAllowedDatesOnGroupsUsers(var AllowPostingFrom: Date;var AllowPostingTo: Date)
+    procedure GetPostingAllowedDatesOnGroupsUsers(var AllowPostingFrom: Date; var AllowPostingTo: Date)
     var
         UserGroupMember: Record "User Group Member";
         UserGroup: Record "User Group";
@@ -1311,13 +1315,13 @@ codeunit 50017 "Provisions Cde Mgt"
         if not AddOnSetup."GL Security On Group Users" then exit;
 
         UserGroupMember.Reset;
-        UserGroupMember.SetRange("User Name",UserId);
+        UserGroupMember.SetRange("User Name", UserId);
         //UserGroupMember.SETRANGE("Company Name",COMPANYNAME);
         if UserGroupMember.FindFirst then begin
-          if UserGroup.Get(UserGroupMember."User Group Code") then begin
-            AllowPostingFrom := UserGroup."Allow Posting From";
-            AllowPostingTo := UserGroup."Allow Posting To";
-          end;
+            if UserGroup.Get(UserGroupMember."User Group Code") then begin
+                AllowPostingFrom := UserGroup."Allow Posting From";
+                AllowPostingTo := UserGroup."Allow Posting To";
+            end;
         end;
     end;
 
@@ -1326,7 +1330,7 @@ codeunit 50017 "Provisions Cde Mgt"
         GLEntry: Record "G/L Entry";
         SommeMontant: Decimal;
     begin
-        
+
         /*
         GLEntry.RESET;
         GLEntry.SETCURRENTKEY(GLEntry."External Document No.");
@@ -1337,17 +1341,18 @@ codeunit 50017 "Provisions Cde Mgt"
         UNTIL GLEntry.NEXT = 0;
         */
         AddOnSetup.Get;
-        
+
         GLEntry.Reset;
         GLEntry.SetCurrentKey(GLEntry."External Document No.");
-        GLEntry.SetRange(GLEntry."External Document No.",CodeCde);
-        if GLEntry.FindSet then repeat
-         if ((GLEntry."G/L Account No."=AddOnSetup."Unbilled Revenues Account") or
-         (GLEntry."G/L Account No."=AddOnSetup."Invoice To Receive Account")) then
-          SommeMontant := SommeMontant + GLEntry.Amount;
-        until GLEntry.Next = 0;
-        
-        exit(SommeMontant<>0)
+        GLEntry.SetRange(GLEntry."External Document No.", CodeCde);
+        if GLEntry.FindSet then
+            repeat
+                if ((GLEntry."G/L Account No." = AddOnSetup."Unbilled Revenues Account") or
+                (GLEntry."G/L Account No." = AddOnSetup."Invoice To Receive Account")) then
+                    SommeMontant := SommeMontant + GLEntry.Amount;
+            until GLEntry.Next = 0;
+
+        exit(SommeMontant <> 0)
 
     end;
 
@@ -1362,7 +1367,7 @@ codeunit 50017 "Provisions Cde Mgt"
         GLAccNo: Code[20];
         Item1: Record Item;
     begin
-        
+
         /*
         GLEntry.RESET;
         GLEntry.SETCURRENTKEY(GLEntry."External Document No.");
@@ -1373,51 +1378,53 @@ codeunit 50017 "Provisions Cde Mgt"
         UNTIL GLEntry.NEXT = 0;
         */
         //AddOnSetup.GET;
-        
+
         SalesLine.Reset();
-        SalesLine.SetRange("Document Type",SalesLine."Document Type"::Order);
-        SalesLine.SetRange("Document No.",CodeCde);
-        SalesLine.SetFilter("No.",'<>%1','');
-        SalesLine.SetRange(Type,SalesLine.Type::Item);
+        SalesLine.SetRange("Document Type", SalesLine."Document Type"::Order);
+        SalesLine.SetRange("Document No.", CodeCde);
+        SalesLine.SetFilter("No.", '<>%1', '');
+        SalesLine.SetRange(Type, SalesLine.Type::Item);
         if SalesLine.FindSet then
-        repeat
-          Item1.Get(SalesLine."No.");
-          if Item1.Type = Item1.Type::Inventory then begin
-            GLAccNo := GetCOGSAccount(SalesLine."Gen. Bus. Posting Group",SalesLine."Gen. Prod. Posting Group");
-        
-            GLEntry.Reset;
-            GLEntry.SetCurrentKey(GLEntry."External Document No.");
-            GLEntry.SetRange(GLEntry."External Document No.",CodeCde);
-            if GLEntry.FindSet then repeat
-             if ((GLEntry."G/L Account No."=GLAccNo)) then
-              SommeMontant := SommeMontant + GLEntry.Amount;
-            until GLEntry.Next = 0;
-          end;
-        until SalesLine.Next=0;
-        
-        
+            repeat
+                Item1.Get(SalesLine."No.");
+                if Item1.Type = Item1.Type::Inventory then begin
+                    GLAccNo := GetCOGSAccount(SalesLine."Gen. Bus. Posting Group", SalesLine."Gen. Prod. Posting Group");
+
+                    GLEntry.Reset;
+                    GLEntry.SetCurrentKey(GLEntry."External Document No.");
+                    GLEntry.SetRange(GLEntry."External Document No.", CodeCde);
+                    if GLEntry.FindSet then
+                        repeat
+                            if ((GLEntry."G/L Account No." = GLAccNo)) then
+                                SommeMontant := SommeMontant + GLEntry.Amount;
+                        until GLEntry.Next = 0;
+                end;
+            until SalesLine.Next = 0;
+
+
         PurchLine.Reset();
-        PurchLine.SetRange("Document Type",PurchLine."Document Type"::Order);
-        PurchLine.SetRange("Document No.",CodeCde);
-        PurchLine.SetFilter("No.",'<>%1','');
-        PurchLine.SetRange(Type,PurchLine.Type::Item);
+        PurchLine.SetRange("Document Type", PurchLine."Document Type"::Order);
+        PurchLine.SetRange("Document No.", CodeCde);
+        PurchLine.SetFilter("No.", '<>%1', '');
+        PurchLine.SetRange(Type, PurchLine.Type::Item);
         if PurchLine.FindSet then
-        repeat
-          Item1.Get(PurchLine."No.");
-          if Item1.Type = Item1.Type::Inventory then begin
-            GLAccNo := GetCOGSAccount(PurchLine."Gen. Bus. Posting Group",PurchLine."Gen. Prod. Posting Group");
-        
-            GLEntry.Reset;
-            GLEntry.SetCurrentKey(GLEntry."External Document No.");
-            GLEntry.SetRange(GLEntry."External Document No.",CodeCde);
-            if GLEntry.FindSet then repeat
-             if ((GLEntry."G/L Account No." = GLAccNo)) then
-              SommeMontant := SommeMontant + GLEntry.Amount;
-            until GLEntry.Next = 0;
-          end;
-        until PurchLine.Next=0;
-        
-        exit(SommeMontant<>0)
+            repeat
+                Item1.Get(PurchLine."No.");
+                if Item1.Type = Item1.Type::Inventory then begin
+                    GLAccNo := GetCOGSAccount(PurchLine."Gen. Bus. Posting Group", PurchLine."Gen. Prod. Posting Group");
+
+                    GLEntry.Reset;
+                    GLEntry.SetCurrentKey(GLEntry."External Document No.");
+                    GLEntry.SetRange(GLEntry."External Document No.", CodeCde);
+                    if GLEntry.FindSet then
+                        repeat
+                            if ((GLEntry."G/L Account No." = GLAccNo)) then
+                                SommeMontant := SommeMontant + GLEntry.Amount;
+                        until GLEntry.Next = 0;
+                end;
+            until PurchLine.Next = 0;
+
+        exit(SommeMontant <> 0)
 
     end;
 
@@ -1434,20 +1441,22 @@ codeunit 50017 "Provisions Cde Mgt"
         if IsCommandeProvisionnee(CodeCde) then exit;
 
         SalesL.Reset;
-        SalesL.SetRange("Document Type",SalesL."Document Type"::Order);
-        SalesL.SetRange("Document No.",CodeCde);
-        if SalesL.FindSet(true,true) then repeat
-          SalesL."Provision Qty" := 0;
-          SalesL.Modify;
-        until SalesL.Next=0;
+        SalesL.SetRange("Document Type", SalesL."Document Type"::Order);
+        SalesL.SetRange("Document No.", CodeCde);
+        if SalesL.FindSet(true, true) then
+            repeat
+                SalesL."Provision Qty" := 0;
+                SalesL.Modify;
+            until SalesL.Next = 0;
 
         PurchLine.Reset;
-        PurchLine.SetRange("Document Type",SalesL."Document Type"::Order);
-        PurchLine.SetRange("Document No.",CodeCde);
-        if PurchLine.FindSet(true,true) then repeat
-          PurchLine."Provision Qty":=0;
-          PurchLine.Modify;
-        until PurchLine.Next=0;
+        PurchLine.SetRange("Document Type", SalesL."Document Type"::Order);
+        PurchLine.SetRange("Document No.", CodeCde);
+        if PurchLine.FindSet(true, true) then
+            repeat
+                PurchLine."Provision Qty" := 0;
+                PurchLine.Modify;
+            until PurchLine.Next = 0;
     end;
 
     procedure ResetProvisionsVarStock(CodeCde: Code[20])
@@ -1463,32 +1472,34 @@ codeunit 50017 "Provisions Cde Mgt"
         if IsCommandeProvisionneeVarStock(CodeCde) then exit;
 
         SalesL.Reset;
-        SalesL.SetRange("Document Type",SalesL."Document Type"::Order);
-        SalesL.SetRange("Document No.",CodeCde);
-        if SalesL.FindSet(true,true) then repeat
-          SalesL."Provision Var Stock Qty" := 0;
-          SalesL.Modify;
-        until SalesL.Next=0;
+        SalesL.SetRange("Document Type", SalesL."Document Type"::Order);
+        SalesL.SetRange("Document No.", CodeCde);
+        if SalesL.FindSet(true) then
+            repeat
+                SalesL."Provision Var Stock Qty" := 0;
+                SalesL.Modify;
+            until SalesL.Next = 0;
 
         PurchLine.Reset;
-        PurchLine.SetRange("Document Type",SalesL."Document Type"::Order);
-        PurchLine.SetRange("Document No.",CodeCde);
-        if PurchLine.FindSet(true,true) then repeat
-          PurchLine."Provision Var Stock Qty":=0;
-          PurchLine.Modify;
-        until PurchLine.Next=0;
+        PurchLine.SetRange("Document Type", SalesL."Document Type"::Order);
+        PurchLine.SetRange("Document No.", CodeCde);
+        if PurchLine.FindSet(true) then
+            repeat
+                PurchLine."Provision Var Stock Qty" := 0;
+                PurchLine.Modify;
+            until PurchLine.Next = 0;
     end;
 
-    local procedure GetCOGSAccount(GenBusPostingCode: Code[10];GenProdPostingCode: Code[10]): Code[20]
+    local procedure GetCOGSAccount(GenBusPostingCode: Code[10]; GenProdPostingCode: Code[10]): Code[20]
     begin
-        GenPostingSetup.Get(GenBusPostingCode,GenProdPostingCode);
+        GenPostingSetup.Get(GenBusPostingCode, GenProdPostingCode);
         GenPostingSetup.TestField(GenPostingSetup."COGS Account");
         exit(GenPostingSetup."COGS Account");
     end;
 
-    local procedure GetInvAccount(LocationCode: Code[10];ItemInvPostingGroup: Code[10]): Code[20]
+    local procedure GetInvAccount(LocationCode: Code[10]; ItemInvPostingGroup: Code[10]): Code[20]
     begin
-        InvPostingSetup.Get(LocationCode,ItemInvPostingGroup);
+        InvPostingSetup.Get(LocationCode, ItemInvPostingGroup);
         InvPostingSetup.TestField(InvPostingSetup."Inventory Account");
         exit(InvPostingSetup."Inventory Account");
     end;
@@ -1509,12 +1520,12 @@ codeunit 50017 "Provisions Cde Mgt"
 
         FA.Get(CodeFA);
 
-        GenPostingSetup.Get(AddOnSetup."Gen. Bus. Posting Group Def",FA."Gen. Prod. Posting Group");
+        GenPostingSetup.Get(AddOnSetup."Gen. Bus. Posting Group Def", FA."Gen. Prod. Posting Group");
         GenPostingSetup.TestField("Purch. Account");
         exit(GenPostingSetup."Purch. Account");
     end;
 
-    procedure ConfirmProvisionsFA(CodeFacture: Code[20];CodeFactureEnreg: Code[20])
+    procedure ConfirmProvisionsFA(CodeFacture: Code[20]; CodeFactureEnreg: Code[20])
     var
         PurchH1: Record "Purchase Header";
         LigneFraisAnn: Record "Purchase Order Tracking";
@@ -1523,28 +1534,28 @@ codeunit 50017 "Provisions Cde Mgt"
           PurchH1.ProvisionValide:=TRUE;
           PurchH1.MODIFY;
         END;*/
-        
-        if not PurchH1.Get(PurchH1."Document Type"::Invoice,CodeFacture) then exit;
-        
-        if PurchH1."Created By Doc Type"<>PurchH1."Created By Doc Type"::ProvisionsFA then exit;
-        
+
+        if not PurchH1.Get(PurchH1."Document Type"::Invoice, CodeFacture) then exit;
+
+        if PurchH1."Created By Doc Type" <> PurchH1."Created By Doc Type"::ProvisionsFA then exit;
+
         LigneFraisAnn.Reset();
-        LigneFraisAnn.SetRange("Document Type",LigneFraisAnn."Document Type"::Order);
-        LigneFraisAnn.SetRange("Document No.",PurchH1."Created By Doc No.");
-        LigneFraisAnn.SetRange(LigneFraisAnn."Data Type",LigneFraisAnn."Data Type"::FraisAnnexe);
-        LigneFraisAnn.SetRange(LigneFraisAnn."Provision Invoice",CodeFacture);
+        LigneFraisAnn.SetRange("Document Type", LigneFraisAnn."Document Type"::Order);
+        LigneFraisAnn.SetRange("Document No.", PurchH1."Created By Doc No.");
+        LigneFraisAnn.SetRange(LigneFraisAnn."Data Type", LigneFraisAnn."Data Type"::FraisAnnexe);
+        LigneFraisAnn.SetRange(LigneFraisAnn."Provision Invoice", CodeFacture);
         if LigneFraisAnn.FindSet then begin
-        repeat
-          LigneFraisAnn.Provisioned := true;
-          LigneFraisAnn."Provision Posted Invoice" := CodeFactureEnreg;
-          LigneFraisAnn.Modify;
-        
-        until LigneFraisAnn.Next=0
+            repeat
+                LigneFraisAnn.Provisioned := true;
+                LigneFraisAnn."Provision Posted Invoice" := CodeFactureEnreg;
+                LigneFraisAnn.Modify;
+
+            until LigneFraisAnn.Next = 0
         end;
 
     end;
 
-    procedure TraiterProvisionFraisAnnexesOld(PurchH: Record "Purchase Header";LigneFraisAnn: Record "Purchase Order Tracking";ModeleFeuille: Code[20];CodeFeuille: Code[20];PostingDate: Date;DocumentNo: Code[20];var LineNo: Integer): Boolean
+    procedure TraiterProvisionFraisAnnexesOld(PurchH: Record "Purchase Header"; LigneFraisAnn: Record "Purchase Order Tracking"; ModeleFeuille: Code[20]; CodeFeuille: Code[20]; PostingDate: Date; DocumentNo: Code[20]; var LineNo: Integer): Boolean
     var
         BesoinNo: Integer;
         NbreTotalLignes: Integer;
@@ -1571,40 +1582,40 @@ codeunit 50017 "Provisions Cde Mgt"
         //IF LigneFraisAnn.FINDSET THEN BEGIN
         //REPEAT
 
-            Clear(GenJrnLine);
-            GenJrnLine."Journal Template Name":= ModeleFeuille;
-            GenJrnLine."Journal Batch Name" := CodeFeuille;
+        Clear(GenJrnLine);
+        GenJrnLine."Journal Template Name" := ModeleFeuille;
+        GenJrnLine."Journal Batch Name" := CodeFeuille;
 
-            LineNo := LineNo+10;
-            GenJrnLine."Line No." := LineNo;
-            JrnTmplName.Get(GenJrnLine."Journal Template Name");
-            JrnTmplName.TestField("Source Code");
-            GenJrnLine."Source Code" := JrnTmplName."Source Code";
-            GenJrnLine.Validate("Posting Date",PostingDate);
+        LineNo := LineNo + 10;
+        GenJrnLine."Line No." := LineNo;
+        JrnTmplName.Get(GenJrnLine."Journal Template Name");
+        JrnTmplName.TestField("Source Code");
+        GenJrnLine."Source Code" := JrnTmplName."Source Code";
+        GenJrnLine.Validate("Posting Date", PostingDate);
 
-            GenJrnLine."Document No." := DocumentNo;
-            GenJrnLine."External Document No." := PurchH."No.";
+        GenJrnLine."Document No." := DocumentNo;
+        GenJrnLine."External Document No." := PurchH."No.";
 
-            GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
-            GLAccNo := GetPurchAccFA(LigneFraisAnn."FA Code");
-            GenJrnLine.Validate("Account No.",GLAccNo);
-            GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
+        GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
+        GLAccNo := GetPurchAccFA(LigneFraisAnn."FA Code");
+        GenJrnLine.Validate("Account No.", GLAccNo);
+        GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
 
-            GenJrnLine.Description := CopyStr(StrSubstNo(Text006,PurchH."No."),1,49);
-            GenJrnLine.TypeProvision:=GenJrnLine.TypeProvision::FraisAnn;
+        GenJrnLine.Description := CopyStr(StrSubstNo(Text006, PurchH."No."), 1, 49);
+        GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::FraisAnn;
 
-            //LineAmount := LigneCde."Direct Unit Cost"*(LigneCde."Qty. Rcd. Not Invoiced"-LigneCde."Provision Qty");
-            LigneFraisAnn.TestField(LigneFraisAnn."FA Amount");
-            LineAmount := LigneFraisAnn."FA Amount";
-
-
-            GenJrnLine.Validate(GenJrnLine.Amount, LineAmount);
+        //LineAmount := LigneCde."Direct Unit Cost"*(LigneCde."Qty. Rcd. Not Invoiced"-LigneCde."Provision Qty");
+        LigneFraisAnn.TestField(LigneFraisAnn."FA Amount");
+        LineAmount := LigneFraisAnn."FA Amount";
 
 
-            MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
-            GenJrnLine.Validate("Currency Code",'');
-            if GenJrnLine.Amount<>0 then
-              GenJrnLine.Insert(true);
+        GenJrnLine.Validate(GenJrnLine.Amount, LineAmount);
+
+
+        MontantTotalCde := MontantTotalCde + GenJrnLine.Amount;
+        GenJrnLine.Validate("Currency Code", '');
+        if GenJrnLine.Amount <> 0 then
+            GenJrnLine.Insert(true);
 
         //UNTIL LigneFraisAnn.NEXT=0
         //END;
@@ -1612,58 +1623,59 @@ codeunit 50017 "Provisions Cde Mgt"
 
         //Contrepartie
         Clear(GenJrnLine);
-        GenJrnLine."Journal Template Name":= ModeleFeuille;
+        GenJrnLine."Journal Template Name" := ModeleFeuille;
         GenJrnLine."Journal Batch Name" := CodeFeuille;
 
-        LineNo := LineNo+10;
+        LineNo := LineNo + 10;
         GenJrnLine."Line No." := LineNo;
         JrnTmplName.Get(GenJrnLine."Journal Template Name");
         JrnTmplName.TestField(JrnTmplName."Source Code");
         GenJrnLine."Source Code" := JrnTmplName."Source Code";
-        GenJrnLine.Validate("Posting Date",PostingDate);
+        GenJrnLine.Validate("Posting Date", PostingDate);
 
         GenJrnLine."Document No." := DocumentNo;
         GenJrnLine."External Document No." := PurchH."No.";
 
         GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
         GLAccNo := AddOnSetup."Invoice To Receive Account";
-        GenJrnLine.Validate("Account No.",GLAccNo);
-        GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
+        GenJrnLine.Validate("Account No.", GLAccNo);
+        GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
 
-        GenJrnLine.Description := CopyStr(StrSubstNo(Text006,PurchH."No."),1,49);
+        GenJrnLine.Description := CopyStr(StrSubstNo(Text006, PurchH."No."), 1, 49);
         GenJrnLine.Validate(GenJrnLine.Amount, -MontantTotalCde);
-        GenJrnLine.TypeProvision:=GenJrnLine.TypeProvision::FraisAnn;
-        GenJrnLine."Gen. Posting Type":=GenJrnLine."Gen. Posting Type"::Purchase;
+        GenJrnLine.TypeProvision := GenJrnLine.TypeProvision::FraisAnn;
+        GenJrnLine."Gen. Posting Type" := GenJrnLine."Gen. Posting Type"::Purchase;
 
-        GenJrnLine.Validate("Currency Code",'');
+        GenJrnLine.Validate("Currency Code", '');
 
-        if GenJrnLine.Amount<>0 then begin
-          GenJrnLine.Insert(true);
-          exit(true);
+        if GenJrnLine.Amount <> 0 then begin
+            GenJrnLine.Insert(true);
+            exit(true);
         end;
         exit(false);
     end;
 
     local procedure GetPosOrZero(Qty: Decimal): Decimal
     begin
-        if Qty>0 then
-          exit(Qty)
+        if Qty > 0 then
+            exit(Qty)
         else
-          exit(0);
+            exit(0);
     end;
 
-    local procedure GetQteLivreeNonFacturee_Ventes(DateDeb: Date;DateFin: Date;LigneCde: Record "Sales Line") Rep: Decimal
+    local procedure GetQteLivreeNonFacturee_Ventes(DateDeb: Date; DateFin: Date; LigneCde: Record "Sales Line") Rep: Decimal
     var
         SalesShipmentLine: Record "Sales Shipment Line";
     begin
         SalesShipmentLine.Reset;
-        SalesShipmentLine.SetCurrentKey("Order No.","Order Line No.");
-        SalesShipmentLine.SetRange("Order No.",LigneCde."Document No.");
-        SalesShipmentLine.SetRange("Order Line No.",LigneCde."Line No.");
-        if SalesShipmentLine.FindSet then repeat
-          if ((SalesShipmentLine."Posting Date">=DateDeb) and (SalesShipmentLine."Posting Date"<=DateFin)) then
-            Rep := Rep + (SalesShipmentLine.Quantity-GetQteFactureeLivraison(SalesShipmentLine));
-        until SalesShipmentLine.Next=0;
+        SalesShipmentLine.SetCurrentKey("Order No.", "Order Line No.");
+        SalesShipmentLine.SetRange("Order No.", LigneCde."Document No.");
+        SalesShipmentLine.SetRange("Order Line No.", LigneCde."Line No.");
+        if SalesShipmentLine.FindSet then
+            repeat
+                if ((SalesShipmentLine."Posting Date" >= DateDeb) and (SalesShipmentLine."Posting Date" <= DateFin)) then
+                    Rep := Rep + (SalesShipmentLine.Quantity - GetQteFactureeLivraison(SalesShipmentLine));
+            until SalesShipmentLine.Next = 0;
     end;
 
     local procedure GetQteFactureeLivraison(SalesShipmentLine: Record "Sales Shipment Line") Rep: Decimal
@@ -1671,33 +1683,34 @@ codeunit 50017 "Provisions Cde Mgt"
         ShipmentInv: Record "Shipment Invoiced";
     begin
         ShipmentInv.Reset;
-        ShipmentInv.SetCurrentKey("Shipment No.","Shipment Line No.");
-        ShipmentInv.SetRange("Shipment No.",SalesShipmentLine."Document No.");
-        ShipmentInv.SetRange("Shipment Line No.",SalesShipmentLine."Line No.");
-        if ShipmentInv.FindSet then repeat
-          Rep := Rep + ShipmentInv."Qty. to Invoice";
-        until ShipmentInv.Next=0;
+        ShipmentInv.SetCurrentKey("Shipment No.", "Shipment Line No.");
+        ShipmentInv.SetRange("Shipment No.", SalesShipmentLine."Document No.");
+        ShipmentInv.SetRange("Shipment Line No.", SalesShipmentLine."Line No.");
+        if ShipmentInv.FindSet then
+            repeat
+                Rep := Rep + ShipmentInv."Qty. to Invoice";
+            until ShipmentInv.Next = 0;
     end;
 
-    local procedure GetQteCdeeNonFacturee_Ventes(DateDeb: Date;DateFin: Date;SalesH: Record "Sales Header";LigneCde: Record "Sales Line") Rep: Decimal
+    local procedure GetQteCdeeNonFacturee_Ventes(DateDeb: Date; DateFin: Date; SalesH: Record "Sales Header"; LigneCde: Record "Sales Line") Rep: Decimal
     var
         SalesShipmentLine: Record "Sales Shipment Line";
     begin
 
-        if ((SalesH."Order Date">=DateDeb) and (SalesH."Order Date"<=DateFin)) then
-          Rep := LigneCde.Quantity - LigneCde."Quantity Invoiced";
+        if ((SalesH."Order Date" >= DateDeb) and (SalesH."Order Date" <= DateFin)) then
+            Rep := LigneCde.Quantity - LigneCde."Quantity Invoiced";
     end;
 
-    local procedure GetQteCdeeNonFacturee_Achats(DateDeb: Date;DateFin: Date;PurchH: Record "Purchase Header";LigneCde: Record "Purchase Line") Rep: Decimal
+    local procedure GetQteCdeeNonFacturee_Achats(DateDeb: Date; DateFin: Date; PurchH: Record "Purchase Header"; LigneCde: Record "Purchase Line") Rep: Decimal
     var
         SalesShipmentLine: Record "Sales Shipment Line";
     begin
 
-        if ((PurchH."Order Date">=DateDeb) and (PurchH."Order Date"<=DateFin)) then
-          Rep := LigneCde.Quantity - LigneCde."Quantity Invoiced";
+        if ((PurchH."Order Date" >= DateDeb) and (PurchH."Order Date" <= DateFin)) then
+            Rep := LigneCde.Quantity - LigneCde."Quantity Invoiced";
     end;
 
-    local procedure GetQteFactureeReception(PurchReptLine: Record "Purch. Rcpt. Line";SalesOrderNo: Code[20];ItemNo: Code[20]) Rep: Decimal
+    local procedure GetQteFactureeReception(PurchReptLine: Record "Purch. Rcpt. Line"; SalesOrderNo: Code[20]; ItemNo: Code[20]) Rep: Decimal
     var
         ShipmentInv: Record "Shipment Invoiced";
         PurchInvLine: Record "Purch. Inv. Line";
@@ -1706,14 +1719,15 @@ codeunit 50017 "Provisions Cde Mgt"
     begin
         PurchInvH.Reset;
         PurchInvH.SetCurrentKey("Order No.");
-        PurchInvH.SetRange("Order No.",SalesOrderNo);
-        if PurchInvH.FindSet then repeat
+        PurchInvH.SetRange("Order No.", SalesOrderNo);
+        if PurchInvH.FindSet then
+            repeat
 
-          if PurchInvLine.Get(PurchInvH."No.",PurchReptLine."Line No.") then
-            if PurchInvLine."No."=ItemNo then
-              Rep := Rep + PurchInvLine.Quantity;
+                if PurchInvLine.Get(PurchInvH."No.", PurchReptLine."Line No.") then
+                    if PurchInvLine."No." = ItemNo then
+                        Rep := Rep + PurchInvLine.Quantity;
 
-        until PurchInvH.Next=0;
+            until PurchInvH.Next = 0;
     end;
 
     local procedure GetQteFactureeArticleCde_Reception(LigneCde: Record "Purchase Line") Rep: Decimal
@@ -1725,17 +1739,18 @@ codeunit 50017 "Provisions Cde Mgt"
     begin
         PurchInvH.Reset;
         PurchInvH.SetCurrentKey("Order No.");
-        PurchInvH.SetRange("Order No.",LigneCde."Document No.");
-        if PurchInvH.FindSet then repeat
+        PurchInvH.SetRange("Order No.", LigneCde."Document No.");
+        if PurchInvH.FindSet then
+            repeat
 
-          if PurchInvLine.Get(PurchInvH."No.",LigneCde."Line No.") then
-            if PurchInvLine."No."=LigneCde."No." then
-              Rep := Rep + PurchInvLine.Quantity;
+                if PurchInvLine.Get(PurchInvH."No.", LigneCde."Line No.") then
+                    if PurchInvLine."No." = LigneCde."No." then
+                        Rep := Rep + PurchInvLine.Quantity;
 
-        until PurchInvH.Next=0;
+            until PurchInvH.Next = 0;
     end;
 
-    local procedure GetQteLivreeNonFacturee_Achats(DateDeb: Date;DateFin: Date;LigneCde: Record "Purchase Line") Rep: Decimal
+    local procedure GetQteLivreeNonFacturee_Achats(DateDeb: Date; DateFin: Date; LigneCde: Record "Purchase Line") Rep: Decimal
     var
         SalesShipmentLine: Record "Sales Shipment Line";
         PurchReptLine: Record "Purch. Rcpt. Line";
@@ -1745,33 +1760,34 @@ codeunit 50017 "Provisions Cde Mgt"
         ResteAAffecter := GetQteFactureeArticleCde_Reception(LigneCde);
 
         PurchReptLine.Reset;
-        PurchReptLine.SetCurrentKey("Order No.","Order Line No.");
-        PurchReptLine.SetRange("Order No.",LigneCde."Document No.");
-        PurchReptLine.SetRange("Order Line No.",LigneCde."Line No.");
-        if PurchReptLine.FindSet then repeat
+        PurchReptLine.SetCurrentKey("Order No.", "Order Line No.");
+        PurchReptLine.SetRange("Order No.", LigneCde."Document No.");
+        PurchReptLine.SetRange("Order Line No.", LigneCde."Line No.");
+        if PurchReptLine.FindSet then
+            repeat
 
-            if ((PurchReptLine."Posting Date">=DateDeb) and (PurchReptLine."Posting Date"<=DateFin)) then begin
-              if ResteAAffecter<PurchReptLine.Quantity then
-                if ResteAAffecter>=0 then
-                  Rep := Rep + (PurchReptLine.Quantity-ResteAAffecter)
-                else
-                  Rep := Rep + PurchReptLine.Quantity;
-            end;
+                if ((PurchReptLine."Posting Date" >= DateDeb) and (PurchReptLine."Posting Date" <= DateFin)) then begin
+                    if ResteAAffecter < PurchReptLine.Quantity then
+                        if ResteAAffecter >= 0 then
+                            Rep := Rep + (PurchReptLine.Quantity - ResteAAffecter)
+                        else
+                            Rep := Rep + PurchReptLine.Quantity;
+                end;
 
-          ResteAAffecter := ResteAAffecter-PurchReptLine.Quantity;
+                ResteAAffecter := ResteAAffecter - PurchReptLine.Quantity;
 
-        until PurchReptLine.Next=0;
+            until PurchReptLine.Next = 0;
     end;
 
-    procedure SetSoucheExtourneProvisionFA(FromPostedFacture: Record "Purch. Inv. Header";var ToAvoir: Record "Purchase Header")
+    procedure SetSoucheExtourneProvisionFA(FromPostedFacture: Record "Purch. Inv. Header"; var ToAvoir: Record "Purchase Header")
     begin
-        if FromPostedFacture."Created By Doc Type"=FromPostedFacture."Created By Doc Type"::ProvisionsFA then begin
-          if ToAvoir."Document Type"=ToAvoir."Document Type"::"Credit Memo" then begin
-            AddOnSetup.Get;
-            AddOnSetup.TestField(AddOnSetup."Extourne Facture Prov Nos.");
-            ToAvoir.Validate("Posting No. Series",AddOnSetup."Extourne Facture Prov Nos.");
-            ToAvoir.Modify;
-          end;
+        if FromPostedFacture."Created By Doc Type" = FromPostedFacture."Created By Doc Type"::ProvisionsFA then begin
+            if ToAvoir."Document Type" = ToAvoir."Document Type"::"Credit Memo" then begin
+                AddOnSetup.Get;
+                AddOnSetup.TestField(AddOnSetup."Extourne Facture Prov Nos.");
+                ToAvoir.Validate("Posting No. Series", AddOnSetup."Extourne Facture Prov Nos.");
+                ToAvoir.Modify;
+            end;
         end;
     end;
 }

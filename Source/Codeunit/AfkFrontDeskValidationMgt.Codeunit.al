@@ -806,7 +806,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Value"), input, 'Warranty Value');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Warranty Validity"), input, 'Warranty Validity');
         //WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Currency Code"), input, 'Currency Code');
-        WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Language Code"), input, 'Language Code');
+        WS.ValidateField(RecRef, Lead.FieldNo(Lead."Language Code"), input, 'Language Code');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Contact Type"), input, 'Contact Type');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Blocked"), input, 'Blocked');
 

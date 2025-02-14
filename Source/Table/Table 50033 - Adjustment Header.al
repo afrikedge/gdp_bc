@@ -464,6 +464,7 @@ table 50033 "Adjustment Header"
         AddOnSetup.Get;
         if "No." = '' then begin
             TestNoSeries;
+            "No. Series" := GetNoSeriesCode();
             if (NoSeriesMgt.AreRelated(GetNoSeriesCode(), xRec."No. Series")) then
                 "No. Series" := xRec."No. Series";
             "No." := NoSeriesMgt.GetNextNo("No. Series");
