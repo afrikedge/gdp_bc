@@ -1555,7 +1555,7 @@ report 50191 "Posted Sales Invoice"
                     Foot3 := CompanyInfos."Phone No." + ' - Fax : ' + CompanyInfos."Fax No.";
 
                 if PaymentTerms.Get(Header."Payment Terms Code") then
-                    PaymentTerm := PaymentTerms.Description;
+                    PaymentTerm := PaymentTerms.Description + ' ' + 'par ';
 
                 GLSetup.Get();
                 GLSetup.TestField("LCY Code");
@@ -1610,22 +1610,22 @@ report 50191 "Posted Sales Invoice"
 
                 if Cust.Get(Header."Sell-to Customer No.") then begin
                     if Cust."Cash payment" or Cust."Credit Note" then
-                        CashPaymentMode := 'Espèces'
+                        CashPaymentMode := 'Espèces,'
                     else
                         CashPaymentMode := '';
 
                     if Cust."Bank Transfer Bank Stamp" then
-                        OvAvecCahcetMode := 'Virement'
+                        OvAvecCahcetMode := 'Virement,'
                     else
                         OvAvecCahcetMode := '';
 
                     if Cust.Traite then
-                        TraiteMode := 'Traite'
+                        TraiteMode := 'Traite,'
                     else
                         TraiteMode := '';
 
                     if Cust."Check Set" or Cust."Received Check" then
-                        CheckPositionMode := 'Chèque'
+                        CheckPositionMode := 'Chèque,'
                     else
                         CheckPositionMode := '';
                 end;
@@ -1826,7 +1826,7 @@ report 50191 "Posted Sales Invoice"
         Foot3: Text;
         STAT: Code[50];
         CIF: Code[50];
-        PaymentTerm: Text[100];
+        PaymentTerm: Text;
         ChannelCode: Code[10];
         VAT: Text[5];
         LineHT: Decimal;

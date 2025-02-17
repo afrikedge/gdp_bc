@@ -2578,7 +2578,6 @@
                                                             <PaddingBottom>2pt</PaddingBottom>
                                                           </Style>
                                                         </Textbox>
-                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                   </TablixCells>
@@ -2692,6 +2691,54 @@
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve"> </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value>=Fields!CashPaymentMode.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve"> </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value>=Fields!CheckPositionMode.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve"> </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value>=Fields!OvAvecCahcetMode.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve"> </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value>=Fields!TraiteMode.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
                                                               </TextRuns>
                                                               <Style>
                                                                 <TextAlign>Left</TextAlign>
@@ -2710,6 +2757,7 @@
                                                             <PaddingBottom>2pt</PaddingBottom>
                                                           </Style>
                                                         </Textbox>
+                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                   </TablixCells>
@@ -2744,49 +2792,7 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value xml:space="preserve">   </Value>
-                                                                  <Style>
-                                                                    <FontSize>8pt</FontSize>
-                                                                  </Style>
-                                                                </TextRun>
-                                                                <TextRun>
-                                                                  <Value>=Fields!CashPaymentMode.Value</Value>
-                                                                  <Style>
-                                                                    <FontSize>8pt</FontSize>
-                                                                  </Style>
-                                                                </TextRun>
-                                                                <TextRun>
-                                                                  <Value xml:space="preserve">  </Value>
-                                                                  <Style>
-                                                                    <FontSize>8pt</FontSize>
-                                                                  </Style>
-                                                                </TextRun>
-                                                                <TextRun>
-                                                                  <Value>=Fields!CheckPositionMode.Value</Value>
-                                                                  <Style>
-                                                                    <FontSize>8pt</FontSize>
-                                                                  </Style>
-                                                                </TextRun>
-                                                                <TextRun>
-                                                                  <Value xml:space="preserve">  </Value>
-                                                                  <Style>
-                                                                    <FontSize>8pt</FontSize>
-                                                                  </Style>
-                                                                </TextRun>
-                                                                <TextRun>
-                                                                  <Value>=Fields!OvAvecCahcetMode.Value</Value>
-                                                                  <Style>
-                                                                    <FontSize>8pt</FontSize>
-                                                                  </Style>
-                                                                </TextRun>
-                                                                <TextRun>
-                                                                  <Value xml:space="preserve">  </Value>
-                                                                  <Style>
-                                                                    <FontSize>8pt</FontSize>
-                                                                  </Style>
-                                                                </TextRun>
-                                                                <TextRun>
-                                                                  <Value>=Fields!TraiteMode.Value</Value>
+                                                                  <Value xml:space="preserve">         </Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
