@@ -100,6 +100,9 @@ page 50351 "Params Setup2"
                 field("Company Cust Templ"; Rec."Company Cust Templ")
                 {
                 }
+                field("Activate Email Service"; Rec."Activate Email Service")
+                {
+                }
             }
         }
     }

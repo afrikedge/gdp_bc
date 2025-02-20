@@ -27,7 +27,7 @@ pageextension 50106 "Afk Payment Journal" extends "Payment Journal"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 ShortcutKey = 'Shift+F9';
-                Visible = false;
+                //Visible = false;
 
                 trigger OnAction()
                 var
@@ -148,6 +148,17 @@ pageextension 50106 "Afk Payment Journal" extends "Payment Journal"
                     GenJnlLine.SETRANGE("Document No.", Rec."Document No.");//**************************************added
                     REPORT.RUN(REPORT::"Avis Paiement Fournisseur", TRUE, FALSE, GenJnlLine);
                 end;
+            }
+            action("Emails")
+            {
+                //Visible = false;
+                ApplicationArea = All;
+                Caption = 'Emails à envoyer';
+                Image = Email;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedIsBig = true;
+                RunObject = page "Vendor Emails To Send";
             }
         }
     }

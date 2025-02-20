@@ -1548,6 +1548,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 1504737636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activer service Emails</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Activate Email Service - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 463785790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Intérim DFI activé</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12778,10 +12783,35 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field Attachment - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 3116354377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachment File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field AttachmentFile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 1553343985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Body</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field BodyAsHTML - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4135713293 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 491087931 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email Object</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field EmailObject - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 2034144036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email Sent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field EmailSent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 1396961768 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field EmailType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4135713293 - Field 1627640004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry Date</source>
@@ -12797,6 +12827,16 @@
           <source>Payment Method Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field Payment Method Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 3466748865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sent To</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field SendTo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 3201645241 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CC</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field SendToCC - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4135713293 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>User ID</source>
@@ -40133,15 +40173,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Emails To Send - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1287151416 - Action 1534049892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Envoyer le mail pour la ligne</source>
+        <trans-unit id="Page 1287151416 - Action 181813838 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update emails address</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Emails To Send - Action Envoyer le mail pour la ligne - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1287151416 - Action 3199400237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Send emails</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Emails To Send - Action Send emails - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Emails To Send - Action Refresh emails - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2953271353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Utilisateurs workflow de validation de factures fournisseur</source>
@@ -62268,6 +62303,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action Avis Paiement Factures frs - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 1392835601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Emails à envoyer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action Emails - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1105850977 - Action 1551147523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
           <source>Imprimer Factures du paiement</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -67912,6 +67952,26 @@
           <source>Exemption</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Warranty Status - EnumValue Exemption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 99219820 - EnumValue 3371220206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>None</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AfkEmailType - EnumValue None - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 99219820 - EnumValue 395510365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AfkEmailType - EnumValue Purchase - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 99219820 - EnumValue 1385143975 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VendorInvoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AfkEmailType - EnumValue VendorInvoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 99219820 - EnumValue 4149131617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VendorTransfer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AfkEmailType - EnumValue VendorTransfer - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3747719303 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source> </source>

@@ -39,6 +39,9 @@ page 50350 "Vendor Emails To Send"
                 field("User ID"; Rec."User ID")
                 {
                 }
+                field(EmailSent; Rec.EmailSent)
+                {
+                }
             }
         }
     }
@@ -47,28 +50,47 @@ page 50350 "Vendor Emails To Send"
     {
         area(processing)
         {
-            action("Send emails")
+            action("Refresh emails")
             {
-                Caption = 'Send emails';
-                Image = SendMail;
+                Caption = 'Update emails address';
+                Image = Vendor;
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
 
                 trigger OnAction()
+                var
+                    Vend: Record Vendor;
                 begin
-                    TresoMgt.SendEmailVendorTransferAll();
+                    if (Vend.Get(Rec."Vendor No.")) then begin
+                        rec.SendTo := Vend."E-Mail";
+                        rec.Modify();
+                    end;
                 end;
             }
-            action("Envoyer le mail pour la ligne")
-            {
-                Caption = 'Envoyer le mail pour la ligne';
+            // action("Send emails")
+            // {
+            //     Caption = 'Send emails';
+            //     Image = SendMail;
+            //     Promoted = true;
+            //     PromotedCategory = Process;
+            //     PromotedIsBig = true;
 
-                trigger OnAction()
-                begin
-                    TresoMgt.SendEmailVendorTransferOne(Rec);
-                end;
-            }
+            //     trigger OnAction()
+            //     begin
+            //         TresoMgt.SendEmailVendorTransferAll();
+            //     end;
+            // }
+            // action("Envoyer le mail pour la ligne")
+            // {
+            //     Caption = 'Envoyer le mail pour la ligne';
+            //     Visible = false;
+
+            //     trigger OnAction()
+            //     begin
+            //         TresoMgt.SendEmailVendorTransferOne(Rec);
+            //     end;
+            // }
         }
     }
 
@@ -76,6 +98,8 @@ page 50350 "Vendor Emails To Send"
     begin
         Rec.FilterGroup(2);
         Rec.SetRange("User ID", UserId);
+        Rec.SetRange(EmailSent, false);
+        Rec.SetRange(Rec.EmailType, Rec.EmailType::VendorTransfer);
         Rec.FilterGroup(0);
     end;
 
