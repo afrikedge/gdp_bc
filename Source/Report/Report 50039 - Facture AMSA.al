@@ -102,7 +102,7 @@ report 50039 "Facture AMSA"
                 column(TotalText; TotalText)
                 {
                 }
-                column(TotalAmountLetter; TotalAmountLetter[1])
+                column(TotalAmountLetter; Amount_InWords)
                 {
                 }
 
@@ -144,8 +144,8 @@ report 50039 "Facture AMSA"
                     Location.Get(FuelStat."Location Code");
 
                 NbTLet.InitTextVariable;
-                //TODO Montants
-                //NbTLet.FormatNoTextFR(TotalAmountLetter, TotalAmount, '');
+                NbTLet.FormatNoText(TotalAmountLetter, TotalAmount, '');
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
 
                 if ShipToAddress.Get(Cust."No.", Cust."Ship-to Code2") then;
             end;
@@ -207,5 +207,6 @@ report 50039 "Facture AMSA"
         FuelStat: Record "Fuel Statement Header";
         ShipToAddress: Record "Ship-to Address";
         PayConditionsTxt: Text[150];
+        Amount_InWords: Text;
 }
 

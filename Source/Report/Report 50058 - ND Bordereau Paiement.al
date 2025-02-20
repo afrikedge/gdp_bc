@@ -156,7 +156,7 @@ report 50058 "ND Bordereau Paiement"
             column(OutputNo; OutputNo)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
             column(EntryNo; "Line No.")
@@ -215,6 +215,7 @@ report 50058 "ND Bordereau Paiement"
                     NbTLet.FormatNoText(TotalAmountLetter, Abs(PaymentHeader.Amount), "Currency Code")
                 else
                     NbTLet.FormatNoText(TotalAmountLetter, Abs(PaymentHeader.Amount), GLSetup."LCY Code");
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
             end;
         }
     }
@@ -364,6 +365,7 @@ report 50058 "ND Bordereau Paiement"
         Text005: Label 'Vous devez renseigner le numéro de document externe';
         Num: Text[20];
         PaymentHeader: Record "Payment Header";
+        Amount_InWords: Text;
 
     procedure InitLogInteraction()
     begin

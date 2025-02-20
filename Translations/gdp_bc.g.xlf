@@ -62328,6 +62328,56 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Control Destinataire - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3863853848 - Action 3067040047 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>JIRAMA Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice - Action JIRAMA Sales Invoice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3863853848 - Action 3067040047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Print - JIRAMA Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice - Action JIRAMA Sales Invoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3863853848 - Action 3956552522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Imprimer la Note de débit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice - Action Note debit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3863853848 - Action 1953554049 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Sales Invoice Soutage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice - Action Sales Invoice Soutage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3863853848 - Action 1953554049 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Print - Sales Invoice Soutage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice - Action Sales Invoice Soutage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4152895242 - Action 3067040047 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>JIRAMA Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice List - Action JIRAMA Sales Invoice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4152895242 - Action 3067040047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Print - JIRAMA Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice List - Action JIRAMA Sales Invoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4152895242 - Action 3956552522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Imprimer la Note de débit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice List - Action Note debit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4152895242 - Action 1953554049 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Sales Invoice Soutage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice List - Action Sales Invoice Soutage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4152895242 - Action 1953554049 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Print - Sales Invoice Soutage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice List - Action Sales Invoice Soutage - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2556259635 - Method 1146877244 - NamedType 3337191547" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2556259635">
           <source>Vous ne disposez pas d'autorisations pour créer des demandes d'achat</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -63527,56 +63577,6 @@
           <source>Cash Receipt Journals</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension pageextension70000135 - Action Cash Receipt Journals - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2420212404 - Action 3067040047 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
-          <source>JIRAMA Sales Invoice</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice - Action JIRAMA Sales Invoice - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2420212404 - Action 3067040047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
-          <source>Print - JIRAMA Sales Invoice</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice - Action JIRAMA Sales Invoice - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2420212404 - Action 3956552522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
-          <source>Imprimer la Note de débit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice - Action Note debit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2420212404 - Action 1953554049 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
-          <source>Sales Invoice Soutage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice - Action Sales Invoice Soutage - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2420212404 - Action 1953554049 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
-          <source>Print - Sales Invoice Soutage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice - Action Sales Invoice Soutage - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3923308998 - Action 3067040047 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>JIRAMA Sales Invoice</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice List - Action JIRAMA Sales Invoice - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3923308998 - Action 3067040047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Print - JIRAMA Sales Invoice</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice List - Action JIRAMA Sales Invoice - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3923308998 - Action 3956552522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Imprimer la Note de débit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice List - Action Note debit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3923308998 - Action 1953554049 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Sales Invoice Soutage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice List - Action Sales Invoice Soutage - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3923308998 - Action 1953554049 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Print - Sales Invoice Soutage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice List - Action Sales Invoice Soutage - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 296867727 - NamedType 3810525201" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 296867727">
           <source>Cette facture ne peut pas être modifiée car elle provient d'un document MFiles</source>

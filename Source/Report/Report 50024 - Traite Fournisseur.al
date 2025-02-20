@@ -93,7 +93,7 @@ report 50024 "Traite Fournisseur"
             column(Vend_Addr; Vend.Address)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
             column(VendBank_Name; VendBank.Name)
@@ -305,5 +305,6 @@ report 50024 "Traite Fournisseur"
         Company: Record "Company Information";
         FormatAddr: Codeunit "Format Address";
         CompanyAddr: array[8] of Text[50];
+        Amount_InWords: Text;
 }
 

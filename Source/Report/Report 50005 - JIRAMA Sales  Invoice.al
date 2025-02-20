@@ -225,7 +225,7 @@ report 50005 "JIRAMA Sales  Invoice"
                     column(PricesInclVAT_SalesInvHdrCaption; "Sales Invoice Header".FieldCaption("Prices Including VAT"))
                     {
                     }
-                    column(TotalAmountLetter; TotalAmountLetter[1])
+                    column(TotalAmountLetter; Amount_InWords)
                     {
                     }
                     dataitem(DimensionLoop1; "Integer")
@@ -1030,6 +1030,7 @@ report 50005 "JIRAMA Sales  Invoice"
                     else
                         NbTLet.FormatNoText(TotalAmountLetter, "Amount Including VAT", GLSetup."LCY Code");
 
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
                 //SalesInvLine.SETRANGE("Document No.","No.");
                 //SalesInvLine.FINDFIRST;
                 //REPEAT
@@ -1326,6 +1327,7 @@ report 50005 "JIRAMA Sales  Invoice"
         ProEntBE: Record pro_enteteBE;
         NumLine: Integer;
         SalesInvLine: Record "Sales Invoice Line";
+        Amount_InWords: Text;
 
     procedure InitLogInteraction()
     begin

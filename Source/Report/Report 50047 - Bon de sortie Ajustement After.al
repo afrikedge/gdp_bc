@@ -153,7 +153,7 @@ report 50047 "Bon de sortie Ajustement After"
                 column(FactureCaption; factureCaption)
                 {
                 }
-                column(TotalAmountLetter; TotalAmountLetter[1])
+                column(TotalAmountLetter; Amount_InWords)
                 {
                 }
                 column(MontantTTCC; MontantTTC)
@@ -238,8 +238,8 @@ report 50047 "Bon de sortie Ajustement After"
                 MontantTTC := Round(Totaln * 1.2, 0.02);
 
                 NbTLet.InitTextVariable;
-                //TODO Montants
-                //NbTLet.FormatNoTextFR(TotalAmountLetter,MontantTTC,'MGA');
+                NbTLet.FormatNoText(TotalAmountLetter, MontantTTC, 'MGA');
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
 
             end;
         }
@@ -385,6 +385,7 @@ report 50047 "Bon de sortie Ajustement After"
         SIH: Record "Sales Invoice Header";
         SIL: Record "Sales Invoice Line";
         Totaln: Decimal;
+        Amount_InWords: Text;
 
     procedure InitLogInteraction()
     begin

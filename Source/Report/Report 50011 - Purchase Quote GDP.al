@@ -186,7 +186,7 @@ report 50011 "Purchase Quote GDP"
                     column(DocDate_PurchHeaderCaption; DocDate_PurchHeaderCaption)
                     {
                     }
-                    column(TotalAmountLetter; TotalAmountLetter[1])
+                    column(TotalAmountLetter; Amount_InWords)
                     {
                     }
                     dataitem(DimensionLoop1; "Integer")
@@ -737,9 +737,10 @@ report 50011 "Purchase Quote GDP"
                     TotalAmountInclVAT := VATAmountLine.GetTotalAmountInclVAT;
 
                     NbTLet.InitTextVariable;
-                    //TODO
-                    // if TotalAmountInclVAT<>0 then
-                    //   NbTLet.FormatNoTextFR(TotalAmountLetter,TotalAmountInclVAT,"Purchase Header"."Currency Code");
+                    if TotalAmountInclVAT <> 0 then
+                        NbTLet.FormatNoText(TotalAmountLetter, TotalAmountInclVAT, "Purchase Header"."Currency Code");
+
+                    Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
 
                     PrepmtInvBuf.DeleteAll;
                     PurchPostPrepmt.GetPurchLines("Purchase Header", 0, PrepmtPurchLine);
@@ -996,6 +997,7 @@ report 50011 "Purchase Quote GDP"
         EmailCaptionLbl: Label 'Email : ';
         DocDate_PurchHeaderCaption: Label 'Date Document :';
         RecptDate: Label 'Date de Réception Souhaitée : ';
+        Amount_InWords: Text;
 
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)
     begin

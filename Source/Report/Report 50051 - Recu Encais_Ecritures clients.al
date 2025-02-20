@@ -54,7 +54,7 @@ report 50051 "Recu Encais_Ecritures clients"
             column(Cust_Name; Cust.Name)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
             column(NoTitre; "Check No.")
@@ -252,8 +252,10 @@ report 50051 "Recu Encais_Ecritures clients"
 
                 //IF TmpDetCustLedgEntry.FINDSET THEN;
                 NbTLet.InitTextVariable;
-                //TODO Montants
                 NbTLet.FormatNoText(TotalAmountLetter, Abs("Cust. Ledger Entry".Amount), "Cust. Ledger Entry"."Currency Code");
+
+
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
             end;
 
             trigger OnPreDataItem()
@@ -348,6 +350,7 @@ report 50051 "Recu Encais_Ecritures clients"
         TabValues: array[100, 3] of Text[50];
         compteurTab: Integer;
         compteurLignes: Integer;
+        Amount_InWords: Text;
         User: Record User;
 
     local procedure FindApplnEntriesDtldtLedgEntry(AppliedEntryNo: Integer; DocNo: Code[20])

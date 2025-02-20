@@ -1,4 +1,8 @@
-pageextension 50100 "Afk Sales Invoice" extends "Sales Invoice"
+namespace gdp_bc.gdp_bc;
+
+using Microsoft.Sales.History;
+
+pageextension 50108 "Afk Posted Sales Credit Memo" extends "Posted Sales Credit Memo"
 {
     layout
     {
@@ -7,6 +11,7 @@ pageextension 50100 "Afk Sales Invoice" extends "Sales Invoice"
             field(Observations; Rec.Observations)
             {
                 MultiLine = true;
+                Editable = false;
             }
         }
     }

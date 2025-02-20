@@ -209,7 +209,7 @@ report 50048 "Sales  Invoice ND"
                     column(PricesInclVAT_SalesInvHdrCaption; "Sales Invoice Header".FieldCaption("Prices Including VAT"))
                     {
                     }
-                    column(TotalAmountLetter; TotalAmountLetter[1])
+                    column(TotalAmountLetter; Amount_InWords)
                     {
                     }
                     dataitem(DimensionLoop1; "Integer")
@@ -999,9 +999,9 @@ report 50048 "Sales  Invoice ND"
                 "Sales Invoice Header".CalcFields("Amount Including VAT");
                 MontFact := "Sales Invoice Header"."Amount Including VAT";
                 NbTLet.InitTextVariable;
-                //TODO Montants
-                // if "Amount Including VAT" <> 0 then
-                //     NbTLet.FormatNoTextFR(TotalAmountLetter, "Amount Including VAT", "Sales Invoice Header"."Currency Code");
+
+                if "Amount Including VAT" <> 0 then
+                    NbTLet.FormatNoText(TotalAmountLetter, "Amount Including VAT", "Sales Invoice Header"."Currency Code");
 
             end;
         }
@@ -1245,6 +1245,7 @@ report 50048 "Sales  Invoice ND"
         MontTVA: Decimal;
         MontFact: Decimal;
         TVAtext: Label 'TVA';
+        Amount_InWords: Text;
 
     procedure InitLogInteraction()
     begin

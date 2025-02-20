@@ -1,7 +1,7 @@
 /// <summary>
-/// PageExtension Posted Sales Invoice (ID 50089) extends Posted Sales Invoice.
+/// PageExtension Posted Sales Invoice List (ID 50090) extends Posted Sales Invoices.
 /// </summary>
-pageextension 50089 "Posted Sales Invoice" extends "Posted Sales Invoice"
+pageextension 50090 "Afk Posted Sales Invoice List" extends "Posted Sales Invoices"
 {
     layout
     {
@@ -63,7 +63,6 @@ pageextension 50089 "Posted Sales Invoice" extends "Posted Sales Invoice"
                     SalesInvReport: Report "Posted Sales Invoice";
                 begin
                     SalesInvReport.SetIsDebitNote(true);
-
                     SalesInvRec.SetRange("No.", Rec."No.");
                     SalesInvRec.SetRange("Sell-to Customer No.", Rec."Sell-to Customer No.");
                     SalesInvReport.SetTableView(SalesInvRec);
@@ -71,7 +70,6 @@ pageextension 50089 "Posted Sales Invoice" extends "Posted Sales Invoice"
                     // Report.Run(, true, false, SalesInvRec);
                 end;
             }
-
         }
     }
 }

@@ -85,7 +85,7 @@ report 50023 "Virement Fournisseur"
             column(Vend_Name; NomDestinataire)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
             column(VendBank_Name; NomBanqueDestinataire)
@@ -195,8 +195,8 @@ report 50023 "Virement Fournisseur"
 
 
                 NbTLet.InitTextVariable;
-                //TODO Montants
                 NbTLet.FormatNoText(TotalAmountLetter, "Gen. Journal Line".Amount, "Gen. Journal Line"."Currency Code");
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
 
             end;
 
@@ -265,6 +265,7 @@ report 50023 "Virement Fournisseur"
         PurchSetup: Record "Purchases & Payables Setup";
         UserSetup: Record "User Setup";
         GenJnlLineFilter: Text;
+        Amount_InWords: Text;
         VendBank: Record "Vendor Bank Account";
         ComBank: Record "Bank Account";
         Text027: Label 'La devise de la transaction % 1 ne correspond pas à la devise du compte bancaire %2';
@@ -283,5 +284,6 @@ report 50023 "Virement Fournisseur"
         NomBeneficiaire: Text[60];
         NomBanqueDestinataire: Text[60];
         DestBank: Record "Bank Account";
+    //Amount_InWords: Text;
 }
 

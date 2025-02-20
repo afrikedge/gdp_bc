@@ -831,9 +831,12 @@ codeunit 50032 "EventsSubscribers Code"
     local procedure InventoryPostingToGL_OnPostInvtPostBufOnAfterInitGenJnlLine(var GenJournalLine: Record "Gen. Journal Line"; var ValueEntry: Record "Value Entry")
     var
         FAMgt: codeunit "FA Mgt";
+        addonSetup: record "AddOn Setup";
         Descr: Text[100];
     begin
-        Descr := FAMgt.AFK_GetNewDescr(ValueEntry);
+        addonSetup.GetRecordOnce();
+        if (addonSetup."Activer libelles Stock") then
+            Descr := FAMgt.AFK_GetNewDescr(ValueEntry);
         if (Descr <> '') then
             GenJournalLine.Description := Descr;
     end;
@@ -927,7 +930,7 @@ codeunit 50032 "EventsSubscribers Code"
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterInvoicePostingBufferAssignAmounts', '', true, false)]
-    local procedure SalesPost_OOnAfterInvoicePostingBufferAssignAmounts(SalesLine: Record "Sales Line"; var TotalAmount: Decimal; var TotalAmountLCY: Decimal; SalesLineACY: Record "Sales Line"; var TotalVAT: Decimal; var TotalVATACY: Decimal; var TotalVATBase: Decimal; var TotalVATBaseACY: Decimal; var TempInvoicePostBuffer: Record "Invoice Post. Buffer" temporary; var InvoicePostBuffer: Record "Invoice Post. Buffer")
+    local procedure SalesPost_OnAfterInvoicePostingBufferAssignAmounts(SalesLine: Record "Sales Line"; var TotalAmount: Decimal; var TotalAmountLCY: Decimal; SalesLineACY: Record "Sales Line"; var TotalVAT: Decimal; var TotalVATACY: Decimal; var TotalVATBase: Decimal; var TotalVATBaseACY: Decimal; var TempInvoicePostBuffer: Record "Invoice Post. Buffer" temporary; var InvoicePostBuffer: Record "Invoice Post. Buffer")
     var
         SalesPostingMgt: codeunit "SalesPostingMgt";
     begin
@@ -935,12 +938,6 @@ codeunit 50032 "EventsSubscribers Code"
     end;
 
 
-    //OnAfterInvoicePostingBufferAssignAmounts
-    [Obsolete('Moved to Sales Invoice Posting implementation. Use the new event OnPrepareLineOnAfterUpdateInvoicePostingBuffer in codeunit 825 "Sales Post Invoice Events".', '19.0')]
-    [IntegrationEvent(false, false)]
-    local procedure OnFillInvoicePostingBufferOnAfterUpdateInvoicePostBuffer(SalesHeader: Record "Sales Header"; SalesLine: Record "Sales Line"; var InvoicePostBuffer: Record "Invoice Post. Buffer"; var TempInvoicePostBuffer: Record "Invoice Post. Buffer" temporary; var GenJnlLineDocNo: Code[20]; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line")
-    begin
-    end;
 
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approvals Mgmt.", 'OnSendPurchaseDocForApproval', '', true, false)]

@@ -419,6 +419,8 @@ report 50018 "Reminder GDP"
                             NbTLet.FormatNoText(TotalAmountLetter, NNC_TotalInclVAT, "Issued Reminder Header"."Currency Code")
                         else
                             NbTLet.FormatNoText(TotalAmountLetter, NNC_TotalInclVAT, GLSetup."LCY Code");
+
+                        Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
                     end;
 
                     trigger OnPreDataItem()
@@ -919,5 +921,6 @@ report 50018 "Reminder GDP"
         Inter: Record Contact;
         EndMess: Text[150];
         FormatAddr: Codeunit "Format Address";
+        Amount_InWords: Text;
 }
 

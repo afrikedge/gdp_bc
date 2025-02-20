@@ -196,7 +196,7 @@ report 50003 "Sales Order Confirmation"
                     column(PricesInclVAT_SalesHeaderCaption; "Sales Header".FieldCaption("Prices Including VAT"))
                     {
                     }
-                    column(TotalAmountLetter; TotalAmountLetter[1])
+                    column(TotalAmountLetter; Amount_InWords)
                     {
                     }
                     dataitem(DimensionLoop1; "Integer")
@@ -953,8 +953,9 @@ report 50003 "Sales Order Confirmation"
                     NNCSalesLineInvDiscAmt := 0;
 
                     NbTLet.InitTextVariable;
-                    // if TotalAmountInclVAT<>0 then
-                    //   NbTLet.FormatNoTextFR(TotalAmountLetter,TotalAmountInclVAT,"Sales Header"."Currency Code");
+                    if TotalAmountInclVAT <> 0 then
+                        NbTLet.FormatNoText(TotalAmountLetter, TotalAmountInclVAT, "Sales Header"."Currency Code");
+                    Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
                 end;
 
                 trigger OnPostDataItem()
@@ -1303,6 +1304,7 @@ report 50003 "Sales Order Confirmation"
         TotalAmountLetter: array[2] of Text[150];
         FaxCaptionLbl: Label 'Fax : ';
         Cust: Record Customer;
+        Amount_InWords: Text;
 
     procedure InitializeRequest(NoOfCopiesFrom: Integer; ShowInternalInfoFrom: Boolean; ArchiveDocumentFrom: Boolean; LogInteractionFrom: Boolean; PrintFrom: Boolean; DisplayAsmInfo: Boolean)
     begin
