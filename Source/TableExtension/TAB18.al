@@ -171,7 +171,7 @@ tableextension 50005 "A02 Customer" extends Customer
         {
             Caption = 'Other Legal Status';
         }
-        field(50038; "Afk Main Industry"; code[20])
+        field(50038; "Afk Main Industry"; code[50])
         {
             Caption = 'Main Industry';
             TableRelation = "Afk Reference".Code where(TableType = const("Main Industry"));

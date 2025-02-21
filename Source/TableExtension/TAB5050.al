@@ -102,7 +102,7 @@ tableextension 50055 "A02 Contact" extends Contact
         }
 
 
-        field(50038; "Afk Main Industry"; code[20])
+        field(50038; "Afk Main Industry"; code[50])
         {
             Caption = 'Main Industry';
             TableRelation = "Afk Reference".Code where(TableType = const("Main Industry"));
