@@ -226,11 +226,22 @@ codeunit 50032 "EventsSubscribers Code"
         AFKTresoMgt: codeunit "Treso Mgt";
         SingleInstanceCu: Codeunit SingleInstance;
     begin
-        IF SingleInstanceCu.Get_SendVendorEmails_AFK() THEN
-            AFKTresoMgt.CreateDocEmailVendorTransfer(GenJournalLine);
+        // IF SingleInstanceCu.Get_SendVendorEmails_AFK() THEN
+        //     AFKTresoMgt.CreateDocEmailVendorTransfer(GenJournalLine);
 
         AFKTresoMgt.AFK_ProcessFeuilleReglementCCL(GenJournalLine);
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Batch", 'OnBeforePostGenJnlLine', '', true, true)]
+    local procedure GenJnlPostBatch_OnBeforePostGenJnlLine(var GenJournalLine: Record "Gen. Journal Line"; CommitIsSuppressed: Boolean; var Posted: Boolean; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; var PostingGenJournalLine: Record "Gen. Journal Line")
+    var
+        AFKTresoMgt: codeunit "Treso Mgt";
+        SingleInstanceCu: Codeunit SingleInstance;
+    begin
+        IF SingleInstanceCu.Get_SendVendorEmails_AFK() THEN
+            AFKTresoMgt.CreateDocEmailVendorTransfer(GenJournalLine);
+    end;
+
 
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Check Line", 'OnAfterGetItem', '', true, true)]

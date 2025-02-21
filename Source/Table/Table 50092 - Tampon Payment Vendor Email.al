@@ -85,6 +85,7 @@ table 50092 "Tampon Payment Vendor Email"
             //DataClassification = SystemMetadata;
             //Subtype =UserDefined;
         }
+
         field(34; EmailSent; Boolean)
         {
             Caption = 'Email Sent';
@@ -94,12 +95,19 @@ table 50092 "Tampon Payment Vendor Email"
         {
             Caption = 'Email Type';
         }
+        field(36; AttachmentMedia; Media)
+        {
+            Caption = 'Attachment media';
+            //DataClassification = SystemMetadata;
+            //Subtype =UserDefined;
+        }
 
         field(172; "Payment Method Code"; Code[10])
         {
             Caption = 'Payment Method Code';
             TableRelation = "Payment Method";
         }
+
 
     }
 

@@ -748,48 +748,12 @@ codeunit 50031 VendorInvoiceMgt
     var
         // SMTPMail: Codeunit "SMTP Mail";
         NewObjet: Text;
-        EmailToSend: Record "Tampon Payment Vendor Email";
+        EmailToSend: Record "Tampon Payment Vendor Email" temporary;
         EmailMgt: Codeunit EmailMgt;
     begin
 
-        // SMTPSetup.Get;
-        // SMTPSetup.TestField(SMTPSetup."From Adress");
-        // SMTPSetup.TestField(SMTPSetup."From Name");
-
-        // //Test
-        // //NewObjet := Objet + ' - ' + gRequisitionSetup.TexteSuffixeObjetEmail;
-        // SMTPMail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",ToAdress,Objet,'',true);
-
-        // SMTPMail.AppendBody('<table border="0" he cellpadding="0" cellspacing="0" width="100%" bgcolor="#ecf0f1">');
-        // SMTPMail.AppendBody('<span style="font-family: Tahoma; font-size: 12;">');
-        // SMTPMail.AppendBody('<p>D&eacute;tails du document :</p>');
-        // SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
-        // SMTPMail.AppendBody('<li>Document : <strong>' + DocType + ' ' + CodeDocument + '</strong></li>');
-        // SMTPMail.AppendBody('</ul>');
-        // SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
-        // SMTPMail.AppendBody('<li>Trait&eacute; par : <strong>' + Sender + '</strong></li>');
-        // SMTPMail.AppendBody('</ul>');
-        // SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
-        // SMTPMail.AppendBody('<li>Trait&eacute; le : <strong>' + SendDate + '</strong></li>');
-        // SMTPMail.AppendBody('</ul>');
-        // SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
-        // SMTPMail.AppendBody('<li>Commentaires : <em>' + Commentaires + '</em></li>');
-        // SMTPMail.AppendBody('</ul>');
-        // SMTPMail.AppendBody('</span>');
-        // SMTPMail.AppendBody('<p>&nbsp;</p>');
-        // SMTPMail.AppendBody('<p style="color: rgb(210, 11, 0);"><big>_________________________________</big></p>');
-        // SMTPMail.AppendBody('<p style="color: rgb(0, 113, 66);">Message envoy&eacute; depuis Dynamics NAV.</p>');
-
-
-        // if CCAdress<>'' then SMTPMail.AddCC(CCAdress);
-
-        // //MESSAGE('%1 %2',ToAdress,CCAdress);
-        // SMTPMail.Send;
-
-        exit;
-
         EmailToSend.Init();
-        EmailToSend.EntryID := EmailMgt.GetNextEntryNoInEmailRec();
+        //EmailToSend.EntryID := EmailMgt.GetNextEntryNoInEmailRec();
         EmailToSend.EmailObject := Objet;
         EmailToSend.BodyAsHTML := CreateEmailBody(CodeDocument, Commentaires, Sender, SendDate, DocType);
         EmailToSend.SendTo := ToAdress;
@@ -800,7 +764,7 @@ codeunit 50031 VendorInvoiceMgt
         if (CCAdress <> '') then
             EmailToSend.SendToCC := CCAdress;
 
-        EmailToSend.Insert(true);
+        EmailMgt.SendEmail(EmailToSend);
     end;
 
     local procedure CreateEmailBody(CodeDocument: Text[30]; Commentaires: Text[150]; Sender: Text[80]; SendDate: Text[50]; DocType: Text[30]): Text
@@ -1272,43 +1236,8 @@ codeunit 50031 VendorInvoiceMgt
         Objet: Text;
     begin
 
-        // SMTPSetup.Get;
-        // SMTPSetup.TestField(SMTPSetup."From Adress");
-        // SMTPSetup.TestField(SMTPSetup."From Name");
-
-
-        // //Test
-        // //NewObjet := Objet + ' - ' + gRequisitionSetup.TexteSuffixeObjetEmail;
-        // Objet := StrSubstNo(ObjetEmailFsseur,VendInv."Vendor Invoice No.",Format(VendInv."Invoice Date"));
-        // SMTPMail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",ToAdress,Objet,'',true);
-
-        // SMTPMail.AppendBody('<span style="font-family: Arial;">Madame, Monsieur,<br>');
-        // SMTPMail.AppendBody('<br>Nous avons bien reçu votre facture que nous sommes contraints ');
-        // SMTPMail.AppendBody('de retourner par le pr&eacute;sent mail afin qu&#8217;elle soit corrig&eacute;e ');
-        // SMTPMail.AppendBody('pour le motif <span style="font-weight: bold;"> : "' + VendInv."Reason for rejection" + '". </span><br><br>');
-        // //SMTPMail.AppendBody('avant le traitement pour le motif &eacute;nonc&eacute;.<br><br>');
-        // SMTPMail.AppendBody('De ce fait, nous vous prions de r&eacute;gulariser la facture et de nous faire ');
-        // SMTPMail.AppendBody('parvenir la version rectificative dans les 5 jours &agrave; la r&eacute;ception en vue de son traitement. <br><br>');
-        // //SMTPMail.AppendBody('Nous vous remercions d&#8217;avance de prendre en compte notre demande afin ');
-        // //SMTPMail.AppendBody('de traiter efficacement les paiements des montants de facture corrects ');
-        // //SMTPMail.AppendBody('selon les conditions de paiement que nous avons convenue ensemble. <br><br>');
-        // SMTPMail.AppendBody('Nous vous informons que l&#8217;&eacute;ch&eacute;ance ne courra qu&#8217;apr&egrave;s r&eacute;ception ');
-        // SMTPMail.AppendBody('d&eacute;finitive de vos factures en r&egrave;gles et en bonne et due forme.&nbsp; <br>');
-        // SMTPMail.AppendBody('<br>Comptant sur votre collaboration.<br><br><br>');
-        // SMTPMail.AppendBody('<br><span style="font-weight: bold;">Comptabilité fournisseurs</span><br>');
-        // SMTPMail.AppendBody('Galana Distribution Pétrolière S.A.<br>');
-        // SMTPMail.AppendBody('Immeuble PRADON Antanimena, 2ème étage. </span><br>');
-
-        // if CCAdress<>'' then SMTPMail.AddCC(CCAdress);
-
-        // //MESSAGE('%1 %2',ToAdress,CCAdress);
-        // SMTPMail.Send;
-
-        exit;
-
-
         EmailToSend.Init();
-        EmailToSend.EntryID := EmailMgt.GetNextEntryNoInEmailRec();
+        //EmailToSend.EntryID := EmailMgt.GetNextEntryNoInEmailRec();
         EmailToSend.EmailObject := Objet;
         EmailToSend.BodyAsHTML := CreateEmailBody(VendInv);
         EmailToSend.SendTo := ToAdress;
@@ -1319,7 +1248,7 @@ codeunit 50031 VendorInvoiceMgt
         if (CCAdress <> '') then
             EmailToSend.SendToCC := CCAdress;
 
-        EmailToSend.Insert(true);
+        EmailMgt.SendEmail(EmailToSend);
     end;
 
     local procedure CreateEmailBody(VendInv: Record "Vendor Invoice Doc"): Text

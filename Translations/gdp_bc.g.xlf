@@ -12788,6 +12788,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field AttachmentFile - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 3304108391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachment media</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field AttachmentMedia - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4135713293 - Field 1553343985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Body</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -40173,10 +40178,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Emails To Send - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1287151416 - Action 1534049892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Envoyer le mail pour la ligne</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Emails To Send - Action Envoyer le mail pour la ligne - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1287151416 - Action 181813838 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update emails address</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Emails To Send - Action Refresh emails - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1287151416 - Action 3199400237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Envoyer tous les mails</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Emails To Send - Action Send emails - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2953271353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Utilisateurs workflow de validation de factures fournisseur</source>

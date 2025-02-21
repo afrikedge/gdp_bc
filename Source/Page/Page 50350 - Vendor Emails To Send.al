@@ -14,6 +14,9 @@ page 50350 "Vendor Emails To Send"
         {
             repeater(Group)
             {
+                field(EntryID; Rec.EntryID)
+                {
+                }
                 field("Vendor No."; Rec."Vendor No.")
                 {
                 }
@@ -68,29 +71,32 @@ page 50350 "Vendor Emails To Send"
                     end;
                 end;
             }
-            // action("Send emails")
-            // {
-            //     Caption = 'Send emails';
-            //     Image = SendMail;
-            //     Promoted = true;
-            //     PromotedCategory = Process;
-            //     PromotedIsBig = true;
+            action("Send emails")
+            {
+                Caption = 'Envoyer tous les mails';
+                Image = SendMail;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
-            //     trigger OnAction()
-            //     begin
-            //         TresoMgt.SendEmailVendorTransferAll();
-            //     end;
-            // }
-            // action("Envoyer le mail pour la ligne")
-            // {
-            //     Caption = 'Envoyer le mail pour la ligne';
-            //     Visible = false;
+                trigger OnAction()
+                begin
+                    TresoMgt.SendEmailVendorTransferAll();
+                end;
+            }
+            action("Envoyer le mail pour la ligne")
+            {
+                Caption = 'Envoyer le mail pour la ligne';
+                Image = SendEmailPDF;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
-            //     trigger OnAction()
-            //     begin
-            //         TresoMgt.SendEmailVendorTransferOne(Rec);
-            //     end;
-            // }
+                trigger OnAction()
+                begin
+                    TresoMgt.SendEmailVendorTransferOne(Rec);
+                end;
+            }
         }
     }
 
@@ -98,8 +104,8 @@ page 50350 "Vendor Emails To Send"
     begin
         Rec.FilterGroup(2);
         Rec.SetRange("User ID", UserId);
-        Rec.SetRange(EmailSent, false);
-        Rec.SetRange(Rec.EmailType, Rec.EmailType::VendorTransfer);
+        // Rec.SetRange(EmailSent, false);
+        // Rec.SetRange(Rec.EmailType, Rec.EmailType::VendorTransfer);
         Rec.FilterGroup(0);
     end;
 

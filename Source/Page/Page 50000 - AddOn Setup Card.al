@@ -657,8 +657,10 @@ page 50000 "AddOn Setup Card"
                 trigger OnAction()
                 var
                     ApiMgt: Codeunit "Afk Api Mgt";
+                    EmailMgt: Codeunit EmailMgt;
                 begin
-                    ApiMgt.DebugApiFunction();
+                    //ApiMgt.DebugApiFunction();
+                    EmailMgt.TestSendEmail();
                 end;
             }
         }
