@@ -262,7 +262,7 @@ report 50197 "PreparationOrder Lub"
                         LineNumberText := Format(LineNumber);
 
                     if ItemUnitMeasure.Get(Line."Item No.", Line."Unit of Measure Code") then
-                        if ItemUnitMeasure.Get(Line."Item No.", 'TONNE') then
+                        if ItemUnitMeasure.Get(Line."Item No.", 'KG') then
                             TonneConversion := Line.Quantity / ItemUnitMeasure."Qty. per Unit of Measure";
                 end;
 

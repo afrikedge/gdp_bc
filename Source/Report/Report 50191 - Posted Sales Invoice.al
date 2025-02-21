@@ -1535,7 +1535,6 @@ report 50191 "Posted Sales Invoice"
                 else
                     InvTitle := InvoicetitleLbl;
 
-                // ShipmentNumber(Header);
                 ShipmentRef1 := ReturnShipmentRef();
 
                 if RespCenter.Get(Header."Responsibility Center") then
@@ -2442,21 +2441,4 @@ report 50191 "Posted Sales Invoice"
         if ShipmentInv.FindFirst() then
             exit(ShipmentInv."Shipment No.");
     end;
-
-    // local procedure ShipmentNumber(Head: Record "Sales Invoice Header")
-    // var
-    //     ShipmentInv: Record "Shipment Invoiced";
-    // begin
-    //     ShipmentRef1 := '';
-    //     ShipmentRef2 := '';
-    //     ShipmentRef3 := '';
-    //     ShipmentRef4 := '';
-    //     ShipmentRef5 := '';
-
-    //     ShipmentInv.SetRange("Invoice No.", Head."No.");
-    //     if ShipmentInv.FindSet() then
-    //         repeat
-
-    //         until ShipmentInv.Next() = 0;
-    // end;
 }
