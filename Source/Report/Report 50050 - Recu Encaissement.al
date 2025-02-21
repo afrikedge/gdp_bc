@@ -76,7 +76,7 @@ report 50050 "Recu Encaissement"
             column(Cust_Name; Cust.Name)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
             column(NoTitre; "Check No.")
@@ -244,8 +244,9 @@ report 50050 "Recu Encaissement"
 
                 if CustLedgEntry.FindFirst then;
                 NbTLet.InitTextVariable;
-                //TODO Montants
                 NbTLet.FormatNoText(TotalAmountLetter, Abs("Gen. Journal Line".Amount), "Gen. Journal Line"."Currency Code");
+
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
             end;
 
             trigger OnPreDataItem()
@@ -304,6 +305,7 @@ report 50050 "Recu Encaissement"
     end;
 
     var
+        Amount_InWords: Text;
         Devise1: Text[30];
         Devise2: Text[30];
         GLSetup: Record "General Ledger Setup";

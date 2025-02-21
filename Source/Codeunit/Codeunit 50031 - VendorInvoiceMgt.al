@@ -748,43 +748,52 @@ codeunit 50031 VendorInvoiceMgt
     var
         // SMTPMail: Codeunit "SMTP Mail";
         NewObjet: Text;
+        EmailToSend: Record "Tampon Payment Vendor Email" temporary;
+        EmailMgt: Codeunit EmailMgt;
     begin
 
-        // SMTPSetup.Get;
-        // SMTPSetup.TestField(SMTPSetup."From Adress");
-        // SMTPSetup.TestField(SMTPSetup."From Name");
+        EmailToSend.Init();
+        //EmailToSend.EntryID := EmailMgt.GetNextEntryNoInEmailRec();
+        EmailToSend.EmailObject := Objet;
+        EmailToSend.BodyAsHTML := CreateEmailBody(CodeDocument, Commentaires, Sender, SendDate, DocType);
+        EmailToSend.SendTo := ToAdress;
+        EmailToSend.EmailType := EmailToSend.EmailType::VendorInvoice;
+        EmailToSend."User ID" := UserId;
+        EmailToSend."Entry Date" := Today;
+        EmailToSend."Document No." := CodeDocument;
+        if (CCAdress <> '') then
+            EmailToSend.SendToCC := CCAdress;
 
-        // //Test
-        // //NewObjet := Objet + ' - ' + gRequisitionSetup.TexteSuffixeObjetEmail;
-        // SMTPMail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",ToAdress,Objet,'',true);
+        EmailMgt.SendEmail(EmailToSend);
+    end;
 
-        // SMTPMail.AppendBody('<table border="0" he cellpadding="0" cellspacing="0" width="100%" bgcolor="#ecf0f1">');
-        // SMTPMail.AppendBody('<span style="font-family: Tahoma; font-size: 12;">');
-        // //SMTPMail.AppendBody('<span style="color: #993300;font-size: 13;">Votre validation est r&eacute;quise.</span>');
-        // //SMTPMail.AppendBody('<p>Un document a &eacute;t&eacute; envoy&eacute; &agrave; votre niveau pour traitement. D&eacute;tails du document :</p>');
-        // SMTPMail.AppendBody('<p>D&eacute;tails du document :</p>');
-        // SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
-        // SMTPMail.AppendBody('<li>Document : <strong>' + DocType + ' ' + CodeDocument + '</strong></li>');
-        // SMTPMail.AppendBody('</ul>');
-        // SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
-        // SMTPMail.AppendBody('<li>Trait&eacute; par : <strong>' + Sender + '</strong></li>');
-        // SMTPMail.AppendBody('</ul>');
-        // SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
-        // SMTPMail.AppendBody('<li>Trait&eacute; le : <strong>' + SendDate + '</strong></li>');
-        // SMTPMail.AppendBody('</ul>');
-        // SMTPMail.AppendBody('<ul style="list-style-type: circle;">');
-        // SMTPMail.AppendBody('<li>Commentaires : <em>' + Commentaires + '</em></li>');
-        // SMTPMail.AppendBody('</ul>');
-        // SMTPMail.AppendBody('</span>');
-        // SMTPMail.AppendBody('<p>&nbsp;</p>');
-        // SMTPMail.AppendBody('<p style="color: rgb(210, 11, 0);"><big>_________________________________</big></p>');
-        // SMTPMail.AppendBody('<p style="color: rgb(0, 113, 66);">Message envoy&eacute; depuis Dynamics NAV.</p>');
+    local procedure CreateEmailBody(CodeDocument: Text[30]; Commentaires: Text[150]; Sender: Text[80]; SendDate: Text[50]; DocType: Text[30]): Text
+    var
+        BodyText: Text;
+    begin
+        BodyText := '<html><body>';
+        BodyText += '<table border="0" he cellpadding="0" cellspacing="0" width="100%" bgcolor="#ecf0f1">';
+        BodyText += '<span style="font-family: Tahoma; font-size: 12;">';
+        BodyText += '<p>D&eacute;tails du document :</p>';
+        BodyText += '<ul style="list-style-type: circle;">';
+        BodyText += '<li>Document : <strong>' + DocType + ' ' + CodeDocument + '</strong></li>';
+        BodyText += '</ul>';
+        BodyText += '<ul style="list-style-type: circle;">';
+        BodyText += '<li>Trait&eacute; par : <strong>' + Sender + '</strong></li>';
+        BodyText += '</ul>';
+        BodyText += '<ul style="list-style-type: circle;">';
+        BodyText += '<li>Trait&eacute; le : <strong>' + SendDate + '</strong></li>';
+        BodyText += '</ul>';
+        BodyText += '<ul style="list-style-type: circle;">';
+        BodyText += '<li>Commentaires : <em>' + Commentaires + '</em></li>';
+        BodyText += '</ul>';
+        BodyText += '</span>';
+        BodyText += '<p>&nbsp;</p>';
+        BodyText += '<p style="color: rgb(210, 11, 0);"><big>_________________________________</big></p>';
+        BodyText += '<p style="color: rgb(0, 113, 66);">Message envoy&eacute; depuis Dynamics Business Central.</p>';
+        BodyText += '</body></html>';
 
-
-        // if CCAdress<>'' then SMTPMail.AddCC(CCAdress);
-
-        // //MESSAGE('%1 %2',ToAdress,CCAdress);
-        // SMTPMail.Send;
+        exit(BodyText);
     end;
 
     procedure GetEmail(UserId: Code[50]): Text
@@ -1221,41 +1230,53 @@ codeunit 50031 VendorInvoiceMgt
     procedure SendEmail_RejetFsseur(VendInv: Record "Vendor Invoice Doc"; ToAdress: Text[80]; CCAdress: Text)
     var
         // SMTPMail: Codeunit "SMTP Mail";
+        EmailToSend: Record "Tampon Payment Vendor Email";
+        EmailMgt: Codeunit EmailMgt;
         NewObjet: Text;
         Objet: Text;
     begin
 
-        // SMTPSetup.Get;
-        // SMTPSetup.TestField(SMTPSetup."From Adress");
-        // SMTPSetup.TestField(SMTPSetup."From Name");
+        EmailToSend.Init();
+        //EmailToSend.EntryID := EmailMgt.GetNextEntryNoInEmailRec();
+        EmailToSend.EmailObject := Objet;
+        EmailToSend.BodyAsHTML := CreateEmailBody(VendInv);
+        EmailToSend.SendTo := ToAdress;
+        EmailToSend.EmailType := EmailToSend.EmailType::VendorInvoice;
+        EmailToSend."User ID" := UserId;
+        EmailToSend."Entry Date" := Today;
+        EmailToSend."Document No." := VendInv."Reference Number";
+        if (CCAdress <> '') then
+            EmailToSend.SendToCC := CCAdress;
 
+        EmailMgt.SendEmail(EmailToSend);
+    end;
 
-        // //Test
-        // //NewObjet := Objet + ' - ' + gRequisitionSetup.TexteSuffixeObjetEmail;
-        // Objet := StrSubstNo(ObjetEmailFsseur,VendInv."Vendor Invoice No.",Format(VendInv."Invoice Date"));
-        // SMTPMail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",ToAdress,Objet,'',true);
+    local procedure CreateEmailBody(VendInv: Record "Vendor Invoice Doc"): Text
+    var
+        BodyText: Text;
+    begin
+        BodyText := '<html><body>';
 
-        // SMTPMail.AppendBody('<span style="font-family: Arial;">Madame, Monsieur,<br>');
-        // SMTPMail.AppendBody('<br>Nous avons bien reçu votre facture que nous sommes contraints ');
-        // SMTPMail.AppendBody('de retourner par le pr&eacute;sent mail afin qu&#8217;elle soit corrig&eacute;e ');
-        // SMTPMail.AppendBody('pour le motif <span style="font-weight: bold;"> : "' + VendInv."Reason for rejection" + '". </span><br><br>');
-        // //SMTPMail.AppendBody('avant le traitement pour le motif &eacute;nonc&eacute;.<br><br>');
-        // SMTPMail.AppendBody('De ce fait, nous vous prions de r&eacute;gulariser la facture et de nous faire ');
-        // SMTPMail.AppendBody('parvenir la version rectificative dans les 5 jours &agrave; la r&eacute;ception en vue de son traitement. <br><br>');
-        // //SMTPMail.AppendBody('Nous vous remercions d&#8217;avance de prendre en compte notre demande afin ');
-        // //SMTPMail.AppendBody('de traiter efficacement les paiements des montants de facture corrects ');
-        // //SMTPMail.AppendBody('selon les conditions de paiement que nous avons convenue ensemble. <br><br>');
-        // SMTPMail.AppendBody('Nous vous informons que l&#8217;&eacute;ch&eacute;ance ne courra qu&#8217;apr&egrave;s r&eacute;ception ');
-        // SMTPMail.AppendBody('d&eacute;finitive de vos factures en r&egrave;gles et en bonne et due forme.&nbsp; <br>');
-        // SMTPMail.AppendBody('<br>Comptant sur votre collaboration.<br><br><br>');
-        // SMTPMail.AppendBody('<br><span style="font-weight: bold;">Comptabilité fournisseurs</span><br>');
-        // SMTPMail.AppendBody('Galana Distribution Pétrolière S.A.<br>');
-        // SMTPMail.AppendBody('Immeuble PRADON Antanimena, 2ème étage. </span><br>');
+        BodyText += '<span style="font-family: Arial;">Madame, Monsieur,<br>';
+        BodyText += '<br>Nous avons bien reçu votre facture que nous sommes contraints ';
+        BodyText += 'de retourner par le pr&eacute;sent mail afin qu&#8217;elle soit corrig&eacute;e ';
+        BodyText += 'pour le motif <span style="font-weight: bold;"> : "' + VendInv."Reason for rejection" + '". </span><br><br>';
+        BodyText += 'avant le traitement pour le motif &eacute;nonc&eacute;.<br><br>';
+        BodyText += 'De ce fait, nous vous prions de r&eacute;gulariser la facture et de nous faire ';
+        BodyText += 'parvenir la version rectificative dans les 5 jours &agrave; la r&eacute;ception en vue de son traitement. <br><br>';
+        BodyText += 'Nous vous remercions d&#8217;avance de prendre en compte notre demande afin ';
+        BodyText += 'de traiter efficacement les paiements des montants de facture corrects ';
+        BodyText += 'selon les conditions de paiement que nous avons convenue ensemble. <br><br>';
+        BodyText += 'Nous vous informons que l&#8217;&eacute;ch&eacute;ance ne courra qu&#8217;apr&egrave;s r&eacute;ception ';
+        BodyText += 'd&eacute;finitive de vos factures en r&egrave;gles et en bonne et due forme.&nbsp; <br>';
+        BodyText += '<br>Comptant sur votre collaboration.<br><br><br>';
+        BodyText += '<br><span style="font-weight: bold;">Comptabilité fournisseurs</span><br>';
+        BodyText += 'Galana Distribution Pétrolière S.A.<br>';
+        BodyText += 'Immeuble PRADON Antanimena, 2ème étage. </span><br>';
 
-        // if CCAdress<>'' then SMTPMail.AddCC(CCAdress);
+        BodyText += '</body></html>';
 
-        // //MESSAGE('%1 %2',ToAdress,CCAdress);
-        // SMTPMail.Send;
+        exit(BodyText);
     end;
 
     procedure InsertNewPayment(PostedVendInvoiceEntry: Record "Vendor Ledger Entry"; var GenJnlLine: Record "Gen. Journal Line"; var LastLineNo: Integer; var NextDocNo: Code[20]; GenJnlBatch: Record "Gen. Journal Batch"; GenJnlTemplate: Record "Gen. Journal Template")
@@ -1329,9 +1350,13 @@ codeunit 50031 VendorInvoiceMgt
         NewDimensionID: Integer;
         DimSetIDArr: array[10] of Integer;
     begin
+        GenJnlLine.CreateDimFromDefaultDim(GenJnlLine.FieldNo(GenJnlLine."Account No."));
+        GenJnlLine.CreateDimFromDefaultDim(GenJnlLine.FieldNo(GenJnlLine."Bal. Account No."));
+        GenJnlLine.CreateDimFromDefaultDim(GenJnlLine.FieldNo(GenJnlLine."Salespers./Purch. Code"));
+        GenJnlLine.CreateDimFromDefaultDim(GenJnlLine.FieldNo(GenJnlLine."Job No."));
+        GenJnlLine.CreateDimFromDefaultDim(GenJnlLine.FieldNo(GenJnlLine."Campaign No."));
         // with GenJnlLine do begin
         //     NewDimensionID := "Dimension Set ID";
-        //     //TODO change here
         //     CreateDim(
         //       DimMgt.TypeToTableID1("Account Type"), "Account No.",
         //       DimMgt.TypeToTableID1("Bal. Account Type"), "Bal. Account No.",
@@ -1346,6 +1371,7 @@ codeunit 50031 VendorInvoiceMgt
         //     end;
         // end;
     end;
+
 
     procedure EnvoiEmailRefus_Facture(VendInvoiceDoc: Record "Vendor Invoice Doc")
     var

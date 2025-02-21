@@ -54,7 +54,7 @@ report 50049 "Sales  Cr Memo NC"
             column(PaymentCond; CondPaieName)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
             dataitem(CopyLoop; "Integer")
@@ -843,9 +843,10 @@ report 50049 "Sales  Cr Memo NC"
                 "Sales Cr.Memo Header".CalcFields("Amount Including VAT");
                 MontFact := "Sales Cr.Memo Header"."Amount Including VAT";
                 NbTLet.InitTextVariable;
-                //TODO Montants
-                // if "Amount Including VAT"<>0 then
-                //   NbTLet.FormatNoTextFR(TotalAmountLetter,"Amount Including VAT","Sales Cr.Memo Header"."Currency Code");
+
+                if "Amount Including VAT" <> 0 then
+                    NbTLet.FormatNoText(TotalAmountLetter, "Amount Including VAT", "Sales Cr.Memo Header"."Currency Code");
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
             end;
         }
     }
@@ -1038,6 +1039,7 @@ report 50049 "Sales  Cr Memo NC"
         MontFact: Decimal;
         Cust: Record Customer;
         TVAtext: Label 'TVA';
+        Amount_InWords: Text;
 
     procedure InitLogInteraction()
     begin

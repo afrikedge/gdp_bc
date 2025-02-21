@@ -182,6 +182,8 @@ report 50185 "Avis Paiement Fournisseur"
                 else
                     NbTLet.FormatNoText(TotalAmountLetter, "Gen. Journal Line".Amount, GlSetup."LCY Code");
 
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
+
                 FormatAddr.Company(CompanyAddr, Company);
                 GenPostingDate := "Gen. Journal Line"."Posting Date";
                 if "Gen. Journal Line"."Payment Method Code" = 'TRAITES' then
@@ -283,5 +285,6 @@ report 50185 "Avis Paiement Fournisseur"
         TxtDate: Text;
         TextDate: Label 'Date';
         TextDateEcheance: Label 'Date d''échéance';
+        Amount_InWords: Text;
 }
 

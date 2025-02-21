@@ -168,7 +168,7 @@ report 50020 "ND / NC Before"
             column(OutputNo; OutputNo)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
             column(BalVATAmount_GenJournalLine; "Gen. Journal Line"."Bal. VAT Amount")
@@ -283,6 +283,8 @@ report 50020 "ND / NC Before"
 
                 NbTLet.InitTextVariable;
                 NbTLet.FormatNoText(TotalAmountLetter, (MontantTTC), "Currency Code");
+
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
 
             end;
 
@@ -467,6 +469,7 @@ report 50020 "ND / NC Before"
         TextePaymentFsseur: Label 'payé par Chèque à l''ordre de GALANA DISTRIBUTION PETROLIERE SA';
         TexteChequeFsseur: Text[100];
         TextCliFssTiers: Label 'TIERS';
+        Amount_InWords: Text;
 
     procedure InitLogInteraction()
     begin

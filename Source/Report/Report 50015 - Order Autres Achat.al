@@ -859,12 +859,13 @@ report 50015 "Order Autres Achat"
                     //****************************
                     TotalAvecRemise := VATAmountLine.GetTotalLineAmount(false, "Purchase Header"."Currency Code") - VATAmountLine.GetTotalInvDiscAmount;
                     NbTLet.InitTextVariable;
-                    //TODO Montants
                     if TotalAvecRemise <> 0 then
                         if ("Purchase Header"."Currency Code" <> '') then
                             NbTLet.FormatNoText(TotalAmountLetter2, TotalAvecRemise, "Purchase Header"."Currency Code")
                         else
                             NbTLet.FormatNoText(TotalAmountLetter2, TotalAvecRemise, GLSetup."LCY Code");
+
+                    Amount_InWords := TotalAmountLetter2[1] + ' ' + TotalAmountLetter2[2];
                     //****************************
 
 
@@ -1279,6 +1280,7 @@ report 50015 "Order Autres Achat"
         FirstApproverDate: Date;
         SecondApproverDate: Date;
         TextImprimeLe: Text;
+        Amount_InWords: Text;
 
 
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)

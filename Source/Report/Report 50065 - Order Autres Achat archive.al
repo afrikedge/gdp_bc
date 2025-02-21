@@ -883,6 +883,8 @@ report 50065 "Order Autres Achat archive"
                             NbTLet.FormatNoText(TotalAmountLetter2, TotalAvecRemise, "Purchase Header Archive"."Currency Code")
                         else
                             NbTLet.FormatNoText(TotalAmountLetter2, TotalAvecRemise, GlSetup."LCY Code");
+
+                    Amount_InWords := TotalAmountLetter2[1] + ' ' + TotalAmountLetter2[2];
                     //****************************
 
                     /*
@@ -1257,6 +1259,7 @@ report 50065 "Order Autres Achat archive"
         CodeDemand: Code[20];
         TotalAvecRemise: Decimal;
         Pays: Record "Country/Region";
+        Amount_InWords: Text;
         NomPays: Text[50];
         DateCde: Date;
         DepartementDemandeur: Text[50];

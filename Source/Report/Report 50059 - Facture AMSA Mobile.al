@@ -105,7 +105,7 @@ report 50059 "Facture AMSA Mobile"
                 column(TotalText; TotalText)
                 {
                 }
-                column(TotalAmountLetter; TotalAmountLetter[1])
+                column(TotalAmountLetter; Amount_InWords)
                 {
                 }
                 column(ProcessVar; ProcessVar)
@@ -165,6 +165,7 @@ report 50059 "Facture AMSA Mobile"
                 NbTLet.InitTextVariable;
                 //TODO Montants
                 NbTLet.FormatNoText(TotalAmountLetter, TotalAmount, '');
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
 
                 if ShipToAddress.Get(Cust."No.", Cust."Ship-to Code2") then;
             end;
@@ -232,5 +233,6 @@ report 50059 "Facture AMSA Mobile"
         PeriodTexteVar: Text[80];
         ProcessVar: Text[50];
         PayConditionsTxt: Text[150];
+        Amount_InWords: Text;
 }
 

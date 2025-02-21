@@ -165,7 +165,7 @@ report 50007 "Note de Debit/Note de Credit"
             column(OutputNo; OutputNo)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
 
@@ -211,6 +211,7 @@ report 50007 "Note de Debit/Note de Credit"
                 else
                     NbTLet.FormatNoText(TotalAmountLetter, Abs(Amount), GLSetup."LCY Code");
 
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
             end;
 
             trigger OnPreDataItem()
@@ -376,6 +377,7 @@ report 50007 "Note de Debit/Note de Credit"
         Descript: Text[50];
         Text005: Label 'Vous devez renseigner le numéro de document externe';
         Num: Text[20];
+        Amount_InWords: Text;
 
     procedure InitLogInteraction()
     begin

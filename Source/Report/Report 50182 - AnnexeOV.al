@@ -122,6 +122,8 @@ report 50182 AnnexeOV
                     NbTLet.InitTextVariable;
                 NbTLet.FormatNoText(TotalAmountLetter, "Gen. Journal Line".Amount, "Gen. Journal Line"."Currency Code");
 
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
+
                 FormatAddr.Company(CompanyAddr, Company);
                 GenPostingDate := "Gen. Journal Line"."Posting Date";
                 GenDocNo := "Gen. Journal Line"."Document No.";
@@ -224,5 +226,6 @@ report 50182 AnnexeOV
         NumCompte: Text[50];
         Text028: Label 'Diverses factures';
         Domiciliation: Text[50];
+        Amount_InWords: Text;
 }
 

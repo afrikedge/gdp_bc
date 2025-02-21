@@ -165,7 +165,7 @@ report 50040 "Note de Debit Fournisseur"
             column(OutputNo; OutputNo)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
 
@@ -198,8 +198,8 @@ report 50040 "Note de Debit Fournisseur"
                     CondPaieName := CondPaiem.Description;
 
                 NbTLet.InitTextVariable;
-                //TODO Montants
-                //NbTLet.FormatNoTextFR(TotalAmountLetter, Abs(Amount), "Vendor Ledger Entry"."Currency Code");
+                NbTLet.FormatNoText(TotalAmountLetter, Abs(Amount), "Vendor Ledger Entry"."Currency Code");
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
             end;
         }
     }
@@ -356,6 +356,7 @@ report 50040 "Note de Debit Fournisseur"
         Text005: Label 'Vous devez renseigner le numéro de document externe';
         Num: Text[20];
         Vend: Record Vendor;
+        Amount_InWords: Text;
 
     procedure InitLogInteraction()
     begin

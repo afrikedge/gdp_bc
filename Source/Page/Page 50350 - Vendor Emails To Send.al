@@ -14,6 +14,9 @@ page 50350 "Vendor Emails To Send"
         {
             repeater(Group)
             {
+                field(EntryID; Rec.EntryID)
+                {
+                }
                 field("Vendor No."; Rec."Vendor No.")
                 {
                 }
@@ -39,6 +42,9 @@ page 50350 "Vendor Emails To Send"
                 field("User ID"; Rec."User ID")
                 {
                 }
+                field(EmailSent; Rec.EmailSent)
+                {
+                }
             }
         }
     }
@@ -47,9 +53,27 @@ page 50350 "Vendor Emails To Send"
     {
         area(processing)
         {
+            action("Refresh emails")
+            {
+                Caption = 'Update emails address';
+                Image = Vendor;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    Vend: Record Vendor;
+                begin
+                    if (Vend.Get(Rec."Vendor No.")) then begin
+                        rec.SendTo := Vend."E-Mail";
+                        rec.Modify();
+                    end;
+                end;
+            }
             action("Send emails")
             {
-                Caption = 'Send emails';
+                Caption = 'Envoyer tous les mails';
                 Image = SendMail;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -63,6 +87,10 @@ page 50350 "Vendor Emails To Send"
             action("Envoyer le mail pour la ligne")
             {
                 Caption = 'Envoyer le mail pour la ligne';
+                Image = SendEmailPDF;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
                 trigger OnAction()
                 begin
@@ -76,6 +104,8 @@ page 50350 "Vendor Emails To Send"
     begin
         Rec.FilterGroup(2);
         Rec.SetRange("User ID", UserId);
+        // Rec.SetRange(EmailSent, false);
+        // Rec.SetRange(Rec.EmailType, Rec.EmailType::VendorTransfer);
         Rec.FilterGroup(0);
     end;
 

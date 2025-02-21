@@ -28,6 +28,7 @@ table 50099 "Afk FrontDesk User"
         field(6; "Default Company"; Code[20])
         {
             Caption = 'Default Company';
+            TableRelation = Company;
         }
         field(7; "Default Company Name"; Text[100])
         {
@@ -44,10 +45,12 @@ table 50099 "Afk FrontDesk User"
         field(10; "BC User Id"; Code[50])
         {
             Caption = 'BC User Id';
+            TableRelation = User."User Name";
         }
         field(11; "Sales Person Code"; Code[20])
         {
             Caption = 'Sales Person Code';
+            TableRelation = "Salesperson/Purchaser";
         }
         field(12; "Is Customer User"; Boolean)
         {
@@ -56,6 +59,7 @@ table 50099 "Afk FrontDesk User"
         field(13; "Customer No_"; Code[20])
         {
             Caption = 'Customer No_';
+            TableRelation = Customer;
         }
         field(14; "Customer Name"; Text[100])
         {
@@ -64,10 +68,12 @@ table 50099 "Afk FrontDesk User"
         field(15; "Responsibility Center"; Code[10])
         {
             Caption = 'Responsibility Center';
+            TableRelation = "Responsibility Center";
         }
         field(16; "User Profile"; Code[20])
         {
             Caption = 'User Profile';
+            TableRelation = "Afk FrontDesk Profile";
         }
         field(17; "Profile Description"; Text[100])
         {
@@ -76,6 +82,7 @@ table 50099 "Afk FrontDesk User"
         field(18; "Language Code"; Code[10])
         {
             Caption = 'Language Code';
+            TableRelation = Language;
         }
         field(19; "Can Approve As Ccredit"; Boolean)
         {

@@ -168,7 +168,7 @@ report 50067 "ND / NC Vendor After"
             column(OutputNo; OutputNo)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
             column(BalVATAmount_GenJournalLine; MontantTVA)
@@ -268,6 +268,8 @@ report 50067 "ND / NC Vendor After"
                     NbTLet.FormatNoText(TotalAmountLetter, (MontantTTC), "Currency Code")
                 else
                     NbTLet.FormatNoText(TotalAmountLetter, Abs(Amount), GLSetup."LCY Code");
+
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
 
             end;
 
@@ -454,6 +456,7 @@ report 50067 "ND / NC Vendor After"
         TextCliFssTiers: Label 'TIERS';
         MontantTVA: Decimal;
         MontantTTC: Decimal;
+        Amount_InWords: Text;
 
     procedure InitLogInteraction()
     begin

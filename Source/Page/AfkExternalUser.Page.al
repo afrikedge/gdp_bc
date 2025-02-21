@@ -32,18 +32,18 @@ page 50037 "Afk External User"
                 field("Default Company"; Rec."Default Company")
                 {
                 }
-                field("Default Company Id"; Rec."Default Company Id")
-                {
-                }
-                field("Default Company Name"; Rec."Default Company Name")
-                {
-                }
+                // field("Default Company Id"; Rec."Default Company Id")
+                // {
+                // }
+                // field("Default Company Name"; Rec."Default Company Name")
+                // {
+                // }
                 field("Customer No_"; Rec."Customer No_")
                 {
                 }
-                field("Customer Name"; Rec."Customer Name")
-                {
-                }
+                // field("Customer Name"; Rec."Customer Name")
+                // {
+                // }
                 field("Language Code"; Rec."Language Code")
                 {
                 }
@@ -67,9 +67,9 @@ page 50037 "Afk External User"
                 field("User Profile"; Rec."User Profile")
                 {
                 }
-                field("Profile Description"; Rec."Profile Description")
-                {
-                }
+                // field("Profile Description"; Rec."Profile Description")
+                // {
+                // }
                 field("Is Customer User"; Rec."Is Customer User")
                 {
                 }

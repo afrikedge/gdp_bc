@@ -11,7 +11,7 @@ table 50098 "Afk Reference"
             Caption = 'TableType';
             Editable = false;
         }
-        field(2; "Code"; Code[20])
+        field(2; "Code"; Code[50])
         {
             Caption = 'Code';
         }

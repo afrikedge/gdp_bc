@@ -145,6 +145,10 @@ table 50001 "AddOn Setup2"
             Caption = 'Holding Cust Templ';
             TableRelation = "Customer Templ.".Code;
         }
+        field(32; "Activate Email Service"; Boolean)
+        {
+            Caption = 'Activer service Emails';
+        }
     }
 
     keys

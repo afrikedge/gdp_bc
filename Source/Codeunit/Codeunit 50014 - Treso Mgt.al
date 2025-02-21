@@ -10,6 +10,7 @@ codeunit 50014 "Treso Mgt"
         AddOnSetup: Record "AddOn Setup";
         GLSetup: Record "General Ledger Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
+        EmailMgt: Codeunit EmailMgt;
         SingleInstanceCU: Codeunit SingleInstance;
         HavePostMoneyTechTrans: Boolean;
         GenJrnTableND: Record "Gen. Journal Batch";
@@ -901,245 +902,129 @@ codeunit 50014 "Treso Mgt"
             until ((LCExpiry.Next = 0) or (ResteAAffecter <= 0));
     end;
 
-    procedure SendEmailVendorTransfer(GenJnlLine: Record "Gen. Journal Line")
-    var
-        Vend1: Record Vendor;
-        FileName: Text;
-        Emplacement: Text;
-        RefFile: Integer;
-        //_mail: Codeunit "SMTP Mail";
-        GenJnlLine3: Record "Gen. Journal Line";
-        EmailObject: Text[250];
-    begin
-
-        // if GenJnlLine."Account Type" <> GenJnlLine."Account Type"::Vendor then exit;
-        // if GenJnlLine."Document Type" <> GenJnlLine."Document Type"::Payment then exit;
-        // GenJnlLine.TestField("Payment Method Code", 'VIREMENT');
-        // GenJnlLine.TestField(GenJnlLine."Document No.");
-
-        // Vend1.Get(GenJnlLine."Account No.");
-        // Vend1.TestField(Vend1."E-Mail");
-
-        // AddOnSetup.Get;
-        // SMTPSetup.Get;
-        // //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
-
-        // EmailObject := GetVendorEmailObject(GenJnlLine."Payment Method Code");
-
-        // _mail.CreateMessage(SMTPSetup."From Name", SMTPSetup."From Adress",
-        //     Vend1."E-Mail", EmailObject, Text032, false);
-
-        // Emplacement := GetEmplacementFichierVirement(GenJnlLine);
-
-        // if not Exists(Emplacement) then exit;
-        // //IF ERASE(Emplacement) THEN;
-
-
-
-        // _mail.AddAttachment(Emplacement, FileName);
-        // _mail.Send();
-
-    end;
-
     procedure CreateDocEmailVendorTransfer(GenJnlLine: Record "Gen. Journal Line")
     var
         Vend1: Record Vendor;
+
         FileName: Text;
         Emplacement: Text;
         RefFile: Integer;
         //_mail: Codeunit "SMTP Mail";
+        EmailToSend: Record "Tampon Payment Vendor Email";
+        VendTransferReport: report "Avis Paiement Fournisseur";
         GenJnlLine3: Record "Gen. Journal Line";
         TmpPath: Text;
         PaymentMethod: Record "Payment Method";
+        TempBlob: Codeunit "Temp Blob";
+        RecordRef1: RecordRef;
+        OutStream: OutStream;
+        InStream: InStream;
+        PDFOutStream: OutStream;
     begin
 
-        // if PaymentMethod.Get(GenJnlLine."Payment Method Code") then;
 
-        // GenJnlLine.TestField("Account Type", GenJnlLine."Account Type"::Vendor);
-        // GenJnlLine.TestField("Document Type", GenJnlLine."Document Type"::Payment);
-        // /*
-        // IF ((GenJnlLine."Payment Method Code"<>'VIREMENT') AND
-        //   (GenJnlLine."Payment Method Code"<>'CHEQUES')) THEN
-        //     ERROR(Text026);
-        // *///041023 JN
+        if PaymentMethod.Get(GenJnlLine."Payment Method Code") then;
 
-        // if not PaymentMethod."Allow vendor email" then Error(Text027);//041023 JN
+        GenJnlLine.TestField("Account Type", GenJnlLine."Account Type"::Vendor);
+        GenJnlLine.TestField("Document Type", GenJnlLine."Document Type"::Payment);
 
-        // //GenJnlLine.TESTFIELD("Payment Method Code",'VIREMENT');
-        // GenJnlLine.TestField(GenJnlLine."Document No.");
+        if not PaymentMethod."Allow vendor email" then Error(Text027);//041023 JN
 
-        // Vend1.Get(GenJnlLine."Account No.");
-        // //Vend1.TESTFIELD(Vend1."E-Mail");
+        GenJnlLine.TestField(GenJnlLine."Document No.");
 
-        // AddOnSetup.Get;
-        // SMTPSetup.Get;
-        // //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
+        Vend1.Get(GenJnlLine."Account No.");
 
-        // //_mail.CreateMessage(SMTPSetup."From Name",SMTPSetup."From Adress",
-        // //Vend1."E-Mail",'Nouveau virement de la part de GALANA','Veuillez trouver en pièce jointe à ce mail votre virement validé ce jour.',FALSE);
+        AddOnSetup.Get;
 
-        // Emplacement := GetEmplacementFichierVirement(GenJnlLine);
-
-        // if Exists(Emplacement) then
-        //     if Erase(Emplacement) then;
+        GenJnlLine3.Get(GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name", GenJnlLine."Line No.");
+        GenJnlLine.SetRange("Journal Template Name", GenJnlLine."Journal Template Name");
+        GenJnlLine3.SetRange("Journal Batch Name", GenJnlLine."Journal Batch Name");
+        GenJnlLine3.SetRange("Posting Date", GenJnlLine."Posting Date");
+        GenJnlLine3.SetRange("Document No.", GenJnlLine."Document No.");
+        GenJnlLine3.SetRange("Account No.", GenJnlLine."Account No.");
+        //REPORT.SaveAsPdf(50185, Emplacement, GenJnlLine3);
 
 
-        // /*
-        // GenJnlLine3.RESET;
-        // GenJnlLine3.COPY(GenJnlLine);
-        // GenJnlLine.SETRANGE("Journal Template Name",GenJnlLine."Journal Template Name");
-        // GenJnlLine3.SETRANGE("Journal Batch Name",GenJnlLine."Journal Batch Name");
-        // GenJnlLine3.SETRANGE("Posting Date",GenJnlLine."Posting Date");
-        // GenJnlLine3.SETRANGE("Document No.",GenJnlLine."Document No.");//**************************************added
-        // //REPORT.RUN(REPORT::FacturePaiement,FALSE,FALSE,GenJnlLine3);
-        // */
-        // GenJnlLine3.Get(GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name", GenJnlLine."Line No.");
-        // GenJnlLine.SetRange("Journal Template Name", GenJnlLine."Journal Template Name");
-        // GenJnlLine3.SetRange("Journal Batch Name", GenJnlLine."Journal Batch Name");
-        // GenJnlLine3.SetRange("Posting Date", GenJnlLine."Posting Date");
-        // GenJnlLine3.SetRange("Document No.", GenJnlLine."Document No.");//**************************************added
-        // GenJnlLine3.SetRange("Account No.", GenJnlLine."Account No.");
-        // REPORT.SaveAsPdf(50185, Emplacement, GenJnlLine3);
+        EmailToSend.Init();
+        EmailToSend.EntryID := EmailMgt.GetNextEntryNoInEmailRec();
+        EmailToSend.EmailObject := GetVendorEmailObject(PaymentMethod.Code);
+
+        // Create email body
+        EmailToSend.BodyAsHTML := CreateEmailBody(Text032);
+
+        EmailToSend.SendTo := Vend1."E-Mail";
+
+        // Generate PDF report for the customer
+
+        OutStream := TempBlob.CreateOutStream();
+        Clear(VendTransferReport);
+        VendTransferReport.SetTableView(GenJnlLine3);
+        VendTransferReport.SaveAs('', ReportFormat::Pdf, OutStream);
+        InStream := TempBlob.CreateInStream();
 
 
-        // InsertEmailToSend(GenJnlLine3, Emplacement);
-        // //SLEEP(1000);
-
-        // //_mail.AddAttachment(Emplacement, FileName);
-
-        // //MESSAGE('%1',Vend1."E-Mail");
-        // //_mail.Send();
-
-    end;
-
-    local procedure GetEmplacementFichierVirement(GenJnlLine: Record "Gen. Journal Line"): Text
-    var
-        TmpPath: Text;
-        FileName: Text;
-    begin
-        // FileName := FileMgt.AFK_GetSafeFileName(GenJnlLine."Document No." + GenJnlLine."Account No.") + '.PDF';
-        // TmpPath := FileMgt.AFK_GetClientTempSubDirectory();
-        // //EXIT( TmpPath + '\' + FileName);
-        // exit(TemporaryPath + FileName);
-    end;
-
-    local procedure InsertEmailToSend(GenJrnLine: Record "Gen. Journal Line"; FileName: Text)
-    var
-        EmailToSend: Record "Tampon Payment Vendor Email";
-        NextID: Integer;
-    begin
-
-        EmailToSend.Reset;
-        if EmailToSend.FindLast then
-            NextID := EmailToSend.EntryID + 1
-        else
-            NextID := 1;
-
-        EmailToSend.Init;
-        EmailToSend.EntryID := NextID;
-        EmailToSend."Vendor No." := GenJrnLine."Account No.";
-        EmailToSend."Document No." := GenJrnLine."Document No.";
-        EmailToSend.Attachment := FileName;
+        EmailToSend.EmailType := EmailToSend.EmailType::VendorTransfer;
         EmailToSend."User ID" := UserId;
+        EmailToSend."Vendor No." := Vend1."No.";
         EmailToSend."Entry Date" := Today;
-        EmailToSend.Amount := Abs(GenJrnLine.Amount);
-        EmailToSend."Payment Method Code" := GenJrnLine."Payment Method Code";
-        EmailToSend.Insert;
+        EmailToSend."Document No." := GenJnlLine3."Document No.";
+        EmailToSend."Payment Method Code" := GenJnlLine3."Payment Method Code";
+        EmailToSend.Amount := Abs(GenJnlLine3.Amount);
+        EmailToSend.Attachment := FileMgt.GetSafeFileName(GenJnlLine."Document No." + GenJnlLine."Account No.") + '.pdf';
+        if (AddOnSetup2."Email Avis Paiement" <> '') then
+            EmailToSend.SendToCC := AddOnSetup2."Email Avis Paiement";
+
+        EmailToSend.AttachmentFile.CreateOutStream(PDFOutStream);
+        CopyStream(PDFOutStream, InStream);
+
+        EmailToSend.Insert(true);
+        //EmailMgt.SendEmailWithAttachment(EmailToSend, InStream, EmailToSend.Attachment);
     end;
+
+    local procedure CreateEmailBody(TextContent: Text): Text
+    var
+        BodyText: Text;
+    begin
+        BodyText := '<html><body>';
+        BodyText += '<p>' + TextContent + '</p>';
+        // BodyText += '<p>Please find attached your detailed trial balance report.</p>';
+        // BodyText += '<p>If you have any questions regarding this report, please contact your account manager.</p>';
+        // BodyText += '<p>Best regards,<br>Your Company Name</p>';
+        BodyText += '</body></html>';
+
+        exit(BodyText);
+    end;
+
+
+
+
 
     procedure SendEmailVendorTransferOne(var TmpVendEmail: Record "Tampon Payment Vendor Email")
     var
-    // Vend1: Record Vendor;
-    // FileName: Text[250];
-    // Emplacement: Text[250];
-    // RefFile: Integer;
-    // _mail: Codeunit "SMTP Mail";
-    // GenJnlLine3: Record "Gen. Journal Line";
-    // EmailObject: Text[250];
+        EmailMgt: Codeunit EmailMgt;
+        InStream: InStream;
+        MailIsSent: Boolean;
     begin
-        // Vend1.Get(TmpVendEmail."Vendor No.");
-        // Vend1.TestField(Vend1."E-Mail");
 
-        // AddOnSetup.Get;
-        // AddOnSetup2.Get;
-        // SMTPSetup.Get;
-        // //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
+        Clear(InStream);
+        TmpVendEmail.CalcFields(AttachmentFile);
+        TmpVendEmail.AttachmentFile.CreateInStream(InStream);
 
-        // EmailObject := GetVendorEmailObject(TmpVendEmail."Payment Method Code");
-
-        // Clear(_mail);
-        // _mail.CreateMessage(SMTPSetup."From Name", SMTPSetup."From Adress",
-        //     Vend1."E-Mail", EmailObject, Text032, false);
-
-        // Emplacement := TmpVendEmail.Attachment;
-
-        // if not Exists(Emplacement) then begin
-        //     Message(Text026);
-        //     exit;
-        // end;
-
-        // _mail.AddAttachment(Emplacement, FileName);
-
-        // if (AddOnSetup2."Email Avis Paiement" <> '') then
-        //     _mail.AddCC(AddOnSetup2."Email Avis Paiement");
-
-        // //MESSAGE('%1',Vend1."E-Mail");
-        // _mail.Send();
-
-        // TmpVendEmail.Delete;
+        MailIsSent := EmailMgt.SendEmailWithAttachment(TmpVendEmail, InStream, TmpVendEmail.Attachment);
+        if (MailIsSent) then
+            TmpVendEmail.Delete();
     end;
 
     procedure SendEmailVendorTransferAll()
     var
-    // Vend1: Record Vendor;
-    // FileName: Text[250];
-    // Emplacement: Text[250];
-    // RefFile: Integer;
-    // _mail: Codeunit "SMTP Mail";
-    // GenJnlLine3: Record "Gen. Journal Line";
-    // TmpVendEmail: Record "Tampon Payment Vendor Email";
-    // EmailObject: Text[250];
+        TmpVendEmail: Record "Tampon Payment Vendor Email";
     begin
-
-        // TmpVendEmail.Reset;
-        // TmpVendEmail.SetRange(TmpVendEmail."User ID", UserId);
-        // if TmpVendEmail.FindSet then
-        //     repeat
-        //         Vend1.Get(TmpVendEmail."Vendor No.");
-        //         Vend1.TestField(Vend1."E-Mail");
-        //     until TmpVendEmail.Next = 0;
-
-
-        // AddOnSetup.Get;
-        // AddOnSetup2.Get;
-        // SMTPSetup.Get;
-        // //AddOnSetup.TESTFIELD(AddOnSetup."Print Directory Setup");
-
-        // TmpVendEmail.Reset;
-        // TmpVendEmail.SetRange(TmpVendEmail."User ID", UserId);
-        // if TmpVendEmail.FindSet then
-        //     repeat
-
-        //         Vend1.Get(TmpVendEmail."Vendor No.");
-
-        //         EmailObject := GetVendorEmailObject(TmpVendEmail."Payment Method Code");
-
-        //         Clear(_mail);
-        //         _mail.CreateMessage(SMTPSetup."From Name", SMTPSetup."From Adress",
-        //         Vend1."E-Mail", EmailObject, Text032, false);
-
-        //         Emplacement := TmpVendEmail.Attachment;
-
-        //         if (AddOnSetup2."Email Avis Paiement" <> '') then
-        //             _mail.AddCC(AddOnSetup2."Email Avis Paiement");
-
-        //         if Exists(Emplacement) then begin
-        //             _mail.AddAttachment(Emplacement, FileName);
-        //             _mail.Send();
-        //             TmpVendEmail.Delete;
-        //         end;
-
-        //     until TmpVendEmail.Next = 0;
+        TmpVendEmail.Reset();
+        TmpVendEmail.SetRange(TmpVendEmail."User ID", UserId);
+        if TmpVendEmail.FindSet(true) then
+            repeat
+                SendEmailVendorTransferOne(TmpVendEmail);
+            until TmpVendEmail.Next = 0;
     end;
 
     local procedure GetVendorEmailObject(PaymentMethodCode: Code[10]): Text[250]
@@ -1241,11 +1126,7 @@ codeunit 50014 "Treso Mgt"
         //Traite fournisseur
         if (GenJnlLine3."Account Type" = GenJnlLine3."Account Type"::Vendor) and (GenJnlLine3."Payment Method Code" <> '') then begin
             AFK_GLMgt.CreateNewPaymentDocVendor(GenJnlLine3);
-            //IF SendVendorEmails_AFK THEN
-            //  AFKTresoMgt.SendEmailVendorTransfer(GenJnlLine3);//Envoi manuel
         end;
-
-        //until TempGenJnlLine.Next = 0;
 
     end;
 

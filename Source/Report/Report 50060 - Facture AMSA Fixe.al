@@ -105,7 +105,7 @@ report 50060 "Facture AMSA Fixe"
                 column(TotalText; TotalText)
                 {
                 }
-                column(TotalAmountLetter; TotalAmountLetter[1])
+                column(TotalAmountLetter; Amount_InWords)
                 {
                 }
                 column(CustomerNo_AMSAInvoiceLine; "AMSA Invoice Line"."Customer No")
@@ -162,8 +162,9 @@ report 50060 "Facture AMSA Fixe"
                 end;
 
                 NbTLet.InitTextVariable;
-                //TODO Montants
                 NbTLet.FormatNoText(TotalAmountLetter, TotalAmount, '');
+
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
 
                 if ShipToAddress.Get(Cust."No.", Cust."Ship-to Code2") then;
             end;
@@ -231,5 +232,6 @@ report 50060 "Facture AMSA Fixe"
         PeriodTexteVar: Text[80];
         ProcessVar: Text[50];
         PayConditionsTxt: Text[150];
+        Amount_InWords: Text;
 }
 

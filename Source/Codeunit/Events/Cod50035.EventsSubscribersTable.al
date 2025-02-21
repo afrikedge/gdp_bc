@@ -1115,6 +1115,32 @@ codeunit 50035 "EventsSubscribers Table"
             IsHandled := true;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Invoice Post. Buffer", 'OnAfterInvPostBufferPrepareSales', '', true, true)]
+    local procedure InvoicePostBuffer_OnBeforeInitHeaderLocactionCode(var SalesLine: Record "Sales Line"; var InvoicePostBuffer: Record "Invoice Post. Buffer")
+    var
+        AddOnSetup: Record "AddOn Setup";
+    begin
+        AddOnSetup.GetRecordOnce();
+        if (AddOnSetup."Activer libelles Compta Client") then begin
+            InvoicePostBuffer."Entry Description" := SalesLine.Description;
+            InvoicePostBuffer."Fixed Asset Line No." := SalesLine."Line No.";
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Invoice Post. Buffer", 'OnAfterInvPostBufferPreparePurchase', '', true, true)]
+    local procedure InvoicePostBuffer_OnAfterInvPostBufferPreparePurchase(var PurchaseLine: Record "Purchase Line"; var InvoicePostBuffer: Record "Invoice Post. Buffer")
+    var
+        AddOnSetup: Record "AddOn Setup";
+    begin
+        AddOnSetup.GetRecordOnce();
+        if (AddOnSetup."Activer libelles compta Fsseur") then begin
+            InvoicePostBuffer."Entry Description" := PurchaseLine.Description;
+            InvoicePostBuffer."Fixed Asset Line No." := PurchaseLine."Line No.";
+        end;
+    end;
+
+
+
 
     [EventSubscriber(ObjectType::Table, Database::"Contact", 'OnAfterCreateCustomer', '', true, true)]
     local procedure OnAfterCreateCustomer_Contact(var Customer: Record Customer; Contact: Record Contact)

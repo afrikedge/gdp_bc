@@ -209,7 +209,7 @@ report 50002 "Sales Invoice"
                     column(PricesInclVAT_SalesInvHdrCaption; "Sales Invoice Header".FieldCaption("Prices Including VAT"))
                     {
                     }
-                    column(TotalAmountLetter; TotalAmountLetter[1])
+                    column(TotalAmountLetter; Amount_InWords)
                     {
                     }
                     dataitem(DimensionLoop1; "Integer")
@@ -999,13 +999,13 @@ report 50002 "Sales Invoice"
                 "Sales Invoice Header".CalcFields("Amount Including VAT");
                 MontFact := "Sales Invoice Header"."Amount Including VAT";
                 NbTLet.InitTextVariable;
-                //TODO format text here
                 if "Amount Including VAT" <> 0 then
                     if ("Sales Invoice Header"."Currency Code" <> '') then
                         NbTLet.FormatNoText(TotalAmountLetter, "Amount Including VAT", "Sales Invoice Header"."Currency Code")
                     else
                         NbTLet.FormatNoText(TotalAmountLetter, "Amount Including VAT", GLSetup."LCY Code");
 
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
             end;
         }
     }
@@ -1248,6 +1248,7 @@ report 50002 "Sales Invoice"
         MontTVA: Decimal;
         MontFact: Decimal;
         TVAtext: Label 'TVA';
+        Amount_InWords: Text;
 
     procedure InitLogInteraction()
     begin

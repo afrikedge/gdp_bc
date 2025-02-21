@@ -53,7 +53,7 @@ report 50082 "Recu Encais_Ecritures clients2"
             column(Cust_Name; Cust.Name)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
             column(NoTitre; "G/L Entry"."Document No.")
@@ -230,8 +230,10 @@ report 50082 "Recu Encais_Ecritures clients2"
                   */
 
                 NbTLet.InitTextVariable;
-                //TODO Montants
-                //NbTLet.FormatNoTextFR(TotalAmountLetter, Abs("G/L Entry".Amount), '');
+
+                NbTLet.FormatNoText(TotalAmountLetter, Abs("G/L Entry".Amount), '');
+
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
 
             end;
 
@@ -328,6 +330,7 @@ report 50082 "Recu Encais_Ecritures clients2"
         compteurTab: Integer;
         compteurLignes: Integer;
         User: Record User;
+        Amount_InWords: Text;
 
     local procedure FindApplnEntriesDtldtLedgEntry(AppliedEntryNo: Integer; DocNo: Code[20])
     var

@@ -53,7 +53,7 @@ report 50053 "Lettrage A zero"
             column(Cust_Name; Cust.Name)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
             column(NoTitre; "Check No.")
@@ -241,8 +241,8 @@ report 50053 "Lettrage A zero"
 
                 //IF TmpDetCustLedgEntry.FINDSET THEN;
                 NbTLet.InitTextVariable;
-                //TODO Montants
-                //NbTLet.FormatNoTextFR(TotalAmountLetter, Abs("Cust. Ledger Entry".Amount), "Cust. Ledger Entry"."Currency Code");
+                NbTLet.FormatNoText(TotalAmountLetter, Abs("Cust. Ledger Entry".Amount), "Cust. Ledger Entry"."Currency Code");
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
             end;
 
             trigger OnPreDataItem()
@@ -343,6 +343,7 @@ report 50053 "Lettrage A zero"
         OriginLine: Boolean;
         LineNum: Integer;
         EntryNum: Integer;
+        Amount_InWords: Text;
 
     local procedure FindApplnEntriesDtldtLedgEntry(AppliedEntryNo: Integer; DocNo: Code[20]; EcritureOrigine: Record "Cust. Ledger Entry")
     var

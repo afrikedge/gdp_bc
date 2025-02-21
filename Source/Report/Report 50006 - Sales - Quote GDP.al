@@ -171,7 +171,7 @@ report 50006 "Sales - Quote GDP"
                     column(CompanyInfoSTAT; 'STAT : ' + CompanyInfo."Legal Form")
                     {
                     }
-                    column(TotalAmountLetter; TotalAmountLetter[1])
+                    column(TotalAmountLetter; Amount_InWords)
                     {
                     }
                     column(OrderNoCaption; OrderNoCaptionLbl)
@@ -650,12 +650,13 @@ report 50006 "Sales - Quote GDP"
                     CurrReport.PageNo := 1;
 
                     NbTLet.InitTextVariable;
-                    //TODO format here
                     if TotalAmountInclVAT <> 0 then
                         if ("Sales Header"."Currency Code" <> '') then
                             NbTLet.FormatNoText(TotalAmountLetter, TotalAmountInclVAT, "Sales Header"."Currency Code")
                         else
                             NbTLet.FormatNoText(TotalAmountLetter, TotalAmountInclVAT, GLSetup."LCY Code");
+
+                    Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
                 end;
 
                 trigger OnPostDataItem()
@@ -996,6 +997,7 @@ report 50006 "Sales - Quote GDP"
         PhoneNoCaptionLbl: Label 'Phone No.';
         OrderNoCaptionLbl: Label 'Order No.';
         EmailCaptionLbl: Label 'E-Mail';
+        Amount_InWords: Text;
 
     procedure InitializeRequest(NoOfCopiesFrom: Integer; ShowInternalInfoFrom: Boolean; ArchiveDocumentFrom: Boolean; LogInteractionFrom: Boolean; PrintFrom: Boolean)
     begin

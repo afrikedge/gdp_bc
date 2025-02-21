@@ -156,7 +156,7 @@ report 50068 "ND Bordereau Paiement Archive"
             column(OutputNo; OutputNo)
             {
             }
-            column(TotalAmountLetter; TotalAmountLetter[1])
+            column(TotalAmountLetter; Amount_InWords)
             {
             }
             dataitem("Payment Line Archive"; "Payment Line Archive")
@@ -218,11 +218,12 @@ report 50068 "ND Bordereau Paiement Archive"
 
                 "Payment Header Archive".CalcFields(Amount);
                 NbTLet.InitTextVariable;
-                //TODO Montants
                 if ("Currency Code" <> '') then
                     NbTLet.FormatNoText(TotalAmountLetter, Abs(Amount), "Currency Code")
                 else
                     NbTLet.FormatNoText(TotalAmountLetter, Abs(Amount), GLSetup."LCY Code");
+
+                Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
             end;
         }
     }
@@ -375,6 +376,7 @@ report 50068 "ND Bordereau Paiement Archive"
         Descript: Text[50];
         Text005: Label 'Vous devez renseigner le numéro de document externe';
         Num: Text[20];
+        Amount_InWords: Text;
 
     procedure InitLogInteraction()
     begin

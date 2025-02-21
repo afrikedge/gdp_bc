@@ -12,8 +12,13 @@ pageextension 50106 "Afk Payment Journal" extends "Payment Journal"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the recipient information';
             }
+            field("Due Date"; Rec."Due Date")
+            {
+                ApplicationArea = All;
+            }
         }
     }
+
     actions
     {
         addafter("P&osting")
@@ -27,7 +32,7 @@ pageextension 50106 "Afk Payment Journal" extends "Payment Journal"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 ShortcutKey = 'Shift+F9';
-                Visible = false;
+                //Visible = false;
 
                 trigger OnAction()
                 var
@@ -149,8 +154,26 @@ pageextension 50106 "Afk Payment Journal" extends "Payment Journal"
                     REPORT.RUN(REPORT::"Avis Paiement Fournisseur", TRUE, FALSE, GenJnlLine);
                 end;
             }
+            action("Emails")
+            {
+                //Visible = false;
+                ApplicationArea = All;
+                Caption = 'Emails à envoyer';
+                Image = Email;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedIsBig = true;
+                RunObject = page "Vendor Emails To Send";
+            }
         }
     }
+    trigger OnNewRecord(BelowxRec: Boolean)
+    var
+    begin
+        Rec."Account Type" := Rec."Account Type"::Vendor;
+        Rec."Document Type" := Rec."Document Type"::Payment;
+    end;
+
     var
         GenJnlLine: Record "Gen. Journal Line";
 }

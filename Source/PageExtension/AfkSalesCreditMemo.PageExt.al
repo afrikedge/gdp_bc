@@ -6,7 +6,7 @@ pageextension 50101 "Afk Sales Credit Memo" extends "Sales Credit Memo"
         {
             field(Observations; Rec.Observations)
             {
-
+                MultiLine = true;
             }
         }
     }

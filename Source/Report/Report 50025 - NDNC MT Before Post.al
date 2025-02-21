@@ -168,7 +168,7 @@
 //                 column(Fact;Fact)
 //                 {
 //                 }
-//                 column(TotalAmountLetter;TotalAmountLetter[1])
+//                 column(TotalAmountLetter;Amount_InWords)
 //                 {
 //                 }
 //                 dataitem(StationJr;"Integer")

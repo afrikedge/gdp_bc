@@ -283,6 +283,231 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Afk Grand Livre - Control PrintCorrectionsOnly - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 419055223 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comptabilité client âgée</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 3954423248" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Après</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType AfterTok</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 2402552187" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comptabilité client âgée</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType AgedAccReceivableCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 2555393066" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Montants échus âgés</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType AgedOverdueAmtCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 3284058877" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tous les montants DS</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType AllAmtinLCYCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 1350921099" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Avant</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType BeforeTok</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 1707603408" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Montant initial </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType CLEEndDateAmtLCYCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 394537149" size-unit="char" translate="yes" xml:space="preserve">
+          <source>N° Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType CLEEndDateDocNoCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 1747274374" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType CLEEndDateDocTypeCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 3808507638" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date d'échéance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType CLEEndDateDueDateCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 2244048076" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date compta</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType CLEEndDatePstngDateCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 3193990627" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType CurrReportPageNoCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 269144572" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Spécification de la devise</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType CurrSpecificationCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 82002553" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entrez une formule de date dans le champ base période.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType EnterDateFormulaErr</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 2813197814" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code devise</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType OriginalAmtCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Non échu</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>jours</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agée par %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType Text004</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 1370456556" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total pour %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType Text005</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 2008153173" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agée en date du %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType Text006</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 2645849790" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agée par %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType Text007</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 3921243024" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date d'écheance,Date compta,Date Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType Text009</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 1664139952" size-unit="char" translate="yes" xml:space="preserve">
+          <source>La formule de la date %1 ne peut pas etre utilisée. Essayez de la reformuler. E.x. 1M+CM au lieu de CM+1M.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType Text010</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 2353355232" size-unit="char" translate="yes" xml:space="preserve">
+          <source>-%1</source>
+          <note from="Developer" annotates="general" priority="2">Durée de la période négative: %1 est la durée de la période</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType Text032Txt</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - NamedType 1865626161" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total (DS)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - NamedType TotalLCYCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - ReportLabel 3857790676" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Balance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - ReportLabel BalanceCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 2060407144 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si le cumul date est calculé à partir de la date d'échéance, la date comptabilisation ou la date document.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control AgedAsOf - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 2060407144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Âgée en date du</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control AgedAsOf - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 3438973743 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si le cumul date est calculé à partir de la date d'échéance, la date comptabilisation ou la date document.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control Agingby - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 3438973743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agée par</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control Agingby - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 3438973743 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date d'échéance,Date comptabilisation,Date document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control Agingby - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 4096492506 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si vous souhaitez que l'état spécifie le cumul par écriture comptable client.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control AmountsinLCY - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 4096492506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Imprimer montant DS</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control AmountsinLCY - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 336339332 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si l'en-tête de colonne pour les trois périodes doit indiquer un intervalle de date ou le nombre de jours échus.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control HeadingType - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 336339332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type titre</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control HeadingType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 336339332 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Intervalles de dates,Nombre de Jours</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control HeadingType - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 2035961037 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si les informations client sont imprimées sur une nouvelle page si vous avez choisi plusieurs clients à inclure dans l'état, activez ce champ pour imprimer le solde de chaque client sur une page distincte.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control perCustomer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 2035961037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nouvelle page par client</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control perCustomer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 2740290379 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Spécifie la période pour laquelle les données sont affichées dans l'état. Par exemple, saisissez « 1M » pour un mois, « 30D » pour trente jours, « 3Q » pour trois trimestres ou « 5Y » pour cinq années.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control PeriodLength - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 2740290379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Base période</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control PeriodLength - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 568987109 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique si vous souhaitez que l'état affiche les écritures détaillées qui additionnent le solde total de chaque client.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control PrintDetails - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 568987109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Imprimer détails</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control PrintDetails - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 3494431854 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Spécifie si vous souhaitez ignorer les clients présentant un solde nul dans l’état.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control Skip Zero Balance Customers - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 419055223 - Control 3494431854 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ignorer les clients dont le solde est nul</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AfkComptaCltAgee - Control Skip Zero Balance Customers - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1526680249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AddOn Setup</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1322,6 +1547,11 @@
           <source>AddOn Setup2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 1504737636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activer service Emails</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Activate Email Service - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3242877383 - Field 463785790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Intérim DFI activé</source>
@@ -12553,10 +12783,40 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field Attachment - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 3116354377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachment File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field AttachmentFile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 3304108391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachment media</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field AttachmentMedia - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 1553343985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Body</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field BodyAsHTML - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4135713293 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 491087931 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email Object</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field EmailObject - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 2034144036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email Sent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field EmailSent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 1396961768 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field EmailType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4135713293 - Field 1627640004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry Date</source>
@@ -12572,6 +12832,16 @@
           <source>Payment Method Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field Payment Method Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 3466748865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sent To</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field SendTo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4135713293 - Field 3201645241 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CC</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Tampon Payment Vendor Email - Field SendToCC - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4135713293 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>User ID</source>
@@ -39913,8 +40183,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Emails To Send - Action Envoyer le mail pour la ligne - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1287151416 - Action 181813838 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update emails address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Emails To Send - Action Refresh emails - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1287151416 - Action 3199400237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Send emails</source>
+          <source>Envoyer tous les mails</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Emails To Send - Action Send emails - Property Caption</note>
         </trans-unit>
@@ -53543,6 +53818,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Sales Invoice - Control LogInteractione - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 2420212404 - Control 1909832434 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Note de débit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Sales Invoice - Control NoteDebit - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Report 2420212404 - Control 1909832434 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Note de débit</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -62038,6 +62318,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action Avis Paiement Factures frs - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1105850977 - Action 1392835601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Emails à envoyer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Action Emails - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1105850977 - Action 1551147523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
           <source>Imprimer Factures du paiement</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -62057,6 +62342,56 @@
           <source>Specifies the recipient information</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Payment Journal - Control Destinataire - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3863853848 - Action 3067040047 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>JIRAMA Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice - Action JIRAMA Sales Invoice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3863853848 - Action 3067040047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Print - JIRAMA Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice - Action JIRAMA Sales Invoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3863853848 - Action 3956552522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Imprimer la Note de débit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice - Action Note debit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3863853848 - Action 1953554049 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Sales Invoice Soutage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice - Action Sales Invoice Soutage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3863853848 - Action 1953554049 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Print - Sales Invoice Soutage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice - Action Sales Invoice Soutage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4152895242 - Action 3067040047 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>JIRAMA Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice List - Action JIRAMA Sales Invoice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4152895242 - Action 3067040047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Print - JIRAMA Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice List - Action JIRAMA Sales Invoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4152895242 - Action 3956552522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Imprimer la Note de débit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice List - Action Note debit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4152895242 - Action 1953554049 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Sales Invoice Soutage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice List - Action Sales Invoice Soutage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4152895242 - Action 1953554049 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Print - Sales Invoice Soutage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Sales Invoice List - Action Sales Invoice Soutage - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2556259635 - Method 1146877244 - NamedType 3337191547" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2556259635">
           <source>Vous ne disposez pas d'autorisations pour créer des demandes d'achat</source>
@@ -63257,56 +63592,6 @@
           <source>Cash Receipt Journals</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension pageextension70000135 - Action Cash Receipt Journals - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2420212404 - Action 3067040047 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
-          <source>JIRAMA Sales Invoice</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice - Action JIRAMA Sales Invoice - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2420212404 - Action 3067040047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
-          <source>Print - JIRAMA Sales Invoice</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice - Action JIRAMA Sales Invoice - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2420212404 - Action 3956552522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
-          <source>Imprimer la Note de débit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice - Action Note debit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2420212404 - Action 1953554049 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
-          <source>Sales Invoice Soutage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice - Action Sales Invoice Soutage - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2420212404 - Action 1953554049 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
-          <source>Print - Sales Invoice Soutage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice - Action Sales Invoice Soutage - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3923308998 - Action 3067040047 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>JIRAMA Sales Invoice</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice List - Action JIRAMA Sales Invoice - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3923308998 - Action 3067040047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Print - JIRAMA Sales Invoice</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice List - Action JIRAMA Sales Invoice - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3923308998 - Action 3956552522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Imprimer la Note de débit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice List - Action Note debit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3923308998 - Action 1953554049 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Sales Invoice Soutage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice List - Action Sales Invoice Soutage - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3923308998 - Action 1953554049 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Print - Sales Invoice Soutage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice List - Action Sales Invoice Soutage - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 296867727 - NamedType 3810525201" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 296867727">
           <source>Cette facture ne peut pas être modifiée car elle provient d'un document MFiles</source>
@@ -67682,6 +67967,26 @@
           <source>Exemption</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Warranty Status - EnumValue Exemption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 99219820 - EnumValue 3371220206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>None</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AfkEmailType - EnumValue None - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 99219820 - EnumValue 395510365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AfkEmailType - EnumValue Purchase - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 99219820 - EnumValue 1385143975 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VendorInvoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AfkEmailType - EnumValue VendorInvoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 99219820 - EnumValue 4149131617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VendorTransfer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AfkEmailType - EnumValue VendorTransfer - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3747719303 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source> </source>
