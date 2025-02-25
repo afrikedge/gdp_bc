@@ -201,6 +201,10 @@ codeunit 50001 "Sales Order Process"
 
     procedure ValidationDeblocage(var SalesH: Record "Sales Header")
     begin
+
+        if (SalesH."Delivery Status" <> SalesH."Delivery Status"::Bloquee) then
+            exit;
+
         Cust.Get(SalesH."Sell-to Customer No.");
 
 

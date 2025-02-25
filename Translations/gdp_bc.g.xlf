@@ -2788,6 +2788,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Customer Revision - Field Customer No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2831768765 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Motif</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Customer Revision - Field Description - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2831768765 - Field 328442170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Mobile Banking</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -61623,6 +61628,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort Import LPSA Transfers - Control GenJrnTemplate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="XmlPort 2445625173 - XmlPortNode 942004695 - Method 192879926 - NamedType 1370456556" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Le transfert %1 existe déjà avec ce numéro document externe %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort Import LPSA Transfers - XmlPortNode Import Data - Method OnBeforeInsertRecord - NamedType Text005</note>
+        </trans-unit>
         <trans-unit id="XmlPort 2436726534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import Notes de crédit Gérant</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -63602,6 +63612,11 @@
           <source>Vous n'êtes pas autorisé à utilisé un compte général sur les commandes</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A01 Purchase Line - NamedType AFK_Text0002</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 296867727 - Field 2024996490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Afk Budget Key</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A01 Purchase Line - Field Afk Budget Key - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 296867727 - Field 4082537809 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Batch Number</source>

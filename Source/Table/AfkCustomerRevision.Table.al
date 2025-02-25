@@ -172,6 +172,11 @@ table 50103 "Afk Customer Revision"
             Editable = false;
             TableRelation = "No. Series";
         }
+        field(40; "Description"; Text[500])
+        {
+            Caption = 'Motif';
+        }
+
     }
     keys
     {

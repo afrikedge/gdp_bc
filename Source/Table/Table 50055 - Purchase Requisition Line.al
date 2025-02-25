@@ -518,6 +518,9 @@ table 50055 "Purchase Requisition Line"
             Caption = 'Item Initial Description';
             Editable = false;
         }
+        field(70001; "Afk Budget Key"; Text[40])
+        {
+        }
     }
 
     keys

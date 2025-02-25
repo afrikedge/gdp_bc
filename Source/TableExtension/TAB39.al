@@ -524,13 +524,19 @@ tableextension 50014 "A01 Purchase Line" extends "Purchase Line"
         field(60000; "MFiles ID"; BigInteger)
         {
         }
+        field(60001; "Afk Budget Key"; Text[40])
+        {
+        }
     }
     keys
     {
         // key(A01Key1; "Purchase Account", "Shortcut Dimension 1 Code")
         // {
         // }
-        key(Key2; "Purch Req No.", "Purch Req Line No.")
+        key(AfkKey1; "Afk Budget Key")
+        {
+        }
+        key(AfkKey2; "Purch Req No.", "Purch Req Line No.")
         {
         }
     }

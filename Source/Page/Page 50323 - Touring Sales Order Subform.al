@@ -55,24 +55,11 @@ page 50323 "Touring Sales Order Subform"
                         //SalesH.SetRange(SalesH."Requested Delivery Date", Today, CalcDate('<+1D>', Today));
 
 
-                        /*
-                        IF SalesH.FINDSET THEN
-                        REPEAT
-                          SalesH.MARK(TRUE);
-                        UNTIL SalesH.NEXT=0;
-                        SalesH.MARKEDONLY(TRUE);*/
-
                         if PAGE.RunModal(45, SalesH) = ACTION::LookupOK then begin
                             Rec."Order No" := SalesH."No.";
                             Rec.Validate("Order No");
                         end;
 
-                    end;
-
-                    trigger OnValidate()
-                    var
-                        SalesH: Record "Sales Header";
-                    begin
                     end;
                 }
                 field("Sell-to Customer No."; Rec."Sell-to Customer No.")

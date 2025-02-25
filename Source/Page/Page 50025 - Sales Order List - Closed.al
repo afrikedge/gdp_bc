@@ -123,6 +123,10 @@ page 50025 "Sales Order List - Closed"
                 {
                     Visible = false;
                 }
+                field(SystemCreatedBy; Rec.SystemCreatedBy)
+                {
+
+                }
             }
         }
         area(factboxes)

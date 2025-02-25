@@ -35,7 +35,7 @@ table 50108 "Afk Approval Flow"
             Caption = 'Approved as';
             TableRelation = "Afk FrontDesk User";
         }
-        field(8; "Actual Status"; Enum "Afk Approval Mode")
+        field(8; "Actual Status"; Enum "Afk CRM Approval Status")
         {
             Caption = 'Actual Status';
         }

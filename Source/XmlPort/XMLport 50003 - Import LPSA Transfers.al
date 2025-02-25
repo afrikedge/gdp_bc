@@ -11,40 +11,47 @@ xmlport 50003 "Import LPSA Transfers"
     {
         textelement(Root)
         {
-            tableelement("Import Data";"Import Data")
+            tableelement("Import Data"; "Import Data")
             {
                 AutoSave = false;
                 XmlName = 'InvoiceData';
                 SourceTableView = SORTING(EntryNo) ORDER(Ascending);
-                fieldattribute(BEXNumber;"Import Data".DocumentNo)
+                fieldattribute(BEXNumber; "Import Data".DocumentNo)
                 {
                 }
-                fieldattribute(OTNumber;"Import Data".ExternalDocNo)
+                fieldattribute(OTNumber; "Import Data".ExternalDocNo)
                 {
                 }
-                fieldattribute(Immatriculation;"Import Data".DocNum1)
+                fieldattribute(Immatriculation; "Import Data".DocNum1)
                 {
                 }
-                fieldattribute(ShipmentDate;"Import Data".PostingDate)
+                fieldattribute(ShipmentDate; "Import Data".PostingDate)
                 {
                 }
-                fieldattribute(ItemNum;"Import Data".DocNum2)
+                fieldattribute(ItemNum; "Import Data".DocNum2)
                 {
                 }
-                fieldattribute(Volume;"Import Data".DebitAmount)
+                fieldattribute(Volume; "Import Data".DebitAmount)
                 {
                 }
-                fieldattribute(DepotOrigin;"Import Data".LocationCode)
+                fieldattribute(DepotOrigin; "Import Data".LocationCode)
                 {
                 }
-                fieldattribute(DepotDest;"Import Data".LocationCode2)
+                fieldattribute(DepotDest; "Import Data".LocationCode2)
                 {
                 }
 
                 trigger OnBeforeInsertRecord()
                 var
                     GLAccNo: Code[20];
+                    Text005: Label 'Le transfert %1 existe déjà avec ce numéro document externe %2';
                 begin
+
+                    TransH.Reset;
+                    TransH.SetRange("External Document No.", "Import Data".ExternalDocNo);
+                    if TransH.FindFirst then
+                        Error(Text005, TransH."No.", "Import Data".ExternalDocNo);
+
 
                     BesoinNo := BesoinNo + 1;
 
@@ -60,17 +67,17 @@ xmlport 50003 "Import LPSA Transfers"
                     TransH."BEX Number" := "Import Data".DocumentNo;
                     TransH.nomchauffeur := "Import Data".DocNum1;
                     Evaluate(TransH."Posting Date", "Import Data".PostingDate);
-                    TransH.Validate("Location Code","Import Data".LocationCode);
-                    TransH.Validate("Transfer-to Code","Import Data".LocationCode2);
-                    TransH.Validate("In-Transit Code",AddOnSetup."LPSA Transit Transfer Location");
+                    TransH.Validate("Location Code", "Import Data".LocationCode);
+                    TransH.Validate("Transfer-to Code", "Import Data".LocationCode2);
+                    TransH.Validate("In-Transit Code", AddOnSetup."LPSA Transit Transfer Location");
                     TransH.Modify;
 
                     TransLine.Init;
                     TransLine."Document Type" := TransLine."Document Type"::Transfer;
                     TransLine."Document No." := TransH."No.";
-                    TransLine.Validate(TransLine."Item No.","Import Data".DocNum2);
-                    TransLine.Validate(Quantity,"Import Data".DebitAmount);
-                    TransLine.Validate(TransLine."Qty to return","Import Data".DebitAmount);
+                    TransLine.Validate(TransLine."Item No.", "Import Data".DocNum2);
+                    TransLine.Validate(Quantity, "Import Data".DebitAmount);
+                    TransLine.Validate(TransLine."Qty to return", "Import Data".DebitAmount);
                     TransLine.Insert;
                 end;
             }
@@ -84,13 +91,13 @@ xmlport 50003 "Import LPSA Transfers"
         {
             area(content)
             {
-                field(GenJrnTemplate;GenJrnTemplate)
+                field(GenJrnTemplate; GenJrnTemplate)
                 {
                     Caption = 'General journal template';
                     TableRelation = "Gen. Journal Template";
                     Visible = false;
                 }
-                field(GenJrnBatch;GenJrnBatch)
+                field(GenJrnBatch; GenJrnBatch)
                 {
                     Caption = 'Posting journal Batch';
                     TableRelation = "Gen. Journal Batch";
@@ -125,7 +132,7 @@ xmlport 50003 "Import LPSA Transfers"
 
         LineNo := 0;
 
-        BesoinNo :=0;
+        BesoinNo := 0;
         Window.Open(Text008);
     end;
 

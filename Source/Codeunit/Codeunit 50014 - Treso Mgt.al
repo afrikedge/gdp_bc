@@ -934,7 +934,7 @@ codeunit 50014 "Treso Mgt"
 
         Vend1.Get(GenJnlLine."Account No.");
 
-        AddOnSetup.Get;
+        AddOnSetup2.Get;
 
         GenJnlLine3.Get(GenJnlLine."Journal Template Name", GenJnlLine."Journal Batch Name", GenJnlLine."Line No.");
         GenJnlLine.SetRange("Journal Template Name", GenJnlLine."Journal Template Name");

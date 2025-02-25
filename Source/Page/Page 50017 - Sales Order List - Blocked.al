@@ -164,6 +164,7 @@ page 50017 "Sales Order List - Blocked"
                 {
                     Visible = false;
                 }
+
             }
         }
         area(factboxes)
