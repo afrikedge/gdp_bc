@@ -523,16 +523,22 @@ report 50191 "Posted Sales Invoice"
             column(Date; Format("Posting Date"))
             {
             }
-            column(Customer_No_; "Sell-to Customer No.")
+            column(Customer_No_; Customer_No_)
             {
             }
-            column(Customer_Name; "Sell-to Customer Name")
+            column(Customer_Name; Customer_Name)
             {
             }
-            column(Customer_Name_2; "Sell-to Customer Name 2")
+            column(Customer_Name_2; Customer_Name_2)
             {
             }
-            column(Sell_to_Address; "Sell-to Address")
+            column(Sell_to_Address; Sell_to_Address)
+            {
+            }
+            column(Sell_to_Address_2; Sell_to_Address_2)
+            {
+            }
+            column(Post_Code; Post_Code)
             {
             }
             column(Resp_Center; "Responsibility Center")
@@ -1548,6 +1554,12 @@ report 50191 "Posted Sales Invoice"
                     STAT := Cust."STAT Code";
                     CIF := Cust."CIF/CIS";
                     ChannelCode := Cust."Sales Channel Code";
+                    Customer_No_ := Cust."No.";
+                    Customer_Name := Cust.Name;
+                    Customer_Name_2 := Cust."Search Name";
+                    Sell_to_Address := Cust.Address;
+                    Sell_to_Address_2 := Cust."Address 2";
+                    Post_Code := Cust."Post Code";
                 end;
 
                 if CompanyInfos.Get() then
@@ -1816,6 +1828,12 @@ report 50191 "Posted Sales Invoice"
         WorkDescriptionInstream: InStream;
 
         Lines: Integer;
+        Customer_No_: Code[20];
+        Customer_Name: Text[100];
+        Customer_Name_2: Code[100];
+        Sell_to_Address: Text[100];
+        Sell_to_Address_2: Text[50];
+        Post_Code: Code[20];
         LineNumber: Integer;
         LinesNumb: Integer;
         LineNumberText: Code[2];
