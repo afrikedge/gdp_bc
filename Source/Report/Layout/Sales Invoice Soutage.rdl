@@ -1090,6 +1090,7 @@
                                                             <PaddingBottom>2pt</PaddingBottom>
                                                           </Style>
                                                         </Textbox>
+                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                   </TablixCells>
@@ -1437,10 +1438,21 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value />
+                                                                  <Value>=Fields!Sell_to_Address_2.Value</Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
-                                                                    <FontWeight>Bold</FontWeight>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve">  </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value>=Fields!Post_Code.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -1477,7 +1489,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value>=Fields!ObjectLbl.Value</Value>
+                                                                  <Value />
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                     <FontWeight>Bold</FontWeight>
@@ -1512,7 +1524,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value>=Fields!Sell_to_Address.Value</Value>
+                                                                  <Value />
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
@@ -1551,7 +1563,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value />
+                                                                  <Value>=Fields!ObjectLbl.Value</Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                     <FontWeight>Bold</FontWeight>
@@ -1586,10 +1598,9 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value />
+                                                                  <Value>=Fields!Sell_to_Address.Value</Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
-                                                                    <FontWeight>Bold</FontWeight>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -4698,6 +4709,12 @@ End Function
         </Field>
         <Field Name="Sell_to_Address">
           <DataField>Sell_to_Address</DataField>
+        </Field>
+        <Field Name="Sell_to_Address_2">
+          <DataField>Sell_to_Address_2</DataField>
+        </Field>
+        <Field Name="Post_Code">
+          <DataField>Post_Code</DataField>
         </Field>
         <Field Name="Loading_Date">
           <DataField>Loading_Date</DataField>
