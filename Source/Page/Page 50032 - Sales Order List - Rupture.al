@@ -158,6 +158,9 @@ page 50032 "Sales Order List - Rupture"
                 {
                     Visible = JobQueueActive;
                 }
+                field("User ID"; Rec."User ID")
+                {
+                }
             }
         }
         area(factboxes)

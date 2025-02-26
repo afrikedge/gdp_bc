@@ -123,6 +123,9 @@ page 50023 "Sales Order List - Invoiced"
                 {
                     Visible = false;
                 }
+                field(SystemCreatedBy; rec.SystemCreatedBy)
+                {
+                }
             }
         }
         area(factboxes)

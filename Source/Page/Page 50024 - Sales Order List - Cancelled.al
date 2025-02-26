@@ -123,6 +123,9 @@ page 50024 "Sales Order List - Cancelled"
                 {
                     Visible = false;
                 }
+                field(SystemCreatedBy; Rec.SystemCreatedBy)
+                {
+                }
             }
         }
         area(factboxes)

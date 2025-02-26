@@ -473,16 +473,17 @@ codeunit 50020 "Purchase Requisition Mgt"
     procedure CreatePurchaseBudgetLines(PurchaseH: Record "Purchase Header")
     var
         BudgetLine: Record "Purchase Budget Line";
+        TempPurchLine: Record "Purchase Line" temporary;
         PurchLine: Record "Purchase Line";
-        OldAcc: Code[20];
-        OldAccAmt: Decimal;
-        HaveLines: Boolean;
-        NewAcc: Code[20];
+        //OldAcc: Code[20];
+        //OldAccAmt: Decimal;
+        //HaveLines: Boolean;
+        PurchAccNo: Code[20];
         GLAcc: Record "G/L Account";
         DateDeb: Date;
         DateFin: Date;
-        OldCodeBudget: Code[20];
-        NewCodeBudget: Code[20];
+        //OldCodeBudget: Code[20];
+        BudgetCode: Code[20];
     begin
 
         GetPeriod(PurchaseH."Document Date", DateDeb, DateFin);
@@ -494,55 +495,51 @@ codeunit 50020 "Purchase Requisition Mgt"
         BudgetLine.DeleteAll;
 
         PurchLine.Reset;
-        PurchLine.SetCurrentKey("Purchase Account", "Shortcut Dimension 1 Code");
         PurchLine.SetRange("Document Type", PurchaseH."Document Type");
         PurchLine.SetRange("Document No.", PurchaseH."No.");
-        if PurchLine.FindSet then
-            OldAcc := PurchLine."Purchase Account";
-        OldCodeBudget := PurchLine."Shortcut Dimension 1 Code";
-        repeat
+        if PurchLine.FindSet() then
+            repeat
+                TempPurchLine.Init();
+                TempPurchLine.TransferFields(PurchLine);
+                TempPurchLine."Afk Budget Key" := TempPurchLine."Purchase Account" + TempPurchLine."Shortcut Dimension 1 Code";
+                TempPurchLine.Insert();
+            until PurchLine.Next() = 0;
 
-            NewAcc := PurchLine."Purchase Account";
-            NewCodeBudget := PurchLine."Shortcut Dimension 1 Code";
-            CheckData(NewAcc, NewCodeBudget, PurchLine."Line No.");
+        TempPurchLine.Reset;
+        TempPurchLine.SetCurrentKey("Afk Budget Key");
+        TempPurchLine.SetRange("Document Type", PurchaseH."Document Type");
+        TempPurchLine.SetRange("Document No.", PurchaseH."No.");
+        if TempPurchLine.FindSet then
+            repeat
 
-            if ((OldAcc <> NewAcc) or (OldCodeBudget <> NewCodeBudget)) then begin
-                Clear(BudgetLine);
-                BudgetLine."Document Type" := PurchaseH."Document Type";
-                BudgetLine."Document No." := PurchaseH."No.";
-                BudgetLine."G/L Account No" := OldAcc;
-                BudgetLine."Global Dimension 1" := OldCodeBudget;
-                if GLAcc.Get(OldAcc) then BudgetLine."G/L Account Name" := GLAcc.Name;
+                PurchAccNo := TempPurchLine."Purchase Account";
+                BudgetCode := TempPurchLine."Shortcut Dimension 1 Code";
+                CheckData(PurchAccNo, BudgetCode, TempPurchLine."Line No.");
 
-                CalcValuesBudget(BudgetLine, PurchaseH."Document Date", PurchaseH."No.", OldAcc, OldCodeBudget);
+                BudgetLine.Reset();
+                BudgetLine.SetRange("Document Type", PurchaseH."Document Type");
+                BudgetLine.SetRange("Document No.", PurchaseH."No.");
+                BudgetLine.SetRange("G/L Account No", PurchAccNo);
+                BudgetLine.SetRange("Global Dimension 1", BudgetCode);
+                if (BudgetLine.FindFirst()) then begin
+                    BudgetLine."Document Amount" := BudgetLine."Document Amount" + ConvertAmtLCY(PurchaseH."Document Date", TempPurchLine."Line Amount", PurchaseH."Currency Code");
+                    BudgetLine.Modify();
+                end else begin
+                    Clear(BudgetLine);
+                    BudgetLine."Document Type" := PurchaseH."Document Type";
+                    BudgetLine."Document No." := PurchaseH."No.";
+                    BudgetLine."G/L Account No" := PurchAccNo;
+                    BudgetLine."Global Dimension 1" := BudgetCode;
+                    if GLAcc.Get(PurchAccNo) then BudgetLine."G/L Account Name" := GLAcc.Name;
 
-                if OldAcc <> '' then BudgetLine.Insert;
-                OldAcc := PurchLine."Purchase Account";
-                OldCodeBudget := PurchLine."Shortcut Dimension 1 Code";
-                OldAccAmt := ConvertAmtLCY(PurchaseH."Document Date", PurchLine."Line Amount", PurchaseH."Currency Code");
-            end else begin
-                OldAccAmt := OldAccAmt + ConvertAmtLCY(PurchaseH."Document Date", PurchLine."Line Amount", PurchaseH."Currency Code");
-            end;
-            HaveLines := true;
-        until PurchLine.Next = 0;
+                    CalcValuesBudget(BudgetLine, PurchaseH."Document Date", PurchaseH."No.", PurchAccNo, BudgetCode);
 
-        //Derniere ligne
-        if HaveLines then begin
-            Clear(BudgetLine);
-            BudgetLine."Document Type" := PurchaseH."Document Type";
-            BudgetLine."Document No." := PurchaseH."No.";
-            BudgetLine."G/L Account No" := OldAcc;
+                    BudgetLine."Document Amount" := BudgetLine."Document Amount" + ConvertAmtLCY(PurchaseH."Document Date", TempPurchLine."Line Amount", PurchaseH."Currency Code");
 
-            if GLAcc.Get(OldAcc) then BudgetLine."G/L Account Name" := GLAcc.Name;
-            BudgetLine."Global Dimension 1" := OldCodeBudget;
-            BudgetLine."Document Amount" := OldAccAmt;
-
-            CalcValuesBudget(BudgetLine, PurchaseH."Document Date", PurchaseH."No.", OldAcc, OldCodeBudget);
-
-            //IF (BudgetLine."Remaining Amount"<0) THEN BudgetLine."Remaining Amount":=0;
-
-            if OldAcc <> '' then BudgetLine.Insert;
-        end;
+                    if PurchAccNo <> '' then
+                        BudgetLine.Insert;
+                end;
+            until TempPurchLine.Next = 0;
     end;
 
     procedure CreatePurchaseBudgetLinesFromReq(PurchaseH: Record "Purchase Requisition")
@@ -571,9 +568,10 @@ codeunit 50020 "Purchase Requisition Mgt"
         BudgetLine.SetRange("Document No.", PurchaseH."No.");
         BudgetLine.DeleteAll;
 
+
+
         PurchLine.Reset;
         PurchLine.SetCurrentKey("Purchase Account", "Shortcut Dimension 1 Code");
-        //PurchLine.SETRANGE("Document Type",BudgetLine."Document Type"::Requisition);
         PurchLine.SetRange("Document No", PurchaseH."No.");
         if PurchLine.FindSet then
             OldAcc := PurchLine."Purchase Account";

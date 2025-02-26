@@ -287,31 +287,31 @@ codeunit 50024 EmailMgt
         exit(UserSetup."Mail acheteur");
     end;
 
-    local procedure InsertEmailToSend(GenJrnLine: Record "Gen. Journal Line"; FileName: Text)
-    var
-        EmailToSend: Record "Tampon Payment Vendor Email";
-        NextID: Integer;
-    begin
+    // local procedure InsertEmailToSend(GenJrnLine: Record "Gen. Journal Line"; FileName: Text)
+    // var
+    //     EmailToSend: Record "Tampon Payment Vendor Email";
+    //     NextID: Integer;
+    // begin
 
-        exit;
+    //     exit;
 
-        EmailToSend.Reset;
-        if EmailToSend.FindLast then
-            NextID := EmailToSend.EntryID + 1
-        else
-            NextID := 1;
+    //     EmailToSend.Reset;
+    //     if EmailToSend.FindLast then
+    //         NextID := EmailToSend.EntryID + 1
+    //     else
+    //         NextID := 1;
 
-        EmailToSend.Init;
-        EmailToSend.EntryID := NextID;
-        EmailToSend."Vendor No." := GenJrnLine."Account No.";
-        EmailToSend."Document No." := GenJrnLine."Document No.";
-        EmailToSend.Attachment := FileName;
-        EmailToSend."User ID" := UserId;
-        EmailToSend."Entry Date" := Today;
-        EmailToSend.Amount := Abs(GenJrnLine.Amount);
-        EmailToSend."Payment Method Code" := GenJrnLine."Payment Method Code";
-        EmailToSend.Insert;
-    end;
+    //     EmailToSend.Init;
+    //     EmailToSend.EntryID := NextID;
+    //     EmailToSend."Vendor No." := GenJrnLine."Account No.";
+    //     EmailToSend."Document No." := GenJrnLine."Document No.";
+    //     EmailToSend.Attachment := FileName;
+    //     EmailToSend."User ID" := UserId;
+    //     EmailToSend."Entry Date" := Today;
+    //     EmailToSend.Amount := Abs(GenJrnLine.Amount);
+    //     EmailToSend."Payment Method Code" := GenJrnLine."Payment Method Code";
+    //     EmailToSend.Insert;
+    // end;
 
     local procedure GenerateReportPDF(ReportID: Integer; var OutStream: OutStream)
     var

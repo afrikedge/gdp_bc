@@ -12,6 +12,7 @@ report 50200 "AfkCpteBancaireGrdLivre"
     Caption = 'Comptes Bancaire - Grand Livre';
     UsageCategory = ReportsAndAnalysis;
     WordMergeDataItem = "Bank Account";
+    DataAccessIntent = ReadOnly;
 
     dataset
     {

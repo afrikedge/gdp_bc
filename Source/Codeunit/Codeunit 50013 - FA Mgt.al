@@ -150,11 +150,14 @@ codeunit 50013 "FA Mgt"
         GenJnlLine.Validate("Bal. VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
 
 
-        DimId := CreateDim(DATABASE::"Fixed Asset", FA."No.", GenJnlLine);
-        if DimId > 0 then
-            GenJnlLine."Dimension Set ID" := DimId;
-        //GenJnlLine."Shortcut Dimension 1 Code" := FA."Global Dimension 1 Code";
-        //GenJnlLine."Shortcut Dimension 2 Code" := FA."Global Dimension 1 Code";
+
+
+        //DimId := CreateDim(DATABASE::"Fixed Asset", FA."No.", GenJnlLine);
+        CreateDimFromDefaultDim(GenJnlLine, FA);
+        // if DimId > 0 then
+        //     GenJnlLine."Dimension Set ID" := DimId;
+        // GenJnlLine."Shortcut Dimension 1 Code" := FA."Global Dimension 1 Code";
+        // GenJnlLine."Shortcut Dimension 2 Code" := FA."Global Dimension 1 Code";
         //GenJnlLine."Dimension Set ID" := FA."Dimension Set ID";
 
 
@@ -293,6 +296,37 @@ codeunit 50013 "FA Mgt"
         //     TableID, No, GenJrnLine1."Source Code",
         //     GenJrnLine1."Shortcut Dimension 1 Code", GenJrnLine1."Shortcut Dimension 2 Code", 0, 0));
     end;
+
+    procedure CreateDimFromDefaultDim(var GenJrnLine1: Record "Gen. Journal Line"; FA: record "Fixed Asset")
+    var
+        DefaultDimSource: List of [Dictionary of [Integer, Code[20]]];
+    begin
+        InitDefaultDimensionSources(DefaultDimSource, FA);
+        CreateDim(GenJrnLine1, DefaultDimSource);
+    end;
+
+    local procedure InitDefaultDimensionSources(var DefaultDimSource: List of [Dictionary of [Integer, Code[20]]]; FA: record "Fixed Asset")
+    begin
+        DimMgt.AddDimSource(DefaultDimSource, Database::"Fixed Asset", FA."No.", false);
+
+    end;
+
+    procedure CreateDim(var GenJrnLine1: Record "Gen. Journal Line"; DefaultDimSource: List of [Dictionary of [Integer, Code[20]]])
+    var
+        IsHandled: Boolean;
+        OldDimSetID: Integer;
+    begin
+        GenJrnLine1."Shortcut Dimension 1 Code" := '';
+        GenJrnLine1."Shortcut Dimension 2 Code" := '';
+        OldDimSetID := GenJrnLine1."Dimension Set ID";
+        GenJrnLine1."Dimension Set ID" :=
+          DimMgt.GetRecDefaultDimID(
+            GenJrnLine1, 0, DefaultDimSource, GenJrnLine1."Source Code", GenJrnLine1."Shortcut Dimension 1 Code", GenJrnLine1."Shortcut Dimension 2 Code", 0, 0);
+
+    end;
+
+
+
 
     procedure GenerateNosTransfer(Update: Boolean): Code[20]
     begin
