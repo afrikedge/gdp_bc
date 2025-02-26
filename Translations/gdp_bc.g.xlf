@@ -12308,6 +12308,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requisition Line - NamedType Text001</note>
         </trans-unit>
+        <trans-unit id="Table 3438964027 - Field 2024996490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Afk Budget Key</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requisition Line - Field Afk Budget Key - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3438964027 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>

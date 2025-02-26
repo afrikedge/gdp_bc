@@ -517,6 +517,8 @@ codeunit 50020 "Purchase Requisition Mgt"
                 CheckData(PurchAccNo, BudgetCode, TempPurchLine."Line No.");
 
                 BudgetLine.Reset();
+                BudgetLine.SetRange("Document Type", PurchaseH."Document Type");
+                BudgetLine.SetRange("Document No.", PurchaseH."No.");
                 BudgetLine.SetRange("G/L Account No", PurchAccNo);
                 BudgetLine.SetRange("Global Dimension 1", BudgetCode);
                 if (BudgetLine.FindFirst()) then begin
