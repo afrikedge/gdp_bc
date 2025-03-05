@@ -1229,12 +1229,13 @@ codeunit 50031 VendorInvoiceMgt
 
     procedure SendEmail_RejetFsseur(VendInv: Record "Vendor Invoice Doc"; ToAdress: Text[80]; CCAdress: Text)
     var
-        // SMTPMail: Codeunit "SMTP Mail";
         EmailToSend: Record "Tampon Payment Vendor Email";
         EmailMgt: Codeunit EmailMgt;
         NewObjet: Text;
         Objet: Text;
     begin
+
+        Objet := STRSUBSTNO(ObjetEmailFsseur, VendInv."Vendor Invoice No.", FORMAT(VendInv."Invoice Date"));
 
         EmailToSend.Init();
         //EmailToSend.EntryID := EmailMgt.GetNextEntryNoInEmailRec();

@@ -302,7 +302,7 @@ report 50009 "Recap Posted Import MoneyTech"
         DisplayAdditionalFeeNote: Boolean;
         OrderNoCaptionLbl: Label 'Order No.';
         Location: Record Location;
-        LocationName: Text[60];
+        LocationName: Text[100];
         Desc_Caption: Label 'DESIGNATION';
         No_LineCaption: Label 'REFERENCE';
         UnitofMeasure_Caption: Label 'UNITE';

@@ -349,7 +349,7 @@ report 50058 "ND Bordereau Paiement"
         MontLetter: Label 'Arrêté la présente note de débit à la somme de :   ';
         OrderNoCaptionLbl: Label 'Order No.';
         Location: Record Location;
-        LocationName: Text[60];
+        LocationName: Text[100];
         Desc_Caption: Label 'DESIGNATION';
         No_LineCaption: Label 'REFERENCE';
         UnitofMeasure_Caption: Label 'UNITE';

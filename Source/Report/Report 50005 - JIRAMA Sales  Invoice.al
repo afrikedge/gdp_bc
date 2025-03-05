@@ -1310,7 +1310,7 @@ report 50005 "JIRAMA Sales  Invoice"
         MontLetter: Label 'Arrêtée la présente facture à la somme de   ';
         OrderNoCaptionLbl: Label 'Order No.';
         Location: Record "Responsibility Center";
-        LocationName: Text[60];
+        LocationName: Text[100];
         Desc_SalesInvLineCaption: Label 'PRODUIT';
         No_SalesInvLineCaption: Label 'REFERENCE';
         UnitofMeasure_SalesInvLineCaption: Label 'UNITE';

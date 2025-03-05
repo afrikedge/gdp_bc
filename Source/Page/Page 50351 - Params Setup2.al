@@ -103,6 +103,9 @@ page 50351 "Params Setup2"
                 field("Activate Email Service"; Rec."Activate Email Service")
                 {
                 }
+                field("Email for Customers Creation"; Rec."Email for Customers Creation")
+                {
+                }
             }
         }
     }

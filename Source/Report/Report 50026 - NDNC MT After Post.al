@@ -434,7 +434,7 @@
 //         MontLetter: Label 'Arrêté le présent document à la somme de :   ';
 //         OrderNoCaptionLbl: Label 'Order No.';
 //         Location: Record Location;
-//         LocationName: Text[60];
+//         LocationName: Text[100];
 //         Desc_Caption: Label 'DESIGNATION';
 //         No_LineCaption: Label 'REFERENCE';
 //         UnitofMeasure_Caption: Label 'UNITE';

@@ -8,7 +8,7 @@ table 50011 "PO Tracking Information"
         field(1; "Code"; Code[20])
         {
         }
-        field(2; Description; Text[60])
+        field(2; Description; Text[100])
         {
         }
     }
