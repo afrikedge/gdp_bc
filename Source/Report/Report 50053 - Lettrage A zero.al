@@ -313,7 +313,7 @@ report 50053 "Lettrage A zero"
         TmpDetCustLedgEntry: Record "Detailed Cust. Ledg. Entry" temporary;
         Counter: Integer;
         DocumentNo: Code[20];
-        DocDescrip: Text[60];
+        DocDescrip: Text[100];
         DocDate: Date;
         AmountLCY: Decimal;
         RefCust: Text[20];

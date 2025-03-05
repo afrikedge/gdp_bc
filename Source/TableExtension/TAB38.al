@@ -293,7 +293,7 @@ tableextension 50013 "A02 Purchase Header" extends "Purchase Header"
 
             trigger OnLookup()
             var
-                VendPostingGroup: Record "93";
+                VendPostingGroup: Record "Vendor Posting Group";
             begin
                 IF PAGE.RUNMODAL(50139, VendPostingGroup) = ACTION::LookupOK THEN BEGIN
                     VALIDATE("Vendor Retention Posting Group", VendPostingGroup.Code);
@@ -308,12 +308,7 @@ tableextension 50013 "A02 Purchase Header" extends "Purchase Header"
             //This property is currently not supported
             //TestTableRelation = false;
 
-            trigger OnLookup()
-            var
-                UserMgt: Codeunit "418";
-            begin
-                //UserMgt.LookupUserID("User ID");
-            end;
+
         }
         field(50061; "Processing Status"; Option)
         {

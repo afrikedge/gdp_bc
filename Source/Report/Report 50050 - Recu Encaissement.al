@@ -325,7 +325,7 @@ report 50050 "Recu Encaissement"
         CustLedgEntry: Record "Cust. Ledger Entry";
         Counter: Integer;
         DocumentNo: Code[30];
-        DocDescrip: Text[60];
+        DocDescrip: Text[100];
         DocDate: Date;
         AmountLCY: Decimal;
         RefCust: Text[30];

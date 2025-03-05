@@ -1230,7 +1230,7 @@ report 50048 "Sales  Invoice ND"
         MontLetter: Label 'Facture arrêtée à la somme de :   ';
         OrderNoCaptionLbl: Label 'Order No.';
         Location: Record Location;
-        LocationName: Text[60];
+        LocationName: Text[100];
         Desc_SalesInvLineCaption: Label 'DESIGNATION';
         No_SalesInvLineCaption: Label 'REFERENCE';
         UnitofMeasure_SalesInvLineCaption: Label 'UNITE';

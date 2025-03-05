@@ -1030,7 +1030,7 @@ report 50049 "Sales  Cr Memo NC"
         TotalCptnLbl: Label 'Total';
         SalesCrMemoLineDiscCaptionLbl: Label 'Discount %';
         Location: Record Location;
-        LocationName: Text[60];
+        LocationName: Text[100];
         NbTLet: Report Check;
         TotalAmountLetter: array[2] of Text[150];
         CondPaieName: Text[50];

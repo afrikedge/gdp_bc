@@ -538,71 +538,71 @@ codeunit 50032 "EventsSubscribers Code"
     //     AFKVendInvMgt.ValidationAutoFactureCompta(PurchaseHeader, abs(TotalPrepmtInvLineBuffer."Amount Incl. VAT"), abs(TotalPrepmtInvLineBuffer.Amount));
     // end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPostInvoice', '', true, true)]
-    local procedure PurchPost_OnAfterPostInvoice(var PurchHeader: Record "Purchase Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; TotalPurchLine: Record "Purchase Line"; TotalPurchLineLCY: Record "Purchase Line"; CommitIsSupressed: Boolean; var VendorLedgerEntry: Record "Vendor Ledger Entry")
-    var
-        VendAFK: Record Vendor;
-        AFKVendPostingGroup: Record "Vendor Posting Group";
-        SourceDeductionBaseAmt: Decimal;
-        SourceDeductionBaseAmtLCY: Decimal;
-        GenJnlLine: Record "Gen. Journal Line";
-        CurrExchRate: Record "Currency Exchange Rate";
-        Currency: record Currency;
-        TextAFK001: label 'La retenue à la source ne doit pas être activée en cas d''achat au comptant';
-    begin
-        IF PurchHeader."Vendor Retention Posting Group" <> '' THEN begin
-            IF PurchHeader."Bal. Account No." <> '' THEN
-                ERROR(TextAFK001);
-            AFKVendPostingGroup.GET(PurchHeader."Vendor Retention Posting Group");
-            AFKVendPostingGroup.TESTFIELD("Retention Account");
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPostInvoice', '', true, true)]
+    // local procedure PurchPost_OnAfterPostInvoice(var PurchHeader: Record "Purchase Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; TotalPurchLine: Record "Purchase Line"; TotalPurchLineLCY: Record "Purchase Line"; CommitIsSupressed: Boolean; var VendorLedgerEntry: Record "Vendor Ledger Entry")
+    // var
+    //     VendAFK: Record Vendor;
+    //     AFKVendPostingGroup: Record "Vendor Posting Group";
+    //     SourceDeductionBaseAmt: Decimal;
+    //     SourceDeductionBaseAmtLCY: Decimal;
+    //     GenJnlLine: Record "Gen. Journal Line";
+    //     CurrExchRate: Record "Currency Exchange Rate";
+    //     Currency: record Currency;
+    //     TextAFK001: label 'La retenue à la source ne doit pas être activée en cas d''achat au comptant';
+    // begin
+    //     IF PurchHeader."Vendor Retention Posting Group" <> '' THEN begin
+    //         IF PurchHeader."Bal. Account No." <> '' THEN
+    //             ERROR(TextAFK001);
+    //         AFKVendPostingGroup.GET(PurchHeader."Vendor Retention Posting Group");
+    //         AFKVendPostingGroup.TESTFIELD("Retention Account");
 
-            GenJnlLine.INIT;
-            GenJnlLine."Posting Date" := PurchHeader."Posting Date";
-            GenJnlLine."Document Date" := PurchHeader."Document Date";
-            GenJnlLine.Description := PurchHeader."Posting Description";
-            GenJnlLine."Shortcut Dimension 1 Code" := PurchHeader."Shortcut Dimension 1 Code";
-            GenJnlLine."Shortcut Dimension 2 Code" := PurchHeader."Shortcut Dimension 2 Code";
-            GenJnlLine."Dimension Set ID" := PurchHeader."Dimension Set ID";
-            GenJnlLine."Reason Code" := PurchHeader."Reason Code";
-            GenJnlLine."Account Type" := GenJnlLine."Account Type"::Vendor;
-            GenJnlLine."Account No." := PurchHeader."Pay-to Vendor No.";
-            GenJnlLine."Document Type" := GenJnlLine."Document Type"::" ";
-            GenJnlLine."Document No." := VendorLedgerEntry."Document No.";
-            GenJnlLine."External Document No." := VendorLedgerEntry."External Document No.";
-            GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
-            GenJnlLine."Bal. Account No." := AFKVendPostingGroup."Retention Account";
-            GenJnlLine."Currency Code" := PurchHeader."Currency Code";
+    //         GenJnlLine.INIT;
+    //         GenJnlLine."Posting Date" := PurchHeader."Posting Date";
+    //         GenJnlLine."Document Date" := PurchHeader."Document Date";
+    //         GenJnlLine.Description := PurchHeader."Posting Description";
+    //         GenJnlLine."Shortcut Dimension 1 Code" := PurchHeader."Shortcut Dimension 1 Code";
+    //         GenJnlLine."Shortcut Dimension 2 Code" := PurchHeader."Shortcut Dimension 2 Code";
+    //         GenJnlLine."Dimension Set ID" := PurchHeader."Dimension Set ID";
+    //         GenJnlLine."Reason Code" := PurchHeader."Reason Code";
+    //         GenJnlLine."Account Type" := GenJnlLine."Account Type"::Vendor;
+    //         GenJnlLine."Account No." := PurchHeader."Pay-to Vendor No.";
+    //         GenJnlLine."Document Type" := GenJnlLine."Document Type"::" ";
+    //         GenJnlLine."Document No." := VendorLedgerEntry."Document No.";
+    //         GenJnlLine."External Document No." := VendorLedgerEntry."External Document No.";
+    //         GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
+    //         GenJnlLine."Bal. Account No." := AFKVendPostingGroup."Retention Account";
+    //         GenJnlLine."Currency Code" := PurchHeader."Currency Code";
 
-            SourceDeductionBaseAmtLCY := TotalPurchLineLCY.Amount;
-            SourceDeductionBaseAmt :=
-              CurrExchRate.ExchangeAmtLCYToFCY(
-                PurchHeader."Posting Date", PurchHeader."Currency Code",
-                SourceDeductionBaseAmtLCY, PurchHeader."Currency Factor");
+    //         SourceDeductionBaseAmtLCY := TotalPurchLineLCY.Amount;
+    //         SourceDeductionBaseAmt :=
+    //           CurrExchRate.ExchangeAmtLCYToFCY(
+    //             PurchHeader."Posting Date", PurchHeader."Currency Code",
+    //             SourceDeductionBaseAmtLCY, PurchHeader."Currency Factor");
 
-            GenJnlLine.Amount := ROUND(SourceDeductionBaseAmt * (AFKVendPostingGroup."Retention %" / 100), Currency."Amount Rounding Precision");
-            GenJnlLine.Correction := PurchHeader.Correction;
-            GenJnlLine."Source Currency Code" := PurchHeader."Currency Code";
-            GenJnlLine."Source Currency Amount" := GenJnlLine.Amount;
-            GenJnlLine.Destinataire := 'AFK_RETENUE';
+    //         GenJnlLine.Amount := ROUND(SourceDeductionBaseAmt * (AFKVendPostingGroup."Retention %" / 100), Currency."Amount Rounding Precision");
+    //         GenJnlLine.Correction := PurchHeader.Correction;
+    //         GenJnlLine."Source Currency Code" := PurchHeader."Currency Code";
+    //         GenJnlLine."Source Currency Amount" := GenJnlLine.Amount;
+    //         GenJnlLine.Destinataire := 'AFK_RETENUE';
 
-            GenJnlLine."Amount (LCY)" := ROUND(SourceDeductionBaseAmtLCY * (AFKVendPostingGroup."Retention %" / 100));
-            IF PurchHeader."Currency Code" = '' THEN
-                GenJnlLine."Currency Factor" := 1
-            ELSE
-                GenJnlLine."Currency Factor" := PurchHeader."Currency Factor";
-            GenJnlLine."Applies-to Doc. Type" := VendorLedgerEntry."Document Type";
-            GenJnlLine."Applies-to Doc. No." := VendorLedgerEntry."Document No.";
-            GenJnlLine."Source Type" := GenJnlLine."Source Type"::Vendor;
-            GenJnlLine."Source No." := PurchHeader."Pay-to Vendor No.";
-            GenJnlLine."Source Code" := VendorLedgerEntry."Source Code";
-            GenJnlLine."Posting No. Series" := PurchHeader."Posting No. Series";
-            GenJnlLine."IC Partner Code" := PurchHeader."Pay-to IC Partner Code";
-            GenJnlLine."Allow Zero-Amount Posting" := TRUE;
-            GenJnlLine."Salespers./Purch. Code" := PurchHeader."Purchaser Code";
-            IF GenJnlLine.Amount <> 0 THEN
-                GenJnlPostLine.RunWithCheck(GenJnlLine);
-        end;
-    end;
+    //         GenJnlLine."Amount (LCY)" := ROUND(SourceDeductionBaseAmtLCY * (AFKVendPostingGroup."Retention %" / 100));
+    //         IF PurchHeader."Currency Code" = '' THEN
+    //             GenJnlLine."Currency Factor" := 1
+    //         ELSE
+    //             GenJnlLine."Currency Factor" := PurchHeader."Currency Factor";
+    //         GenJnlLine."Applies-to Doc. Type" := VendorLedgerEntry."Document Type";
+    //         GenJnlLine."Applies-to Doc. No." := VendorLedgerEntry."Document No.";
+    //         GenJnlLine."Source Type" := GenJnlLine."Source Type"::Vendor;
+    //         GenJnlLine."Source No." := PurchHeader."Pay-to Vendor No.";
+    //         GenJnlLine."Source Code" := VendorLedgerEntry."Source Code";
+    //         GenJnlLine."Posting No. Series" := PurchHeader."Posting No. Series";
+    //         GenJnlLine."IC Partner Code" := PurchHeader."Pay-to IC Partner Code";
+    //         GenJnlLine."Allow Zero-Amount Posting" := TRUE;
+    //         GenJnlLine."Salespers./Purch. Code" := PurchHeader."Purchaser Code";
+    //         IF GenJnlLine.Amount <> 0 THEN
+    //             GenJnlPostLine.RunWithCheck(GenJnlLine);
+    //     end;
+    // end;
 
 
 

@@ -79,6 +79,9 @@ codeunit 50041 "Afk Api Interface Mgt"
             'documentlink_delete':
                 exit(DdeDeblocageMgt.RunLinkDocument(input, true));
 
+            'customer_reassign':
+                exit(DdeDeblocageMgt.Customer_Reassign(input));
+
 
             // 'orders_item_getPrice':
             //     exit(OrdersMgt.GetUnitPrice(input));

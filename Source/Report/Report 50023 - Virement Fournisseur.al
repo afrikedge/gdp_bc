@@ -275,14 +275,14 @@ report 50023 "Virement Fournisseur"
         Vend: Record Vendor;
         NbTLet: Report Check;
         TotalAmountLetter: array[2] of Text[150];
-        ComBankCode: Text[60];
+        ComBankCode: Text[100];
         Reference: Text[30];
-        VendBankCode: Text[60];
+        VendBankCode: Text[100];
         Text028: Label '%1 ne dispose pas de code IBAN';
-        NomDestinataire: Text[60];
-        CodeSwiftDest: Text[60];
-        NomBeneficiaire: Text[60];
-        NomBanqueDestinataire: Text[60];
+        NomDestinataire: Text[100];
+        CodeSwiftDest: Text[100];
+        NomBeneficiaire: Text[100];
+        NomBanqueDestinataire: Text[100];
         DestBank: Record "Bank Account";
     //Amount_InWords: Text;
 }

@@ -261,7 +261,7 @@ report 50185 "Avis Paiement Fournisseur"
         VendLedgEntry: Record "Vendor Ledger Entry";
         Counter: Integer;
         DocumentNo: Code[20];
-        DocDescrip: Text[60];
+        DocDescrip: Text[100];
         DocDate: Date;
         AmountLCY: Decimal;
         RefFour: Text[50];

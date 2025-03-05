@@ -424,7 +424,7 @@ report 50067 "ND / NC Vendor After"
         MontLetter: Label 'Arrêté le présent document à la somme de :   ';
         OrderNoCaptionLbl: Label 'Order No.';
         Location: Record Location;
-        LocationName: Text[60];
+        LocationName: Text[100];
         Desc_Caption: Label 'Désignation';
         No_LineCaption: Label 'Référence';
         UnitofMeasure_Caption: Label 'Unité';

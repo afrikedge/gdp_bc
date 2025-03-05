@@ -1613,6 +1613,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Email CC Relance - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 4150883283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email pour alerte création des clients</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Email for Customers Creation - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 3441365986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Email pour les refus de validation factures fournisseur</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14602,11 +14607,6 @@
           <source>Le code fournisseur à payer %1 ne doit pas être différent de code fournisseur</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit EventsSubscribers Code - Method PurchPost_OnAfterInsertPostedHeaders - NamedType TextAFK002</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1780695589 - Method 565500937 - NamedType 4016145812" size-unit="char" translate="yes" xml:space="preserve">
-          <source>La retenue à la source ne doit pas être activée en cas d'achat au comptant</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EventsSubscribers Code - Method PurchPost_OnAfterPostInvoice - NamedType TextAFK001</note>
         </trans-unit>
         <trans-unit id="Codeunit 1780695589 - Method 32147862 - NamedType 358875133" size-unit="char" translate="yes" xml:space="preserve">
           <source>Le code fournisseur à payer %1 ne doit pas être différent de code fournisseur</source>
@@ -41147,6 +41147,11 @@
           <source>New password</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Afk CreateResetPassword - Control NewPasswordCtrl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3135814134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Afk Workflow Maintenance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Workflow Maintenance - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2420847860 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AnnexeOV</source>

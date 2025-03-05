@@ -149,6 +149,10 @@ table 50001 "AddOn Setup2"
         {
             Caption = 'Activer service Emails';
         }
+        field(33; "Email for Customers Creation"; Text[80])
+        {
+            Caption = 'Email pour alerte création des clients';
+        }
     }
 
     keys

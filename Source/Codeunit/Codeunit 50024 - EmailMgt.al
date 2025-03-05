@@ -135,7 +135,7 @@ codeunit 50024 EmailMgt
             Message(Text001);
     end;
 
-    local procedure SendEmail(Objet: Text[80]; CodeDocument: Text[30]; Commentaires: Text[150]; ToAdress: Text[80]; CCAdress: Text[80]; Sender: Text[80]; SendDate: Text[50]; DocType: Text[30])
+    procedure SendEmail(Objet: Text[80]; CodeDocument: Text[30]; Commentaires: Text[150]; ToAdress: Text[80]; CCAdress: Text[80]; Sender: Text[80]; SendDate: Text[50]; DocType: Text[30])
     var
         EmailToSend: Record "Tampon Payment Vendor Email" temporary;
         EmailMgt: Codeunit EmailMgt;

@@ -138,6 +138,35 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         //     exit(AddLinkDocument(CustNo, input));
     end;
 
+    procedure Customer_Reassign(input: JsonObject): Text
+    var
+        Cust: record Customer;
+        SubCust: record Customer;
+        UserName: Code[50];
+        CustNo: Code[20];
+        SalesPerson: Code[20];
+        IncludeSubAccounts: Boolean;
+    begin
+        UserName := ws.GetText('webUserName', input);
+        CustNo := ws.GetText('No_', input);
+        SalesPerson := ws.GetText('Salesperson Code', input);
+        IncludeSubAccounts := ws.GetBool('Include Sub-accounts', input);
+
+        if (Cust.Get(CustNo)) then begin
+            Cust."Salesperson Code" := SalesPerson;
+            Cust.Modify();
+
+            if (IncludeSubAccounts) then begin
+                SubCust.SetRange(SubCust."Afk Parent Account No.", Cust."No.");
+                if SubCust.FindSet(true) then
+                    repeat
+                        SubCust."Salesperson Code" := SalesPerson;
+                        SubCust.Modify();
+                    until SubCust.Next() < 1;
+            end;
+        end;
+    end;
+
     procedure Run_ModifyLeadStatus(input: JsonObject): Text
     var
         c: JsonToken;
@@ -494,6 +523,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."New Mobile Banking"), input, 'New Mobile Banking');
         WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision."New Credit limit (LCY)"), input, 'New Credit limit (LCY)');
         WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision.Object), input, 'Object');
+        WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision.Description), input, 'Description');
 
         //WS.ValidateField(RecRef, CustRevision.FieldNo(CustRevision.ve), input, 'Salesperson Code');
 
@@ -992,7 +1022,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
         if (DdeDeblocage."Approval Status" = DdeDeblocage."Approval Status"::"Validé") then
             if (SalesOrder.get(SalesOrder."Document Type"::Order, DdeDeblocage."No.")) then
-                SalesProcessMgt.ValidationDeblocage(SalesOrder);
+                if (SalesOrder."Delivery Status" = SalesOrder."Delivery Status"::Bloquee) then
+                    SalesProcessMgt.ValidationDeblocage(SalesOrder);
 
         exit(DdeDeblocage."No.");
         //ModifyBlockingStatus(DdeDeblocage, ApprovalFlow."Approved by", ApprovalFlow."Next Status");
@@ -1050,6 +1081,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     var
         Lead: Record "Contact";
         Cont: Record "Contact";
+        CustNo: Code[20];
+        customerNos: List of [Code[20]];
     begin
 
         Lead.Get(ws.GetText('No_', input));
@@ -1062,27 +1095,75 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
             AfkSetup.Get();
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::Holding) then begin
                 AfkSetup.TestField(AfkSetup."Holding Cust Templ");
-                Lead.CreateCustomerFromTemplate(AfkSetup."Holding Cust Templ");
+                CustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Holding Cust Templ");
+                customerNos.Add(CustNo);
             end;
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Opération") then begin
                 AfkSetup.TestField(AfkSetup."Operation Cust Templ");
-                Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
+                CustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
+                customerNos.Add(CustNo);
             end;
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Société") then begin
                 AfkSetup.TestField(AfkSetup."Company Cust Templ");
-                Lead.CreateCustomerFromTemplate(AfkSetup."Company Cust Templ");
+                CustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Company Cust Templ");
+                customerNos.Add(CustNo);
             end;
 
             Cont.SetRange(Cont."Afk Parent Account No.", Lead."No.");
             if Cont.FindSet(true) then
                 repeat
-                    Cont.CreateCustomerFromTemplate('');
+                    CustNo := Cont.CreateCustomerFromTemplate('');
                     Cont."Afk Parent Account Type" := Cont."Afk Parent Account Type"::Client;
                     Cont.Modify();
+                    customerNos.Add(CustNo);
                 until Cont.Next() < 1;
         end;
+
+
+        foreach CustNo in customerNos do begin
+            SendEmailWhenNewCustomer(CustNo);
+        end;
+
     end;
 
+    procedure SendEmailWhenNewCustomer(CustNo: Code[20])
+    var
+        UserSetup: Record "User Setup";
+        EmailMgt: Codeunit EmailMgt;
+        AddOnSetup2: record "AddOn Setup2";
+        Objet: Text[80];
+        CodeDocument: Text[30];
+        Commentaires: Text[150];
+        ToAdress: Text[80];
+        CCAdress: Text[80];
+        Sender: Text[80];
+        SendDate: Text[50];
+        DocType: Text[30];
+
+    begin
+
+        if (CustNo = '') then
+            exit;
+
+        AddOnSetup2.Get();
+        if (AddOnSetup2."Email for Customers Creation" = '') then
+            exit;
+
+        UserSetup.Get(UserId);
+        UserSetup.CalcFields("User Full Name");
+
+        Objet := 'Nouveau client crée dans Business Central : ' + CustNo;
+        CodeDocument := CustNo;
+        Commentaires := 'Nouveau client';
+        ToAdress := AddOnSetup2."Email for Customers Creation";
+        CCAdress := '';
+        Sender := UserSetup."User ID" + ' - ' + UserSetup."User Full Name";
+        SendDate := Format(WorkDate);
+        DocType := 'Client';
+
+        if ((ToAdress <> '') or (CCAdress <> '')) then
+            EmailMgt.SendEmail(Objet, CodeDocument, Commentaires, ToAdress, CCAdress, Sender, SendDate, DocType);
+    end;
 
     var
         AfkSetup: record "AddOn Setup2";

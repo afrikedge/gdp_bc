@@ -305,7 +305,7 @@ report 50082 "Recu Encais_Ecritures clients2"
         TmpDetCustLedgEntry: Record "Detailed Cust. Ledg. Entry" temporary;
         Counter: Integer;
         DocumentNo: Code[20];
-        DocDescrip: Text[60];
+        DocDescrip: Text[100];
         DocDate: Date;
         AmountLCY: Decimal;
         RefCust: Text[20];
