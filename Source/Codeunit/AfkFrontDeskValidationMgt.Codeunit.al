@@ -329,6 +329,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         CustRevision.Get(OrderNo);
 
         ProcessCustRevisionHeader(CustRevision, input);
+        CustRevision.Modify();
 
         //processApprovalFlows("Afk Record Type"::"Révision compte", CustRevision."No.", input);
 
