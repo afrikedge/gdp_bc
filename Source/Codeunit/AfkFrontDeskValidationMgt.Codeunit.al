@@ -1082,7 +1082,9 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     var
         Lead: Record "Contact";
         Cont: Record "Contact";
+        Cust: record Customer;
         CustNo: Code[20];
+        ParentCustNo: Code[20];
         customerNos: List of [Code[20]];
     begin
 
@@ -1096,24 +1098,28 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
             AfkSetup.Get();
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::Holding) then begin
                 AfkSetup.TestField(AfkSetup."Holding Cust Templ");
-                CustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Holding Cust Templ");
-                customerNos.Add(CustNo);
+                ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Holding Cust Templ");
+                customerNos.Add(ParentCustNo);
             end;
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Opération") then begin
                 AfkSetup.TestField(AfkSetup."Operation Cust Templ");
-                CustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
-                customerNos.Add(CustNo);
+                ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
+                customerNos.Add(ParentCustNo);
             end;
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Société") then begin
                 AfkSetup.TestField(AfkSetup."Company Cust Templ");
-                CustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Company Cust Templ");
-                customerNos.Add(CustNo);
+                ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Company Cust Templ");
+                customerNos.Add(ParentCustNo);
             end;
 
             Cont.SetRange(Cont."Afk Parent Account No.", Lead."No.");
             if Cont.FindSet(true) then
                 repeat
                     CustNo := Cont.CreateCustomerFromTemplate('');
+                    if (Cust.Get(CustNo)) then begin
+                        Cust."Afk Parent Account No." := ParentCustNo;
+                        Cust.Modify();
+                    end;
                     Cont."Afk Parent Account Type" := Cont."Afk Parent Account Type"::Client;
                     Cont.Modify();
                     customerNos.Add(CustNo);
