@@ -54858,6 +54858,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType LicenseNumberCaptionLbl</note>
         </trans-unit>
+        <trans-unit id="Report 3260171944 - NamedType 4003441031" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LIEU DE LIVRAISON :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType LieuDeLivraisonLbl</note>
+        </trans-unit>
         <trans-unit id="Report 3260171944 - NamedType 1860426998" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name :</source>
           <note from="Developer" annotates="general" priority="2"></note>
