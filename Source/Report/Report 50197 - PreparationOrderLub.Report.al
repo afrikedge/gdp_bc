@@ -178,6 +178,21 @@ report 50197 "PreparationOrder Lub"
             column(ObservationsCaptionLbl; ObservationsCaptionLbl)
             {
             }
+            column(LieuDeLivraisonLbl; LieuDeLivraisonLbl)
+            {
+            }
+            column(AddresLivr1; AddresLivr1)
+            {
+            }
+            column(AddressLivr2; AddressLivr2)
+            {
+            }
+            // column(AddresLivr1; ShipToAddress.Address)
+            // {
+            // }
+            // column(AddressLivr2; ShipToAddress."Address 2")
+            // {
+            // }
             column(Location_Code; Header."Location Code")
             {
             }
@@ -310,6 +325,11 @@ report 50197 "PreparationOrder Lub"
                     Cust.Get(Header."Customer No.");
                 if Cust."Responsibility Center" <> '' then
                     RespCenter.Get(Cust."Responsibility Center");
+
+                if ShipToAddress.Get(Header."Customer No.", Header."Ship-to Code") then begin
+                    AddresLivr1 := ShipToAddress.Address;
+                    AddressLivr2 := ShipToAddress."Address 2";
+                end;
             end;
         }
     }
@@ -338,6 +358,7 @@ report 50197 "PreparationOrder Lub"
     var
         Location: Record Location;
         Cust: Record Customer;
+        ShipToAddress: Record "Ship-to Address";
         RespCenter: Record "Responsibility Center";
         CompanyInfo: Record "Company Information";
         CompanyInfos: Record "Company Information";
@@ -350,7 +371,10 @@ report 50197 "PreparationOrder Lub"
         LineNumberText: Code[2];
         DepotName: Text[100];
         Foot3: Text;
+        AddresLivr1: Text[100];
+        AddressLivr2: Text[50];
         // PAGENOCaptionLbl: Label 'Page';
+        LieuDeLivraisonLbl: Label 'LIEU DE LIVRAISON :';
         TitleCaptionLbl: Label 'DELIVERY NOTE';
         BLNumberCaptionLbl: Label 'B/L N°';
         SalesAgencyCaptionLbl: Label 'SALES AGENCY';

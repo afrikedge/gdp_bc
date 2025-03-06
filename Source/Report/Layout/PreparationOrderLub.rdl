@@ -1282,7 +1282,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value />
+                                                                  <Value>=Fields!LieuDeLivraisonLbl.Value</Value>
                                                                   <Style>
                                                                     <FontSize>9pt</FontSize>
                                                                   </Style>
@@ -1316,8 +1316,22 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value />
-                                                                  <Style />
+                                                                  <Value>=Fields!AddresLivr1.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve">  </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value>=Fields!AddressLivr2.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
                                                                 </TextRun>
                                                               </TextRuns>
                                                               <Style />
@@ -4536,7 +4550,6 @@
                                           <Border />
                                         </Style>
                                       </Rectangle>
-                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixCell>
                                 </TablixCells>
@@ -5136,6 +5149,15 @@ End Function
         </Field>
         <Field Name="ObservationsCaptionLbl">
           <DataField>ObservationsCaptionLbl</DataField>
+        </Field>
+        <Field Name="LieuDeLivraisonLbl">
+          <DataField>LieuDeLivraisonLbl</DataField>
+        </Field>
+        <Field Name="AddresLivr1">
+          <DataField>AddresLivr1</DataField>
+        </Field>
+        <Field Name="AddressLivr2">
+          <DataField>AddressLivr2</DataField>
         </Field>
         <Field Name="Location_Code">
           <DataField>Location_Code</DataField>
