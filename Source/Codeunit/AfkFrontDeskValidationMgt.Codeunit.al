@@ -1093,19 +1093,20 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         //CustRevision."Approved Payment Terms Code" := ws.GetBool('Approved Payment Terms Code', input);
 
         Lead.Modify();
+        AfkSetup.Get();
 
         if (Lead."Afk Approval Status" = Lead."Afk Approval Status"::"Validé") then begin
-            AfkSetup.Get();
+
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::Holding) then begin
                 AfkSetup.TestField(AfkSetup."Holding Cust Templ");
                 ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Holding Cust Templ");
                 customerNos.Add(ParentCustNo);
             end;
-            if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Opération") then begin
-                AfkSetup.TestField(AfkSetup."Operation Cust Templ");
-                ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
-                customerNos.Add(ParentCustNo);
-            end;
+            // if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Opération") then begin
+            //     AfkSetup.TestField(AfkSetup."Operation Cust Templ");
+            //     ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
+            //     customerNos.Add(ParentCustNo);
+            // end;
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Société") then begin
                 AfkSetup.TestField(AfkSetup."Company Cust Templ");
                 ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Company Cust Templ");
@@ -1115,7 +1116,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
             Cont.SetRange(Cont."Afk Parent Account No.", Lead."No.");
             if Cont.FindSet(true) then
                 repeat
-                    CustNo := Cont.CreateCustomerFromTemplate('');
+                    AfkSetup.TestField(AfkSetup."Operation Cust Templ");
+                    CustNo := Cont.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
                     if (Cust.Get(CustNo)) then begin
                         Cust."Afk Parent Account No." := ParentCustNo;
                         Cust.Modify();
