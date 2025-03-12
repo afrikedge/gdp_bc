@@ -444,6 +444,7 @@ codeunit 50035 "EventsSubscribers Table"
         AfkLoc: Record Location;
         Cust2: record Customer;
         AFK_AddOnSetup: record "AddOn Setup";
+        AFK_AddOnSetup2: record "AddOn Setup2";
         AFK_SecMgt: Codeunit "Security Mgt";
         AFK_Text002: Label 'Impossible de facturer directement des articles, vous devez passer par une commande';
     begin
@@ -452,6 +453,7 @@ codeunit 50035 "EventsSubscribers Table"
         Cust2.TESTFIELD("Sales Category Code");
 
         AFK_AddOnSetup.GET;
+        AFK_AddOnSetup2.Get();
         IF Item.Type = Item.Type::Inventory THEN BEGIN
             IF NOT AFK_SecMgt.CanAddItemOnSalesInv THEN BEGIN
                 IF ((SalesHeader."Document Type" IN [SalesHeader."Document Type"::Invoice, SalesHeader."Document Type"::"Credit Memo"]) AND
@@ -464,11 +466,12 @@ codeunit 50035 "EventsSubscribers Table"
         IF SalesHeader."Document Type" = SalesHeader."Document Type"::Order THEN
             Item.TESTFIELD("Sales Category Code", Cust2."Sales Category Code");
 
-        IF Item.Type = Item.Type::Inventory THEN
-            IF AfkLoc.GET(SalesLine."Location Code") THEN begin
-                Item.CalcFields("Parent Category");
-                //Item.TESTFIELD("Parent Category", AfkLoc."Item Category Code");
-            end;
+        if (not AFK_AddOnSetup2."Desactivate Loc Type Control") then
+            IF Item.Type = Item.Type::Inventory THEN
+                IF AfkLoc.GET(SalesLine."Location Code") THEN begin
+                    Item.CalcFields("Parent Category");
+                    Item.TESTFIELD("Parent Category", AfkLoc."Item Category Code");
+                end;
 
 
         SalesLine."FER Fees Price" := Item."FER Fees Price";

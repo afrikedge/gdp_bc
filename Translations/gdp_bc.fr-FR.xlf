@@ -17129,7 +17129,7 @@
         </trans-unit>
         <trans-unit id="Table 3097719983 - Field 3165642484 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Devise</source>
-          <target state="needs-review-translation">Concevoir</target>
+          <target state="needs-review-translation">Devise</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Invoice Doc - Field Devise - Property Caption</note>
         </trans-unit>
@@ -17147,7 +17147,7 @@
         </trans-unit>
         <trans-unit id="Table 3097719983 - Field 329134311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No</source>
-          <target state="needs-review-translation">Numéro d'entrée</target>
+          <target state="needs-review-translation">Numéro</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Invoice Doc - Field Entry No - Property Caption</note>
         </trans-unit>

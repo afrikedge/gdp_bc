@@ -13,7 +13,7 @@ table 50092 "Tampon Payment Vendor Email"
             Editable = false;
             TableRelation = Vendor;
         }
-        field(6; "Document No."; Code[20])
+        field(6; "Document No."; Code[50])
         {
             Caption = 'Document No.';
             Editable = false;
