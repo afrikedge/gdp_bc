@@ -712,7 +712,7 @@ codeunit 50031 VendorInvoiceMgt
     procedure EnvoiEmailLitige_Facture(VendInvoiceDoc: Record "Vendor Invoice Doc")
     var
         Objet: Text;
-        CodeDocument: Text[30];
+        CodeDocument: Text[35];
         Commentaires: Text[150];
         ToAdress: Text;
         CCAdress: Text;
@@ -808,7 +808,7 @@ codeunit 50031 VendorInvoiceMgt
     local procedure SendEmail_Facture(FactureFsseur: Record "Vendor Invoice Doc"; Niveau: Integer)
     var
         Objet: Text[80];
-        CodeDocument: Text[30];
+        CodeDocument: Text[35];
         Commentaires: Text[150];
         ToAdress: Text;
         CCAdress: Text;
@@ -844,7 +844,7 @@ codeunit 50031 VendorInvoiceMgt
     local procedure SendEmail_Facture_DAF(FactureFsseur: Record "Vendor Invoice Doc")
     var
         Objet: Text[80];
-        CodeDocument: Text[30];
+        CodeDocument: Text[35];
         Commentaires: Text[150];
         ToAdress: Text;
         CCAdress: Text;
@@ -1377,7 +1377,7 @@ codeunit 50031 VendorInvoiceMgt
     procedure EnvoiEmailRefus_Facture(VendInvoiceDoc: Record "Vendor Invoice Doc")
     var
         Objet: Text;
-        CodeDocument: Text[30];
+        CodeDocument: Text[35];
         Commentaires: Text[150];
         ToAdress: Text;
         CCAdress: Text;
