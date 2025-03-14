@@ -1102,11 +1102,11 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
                 ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Holding Cust Templ");
                 customerNos.Add(ParentCustNo);
             end;
-            // if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Opération") then begin
-            //     AfkSetup.TestField(AfkSetup."Operation Cust Templ");
-            //     ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
-            //     customerNos.Add(ParentCustNo);
-            // end;
+            if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Opération") then begin
+                AfkSetup.TestField(AfkSetup."Operation Cust Templ");
+                ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
+                customerNos.Add(ParentCustNo);
+            end;
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Société") then begin
                 AfkSetup.TestField(AfkSetup."Company Cust Templ");
                 ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Company Cust Templ");
