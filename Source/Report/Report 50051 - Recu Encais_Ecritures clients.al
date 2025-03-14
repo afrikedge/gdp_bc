@@ -252,7 +252,7 @@ report 50051 "Recu Encais_Ecritures clients"
 
                 //IF TmpDetCustLedgEntry.FINDSET THEN;
                 NbTLet.InitTextVariable;
-                NbTLet.FormatNoText(TotalAmountLetter, Abs("Cust. Ledger Entry".Amount), "Cust. Ledger Entry"."Currency Code");
+                NbTLet.FormatNoText(TotalAmountLetter, Abs("Cust. Ledger Entry".Amount), Devise1);
 
 
                 Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
