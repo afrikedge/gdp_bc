@@ -337,6 +337,10 @@ tableextension 50005 "A02 Customer" extends Customer
         {
             Caption = 'Motif désactivation';
         }
+        field(60005; "Afk CRM Guid"; Guid)
+        {
+            Caption = 'CRM Guid';
+        }
 
     }
     keys

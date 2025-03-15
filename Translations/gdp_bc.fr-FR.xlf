@@ -1911,6 +1911,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Def Prepmt. Payment Terms Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 3459991328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desactivate Location Type Control</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Desactivate Loc Type Control - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 1169835828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Désactiver le contrôle des provisions</source>
           <target state="needs-review-translation">Désactiver le contrôle des provisions</target>
@@ -5813,7 +5819,7 @@
         </trans-unit>
         <trans-unit id="Table 2637844426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Driver</source>
-          <target state="needs-review-translation">Conducteur</target>
+          <target state="needs-review-translation">Chauffeur</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Driver - Property Caption</note>
         </trans-unit>
@@ -5848,8 +5854,9 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Driver - Field Formateur - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2637844426 - Field 2894356444 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Registration</source>
-          <target state="needs-review-translation">Immatriculation</target>
+          <source>Immatriculation</source>
+          <target state="needs-adaptation">Immatriculation</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Driver - Field immatriculation - Property Caption</note>
         </trans-unit>
@@ -5873,7 +5880,7 @@
         </trans-unit>
         <trans-unit id="Table 2637844426 - Field 969924140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Permis</source>
-          <target state="needs-review-translation">Driver licence</target>
+          <target state="needs-review-translation">Permis</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Driver - Field Permis - Property Caption</note>
         </trans-unit>
@@ -31937,7 +31944,7 @@
         </trans-unit>
         <trans-unit id="Page 911762039 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Drivers</source>
-          <target state="needs-review-translation">Pilotes</target>
+          <target state="needs-review-translation">Chauffeurs</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Drivers - Property Caption</note>
         </trans-unit>
@@ -48185,7 +48192,7 @@
         </trans-unit>
         <trans-unit id="Page 3187609593 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Truck Card</source>
-          <target state="needs-review-translation">Truck Card</target>
+          <target state="needs-review-translation">Fiche Camion</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Truck Card - Property Caption</note>
         </trans-unit>
@@ -48240,7 +48247,6 @@
         <trans-unit id="Page 1287151416 - Action 3199400237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Envoyer tous les mails</source>
           <target state="needs-adaptation">Envoyer les emails</target>
-          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Emails To Send - Action Send emails - Property Caption</note>
         </trans-unit>
@@ -63672,7 +63678,7 @@
         </trans-unit>
         <trans-unit id="Report 732918645 - NamedType 2996270070" size-unit="char" translate="yes" xml:space="preserve">
           <source>TRUCK N° :</source>
-          <target state="needs-review-translation">TRUCK N° :</target>
+          <target state="needs-review-translation">N° Camion:</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PBL FO Delivery Note - NamedType TruckNumberLbl</note>
         </trans-unit>
@@ -65831,7 +65837,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType LicenseNumberCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3260171944 - NamedType 4003441031" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Lieu de livraison :</source>
+          <source>LIEU DE LIVRAISON :</source>
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PreparationOrder Lub - NamedType LieuDeLivraisonLbl</note>
@@ -77116,6 +77122,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Approval Status - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3475545745 - Field 4104621217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>CRM Guid</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk CRM Guid - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3475545745 - Field 403573546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Customer Level</source>
           <target state="needs-review-translation">Type client</target>
@@ -80274,7 +80286,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 1251424737 - Field 795761978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 151805736">
           <source>Truck code</source>
-          <target state="needs-review-translation">Camion</target>
+          <target state="needs-review-translation">Code Camion</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Transfer Header - Field Truck Code - Property Caption</note>
         </trans-unit>

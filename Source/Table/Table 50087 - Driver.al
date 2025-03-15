@@ -1,13 +1,13 @@
 table 50087 Driver
 {
-    // DrillDownPageID = Drivers;
-    // LookupPageID = Drivers;
+    DrillDownPageID = Drivers;
+    LookupPageID = Drivers;
 
     fields
     {
         field(1; immatriculation; Code[30])
         {
-            Caption = 'Registration';
+            Caption = 'Immatriculation';
         }
         field(2; NumOrdre; Integer)
         {

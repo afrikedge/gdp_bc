@@ -1,10 +1,11 @@
 page 50332 Drivers
 {
+    Caption = 'Drivers';
     AutoSplitKey = true;
     PageType = List;
     SourceTable = Driver;
     ApplicationArea = All;
-    UsageCategory = History;
+    UsageCategory = Administration;
     SourceTableView = SORTING(immatriculation, NumOrdre)
                       ORDER(Descending);
 
