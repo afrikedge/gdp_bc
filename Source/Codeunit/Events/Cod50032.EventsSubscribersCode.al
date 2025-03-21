@@ -1015,6 +1015,19 @@ codeunit 50032 "EventsSubscribers Code"
         PaymentExportData."SEPA Charge Bearer Text" := 'SHAR';
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnApplyCustLedgEntryOnAfterCalcShouldUpdateCalcInterestFromNewBuf', '', true, false)]
+    local procedure GenJnlPostLine_OnApplyCustLedgEntryOnAfterCalcShouldUpdateCalcInterestFromNewBuf(var OldCVLedgEntryBuf: Record "CV Ledger Entry Buffer"; var NewCVLedgEntryBuf: Record "CV Ledger Entry Buffer"; Cust: Record Customer; var ShouldUpdateCalcInterest: Boolean)
+    var
+        AddonSetup2: record "AddOn Setup2";
+    begin
+        //bug on applying cust ledger entries
+        AddonSetup2.get();
+        if (AddonSetup2."Desactivate Calc Interest") then
+            ShouldUpdateCalcInterest := false;
+    end;
+
+
+
 
 
 

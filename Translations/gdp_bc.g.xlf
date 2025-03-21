@@ -1593,6 +1593,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Def Prepmt. Payment Terms Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 883077468 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desactivate Calc Interest</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Desactivate Calc Interest - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 3459991328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Desactivate Location Type Control</source>
           <note from="Developer" annotates="general" priority="2"></note>

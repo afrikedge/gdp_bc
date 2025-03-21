@@ -157,6 +157,10 @@ table 50001 "AddOn Setup2"
         {
             Caption = 'Desactivate Location Type Control';
         }
+        field(35; "Desactivate Calc Interest"; Boolean)
+        {
+            Caption = 'Desactivate Calc Interest';
+        }
     }
 
     keys
