@@ -26,6 +26,26 @@ page 50002 "Sales Order Payments"
                 {
 
                 }
+                field("Frontdesk Reference"; Rec."Frontdesk Reference")
+                {
+                    Visible = false;
+                }
+                field("Frontdesk Pay Method"; Rec."Frontdesk Pay Method")
+                {
+                    Visible = false;
+                }
+                field("Frontdesk Pay Method Name"; Rec."Frontdesk Pay Method Name")
+                {
+                    Visible = false;
+                }
+                field("Frontdesk Amount"; Rec."Frontdesk Amount")
+                {
+                    Visible = false;
+                }
+                field("Frontdesk Observations"; Rec."Frontdesk Observations")
+                {
+                    Visible = false;
+                }
             }
         }
     }

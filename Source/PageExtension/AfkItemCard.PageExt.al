@@ -32,6 +32,9 @@ pageextension 50098 "Afk Item Card" extends "Item Card"
             field("Validation Status"; Rec."Validation Status")
             {
             }
+            field("Afk Default Transport Code"; Rec."Afk Default Transport Code")
+            {
+            }
         }
     }
 }

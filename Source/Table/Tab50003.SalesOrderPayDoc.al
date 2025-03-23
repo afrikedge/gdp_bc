@@ -51,10 +51,38 @@ table 50003 "Sales Order Pay Doc"
         {
             Caption = 'Customer No.';
         }
+        field(6; "Frontdesk Pay Method"; Code[20])
+        {
+            Caption = 'Frontdesk Payment Method';
+            TableRelation = "Afk Reference".Code where(TableType = const("Payment Method"));
+        }
+        field(7; "Frontdesk Pay Method Name"; Text[100])
+        {
+            Caption = 'Frontdesk Payment Method Name';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup("Afk Reference".Description where(TableType = const("Payment Method"), Code = field("Frontdesk Pay Method")));
+        }
+        field(9; "Frontdesk Reference"; Code[60])
+        {
+            Caption = 'Frontdesk Reference';
+        }
+        field(10; "Frontdesk Amount"; Decimal)
+        {
+            Caption = 'Frontdesk Amount';
+        }
+        field(11; "Frontdesk Observations"; Text[300])
+        {
+            Caption = 'Frontdesk Observations';
+        }
+        field(12; "Line No."; Integer)
+        {
+            Caption = 'Frontdesk Observations';
+        }
     }
     keys
     {
-        key(PK; "Customer No.", "Document No.", "Pay Document No.")
+        key(PK; "Customer No.", "Document No.", "Pay Document No.", "Line No.")
         {
             Clustered = true;
         }

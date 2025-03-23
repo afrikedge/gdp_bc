@@ -375,6 +375,12 @@ tableextension 50011 "A02 Sales Header" extends "Sales Header"
             Caption = 'Credit notes / payment';
             Editable = false;
         }
+        field(50079; "Afk Web User Id"; Code[50])
+        {
+            Caption = 'Web User Id';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
     }
     keys
     {

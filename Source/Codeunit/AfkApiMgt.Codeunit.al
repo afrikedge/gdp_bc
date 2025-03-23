@@ -366,23 +366,7 @@ codeunit 50040 "Afk Api Mgt"
     //     RecRef.SetTable(Rec);
     // end;
 
-    // procedure AssignValueToField(RecordId: Integer; FieldNo: Integer; Value: Variant)
-    // var
-    //     RecRef: RecordRef;
-    //     FldRef: FieldRef;
-    // begin
-    //     RecRef.Open(RecordId);
-    //     FldRef := RecRef.Field(FieldNo);
 
-    //     case FldRef.Type of
-    //         FieldType::Text, FieldType::Code:
-    //             FldRef.Value := Value;
-    //         FieldType::Enum:
-    //             FldRef.Validate(Value);
-    //     end;
-
-    //     RecRef.Modify();
-    // end;
 
 }
 

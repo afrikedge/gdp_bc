@@ -657,6 +657,9 @@ tableextension 50012 "A02 Sales Line" extends "Sales Line"
         field(50081; VAT15Amount; Decimal)
         {
         }
+        field(50082; "Afk Linked Line No."; Integer)
+        {
+        }
     }
 
     procedure GetParentCategory(): Code[20]

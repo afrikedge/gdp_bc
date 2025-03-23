@@ -104,6 +104,11 @@ tableextension 50009 "A02 Item" extends Item
             CalcFormula = lookup("Item Category"."Parent Category" where(Code = field("Item Category Code")));
             Editable = false;
         }
+        field(50026; "Afk Default Transport Code"; Code[20])
+        {
+            Caption = 'Default Transport Code';
+            TableRelation = Item;
+        }
     }
     keys
     {
