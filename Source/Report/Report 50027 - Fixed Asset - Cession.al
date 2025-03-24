@@ -188,7 +188,7 @@ report 50027 "Fixed Asset - Cession"
 
     labels
     {
-        DAF = 'DIRECTEUR FINANCIER ET INFORMATIQUE';
+        DAF = 'DIRECTEUR FINANCIER';
         DG = 'DIRECTEUR GENERAL';
         DOP = 'DEPARTEMENT OU SERVICE (DOP/SGX/DIT,...)';
         CSImm = 'CS IMMOBILISATIONS';

@@ -48734,7 +48734,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Cession - ReportLabel CSImm</note>
         </trans-unit>
         <trans-unit id="Report 1062809799 - ReportLabel 14019165" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DIRECTEUR FINANCIER ET INFORMATIQUE</source>
+          <source>DIRECTEUR FINANCIER</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Cession - ReportLabel DAF</note>
         </trans-unit>
