@@ -481,13 +481,23 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     local procedure AddContact(input: JsonObject): Text
     var
         Cont: Record Contact;
+        ContactBusRel: Record "Contact Business Relation";
+        CustNo: Code[20];
     begin
 
         Cont.Init();
         Cont."No." := '';
         Cont.Type := Cont.Type::Person;
+        //         [Company No_] = (SELECT TOP 1 [Contact No_] 
+        // FROM [GDP$Contact Business Relation$437dbf0e-84ff-417a-965d-ed2bb9650972] WHERE No_ = [Customer No_]
+        // AND [Link to Table] = 1)
 
         Cont.Insert(true);
+
+        CustNo := ws.GetText('Customer No_', input);
+        ContactBusRel.SetRange("No.", CustNo);
+        if (ContactBusRel.FindFirst()) then
+            Cont."Company No." := ContactBusRel."Contact No.";
 
         PopulateValuesContact(Cont, input);
         Cont.Modify(true);

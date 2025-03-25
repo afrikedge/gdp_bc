@@ -3,6 +3,11 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="gdp_bc">
     <body>
       <group id="body">
+        <trans-unit id="Page 3545351763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Revision List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Customer Revision List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3043324616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Permissions</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2739,7 +2744,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Customer Requirement - Field Value Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2831768765 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Afk Customer Revision</source>
+          <source>Customer Revision</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Customer Revision - Property Caption</note>
         </trans-unit>
@@ -62582,6 +62587,11 @@
           <source>Afk Front Desk</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkFrontDesk - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3342160307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Demandes revision</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkCustomerRevisionList - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 3376788125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Utilisateurs externes</source>

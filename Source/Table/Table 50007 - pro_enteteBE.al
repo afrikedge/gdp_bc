@@ -30,8 +30,8 @@ table 50007 pro_enteteBE
 
             trigger OnValidate()
             begin
-                //TODO Migration
-                //AFK_SecMgt.CheckWarehouseUser(depot);
+
+                AFK_SecMgt.CheckWarehouseUser(depot);
 
                 if ((depot <> xRec.depot) and (xRec.depot <> '')) then begin
                     if not Confirm(Text001) then Error('');
@@ -695,7 +695,7 @@ table 50007 pro_enteteBE
         oldCamion: Record pro_moyentransport;
         newCamion: Record pro_moyentransport;
         Text001: Label 'Voulez vous modifier le code dépôt ?';
-        // AFK_SecMgt: Codeunit "Security Mgt";
+        AFK_SecMgt: Codeunit "Security Mgt";
         // JIRAMAMgt: Codeunit "JIRAMA Sales Mgt";
         AddOnSetup: Record "AddOn Setup";
         Cust: Record Customer;

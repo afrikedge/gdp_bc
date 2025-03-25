@@ -998,6 +998,13 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
                     Caption = 'Moyens de paiement Frontdesk';
                     RunObject = Page AfkFrontDeskPaymentMethod;
                 }
+                action(AfkCustomerRevisionList)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Demandes revision';
+                    RunObject = Page "Afk Customer Revision List";
+                }
+
             }
         }
 

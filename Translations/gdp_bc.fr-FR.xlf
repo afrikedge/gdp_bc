@@ -3,6 +3,12 @@
   <file datatype="xml" source-language="en-US" target-language="fr-FR" original="gdp_bc">
     <body>
       <group id="body">
+        <trans-unit id="Page 3545351763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Revision List</source>
+          <target>Demandes de révision client</target>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Customer Revision List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3043324616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Permissions</source>
           <target state="needs-translation"/>
@@ -68,6 +74,12 @@
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2">%</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control Sales Channel - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2376765531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Moyens de paiement Frontdesk</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AfkFrontDeskPaymentMethod - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1264407366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comptes Bancaire - Grand Livre</source>
@@ -1910,6 +1922,12 @@
           <target state="needs-review-translation">Code conditions paiement acompte</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Def Prepmt. Payment Terms Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 883077468 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desactivate Calc Interest</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Desactivate Calc Interest - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3242877383 - Field 3459991328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Desactivate Location Type Control</source>
@@ -5856,7 +5874,6 @@
         <trans-unit id="Table 2637844426 - Field 2894356444 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Immatriculation</source>
           <target state="needs-adaptation">Immatriculation</target>
-          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Driver - Field immatriculation - Property Caption</note>
         </trans-unit>
@@ -11490,7 +11507,7 @@
         </trans-unit>
         <trans-unit id="Table 3488870608 - Field 2832374592 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>To invoice volume</source>
-          <target state="needs-review-translation">Pour facturer le volume</target>
+          <target state="needs-review-translation">Volume à facturer</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_detailBE - Field volumelivre - Property Caption</note>
         </trans-unit>
@@ -15147,6 +15164,42 @@
           <target state="needs-review-translation">N° document</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3127719954 - Field 1253942328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Frontdesk Amount</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Frontdesk Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3127719954 - Field 3395704603 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Frontdesk Observations</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Frontdesk Observations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3127719954 - Field 2660075089 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Frontdesk Payment Method</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Frontdesk Pay Method - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3127719954 - Field 189648996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Frontdesk Payment Method Name</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Frontdesk Pay Method Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3127719954 - Field 1503894813 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Frontdesk Reference</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Frontdesk Reference - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3127719954 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Frontdesk Observations</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3127719954 - Field 231998036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Paid Amount</source>
@@ -75094,6 +75147,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkFDRequirementList - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 763830656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Moyens de paiement Frontdesk</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkFPaymentMethods - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 1459027600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Demandes de déblocage</source>
           <target state="needs-translation"/>
@@ -77950,6 +78009,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Invoice Post. Buffer - Field Posting Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4052574762 - Field 3006404875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Default Transport Code</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Item - Field Afk Default Transport Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4052574762 - Field 4276315042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Cargo Mgt</source>
           <target state="needs-review-translation">Géré par Cargo</target>
@@ -79258,6 +79323,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - NamedType AFK_Text004</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1551112472 - Field 2968489684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Web User Id</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Afk Web User Id - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 695912640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Anticipated</source>
           <target state="needs-review-translation">Anticipé</target>
@@ -79815,6 +79886,12 @@
           <target state="needs-review-translation">VAT20Amount</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Invoice Line - Field VAT20Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 289661023 - Field 76999832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>Afk Linked Line No.</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Line - Field Afk Linked Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 289661023 - Field 4050268969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Backcharge</source>
@@ -81555,6 +81632,12 @@
           <target state="needs-review-translation">Secteur Principal</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Table Type - EnumValue Main Industry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3759309350 - EnumValue 3566004263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Method</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Table Type - EnumValue Payment Method - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1083544202 - EnumValue 2530242531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Illimité</source>
