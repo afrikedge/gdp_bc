@@ -188,7 +188,7 @@ report 50017 "Fixed Asset - Mise en Serv"
 
     labels
     {
-        RespAchat = '<DEPARTEMENT OU SERVICE (DOP/SGX/DIT,...)>';
+        RespAchat = 'DEPARTEMENT OU SERVICE (DOP/SGX/DIT,...)';
         Mag = 'MAGASIN';
         Det = 'DETENTEUR';
         CSImm = 'CS IMMOBILISATIONS';

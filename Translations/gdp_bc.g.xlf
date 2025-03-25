@@ -49169,7 +49169,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Mise en Serv - ReportLabel Ref</note>
         </trans-unit>
         <trans-unit id="Report 2975634692 - ReportLabel 2086386165" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;DEPARTEMENT OU SERVICE (DOP/SGX/DIT,...)&gt;</source>
+          <source>DEPARTEMENT OU SERVICE (DOP/SGX/DIT,...)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Mise en Serv - ReportLabel RespAchat</note>
         </trans-unit>
