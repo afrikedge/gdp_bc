@@ -256,6 +256,17 @@ codeunit 50040 "Afk Api Mgt"
         exit(response);
     end;
 
+    procedure ValidateIntField(MyRecordRef: RecordRef; MyFieldNo: integer; intValue: Integer)
+    var
+        field: record Field;
+        fieldRef: FieldRef;
+    begin
+        if (field.Get(MyRecordRef.Number, MyFieldNo)) then begin
+            fieldRef := MyRecordRef.field(field."No.");
+            fieldRef.Validate(intValue);
+        end;
+    end;
+
     procedure ValidateField(MyRecordRef: RecordRef; MyFieldNo: integer; input: JsonObject; jsonKey: Text)
     var
         field: record Field;

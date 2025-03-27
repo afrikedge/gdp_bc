@@ -1056,6 +1056,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         RecRef.GetTable(SalesLine);
 
         WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."Line No."), input, 'Line No_');
+        WS.ValidateIntField(RecRef, SalesLine.FieldNo(SalesLine.Type), 2);
         WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."No."), input, 'No_');
         WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."Description"), input, 'Description');
         WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."Unit of Measure Code"), input, 'Unit of Measure');
