@@ -63,7 +63,7 @@ page 50034 "Posted Touring Card"
             part("Bons List"; "Touring BE Subform")
             {
                 Caption = 'Bons List';
-                SubPageLink = idtournee = FIELD(IdTouring);
+                SubPageLink = idtournee = FIELD(IdTouring), isAnnule = const(false);
 
             }
         }
@@ -95,6 +95,7 @@ page 50034 "Posted Touring Card"
                     PrintBE: Report "PickUp Order";
                 begin
                     BE.SetRange(idtournee, Rec.IdTouring);
+                    BE.SetRange(isAnnule, false);
                     PrintBE.SetTableView(BE);
                     PrintBE.RunModal();
                 end;
@@ -110,6 +111,7 @@ page 50034 "Posted Touring Card"
                     PrintBL: Report "PBL FO Delivery Note";
                 begin
                     BE.SetRange(idtournee, Rec.IdTouring);
+                    BE.SetRange(isAnnule, false);
                     PrintBL.SetTableView(BE);
                     PrintBL.RunModal();
                 end;

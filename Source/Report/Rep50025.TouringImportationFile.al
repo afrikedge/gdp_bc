@@ -11,7 +11,7 @@ report 50025 "Touring Importation File"
             dataitem(pro_enteteBE; pro_enteteBE)
             {
                 DataItemLink = idtournee = field(IdTouring);
-                DataItemTableView = SORTING(NumBU) where(IsBon = const(true));
+                DataItemTableView = SORTING(NumBU) where(IsBon = const(true), isAnnule = const(false));
                 column(CustomerNo; "Customer No")
                 {
                 }
