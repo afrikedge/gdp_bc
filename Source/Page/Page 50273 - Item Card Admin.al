@@ -258,6 +258,9 @@ page 50273 "Item Card Admin"
                 field("Cargo Mgt"; Rec."Cargo Mgt")
                 {
                 }
+                field("Afk Default Transport Code"; Rec."Afk Default Transport Code")
+                {
+                }
             }
             group(Replenishment)
             {

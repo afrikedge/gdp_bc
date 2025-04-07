@@ -659,8 +659,8 @@ page 50000 "AddOn Setup Card"
                     ApiMgt: Codeunit "Afk Api Mgt";
                     EmailMgt: Codeunit EmailMgt;
                 begin
-                    //ApiMgt.DebugApiFunction();
-                    EmailMgt.TestSendEmail();
+                    ApiMgt.DebugApiFunction();
+                    //EmailMgt.TestSendEmail();
                 end;
             }
         }

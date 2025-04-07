@@ -9,4 +9,8 @@ enum 50021 "Afk Table Type"
     {
         Caption = 'Fonctionnalité FrontDesk';
     }
+    value(2; "Payment Method")
+    {
+        Caption = 'Payment Method';
+    }
 }

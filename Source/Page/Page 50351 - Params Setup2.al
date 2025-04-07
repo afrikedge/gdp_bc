@@ -106,6 +106,12 @@ page 50351 "Params Setup2"
                 field("Email for Customers Creation"; Rec."Email for Customers Creation")
                 {
                 }
+                field("Desactivate Loc Type Control"; Rec."Desactivate Loc Type Control")
+                {
+                }
+                field("Desactivate Calc Interest"; Rec."Desactivate Calc Interest")
+                {
+                }
             }
         }
     }

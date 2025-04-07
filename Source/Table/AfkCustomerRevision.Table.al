@@ -1,6 +1,6 @@
 table 50103 "Afk Customer Revision"
 {
-    Caption = 'Afk Customer Revision';
+    Caption = 'Customer Revision';
     DataClassification = CustomerContent;
 
     fields

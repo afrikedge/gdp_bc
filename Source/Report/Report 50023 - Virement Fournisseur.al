@@ -195,7 +195,11 @@ report 50023 "Virement Fournisseur"
 
 
                 NbTLet.InitTextVariable;
-                NbTLet.FormatNoText(TotalAmountLetter, "Gen. Journal Line".Amount, "Gen. Journal Line"."Currency Code");
+                if ("Gen. Journal Line"."Currency Code" <> '') then
+                    NbTLet.FormatNoText(TotalAmountLetter, "Gen. Journal Line".Amount, "Gen. Journal Line"."Currency Code")
+                else
+                    NbTLet.FormatNoText(TotalAmountLetter, "Gen. Journal Line".Amount, GLSetup."LCY Code");
+                //NbTLet.FormatNoText(TotalAmountLetter, "Gen. Journal Line".Amount, "Gen. Journal Line"."Currency Code");
                 Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
 
             end;

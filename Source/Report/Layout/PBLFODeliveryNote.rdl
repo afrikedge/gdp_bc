@@ -24,7 +24,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>18.69859cm</Height>
+                  <Height>18.38109cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -37,7 +37,7 @@
                             </TablixColumns>
                             <TablixRows>
                               <TablixRow>
-                                <Height>18.69859cm</Height>
+                                <Height>18.38109cm</Height>
                                 <TablixCells>
                                   <TablixCell>
                                     <CellContents>
@@ -740,7 +740,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!NavOrderNo.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -834,19 +834,19 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!depot.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
                                                                   <Value xml:space="preserve"> </Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
                                                                   <Value>="- " &amp; Fields!DepotName.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -942,7 +942,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!PlaceOfDelivery.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -984,114 +984,20 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value />
-                                                                  <Style>
-                                                                    <FontSize>7pt</FontSize>
-                                                                  </Style>
-                                                                </TextRun>
-                                                              </TextRuns>
-                                                              <Style />
-                                                            </Paragraph>
-                                                          </Paragraphs>
-                                                          <rd:DefaultName>Textbox58</rd:DefaultName>
-                                                          <Style>
-                                                            <Border>
-                                                              <Style>Solid</Style>
-                                                            </Border>
-                                                            <TopBorder>
-                                                              <Style>None</Style>
-                                                            </TopBorder>
-                                                            <BottomBorder>
-                                                              <Style>None</Style>
-                                                            </BottomBorder>
-                                                            <LeftBorder>
-                                                              <Width>1pt</Width>
-                                                            </LeftBorder>
-                                                            <RightBorder>
-                                                              <Color>Black</Color>
-                                                              <Style>Solid</Style>
-                                                            </RightBorder>
-                                                            <VerticalAlign>Middle</VerticalAlign>
-                                                            <PaddingLeft>2pt</PaddingLeft>
-                                                            <PaddingRight>2pt</PaddingRight>
-                                                            <PaddingTop>2pt</PaddingTop>
-                                                            <PaddingBottom>2pt</PaddingBottom>
-                                                          </Style>
-                                                        </Textbox>
-                                                      </CellContents>
-                                                    </TablixCell>
-                                                  </TablixCells>
-                                                </TablixRow>
-                                                <TablixRow>
-                                                  <Height>0.34097cm</Height>
-                                                  <TablixCells>
-                                                    <TablixCell>
-                                                      <CellContents>
-                                                        <Textbox Name="Textbox61">
-                                                          <CanGrow>true</CanGrow>
-                                                          <KeepTogether>true</KeepTogether>
-                                                          <Paragraphs>
-                                                            <Paragraph>
-                                                              <TextRuns>
-                                                                <TextRun>
-                                                                  <Value />
-                                                                  <Style>
-                                                                    <FontSize>8pt</FontSize>
-                                                                  </Style>
-                                                                </TextRun>
-                                                              </TextRuns>
-                                                              <Style />
-                                                            </Paragraph>
-                                                          </Paragraphs>
-                                                          <rd:DefaultName>Textbox61</rd:DefaultName>
-                                                          <Style>
-                                                            <Border>
-                                                              <Style>Solid</Style>
-                                                            </Border>
-                                                            <TopBorder>
-                                                              <Style>None</Style>
-                                                            </TopBorder>
-                                                            <BottomBorder>
-                                                              <Style>None</Style>
-                                                            </BottomBorder>
-                                                            <LeftBorder>
-                                                              <Style>None</Style>
-                                                            </LeftBorder>
-                                                            <RightBorder>
-                                                              <Style>None</Style>
-                                                            </RightBorder>
-                                                            <VerticalAlign>Middle</VerticalAlign>
-                                                            <PaddingLeft>2pt</PaddingLeft>
-                                                            <PaddingRight>2pt</PaddingRight>
-                                                            <PaddingTop>2pt</PaddingTop>
-                                                            <PaddingBottom>2pt</PaddingBottom>
-                                                          </Style>
-                                                        </Textbox>
-                                                        <ColSpan>3</ColSpan>
-                                                      </CellContents>
-                                                    </TablixCell>
-                                                    <TablixCell />
-                                                    <TablixCell />
-                                                    <TablixCell>
-                                                      <CellContents>
-                                                        <Textbox Name="Textbox28">
-                                                          <CanGrow>true</CanGrow>
-                                                          <KeepTogether>true</KeepTogether>
-                                                          <Paragraphs>
-                                                            <Paragraph>
-                                                              <TextRuns>
-                                                                <TextRun>
                                                                   <Value>=Fields!Duplicata.Value</Value>
                                                                   <Style>
+                                                                    <FontSize>9pt</FontSize>
                                                                     <FontWeight>Bold</FontWeight>
                                                                     <Color>Red</Color>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
-                                                              <Style />
+                                                              <Style>
+                                                                <TextAlign>Left</TextAlign>
+                                                              </Style>
                                                             </Paragraph>
                                                           </Paragraphs>
-                                                          <rd:DefaultName>Textbox28</rd:DefaultName>
+                                                          <rd:DefaultName>Textbox58</rd:DefaultName>
                                                           <Style>
                                                             <Border>
                                                               <Style>Solid</Style>
@@ -1114,7 +1020,7 @@
                                                             <VerticalAlign>Middle</VerticalAlign>
                                                             <PaddingLeft>14pt</PaddingLeft>
                                                             <PaddingRight>2pt</PaddingRight>
-                                                            <PaddingTop>2pt</PaddingTop>
+                                                            <PaddingTop>3pt</PaddingTop>
                                                             <PaddingBottom>2pt</PaddingBottom>
                                                           </Style>
                                                         </Textbox>
@@ -1141,12 +1047,11 @@
                                                 <TablixMember />
                                                 <TablixMember />
                                                 <TablixMember />
-                                                <TablixMember />
                                               </TablixMembers>
                                             </TablixRowHierarchy>
                                             <Top>0.47653cm</Top>
                                             <Left>4.76262cm</Left>
-                                            <Height>3.5386cm</Height>
+                                            <Height>3.19763cm</Height>
                                             <Width>14.23738cm</Width>
                                             <ZIndex>1</ZIndex>
                                             <Style>
@@ -1282,7 +1187,7 @@
                                                   <Width>4.76262cm</Width>
                                                 </TablixColumn>
                                                 <TablixColumn>
-                                                  <Width>6.69333cm</Width>
+                                                  <Width>14.23733cm</Width>
                                                 </TablixColumn>
                                               </TablixColumns>
                                               <TablixRows>
@@ -1300,7 +1205,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!CarrierLbl.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -1334,7 +1239,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!nomTransporteur.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -1373,7 +1278,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!DriverNameLbl.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -1407,7 +1312,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!nomchauffeur.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -1446,7 +1351,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!LicenseNumberLbl.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -1480,7 +1385,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!permis.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -1519,7 +1424,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!TruckNumberLbl.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -1553,7 +1458,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!codemoyentransport.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -1592,7 +1497,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!DeliveryModeLbl.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -1626,7 +1531,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!DeliveryMode.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -1668,9 +1573,9 @@
                                                 <TablixMember />
                                               </TablixMembers>
                                             </TablixRowHierarchy>
-                                            <Top>4.05041cm</Top>
+                                            <Top>3.73291cm</Top>
                                             <Height>2.20485cm</Height>
-                                            <Width>11.45595cm</Width>
+                                            <Width>18.99995cm</Width>
                                             <ZIndex>3</ZIndex>
                                             <Style>
                                               <Border>
@@ -9493,7 +9398,7 @@
                                                 </TablixMember>
                                               </TablixMembers>
                                             </TablixRowHierarchy>
-                                            <Top>6.36322cm</Top>
+                                            <Top>6.04572cm</Top>
                                             <Height>12.33537cm</Height>
                                             <Width>19cm</Width>
                                             <ZIndex>4</ZIndex>
@@ -9525,7 +9430,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!OrderNumberLbl.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -9564,7 +9469,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!DeliveryDepotLbl.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -9603,7 +9508,7 @@
                                                                 <TextRun>
                                                                   <Value>=Fields!PlaceOfDeliveryLbl.Value</Value>
                                                                   <Style>
-                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontSize>8pt</FontSize>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -9613,45 +9518,6 @@
                                                             </Paragraph>
                                                           </Paragraphs>
                                                           <rd:DefaultName>Textbox21</rd:DefaultName>
-                                                          <Style>
-                                                            <Border>
-                                                              <Style>None</Style>
-                                                            </Border>
-                                                            <VerticalAlign>Middle</VerticalAlign>
-                                                            <PaddingLeft>2pt</PaddingLeft>
-                                                            <PaddingRight>2pt</PaddingRight>
-                                                            <PaddingTop>2pt</PaddingTop>
-                                                            <PaddingBottom>2pt</PaddingBottom>
-                                                          </Style>
-                                                        </Textbox>
-                                                      </CellContents>
-                                                    </TablixCell>
-                                                  </TablixCells>
-                                                </TablixRow>
-                                                <TablixRow>
-                                                  <Height>0.34097cm</Height>
-                                                  <TablixCells>
-                                                    <TablixCell>
-                                                      <CellContents>
-                                                        <Textbox Name="Textbox54">
-                                                          <CanGrow>true</CanGrow>
-                                                          <KeepTogether>true</KeepTogether>
-                                                          <Paragraphs>
-                                                            <Paragraph>
-                                                              <TextRuns>
-                                                                <TextRun>
-                                                                  <Value />
-                                                                  <Style>
-                                                                    <FontSize>9pt</FontSize>
-                                                                  </Style>
-                                                                </TextRun>
-                                                              </TextRuns>
-                                                              <Style>
-                                                                <TextAlign>Right</TextAlign>
-                                                              </Style>
-                                                            </Paragraph>
-                                                          </Paragraphs>
-                                                          <rd:DefaultName>Textbox29</rd:DefaultName>
                                                           <Style>
                                                             <Border>
                                                               <Style>None</Style>
@@ -9679,11 +9545,10 @@
                                                 <TablixMember />
                                                 <TablixMember />
                                                 <TablixMember />
-                                                <TablixMember />
                                               </TablixMembers>
                                             </TablixRowHierarchy>
                                             <Top>2.35125cm</Top>
-                                            <Height>1.66388cm</Height>
+                                            <Height>1.32291cm</Height>
                                             <Width>4.76262cm</Width>
                                             <ZIndex>5</ZIndex>
                                             <Style>
@@ -9745,7 +9610,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <Left>0.00001cm</Left>
-            <Height>18.69859cm</Height>
+            <Height>18.38109cm</Height>
             <Width>19cm</Width>
             <Style>
               <Border>
@@ -9754,7 +9619,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>18.69859cm</Height>
+        <Height>18.39873cm</Height>
         <Style />
       </Body>
       <Width>19.00001cm</Width>
@@ -9821,7 +9686,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1cm</Height>
+          <Height>0.94708cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -10024,6 +9889,7 @@
               </Style>
             </Textbox>
             <Line Name="Line3">
+              <Top>0cm</Top>
               <Left>6.42068cm</Left>
               <Height>0.9064cm</Height>
               <Width>0cm</Width>

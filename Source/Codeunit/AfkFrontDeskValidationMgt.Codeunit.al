@@ -206,6 +206,24 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         exit(Ws.CreateResponseSuccess(''));
     end;
 
+
+    procedure Run_SalesOrders(input: JsonObject; IsDeletion: Boolean): Text
+    var
+        NoOrder: text;
+    begin
+        NoOrder := ws.GetText('No_', input);
+        if (NoOrder <> '') then begin
+
+            if (IsDeletion) then
+                exit(DeleteOrder(NoOrder))
+            else
+                exit(ModifyOrder(NoOrder, input))
+
+        end else
+            exit(AddOrder(input));
+    end;
+
+
     local procedure SetDdeDeblocageStatus(input: JsonObject): Text
     var
         ApprovalFlow: Record "Afk Approval Flow";
@@ -394,6 +412,57 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
     end;
 
+    local procedure ModifyOrder(OrderNo: Text; input: JsonObject): Text
+    var
+        SalesOrder: Record "Sales Header";
+    begin
+
+        SalesOrder.Get(SalesOrder."Document Type"::Order, OrderNo);
+
+        PopulateValuesSalesOrder(SalesOrder, input);
+
+        SalesOrder.Modify(true);
+        processOrdersLines(SalesOrder, input);
+        processOrdersPayMethods(SalesOrder, input);
+
+        exit(Ws.CreateResponseSuccess(SalesOrder."No."));
+
+    end;
+
+    local procedure AddOrder(input: JsonObject): Text
+    var
+        SalesOrder: Record "Sales Header";
+        SalesOrderLine: Record "Sales Line";
+    begin
+
+        SalesOrder.Init();
+        SalesOrder."Document Type" := SalesOrder."Document Type"::Order;
+        SalesOrder."No." := '';
+
+        SalesOrderLine.LockTable();
+        SalesOrder.Insert(true);
+
+        PopulateValuesSalesOrder(SalesOrder, input);
+        SalesOrder.Modify(true);
+        //processOrdersLines(SalesOrder, SalesOrderLine, input);
+
+        exit(Ws.CreateResponseSuccess(SalesOrder."No."));
+
+    end;
+
+    local procedure DeleteOrder(OrderNo: Text): Text
+    var
+        SalesOrder: Record "Sales Header";
+    begin
+
+        SalesOrder.Get(SalesOrder."Document Type"::Order, OrderNo);
+
+        SalesOrder.Delete(true);
+
+        exit(Ws.CreateResponseSuccess(SalesOrder."No."));
+
+    end;
+
     local procedure ModifyContact(OrderNo: Text; input: JsonObject): Text
     var
         Cont: Record Contact;
@@ -413,12 +482,23 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     local procedure AddContact(input: JsonObject): Text
     var
         Cont: Record Contact;
+        ContactBusRel: Record "Contact Business Relation";
+        CustNo: Code[20];
     begin
 
         Cont.Init();
         Cont."No." := '';
+        Cont.Type := Cont.Type::Person;
+        //         [Company No_] = (SELECT TOP 1 [Contact No_] 
+        // FROM [GDP$Contact Business Relation$437dbf0e-84ff-417a-965d-ed2bb9650972] WHERE No_ = [Customer No_]
+        // AND [Link to Table] = 1)
 
         Cont.Insert(true);
+
+        CustNo := ws.GetText('Customer No_', input);
+        ContactBusRel.SetRange("No.", CustNo);
+        if (ContactBusRel.FindFirst()) then
+            Cont."Company No." := ContactBusRel."Contact No.";
 
         PopulateValuesContact(Cont, input);
         Cont.Modify(true);
@@ -554,6 +634,103 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     //         ApprovalFlow.Insert();
     //     end;
     // end;
+    local procedure processOrdersLines(SalesOrder: Record "Sales Header"; input: JsonObject)
+    var
+        SalesLine: record "Sales Line";
+        SalesOrderLine: Record "Sales Line";
+        c: JsonToken;
+        LinesArray: JsonArray;
+        LineInput: JsonObject;
+    begin
+
+        SalesLine.Reset();
+        SalesLine.SetRange("Document Type", SalesLine."Document Type"::Order);
+        SalesLine.SetRange("Document No.", SalesOrder."No.");
+        if (not SalesLine.IsEmpty) then
+            SalesLine.DeleteAll();
+
+        input.Get('items', c);
+        LinesArray := c.AsArray();
+        foreach c in LinesArray do begin
+            LineInput := c.AsObject();
+            AddOrUpdateSalesOrderLine(SalesOrder, SalesOrderLine, LineInput);
+        end;
+    end;
+
+    local procedure processOrdersPayMethods(SalesOrder: Record "Sales Header"; input: JsonObject)
+    var
+        PayMethod: record "Sales Order Pay Doc";
+        PayMethodLine: Record "Sales Order Pay Doc";
+        c: JsonToken;
+        LinesArray: JsonArray;
+        LineInput: JsonObject;
+    begin
+
+        PayMethod.Reset();
+        PayMethod.SetRange(PayMethod."Customer No.", SalesOrder."Sell-to Customer No.");
+        PayMethod.SetRange("Document No.", SalesOrder."No.");
+        if (not PayMethod.IsEmpty) then
+            PayMethod.DeleteAll();
+
+        input.Get('paymentMethods', c);
+        LinesArray := c.AsArray();
+        foreach c in LinesArray do begin
+            LineInput := c.AsObject();
+            AddOrUpdateSalesOrderPaymentMethod(SalesOrder, PayMethodLine, LineInput);
+        end;
+    end;
+
+    local procedure AddOrUpdateSalesOrderLine(SalesOrder: Record "Sales Header"; var SalesLine: Record "Sales Line"; input: JsonObject)
+    var
+        SalesL: Record "Sales Line";
+    begin
+
+
+        SalesL.Reset();
+        SalesL.SetRange("Document Type", SalesOrder."Document Type");
+        SalesL.SetRange("Document No.", SalesOrder."No.");
+        SalesL.SetRange("Line No.", WS.GetInt('Line No_', input));
+        if (not SalesL.FindFirst()) then begin
+
+            SalesLine.Init();
+            SalesLine."Document Type" := SalesOrder."Document Type";
+            SalesLine."Document No." := SalesOrder."No.";
+            PopulateValuesSalesLines(SalesLine, input);
+            SalesLine.Insert();
+
+        end else begin
+
+            PopulateValuesSalesLines(SalesL, input);
+            SalesL.Modify(true);
+
+        end;
+    end;
+
+    local procedure AddOrUpdateSalesOrderPaymentMethod(SalesOrder: Record "Sales Header"; var PayMethod: Record "Sales Order Pay Doc"; input: JsonObject)
+    var
+        SalesPayDoc: Record "Sales Order Pay Doc";
+    begin
+
+
+        SalesPayDoc.Reset();
+        SalesPayDoc.SetRange("Customer No.", SalesOrder."Sell-to Customer No.");
+        SalesPayDoc.SetRange("Document No.", SalesOrder."No.");
+        SalesPayDoc.SetRange("Line No.", WS.GetInt('Line No_', input));
+        if (not SalesPayDoc.FindFirst()) then begin
+
+            PayMethod.Init();
+            PayMethod."Customer No." := SalesOrder."Sell-to Customer No.";
+            PayMethod."Document No." := SalesOrder."No.";
+            PopulateValuesSOPaymentMethods(PayMethod, input);
+            PayMethod.Insert();
+
+        end else begin
+
+            PopulateValuesSOPaymentMethods(SalesPayDoc, input);
+            SalesPayDoc.Modify(true);
+
+        end;
+    end;
 
     local procedure processCustRequirements(RecNo: Code[20]; input: JsonObject; IsLead: Boolean)
     var
@@ -845,6 +1022,73 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     end;
 
 
+    //modification commande : {"inputJson":"{\"Parameter\":\"salesOrder_modify\",\"UserId\":\"S000024\",
+    //\"No_\":\"SO-25-003\",\"Document Date\":\"2025-03-19\",\"External Document No_\":\"BC DU 19032025\",
+    //\"Requested Delivery Date\":\"2025-03-31\",\"Sell-to Customer No_\":\"CLT-CP0001\",\
+    //"items\":[{\"Line No_\":1,\"No_\":\"Produit 1\",\"Description\":\"Description du produit 1\",
+    //\"Unit of Measure\":\"Bouteille\",\"Quantity\":10,\"Unit Price\":3500,\"Line Amount\":35000,
+    //\"Linked Line No_\":0},{\"Line No_\":2,\"No_\":\"Produit 2\",\"Description\":\"Description du produit 2\",
+    //\"Unit of Measure\":\"Bouteille\",\"Quantity\":10,\"Unit Price\":3500,\"Line Amount\":35000,
+    //\"Linked Line No_\":0}],\"paymentMethods\":[{\"Line No_\":1,\"No_\":\"CHEQUE\",\"Reference\":\"REF001\",
+    //\"Amount\":50000,\"Observation\":\"ras\"},{\"Line No_\":2,\"No_\":\"ESPECE\",\"Reference\":\"REF002\",
+    //\"Amount\":20000,\"Observation\":\"\"}]}"}
+
+    //{"inputJson":"{\"Parameter\":\"salesOrder_insert\",\"UserId\":\"S000024\",\"No_\":\"\",\"Sell-to Customer No_\":\"CP000082\",\"items\":[],\"paymentMethods\":[]}"}
+    local procedure PopulateValuesSalesOrder(var SalesHeader: Record "Sales Header"; input: JsonObject)
+    var
+        RecRef: RecordRef;
+    begin
+
+        RecRef.GetTable(SalesHeader);
+
+        WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."Sell-to Customer No."), input, 'Sell-to Customer No_');
+        WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."Afk Web User Id"), input, 'UserId');
+        WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."Document Date"), input, 'Document Date');
+        WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."External Document No."), input, 'External Document No_');
+        WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."Requested Delivery Date"), input, 'Requested Delivery Date');
+
+
+        RecRef.SetTable(SalesHeader);
+    end;
+
+    local procedure PopulateValuesSalesLines(var SalesLine: Record "Sales Line"; input: JsonObject)
+    var
+        RecRef: RecordRef;
+    begin
+
+        RecRef.GetTable(SalesLine);
+
+        WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."Line No."), input, 'Line No_');
+        WS.ValidateIntField(RecRef, SalesLine.FieldNo(SalesLine.Type), 2);
+        WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."No."), input, 'No_');
+        WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."Description"), input, 'Description');
+        WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."Unit of Measure Code"), input, 'Unit of Measure');
+        WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."Quantity"), input, 'Quantity');
+        WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."Unit Price"), input, 'Unit Price');
+        //WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."Line Amount"), input, 'Line Amount');
+        WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."VAT %"), input, 'VAT _');
+        WS.ValidateField(RecRef, SalesLine.FieldNo(SalesLine."Afk Linked Line No."), input, 'Linked Line No_');
+
+        RecRef.SetTable(SalesLine);
+    end;
+
+    local procedure PopulateValuesSOPaymentMethods(var PayMethod: Record "Sales Order Pay Doc"; input: JsonObject)
+    var
+        RecRef: RecordRef;
+    begin
+
+        RecRef.GetTable(PayMethod);
+
+        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Line No."), input, 'Line No_');
+        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Pay Method"), input, 'No_');
+        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Reference"), input, 'Reference');
+        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Amount"), input, 'Amount');
+        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Observations"), input, 'Observation');
+
+        RecRef.SetTable(PayMethod);
+    end;
+
+
 
     //{"inputJson":"{\"Parameter\":\"customer_modify\",\"webUserName\":\"GERALD\",\"No_\":\"C000001\",
     // \"Customer Status\":0,\"Name\":\"gerald\",\"Name 2\":\"gerald\",\"Salesperson Code\":\"10011\",
@@ -1102,11 +1346,11 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
                 ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Holding Cust Templ");
                 customerNos.Add(ParentCustNo);
             end;
-            // if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Opération") then begin
-            //     AfkSetup.TestField(AfkSetup."Operation Cust Templ");
-            //     ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
-            //     customerNos.Add(ParentCustNo);
-            // end;
+            if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Opération") then begin
+                AfkSetup.TestField(AfkSetup."Operation Cust Templ");
+                ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
+                customerNos.Add(ParentCustNo);
+            end;
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Société") then begin
                 AfkSetup.TestField(AfkSetup."Company Cust Templ");
                 ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Company Cust Templ");
@@ -1172,6 +1416,57 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
         if ((ToAdress <> '') or (CCAdress <> '')) then
             EmailMgt.SendEmail(Objet, CodeDocument, Commentaires, ToAdress, CCAdress, Sender, SendDate, DocType);
+    end;
+
+    procedure GetUnitPrice(input: JsonObject): Text
+    var
+
+        QuoteNo: Code[20];
+        itemCode: Code[20];
+        variantCode: Code[20];
+        Quantity: Decimal;
+    begin
+        QuoteNo := CopyStr(ws.GetText('OrderNo', input), 1, 20);
+        itemCode := CopyStr(ws.GetText('itemCode', input), 1, 20);
+        variantCode := CopyStr(ws.GetText('Variant Code', input), 1, 20);
+        Quantity := ws.GetDecimal('Quantity', input);
+
+        exit(GetPrice(QuoteNo, itemCode, Quantity, variantCode));
+    end;
+
+    procedure SalesOrderSentToValidation(input: JsonObject): Text
+    var
+        SalesHeader: record "Sales Header";
+        SalesOrderProcess: Codeunit "Sales Order Process";
+        SalesOrderNo: Code[20];
+        WebUserId: Code[50];
+    begin
+        SalesOrderNo := CopyStr(ws.GetText('No_', input), 1, 20);
+        WebUserId := CopyStr(ws.GetText('UserId', input), 1, 50);
+        if (SalesHeader.get(SalesHeader."Document Type"::Order, SalesOrderNo)) then begin
+            SalesOrderProcess.ValidationEnSaisie(SalesHeader);
+            ws.CreateResponseSuccess(SalesOrderNo);
+        end else
+            ws.CreateResponseError('Invalid sales order ' + SalesOrderNo);
+    end;
+
+    local procedure GetPrice(OrderNo: Code[20]; ItemNo: Code[20]; Quantity: Decimal; variantCode: Code[20]): Text
+    var
+        TempSalesLine: Record "Sales Line" temporary;
+        PriceText: Code[20];
+    begin
+
+        TempSalesLine.Init();
+        TempSalesLine."Document Type" := TempSalesLine."Document Type"::Order;
+        TempSalesLine."Document No." := OrderNo;
+
+        TempSalesLine.Validate(Type, TempSalesLine.Type::Item);
+        TempSalesLine.Validate("No.", ItemNo);
+        TempSalesLine.Validate("Variant Code", variantCode);
+        TempSalesLine.Validate(Quantity, Quantity);
+
+        PriceText := Format(TempSalesLine."Unit Price");
+        exit(Ws.CreateResponseSuccess(PriceText));
     end;
 
     var

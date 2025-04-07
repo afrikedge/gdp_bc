@@ -195,9 +195,8 @@ codeunit 50040 "Afk Api Mgt"
         ApiInterface: Codeunit "Afk Api Interface Mgt";
         jsonText: Text;
     begin
-        //jsonText := '{"inputJson":"{\"Parameter\":\"SOUnblocking_updateApprovalFlow\",\"webUserName\":\"DAVID\",\"Approval Status\":4,\"ApprovalFlow\":[{\"Record Type\":2,\"Record No_\":\"470101\",\"Sequence No_\":1,\"Approval Mode\":0,\"Approved On\":\"2025-02-09T20:37:08.913Z\",\"Approved by\":\"DAVID\",\"Approved as\":\"DAVID\",\"Actual Status\":2,\"Next Status\":4,\"Comments\":\"Ok\\n\"}]}"}';
-        jsonText := '{"inputJson":"{\"Parameter\":\"RevisionRequest_updateApprovalFlow\",\"webUserName\":\"DAVID\",\"No_\":\"CRR/25-00026\",\"Approval Status\":4,\"Approved Payment Terms Code\":0,\"Approved Credit limit (LCY)\":0,\"Approved Risk Level\":0,\"Approved Payment Method\":0,\"ApprovalFlow\":[{\"Record Type\":1,\"Record No_\":\"CRR/25-00026\",\"Sequence No_\":2,\"Approval Mode\":0,\"Approved On\":\"2025-02-12T16:44:32.240Z\",\"Approved by\":\"DAVID\",\"Approved as\":\"DAVID\",\"Actual Status\":2,\"Next Status\":4,\"Comments\":\"\"}]}"}';
-        //jsonText := '\"Parameter\":\"SOUnblocking_updateApprovalFlow\",\"webUserName\":\"DAVID\",\"Approval Status\":4,\"ApprovalFlow\":[{\"Record Type\":2,\"Record No_\":\"470101\",\"Sequence No_\":1,\"Approval Mode\":0,\"Approved On\":\"2025-02-09T20:37:08.913Z\",\"Approved by\":\"DAVID\",\"Approved as\":\"DAVID\",\"Actual Status\":2,\"Next Status\":4,\"Comments\":\"Ok\\n\"}]';
+        //jsonText := '{"inputJson":"{\"Parameter\":\"RevisionRequest_updateApprovalFlow\",\"webUserName\":\"DAVID\",\"No_\":\"CRR/25-00026\",\"Approval Status\":4,\"Approved Payment Terms Code\":0,\"Approved Credit limit (LCY)\":0,\"Approved Risk Level\":0,\"Approved Payment Method\":0,\"ApprovalFlow\":[{\"Record Type\":1,\"Record No_\":\"CRR/25-00026\",\"Sequence No_\":2,\"Approval Mode\":0,\"Approved On\":\"2025-02-12T16:44:32.240Z\",\"Approved by\":\"DAVID\",\"Approved as\":\"DAVID\",\"Actual Status\":2,\"Next Status\":4,\"Comments\":\"\"}]}"}';
+        jsonText := '{"inputJson":"{\"Parameter\":\"salesOrder_insert\",\"UserId\":\"S000024\",\"No_\":\"\",\"Sell-to Customer No_\":\"C0000024\",\"items\":[],\"paymentMethods\":[]}"}';
         MainJson.ReadFrom(jsonText);
         MainJson.Get('inputJson', InputJsonToken);
         InputJsonString := InputJsonToken.AsValue().AsText();
@@ -254,6 +253,17 @@ codeunit 50040 "Afk Api Mgt"
         response := CreateDateTime(responseDate, responseTime);
 
         exit(response);
+    end;
+
+    procedure ValidateIntField(MyRecordRef: RecordRef; MyFieldNo: integer; intValue: Integer)
+    var
+        field: record Field;
+        fieldRef: FieldRef;
+    begin
+        if (field.Get(MyRecordRef.Number, MyFieldNo)) then begin
+            fieldRef := MyRecordRef.field(field."No.");
+            fieldRef.Validate(intValue);
+        end;
     end;
 
     procedure ValidateField(MyRecordRef: RecordRef; MyFieldNo: integer; input: JsonObject; jsonKey: Text)
@@ -366,23 +376,7 @@ codeunit 50040 "Afk Api Mgt"
     //     RecRef.SetTable(Rec);
     // end;
 
-    // procedure AssignValueToField(RecordId: Integer; FieldNo: Integer; Value: Variant)
-    // var
-    //     RecRef: RecordRef;
-    //     FldRef: FieldRef;
-    // begin
-    //     RecRef.Open(RecordId);
-    //     FldRef := RecRef.Field(FieldNo);
 
-    //     case FldRef.Type of
-    //         FieldType::Text, FieldType::Code:
-    //             FldRef.Value := Value;
-    //         FieldType::Enum:
-    //             FldRef.Validate(Value);
-    //     end;
-
-    //     RecRef.Modify();
-    // end;
 
 }
 

@@ -153,6 +153,14 @@ table 50001 "AddOn Setup2"
         {
             Caption = 'Email pour alerte création des clients';
         }
+        field(34; "Desactivate Loc Type Control"; Boolean)
+        {
+            Caption = 'Desactivate Location Type Control';
+        }
+        field(35; "Desactivate Calc Interest"; Boolean)
+        {
+            Caption = 'Desactivate Calc Interest';
+        }
     }
 
     keys

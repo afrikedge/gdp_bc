@@ -3,7 +3,7 @@ codeunit 50041 "Afk Api Interface Mgt"
 
     var
         WS: codeunit "Afk Api Mgt";
-        DdeDeblocageMgt: codeunit "Afk FrontDeskValidation Mgt";
+        FrontDeskMgt: codeunit "Afk FrontDeskValidation Mgt";
         LblUnknownParameter: Label 'Unkwnown parameter : %1', Comment = '%1 = parameter';
     /// <summary>
     /// 
@@ -22,65 +22,78 @@ codeunit 50041 "Afk Api Interface Mgt"
         case param of
 
             'changeUserPassword':
-                exit(DdeDeblocageMgt.RunUpdatePassword(input));
+                exit(FrontDeskMgt.RunUpdatePassword(input));
 
             'SOUnblocking_updateApprovalFlow':
-                exit(DdeDeblocageMgt.Run_ModifyBlockingStatus(input));
+                exit(FrontDeskMgt.Run_ModifyBlockingStatus(input));
 
             'revisionRequest_insert':
-                exit(DdeDeblocageMgt.RunCustRevision(input, false));
+                exit(FrontDeskMgt.RunCustRevision(input, false));
 
             'revisionRequest_modify':
-                exit(DdeDeblocageMgt.RunCustRevision(input, false));
+                exit(FrontDeskMgt.RunCustRevision(input, false));
 
             'revisionRequest_delete':
-                exit(DdeDeblocageMgt.RunCustRevision(input, true));
+                exit(FrontDeskMgt.RunCustRevision(input, true));
 
             'RevisionRequest_updateApprovalFlow':
-                exit(DdeDeblocageMgt.Run_ModifyCustRevisionStatus(input));
+                exit(FrontDeskMgt.Run_ModifyCustRevisionStatus(input));
 
             'lead_insert':
-                exit(DdeDeblocageMgt.RunLeads(input, false));
+                exit(FrontDeskMgt.RunLeads(input, false));
 
             'lead_modify':
-                exit(DdeDeblocageMgt.RunLeads(input, false));
+                exit(FrontDeskMgt.RunLeads(input, false));
 
             'lead_delete':
-                exit(DdeDeblocageMgt.RunLeads(input, true));
+                exit(FrontDeskMgt.RunLeads(input, true));
 
             'lead_updateApprovalFlow':
-                exit(DdeDeblocageMgt.Run_ModifyLeadStatus(input));
+                exit(FrontDeskMgt.Run_ModifyLeadStatus(input));
 
             'shipToAddress_insert':
-                exit(DdeDeblocageMgt.RunShipToAddress(input, false));
+                exit(FrontDeskMgt.RunShipToAddress(input, false));
 
             'shipToAddress_modify':
-                exit(DdeDeblocageMgt.RunShipToAddress(input, false));
+                exit(FrontDeskMgt.RunShipToAddress(input, false));
 
             'shipToAddress_delete':
-                exit(DdeDeblocageMgt.RunShipToAddress(input, true));
+                exit(FrontDeskMgt.RunShipToAddress(input, true));
 
 
             'contact_insert':
-                exit(DdeDeblocageMgt.RunContacts(input, false));
+                exit(FrontDeskMgt.RunContacts(input, false));
 
             'contact_modify':
-                exit(DdeDeblocageMgt.RunContacts(input, false));
+                exit(FrontDeskMgt.RunContacts(input, false));
 
             'contact_delete':
-                exit(DdeDeblocageMgt.RunContacts(input, true));
+                exit(FrontDeskMgt.RunContacts(input, true));
 
             'customer_modify':
-                exit(DdeDeblocageMgt.RunCustomers(input, false));
+                exit(FrontDeskMgt.RunCustomers(input, false));
 
             'documentlink_insert':
-                exit(DdeDeblocageMgt.RunLinkDocument(input, false));
+                exit(FrontDeskMgt.RunLinkDocument(input, false));
 
             'documentlink_delete':
-                exit(DdeDeblocageMgt.RunLinkDocument(input, true));
+                exit(FrontDeskMgt.RunLinkDocument(input, true));
 
             'customer_reassign':
-                exit(DdeDeblocageMgt.Customer_Reassign(input));
+                exit(FrontDeskMgt.Customer_Reassign(input));
+
+
+
+            'salesOrder_getPrice':
+                exit(FrontDeskMgt.GetUnitPrice(input));
+            'salesOrder_insert':
+                exit(FrontDeskMgt.Run_SalesOrders(input, false));
+            'salesOrder_modify':
+                exit(FrontDeskMgt.Run_SalesOrders(input, false));
+            'salesOrder_delete':
+                exit(FrontDeskMgt.Run_SalesOrders(input, true));
+            'salesOrder_submit':
+                exit(FrontDeskMgt.SalesOrderSentToValidation(input));
 
 
             // 'orders_item_getPrice':

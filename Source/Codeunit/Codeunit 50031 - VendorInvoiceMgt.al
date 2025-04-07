@@ -744,7 +744,7 @@ codeunit 50031 VendorInvoiceMgt
             Message(Text011);
     end;
 
-    procedure SendEmail(Objet: Text[80]; CodeDocument: Text[30]; Commentaires: Text[150]; ToAdress: Text; CCAdress: Text; Sender: Text[100]; SendDate: Text[50]; DocType: Text[30])
+    procedure SendEmail(Objet: Text[80]; CodeDocument: Text[50]; Commentaires: Text[150]; ToAdress: Text; CCAdress: Text; Sender: Text[100]; SendDate: Text[50]; DocType: Text[50])
     var
         // SMTPMail: Codeunit "SMTP Mail";
         NewObjet: Text;
@@ -767,7 +767,7 @@ codeunit 50031 VendorInvoiceMgt
         EmailMgt.SendEmail(EmailToSend);
     end;
 
-    local procedure CreateEmailBody(CodeDocument: Text[30]; Commentaires: Text[150]; Sender: Text[80]; SendDate: Text[50]; DocType: Text[30]): Text
+    local procedure CreateEmailBody(CodeDocument: Text[50]; Commentaires: Text[150]; Sender: Text[80]; SendDate: Text[50]; DocType: Text[30]): Text
     var
         BodyText: Text;
     begin
