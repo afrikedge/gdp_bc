@@ -63,7 +63,7 @@ page 50034 "Posted Touring Card"
             part("Bons List"; "Touring BE Subform")
             {
                 Caption = 'Bons List';
-                SubPageLink = idtournee = FIELD(IdTouring), isAnnule = const(false);
+                SubPageLink = idtournee = FIELD(IdTouring);
 
             }
         }

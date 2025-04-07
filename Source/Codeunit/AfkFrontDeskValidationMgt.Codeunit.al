@@ -421,6 +421,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
         PopulateValuesSalesOrder(SalesOrder, input);
 
+        SalesOrder.Modify(true);
         processOrdersLines(SalesOrder, input);
         processOrdersPayMethods(SalesOrder, input);
 
@@ -442,7 +443,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         SalesOrder.Insert(true);
 
         PopulateValuesSalesOrder(SalesOrder, input);
-
+        SalesOrder.Modify(true);
         //processOrdersLines(SalesOrder, SalesOrderLine, input);
 
         exit(Ws.CreateResponseSuccess(SalesOrder."No."));
@@ -707,15 +708,15 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
     local procedure AddOrUpdateSalesOrderPaymentMethod(SalesOrder: Record "Sales Header"; var PayMethod: Record "Sales Order Pay Doc"; input: JsonObject)
     var
-        SalesL: Record "Sales Order Pay Doc";
+        SalesPayDoc: Record "Sales Order Pay Doc";
     begin
 
 
-        SalesL.Reset();
-        SalesL.SetRange("Customer No.", SalesOrder."Sell-to Customer No.");
-        SalesL.SetRange("Document No.", SalesOrder."No.");
-        SalesL.SetRange("Line No.", WS.GetInt('Line No_', input));
-        if (not SalesL.FindFirst()) then begin
+        SalesPayDoc.Reset();
+        SalesPayDoc.SetRange("Customer No.", SalesOrder."Sell-to Customer No.");
+        SalesPayDoc.SetRange("Document No.", SalesOrder."No.");
+        SalesPayDoc.SetRange("Line No.", WS.GetInt('Line No_', input));
+        if (not SalesPayDoc.FindFirst()) then begin
 
             PayMethod.Init();
             PayMethod."Customer No." := SalesOrder."Sell-to Customer No.";
@@ -725,8 +726,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
         end else begin
 
-            PopulateValuesSOPaymentMethods(SalesL, input);
-            SalesL.Modify(true);
+            PopulateValuesSOPaymentMethods(SalesPayDoc, input);
+            SalesPayDoc.Modify(true);
 
         end;
     end;
@@ -1031,6 +1032,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     //\"Linked Line No_\":0}],\"paymentMethods\":[{\"Line No_\":1,\"No_\":\"CHEQUE\",\"Reference\":\"REF001\",
     //\"Amount\":50000,\"Observation\":\"ras\"},{\"Line No_\":2,\"No_\":\"ESPECE\",\"Reference\":\"REF002\",
     //\"Amount\":20000,\"Observation\":\"\"}]}"}
+
+    //{"inputJson":"{\"Parameter\":\"salesOrder_insert\",\"UserId\":\"S000024\",\"No_\":\"\",\"Sell-to Customer No_\":\"CP000082\",\"items\":[],\"paymentMethods\":[]}"}
     local procedure PopulateValuesSalesOrder(var SalesHeader: Record "Sales Header"; input: JsonObject)
     var
         RecRef: RecordRef;
