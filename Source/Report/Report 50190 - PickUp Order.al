@@ -75,6 +75,9 @@ report 50190 "PickUp Order"
             column(AutorisedBy; nomresponsable)
             {
             }
+            column(RegimeDouanier; RegimeDouanier)
+            {
+            }
             column(Foot1; 'Siège social ' + CompanyInfo.Address)
             {
             }

@@ -1107,11 +1107,15 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value />
-                                                                  <Style />
+                                                                  <Value>=Fields!RegimeDouanier.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>9pt</FontSize>
+                                                                  </Style>
                                                                 </TextRun>
                                                               </TextRuns>
-                                                              <Style />
+                                                              <Style>
+                                                                <TextAlign>Left</TextAlign>
+                                                              </Style>
                                                             </Paragraph>
                                                           </Paragraphs>
                                                           <rd:DefaultName>Textbox22</rd:DefaultName>
@@ -1119,6 +1123,7 @@
                                                             <Border>
                                                               <Style>None</Style>
                                                             </Border>
+                                                            <VerticalAlign>Middle</VerticalAlign>
                                                             <PaddingLeft>2pt</PaddingLeft>
                                                             <PaddingRight>2pt</PaddingRight>
                                                             <PaddingTop>2pt</PaddingTop>
@@ -7879,7 +7884,6 @@
               </Style>
             </Textbox>
             <Line Name="Line3">
-              <Top>0cm</Top>
               <Left>6.43943cm</Left>
               <Height>0.87056cm</Height>
               <Width>0cm</Width>
@@ -7891,7 +7895,6 @@
               </Style>
             </Line>
             <Line Name="Line4">
-              <Top>0cm</Top>
               <Left>12.42378cm</Left>
               <Height>0.87056cm</Height>
               <Width>0cm</Width>
@@ -8018,6 +8021,9 @@ End Function
         </Field>
         <Field Name="AutorisedBy">
           <DataField>AutorisedBy</DataField>
+        </Field>
+        <Field Name="RegimeDouanier">
+          <DataField>RegimeDouanier</DataField>
         </Field>
         <Field Name="Foot1">
           <DataField>Foot1</DataField>
