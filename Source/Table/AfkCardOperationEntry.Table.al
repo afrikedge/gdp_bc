@@ -2,7 +2,7 @@ table 50110 "Afk Card Operation Entry"
 {
     Caption = 'Afk Card Operation Entry';
     DataClassification = CustomerContent;
-    
+
     fields
     {
         field(1; "File"; Code[30])
@@ -29,12 +29,28 @@ table 50110 "Afk Card Operation Entry"
         {
             Caption = 'Posted In GL';
         }
+        field(7; "Error Message"; Text[250])
+        {
+            Caption = 'Error Message';
+        }
+        field(8; "Posted Document No."; Code[20])
+        {
+            Caption = 'Posted Document No.';
+        }
     }
     keys
     {
-        key(PK; "File","Posting Date","Customer No.")
+        key(PK; "File", "Posting Date", "Customer No.")
         {
             Clustered = true;
         }
     }
+    procedure Navigate()
+    var
+        NavigateForm: Page Navigate;
+    begin
+        if (Rec."Posted Document No." = '') then exit;
+        NavigateForm.SetDoc(Rec."Posting Date", Rec."Posted Document No.");
+        NavigateForm.Run;
+    end;
 }

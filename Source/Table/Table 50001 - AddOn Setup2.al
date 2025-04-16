@@ -161,6 +161,10 @@ table 50001 "AddOn Setup2"
         {
             Caption = 'Desactivate Calc Interest';
         }
+        field(36; "Email Card Posting Error"; Text[80])
+        {
+            Caption = 'Email pour les alertes en cas erreurs validation transactions cartes';
+        }
     }
 
     keys

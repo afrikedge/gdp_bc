@@ -3,6 +3,26 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="gdp_bc">
     <body>
       <group id="body">
+        <trans-unit id="Page 1447496441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Card Entry To Post</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Card Entry To Post - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1447496441 - Action 1405007275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Navigate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Card Entry To Post - Action &amp;Navigate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1447496441 - Action 428359810 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comptabiliser</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Card Entry To Post - Action PostNow - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 240377702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Afk Card Posting Config</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Card Posting Config - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3545351763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Revision List</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -67,6 +87,16 @@
           <source>Moyens de paiement Frontdesk</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AfkFrontDeskPaymentMethod - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2361576835 - EnumValue 2221101399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Credit Note</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Card Posting Account Type - EnumValue Credit Note - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2361576835 - EnumValue 551726890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Debit Note</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Card Posting Account Type - EnumValue Debit Note - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1264407366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comptes Bancaire - Grand Livre</source>
@@ -1628,6 +1658,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Email Avis Paiement - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 4116220036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email pour les alertes en cas erreurs validation transactions cartes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Email Card Posting Error - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 4035091418 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Email CC pour relances clients</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2627,6 +2662,71 @@
           <source>Sequence No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Approval Flow - Field Sequence No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4192045379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Afk Card Operation Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4192045379 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4192045379 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4192045379 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4192045379 - Field 2852966117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Error Message</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Error Message - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4192045379 - Field 3374690962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field File - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4192045379 - Field 2960574539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Posted Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4192045379 - Field 2051632751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted In GL</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Posted In GL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4192045379 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 240377702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Afk Card Posting Config</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Posting Config - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 240377702 - Field 1891586249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bal. Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Posting Config - Field Bal. Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 240377702 - Field 149522872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Posting Config - Field Entry Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 240377702 - Field 3374690962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Posting Config - Field File - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2244001904 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Afk Criteria Value</source>
@@ -63394,9 +63494,19 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Stock9 - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 172311139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
-          <source>Afk Tenues</source>
+          <source>Afk Tenues et cartes</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1_Tenues - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 3299876027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Configuration compta. cartes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Cartes1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 917998582 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Opérations cartes à comptabiliser</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action GD1Cartes2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 3288576969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Sorties à refacturer</source>
