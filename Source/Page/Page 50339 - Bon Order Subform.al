@@ -72,6 +72,16 @@ page 50339 "Bon Order Subform"
         end;
     end;
 
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    var
+        myInt: Integer;
+    begin
+        if EnteteBE.Get(Rec.numBE) then begin
+            if not (EnteteBE.Source = EnteteBE.Source::" ") then
+                Error('Vous ne devez pas ajouter une ligne sur ce bon car il provient du dispaching');
+        end;
+    end;
+
     var
         IsNotFromDispaching: Boolean;
         EnteteBE: Record pro_enteteBE;

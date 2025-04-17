@@ -1392,11 +1392,15 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         Sender: Text[80];
         SendDate: Text[50];
         DocType: Text[30];
+        Cust: Record Customer;
+        SalesPerson: Record "Salesperson/Purchaser";
 
     begin
 
         if (CustNo = '') then
             exit;
+        if (Cust.get(CustNo)) then;
+        if (SalesPerson.get(Cust."Salesperson Code")) then;
 
         AddOnSetup2.Get();
         if (AddOnSetup2."Email for Customers Creation" = '') then
@@ -1405,9 +1409,9 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         UserSetup.Get(UserId);
         UserSetup.CalcFields("User Full Name");
 
-        Objet := 'Nouveau client crée dans Business Central : ' + CustNo;
+        Objet := CopyStr('Nouveau client crée dans BC : ' + CustNo + ' - ' + Cust.Name, 1, 80);
         CodeDocument := CustNo;
-        Commentaires := 'Nouveau client';
+        Commentaires := 'Nouveau client : ' + Cust.Name + ' ; Commercial : ' + SalesPerson.Code + ' - ' + SalesPerson.Name;
         ToAdress := AddOnSetup2."Email for Customers Creation";
         CCAdress := '';
         Sender := UserSetup."User ID" + ' - ' + UserSetup."User Full Name";

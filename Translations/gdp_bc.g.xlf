@@ -1628,6 +1628,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Cust Revision Nos Series - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 2302406116 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Délai de blocage clients dormants (Mois)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Customer blocking period Month - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 2944887935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prepmt. Payment Terms Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15098,6 +15103,66 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - NamedType TxtTraitementTerminé</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3043917847 - NamedType 2130714324" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Janvier</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method GetDescrMois - NamedType textJan</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3043917847 - NamedType 2630463636" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Février</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method GetDescrMois - NamedType textFev</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3043917847 - NamedType 2093649500" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mars</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method GetDescrMois - NamedType textMars</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3043917847 - NamedType 815574204" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Avril</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method GetDescrMois - NamedType textAvr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3043917847 - NamedType 405151732" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mai</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method GetDescrMois - NamedType textMai</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3043917847 - NamedType 2499195327" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Juin</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method GetDescrMois - NamedType textJuin</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3043917847 - NamedType 1780475662" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Juillet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method GetDescrMois - NamedType textJuillet</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3043917847 - NamedType 3698044950" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Août</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method GetDescrMois - NamedType textAout</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3043917847 - NamedType 2525573769" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Septembre</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method GetDescrMois - NamedType textSept</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3043917847 - NamedType 965636319" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Octobre</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method GetDescrMois - NamedType textOct</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3043917847 - NamedType 3426203894" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Novembre</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method GetDescrMois - NamedType textNov</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1534255607 - Method 3043917847 - NamedType 2127798089" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Décembre</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GL Mgt - Method GetDescrMois - NamedType textDec</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1534255607 - Method 3209614948 - NamedType 4016145812" size-unit="char" translate="yes" xml:space="preserve">
           <source>La retenue à la source ne doit pas être activée en cas d'achat au comptant</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -26677,66 +26742,6 @@
           <source>Dispaching Statistiques</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1128466989 - Method 3043917847 - NamedType 2130714324" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Janvier</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Method GetDescrMois - NamedType textJan</note>
-        </trans-unit>
-        <trans-unit id="Page 1128466989 - Method 3043917847 - NamedType 2630463636" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Février</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Method GetDescrMois - NamedType textFev</note>
-        </trans-unit>
-        <trans-unit id="Page 1128466989 - Method 3043917847 - NamedType 2093649500" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Mars</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Method GetDescrMois - NamedType textMars</note>
-        </trans-unit>
-        <trans-unit id="Page 1128466989 - Method 3043917847 - NamedType 815574204" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Avril</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Method GetDescrMois - NamedType textAvr</note>
-        </trans-unit>
-        <trans-unit id="Page 1128466989 - Method 3043917847 - NamedType 405151732" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Mai</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Method GetDescrMois - NamedType textMai</note>
-        </trans-unit>
-        <trans-unit id="Page 1128466989 - Method 3043917847 - NamedType 2499195327" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Juin</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Method GetDescrMois - NamedType textJuin</note>
-        </trans-unit>
-        <trans-unit id="Page 1128466989 - Method 3043917847 - NamedType 1780475662" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Juillet</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Method GetDescrMois - NamedType textJuillet</note>
-        </trans-unit>
-        <trans-unit id="Page 1128466989 - Method 3043917847 - NamedType 3698044950" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Août</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Method GetDescrMois - NamedType textAout</note>
-        </trans-unit>
-        <trans-unit id="Page 1128466989 - Method 3043917847 - NamedType 2525573769" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Septembre</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Method GetDescrMois - NamedType textSept</note>
-        </trans-unit>
-        <trans-unit id="Page 1128466989 - Method 3043917847 - NamedType 965636319" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Octobre</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Method GetDescrMois - NamedType textOct</note>
-        </trans-unit>
-        <trans-unit id="Page 1128466989 - Method 3043917847 - NamedType 3426203894" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Novembre</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Method GetDescrMois - NamedType textNov</note>
-        </trans-unit>
-        <trans-unit id="Page 1128466989 - Method 3043917847 - NamedType 2127798089" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Décembre</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Dispaching Events - Method GetDescrMois - NamedType textDec</note>
         </trans-unit>
         <trans-unit id="Page 1128466989 - Control 1704097506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Général</source>
@@ -41267,6 +41272,21 @@
           <source>Liste des retours enregistres</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Whse. Basic GDP-R-LIV - Action RetousEnreg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1276753426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bloquer les clients dormants</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Blocking Dormant Customer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1276753426 - NamedType 3283546407" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Process @1@@@@@@@@@@@@@@@@@@@@@@@@@@@@\</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Blocking Dormant Customer - NamedType Text008</note>
+        </trans-unit>
+        <trans-unit id="Report 1276753426 - NamedType 2066700527" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Traitement términé !</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Blocking Dormant Customer - NamedType TxtTraitementTerminé</note>
         </trans-unit>
         <trans-unit id="Report 1770635294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create or reset password</source>

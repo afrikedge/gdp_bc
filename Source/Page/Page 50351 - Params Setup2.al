@@ -115,6 +115,9 @@ page 50351 "Params Setup2"
                 field("Email Card Posting Error"; Rec."Email Card Posting Error")
                 {
                 }
+                field("Customer blocking period Month"; Rec."Customer blocking period Month")
+                {
+                }
             }
         }
     }
