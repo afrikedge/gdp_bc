@@ -35,7 +35,7 @@ pageextension 50016 pageextension70000015 extends "G/L Registers"
                     NCGood.SetRange("No.", Rec."No.");
                     NCGood.SetRange("Journal Templ. Name", Rec."Journal Templ. Name");
                     NCGood.SetRange("Journal Batch Name", Rec."Journal Batch Name");
-                    Report.Run(50202, true, false, NCGood);
+                    Report.Run(50064, true, false, NCGood);
                 end;
             }
         }

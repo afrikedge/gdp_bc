@@ -7,7 +7,7 @@ using Microsoft.Sales.Receivables;
 using Microsoft.Utilities;
 using System.Utilities;
 
-report 50201 "AfkComptaCltAgee"
+report 50076 "AfkComptaCltAgee"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/AfkReport120.rdl';

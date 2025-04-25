@@ -4,7 +4,7 @@ using Microsoft.Bank.BankAccount;
 using Microsoft.Bank.Ledger;
 using System.Utilities;
 
-report 50200 "AfkCpteBancaireGrdLivre"
+report 50075 "AfkCpteBancaireGrdLivre"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/AfkReport1404.rdl';
