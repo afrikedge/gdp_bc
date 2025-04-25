@@ -282,8 +282,11 @@ report 50020 "ND / NC Before"
 
 
                 NbTLet.InitTextVariable;
-                NbTLet.FormatNoText(TotalAmountLetter, (MontantTTC), "Currency Code");
-
+                if "Gen. Journal Line"."Currency Code" <> '' then
+                    NbTLet.FormatNoText(TotalAmountLetter, (MontantTTC), "Gen. Journal Line"."Currency Code")
+                else
+                    NbTLet.FormatNoText(TotalAmountLetter, (MontantTTC), GLSetup."LCY Code");
+                // NbTLet.FormatNoText(TotalAmountLetter, (MontantTTC), "Currency Code");
                 Amount_InWords := TotalAmountLetter[1] + ' ' + TotalAmountLetter[2];
 
             end;
