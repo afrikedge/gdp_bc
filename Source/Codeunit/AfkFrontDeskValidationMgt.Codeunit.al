@@ -223,6 +223,39 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
             exit(AddOrder(input));
     end;
 
+    /// {"inputJson":"{\"Parameter\":\"documentlink_delete\",\"webUserName\":\"GERALD\",\"Function\":\"Customers\",\"No_\":\"PRP0001\"}"
+    procedure Run_DeleteDocumentLinks(input: JsonObject; IsDeletion: Boolean): Text
+    var
+        NoOrder: text;
+    begin
+        NoOrder := ws.GetText('No_', input);
+        if (NoOrder <> '') then begin
+
+            if (IsDeletion) then
+                exit(DeleteOrder(NoOrder))
+            else
+                exit(ModifyOrder(NoOrder, input))
+
+        end else
+            exit(AddOrder(input));
+    end;
+
+    procedure Run_CancelOrder(input: JsonObject): Text
+    var
+        SalesHeader: Record "Sales Header";
+        SalesOrderMgt: codeunit "Sales Order Process";
+        NoOrder: text;
+        WebUser: text;
+    begin
+        NoOrder := ws.GetText('No_', input);
+        WebUser := ws.GetText('UserId', input);
+        if (SalesHeader.Get(SalesHeader."Document Type"::Order, NoOrder)) then begin
+            SalesHeader."Afk Web User Id" := CopyStr(WebUser, 1, 50);
+            SalesHeader.Modify();
+            SalesOrderMgt.CancelCdeInternal(SalesHeader);
+        end;
+    end;
+
 
     local procedure SetDdeDeblocageStatus(input: JsonObject): Text
     var
@@ -1084,6 +1117,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Reference"), input, 'Reference');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Amount"), input, 'Amount');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Observations"), input, 'Observation');
+        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Pay Document No."), input, 'Pay Document No_');
 
         RecRef.SetTable(PayMethod);
     end;

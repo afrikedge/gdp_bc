@@ -1,7 +1,7 @@
 /// <summary>
 /// Report NC Goodies (ID 50064).
 /// </summary>
-report 50064 "NC Goodies"
+report 50077 "NC Goodies"
 {
     DefaultLayout = RDLC;
     Caption = 'NC Goodies';

@@ -64849,7 +64849,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Category 2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3475545745 - Field 3798315222 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source> ,Ancienne SS,Clients sains réseau,Clients sains B2B,ETS Gallois,Trésor,Naphta,Royalties,GD non bouclés,Contentieux,Précontentieux,Compte interne,Jirama,Gallois,Station en GD</source>
+          <source> ,Ancienne SS,Clients sains réseau,Clients sains B2B,ETS Gallois,Trésor,Naphta,Royalties,GD non bouclés,Contentieux,Précontentieux,Compte interne,Jirama,Gallois,Station en GD,Prepaye,PostPaye</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Category 2 - Property OptionCaption</note>
         </trans-unit>
@@ -65327,6 +65327,11 @@
           <source>Default Transport Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Item - Field Afk Default Transport Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4052574762 - Field 485534419 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Show on Market Place</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Item - Field Afk Show on Market Place - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4052574762 - Field 4276315042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Cargo Mgt</source>

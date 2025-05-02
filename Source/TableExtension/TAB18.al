@@ -160,8 +160,8 @@ tableextension 50005 "A02 Customer" extends Customer
         }
         field(50036; "Category 2"; Option)
         {
-            OptionCaption = ' ,Ancienne SS,Clients sains réseau,Clients sains B2B,ETS Gallois,Trésor,Naphta,Royalties,GD non bouclés,Contentieux,Précontentieux,Compte interne,Jirama,Gallois,Station en GD';
-            OptionMembers = " ","Ancienne SS","Clients sains réseau","Clients sains B2B","ETS Gallois","Trésor",Naphta,Royalties,"GD non bouclés",Contentieux,"Précontentieux","Compte interne;Jirama",Gallois,"Station en GD";
+            OptionCaption = ' ,Ancienne SS,Clients sains réseau,Clients sains B2B,ETS Gallois,Trésor,Naphta,Royalties,GD non bouclés,Contentieux,Précontentieux,Compte interne,Jirama,Gallois,Station en GD,Prepaye,PostPaye';
+            OptionMembers = " ","Ancienne SS","Clients sains réseau","Clients sains B2B","ETS Gallois","Trésor",Naphta,Royalties,"GD non bouclés",Contentieux,Précontentieux,"Compte interne",Jirama,Gallois,"Station en GD",Prepaye,PostPaye;
         }
 
 

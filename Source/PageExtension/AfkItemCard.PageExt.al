@@ -35,6 +35,9 @@ pageextension 50098 "Afk Item Card" extends "Item Card"
             field("Afk Default Transport Code"; Rec."Afk Default Transport Code")
             {
             }
+            field("Afk Show on Market Place"; Rec."Afk Show on Market Place")
+            {
+            }
         }
     }
 }

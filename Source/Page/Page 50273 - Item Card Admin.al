@@ -261,6 +261,9 @@ page 50273 "Item Card Admin"
                 field("Afk Default Transport Code"; Rec."Afk Default Transport Code")
                 {
                 }
+                field("Afk Show on Market Place"; Rec."Afk Show on Market Place")
+                {
+                }
             }
             group(Replenishment)
             {
