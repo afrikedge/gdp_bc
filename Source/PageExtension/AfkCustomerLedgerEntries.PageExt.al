@@ -70,6 +70,24 @@ pageextension 50095 "Afk Customer Ledger Entries" extends "Customer Ledger Entri
                     Report.Run(50195, true, false, Inv);
                 end;
             }
+            action("ND Recharge")
+            {
+                ToolTip = 'Imprimer la ND recharge';
+                Image = PrintForm;
+                Caption = 'Imprimer la ND recharge';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    Inv: Record "Cust. Ledger Entry";
+                begin
+                    Inv.SetRange("Entry No.", Rec."Entry No.");
+                    Inv.SetRange("Document No.", Rec."Document No.");
+                    Report.Run(50078, true, false, Inv);
+                end;
+            }
         }
     }
     trigger OnOpenPage()

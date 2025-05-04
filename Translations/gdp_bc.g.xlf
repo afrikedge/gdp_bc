@@ -52053,6 +52053,341 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ND Bordereau Paiement Archive - ReportLabel Text9</note>
         </trans-unit>
+        <trans-unit id="Report 2323116873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ND Recharge</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 2160707481" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ACTIVITE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType ActivityLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 898401247" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AGENCE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType AgencyLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 2683966222" size-unit="char" translate="yes" xml:space="preserve">
+          <source>MONTANT (HT)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType AmountHTLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 2690344337" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BL N°</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType BLNumberLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 2237255369" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CIF/CIS :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType CIFCISLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 1854582585" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BC Client</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType CustomerBCLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 1809700119" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Le client accepte les conditions générales de vente décrites au verso</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType CustomerGeneralTermsLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 76061626" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CLIENT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType CustomerLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 282961201" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType Date1Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 1542941690" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DATE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType DateLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 101999088" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DEPOT LIVRAISON</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType DeliveryDepotLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 3125672063" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DESIGNATION</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType DesignationLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 481445982" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date d'écheance :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType DueDateLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 3642584667" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Taux d'echange: %1/%2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType ExchangeRateTxt</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 2634089383" size-unit="char" translate="yes" xml:space="preserve">
+          <source>POUR GALANA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType ForGalanaLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 4269429291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Facture arrêtée à la somme de :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType InvoiceArrestedLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 3451923796" size-unit="char" translate="yes" xml:space="preserve">
+          <source>N° Facture </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType InvoiceNumberLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 1981706351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nom :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType NameLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 1869968017" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NET A PAYER (TTC)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType NetPayableLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 2839777789" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NIF :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType NIFLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 1366325405" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OBSERVATIONS</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType ObservationsLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 3046308225" size-unit="char" translate="yes" xml:space="preserve">
+          <source>N° Commande</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType OrderNumberLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 2694455927" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Conditions de paiement :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType PaymentTermsLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 3647455590" size-unit="char" translate="yes" xml:space="preserve">
+          <source>REFERENCE PRODUITS</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType ProdRefLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 1775621264" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType ProductCodeLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 1104486499" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Produit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType ProductLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 358192545" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unité</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType ProductUnitLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 2577878161" size-unit="char" translate="yes" xml:space="preserve">
+          <source>QUANTITE ou NOMBRE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType QtyOrNbLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 2295386186" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NOTE DE DEBIT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType ReportTitle</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 2705924812" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STAT :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType STATLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 2786556803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PRIX UNITAIRE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType UnitPriceLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - NamedType 2617756395" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TVA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - NamedType VATLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2323116873 - ReportDataItem 1735507514 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ND Recharge</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Recharge - ReportDataItem Line - Property RequestFilterHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ND/Nc Royalties..Goodies</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 2160707481" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ACTIVITE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType ActivityLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 898401247" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AGENCE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType AgencyLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 2683966222" size-unit="char" translate="yes" xml:space="preserve">
+          <source>MONTANT (HT)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType AmountHTLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 2690344337" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BL N°</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType BLNumberLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 2237255369" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CIF/CIS :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType CIFCISLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 1854582585" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BC Client</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType CustomerBCLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 1809700119" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Le client accepte les conditions générales de vente décrites au verso</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType CustomerGeneralTermsLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 76061626" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CLIENT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType CustomerLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 282961201" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType Date1Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 1542941690" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DATE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType DateLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 101999088" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DEPOT LIVRANCIER</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType DeliveryDepotLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 3125672063" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DESIGNATION</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType DesignationLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 481445982" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date d'écheance :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType DueDateLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 3642584667" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Taux d'echange: %1/%2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType ExchangeRateTxt</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 2634089383" size-unit="char" translate="yes" xml:space="preserve">
+          <source>POUR GALANA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType ForGalanaLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 4269429291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Facture arrêtée à la somme de :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType InvoiceArrestedLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 3451923796" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Facture N°</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType InvoiceNumberLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 1981706351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nom :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType NameLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 1869968017" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NET A PAYER (TTC)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType NetPayableLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 2839777789" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NIF :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType NIFLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 1366325405" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OBSERVATIONS</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType ObservationsLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 3046308225" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cmde N°</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType OrderNumberLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 2694455927" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Conditions de paiement :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType PaymentTermsLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 3647455590" size-unit="char" translate="yes" xml:space="preserve">
+          <source>REFERENCE PRODUITS</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType ProdRefLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 1775621264" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType ProductCodeLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 1104486499" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Produit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType ProductLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 358192545" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unité</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType ProductUnitLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 2577878161" size-unit="char" translate="yes" xml:space="preserve">
+          <source>QUANTITE ou NOMBRE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType QtyOrNbLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 2705924812" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STAT :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType STATLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 2786556803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PRIX UNITAIRE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType UnitPriceLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - NamedType 2617756395" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TVA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - NamedType VATLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 4165208804 - ReportDataItem 1735507514 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ND/NC Royalties..Goodies</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ND Royalties - ReportDataItem Line - Property RequestFilterHeading</note>
+        </trans-unit>
         <trans-unit id="Report 990463880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Debit Note</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -52492,6 +52827,11 @@
           <source>Commentaires</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Order Autres Achat - NamedType Com</note>
+        </trans-unit>
+        <trans-unit id="Report 3663497183 - NamedType 3686801667" size-unit="char" translate="yes" xml:space="preserve">
+          <source>« La société GALANA DISTRIBUTION PETROLIERE (GDP) S.A  s’attend à ce que les fournisseurs avec qui elle travaille s’engagent sur le respect du Code éthique du groupe RUBIS, disponible sur le site "www.rubis.fr", ainsi que de ses Conditions Générales d’Achats »</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Autres Achat - NamedType ConditionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3663497183 - NamedType 282762708" size-unit="char" translate="yes" xml:space="preserve">
           <source>Subtotal</source>
@@ -62528,6 +62868,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Customer Ledger Entries - Action Invoice NC/ND - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 624402449 - Action 2323116873 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Imprimer la ND recharge</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Customer Ledger Entries - Action ND Recharge - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 624402449 - Action 2323116873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Imprimer la ND recharge</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Customer Ledger Entries - Action ND Recharge - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 624402449 - Action 3081714176 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
           <source>Print receipt</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -62547,6 +62897,16 @@
           <source>Print zero lettering</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Customer Ledger Entries - Action Zero Lettering - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1394611155 - Action 58518974 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Imprimer la ND/NC Royalties..Goodies</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk GLEntry - Action ND/NC Royalties - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1394611155 - Action 58518974 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Imprimer la ND/NC Royalties..Goodies</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk GLEntry - Action ND/NC Royalties - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1105850977 - Action 848071777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
           <source>Post and email to vendor</source>

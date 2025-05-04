@@ -1,7 +1,7 @@
 report 50015 "Order Autres Achat"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Source/Report/Layout/Order Autres Achat.rdlc';
+    RDLCLayout = './Source/Report/Layout/Order Autres Achat.rdl';
     Caption = 'Order';
     PreviewMode = PrintLayout;
 
@@ -96,6 +96,9 @@ report 50015 "Order Autres Achat"
             {
             }
             column(TextImprimeLe; TextImprimeLe)
+            {
+            }
+            column(ConditionLbl; ConditionLbl)
             {
             }
 
@@ -1265,6 +1268,7 @@ report 50015 "Order Autres Achat"
         Com: Label 'Commentaires';
         DevAmountCaption: Label 'Devise %1';
         TxtNeant: Label 'NEANT';
+        ConditionLbl: Label '« La société GALANA DISTRIBUTION PETROLIERE (GDP) S.A  s’attend à ce que les fournisseurs avec qui elle travaille s’engagent sur le respect du Code éthique du groupe RUBIS, disponible sur le site "www.rubis.fr", ainsi que de ses Conditions Générales d’Achats »';
         CodeDemand: Code[20];
         TotalAvecRemise: Decimal;
         Pays: Record "Country/Region";
