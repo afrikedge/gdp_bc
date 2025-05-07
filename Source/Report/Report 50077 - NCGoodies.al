@@ -1,5 +1,5 @@
 /// <summary>
-/// Report NC Goodies (ID 50064).
+/// Report NC Goodies (ID 50077).
 /// </summary>
 report 50077 "NC Goodies"
 {
