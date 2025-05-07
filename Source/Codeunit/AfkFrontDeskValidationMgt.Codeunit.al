@@ -223,6 +223,39 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
             exit(AddOrder(input));
     end;
 
+    /// {"inputJson":"{\"Parameter\":\"documentlink_delete\",\"webUserName\":\"GERALD\",\"Function\":\"Customers\",\"No_\":\"PRP0001\"}"
+    procedure Run_DeleteDocumentLinks(input: JsonObject; IsDeletion: Boolean): Text
+    var
+        NoOrder: text;
+    begin
+        NoOrder := ws.GetText('No_', input);
+        if (NoOrder <> '') then begin
+
+            if (IsDeletion) then
+                exit(DeleteOrder(NoOrder))
+            else
+                exit(ModifyOrder(NoOrder, input))
+
+        end else
+            exit(AddOrder(input));
+    end;
+
+    procedure Run_CancelOrder(input: JsonObject): Text
+    var
+        SalesHeader: Record "Sales Header";
+        SalesOrderMgt: codeunit "Sales Order Process";
+        NoOrder: text;
+        WebUser: text;
+    begin
+        NoOrder := ws.GetText('No_', input);
+        WebUser := ws.GetText('UserId', input);
+        if (SalesHeader.Get(SalesHeader."Document Type"::Order, NoOrder)) then begin
+            SalesHeader."Afk Web User Id" := CopyStr(WebUser, 1, 50);
+            SalesHeader.Modify();
+            SalesOrderMgt.CancelCdeInternal(SalesHeader);
+        end;
+    end;
+
 
     local procedure SetDdeDeblocageStatus(input: JsonObject): Text
     var
@@ -1084,6 +1117,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Reference"), input, 'Reference');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Amount"), input, 'Amount');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Observations"), input, 'Observation');
+        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Pay Document No."), input, 'Pay Document No_');
 
         RecRef.SetTable(PayMethod);
     end;
@@ -1392,11 +1426,15 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         Sender: Text[80];
         SendDate: Text[50];
         DocType: Text[30];
+        Cust: Record Customer;
+        SalesPerson: Record "Salesperson/Purchaser";
 
     begin
 
         if (CustNo = '') then
             exit;
+        if (Cust.get(CustNo)) then;
+        if (SalesPerson.get(Cust."Salesperson Code")) then;
 
         AddOnSetup2.Get();
         if (AddOnSetup2."Email for Customers Creation" = '') then
@@ -1405,9 +1443,9 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         UserSetup.Get(UserId);
         UserSetup.CalcFields("User Full Name");
 
-        Objet := 'Nouveau client crée dans Business Central : ' + CustNo;
+        Objet := CopyStr('Nouveau client crée dans BC : ' + CustNo + ' - ' + Cust.Name, 1, 80);
         CodeDocument := CustNo;
-        Commentaires := 'Nouveau client';
+        Commentaires := 'Nouveau client : ' + Cust.Name + ' ; Commercial : ' + SalesPerson.Code + ' - ' + SalesPerson.Name;
         ToAdress := AddOnSetup2."Email for Customers Creation";
         CCAdress := '';
         Sender := UserSetup."User ID" + ' - ' + UserSetup."User Full Name";

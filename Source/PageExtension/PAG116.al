@@ -18,7 +18,28 @@ pageextension 50016 pageextension70000015 extends "G/L Registers"
                     ReverseProvisions.RUN;
                 end;
             }
+
+            action(NCGoodies)
+            {
+                Image = PrintForm;
+                ApplicationArea = Basic, Suite;
+                ToolTip = 'Imprimer la Note de crédit';
+                Caption = 'Imprimer la Note de crédit';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                trigger OnAction()
+                var
+                    NCGood: Record "G/L Register";
+                begin
+                    NCGood.SetRange("No.", Rec."No.");
+                    NCGood.SetRange("Journal Templ. Name", Rec."Journal Templ. Name");
+                    NCGood.SetRange("Journal Batch Name", Rec."Journal Batch Name");
+                    Report.Run(50077, true, false, NCGood);
+                end;
+            }
         }
+
     }
     trigger OnOpenPage()
     var

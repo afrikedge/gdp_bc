@@ -299,28 +299,9 @@ codeunit 50001 "Sales Order Process"
     end;
 
     procedure AnnulerCde(var SalesH: Record "Sales Header")
-    var
-        CodeBL: Code[20];
     begin
         if not Confirm(StrSubstNo(Text002, SalesH."No.")) then exit;
-        if ShippedLineExists(SalesH) then Error(Text016);
-
-
-        CodeBL := BLEncoursExists(SalesH);
-        if CodeBL <> '' then
-            Error(Text026, CodeBL);
-
-        ReleaseMgt.PerformManualReopen(SalesH);
-        SalesH."Delivery Status" := SalesH."Delivery Status"::Annulee;
-        SalesH.Modify;
-
-        InsertNewStep(SalesH."No.", 1, Format(SalesH."Delivery Status"::Annulee), '');
-
-        ArchiveManagement.ArchSalesDocumentNoConfirm(SalesH);
-
-        SalesH.AFK_AllowDeletion(true);
-        SalesH.Delete(true);
-        SalesH.Clear_AllowDeletion();
+        CancelCdeInternal(SalesH);
     end;
 
     procedure SolderCde(var SalesH: Record "Sales Header")
@@ -959,6 +940,30 @@ codeunit 50001 "Sales Order Process"
                 SLine.TestField(SLine."Shipment Group");
 
             until SLine.Next = 0;
+    end;
+
+    procedure CancelCdeInternal(var SalesH: Record "Sales Header")
+    var
+        CodeBL: Code[20];
+    begin
+        if ShippedLineExists(SalesH) then Error(Text016);
+
+
+        CodeBL := BLEncoursExists(SalesH);
+        if CodeBL <> '' then
+            Error(Text026, CodeBL);
+
+        ReleaseMgt.PerformManualReopen(SalesH);
+        SalesH."Delivery Status" := SalesH."Delivery Status"::Annulee;
+        SalesH.Modify;
+
+        InsertNewStep(SalesH."No.", 1, Format(SalesH."Delivery Status"::Annulee), '');
+
+        ArchiveManagement.ArchSalesDocumentNoConfirm(SalesH);
+
+        SalesH.AFK_AllowDeletion(true);
+        SalesH.Delete(true);
+        SalesH.Clear_AllowDeletion();
     end;
 }
 

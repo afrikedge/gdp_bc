@@ -2088,7 +2088,7 @@
                                                                   <Value>=Fields!Quantity.Value</Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
-                                                                    <Format>#,0;(#,0)</Format>
+                                                                    <Format>#,0.00;(#,0.00)</Format>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -2154,6 +2154,7 @@
                                                             <PaddingBottom>2pt</PaddingBottom>
                                                           </Style>
                                                         </Textbox>
+                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell>
@@ -9889,7 +9890,6 @@
               </Style>
             </Textbox>
             <Line Name="Line3">
-              <Top>0cm</Top>
               <Left>6.42068cm</Left>
               <Height>0.9064cm</Height>
               <Width>0cm</Width>

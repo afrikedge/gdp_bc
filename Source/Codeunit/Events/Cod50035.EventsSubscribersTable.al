@@ -1200,6 +1200,21 @@ codeunit 50035 "EventsSubscribers Table"
     end;
 
 
+    [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnApplyStdCodesToSalesLinesOnAfterSetSalesLineLineNo', '', true, true)]
+    local procedure T172_OnApplyStdCodesToSalesLinesOnAfterSetSalesLineLineNo(var StdCustSalesCode: Record "Standard Customer Sales Code"; var SalesLine: Record "Sales Line"; var IsHandled: Boolean)
+    var
+        SalesH: record "Sales Header";
+        GLMgt: Codeunit "GL Mgt";
+
+    begin
+        if (SalesH.Get(SalesLine."Document Type", SalesLine."Document No.")) then
+            if (SalesH."Posting Date" <> 0D) then
+                SalesLine.Description := CopyStr(SalesLine.Description + ' ' + GLMgt.GetDescrMois(SalesH."Posting Date"), 1, 100);
+    end;
+
+
+
+
 
 
 

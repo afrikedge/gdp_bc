@@ -112,6 +112,12 @@ page 50351 "Params Setup2"
                 field("Desactivate Calc Interest"; Rec."Desactivate Calc Interest")
                 {
                 }
+                field("Email Card Posting Error"; Rec."Email Card Posting Error")
+                {
+                }
+                field("Customer blocking period Month"; Rec."Customer blocking period Month")
+                {
+                }
             }
         }
     }

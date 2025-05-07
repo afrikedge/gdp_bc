@@ -109,6 +109,11 @@ tableextension 50009 "A02 Item" extends Item
             Caption = 'Default Transport Code';
             TableRelation = Item;
         }
+        field(50027; "Afk Show on Market Place"; Boolean)
+        {
+            Caption = 'Show on Market Place';
+        }
+
     }
     keys
     {

@@ -877,7 +877,7 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
             }
             group(GD1_Tenues)
             {
-                Caption = 'Afk Tenues';
+                Caption = 'Afk Tenues et cartes';
                 Image = Sales;
                 action(GD1Tenues1)
                 {
@@ -896,6 +896,18 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
                     ApplicationArea = Basic, Suite;
                     Caption = 'Sorties à refacturer enregistrées';
                     RunObject = Page "Posted Item Inv. Conso List";
+                }
+                action(GD1Cartes1)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Configuration compta. cartes';
+                    RunObject = Page "Afk Card Posting Config";
+                }
+                action(GD1Cartes2)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Opérations cartes à comptabiliser';
+                    RunObject = Page "Afk Card Entry To Post";
                 }
             }
             group(GD1_FacturesFsseur)
