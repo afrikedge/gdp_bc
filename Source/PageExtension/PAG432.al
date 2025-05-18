@@ -10,6 +10,9 @@ pageextension 50038 pageextension70000084 extends "Reminder Levels"
             field("Reminder Report Name"; Rec."Reminder Report Name")
             {
             }
+            field("AG1 Report Usage"; Rec."AG1 Report Usage")
+            {
+            }
         }
     }
 }

@@ -195,8 +195,8 @@ codeunit 50040 "Afk Api Mgt"
         ApiInterface: Codeunit "Afk Api Interface Mgt";
         jsonText: Text;
     begin
-        //jsonText := '{"inputJson":"{\"Parameter\":\"RevisionRequest_updateApprovalFlow\",\"webUserName\":\"DAVID\",\"No_\":\"CRR/25-00026\",\"Approval Status\":4,\"Approved Payment Terms Code\":0,\"Approved Credit limit (LCY)\":0,\"Approved Risk Level\":0,\"Approved Payment Method\":0,\"ApprovalFlow\":[{\"Record Type\":1,\"Record No_\":\"CRR/25-00026\",\"Sequence No_\":2,\"Approval Mode\":0,\"Approved On\":\"2025-02-12T16:44:32.240Z\",\"Approved by\":\"DAVID\",\"Approved as\":\"DAVID\",\"Actual Status\":2,\"Next Status\":4,\"Comments\":\"\"}]}"}';
-        jsonText := '{"inputJson":"{\"Parameter\":\"salesOrder_insert\",\"UserId\":\"S000024\",\"No_\":\"\",\"Sell-to Customer No_\":\"C0000024\",\"items\":[],\"paymentMethods\":[]}"}';
+        //jsonText := '{"inputJson":"{\"Parameter\":\"salesOrder_insert\",\"UserId\":\"S000024\",\"No_\":\"\",\"Sell-to Customer No_\":\"C0000024\",\"items\":[],\"paymentMethods\":[]}"}';
+        jsonText := '{"inputJson":"{\"Parameter\":\"salesOrder_cancel\",\"UserId\":\"S002855\",\"No_\":\"463036\"}"}';
         MainJson.ReadFrom(jsonText);
         MainJson.Get('inputJson', InputJsonToken);
         InputJsonString := InputJsonToken.AsValue().AsText();

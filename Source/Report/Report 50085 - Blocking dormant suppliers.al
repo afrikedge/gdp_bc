@@ -2,6 +2,7 @@ report 50085 "Blocking dormant suppliers"
 {
     Caption = 'Bloquer les fournisseurs dormants';
     ProcessingOnly = true;
+    UsageCategory = Tasks;
 
     dataset
     {
@@ -19,7 +20,7 @@ report 50085 "Blocking dormant suppliers"
                 VendLedgEntry.SetRange("Vendor No.", Vendor."No.");
                 if (VendLedgEntry.FindLast) then begin
                     NbreMois := NbreOfMonthsInPeriod(VendLedgEntry."Posting Date", Today);
-                    if NbreMois > AddOnSetup."Supplier blocking period Month" then begin
+                    if NbreMois >= AddOnSetup."Supplier blocking period Month" then begin
                         if (Vendor.Blocked <> Vendor.Blocked::All) then begin
                             Vendor.Blocked := Vendor.Blocked::All;
                             Vendor.Modify;

@@ -868,6 +868,8 @@ codeunit 50001 "Sales Order Process"
           SalesH."Delivery Status"::Rupture] then
             exit(true);
 
+        if (SalesH."Delivery Status" = SalesH."Delivery Status"::Annulee) then
+            exit(true);
         //IF UserSetup.GET(USERID) THEN
         //  IF UserSetup.CanUpdateOrderAfterValidation THEN
         //    EXIT(TRUE);

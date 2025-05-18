@@ -12,4 +12,17 @@ codeunit 50033 "EventsSubscribers Page"
                 RecRef.GetTable(VendInvoice);
         end;
     end;
+
+    [EventSubscriber(ObjectType::Page, Page::"Report Selection - Reminder", 'OnSetUsageFilterOnAfterSetFiltersByReportUsage', '', true, true)]
+    local procedure P524_OnSetUsageFilterOnAfterSetFiltersByReportUsage(var Rec: Record "Report Selections"; ReportUsage2: Enum "Report Selection Usage Reminder")
+    begin
+        case ReportUsage2 of
+            Enum::"Report Selection Usage Reminder"::Reminder1:
+                Rec.SetRange(Usage, Enum::"Report Selection Usage"::Reminder1);
+            Enum::"Report Selection Usage Reminder"::"Reminder2":
+                Rec.SetRange(Usage, Enum::"Report Selection Usage"::Reminder2);
+            Enum::"Report Selection Usage Reminder"::"Reminder3":
+                Rec.SetRange(Usage, Enum::"Report Selection Usage"::Reminder3);
+        end;
+    end;
 }
