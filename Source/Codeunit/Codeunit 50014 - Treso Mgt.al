@@ -150,6 +150,8 @@ codeunit 50014 "Treso Mgt"
         PaymentHeader.Validate("Posting Date", GenJnlLine."Posting Date");
         PaymentHeader."Origin Document N°" := GenJnlLine."Document No.";
 
+        PaymentHeader."Currency Factor" := GenJnlLine."Currency Factor";
+
         PaymentHeader.Modify;
 
 

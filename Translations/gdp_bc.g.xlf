@@ -98,6 +98,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Card Posting Account Type - EnumValue Debit Note - Property Caption</note>
         </trans-unit>
+        <trans-unit id="EnumExtension 3253383430 - EnumValue 503931689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2634834239">
+          <source>Reminder1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AG1Report Selection Usage Reminder - EnumValue Reminder1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 3253383430 - EnumValue 4161202368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2634834239">
+          <source>Reminder2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AG1Report Selection Usage Reminder - EnumValue Reminder2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 3253383430 - EnumValue 3523505751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2634834239">
+          <source>Reminder3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AG1Report Selection Usage Reminder - EnumValue Reminder3 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1264407366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comptes Bancaire - Grand Livre</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -68862,6 +68877,21 @@
           <source>PurchaseOrderServices</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AFG Report Selection Usage - EnumValue PurchaseOrderServices - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 2722947597 - EnumValue 503931689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+          <source>Reminder1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AFG Report Selection Usage - EnumValue Reminder1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 2722947597 - EnumValue 4161202368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+          <source>Reminder2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AFG Report Selection Usage - EnumValue Reminder2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 2722947597 - EnumValue 3523505751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+          <source>Reminder3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AFG Report Selection Usage - EnumValue Reminder3 - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 1524894578 - EnumValue 276727584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 4149717694">
           <source>ChequeGarantie</source>
