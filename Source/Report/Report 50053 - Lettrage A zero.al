@@ -304,7 +304,7 @@ report 50053 "Lettrage A zero"
         ComBank: Record "Bank Account";
         DevBank: Text[20];
         DevTrans: Text[20];
-        BankMess: Text[50];
+        //BankMess: Text[50];
         Cust: Record Customer;
         NbTLet: Report Check;
         TotalAmountLetter: array[2] of Text[150];
@@ -322,7 +322,7 @@ report 50053 "Lettrage A zero"
         SalesInv: Record "Sales Invoice Header";
         OrderNo: Text[20];
         CompanyInfo: Record "Company Information";
-        CompanyAddr: array[8] of Text[50];
+        CompanyAddr: array[8] of Text[100];
         PhoneNoCaptionLbl: Label 'Phone No.';
         EMailCaptionLbl: Label 'E-Mail';
         FaxCaptionLbl: Label 'Fax : ';
@@ -334,11 +334,11 @@ report 50053 "Lettrage A zero"
         ModeRG: Text[20];
         CustLedgEntry: Record "Cust. Ledger Entry";
         TableauRec: Record "Detailed Cust. Ledg. Entry";
-        TabValues: array[1000, 5] of Text[50];
+        TabValues: array[1000, 5] of Text[100];
         compteurTab: Integer;
         compteurLignes: Integer;
         User: Record User;
-        ExtDocNo: Text[50];
+        ExtDocNo: Text[100];
         DocDateDescr: Text[30];
         OriginLine: Boolean;
         LineNum: Integer;
