@@ -52964,7 +52964,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Order Autres Achat - NamedType Com</note>
         </trans-unit>
         <trans-unit id="Report 3663497183 - NamedType 3686801667" size-unit="char" translate="yes" xml:space="preserve">
-          <source>« La société GALANA DISTRIBUTION PETROLIERE (GDP) S.A  s’attend à ce que les fournisseurs avec qui elle travaille s’engagent sur le respect du Code éthique du groupe RUBIS, disponible sur le site "www.rubis.fr", ainsi que de ses Conditions Générales d’Achats »</source>
+          <source>"La société GALANA DISTRIBUTION PETROLIERE (GDP) S.A requiert de l'ensemble de ses fournisseurs qu'ils s’engagent formellement à respecter le Code éthique du groupe RUBIS, consultable sur le site "www.rubis.fr", ainsi que de les Conditions Générales d’Achat de la société."</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Order Autres Achat - NamedType ConditionLbl</note>
         </trans-unit>
