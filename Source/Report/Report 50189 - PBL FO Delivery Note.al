@@ -275,6 +275,12 @@ report 50189 "PBL FO Delivery Note"
             column(Duplicata; Duplicata)
             {
             }
+            column(AddresLivr1; AddresLivr1)
+            {
+            }
+            column(AddressLivr2; AddressLivr2)
+            {
+            }
             column(Comp1; Comp1)
             {
             }
@@ -431,9 +437,13 @@ report 50189 "PBL FO Delivery Note"
                 if SalesHeader.Get(SalesHeader."Document Type"::Order, Header.NavOrderNo) then
                     DeliveryMode := SalesHeader."Shipment Method Code";
 
+                if ShipToAddress.Get(Header."Customer No", Header.AdrLivraisonBL) then begin
+                    AddresLivr1 := ShipToAddress.Address;
+                    AddressLivr2 := ShipToAddress."Address 2";
+                end;
+
                 if CompanyInfos.Get() then
                     Foot3 := CompanyInfos."Phone No." + ' - Fax : ' + CompanyInfos."Fax No.";
-
 
                 proEnteteBL.Reset;
                 proEnteteBL.SetRange(numBE, Header.numBE);
@@ -455,7 +465,6 @@ report 50189 "PBL FO Delivery Note"
                     end;
             end;
         }
-
     }
 
     requestpage
@@ -483,8 +492,11 @@ report 50189 "PBL FO Delivery Note"
         SalesHeader: Record "Sales Header";
         RespCenter: Record "Responsibility Center";
         CompanyInfos: Record "Company Information";
+        ShipToAddress: Record "Ship-to Address";
         // ShipmentMethod: Record "Shipment Method";
         ConvertedVolume: Decimal;
+        AddresLivr1: Text[100];
+        AddressLivr2: Text[50];
         Comp1: Code[20];
         Comp2: Code[20];
         Comp3: Code[20];

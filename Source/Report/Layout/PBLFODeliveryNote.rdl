@@ -940,7 +940,19 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value>=Fields!PlaceOfDelivery.Value</Value>
+                                                                  <Value>=Fields!AddresLivr1.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve"> </Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value>=Fields!AddressLivr2.Value</Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
@@ -2154,7 +2166,6 @@
                                                             <PaddingBottom>2pt</PaddingBottom>
                                                           </Style>
                                                         </Textbox>
-                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell>
@@ -9566,6 +9577,7 @@
                                           </Border>
                                         </Style>
                                       </Rectangle>
+                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixCell>
                                 </TablixCells>
@@ -10226,6 +10238,12 @@ End Function
         </Field>
         <Field Name="Duplicata">
           <DataField>Duplicata</DataField>
+        </Field>
+        <Field Name="AddresLivr1">
+          <DataField>AddresLivr1</DataField>
+        </Field>
+        <Field Name="AddressLivr2">
+          <DataField>AddressLivr2</DataField>
         </Field>
         <Field Name="Comp1">
           <DataField>Comp1</DataField>
