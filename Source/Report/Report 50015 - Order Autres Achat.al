@@ -1268,7 +1268,7 @@ report 50015 "Order Autres Achat"
         Com: Label 'Commentaires';
         DevAmountCaption: Label 'Devise %1';
         TxtNeant: Label 'NEANT';
-        ConditionLbl: Label '« La société GALANA DISTRIBUTION PETROLIERE (GDP) S.A  s’attend à ce que les fournisseurs avec qui elle travaille s’engagent sur le respect du Code éthique du groupe RUBIS, disponible sur le site "www.rubis.fr", ainsi que de ses Conditions Générales d’Achats »';
+        ConditionLbl: Label '"La société GALANA DISTRIBUTION PETROLIERE (GDP) S.A requiert de l''ensemble de ses fournisseurs qu''ils s’engagent formellement à respecter le Code éthique du groupe RUBIS, consultable sur le site "www.rubis.fr", ainsi que de les Conditions Générales d’Achat de la société."';
         CodeDemand: Code[20];
         TotalAvecRemise: Decimal;
         Pays: Record "Country/Region";
