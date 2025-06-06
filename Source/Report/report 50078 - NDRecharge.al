@@ -214,8 +214,8 @@ report 50078 "ND Recharge"
 
             trigger OnAfterGetRecord()
             begin
-                ProductCode := 'GALITTPREPAID';
-                ProdCode := 'NDC0106';
+                ProductCode := 'RECHARGE PREPAID EASY';
+                ProdCode := 'NDC0118';
                 ProductUnit := 'UNITE';
                 VATPercent := '0%';
 
