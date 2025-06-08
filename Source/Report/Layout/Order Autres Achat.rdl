@@ -2302,7 +2302,7 @@
                 <Source>Embedded</Source>
                 <Value>Annexe05ConditionsgénéralesdachatGDP</Value>
                 <Sizing>Fit</Sizing>
-                <Height>24.75267cm</Height>
+                <Height>24.66044cm</Height>
                 <Width>19.37062cm</Width>
                 <Style>
                   <Border>
@@ -2313,7 +2313,7 @@
             </ReportItems>
             <KeepTogether>true</KeepTogether>
             <Top>8.46303cm</Top>
-            <Height>24.75267cm</Height>
+            <Height>24.66044cm</Height>
             <Width>19.37062cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -2323,7 +2323,7 @@
             </Style>
           </Rectangle>
         </ReportItems>
-        <Height>33.28625cm</Height>
+        <Height>33.19403cm</Height>
         <Style />
       </Body>
       <Width>19.37062cm</Width>
@@ -2356,7 +2356,7 @@
                   </Paragraphs>
                   <rd:DefaultName>Textbox19</rd:DefaultName>
                   <Top>0.03473in</Top>
-                  <Left>2.15965in</Left>
+                  <Left>2.14799in</Left>
                   <Height>0.15625in</Height>
                   <Width>2.99416in</Width>
                   <Style>
@@ -2390,7 +2390,7 @@
                   </Paragraphs>
                   <rd:DefaultName>Textbox19</rd:DefaultName>
                   <Top>0.56943in</Top>
-                  <Left>2.15965in</Left>
+                  <Left>2.14799in</Left>
                   <Height>0.13688in</Height>
                   <Width>2.99416in</Width>
                   <ZIndex>1</ZIndex>
@@ -2425,7 +2425,7 @@
                   </Paragraphs>
                   <rd:DefaultName>Textbox19</rd:DefaultName>
                   <Top>0.38958in</Top>
-                  <Left>2.15965in</Left>
+                  <Left>2.14799in</Left>
                   <Height>0.13541in</Height>
                   <Width>2.99416in</Width>
                   <ZIndex>2</ZIndex>
@@ -2461,7 +2461,7 @@
                   </Paragraphs>
                   <rd:DefaultName>Textbox19</rd:DefaultName>
                   <Top>0.20486in</Top>
-                  <Left>2.15965in</Left>
+                  <Left>2.14799in</Left>
                   <Height>0.14583in</Height>
                   <Width>2.99416in</Width>
                   <ZIndex>3</ZIndex>
@@ -2496,7 +2496,7 @@
                   </Paragraphs>
                   <rd:DefaultName>Textbox22</rd:DefaultName>
                   <Top>2.30911cm</Top>
-                  <Left>3.09328cm</Left>
+                  <Left>3.06367cm</Left>
                   <Height>0.15in</Height>
                   <Width>12.41846cm</Width>
                   <ZIndex>4</ZIndex>
@@ -2531,7 +2531,7 @@
                   </Paragraphs>
                   <rd:DefaultName>Textbox19</rd:DefaultName>
                   <Top>0.73958in</Top>
-                  <Left>2.15381in</Left>
+                  <Left>2.14215in</Left>
                   <Height>0.13541in</Height>
                   <Width>3.03467in</Width>
                   <ZIndex>5</ZIndex>
@@ -2552,7 +2552,7 @@
                   <MIMEType>image/jpeg</MIMEType>
                   <Sizing>FitProportional</Sizing>
                   <Top>0.29403cm</Top>
-                  <Left>0.17182cm</Left>
+                  <Left>0.14221cm</Left>
                   <Height>2.39608cm</Height>
                   <Width>2.78035cm</Width>
                   <ZIndex>6</ZIndex>
@@ -2565,33 +2565,13 @@
               </ReportItems>
               <KeepTogether>true</KeepTogether>
               <Top>0.75408cm</Top>
-              <Left>0.28826cm</Left>
+              <Left>0.31787cm</Left>
               <Height>3.08884cm</Height>
-              <Width>19.04708cm</Width>
+              <Width>19.01747cm</Width>
               <Style>
                 <Border>
                   <Style>Solid</Style>
                 </Border>
-                <TopBorder>
-                  <Color>Black</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </TopBorder>
-                <BottomBorder>
-                  <Color>Black</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </BottomBorder>
-                <LeftBorder>
-                  <Color>Black</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </LeftBorder>
-                <RightBorder>
-                  <Color>Black</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </RightBorder>
               </Style>
             </Rectangle>
             <Textbox Name="Textbox26">
@@ -3215,277 +3195,6 @@
                 <BackgroundColor>LightGrey</BackgroundColor>
               </Style>
             </Rectangle>
-            <Textbox Name="Textbox6">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!FirstApprover_FullName.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>4.06443cm</Top>
-              <Left>0.42619cm</Left>
-              <Height>0.36728cm</Height>
-              <Width>8.01223cm</Width>
-              <ZIndex>5</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>1pt</PaddingLeft>
-                <PaddingRight>1pt</PaddingRight>
-                <PaddingTop>1pt</PaddingTop>
-                <PaddingBottom>1pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox11">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!FirstApproverDate.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>6pt</FontSize>
-                        <Format>d</Format>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>4.86954cm</Top>
-              <Left>0.42619cm</Left>
-              <Height>0.2825cm</Height>
-              <Width>8.01223cm</Width>
-              <ZIndex>6</ZIndex>
-              <Visibility>
-                <Hidden>=Year(First(Fields!FirstApproverDate.Value, "DataSet_Result"))=1900</Hidden>
-              </Visibility>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>1pt</PaddingLeft>
-                <PaddingRight>1pt</PaddingRight>
-                <PaddingTop>1pt</PaddingTop>
-                <PaddingBottom>1pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Image Name="Image2">
-              <Source>Database</Source>
-              <Value>=First(Fields!FirstApprover_Signature.Value, "DataSet_Result")</Value>
-              <MIMEType>image/jpeg</MIMEType>
-              <Sizing>FitProportional</Sizing>
-              <Top>1.90031cm</Top>
-              <Left>3.1224cm</Left>
-              <Height>2.10817cm</Height>
-              <Width>2.88619cm</Width>
-              <ZIndex>7</ZIndex>
-              <Visibility>
-                <Hidden>=Year(First(Fields!FirstApproverDate.Value, "DataSet_Result"))=1900</Hidden>
-              </Visibility>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Image>
-            <Textbox Name="Textbox10">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!FirstApprover_FunctionNamePO.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>6pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>4.46698cm</Top>
-              <Left>0.42833cm</Left>
-              <Height>0.36728cm</Height>
-              <Width>8.01009cm</Width>
-              <ZIndex>8</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>1pt</PaddingLeft>
-                <PaddingRight>1pt</PaddingRight>
-                <PaddingTop>1pt</PaddingTop>
-                <PaddingBottom>1pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox7">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!SecondApprover_FullName.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>4.07199cm</Top>
-              <Left>13.89386cm</Left>
-              <Height>0.36728cm</Height>
-              <Width>5.365cm</Width>
-              <ZIndex>9</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>1pt</PaddingLeft>
-                <PaddingRight>1pt</PaddingRight>
-                <PaddingTop>1pt</PaddingTop>
-                <PaddingBottom>1pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox12">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!SecondApproverDate.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>6pt</FontSize>
-                        <Format>d</Format>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>4.8877cm</Top>
-              <Left>13.89386cm</Left>
-              <Height>0.2825cm</Height>
-              <Width>5.365cm</Width>
-              <ZIndex>10</ZIndex>
-              <Visibility>
-                <Hidden>=Year(First(Fields!SecondApproverDate.Value, "DataSet_Result"))=1900</Hidden>
-              </Visibility>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>1pt</PaddingLeft>
-                <PaddingRight>1pt</PaddingRight>
-                <PaddingTop>1pt</PaddingTop>
-                <PaddingBottom>1pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Image Name="Image3">
-              <Source>Database</Source>
-              <Value>=First(Fields!SecondApprover_Signature.Value, "DataSet_Result")</Value>
-              <MIMEType>image/jpeg</MIMEType>
-              <Sizing>FitProportional</Sizing>
-              <Top>1.93559cm</Top>
-              <Left>13.89386cm</Left>
-              <Height>2.10112cm</Height>
-              <Width>2.93123cm</Width>
-              <ZIndex>11</ZIndex>
-              <Visibility>
-                <Hidden>=Year(First(Fields!SecondApproverDate.Value, "DataSet_Result"))=1900</Hidden>
-              </Visibility>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Image>
-            <Textbox Name="Textbox16">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!SecondApprover_FunctionNamePO.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>6pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>4.47455cm</Top>
-              <Left>13.89386cm</Left>
-              <Height>0.37787cm</Height>
-              <Width>5.36286cm</Width>
-              <ZIndex>12</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>1pt</PaddingLeft>
-                <PaddingRight>1pt</PaddingRight>
-                <PaddingTop>1pt</PaddingTop>
-                <PaddingBottom>1pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Image Name="Image4">
-              <Source>Database</Source>
-              <Value>=First(Fields!CompanyStamp.Value, "DataSet_Result")</Value>
-              <MIMEType>image/jpeg</MIMEType>
-              <Sizing>FitProportional</Sizing>
-              <Top>1.96029cm</Top>
-              <Left>10.06809cm</Left>
-              <Height>3.20991cm</Height>
-              <Width>3.75522cm</Width>
-              <ZIndex>13</ZIndex>
-              <Visibility>
-                <Hidden>=Microsoft.VisualBasic.DateAndTime.Year(First(Fields!SecondApproverDate.Value, "DataSet_Result")) = 1900</Hidden>
-              </Visibility>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Image>
             <Textbox Name="Textbox38">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -3493,19 +3202,41 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!ConditionLbl.Value</Value>
-                      <Style />
+                      <Value>"La société GALANA DISTRIBUTION PETROLIERE (GDP) S.A requiert de l'ensemble de ses fournisseurs qu'ils s'engagent formellement à respecter le Code éthique du groupe RUBIS, consultable sur le site "</Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>www.rubis.fr</Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontSize>8pt</FontSize>
+                        <TextDecoration>Underline</TextDecoration>
+                        <Color>Blue</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>", ainsi que les Conditions Générales d'Achat de la société."</Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontSize>8pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox30</rd:DefaultName>
-              <Top>0.42333cm</Top>
+              <Top>0.17639cm</Top>
               <Left>0.27556cm</Left>
-              <Height>0.46771cm</Height>
+              <Height>0.82048cm</Height>
               <Width>19.04708cm</Width>
-              <ZIndex>14</ZIndex>
+              <ZIndex>5</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -3516,6 +3247,305 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Rectangle Name="Rectangle4">
+              <ReportItems>
+                <Image Name="Image2">
+                  <Source>Database</Source>
+                  <Value>=First(Fields!FirstApprover_Signature.Value, "DataSet_Result")</Value>
+                  <MIMEType>image/jpeg</MIMEType>
+                  <Sizing>FitProportional</Sizing>
+                  <Top>0.03528cm</Top>
+                  <Left>3.32386cm</Left>
+                  <Height>2.10817cm</Height>
+                  <Width>2.88619cm</Width>
+                  <Visibility>
+                    <Hidden>=Year(First(Fields!FirstApproverDate.Value, "DataSet_Result"))=1900</Hidden>
+                  </Visibility>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Image>
+                <Textbox Name="Textbox6">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!FirstApprover_FullName.Value, "DataSet_Result")</Value>
+                          <Style>
+                            <FontSize>7pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox5</rd:DefaultName>
+                  <Top>2.17873cm</Top>
+                  <Left>0.12584cm</Left>
+                  <Height>0.332cm</Height>
+                  <Width>8.01223cm</Width>
+                  <ZIndex>1</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>1pt</PaddingLeft>
+                    <PaddingRight>1pt</PaddingRight>
+                    <PaddingTop>1pt</PaddingTop>
+                    <PaddingBottom>1pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox10">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!FirstApprover_FunctionNamePO.Value, "DataSet_Result")</Value>
+                          <Style>
+                            <FontSize>6pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox5</rd:DefaultName>
+                  <Top>2.54601cm</Top>
+                  <Left>0.12798cm</Left>
+                  <Height>0.32797cm</Height>
+                  <Width>8.01009cm</Width>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>1pt</PaddingLeft>
+                    <PaddingRight>1pt</PaddingRight>
+                    <PaddingTop>1pt</PaddingTop>
+                    <PaddingBottom>1pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox11">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!FirstApproverDate.Value, "DataSet_Result")</Value>
+                          <Style>
+                            <FontSize>6pt</FontSize>
+                            <Format>d</Format>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox5</rd:DefaultName>
+                  <Top>2.90925cm</Top>
+                  <Left>0.12584cm</Left>
+                  <Height>0.31778cm</Height>
+                  <Width>8.01223cm</Width>
+                  <ZIndex>3</ZIndex>
+                  <Visibility>
+                    <Hidden>=Year(First(Fields!FirstApproverDate.Value, "DataSet_Result"))=1900</Hidden>
+                  </Visibility>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>1pt</PaddingLeft>
+                    <PaddingRight>1pt</PaddingRight>
+                    <PaddingTop>1pt</PaddingTop>
+                    <PaddingBottom>1pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Top>1.92502cm</Top>
+              <Left>0.39306cm</Left>
+              <Height>3.24518cm</Height>
+              <Width>9.15469cm</Width>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Rectangle>
+            <Rectangle Name="Rectangle5">
+              <ReportItems>
+                <Image Name="Image4">
+                  <Source>Database</Source>
+                  <Value>=First(Fields!CompanyStamp.Value, "DataSet_Result")</Value>
+                  <MIMEType>image/jpeg</MIMEType>
+                  <Sizing>FitProportional</Sizing>
+                  <Top>0.06199cm</Top>
+                  <Left>0.07056cm</Left>
+                  <Height>3.12976cm</Height>
+                  <Width>3.79986cm</Width>
+                  <Visibility>
+                    <Hidden>=Microsoft.VisualBasic.DateAndTime.Year(First(Fields!SecondApproverDate.Value, "DataSet_Result")) = 1900</Hidden>
+                  </Visibility>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Image>
+                <Textbox Name="Textbox12">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!SecondApproverDate.Value, "DataSet_Result")</Value>
+                          <Style>
+                            <FontSize>6pt</FontSize>
+                            <Format>d</Format>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox5</rd:DefaultName>
+                  <Top>2.90925cm</Top>
+                  <Left>3.94098cm</Left>
+                  <Height>0.31778cm</Height>
+                  <Width>5.55634cm</Width>
+                  <ZIndex>1</ZIndex>
+                  <Visibility>
+                    <Hidden>=Year(First(Fields!SecondApproverDate.Value, "DataSet_Result"))=1900</Hidden>
+                  </Visibility>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>1pt</PaddingLeft>
+                    <PaddingRight>1pt</PaddingRight>
+                    <PaddingTop>1pt</PaddingTop>
+                    <PaddingBottom>1pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox16">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!SecondApprover_FunctionNamePO.Value, "DataSet_Result")</Value>
+                          <Style>
+                            <FontSize>6pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox5</rd:DefaultName>
+                  <Top>2.50669cm</Top>
+                  <Left>3.94098cm</Left>
+                  <Height>0.36728cm</Height>
+                  <Width>5.55634cm</Width>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>1pt</PaddingLeft>
+                    <PaddingRight>1pt</PaddingRight>
+                    <PaddingTop>1pt</PaddingTop>
+                    <PaddingBottom>1pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox7">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!SecondApprover_FullName.Value, "DataSet_Result")</Value>
+                          <Style>
+                            <FontSize>7pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox5</rd:DefaultName>
+                  <Top>2.10414cm</Top>
+                  <Left>3.94098cm</Left>
+                  <Height>0.36728cm</Height>
+                  <Width>5.55634cm</Width>
+                  <ZIndex>3</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>1pt</PaddingLeft>
+                    <PaddingRight>1pt</PaddingRight>
+                    <PaddingTop>1pt</PaddingTop>
+                    <PaddingBottom>1pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Image Name="Image3">
+                  <Source>Database</Source>
+                  <Value>=First(Fields!SecondApprover_Signature.Value, "DataSet_Result")</Value>
+                  <MIMEType>image/jpeg</MIMEType>
+                  <Sizing>FitProportional</Sizing>
+                  <Top>0.06199cm</Top>
+                  <Left>3.94098cm</Left>
+                  <Height>1.97159cm</Height>
+                  <Width>2.93123cm</Width>
+                  <ZIndex>4</ZIndex>
+                  <Visibility>
+                    <Hidden>=Year(First(Fields!SecondApproverDate.Value, "DataSet_Result"))=1900</Hidden>
+                  </Visibility>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Image>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Top>1.92502cm</Top>
+              <Left>9.65357cm</Left>
+              <Height>3.24518cm</Height>
+              <Width>9.555cm</Width>
+              <ZIndex>7</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Rectangle>
           </ReportItems>
           <Style>
             <Border>

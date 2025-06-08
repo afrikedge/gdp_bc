@@ -169,6 +169,24 @@ table 50001 "AddOn Setup2"
         {
             Caption = 'Délai de blocage clients dormants (Mois)';
         }
+        field(38; "Email Copie New Sales Order"; Text[80])
+        {
+            Caption = 'Email pour les alertes Nouvelle commande vente';
+        }
+        field(39; "BC Main Url"; Text[80])
+        {
+            //http://localhost:8081/BC240/?company=GDP
+            Caption = 'BC Main Url';
+        }
+        field(40; "Card print Item"; Code[20])
+        {
+            Caption = 'Article carte imprimé';
+            TableRelation = Item;
+        }
+        field(41; "Card print Item Descr"; Text[10])
+        {
+            Caption = 'Article carte imprimé (Descr)';
+        }
     }
 
     keys

@@ -214,8 +214,13 @@ report 50078 "ND Recharge"
 
             trigger OnAfterGetRecord()
             begin
-                ProductCode := 'GALITTPREPAID';
-                ProdCode := 'NDC0106';
+                AddOnSetup2.Get();
+                AddOnSetup2.TestField("Card print Item");
+                AddOnSetup2.TestField("Card print Item Descr");
+                //ProductCode := 'RECHARGE PREPAID EASY';
+                //ProdCode := 'NDC0118';
+                ProductCode := AddOnSetup2."Card print Item Descr";
+                ProdCode := AddOnSetup2."Card print Item";
                 ProductUnit := 'UNITE';
                 VATPercent := '0%';
 
@@ -305,6 +310,7 @@ report 50078 "ND Recharge"
         Cust: Record Customer;
         PaymentTerms: Record "Payment Terms";
         RepCheck: Report Check;
+        AddOnSetup2: Record "AddOn Setup2";
         VATAmount: Decimal;
         Quantity: Decimal;
         Foot3: Text;

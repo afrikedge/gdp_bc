@@ -4485,6 +4485,9 @@ Zs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs2bFXZs
         <Field Name="TextImprimeLe">
           <DataField>TextImprimeLe</DataField>
         </Field>
+        <Field Name="ConditionLbl">
+          <DataField>ConditionLbl</DataField>
+        </Field>
         <Field Name="ReportTitleCopyText">
           <DataField>ReportTitleCopyText</DataField>
         </Field>

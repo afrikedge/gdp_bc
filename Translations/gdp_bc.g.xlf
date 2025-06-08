@@ -1628,10 +1628,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field ActivateDispachingLogging - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 260655099 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BC Main Url</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field BC Main Url - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 40080402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bloquer les transactions avec cout nul</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Block zero unit cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 1117829884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Article carte imprimé</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Card print Item - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 1034279253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Article carte imprimé (Descr)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Card print Item Descr - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3242877383 - Field 154566986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Company Cust Templ</source>
@@ -1687,6 +1702,11 @@
           <source>Email CC pour relances clients</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Email CC Relance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 840495386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email pour les alertes Nouvelle commande vente</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Email Copie New Sales Order - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3242877383 - Field 4150883283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Email pour alerte création des clients</source>
@@ -52964,7 +52984,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Order Autres Achat - NamedType Com</note>
         </trans-unit>
         <trans-unit id="Report 3663497183 - NamedType 3686801667" size-unit="char" translate="yes" xml:space="preserve">
-          <source>« La société GALANA DISTRIBUTION PETROLIERE (GDP) S.A  s’attend à ce que les fournisseurs avec qui elle travaille s’engagent sur le respect du Code éthique du groupe RUBIS, disponible sur le site "www.rubis.fr", ainsi que de ses Conditions Générales d’Achats »</source>
+          <source>"La société GALANA DISTRIBUTION PETROLIERE (GDP) S.A requiert de l'ensemble de ses fournisseurs qu'ils s’engagent formellement à respecter le Code éthique du groupe RUBIS, consultable sur le site "www.rubis.fr", ainsi que de les Conditions Générales d’Achat de la société."</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Order Autres Achat - NamedType ConditionLbl</note>
         </trans-unit>
@@ -66797,6 +66817,11 @@
           <source>Le document provient d'une sortie à refacturer %1, le code client ne doit pas être changé sur la facture</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - NamedType AFK_Text004</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1551112472 - Field 2471556914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Web Order Sent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Afk Web Order Sent - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 2968489684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Web User Id</source>

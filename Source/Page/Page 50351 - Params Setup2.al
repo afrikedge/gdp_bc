@@ -118,6 +118,12 @@ page 50351 "Params Setup2"
                 field("Customer blocking period Month"; Rec."Customer blocking period Month")
                 {
                 }
+                field("Email Copie New Sales Order"; Rec."Email Copie New Sales Order")
+                {
+                }
+                field("BC Main Url"; Rec."BC Main Url")
+                {
+                }
             }
         }
     }
