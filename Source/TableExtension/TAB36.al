@@ -381,6 +381,12 @@ tableextension 50011 "A02 Sales Header" extends "Sales Header"
             DataClassification = CustomerContent;
             Editable = false;
         }
+        field(50080; "Afk Web Order Sent"; Boolean)
+        {
+            Caption = 'Web Order Sent';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
     }
     keys
     {

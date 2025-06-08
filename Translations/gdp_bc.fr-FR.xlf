@@ -1953,11 +1953,29 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field ActivateDispachingLogging - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 260655099 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BC Main Url</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field BC Main Url - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 40080402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bloquer les transactions avec cout nul</source>
           <target state="needs-review-translation">Bloquer les transactions avec cout nul</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Block zero unit cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 1117829884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Article carte imprimé</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Card print Item - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 1034279253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Article carte imprimé (Descr)</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Card print Item Descr - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3242877383 - Field 154566986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Company Cust Templ</source>
@@ -2024,6 +2042,12 @@
           <target state="needs-review-translation">Email CC pour relances clients</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Email CC Relance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 840495386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email pour les alertes Nouvelle commande vente</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Email Copie New Sales Order - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3242877383 - Field 4150883283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Email pour alerte création des clients</source>
@@ -78269,8 +78293,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 3475545745 - Field 3798315222 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source> ,Ancienne SS,Clients sains réseau,Clients sains B2B,ETS Gallois,Trésor,Naphta,Royalties,GD non bouclés,Contentieux,Précontentieux,Compte interne,Jirama,Gallois,Station en GD,Prepaye,PostPaye</source>
-          <target state="needs-adaptation"> ,Ancienne SS,Clients sains réseau,Clients sains B2B,ETS Gallois,Trésor,Naphta,Royalties,GD non bouclés,Contentieux,Précontentieux,Compte interne,Jirama,Gallois,Station en GD</target>
-          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <target state="needs-adaptation"> ,Ancienne SS,Clients sains réseau,Clients sains B2B,ETS Gallois,Trésor,Naphta,Royalties,GD non bouclés,Contentieux,Précontentieux,Compte interne,Jirama,Gallois,Station en GD,Prepaye,PostPaye</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Category 2 - Property OptionCaption</note>
         </trans-unit>
@@ -80157,6 +80180,12 @@
           <target state="needs-review-translation">Le document provient d'une sortie à refacturer %1, le code client ne doit pas être changé sur la facture</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - NamedType AFK_Text004</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1551112472 - Field 2471556914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Web Order Sent</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Afk Web Order Sent - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 2968489684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Web User Id</source>

@@ -1079,7 +1079,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."Document Date"), input, 'Document Date');
         WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."External Document No."), input, 'External Document No_');
         WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."Requested Delivery Date"), input, 'Requested Delivery Date');
-
+        WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."Ship-to Code"), input, 'Ship-to Code');
+        WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."Afk Web Order Sent"), input, 'Web Order Sent');
 
         RecRef.SetTable(SalesHeader);
     end;
@@ -1478,14 +1479,74 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         SalesOrderProcess: Codeunit "Sales Order Process";
         SalesOrderNo: Code[20];
         WebUserId: Code[50];
+        EmailAdress: Text[100];
     begin
         SalesOrderNo := CopyStr(ws.GetText('No_', input), 1, 20);
         WebUserId := CopyStr(ws.GetText('UserId', input), 1, 50);
+        EmailAdress := CopyStr(ws.GetText('Email', input), 1, 100);
         if (SalesHeader.get(SalesHeader."Document Type"::Order, SalesOrderNo)) then begin
-            SalesOrderProcess.ValidationEnSaisie(SalesHeader);
+            //SalesOrderProcess.ValidationEnSaisie(SalesHeader);
+            SendSalesOrderToGDP(SalesHeader, EmailAdress);
             ws.CreateResponseSuccess(SalesOrderNo);
         end else
             ws.CreateResponseError('Invalid sales order ' + SalesOrderNo);
+    end;
+
+    local procedure SendSalesOrderToGDP(var SalesHeader: record "Sales Header"; sentToEmailAdress: Text[100])
+    var
+    begin
+        SalesHeader."Afk Web Order Sent" := true;
+        SalesHeader.Modify();
+        SendEmailNewSalesOrder(SalesHeader, sentToEmailAdress);
+    end;
+
+    procedure SendEmailNewSalesOrder(SalesHeader: Record "Sales Header"; ToAdress: Text)
+    var
+        AddOnSetup2: record "AddOn Setup2";
+        NewObjet: Text;
+        EmailToSend: Record "Tampon Payment Vendor Email" temporary;
+        EmailMgt: Codeunit EmailMgt;
+        CCAdress: Text;
+        Objet: Text;
+    begin
+
+        AddOnSetup2.Get();
+        CCAdress := AddOnSetup2."Email Copie New Sales Order";
+        AddOnSetup2.TestField("BC Main Url");
+
+        Objet := 'Une commande N° ' + SalesHeader."No." + ' vient d''être soumise par votre client ' + SalesHeader."Sell-to Customer Name";
+
+        EmailToSend.Init();
+        //EmailToSend.EntryID := EmailMgt.GetNextEntryNoInEmailRec();
+        EmailToSend.EmailObject := Objet;
+        EmailToSend.BodyAsHTML := CreateEmailBody(SalesHeader."No.", AddOnSetup2."BC Main Url");
+        EmailToSend.SendTo := ToAdress;
+        EmailToSend.EmailType := EmailToSend.EmailType::VendorInvoice;
+        EmailToSend."User ID" := UserId;
+        EmailToSend."Entry Date" := Today;
+        EmailToSend."Document No." := SalesHeader."No.";
+        if (CCAdress <> '') then
+            EmailToSend.SendToCC := CCAdress;
+
+        if ((ToAdress <> '') or (CCAdress <> '')) then
+            EmailMgt.SendEmail(EmailToSend);
+    end;
+
+    local procedure CreateEmailBody(CodeDocument: Text[50]; BCUrl: Text[150]): Text
+    var
+        BodyText: Text;
+    begin
+        //http://localhost:8081/BC240/?company=GDP
+        BodyText := '<html><body>';
+        BodyText += '<div>Veuillez suivre le lien ci-dessous pour y accéder :';
+        BodyText += '<a href="' + BCUrl + '&page=43&filter=''No.=%22' + CodeDocument + '%22''">' + CodeDocument + '</a>';
+        BodyText += '</div>';
+        BodyText += '<p>&nbsp;</p>';
+        BodyText += '<p style="color: rgb(210, 11, 0);"><big>_________________________________</big></p>';
+        BodyText += '<p style="color: rgb(0, 113, 66);">Message envoy&eacute; depuis Dynamics Business Central.</p>';
+        BodyText += '</body></html>';
+
+        exit(BodyText);
     end;
 
     local procedure GetPrice(OrderNo: Code[20]; ItemNo: Code[20]; Quantity: Decimal; variantCode: Code[20]): Text
