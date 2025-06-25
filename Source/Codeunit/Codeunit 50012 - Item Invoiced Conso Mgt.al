@@ -362,10 +362,12 @@ codeunit 50012 "Item Invoiced Conso Mgt"
                     SalesOrderLine.Validate(SalesOrderLine."No.", Item1."ToCharge Item");
                     //SalesOrderLine.Description := CreatedLine.Description;
                     //SalesOrderLine.VALIDATE(SalesOrderLine."Location Code",AddOnSetup."Consignation Location");
-                    SalesOrderLine.Validate(SalesOrderLine.Quantity, CreatedLine.Quantity);
-                    SalesOrderLine.VALIDATE(SalesOrderLine."Unit Price", CreatedLine.AmountToBeInvoice / SalesOrderLine.Quantity);//040917
+                    SalesOrderLine.Validate(Quantity, CreatedLine.Quantity);
+                    if (ItemAdj.ItemInvoiceSourcePrice = ItemAdj.ItemInvoiceSourcePrice::UnitCost) then
+                        SalesOrderLine.Validate("Unit Price", CreatedLine.AmountToBeInvoice / SalesOrderLine.Quantity);//040917
                     //SalesOrderLine.VALIDATE(SalesOrderLine.Amount, CreatedLine.AmountToBeInvoice);
-                    //SalesOrderLine.Validate(SalesOrderLine."Unit Price",GetUnitPrice(ItemAdj."Customer No.",Item1."No."));//The Up calculated auto
+                    if (ItemAdj.ItemInvoiceSourcePrice = ItemAdj.ItemInvoiceSourcePrice::PriceList) then
+                        SalesOrderLine.Validate("Unit Price", GetUnitPrice(ItemAdj."Customer No.", Item1."No."));//The Up calculated auto
 
 
                     //SalesOrderLine."Card Number" := CreatedLine."Card Number";
@@ -442,6 +444,22 @@ codeunit 50012 "Item Invoiced Conso Mgt"
         exit(SalesL."Unit Price");
     end;
 
+    procedure RefreshToSalesPricesOnList(ItemAdj: Record "Adjustment Header")
+    var
+        AdjustLine: Record "Adjustment Line";
+        Item1: Record Item;
+    begin
+        AdjustLine.Reset;
+        AdjustLine.SetRange("Document No.", ItemAdj."No.");
+        if AdjustLine.FindSet then
+            repeat
+                Item1.Get(AdjustLine."Item No.");
+                AdjustLine."ToCharge %" := Item1."ToCharge %";
+                AdjustLine.Modify;
+            until AdjustLine.Next = 0;
+        Message(Text014);
+    end;
+
     procedure RefreshOutputPercentage(ItemAdj: Record "Adjustment Header")
     var
         AdjustLine: Record "Adjustment Line";
@@ -457,5 +475,7 @@ codeunit 50012 "Item Invoiced Conso Mgt"
             until AdjustLine.Next = 0;
         Message(Text014);
     end;
+
+
 }
 

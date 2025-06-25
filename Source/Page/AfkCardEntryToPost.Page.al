@@ -37,6 +37,9 @@ page 50232 "Afk Card Entry To Post"
                 field("Posted Document No."; Rec."Posted Document No.")
                 {
                 }
+                field("External Doc No."; Rec."External Doc No.")
+                {
+                }
                 field("Error Message"; Rec."Error Message")
                 {
                 }

@@ -38,6 +38,9 @@ page 50191 "Item Invoiced Conso Released"
                     Caption = 'Station Name';
                     Editable = false;
                 }
+                field("ItemInvoiceSourcePrice"; Rec.ItemInvoiceSourcePrice)
+                {
+                }
             }
             part(Lines; "Item Invoiced Conso Subform")
             {

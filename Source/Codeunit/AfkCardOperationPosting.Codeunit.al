@@ -152,7 +152,7 @@ codeunit 50043 "Afk Card Operation Posting"
                 GenJnlLine.Validate(GenJnlLine.Amount, -CardEntryToPost.Amount);
 
 
-            GenJnlLine."External Document No." := CopyStr(CardEntryToPost.File, 1, 35);
+            GenJnlLine."External Document No." := CardEntryToPost."External Doc No.";
             GenJnlLine."Source Code" := SourceCodeSetup.Sales;
             GenJnlLine.SetHideValidation(true);
             GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
