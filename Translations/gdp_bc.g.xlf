@@ -98,6 +98,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Card Posting Account Type - EnumValue Debit Note - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 2308264948 - EnumValue 4145758217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Groupe de prix client</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AfkItemInvoiceSourcePrice - EnumValue PriceList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2308264948 - EnumValue 2988376383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cout unitaire</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AfkItemInvoiceSourcePrice - EnumValue UnitCost - Property Caption</note>
+        </trans-unit>
         <trans-unit id="EnumExtension 3253383430 - EnumValue 503931689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2634834239">
           <source>Reminder1</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2208,6 +2218,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Adjustment Header - Field Item Category Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 535805036 - Field 1819933328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source prix unitaire</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Adjustment Header - Field ItemInvoiceSourcePrice - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 535805036 - Field 2161572060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Location Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2727,6 +2742,11 @@
           <source>Error Message</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Error Message - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4192045379 - Field 3837890622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External Doc No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field External Doc No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4192045379 - Field 3374690962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>File</source>
@@ -49684,7 +49704,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Transf - NamedType DetenteurCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 1175044625 - NamedType 326535993" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Acquisition Date</source>
+          <source>Transfer Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Transf - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>

@@ -5,7 +5,7 @@
       <group id="body">
         <trans-unit id="Page 1447496441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Card Entry To Post</source>
-          <target state="needs-translation"/>
+          <target>Transactions cartes à comptabiliser</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Afk Card Entry To Post - Property Caption</note>
         </trans-unit>
@@ -23,7 +23,7 @@
         </trans-unit>
         <trans-unit id="Page 240377702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Afk Card Posting Config</source>
-          <target state="needs-translation"/>
+          <target>Config. Comptabilisation cartes</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Afk Card Posting Config - Property Caption</note>
         </trans-unit>
@@ -107,31 +107,43 @@
         </trans-unit>
         <trans-unit id="Enum 2361576835 - EnumValue 2221101399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Credit Note</source>
-          <target state="needs-translation"/>
+          <target >Note de crédit</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Card Posting Account Type - EnumValue Credit Note - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 2361576835 - EnumValue 551726890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Debit Note</source>
-          <target state="needs-translation"/>
+          <target >Note de débit</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Card Posting Account Type - EnumValue Debit Note - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 2308264948 - EnumValue 4145758217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Groupe de prix client</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AfkItemInvoiceSourcePrice - EnumValue PriceList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2308264948 - EnumValue 2988376383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cout unitaire</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AfkItemInvoiceSourcePrice - EnumValue UnitCost - Property Caption</note>
+        </trans-unit>
         <trans-unit id="EnumExtension 3253383430 - EnumValue 503931689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2634834239">
           <source>Reminder1</source>
-          <target state="needs-translation"/>
+          <target >Relance 1</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AG1Report Selection Usage Reminder - EnumValue Reminder1 - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 3253383430 - EnumValue 4161202368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2634834239">
           <source>Reminder2</source>
-          <target state="needs-translation"/>
+          <target >Relance 2</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AG1Report Selection Usage Reminder - EnumValue Reminder2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 3253383430 - EnumValue 3523505751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2634834239">
           <source>Reminder3</source>
-          <target state="needs-translation"/>
+          <target >Relance 3</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AG1Report Selection Usage Reminder - EnumValue Reminder3 - Property Caption</note>
         </trans-unit>
@@ -2649,6 +2661,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Adjustment Header - Field Item Category Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 535805036 - Field 1819933328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source prix unitaire</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Adjustment Header - Field ItemInvoiceSourcePrice - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 535805036 - Field 2161572060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Location Code</source>
           <target state="needs-review-translation">Code magasin</target>
@@ -3245,79 +3263,85 @@
         </trans-unit>
         <trans-unit id="Table 4192045379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Afk Card Operation Entry</source>
-          <target state="needs-translation"/>
+          <target state="needs-review-translation">Transaction carte</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4192045379 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
-          <target state="needs-translation"/>
+          <target>Montant</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4192045379 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer No.</source>
-          <target state="needs-translation"/>
+          <target>N° Client</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Customer No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4192045379 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-          <target state="needs-translation"/>
+          <target>Description</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4192045379 - Field 2852966117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Error Message</source>
-          <target state="needs-translation"/>
+          <target>Message d'erreur</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Error Message - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4192045379 - Field 3837890622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External Doc No.</source>
+          <target>Numéro Doc Externe</target>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field External Doc No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4192045379 - Field 3374690962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>File</source>
-          <target state="needs-translation"/>
+          <target>Fichier</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field File - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4192045379 - Field 2960574539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Document No.</source>
-          <target state="needs-translation"/>
+          <target>Numéro Doc enregistré</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Posted Document No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4192045379 - Field 2051632751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted In GL</source>
-          <target state="needs-translation"/>
+          <target>Comptabilisé</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Posted In GL - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4192045379 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Date</source>
-          <target state="needs-translation"/>
+          <target>Date compta</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Operation Entry - Field Posting Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 240377702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Afk Card Posting Config</source>
-          <target state="needs-translation"/>
+          <target>Configuration compta. cartes</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Posting Config - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 240377702 - Field 1891586249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bal. Account No.</source>
-          <target state="needs-translation"/>
+          <target>Compte de contrepartie</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Posting Config - Field Bal. Account No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 240377702 - Field 149522872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry Type</source>
-          <target state="needs-translation"/>
+          <target>Type opération</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Posting Config - Field Entry Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 240377702 - Field 3374690962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>File</source>
-          <target state="needs-translation"/>
+          <target>Fichier</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Card Posting Config - Field File - Property Caption</note>
         </trans-unit>
@@ -59620,8 +59644,9 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Transf - NamedType DetenteurCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 1175044625 - NamedType 326535993" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Acquisition Date</source>
-          <target state="needs-review-translation">Date acquisition</target>
+          <source>Transfer Date</source>
+          <target state="needs-adaptation">Date acquisition</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fixed Asset - Transf - NamedType FADeprBkAcquisitionDtCptnLbl</note>
         </trans-unit>
