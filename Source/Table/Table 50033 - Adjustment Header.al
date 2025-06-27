@@ -421,6 +421,10 @@ table 50033 "Adjustment Header"
             Editable = false;
             FieldClass = FlowField;
         }
+        field(50017; ItemInvoiceSourcePrice; enum AfkItemInvoiceSourcePrice)
+        {
+            Caption = 'Source prix unitaire';
+        }
     }
 
     keys

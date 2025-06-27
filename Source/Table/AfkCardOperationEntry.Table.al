@@ -37,6 +37,10 @@ table 50110 "Afk Card Operation Entry"
         {
             Caption = 'Posted Document No.';
         }
+        field(9; "External Doc No."; Code[35])
+        {
+            Caption = 'External Doc No.';
+        }
     }
     keys
     {

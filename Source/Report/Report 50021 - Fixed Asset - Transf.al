@@ -232,7 +232,7 @@ report 50021 "Fixed Asset - Transf"
         Text003: Label 'You must specify an Ending Date that is later than the Starting Date.';
         FixedAssetAcqListCptnLbl: Label 'FICHE DE TRANSFERT D''IMMOBILISATION';
         CurrReportPageNoCaptionLbl: Label 'Page';
-        FADeprBkAcquisitionDtCptnLbl: Label 'Acquisition Date';
+        FADeprBkAcquisitionDtCptnLbl: Label 'Transfer Date';
         MarqueCaptionLbl: Label 'MARQUE';
         TypeCaptionLbl: Label 'TYPE';
         NbreCaptionLbl: Label 'NOMBRE';
