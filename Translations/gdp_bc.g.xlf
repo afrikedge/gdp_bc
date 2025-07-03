@@ -41373,6 +41373,316 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Afk CreateResetPassword - Control NewPasswordCtrl - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1228528616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reminder Letter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 2248914289" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount Including VAT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType AmountIncVATCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 3197031362" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You are receiving this email to formally notify you that payment owed by you is past due. The payment was due on %1. Enclosed is a copy of invoice with the details of remaining amount.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = A due date</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType AmtDueLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 4233096702" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType BankAccNoCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 2728952663" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType BankNameCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1908025102" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If you have already made the payment, please disregard this email. Thank you for your business.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType BodyLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 2771379227" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sincerely</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType ClosingLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 3451557426" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact E-Mail</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType ContactEmailLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1836485017" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact Mobile Phone No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType ContactMobilePhoneNoLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1120550273" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact Phone No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType ContactPhoneNoLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 4137192940" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Continued</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType ContinuedCaption1Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 4036938315" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Continued</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType ContinuedCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1542941690" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType DateLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 3569966352" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType DescriptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 3112881028" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType DocDateCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 343855514" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType DocumentDateCaption1Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 4092352280" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType DueDateCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 595034892" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType EMailCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 13422290" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Giro No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType GiroNoCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 514421613" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hello</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType GreetingLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 973567044" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Header Dimensions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType HeaderDimensionsCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 2862688884" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Home Page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType HomePageCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 3556547100" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IBAN</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType IBANCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 3208712818" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interest Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType InterestAmountCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 2670743522" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sedera RAVELOSON</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType ManagerNameLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 3798206857" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Objet :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType ObjectLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 4217367735" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Première Relance de règlement</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType ObjTitleLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 650077689" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType PageCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 302396163" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nous vous contactons au sujet des factures figurant sur le relevé joint à ce courriel.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType Para1Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 424799398" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sauf erreur ou omission de notre part, nous constatons qu'à ce jour, ces factures demeurent impayées dans nos registres.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType Para2Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1277453061" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Si votre règlement a été effectué entre-temps, nous vous prions de bien vouloir considérer ce courrier comme nul et vous présentons nos excuses pour cette relance. Dans le cas contraire, nous vous saurions gré de procéder au règlement dans les meilleurs délais afin de régulariser votre situation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType Para3Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1916937632" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Si vous rencontrez des difficultés ou souhaitez échanger à ce sujet, nous vous invitons à contacter votre responsable commercial habituel.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType Para4Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 4185523519" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Veuillez agréer, Monsieur/Madame, l'expression de nos meilleures salutations.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType Para5Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1928308579" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType PhoneNoCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 443421780" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType PostingDateCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 2320187798" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reminder</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType ReminderCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1118993357" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reminder No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType ReminderNoCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 2638249163" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Le Directeur Commercial,</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType SalesManagerLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 374261452" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cher(e) Client(e),</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType SalutationLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total %1 Incl. VAT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1026443335" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Amount Specification in </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType Text011</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 2939533186" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Local Currency</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType Text012</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 2301836569" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exchange rate: %1/%2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType Text013</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 626218360" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType TextPageLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1583171122" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType TotalCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 3913295325" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType VATAmountCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1396908878" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Amount Specification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType VATAmtSpecCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1303359398" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType VATBaseCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 3365690297" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Clause</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType VATClausesCap</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 1071970054" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Identifier</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType VATIdentifierLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - NamedType 969467040" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - NamedType VATPercentCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - ReportDataItem 1929467888 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reminder Letter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - ReportDataItem Issued Reminder Header - Property RequestFilterHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - Control 816368762 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want the reminder that you print to be recorded as interaction, and to be added to the Interaction Log Entry table.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - Control LogInteraction - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Interaction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - Control LogInteraction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - Control 316520822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want the printed report to show information that is only for internal use.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - Control ShowInternalInfo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - Control 316520822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Internal Information</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - Control ShowInternalInfo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - Control 4146528255 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want multiple interest rate details for the journal lines to be included in the report.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - Control ShowMIR - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - Control 4146528255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show MIR Detail</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - Control ShowMIR - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - Control 2278817471 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want to show amounts that are not due from customers.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - Control ShowNotDueAmounts - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 1228528616 - Control 2278817471 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Not Due Amounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Afk Reminder Letter - Control ShowNotDueAmounts - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3135814134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Afk Workflow Maintenance</source>
           <note from="Developer" annotates="general" priority="2"></note>
