@@ -24,7 +24,7 @@ report 50064 "Afk Blocking Dormant Customer"
                 CustLedgEntry.SetRange("Customer No.", Customer."No.");
                 if (CustLedgEntry.FindLast) then begin
                     NbreMois := NbreOfMonthsInPeriod(CustLedgEntry."Posting Date", Today);
-                    if NbreMois >= AddOnSetup."Supplier blocking period Month" then begin
+                    if NbreMois >= AddOnSetup."Customer blocking period Month" then begin
                         if (Customer.Blocked <> Customer.Blocked::All) then begin
                             Customer.Blocked := Customer.Blocked::All;
                             Customer.Modify;
@@ -45,6 +45,9 @@ report 50064 "Afk Blocking Dormant Customer"
                 BesoinNo := 0;
                 Window.Open(Text008);
                 NbreTotalLignes := Customer.Count;
+
+                AddOnSetup.Get;
+                AddOnSetup.TestField("Customer blocking period Month");
             end;
         }
     }

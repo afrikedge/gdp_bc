@@ -26,6 +26,14 @@ report 50085 "Blocking dormant suppliers"
                             Vendor.Modify;
                         end;
                     end;
+                end else begin
+                    NbreMois := NbreOfMonthsInPeriod(DT2Date(Vendor.SystemCreatedAt), Today);
+                    if NbreMois >= AddOnSetup."Supplier blocking period Month" then begin
+                        if (Vendor.Blocked <> Vendor.Blocked::All) then begin
+                            Vendor.Blocked := Vendor.Blocked::All;
+                            Vendor.Modify;
+                        end;
+                    end;
                 end;
             end;
 
@@ -41,6 +49,9 @@ report 50085 "Blocking dormant suppliers"
                 BesoinNo := 0;
                 Window.Open(Text008);
                 NbreTotalLignes := Vendor.Count;
+
+                AddOnSetup.Get;
+                AddOnSetup.TestField("Supplier blocking period Month");
             end;
         }
     }
