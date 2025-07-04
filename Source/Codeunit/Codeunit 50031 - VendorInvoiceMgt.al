@@ -441,6 +441,12 @@ codeunit 50031 VendorInvoiceMgt
 
         end;
 
+        if PurchH."Document Type" = PurchH."Document Type"::"Credit Memo" then
+            VendInvoiceDoc1.TestField(Type, VendInvoiceDoc1.Type::CreditMemo)
+        else
+            VendInvoiceDoc1.TestField(Type, VendInvoiceDoc1.Type::Invoice);
+
+
         if (VendInvoiceDoc1.Status <> VendInvoiceDoc1.Status::Receptionee) then
             Error(Text030, VendInvoiceDoc1."Reference Number", VendInvoiceDoc1."Vendor Invoice No.");
 
