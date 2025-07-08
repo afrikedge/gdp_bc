@@ -937,7 +937,7 @@ codeunit 50032 "EventsSubscribers Code"
     var
         AfkGLMgt: codeunit "GL Mgt";
     begin
-        AfkGLMgt.PostVendorDeductions(PurchHeader, GenJnlLine, GenJnlPostLine, TotalPurchLineLCY, TotalPurchLine);
+        AfkGLMgt.PostVendorDeductions(PurchHeader, GenJnlLine, GenJnlPostLine, TotalPurchLineLCY.Amount);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterInvoicePostingBufferAssignAmounts', '', true, false)]
@@ -1024,6 +1024,25 @@ codeunit 50032 "EventsSubscribers Code"
         AddonSetup2.get();
         if (AddonSetup2."Desactivate Calc Interest") then
             ShouldUpdateCalcInterest := false;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purchase-Post Prepayments", 'OnBeforePostVendorEntryProcedure', '', true, false)]
+    local procedure C444_OnBeforePostVendorEntryProcedure(var PurchHeader: Record "Purchase Header"; TotalPrepmtInvLineBuffer: Record "Prepayment Inv. Line Buffer" temporary; TotalPrepmtInvLineBufferLCY: Record "Prepayment Inv. Line Buffer"; DocumentType: Option Invoice,"Credit Memo"; PostingDescription: Text[100]; DocType: Enum "Gen. Journal Document Type"; DocNo: Code[20]; ExtDocNo: Text[35]; SrcCode: Code[10]; PostingNoSeriesCode: Code[20]; CalcPmtDisc: Boolean; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; var IsHandled: Boolean)
+    var
+        SingleCU: codeunit SingleInstance;
+    begin
+        SingleCU.Set_PrepayGenJnlPostLine(GenJnlPostLine, PurchHeader);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purchase-Post Prepayments", 'OnAfterPostVendorEntry', '', true, false)]
+    local procedure C444_OnAfterPostVendorEntry(var GenJnlLine: Record "Gen. Journal Line"; TotalPrepmtInvLineBuffer: Record "Prepayment Inv. Line Buffer"; TotalPrepmtInvLineBufferLCY: Record "Prepayment Inv. Line Buffer"; CommitIsSupressed: Boolean)
+    var
+        AfkGLMgt: codeunit "GL Mgt";
+        SingleCU: codeunit SingleInstance;
+        PrepayGenJnlPostLine: Codeunit "Gen. Jnl.-Post Line";
+    begin
+        PrepayGenJnlPostLine := SingleCU.Get_PrepayGenJnlPostLine();
+        AfkGLMgt.PostVendorDeductions(SingleCU.Get_PrepayPurchHeader(), GenJnlLine, PrepayGenJnlPostLine, TotalPrepmtInvLineBufferLCY.Amount);
     end;
 
 

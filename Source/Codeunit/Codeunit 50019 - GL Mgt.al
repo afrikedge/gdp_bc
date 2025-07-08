@@ -601,7 +601,11 @@ codeunit 50019 "GL Mgt"
 
     procedure PostVendorDeductions(PurchHeader: Record "Purchase Header";
     VendorGenJnlLine: Record "Gen. Journal Line";
-    var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; var TotalPurchLineLCY: Record "Purchase Line"; var TotalPurchLine: Record "Purchase Line")
+    var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line";
+    //var TotalPurchLineLCY: Record "Purchase Line"; 
+    BaseAmtLCY: decimal
+    //var TotalPurchLine: Record "Purchase Line"
+    )
     var
         Currency: Record Currency;
         AFKVendPostingGroup: record "Vendor Posting Group";
@@ -640,7 +644,8 @@ codeunit 50019 "GL Mgt"
             GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
             GenJnlLine."Bal. Account No." := AFKVendPostingGroup."Retention Account";
             GenJnlLine."Currency Code" := PurchHeader."Currency Code";
-            SourceDeductionBaseAmtLCY := TotalPurchLineLCY.Amount;
+            //SourceDeductionBaseAmtLCY := TotalPurchLineLCY.Amount;
+            SourceDeductionBaseAmtLCY := BaseAmtLCY;
             SourceDeductionBaseAmt :=
               CurrExchRate.ExchangeAmtLCYToFCY(
                 PurchHeader."Posting Date", PurchHeader."Currency Code",

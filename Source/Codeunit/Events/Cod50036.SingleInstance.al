@@ -11,6 +11,8 @@ codeunit 50036 SingleInstance
         CanUpdateAchatDevise: Boolean;
         IsAfkShowItemWarning: Boolean;
         AfkInventoryPostingToGL: codeunit "Inventory Posting To G/L";
+        PrepayGenJnlPostLine: Codeunit "Gen. Jnl.-Post Line";
+        PrepaySalesHeader: record "Purchase header";
         IsPostingSortieImmo: Boolean;
 
     procedure Set_AFK_EscapeCheck_MultiLevelAdjmt(EscapeCheck: Boolean)
@@ -106,5 +108,21 @@ codeunit 50036 SingleInstance
     procedure Get_InventoryPostingToGL(): codeunit "Inventory Posting To G/L"
     begin
         exit(AfkInventoryPostingToGL);
+    end;
+
+    procedure Set_PrepayGenJnlPostLine(var AfkGenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; var SalesH: record "Purchase Header")
+    begin
+        PrepayGenJnlPostLine := AfkGenJnlPostLine;
+        PrepaySalesHeader := SalesH;
+    end;
+
+    procedure Get_PrepayGenJnlPostLine(): Codeunit "Gen. Jnl.-Post Line"
+    begin
+        exit(PrepayGenJnlPostLine);
+    end;
+
+    procedure Get_PrepayPurchHeader(): record "Purchase Header"
+    begin
+        exit(PrepaySalesHeader);
     end;
 }

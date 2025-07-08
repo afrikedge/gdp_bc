@@ -964,6 +964,7 @@ page 50029 "PBL Purchase Order"
                     Ellipsis = true;
                     Image = Print;
                     Promoted = true;
+                    Enabled = CanPrintDoc;
                     PromotedCategory = Process;
 
                     trigger OnAction()
@@ -985,6 +986,7 @@ page 50029 "PBL Purchase Order"
     begin
         CurrPage.IncomingDocAttachFactBox.PAGE.LoadDataFromRecord(Rec);
         ShowWorkflowStatus := CurrPage.WorkflowStatus.PAGE.SetFilterOnWorkflowRecord(Rec.RecordId);
+        CanPrintDoc := ((Rec.Status = Rec.Status::Released) OR (Rec."Prepayment %" > 0));//******************
     end;
 
     trigger OnAfterGetRecord()
@@ -1120,5 +1122,8 @@ page 50029 "PBL Purchase Order"
         OpenApprovalEntriesExistForCurrUser := ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(Rec.RecordId);
         OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(Rec.RecordId);
     end;
+
+    var
+        CanPrintDoc: Boolean;
 }
 

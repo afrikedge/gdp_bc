@@ -73,6 +73,31 @@ report 50000 "Purchase Order"
             column(TextImprimeLe; TextImprimeLe)
             {
             }
+            column(FirstApprover_FullName; FirstApprover."User Full Name")
+            {
+            }
+            //TODO Signature ici
+            column(FirstApprover_Signature; FirstApprover."Afk Signature")
+            {
+            }
+            column(FirstApprover_FunctionNamePO; FirstApprover."Afk Function Name on PO")
+            {
+            }
+            column(FirstApproverDate; FirstApproverDate)
+            {
+            }
+            column(SecondApprover_FullName; SecondApprover."User Full Name")
+            {
+            }
+            column(SecondApprover_Signature; SecondApprover."Afk Signature")
+            {
+            }
+            column(SecondApprover_FunctionNamePO; SecondApprover."Afk Function Name on PO")
+            {
+            }
+            column(SecondApproverDate; SecondApproverDate)
+            {
+            }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);
@@ -98,6 +123,9 @@ report 50000 "Purchase Order"
                     {
                     }
                     column(CompanyInfo_Picture; CompanyInfo.Picture)
+                    {
+                    }
+                    column(CompanyStamp; CompanyInfo."Company Stamp")
                     {
                     }
                     column(CompanyInfoEmail; CompanyInfo."E-Mail")
@@ -883,12 +911,15 @@ report 50000 "Purchase Order"
             }
 
             trigger OnAfterGetRecord()
+            var
+                ApprovalEntry: Record "Approval Entry";
             begin
                 //TODO
                 //CurrReport.Language := Language.GetLanguageID("Language Code");
 
                 CompanyInfo.Get();
                 CompanyInfo.CalcFields(Picture);
+                CompanyInfo.CalcFields("Company Stamp");
                 if RespCenter.Get("Responsibility Center") then begin
                     FormatAddr.RespCenter(CompanyAddr, RespCenter);
                     CompanyInfo."Phone No." := RespCenter."Phone No.";
@@ -980,6 +1011,40 @@ report 50000 "Purchase Order"
 
                 CodeDemand := "Purchase Header"."Code Demande";
                 if CodeDemand = '' then CodeDemand := TxtNeant;
+
+
+                //Approvers
+                FirstApprover.Init;
+                SecondApprover.Init;
+                FirstApproverDate := 19000101D;
+                SecondApproverDate := 19000101D;
+
+                ApprovalEntry.Reset;
+                ApprovalEntry.SetCurrentKey("Table ID", "Document Type", "Document No.", Status, "Last Date-Time Modified");
+                ApprovalEntry.SetRange("Table ID", 38);
+                ApprovalEntry.SetRange("Document Type", ApprovalEntry."Document Type"::Order);
+                ApprovalEntry.SetRange("Document No.", "Purchase Header"."No.");
+                ApprovalEntry.SetRange(ApprovalEntry.Status, ApprovalEntry.Status::Approved);
+                if ApprovalEntry.FindLast then begin
+                    SecMgt.FindUser(SecondApprover, ApprovalEntry."Approver ID");
+                    if (SecondApprover."User ID" <> '') then
+                        SecondApproverDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
+
+                    if (ApprovalEntry."Sequence No." > 2) then begin
+                        if ApprovalEntry.Next(-1) <> 0 then begin
+                            SecMgt.FindUser(FirstApprover, ApprovalEntry."Approver ID");
+                            if (FirstApprover."User ID" <> '') then
+                                FirstApproverDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
+                        end;
+                    end;
+
+                    if FirstApprover."User ID" = SecondApprover."User ID" then begin
+                        FirstApproverDate := 19000101D;
+                        FirstApprover.Init;
+                    end;
+
+                end;
+
                 //***********************
             end;
         }
@@ -1188,6 +1253,11 @@ report 50000 "Purchase Order"
         DevAmount: Text;
         TextImprimeLe: Text;
         Amount_InWords: Text;
+        FirstApprover: Record "User Setup";
+        SecondApprover: Record "User Setup";
+        FirstApproverDate: Date;
+        SecondApproverDate: Date;
+        SecMgt: Codeunit "Security Mgt";
 
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewArchiveDocument: Boolean; NewLogInteraction: Boolean)
     begin
