@@ -2,8 +2,10 @@ report 50200 "Afk Reminder Letter"
 {
     Caption = 'Reminder Letter';
     PreviewMode = PrintLayout;
+    DefaultLayout = Word;
     WordMergeDataItem = "Issued Reminder Header";
-    RDLCLayout = './Source/Report/Layout/AfkReminderLetter.rdl';
+    WordLayout = './Source/Report/Layout/AfkReminderLetter.docx';
+    // RDLCLayout = './Source/Report/Layout/AfkReminderLetter.rdl';
 
     dataset
     {

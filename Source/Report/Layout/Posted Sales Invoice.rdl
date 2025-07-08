@@ -895,7 +895,6 @@
                                                             <PaddingBottom>2pt</PaddingBottom>
                                                           </Style>
                                                         </Textbox>
-                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                   </TablixCells>
@@ -1182,6 +1181,7 @@
                                                           </Style>
                                                         </Textbox>
                                                         <ColSpan>3</ColSpan>
+                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell />
@@ -1306,7 +1306,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value>=Fields!CIFCISLbl.Value</Value>
+                                                                  <Value>=Fields!RCSLbl.Value</Value>
                                                                   <Style>
                                                                     <FontSize>9pt</FontSize>
                                                                   </Style>
@@ -1318,7 +1318,7 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value>=Fields!CIF.Value</Value>
+                                                                  <Value>=Fields!RCS.Value</Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
@@ -5348,6 +5348,15 @@ End Function
         </Field>
         <Field Name="TraiteMode">
           <DataField>TraiteMode</DataField>
+        </Field>
+        <Field Name="RCS">
+          <DataField>RCS</DataField>
+        </Field>
+        <Field Name="RCSLbl">
+          <DataField>RCSLbl</DataField>
+        </Field>
+        <Field Name="Posting_Description">
+          <DataField>Posting_Description</DataField>
         </Field>
         <Field Name="LineNo_Line">
           <DataField>LineNo_Line</DataField>

@@ -124,6 +124,12 @@ page 50351 "Params Setup2"
                 field("BC Main Url"; Rec."BC Main Url")
                 {
                 }
+                field("Card print Item"; Rec."Card print Item")
+                {
+                }
+                field("Card print Item Descr"; Rec."Card print Item Descr")
+                {
+                }
             }
         }
     }

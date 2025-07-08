@@ -205,6 +205,12 @@ report 50195 "NC ND Invoice"
             column(ReportTitle; ReportTitle)
             {
             }
+            column(RCS; RCS)
+            {
+            }
+            column(RCSLbl; RCSLbl)
+            {
+            }
             trigger OnAfterGetRecord()
             begin
 
@@ -223,6 +229,7 @@ report 50195 "NC ND Invoice"
                     NIF := Cust."VAT Registration No.";
                     STAT := Cust."STAT Code";
                     CIF := Cust."CIF/CIS";
+                    RCS := Cust."Trade Number";
                 end;
 
                 GLSetup.Get();
@@ -310,6 +317,7 @@ report 50195 "NC ND Invoice"
         Foot3: Text;
         STAT: Code[50];
         CIF: Code[50];
+        RCS: Code[50];
         PaymentTerm: Text[100];
         VAT: Decimal;
         VATFormatted: Text;
@@ -334,6 +342,7 @@ report 50195 "NC ND Invoice"
         NIFLbl: Label 'NIF :';
         STATLbl: Label 'STAT :';
         CIFCISLbl: Label 'CIF/CIS :';
+        RCSLbl: Label 'RCS :';
         ObservationsLbl: Label 'OBSERVATIONS';
         PaymentTermsLbl: Label 'Payment terms :';
         DueDateLbl: Label 'Due date :';

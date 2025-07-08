@@ -1,14 +1,15 @@
 /// <summary>
-/// Report Posted Sales Invoice (ID 50191).
+/// Report Sales Invoice Email (ID 50201).
 /// </summary>
-report 50191 "Posted Sales Invoice"
+report 50201 "Sales Invoice Email"
 {
     Caption = 'Sales - Invoice';
     EnableHyperlinks = true;
     Permissions = TableData "Sales Shipment Buffer" = rimd;
     PreviewMode = PrintLayout;
     WordMergeDataItem = Header;
-    RDLCLayout = './Source/Report/Layout/Posted Sales Invoice.rdl';
+    DefaultLayout = Word;
+    WordLayout = './Source/Report/Layout/SalesInvoiceEmail.docx';
 
     dataset
     {
