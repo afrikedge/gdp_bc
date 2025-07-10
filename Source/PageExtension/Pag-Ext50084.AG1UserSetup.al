@@ -131,7 +131,10 @@ pageextension 50084 "AG1 User Setup" extends "User Setup"
             // {
             // }
             field("Afk Function Name on PO"; Rec."Afk Function Name on PO") { }
+            field("Afk Commercial Manager"; Rec."Afk Commercial Manager")
+            {
 
+            }
 
         }
     }
