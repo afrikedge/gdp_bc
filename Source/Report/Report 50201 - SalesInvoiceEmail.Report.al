@@ -1,14 +1,15 @@
 /// <summary>
-/// Report Posted Sales Invoice (ID 50191).
+/// Report Sales Invoice Email (ID 50201).
 /// </summary>
-report 50191 "Posted Sales Invoice"
+report 50201 "Sales Invoice Email"
 {
     Caption = 'Sales - Invoice';
     EnableHyperlinks = true;
     Permissions = TableData "Sales Shipment Buffer" = rimd;
     PreviewMode = PrintLayout;
     WordMergeDataItem = Header;
-    RDLCLayout = './Source/Report/Layout/Posted Sales Invoice.rdl';
+    DefaultLayout = Word;
+    WordLayout = './Source/Report/Layout/SalesInvoiceEmail.docx';
 
     dataset
     {
@@ -503,9 +504,7 @@ report 50191 "Posted Sales Invoice"
             column(CompanyPicture; CompanyInfo.Picture)
             {
             }
-            column(CompanyStamp; CompanyInfo."Company Stamp")
-            {
-            }
+
 
             column(DocumentNo; "No.")
             {
@@ -692,18 +691,6 @@ report 50191 "Posted Sales Invoice"
             {
             }
             column(Posting_Description; "Posting Description")
-            {
-            }
-            column(SignFullName; UserSetup."User Full Name")
-            {
-            }
-            column(SignFunction; UserSetup."Afk Function Name on PO")
-            {
-            }
-            column(SignSignature; UserSetup."Afk Signature")
-            {
-            }
-            column(SignatureDate; Format(Today))
             {
             }
             dataitem(Line; "Sales Invoice Line")
@@ -1663,10 +1650,6 @@ report 50191 "Posted Sales Invoice"
                         CheckPositionMode := '';
                 end;
 
-                // -----------*--------- Commercial Manager signature ---------*----------//
-                GetUserSignature(UserSetup);
-                // -----------*--------- Commercial Manager signature ---------*----------//
-
                 GetLineFeeNoteOnReportHist("No.");
 
                 PaymentServiceSetup.CreateReportingArgs(PaymentReportingArgument, Header);
@@ -1820,7 +1803,6 @@ report 50191 "Posted Sales Invoice"
     begin
         CompanyInfo.Get();
         CompanyInfo.CalcFields(Picture);
-        CompanyInfo.CalcFields("Company Stamp");
 
         if Header.GetFilters = '' then
             Error(NoFilterSetErr);
@@ -1846,7 +1828,6 @@ report 50191 "Posted Sales Invoice"
         SellToContact: Record Contact;
         BillToContact: Record Contact;
         SalesHeaderLineRec: Record "Sales Invoice Line";
-        UserSetup: Record "User Setup";
         RepCheck: Report Check;
         LanguageMgt: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
@@ -1901,8 +1882,6 @@ report 50191 "Posted Sales Invoice"
         CurrencyName: Text;
         LocalCurrencyName: Text;
         NoText: array[2] of Text;
-        // SignFullName: Text;
-        // SignFunction: Text;
 
         JobNo: Code[20];
         JobTaskNo: Code[20];
@@ -2490,19 +2469,5 @@ report 50191 "Posted Sales Invoice"
         ShipmentInv.SetRange("Invoice No.", Header."No.");
         if ShipmentInv.FindFirst() then
             exit(ShipmentInv."Shipment No.");
-    end;
-
-    procedure GetUserSignature(var USetup: record "User Setup")
-    begin
-        USetup.Init();
-        if USetup.FindSet() then
-            repeat
-                if USetup."User ID" <> '' then
-                    if USetup."Afk Commercial Manager" then begin
-                        USetup.CalcFields("Afk Signature");
-                        USetup.CalcFields("User Full Name");
-                        exit;
-                    end;
-            until USetup.Next() = 0;
     end;
 }

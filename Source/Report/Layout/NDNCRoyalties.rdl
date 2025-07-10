@@ -1264,7 +1264,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value>=Fields!CIFCISLbl.Value</Value>
+                                                                  <Value>=Fields!RCSLbl.Value</Value>
                                                                   <Style>
                                                                     <FontSize>9pt</FontSize>
                                                                   </Style>
@@ -1276,7 +1276,7 @@
                                                                   </Style>
                                                                 </TextRun>
                                                                 <TextRun>
-                                                                  <Value>=Fields!CIF.Value</Value>
+                                                                  <Value>=Fields!RCS.Value</Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
@@ -4003,6 +4003,7 @@
                                                             <PaddingBottom>2pt</PaddingBottom>
                                                           </Style>
                                                         </Textbox>
+                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                   </TablixCells>
@@ -4859,7 +4860,6 @@
                                                             <PaddingBottom>2pt</PaddingBottom>
                                                           </Style>
                                                         </Textbox>
-                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                   </TablixCells>
@@ -5740,6 +5740,9 @@ End Function
         <Field Name="CIFCISLbl">
           <DataField>CIFCISLbl</DataField>
         </Field>
+        <Field Name="RCSLbl">
+          <DataField>RCSLbl</DataField>
+        </Field>
         <Field Name="ObservationsLbl">
           <DataField>ObservationsLbl</DataField>
         </Field>
@@ -5841,6 +5844,9 @@ End Function
         </Field>
         <Field Name="CIF">
           <DataField>CIF</DataField>
+        </Field>
+        <Field Name="RCS">
+          <DataField>RCS</DataField>
         </Field>
         <Field Name="PaymentTerm">
           <DataField>PaymentTerm</DataField>

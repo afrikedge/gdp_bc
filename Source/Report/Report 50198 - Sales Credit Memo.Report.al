@@ -187,6 +187,12 @@ report 50198 "Sales Credit Memo"
             column(Date1Lbl; Date1Lbl)
             {
             }
+            column(RCS; RCS)
+            {
+            }
+            column(RCSLbl; RCSLbl)
+            {
+            }
             dataitem(Line; "Sales Cr.Memo Line")
             {
                 DataItemLink = "Document No." = field("No.");
@@ -912,6 +918,7 @@ report 50198 "Sales Credit Memo"
                     NIF := Cust."VAT Registration No.";
                     STAT := Cust."STAT Code";
                     CIF := Cust."CIF/CIS";
+                    RCS := Cust."Trade Number";
                     ChannelCode := Cust."Sales Channel Code";
                 end;
 
@@ -1151,6 +1158,7 @@ report 50198 "Sales Credit Memo"
         Foot3: Text;
         STAT: Code[50];
         CIF: Code[50];
+        RCS: Code[50];
         PaymentTerm: Text[100];
         ChannelCode: Code[10];
         VAT: Text[5];
@@ -1196,6 +1204,7 @@ report 50198 "Sales Credit Memo"
         NIFLbl: Label 'NIF :';
         STATLbl: Label 'STAT :';
         CIFCISLbl: Label 'CIF/CIS :';
+        RCSLbl: Label 'RCS :';
         ObservationsLbl: Label 'OBSERVATIONS';
         PaymentTermsLbl: Label 'Condition de paiement :';
         DueDateLbl: Label 'Date d''écheance :';

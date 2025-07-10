@@ -238,6 +238,20 @@ tableextension 50021 "A02 User Setup" extends "User Setup"
         {
             Caption = 'Titre sur le bon de commande';
         }
+        field(50044; "Afk Commercial Manager"; Boolean)
+        {
+            Caption = 'Directeur commercial';
+            trigger OnValidate()
+            var
+                UserSetup: Record "User Setup";
+            begin
+                if "Afk Commercial Manager" then begin
+                    UserSetup.SetRange("Afk Commercial Manager", true);
+                    if not UserSetup.IsEmpty() then
+                        FieldError("Afk Commercial Manager");
+                end;
+            end;
+        }
     }
 
     //Unsupported feature: Property Deletion (LookupPageID).

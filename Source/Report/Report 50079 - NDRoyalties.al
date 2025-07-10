@@ -78,6 +78,9 @@ report 50079 "ND Royalties"
             column(CIFCISLbl; CIFCISLbl)
             {
             }
+            column(RCSLbl; RCSLbl)
+            {
+            }
             column(ObservationsLbl; ObservationsLbl)
             {
             }
@@ -181,6 +184,9 @@ report 50079 "ND Royalties"
             column(CIF; CIF)
             {
             }
+            column(RCS; RCS)
+            {
+            }
             column(PaymentTerm; PaymentTerm)
             {
             }
@@ -239,6 +245,7 @@ report 50079 "ND Royalties"
                     NIF := Cust."VAT Registration No.";
                     STAT := Cust."STAT Code";
                     CIF := Cust."CIF/CIS";
+                    RCS := Cust."Trade Number";
 
                     if PaymentTerms.Get(Cust."Payment Terms Code") then
                         PaymentTerm := PaymentTerms.Description;
@@ -327,6 +334,7 @@ report 50079 "ND Royalties"
         NIF: Text[20];
         STAT: Code[50];
         CIF: Code[50];
+        RCS: Code[50];
         PaymentTerm: Text[100];
         VATFormatted: Text;
         AmountFormmatted: Text;
@@ -347,6 +355,7 @@ report 50079 "ND Royalties"
         NIFLbl: Label 'NIF :';
         STATLbl: Label 'STAT :';
         CIFCISLbl: Label 'CIF/CIS :';
+        RCSLbl: Label 'RCS :';
         ObservationsLbl: Label 'OBSERVATIONS';
         PaymentTermsLbl: Label 'Conditions de paiement :';
         DueDateLbl: Label 'Date d''écheance :';
