@@ -1,4 +1,4 @@
-report 50200 "Afk Reminder Letter"
+report 50080 "Afk Reminder Letter"
 {
     Caption = 'Reminder Letter';
     PreviewMode = PrintLayout;

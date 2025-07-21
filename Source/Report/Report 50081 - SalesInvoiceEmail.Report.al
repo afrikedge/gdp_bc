@@ -1,7 +1,7 @@
 /// <summary>
-/// Report Sales Invoice Email (ID 50201).
+/// Report Sales Invoice Email (ID 50081).
 /// </summary>
-report 50201 "Sales Invoice Email"
+report 50081 "Sales Invoice Email"
 {
     Caption = 'Sales - Invoice';
     EnableHyperlinks = true;
