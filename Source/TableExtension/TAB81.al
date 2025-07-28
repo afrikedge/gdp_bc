@@ -636,8 +636,8 @@ tableextension 50018 "A02 Gen. Journal Line" extends "Gen. Journal Line"
         field(50010; "CC Document Type"; Option)
         {
             Caption = 'CC Document Type';
-            OptionCaption = ' ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money,Mvola Money,Orange Money MarchandAirtel Money Marchand';
-            OptionMembers = " ",ChequeNormal,ChequeCaution,ChequeGarantie,Especes,Virement,MobileMoney,Traite,MobileMoney2,MobileMoney3,MobileMoney4,MobileMoney5;
+            OptionCaption = ' ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money,Mvola Money,Orange Money Marchand,Airtel Money Marchand,Orange Money WP';
+            OptionMembers = " ",ChequeNormal,ChequeCaution,ChequeGarantie,Especes,Virement,MobileMoney,Traite,MobileMoney2,MobileMoney3,MobileMoney4,MobileMoney5,OrangeMoneyWP;
 
             trigger OnValidate()
             var
@@ -648,7 +648,7 @@ tableextension 50018 "A02 Gen. Journal Line" extends "Gen. Journal Line"
                 //*****************************************************************************
                 //Ne pas changer du compte ORANGE MNY vers un autre compte
                 IF xRec."CC Document Type" IN [Rec."CC Document Type"::MobileMoney, Rec."CC Document Type"::MobileMoney2
-                  , Rec."CC Document Type"::MobileMoney3, Rec."CC Document Type"::MobileMoney4
+                  , Rec."CC Document Type"::MobileMoney3, Rec."CC Document Type"::MobileMoney4, Rec."CC Document Type"::OrangeMoneyWP
                   , Rec."CC Document Type"::MobileMoney5, Rec."CC Document Type"::Traite] THEN BEGIN
                     IF xRec."CC Document Type" <> "CC Document Type" THEN
                         //ERROR(AFK_Error01);
@@ -702,6 +702,13 @@ tableextension 50018 "A02 Gen. Journal Line" extends "Gen. Journal Line"
                     AddOnSetup.TESTFIELD(AddOnSetup."CCL Mobile Money Acc 5");
                     "Bal. Account Type" := Rec."Bal. Account Type"::"Bank Account";
                     VALIDATE("Bal. Account No.", AddOnSetup."CCL Mobile Money Acc 5");
+                END;
+
+                IF "CC Document Type" = Rec."CC Document Type"::OrangeMoneyWP THEN BEGIN
+                    AddOnSetup2.GET;
+                    AddOnSetup2.TESTFIELD(AddOnSetup2."Orange Money WP Acc");
+                    "Bal. Account Type" := Rec."Bal. Account Type"::"Bank Account";
+                    VALIDATE("Bal. Account No.", AddOnSetup2."Orange Money WP Acc");
                 END;
 
 
@@ -1043,6 +1050,7 @@ tableextension 50018 "A02 Gen. Journal Line" extends "Gen. Journal Line"
         //AFKSecMgt: Codeunit "50016";
         AFK_Error01: Label 'Vous ne pouvez plus modifier ce champ. Supprimez la ligne plutôt.';
         AddOnSetup: Record "AddOn Setup";
+        AddOnSetup2: Record "AddOn Setup2";
         AFK_Error02: Label 'L''écriture provient d''une lettre de crédit. Vous ne pouvez pas changer le montant';
         AFK_CanUpdateAchatDevise: Boolean;
         AFK_Error03: Label 'Cette option n''est plus valide !';

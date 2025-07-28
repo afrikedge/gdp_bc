@@ -187,6 +187,11 @@ table 50001 "AddOn Setup2"
         {
             Caption = 'Article carte imprimé (Descr)';
         }
+        field(42; "Orange Money WP Acc"; Code[20])
+        {
+            Caption = 'Compte Orange Money WP';
+            TableRelation = "Bank Account";
+        }
     }
 
     keys

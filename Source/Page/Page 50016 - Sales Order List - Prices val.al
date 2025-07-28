@@ -374,7 +374,6 @@ page 50016 "Sales Order List - Prices val"
         ReportPrint: Codeunit "Test Report-Print";
         UserMgt: Codeunit "User Setup Management";
         Usage: Option "Order Confirmation","Work Order","Pick Instruction";
-        [InDataSet]
         JobQueueActive: Boolean;
         OpenApprovalEntriesExist: Boolean;
         CRMIntegrationEnabled: Boolean;

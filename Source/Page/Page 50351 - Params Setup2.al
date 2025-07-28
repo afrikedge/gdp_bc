@@ -130,6 +130,9 @@ page 50351 "Params Setup2"
                 field("Card print Item Descr"; Rec."Card print Item Descr")
                 {
                 }
+                field("Orange Money WP Acc"; Rec."Orange Money WP Acc")
+                {
+                }
             }
         }
     }

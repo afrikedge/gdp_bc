@@ -11,6 +11,8 @@ report 50085 "Blocking dormant suppliers"
             RequestFilterFields = "No.";
 
             trigger OnAfterGetRecord()
+            var
+                VendorCreateDate: date;
             begin
                 BesoinNo := BesoinNo + 1;
                 Window.Update(1,
@@ -27,11 +29,20 @@ report 50085 "Blocking dormant suppliers"
                         end;
                     end;
                 end else begin
-                    NbreMois := NbreOfMonthsInPeriod(DT2Date(Vendor.SystemCreatedAt), Today);
-                    if NbreMois >= AddOnSetup."Supplier blocking period Month" then begin
-                        if (Vendor.Blocked <> Vendor.Blocked::All) then begin
-                            Vendor.Blocked := Vendor.Blocked::All;
-                            Vendor.Modify;
+                    //Aucune transaction
+                    VendorCreateDate := DT2Date(Vendor.SystemCreatedAt);
+                    if (VendorCreateDate = 0D) then
+                        VendorCreateDate := Vendor."Created By Date";
+                    if (VendorCreateDate = 0D) then begin
+                        Vendor.Blocked := Vendor.Blocked::All;
+                        Vendor.Modify;
+                    end else begin
+                        NbreMois := NbreOfMonthsInPeriod(VendorCreateDate, Today);
+                        if NbreMois >= AddOnSetup."Supplier blocking period Month" then begin
+                            if (Vendor.Blocked <> Vendor.Blocked::All) then begin
+                                Vendor.Blocked := Vendor.Blocked::All;
+                                Vendor.Modify;
+                            end;
                         end;
                     end;
                 end;

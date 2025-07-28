@@ -700,7 +700,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     begin
 
         PayMethod.Reset();
-        PayMethod.SetRange(PayMethod."Customer No.", SalesOrder."Sell-to Customer No.");
+        PayMethod.SetRange("Customer No.", SalesOrder."Sell-to Customer No.");
         PayMethod.SetRange("Document No.", SalesOrder."No.");
         if (not PayMethod.IsEmpty) then
             PayMethod.DeleteAll();
@@ -709,7 +709,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         LinesArray := c.AsArray();
         foreach c in LinesArray do begin
             LineInput := c.AsObject();
-            AddOrUpdateSalesOrderPaymentMethod(SalesOrder, PayMethodLine, LineInput);
+            AddOrUpdateSalesOrderPaymentMethod(SalesOrder, LineInput);
         end;
     end;
 
@@ -739,30 +739,34 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         end;
     end;
 
-    local procedure AddOrUpdateSalesOrderPaymentMethod(SalesOrder: Record "Sales Header"; var PayMethod: Record "Sales Order Pay Doc"; input: JsonObject)
+    local procedure AddOrUpdateSalesOrderPaymentMethod(SalesOrder: Record "Sales Header"; input: JsonObject)
     var
+
+
+        PayMethod: Record "Sales Order Pay Doc";
         SalesPayDoc: Record "Sales Order Pay Doc";
     begin
 
 
-        SalesPayDoc.Reset();
-        SalesPayDoc.SetRange("Customer No.", SalesOrder."Sell-to Customer No.");
-        SalesPayDoc.SetRange("Document No.", SalesOrder."No.");
-        SalesPayDoc.SetRange("Line No.", WS.GetInt('Line No_', input));
-        if (not SalesPayDoc.FindFirst()) then begin
+        // SalesPayDoc.Reset();
+        // SalesPayDoc.SetRange("Customer No.", SalesOrder."Sell-to Customer No.");
+        // SalesPayDoc.SetRange("Document No.", SalesOrder."No.");
+        // SalesPayDoc.SetRange("Line No.", WS.GetInt('Line No_', input));
+        // if (not SalesPayDoc.FindFirst()) then begin
 
-            PayMethod.Init();
-            PayMethod."Customer No." := SalesOrder."Sell-to Customer No.";
-            PayMethod."Document No." := SalesOrder."No.";
-            PopulateValuesSOPaymentMethods(PayMethod, input);
-            PayMethod.Insert();
+        clear(PayMethod);
+        PayMethod."Customer No." := SalesOrder."Sell-to Customer No.";
+        PayMethod."Document No." := SalesOrder."No.";
+        PopulateValuesSOPaymentMethods(PayMethod, input);
+        PayMethod."Paid Amount" := -PayMethod."Paid Amount";
+        PayMethod.Insert();
 
-        end else begin
+        // end else begin
 
-            PopulateValuesSOPaymentMethods(SalesPayDoc, input);
-            SalesPayDoc.Modify(true);
+        // PopulateValuesSOPaymentMethods(SalesPayDoc, input);
+        // SalesPayDoc.Modify(true);
 
-        end;
+        //end;
     end;
 
     local procedure processCustRequirements(RecNo: Code[20]; input: JsonObject; IsLead: Boolean)
@@ -1117,6 +1121,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Pay Method"), input, 'No_');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Reference"), input, 'Reference');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Amount"), input, 'Amount');
+        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Paid Amount"), input, 'Amount');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Observations"), input, 'Observation');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Pay Document No."), input, 'Pay Document No_');
 
@@ -1519,7 +1524,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         EmailToSend.Init();
         //EmailToSend.EntryID := EmailMgt.GetNextEntryNoInEmailRec();
         EmailToSend.EmailObject := Objet;
-        EmailToSend.BodyAsHTML := CreateEmailBody(SalesHeader."No.", AddOnSetup2."BC Main Url");
+        EmailToSend.BodyAsHTML := CreateEmailBody(SalesHeader);
         EmailToSend.SendTo := ToAdress;
         EmailToSend.EmailType := EmailToSend.EmailType::VendorInvoice;
         EmailToSend."User ID" := UserId;
@@ -1532,14 +1537,20 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
             EmailMgt.SendEmail(EmailToSend);
     end;
 
-    local procedure CreateEmailBody(CodeDocument: Text[50]; BCUrl: Text[150]): Text
+    procedure CreateEmailBody(SalesHeader: record "Sales Header"): Text
     var
+        AddOnSetup2: record "AddOn Setup2";
         BodyText: Text;
+        BCUrl: Text[150];
     begin
+        AddOnSetup2.Get();
+        AddOnSetup2.TestField("BC Main Url");
+        BCUrl := AddOnSetup2."BC Main Url";
+
         //http://localhost:8081/BC240/?company=GDP
         BodyText := '<html><body>';
         BodyText += '<div>Veuillez suivre le lien ci-dessous pour y accéder :';
-        BodyText += '<a href="' + BCUrl + '&page=43&filter=''No.=%22' + CodeDocument + '%22''">' + CodeDocument + '</a>';
+        BodyText += '<a href="' + BCUrl + '&page=50031&filter=%24systemId%20IS%20''' + SalesHeader.SystemId + '''">' + SalesHeader."No." + '</a>';
         BodyText += '</div>';
         BodyText += '<p>&nbsp;</p>';
         BodyText += '<p style="color: rgb(210, 11, 0);"><big>_________________________________</big></p>';
@@ -1548,6 +1559,81 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
         exit(BodyText);
     end;
+
+    procedure GenerateSalesOrderUrl(SalesOrderNo: Code[20]): Text
+    var
+        CompanyInformation: Record "Company Information";
+        AddOnSetup2: Record "AddOn Setup2";
+        BaseUrl: Text;
+        CompanyName: Text;
+        EncodedCompanyName: Text;
+        EncodedSalesOrderNo: Text;
+        SalesOrderUrl: Text;
+    begin
+        // Get the base URL
+        AddOnSetup2.Get();
+        AddOnSetup2.TestField("BC Main Url");
+        BaseUrl := AddOnSetup2."BC Main Url";
+
+        if not BaseUrl.EndsWith('&') and not BaseUrl.EndsWith('?') then
+            BaseUrl += '&';
+
+        // Remove trailing slash
+        if BaseUrl.EndsWith('/') then
+            BaseUrl := CopyStr(BaseUrl, 1, StrLen(BaseUrl) - 1);
+
+        // Get company name
+        // CompanyInformation.Get();
+        // CompanyName := CompanyInformation.Name;
+
+        // // Encode values for URL
+        // EncodedCompanyName := URLEncode(CompanyName);
+        // EncodedSalesOrderNo := URLEncode(SalesOrderNo);
+
+        // Build the URL (42 = Sales Order Card page)
+        SalesOrderUrl := StrSubstNo(
+            '%1page=50031&filter=''No.''%20IS%20''%2''',
+            BaseUrl,
+            EncodedSalesOrderNo
+        );
+
+        exit(SalesOrderUrl);
+    end;
+
+    // local procedure URLEncode(InputText: Text): Text
+    // var
+    //     OutputText: Text;
+    //     i: Integer;
+    //     Char: Text[1];
+    //     AsciiCode: Integer;
+    // begin
+    //     for i := 1 to StrLen(InputText) do begin
+    //         Char := CopyStr(InputText, i, 1);
+    //         // Allow unreserved characters per RFC 3986
+    //         case Char of
+    //             'A' .. 'Z', 'a' .. 'z', '0' .. '9', '-', '_', '.', '~':
+    //                 OutputText += Char;
+    //             ' ':
+    //                 OutputText += '%20';
+    //             else begin
+    //                 AsciiCode := GetAsciiCode(Char);
+    //                 if AsciiCode > 0 then
+    //                     OutputText += '%' + Format(AsciiCode, 0, '<Hex2>');
+    //             end;
+    //         end;
+    //     end;
+
+    //     exit(OutputText);
+    // end;
+
+    // local procedure GetAsciiCode(Char: Text[1]): Integer
+    // var
+    //     CharArray: array[1] of Char;
+    // begin
+    //     CharArray[1] := Char[1];
+    //     exit(CharArray[1]);
+    // end;
+
 
     local procedure GetPrice(OrderNo: Code[20]; ItemNo: Code[20]; Quantity: Decimal; variantCode: Code[20]): Text
     var
