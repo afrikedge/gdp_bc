@@ -5,7 +5,7 @@ page 50137 "Letter of Credit"
     SourceTable = "Letter of credit";
     SourceTableView = WHERE(Status = CONST(Open));
     ApplicationArea = All;
-    UsageCategory = Lists;
+    UsageCategory = Documents;
 
     layout
     {

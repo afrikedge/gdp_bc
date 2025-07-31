@@ -6,6 +6,8 @@ page 50069 "Transfer Order Archive"
     RefreshOnActivate = true;
     SourceTable = "Transfer Header Archive";
     SourceTableView = WHERE("Transfer Type" = CONST(Normal));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

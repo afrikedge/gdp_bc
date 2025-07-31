@@ -5,6 +5,8 @@ page 50167 "Purchase Requisition Workflow"
     InsertAllowed = false;
     PageType = Document;
     SourceTable = "Purchase Requisition";
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

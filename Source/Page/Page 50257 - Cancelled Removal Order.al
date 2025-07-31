@@ -5,6 +5,8 @@ page 50257 "Cancelled Removal Order"
     PageType = Document;
     SourceTable = pro_enteteBE;
     SourceTableView = WHERE(isAnnule = CONST(true));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

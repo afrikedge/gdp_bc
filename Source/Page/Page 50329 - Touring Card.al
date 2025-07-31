@@ -1,10 +1,12 @@
 page 50329 "Touring Card"
 {
     Editable = true;
-    PageType = Card;
+    PageType = Document;
     RefreshOnActivate = true;
     SourceTable = Touring;
     Caption = 'Tournée';
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

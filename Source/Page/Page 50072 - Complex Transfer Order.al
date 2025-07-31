@@ -5,6 +5,8 @@ page 50072 "Complex Transfer Order"
     RefreshOnActivate = true;
     SourceTable = "Transfer Header";
     SourceTableView = WHERE("Transfer Type" = CONST(Hypothetical));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

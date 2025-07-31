@@ -5,6 +5,8 @@ page 50084 "Item Loan"
     RefreshOnActivate = true;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Loan));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

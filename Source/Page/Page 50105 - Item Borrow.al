@@ -5,6 +5,8 @@ page 50105 "Item Borrow"
     RefreshOnActivate = true;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Borrow));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

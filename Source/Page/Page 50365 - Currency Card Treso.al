@@ -4,6 +4,8 @@ page 50365 "Currency Card Treso"
     Editable = false;
     PageType = Card;
     SourceTable = Currency;
+    UsageCategory = None;
+    ApplicationArea = All;
 
     layout
     {

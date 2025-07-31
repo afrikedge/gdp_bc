@@ -7,6 +7,8 @@ page 50183 "AMSA Invoice"
     PageType = Document;
     SourceTable = "Fuel Statement Header";
     SourceTableView = WHERE("Document Type" = CONST(Invoice));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

@@ -2,8 +2,10 @@ page 50354 "Vendor Invoice Card Saisie"
 {
     Caption = 'Vendor invoice doc card';
     DataCaptionFields = "Vendor Invoice No.";
-    PageType = Card;
+    PageType = Document;
     SourceTable = "Vendor Invoice Doc";
+    UsageCategory = Documents;
+    ApplicationArea = All;
 
     layout
     {

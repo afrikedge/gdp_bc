@@ -2,10 +2,12 @@ page 50034 "Posted Touring Card"
 {
     Caption = 'Posted Touring Card';
     Editable = false;
-    PageType = Card;
+    PageType = Document;
     RefreshOnActivate = true;
     SourceTable = Touring;
     SourceTableView = where(Status = filter(Confirmed | Posted));
+    UsageCategory = Documents;
+    ApplicationArea = All;
 
     layout
     {

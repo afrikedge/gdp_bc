@@ -6,6 +6,8 @@ page 50102 "Posted Item Consignation"
     RefreshOnActivate = true;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Consignation));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

@@ -6,6 +6,8 @@ page 50055 "Posted Moneytech Import"
     ModifyAllowed = false;
     PageType = Document;
     SourceTable = "Posted Moneytech Import";
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

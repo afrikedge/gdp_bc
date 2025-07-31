@@ -4,6 +4,8 @@ page 50158 "Posted Purchase Requisition"
     Editable = false;
     PageType = Document;
     SourceTable = "Posted Purchase Requisition";
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

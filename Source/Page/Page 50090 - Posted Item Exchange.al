@@ -6,6 +6,8 @@ page 50090 "Posted Item Exchange"
     RefreshOnActivate = true;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Exchange));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

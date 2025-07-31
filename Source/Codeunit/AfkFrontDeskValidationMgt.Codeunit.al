@@ -1117,13 +1117,14 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
         RecRef.GetTable(PayMethod);
 
+        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Pay Document No."), input, 'Pay Document No_');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Line No."), input, 'Line No_');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Pay Method"), input, 'No_');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Reference"), input, 'Reference');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Amount"), input, 'Amount');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Paid Amount"), input, 'Amount');
         WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Observations"), input, 'Observation');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Pay Document No."), input, 'Pay Document No_');
+
 
         RecRef.SetTable(PayMethod);
     end;

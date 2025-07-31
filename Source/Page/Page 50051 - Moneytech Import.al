@@ -2,6 +2,8 @@ page 50051 "Moneytech Import"
 {
     PageType = Document;
     SourceTable = "MoneyTech Import";
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

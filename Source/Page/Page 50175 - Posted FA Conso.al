@@ -6,6 +6,8 @@ page 50175 "Posted FA Conso"
     RefreshOnActivate = true;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST("FA Conso"));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

@@ -6,6 +6,8 @@ page 50314 "Customer Ledger Entries2"
     InsertAllowed = false;
     PageType = List;
     SourceTable = "Cust. Ledger Entry";
+    ApplicationArea = All;
+    UsageCategory = Lists;
 
     layout
     {

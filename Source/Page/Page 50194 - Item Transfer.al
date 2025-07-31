@@ -4,6 +4,8 @@ page 50194 "Item Transfer"
     PageType = Document;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Transfer));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

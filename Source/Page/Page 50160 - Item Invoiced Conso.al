@@ -5,6 +5,8 @@ page 50160 "Item Invoiced Conso"
     RefreshOnActivate = true;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST("Invoiced Consumption"));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

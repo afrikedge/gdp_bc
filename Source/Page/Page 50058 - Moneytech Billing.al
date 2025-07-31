@@ -2,6 +2,8 @@ page 50058 "Moneytech Billing"
 {
     PageType = Document;
     SourceTable = "MoneyTech Billing";
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

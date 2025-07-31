@@ -4,6 +4,8 @@ page 50313 "Reconciliation Infos Posted"
     Editable = false;
     PageType = List;
     SourceTable = "Reconciliation Info";
+    ApplicationArea = All;
+    UsageCategory = Lists;
 
     layout
     {

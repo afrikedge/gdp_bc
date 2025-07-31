@@ -6,6 +6,8 @@ page 50252 "Posted Reception Transfer"
     RefreshOnActivate = true;
     SourceTable = "Item Return Header";
     SourceTableView = WHERE("Document Type" = CONST(Transfer));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

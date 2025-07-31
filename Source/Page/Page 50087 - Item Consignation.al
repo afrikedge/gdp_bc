@@ -5,6 +5,8 @@ page 50087 "Item Consignation"
     RefreshOnActivate = true;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Consignation));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

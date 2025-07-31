@@ -8,6 +8,8 @@ page 50120 "Sales Order - workflow"
     RefreshOnActivate = true;
     SourceTable = "Sales Header";
     SourceTableView = WHERE("Document Type" = FILTER(Order));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

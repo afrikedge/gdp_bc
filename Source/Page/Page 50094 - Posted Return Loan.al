@@ -6,6 +6,8 @@ page 50094 "Posted Return Loan"
     RefreshOnActivate = true;
     SourceTable = "Item Return Header";
     SourceTableView = WHERE("Document Type" = CONST(Loan));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

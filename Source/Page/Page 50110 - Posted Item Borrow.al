@@ -5,6 +5,8 @@ page 50110 "Posted Item Borrow"
     RefreshOnActivate = true;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Borrow));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

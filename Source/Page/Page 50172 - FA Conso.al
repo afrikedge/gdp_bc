@@ -5,6 +5,8 @@ page 50172 "FA Conso"
     RefreshOnActivate = true;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST("FA Conso"));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

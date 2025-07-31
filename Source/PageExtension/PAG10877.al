@@ -26,6 +26,7 @@ pageextension 50082 pageextension70000009 extends "Payment Slip Archive"
                 Promoted = true;
                 PromotedCategory = Process;
 
+
                 trigger OnAction()
                 var
                     SlipH: Record "10867";

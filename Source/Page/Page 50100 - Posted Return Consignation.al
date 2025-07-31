@@ -6,6 +6,8 @@ page 50100 "Posted Return Consignation"
     RefreshOnActivate = true;
     SourceTable = "Item Return Header";
     SourceTableView = WHERE("Document Type" = CONST(Consignation));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

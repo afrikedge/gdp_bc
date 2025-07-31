@@ -7,6 +7,8 @@ page 50295 "Purchase Order Archive PBL"
     SourceTable = "Purchase Header Archive";
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Purchase Type" = CONST(AchatMarchandise));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

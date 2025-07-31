@@ -11,6 +11,8 @@ page 50340 "Bon Order (Dispaching)"
     SourceTable = pro_enteteBE;
     SourceTableView = WHERE(BonIsConfirme = CONST(false),
                             IsBon = CONST(true));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

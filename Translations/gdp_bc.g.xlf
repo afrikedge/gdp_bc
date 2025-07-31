@@ -43,6 +43,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Afk Main Industry List - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2925048356 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Plein Cuve List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Operation Plein Cuve List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2925048356 - Action 3622942983 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Operation Plein Cuve List - Action ImportLettrage - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 641096118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Requirement Criteria List</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -87,6 +97,21 @@
           <source>Moyens de paiement Frontdesk</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AfkFrontDeskPaymentMethod - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="XmlPort 771462559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Operation Plein Cuve</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort Afk Import Op Plein Cuve - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="XmlPort 771462559 - NamedType 16731361" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End of importation. %1 lines processed</source>
+          <note from="Developer" annotates="general" priority="2">%1=...</note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort Afk Import Op Plein Cuve - NamedType LblEndOfProcess</note>
+        </trans-unit>
+        <trans-unit id="XmlPort 771462559 - NamedType 3283546407" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Traitement @1@@@@@@@@@@@@@@@@@@@@@@@@@@@@\</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort Afk Import Op Plein Cuve - NamedType Text008</note>
         </trans-unit>
         <trans-unit id="Enum 2361576835 - EnumValue 2221101399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Credit Note</source>
@@ -3303,6 +3328,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk FrontDeskProfilePermission - Field Read - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1544388326 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Plein Cuve</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Operation Plein Cuve - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1544388326 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Operation Plein Cuve - Field Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1544388326 - Field 458406397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Operation Plein Cuve - Field Ending Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1544388326 - Field 2494688018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inactif</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Operation Plein Cuve - Field Inactif - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1544388326 - Field 460889064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Operation Plein Cuve - Field Starting Date - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3706542705 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Afk Reference</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5622,6 +5672,11 @@
           <source>Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Import Data - Field Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 942004695 - Field 3473146343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Boolean1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Import Data - Field Boolean1 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 942004695 - Field 2241553694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CodeAnalytique</source>
@@ -64197,6 +64252,11 @@
           <source>Moyens de paiement Frontdesk</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkFPaymentMethods - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 952572037 - Action 2697968164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Operation Plein Cuve List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GD1 Order Processor RC - Action AfkOperationPleinCuveList - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 952572037 - Action 1459027600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Demandes de déblocage</source>

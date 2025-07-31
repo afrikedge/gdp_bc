@@ -6,6 +6,8 @@ page 50197 "Posted Item Transfer"
     RefreshOnActivate = true;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Transfer));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

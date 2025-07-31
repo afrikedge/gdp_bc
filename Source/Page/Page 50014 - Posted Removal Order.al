@@ -5,6 +5,8 @@ page 50014 "Posted Removal Order"
     PageType = Document;
     SourceTable = pro_enteteBE;
     SourceTableView = WHERE(isconfirme = CONST(true));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

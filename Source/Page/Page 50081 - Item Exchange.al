@@ -5,6 +5,8 @@ page 50081 "Item Exchange"
     RefreshOnActivate = true;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Exchange));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

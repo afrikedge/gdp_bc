@@ -3,6 +3,8 @@ page 50064 "Fuel Statement"
     PageType = Document;
     SourceTable = "Fuel Statement Header";
     SourceTableView = WHERE("Document Type" = CONST(FS));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

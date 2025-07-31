@@ -7,6 +7,8 @@ page 50114 "Item Shipment"
     RefreshOnActivate = true;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Shipment));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

@@ -4,6 +4,8 @@ page 50152 "Purchase Requisition"
     PageType = Document;
     SourceTable = "Purchase Requisition";
     SourceTableView = WHERE(Status = CONST(Open));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

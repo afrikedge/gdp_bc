@@ -5,6 +5,8 @@ page 50273 "Item Card Admin"
     PromotedActionCategories = 'New,Process,Report,Approve,Request Approval';
     RefreshOnActivate = true;
     SourceTable = Item;
+    UsageCategory = Administration;
+    ApplicationArea = All;
 
     layout
     {

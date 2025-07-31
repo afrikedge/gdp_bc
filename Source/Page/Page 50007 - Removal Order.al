@@ -7,6 +7,8 @@ page 50007 "Removal Order"
     PageType = Document;
     SourceTable = pro_enteteBE;
     SourceTableView = WHERE(isconfirme = CONST(false));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

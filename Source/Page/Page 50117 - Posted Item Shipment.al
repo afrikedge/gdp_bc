@@ -6,6 +6,8 @@ page 50117 "Posted Item Shipment"
     RefreshOnActivate = true;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Shipment));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

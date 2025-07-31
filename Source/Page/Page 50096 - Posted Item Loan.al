@@ -6,6 +6,8 @@ page 50096 "Posted Item Loan"
     RefreshOnActivate = true;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Loan));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

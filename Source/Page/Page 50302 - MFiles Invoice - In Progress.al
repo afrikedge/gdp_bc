@@ -6,6 +6,8 @@ page 50302 "MFiles Invoice - In Progress"
     PageType = Document;
     SourceTable = tblFacture;
     SourceTableView = WHERE(Statut = CONST(Created));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

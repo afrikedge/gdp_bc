@@ -7,6 +7,8 @@ page 50029 "PBL Purchase Order"
     SourceTable = "Purchase Header";
     SourceTableView = WHERE("Document Type" = FILTER(Order),
                             "Purchase Type" = CONST(AchatMarchandise));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

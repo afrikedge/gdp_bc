@@ -4,6 +4,8 @@ page 50170 "Posted Fuel Statement"
     PageType = Document;
     SourceTable = "Posted Fuel Statement";
     SourceTableView = WHERE("Document Type" = CONST(FS));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

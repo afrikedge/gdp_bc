@@ -3,6 +3,8 @@ page 50060 "Posted Moneytech Billing"
     Editable = false;
     PageType = Document;
     SourceTable = "Posted MoneyTech Billing";
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

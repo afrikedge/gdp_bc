@@ -7,6 +7,8 @@ page 50031 "Sales Order - Draft"
     RefreshOnActivate = true;
     SourceTable = "Sales Header";
     SourceTableView = WHERE("Document Type" = FILTER(Order));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

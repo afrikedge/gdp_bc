@@ -5,6 +5,8 @@ page 50013 "Posted Delivery Order"
     PageType = Document;
     SourceTable = pro_enteteBL;
     SourceTableView = WHERE(isconfirme = CONST(true));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

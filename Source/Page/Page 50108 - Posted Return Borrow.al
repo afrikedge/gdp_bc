@@ -6,6 +6,8 @@ page 50108 "Posted Return Borrow"
     RefreshOnActivate = true;
     SourceTable = "Item Return Header";
     SourceTableView = WHERE("Document Type" = CONST(Borrow));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
