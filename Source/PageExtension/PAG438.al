@@ -8,6 +8,7 @@ pageextension 50039 pageextension70000085 extends "Issued Reminder"
             {
                 Caption = 'ImprTest';
                 Visible = false;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

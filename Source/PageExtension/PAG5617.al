@@ -6,6 +6,7 @@ pageextension 50054 pageextension70000111 extends "FA Locations"
         {
             field("Project Code"; Rec."Project Code")
             {
+                ApplicationArea = All;
             }
         }
     }
@@ -24,6 +25,7 @@ pageextension 50054 pageextension70000111 extends "FA Locations"
                 PromotedIsBig = true;
                 RunObject = Page 50123;
                 RunPageLink = "Location Code" = FIELD(Code);
+                ApplicationArea = All;
             }
         }
     }

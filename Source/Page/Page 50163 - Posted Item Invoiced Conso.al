@@ -44,6 +44,7 @@ page 50163 "Posted Item Invoiced Conso"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)
@@ -69,6 +70,7 @@ page 50163 "Posted Item Invoiced Conso"
                 Caption = 'Dimensions';
                 Image = Dimensions;
                 ShortCutKey = 'Shift+Ctrl+D';
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -83,6 +85,7 @@ page 50163 "Posted Item Invoiced Conso"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -97,6 +100,7 @@ page 50163 "Posted Item Invoiced Conso"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -110,6 +114,7 @@ page 50163 "Posted Item Invoiced Conso"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

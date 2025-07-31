@@ -53,6 +53,7 @@ page 50185 "Posted AMSA Main Invoice"
             {
                 SubPageLink = "Parent Invoice No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
     }

@@ -10,6 +10,7 @@ pageextension 50056 pageextension70000113 extends "Fixed Asset G/L Journal"
                 Image = "report";
                 Promoted = true;
                 PromotedCategory = Category4;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

@@ -6,6 +6,7 @@ pageextension 50034 pageextension70000071 extends "Bank Acc. Reconciliation"
         {
             Caption = 'Import Bank Statement';
             Visible = false;
+            ApplicationArea = All;
         }
         addafter(ImportBankStatement)
         {
@@ -16,6 +17,7 @@ pageextension 50034 pageextension70000071 extends "Bank Acc. Reconciliation"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

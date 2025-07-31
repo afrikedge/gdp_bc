@@ -79,10 +79,12 @@ page 50070 "Transfer List Archive"
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }

@@ -6,6 +6,7 @@ pageextension 50043 pageextension70000106 extends "Dimension Values"
         {
             field("Old Code"; Rec."Old Code")
             {
+                ApplicationArea = All;
             }
         }
     }

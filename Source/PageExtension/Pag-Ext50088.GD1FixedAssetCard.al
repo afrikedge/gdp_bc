@@ -142,6 +142,7 @@ pageextension 50088 "GD1 Fixed Asset Card" extends "Fixed Asset Card"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -158,6 +159,7 @@ pageextension 50088 "GD1 Fixed Asset Card" extends "Fixed Asset Card"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = Category4;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -174,6 +176,7 @@ pageextension 50088 "GD1 Fixed Asset Card" extends "Fixed Asset Card"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = Category4;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -190,6 +193,7 @@ pageextension 50088 "GD1 Fixed Asset Card" extends "Fixed Asset Card"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = Category4;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -206,6 +210,7 @@ pageextension 50088 "GD1 Fixed Asset Card" extends "Fixed Asset Card"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = Category4;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -223,6 +228,7 @@ pageextension 50088 "GD1 Fixed Asset Card" extends "Fixed Asset Card"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

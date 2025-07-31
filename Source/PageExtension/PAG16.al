@@ -11,11 +11,13 @@ pageextension 50003 pageextension70000047 extends "Chart of Accounts"
                 Image = "Report";
                 RunObject = Report 50186;
                 ShortCutKey = 'Shift+F11';
+                ApplicationArea = All;
             }
             action(AutoReconciliation)
             {
                 Caption = 'Lettrage automatique';
                 Image = Reconcile;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -31,6 +33,7 @@ pageextension 50003 pageextension70000047 extends "Chart of Accounts"
             action("Vérification heure")
             {
                 Caption = 'Vérification heure';
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin

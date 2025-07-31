@@ -107,17 +107,20 @@ page 50167 "Purchase Requisition Workflow"
             {
                 Caption = 'Lines';
                 SubPageLink = "Document No" = FIELD("No.");
+                ApplicationArea = All;
             }
             part("Offers List"; "Vendor Offers Part")
             {
                 Caption = 'Offers List';
                 SubPageLink = "Code Demande" = FIELD("No.");
+                ApplicationArea = All;
             }
             part("Budget Summary"; "Budget Document Lines")
             {
                 Caption = 'Budget Summary';
                 SubPageLink = "Document Type" = CONST(Requisition),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
             systempart(Control1000000001; Links)
             {
@@ -142,6 +145,7 @@ page 50167 "Purchase Requisition Workflow"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -155,6 +159,7 @@ page 50167 "Purchase Requisition Workflow"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -166,6 +171,7 @@ page 50167 "Purchase Requisition Workflow"
                 AccessByPermission = TableData Dimension = R;
                 Caption = 'Dimensions';
                 Image = Dimensions;
+                ApplicationArea = All;
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
@@ -184,6 +190,7 @@ page 50167 "Purchase Requisition Workflow"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -197,6 +204,7 @@ page 50167 "Purchase Requisition Workflow"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -213,6 +221,7 @@ page 50167 "Purchase Requisition Workflow"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -226,6 +235,7 @@ page 50167 "Purchase Requisition Workflow"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -242,6 +252,7 @@ page 50167 "Purchase Requisition Workflow"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

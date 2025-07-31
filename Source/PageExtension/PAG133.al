@@ -6,6 +6,7 @@ pageextension 50020 pageextension70000033 extends "Posted Sales Invoice Subform"
         {
             field("Card Number"; Rec."Card Number")
             {
+                ApplicationArea = All;
             }
         }
     }

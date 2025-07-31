@@ -6,9 +6,11 @@ pageextension 50053 pageextension70000110 extends "FA Posting Groups"
         {
             field("Groupe Immo Encours"; Rec."Groupe Immo Encours")
             {
+                ApplicationArea = All;
             }
             field(Name; Rec.Name)
             {
+                ApplicationArea = All;
             }
         }
     }

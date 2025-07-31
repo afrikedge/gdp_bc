@@ -70,6 +70,7 @@ page 50194 "Item Transfer"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)

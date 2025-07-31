@@ -6,9 +6,11 @@ pageextension 50009 pageextension70000076 extends "Item Journal"
         {
             field("Ref Cargo"; Rec."Ref Cargo")
             {
+                ApplicationArea = All;
             }
             field("Customer No"; Rec."Customer No")
             {
+                ApplicationArea = All;
             }
         }
     }
@@ -45,6 +47,7 @@ pageextension 50009 pageextension70000076 extends "Item Journal"
                 Caption = '&Print BE';
                 Ellipsis = true;
                 Image = Print;
+                ApplicationArea = All;
 
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
@@ -72,6 +75,7 @@ pageextension 50009 pageextension70000076 extends "Item Journal"
                 Caption = '&Print BL';
                 Ellipsis = true;
                 Image = Print;
+                ApplicationArea = All;
 
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;

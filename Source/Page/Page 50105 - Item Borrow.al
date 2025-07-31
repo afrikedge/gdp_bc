@@ -43,6 +43,7 @@ page 50105 "Item Borrow"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)
@@ -50,10 +51,12 @@ page 50105 "Item Borrow"
             systempart(Control1000000012; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1000000011; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }

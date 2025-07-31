@@ -47,6 +47,7 @@ page 50064 "Fuel Statement"
             {
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
     }

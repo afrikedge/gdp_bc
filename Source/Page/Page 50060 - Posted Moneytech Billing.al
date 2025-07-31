@@ -39,6 +39,7 @@ page 50060 "Posted Moneytech Billing"
             {
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
     }

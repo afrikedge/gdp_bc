@@ -6,12 +6,15 @@ pageextension 50082 pageextension70000009 extends "Payment Slip Archive"
         {
             field(Description; Rec.Description)
             {
+                ApplicationArea = All;
             }
             field("Customer No."; Rec."Customer No.")
             {
+                ApplicationArea = All;
             }
             field("Origin Document N°"; Rec."Origin Document N°")
             {
+                ApplicationArea = All;
             }
         }
     }
@@ -25,6 +28,7 @@ pageextension 50082 pageextension70000009 extends "Payment Slip Archive"
                 Image = Print;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
 
                 trigger OnAction()

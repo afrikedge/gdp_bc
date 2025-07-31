@@ -69,6 +69,7 @@ page 50069 "Transfer Order Archive"
             {
                 SubPageLink = "Document No." = FIELD("No."),
                               "Derived From Line No." = CONST(0);
+                ApplicationArea = All;
             }
             group("Transfer-from")
             {
@@ -219,10 +220,12 @@ page 50069 "Transfer Order Archive"
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }
@@ -244,6 +247,7 @@ page 50069 "Transfer Order Archive"
                     RunObject = Page "Transfer Statistics";
                     RunPageLink = "No." = FIELD("No.");
                     ShortCutKey = 'F7';
+                    ApplicationArea = All;
                 }
                 action("Co&mments")
                 {
@@ -252,6 +256,7 @@ page 50069 "Transfer Order Archive"
                     RunObject = Page "Inventory Comment Sheet";
                     RunPageLink = "Document Type" = CONST("Transfer Order"),
                                   "No." = FIELD("No.");
+                    ApplicationArea = All;
                 }
                 action(Dimensions)
                 {
@@ -259,6 +264,7 @@ page 50069 "Transfer Order Archive"
                     Caption = 'Dimensions';
                     Image = Dimensions;
                     ShortCutKey = 'Shift+Ctrl+D';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -277,6 +283,7 @@ page 50069 "Transfer Order Archive"
                     Image = Shipment;
                     RunObject = Page "Posted Transfer Shipments";
                     RunPageLink = "Transfer Order No." = FIELD("No.");
+                    ApplicationArea = All;
                 }
                 action("Re&ceipts")
                 {
@@ -284,6 +291,7 @@ page 50069 "Transfer Order Archive"
                     Image = PostedReceipts;
                     RunObject = Page "Posted Transfer Receipts";
                     RunPageLink = "Transfer Order No." = FIELD("No.");
+                    ApplicationArea = All;
                 }
             }
         }
@@ -296,6 +304,7 @@ page 50069 "Transfer Order Archive"
                 Image = Print;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

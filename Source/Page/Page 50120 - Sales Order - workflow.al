@@ -239,6 +239,7 @@ page 50120 "Sales Order - workflow"
                 Editable = DynamicEditable;
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
         area(factboxes)
@@ -249,20 +250,24 @@ page 50120 "Sales Order - workflow"
                               "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
                 Visible = OpenApprovalEntriesExistForCurrUser;
+                ApplicationArea = All;
             }
             part(Control1903720907; "Sales Hist. Sell-to FactBox")
             {
                 SubPageLink = "No." = FIELD("Sell-to Customer No.");
+                ApplicationArea = All;
                 Visible = true;
             }
             part(Control1902018507; "Customer Statistics FactBox")
             {
                 SubPageLink = "No." = FIELD("Bill-to Customer No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1900316107; "Customer Details FactBox")
             {
                 SubPageLink = "No." = FIELD("Sell-to Customer No.");
+                ApplicationArea = All;
                 Visible = false;
             }
             part(Control1906127307; "Sales Line FactBox")
@@ -272,12 +277,14 @@ page 50120 "Sales Order - workflow"
                               "Document No." = FIELD("Document No."),
                               "Line No." = FIELD("Line No.");
                 Visible = true;
+                ApplicationArea = All;
             }
             part(Control1901314507; "Item Invoicing FactBox")
             {
                 Provider = SalesLines;
                 SubPageLink = "No." = FIELD("No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1906354007; "Approval FactBox")
             {
@@ -285,28 +292,33 @@ page 50120 "Sales Order - workflow"
                               "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(IncomingDocAttachFactBox; "Incoming Doc. Attach. FactBox")
             {
                 ShowFilter = false;
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1907012907; "Resource Details FactBox")
             {
                 Provider = SalesLines;
                 SubPageLink = "No." = FIELD("No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1901796907; "Item Warehouse FactBox")
             {
                 Provider = SalesLines;
                 SubPageLink = "No." = FIELD("No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1907234507; "Sales Hist. Bill-to FactBox")
             {
                 SubPageLink = "No." = FIELD("Bill-to Customer No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(WorkflowStatus; "Workflow Status FactBox")
             {
@@ -314,14 +326,17 @@ page 50120 "Sales Order - workflow"
                 Enabled = false;
                 ShowFilter = false;
                 Visible = ShowWorkflowStatus;
+                ApplicationArea = All;
             }
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }
@@ -341,6 +356,7 @@ page 50120 "Sales Order - workflow"
                     Promoted = true;
                     PromotedCategory = Process;
                     ShortCutKey = 'F7';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -380,6 +396,7 @@ page 50120 "Sales Order - workflow"
                 {
                     Caption = 'Comments';
                     Image = ViewComments;
+                    ApplicationArea = All;
                     RunObject = Page "Sales Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
                                   "No." = FIELD("No."),
@@ -412,6 +429,7 @@ page 50120 "Sales Order - workflow"
                     Caption = 'Sales Order';
                     Enabled = CRMIntegrationEnabled AND CRMIsCoupledToRecord;
                     Image = CoupledOrder;
+                    ApplicationArea = All;
                     ToolTip = 'Open the coupled Microsoft Dynamics CRM sales order.';
 
                     trigger OnAction()
@@ -457,6 +475,7 @@ page 50120 "Sales Order - workflow"
             {
                 Caption = 'Bons List';
                 Image = Sales;
+                ApplicationArea = All;
                 RunObject = Page "Bon Dispaching List";
                 RunPageLink = NavOrderNo = FIELD("No."),
                               IsBon = CONST(true);
@@ -473,6 +492,7 @@ page 50120 "Sales Order - workflow"
             {
                 Caption = 'Delivery Orders List';
                 Image = Sales;
+                ApplicationArea = All;
                 RunObject = Page "Delivery Order List";
                 RunPageLink = CreatedFromDocNo = FIELD("No."),
                               IsBon = CONST(false);
@@ -482,6 +502,7 @@ page 50120 "Sales Order - workflow"
                 Caption = 'Validation Step Lines';
                 Image = History;
                 Promoted = true;
+                ApplicationArea = All;
                 PromotedCategory = Category4;
                 RunObject = Page "Document Step Lines";
                 RunPageLink = "Document Type" = CONST("Sales Order"),
@@ -566,6 +587,7 @@ page 50120 "Sales Order - workflow"
                 {
                     Caption = 'Release Order';
                     Image = Approve;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -584,6 +606,7 @@ page 50120 "Sales Order - workflow"
                 {
                     Caption = 'Calculate Invoice Discount';
                     Image = CalculateInvoiceDiscount;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -596,6 +619,7 @@ page 50120 "Sales Order - workflow"
                     Caption = 'Get Std. Cust. Sales Codes';
                     Ellipsis = false;
                     Image = CustomerCode;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -612,6 +636,7 @@ page 50120 "Sales Order - workflow"
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -623,6 +648,7 @@ page 50120 "Sales Order - workflow"
                     Caption = 'Copy Document';
                     Ellipsis = true;
                     Image = CopyDocument;
+                    ApplicationArea = All;
 
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
@@ -639,6 +665,7 @@ page 50120 "Sales Order - workflow"
                     Caption = 'Move Negative Lines';
                     Ellipsis = true;
                     Image = MoveNegativeLines;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -651,6 +678,7 @@ page 50120 "Sales Order - workflow"
                 action(TraiterCommande)
                 {
                     Caption = 'Process';
+                    ApplicationArea = All;
                     Ellipsis = true;
                     Image = "Action";
                     Promoted = true;
@@ -666,6 +694,7 @@ page 50120 "Sales Order - workflow"
                 action(AnnulerCommande)
                 {
                     Caption = 'Cancel order';
+                    ApplicationArea = All;
                     Ellipsis = true;
                     Image = Cancel;
                     Promoted = true;
@@ -682,6 +711,7 @@ page 50120 "Sales Order - workflow"
                 {
                     Caption = 'Create preparation document';
                     Enabled = ShowCreerPreparation;
+                    ApplicationArea = All;
                     Image = SalesShipment;
                     Promoted = true;
                     PromotedCategory = Category4;
@@ -697,6 +727,7 @@ page 50120 "Sales Order - workflow"
                 {
                     Caption = 'Create removal order';
                     Enabled = ShowCreerBE;
+                    ApplicationArea = All;
                     Image = Shipment;
                     Promoted = true;
                     PromotedCategory = Category4;

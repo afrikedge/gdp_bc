@@ -23,6 +23,7 @@ pageextension 50095 "Afk Customer Ledger Entries" extends "Customer Ledger Entri
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -37,6 +38,7 @@ pageextension 50095 "Afk Customer Ledger Entries" extends "Customer Ledger Entri
             }
             action("Zero Lettering")
             {
+                ApplicationArea = All;
                 ToolTip = 'Print zero lettering';
                 Image = PrintForm;
                 Caption = 'Print zero lettering';
@@ -60,6 +62,7 @@ pageextension 50095 "Afk Customer Ledger Entries" extends "Customer Ledger Entri
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -72,6 +75,7 @@ pageextension 50095 "Afk Customer Ledger Entries" extends "Customer Ledger Entri
             }
             action("ND Recharge")
             {
+                ApplicationArea = All;
                 ToolTip = 'Imprimer la ND recharge';
                 Image = PrintForm;
                 Caption = 'Imprimer la ND recharge';

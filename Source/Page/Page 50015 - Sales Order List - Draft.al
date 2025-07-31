@@ -174,26 +174,31 @@ page 50015 "Sales Order List - Draft"
             {
                 SubPageLink = "No." = FIELD("Bill-to Customer No."),
                               "Date Filter" = FIELD("Date Filter");
+                ApplicationArea = All;
                 Visible = true;
             }
             part(Control1900316107; "Customer Details FactBox")
             {
                 SubPageLink = "No." = FIELD("Bill-to Customer No."),
                               "Date Filter" = FIELD("Date Filter");
+                ApplicationArea = All;
                 Visible = true;
             }
             part(IncomingDocAttachFactBox; "Incoming Doc. Attach. FactBox")
             {
                 ShowFilter = false;
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }
@@ -212,6 +217,7 @@ page 50015 "Sales Order List - Draft"
                     Caption = 'Dimensions';
                     Image = Dimensions;
                     ShortCutKey = 'Shift+Ctrl+D';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -225,6 +231,7 @@ page 50015 "Sales Order List - Draft"
                     Promoted = true;
                     PromotedCategory = Process;
                     ShortCutKey = 'F7';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -233,6 +240,7 @@ page 50015 "Sales Order List - Draft"
                 }
                 action("Co&mments")
                 {
+                    ApplicationArea = All;
                     Caption = 'Comments';
                     Image = ViewComments;
                     RunObject = Page "Sales Comment Sheet";
@@ -252,6 +260,7 @@ page 50015 "Sales Order List - Draft"
                     RunObject = Page "Posted Sales Shipments";
                     RunPageLink = "Order No." = FIELD("No.");
                     RunPageView = SORTING("Order No.");
+                    ApplicationArea = All;
                 }
                 action(Invoices)
                 {
@@ -260,6 +269,7 @@ page 50015 "Sales Order List - Draft"
                     RunObject = Page "Posted Sales Invoices";
                     RunPageLink = "Order No." = FIELD("No.");
                     RunPageView = SORTING("Order No.");
+                    ApplicationArea = All;
                 }
                 action("Prepa&yment Invoices")
                 {
@@ -268,6 +278,7 @@ page 50015 "Sales Order List - Draft"
                     RunObject = Page "Posted Sales Invoices";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
                     RunPageView = SORTING("Prepayment Order No.");
+                    ApplicationArea = All;
                 }
                 action("Prepayment Credi&t Memos")
                 {
@@ -276,6 +287,7 @@ page 50015 "Sales Order List - Draft"
                     RunObject = Page "Posted Sales Credit Memos";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
                     RunPageView = SORTING("Prepayment Order No.");
+                    ApplicationArea = All;
                 }
             }
         }
@@ -292,6 +304,7 @@ page 50015 "Sales Order List - Draft"
                     Promoted = true;
                     PromotedCategory = Process;
                     ShortCutKey = 'Ctrl+F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -306,6 +319,7 @@ page 50015 "Sales Order List - Draft"
                     Image = ReOpen;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -322,6 +336,7 @@ page 50015 "Sales Order List - Draft"
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin

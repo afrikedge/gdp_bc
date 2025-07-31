@@ -227,6 +227,7 @@ page 50031 "Sales Order - Draft"
                 Editable = DynamicEditable;
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
         area(factboxes)
@@ -237,21 +238,25 @@ page 50031 "Sales Order - Draft"
                               "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
                 Visible = OpenApprovalEntriesExistForCurrUser;
+                ApplicationArea = All;
             }
             part(Control1903720907; "Sales Hist. Sell-to FactBox")
             {
                 SubPageLink = "No." = FIELD("Sell-to Customer No.");
                 Visible = true;
+                ApplicationArea = All;
             }
             part(Control1902018507; "Customer Statistics FactBox")
             {
                 SubPageLink = "No." = FIELD("Bill-to Customer No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1900316107; "Customer Details FactBox")
             {
                 SubPageLink = "No." = FIELD("Sell-to Customer No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1906127307; "Sales Line FactBox")
             {
@@ -260,12 +265,14 @@ page 50031 "Sales Order - Draft"
                               "Document No." = FIELD("Document No."),
                               "Line No." = FIELD("Line No.");
                 Visible = true;
+                ApplicationArea = All;
             }
             part(Control1901314507; "Item Invoicing FactBox")
             {
                 Provider = SalesLines;
                 SubPageLink = "No." = FIELD("No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1906354007; "Approval FactBox")
             {
@@ -273,17 +280,20 @@ page 50031 "Sales Order - Draft"
                               "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(IncomingDocAttachFactBox; "Incoming Doc. Attach. FactBox")
             {
                 ShowFilter = false;
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1907012907; "Resource Details FactBox")
             {
                 Provider = SalesLines;
                 SubPageLink = "No." = FIELD("No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1901796907; "Item Warehouse FactBox")
             {
@@ -295,6 +305,7 @@ page 50031 "Sales Order - Draft"
             {
                 SubPageLink = "No." = FIELD("Bill-to Customer No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(WorkflowStatus; "Workflow Status FactBox")
             {
@@ -302,14 +313,17 @@ page 50031 "Sales Order - Draft"
                 Enabled = false;
                 ShowFilter = false;
                 Visible = ShowWorkflowStatus;
+                ApplicationArea = All;
             }
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }
@@ -329,6 +343,7 @@ page 50031 "Sales Order - Draft"
                     Promoted = true;
                     PromotedCategory = Process;
                     ShortCutKey = 'F7';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -343,6 +358,7 @@ page 50031 "Sales Order - Draft"
                     RunObject = Page "Customer Card";
                     RunPageLink = "No." = FIELD("Sell-to Customer No.");
                     ShortCutKey = 'Shift+F7';
+                    ApplicationArea = All;
                 }
                 action(Dimensions)
                 {
@@ -350,6 +366,7 @@ page 50031 "Sales Order - Draft"
                     Caption = 'Dimensions';
                     Image = Dimensions;
                     ShortCutKey = 'Shift+Ctrl+D';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -360,6 +377,7 @@ page 50031 "Sales Order - Draft"
                 action("A&pprovals")
                 {
                     Caption = 'Approvals';
+                    ApplicationArea = All;
                     Image = Approvals;
 
                     trigger OnAction()
@@ -378,11 +396,13 @@ page 50031 "Sales Order - Draft"
                     RunPageLink = "Document Type" = FIELD("Document Type"),
                                   "No." = FIELD("No."),
                                   "Document Line No." = CONST(0);
+                    ApplicationArea = All;
                 }
                 action(SuiviEtapesValidation)
                 {
                     Caption = 'Validation Step Lines';
                     Image = History;
+                    ApplicationArea = All;
                     Promoted = true;
                     PromotedCategory = Category4;
                     RunObject = Page "Document Step Lines";
@@ -451,6 +471,7 @@ page 50031 "Sales Order - Draft"
                     Image = CopyDocument;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -466,6 +487,7 @@ page 50031 "Sales Order - Draft"
                     Image = "Action";
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
                     PromotedIsBig = true;
 
                     trigger OnAction()
@@ -477,6 +499,7 @@ page 50031 "Sales Order - Draft"
                 action("Create cargo entries")
                 {
                     Caption = 'Create cargo entries';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -497,6 +520,7 @@ page 50031 "Sales Order - Draft"
                     Image = PostOrder;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
                     PromotedIsBig = true;
                     ShortCutKey = 'F9';
                     Visible = true;
@@ -515,6 +539,7 @@ page 50031 "Sales Order - Draft"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'Shift+F9';
+                    ApplicationArea = All;
                     Visible = false;
 
                     trigger OnAction()
@@ -525,6 +550,7 @@ page 50031 "Sales Order - Draft"
                 action("Post and Email")
                 {
                     Caption = 'Post and Email';
+                    ApplicationArea = All;
                     Ellipsis = true;
                     Image = PostMail;
                     Visible = false;
@@ -541,6 +567,7 @@ page 50031 "Sales Order - Draft"
                     Caption = 'Test Report';
                     Ellipsis = true;
                     Image = TestReport;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -552,6 +579,7 @@ page 50031 "Sales Order - Draft"
                     Caption = 'Post Batch';
                     Ellipsis = true;
                     Image = PostBatch;
+                    ApplicationArea = All;
                     Visible = false;
 
                     trigger OnAction()
@@ -564,6 +592,7 @@ page 50031 "Sales Order - Draft"
                 {
                     Caption = 'Preview Posting';
                     Image = ViewPostedOrder;
+                    ApplicationArea = All;
                     Visible = false;
 
                     trigger OnAction()
@@ -581,6 +610,7 @@ page 50031 "Sales Order - Draft"
                     Caption = 'Email Confirmation';
                     Ellipsis = true;
                     Image = Email;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -592,6 +622,7 @@ page 50031 "Sales Order - Draft"
                     Caption = 'Print Confirmation';
                     Ellipsis = true;
                     Image = Print;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin

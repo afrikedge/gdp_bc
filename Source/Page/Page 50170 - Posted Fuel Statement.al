@@ -48,6 +48,7 @@ page 50170 "Posted Fuel Statement"
             {
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
     }
@@ -63,6 +64,7 @@ page 50170 "Posted Fuel Statement"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

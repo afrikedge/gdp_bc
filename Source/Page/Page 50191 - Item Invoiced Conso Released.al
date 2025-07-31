@@ -49,6 +49,7 @@ page 50191 "Item Invoiced Conso Released"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)

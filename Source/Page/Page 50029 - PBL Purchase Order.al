@@ -177,6 +177,7 @@ page 50029 "PBL Purchase Order"
             {
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
             part(TrackingLines; "PO Tracking Subform")
             {
@@ -184,6 +185,7 @@ page 50029 "PBL Purchase Order"
                 SubPageLink = "Document No." = FIELD("No."),
                               "Document Type" = FIELD("Document Type");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
             part(FALines; "PO FA Subform")
             {
@@ -239,6 +241,7 @@ page 50029 "PBL Purchase Order"
                 Provider = PurchLines;
                 SubPageLink = "No." = FIELD("No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1906354007; "Approval FactBox")
             {
@@ -246,31 +249,37 @@ page 50029 "PBL Purchase Order"
                               "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1901138007; "Vendor Details FactBox")
             {
                 SubPageLink = "No." = FIELD("Buy-from Vendor No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1904651607; "Vendor Statistics FactBox")
             {
                 SubPageLink = "No." = FIELD("Pay-to Vendor No.");
                 Visible = true;
+                ApplicationArea = All;
             }
             part(IncomingDocAttachFactBox; "Incoming Doc. Attach. FactBox")
             {
                 ShowFilter = false;
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1903435607; "Vendor Hist. Buy-from FactBox")
             {
                 SubPageLink = "No." = FIELD("Buy-from Vendor No.");
                 Visible = true;
+                ApplicationArea = All;
             }
             part(Control1906949207; "Vendor Hist. Pay-to FactBox")
             {
                 SubPageLink = "No." = FIELD("Pay-to Vendor No.");
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control3; "Purchase Line FactBox")
             {
@@ -278,6 +287,7 @@ page 50029 "PBL Purchase Order"
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("Document No."),
                               "Line No." = FIELD("Line No.");
+                ApplicationArea = All;
             }
             part(WorkflowStatus; "Workflow Status FactBox")
             {
@@ -285,14 +295,17 @@ page 50029 "PBL Purchase Order"
                 Enabled = false;
                 ShowFilter = false;
                 Visible = ShowWorkflowStatus;
+                ApplicationArea = All;
             }
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }
@@ -314,6 +327,7 @@ page 50029 "PBL Purchase Order"
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
                     ShortCutKey = 'Shift+Ctrl+D';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -329,6 +343,7 @@ page 50029 "PBL Purchase Order"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'F7';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -346,10 +361,12 @@ page 50029 "PBL Purchase Order"
                     RunObject = Page "Vendor Card";
                     RunPageLink = "No." = FIELD("Buy-from Vendor No.");
                     ShortCutKey = 'Shift+F7';
+                    ApplicationArea = All;
                 }
                 action(Approvals)
                 {
                     Caption = 'Approvals';
+                    ApplicationArea = All;
                     Image = Approvals;
 
                     trigger OnAction()
@@ -380,6 +397,7 @@ page 50029 "PBL Purchase Order"
                     RunObject = Page "Posted Purchase Receipts";
                     RunPageLink = "Order No." = FIELD("No.");
                     RunPageView = SORTING("Order No.");
+                    ApplicationArea = All;
                 }
                 action(Invoices)
                 {
@@ -391,6 +409,7 @@ page 50029 "PBL Purchase Order"
                     RunObject = Page "Posted Purchase Invoices";
                     RunPageLink = "Order No." = FIELD("No.");
                     RunPageView = SORTING("Order No.");
+                    ApplicationArea = All;
                 }
                 action("Prepa&yment Invoices")
                 {
@@ -399,6 +418,7 @@ page 50029 "PBL Purchase Order"
                     RunObject = Page "Posted Purchase Invoices";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
                     RunPageView = SORTING("Prepayment Order No.");
+                    ApplicationArea = All;
                 }
                 action("Prepayment Credi&t Memos")
                 {
@@ -407,6 +427,7 @@ page 50029 "PBL Purchase Order"
                     RunObject = Page "Posted Purchase Credit Memos";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
                     RunPageView = SORTING("Prepayment Order No.");
+                    ApplicationArea = All;
                 }
                 action(ProvisionsEntries)
                 {
@@ -419,6 +440,7 @@ page 50029 "PBL Purchase Order"
                     RunObject = Page "General Ledger Entries";
                     RunPageLink = "External Document No." = FIELD("No.");
                     Visible = false;
+                    ApplicationArea = All;
                 }
                 action(FacturesProvisions)
                 {
@@ -430,6 +452,7 @@ page 50029 "PBL Purchase Order"
                     PromotedIsBig = true;
                     RunObject = Page "Purchase Invoices";
                     RunPageLink = "Created By Doc No." = FIELD("No.");
+                    ApplicationArea = All;
                 }
                 group("Dr&op Shipment")
                 {
@@ -440,6 +463,7 @@ page 50029 "PBL Purchase Order"
                         Caption = 'Get Sales Order';
                         Image = "Order";
                         RunObject = Codeunit "Purch.-Get Drop Shpt.";
+                        ApplicationArea = All;
                     }
                 }
                 group("Speci&al Order")
@@ -451,6 +475,7 @@ page 50029 "PBL Purchase Order"
                         AccessByPermission = TableData "Sales Shipment Header" = R;
                         Caption = 'Get Sales Order';
                         Image = "Order";
+                        ApplicationArea = All;
 
                         trigger OnAction()
                         var
@@ -478,6 +503,7 @@ page 50029 "PBL Purchase Order"
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
                     Visible = OpenApprovalEntriesExistForCurrUser;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -494,6 +520,7 @@ page 50029 "PBL Purchase Order"
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
                     Visible = OpenApprovalEntriesExistForCurrUser;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -509,6 +536,7 @@ page 50029 "PBL Purchase Order"
                     Promoted = true;
                     PromotedCategory = Category4;
                     Visible = OpenApprovalEntriesExistForCurrUser;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -528,6 +556,7 @@ page 50029 "PBL Purchase Order"
                     //               "Document Type" = FIELD("Document Type"),
                     //               "Document No." = FIELD("No.");
                     Visible = OpenApprovalEntriesExistForCurrUser;
+                    ApplicationArea = All;
                     trigger OnAction()
                     var
                         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
@@ -550,6 +579,7 @@ page 50029 "PBL Purchase Order"
                     Promoted = true;
                     PromotedCategory = Process;
                     ShortCutKey = 'Ctrl+F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -562,6 +592,7 @@ page 50029 "PBL Purchase Order"
                 {
                     Caption = 'Reopen';
                     Image = ReOpen;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -598,6 +629,7 @@ page 50029 "PBL Purchase Order"
                     Caption = 'Get Std. Vend. Purchase Codes';
                     Ellipsis = true;
                     Image = VendorCode;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -614,6 +646,7 @@ page 50029 "PBL Purchase Order"
                     Caption = 'Copy Document';
                     Ellipsis = true;
                     Image = CopyDocument;
+                    ApplicationArea = All;
                     Promoted = true;
                     PromotedCategory = Process;
 
@@ -629,6 +662,7 @@ page 50029 "PBL Purchase Order"
                     Caption = 'Move Negative Lines';
                     Ellipsis = true;
                     Image = MoveNegativeLines;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -646,6 +680,7 @@ page 50029 "PBL Purchase Order"
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -660,6 +695,7 @@ page 50029 "PBL Purchase Order"
                 action("Create cargo entries")
                 {
                     Caption = 'Create cargo entries';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -692,6 +728,7 @@ page 50029 "PBL Purchase Order"
                         AccessByPermission = TableData "Incoming Document" = R;
                         Caption = 'Select Incoming Document';
                         Image = SelectLineToApply;
+                        ApplicationArea = All;
                         //The property 'ToolTip' cannot be empty.
                         //ToolTip = '';
 
@@ -709,6 +746,7 @@ page 50029 "PBL Purchase Order"
                         Caption = 'Create Incoming Document from File';
                         Ellipsis = true;
                         Enabled = NOT HasIncomingDocument;
+                        ApplicationArea = All;
                         Image = Attach;
                         //The property 'ToolTip' cannot be empty.
                         //ToolTip = '';
@@ -724,6 +762,7 @@ page 50029 "PBL Purchase Order"
                     {
                         Caption = 'Remove Incoming Document';
                         Enabled = HasIncomingDocument;
+                        ApplicationArea = All;
                         Image = RemoveLine;
                         //The property 'ToolTip' cannot be empty.
                         //ToolTip = '';
@@ -745,6 +784,7 @@ page 50029 "PBL Purchase Order"
                     Image = SendApprovalRequest;
                     Promoted = true;
                     PromotedCategory = Category9;
+                    ApplicationArea = All;
 
                     // trigger OnAction()
                     // var
@@ -770,6 +810,7 @@ page 50029 "PBL Purchase Order"
                     Image = Cancel;
                     Promoted = true;
                     PromotedCategory = Category9;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -794,6 +835,7 @@ page 50029 "PBL Purchase Order"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -805,6 +847,7 @@ page 50029 "PBL Purchase Order"
                     Caption = 'Preview Posting';
                     Image = ViewPostedOrder;
                     Visible = false;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -822,6 +865,7 @@ page 50029 "PBL Purchase Order"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'Shift+F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -833,6 +877,7 @@ page 50029 "PBL Purchase Order"
                     Caption = 'Test Report';
                     Ellipsis = true;
                     Image = TestReport;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -844,6 +889,7 @@ page 50029 "PBL Purchase Order"
                     Caption = 'Post Batch';
                     Ellipsis = true;
                     Image = PostBatch;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -856,6 +902,7 @@ page 50029 "PBL Purchase Order"
                     Caption = 'Remove From Job Queue';
                     Image = RemoveLine;
                     Visible = JobQueueVisible;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -868,6 +915,7 @@ page 50029 "PBL Purchase Order"
                     Image = Close;
                     Promoted = true;
                     PromotedCategory = Category4;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -888,6 +936,7 @@ page 50029 "PBL Purchase Order"
                         Caption = 'Prepayment Test Report';
                         Ellipsis = true;
                         Image = PrepaymentSimulation;
+                        ApplicationArea = All;
 
                         trigger OnAction()
                         begin
@@ -899,6 +948,7 @@ page 50029 "PBL Purchase Order"
                         Caption = 'Post Prepayment Invoice';
                         Ellipsis = true;
                         Image = PrepaymentPost;
+                        ApplicationArea = All;
 
                         trigger OnAction()
                         var
@@ -914,6 +964,7 @@ page 50029 "PBL Purchase Order"
                         Caption = 'Post and Print Prepmt. Invoice';
                         Ellipsis = true;
                         Image = PrepaymentPostPrint;
+                        ApplicationArea = All;
 
                         trigger OnAction()
                         var
@@ -929,6 +980,7 @@ page 50029 "PBL Purchase Order"
                         Caption = 'Post Prepayment Credit Memo';
                         Ellipsis = true;
                         Image = PrepaymentPost;
+                        ApplicationArea = All;
 
                         trigger OnAction()
                         var
@@ -944,6 +996,7 @@ page 50029 "PBL Purchase Order"
                         Caption = 'Post and Print Prepmt. Cr. Memo';
                         Ellipsis = true;
                         Image = PrepaymentPostPrint;
+                        ApplicationArea = All;
 
                         trigger OnAction()
                         var
@@ -968,6 +1021,7 @@ page 50029 "PBL Purchase Order"
                     Promoted = true;
                     Enabled = CanPrintDoc;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var

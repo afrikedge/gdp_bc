@@ -109,11 +109,13 @@ page 50152 "Purchase Requisition"
             {
                 Caption = 'Lines';
                 SubPageLink = "Document No" = FIELD("No.");
+                ApplicationArea = All;
             }
             part("Offers List"; "Vendor Offers Part")
             {
                 Caption = 'Offers List';
                 SubPageLink = "Code Demande" = FIELD("No.");
+                ApplicationArea = All;
                 Visible = false;
             }
             part("Budget Summary"; "Budget Document Lines")
@@ -121,6 +123,7 @@ page 50152 "Purchase Requisition"
                 Caption = 'Budget Summary';
                 SubPageLink = "Document Type" = CONST(Requisition),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
                 Visible = false;
             }
             systempart(Control1000000001; Links)
@@ -146,6 +149,7 @@ page 50152 "Purchase Requisition"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -159,6 +163,7 @@ page 50152 "Purchase Requisition"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
                 Visible = false;
 
                 trigger OnAction()
@@ -173,6 +178,7 @@ page 50152 "Purchase Requisition"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
                 Visible = false;
 
                 trigger OnAction()
@@ -188,6 +194,7 @@ page 50152 "Purchase Requisition"
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
                 Visible = false;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -205,6 +212,7 @@ page 50152 "Purchase Requisition"
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
                 Visible = false;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -220,6 +228,7 @@ page 50152 "Purchase Requisition"
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
                 ShortCutKey = 'Shift+Ctrl+D';
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -233,6 +242,7 @@ page 50152 "Purchase Requisition"
                 Image = PrintDocument;
                 Promoted = true;
                 PromotedCategory = Category4;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin

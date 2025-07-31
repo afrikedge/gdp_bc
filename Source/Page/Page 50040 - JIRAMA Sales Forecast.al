@@ -60,6 +60,7 @@ page 50040 "JIRAMA Sales Forecast"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -73,6 +74,7 @@ page 50040 "JIRAMA Sales Forecast"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -91,6 +93,7 @@ page 50040 "JIRAMA Sales Forecast"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -101,6 +104,7 @@ page 50040 "JIRAMA Sales Forecast"
             {
                 Caption = 'Transfers list';
                 Image = TransferToLines;
+                ApplicationArea = All;
                 Promoted = true;
                 PromotedCategory = Category4;
                 RunObject = Page "JIRAMA Forecast Transfers";
@@ -110,6 +114,7 @@ page 50040 "JIRAMA Sales Forecast"
             {
                 Caption = 'Update quantities';
                 Image = Calculate;
+                ApplicationArea = All;
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;

@@ -6,6 +6,7 @@ pageextension 50050 pageextension70000100 extends "Purchase Order Archive"
         {
             field(Derogation; Rec.Derogation)
             {
+                ApplicationArea = All;
             }
         }
     }
@@ -20,6 +21,7 @@ pageextension 50050 pageextension70000100 extends "Purchase Order Archive"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

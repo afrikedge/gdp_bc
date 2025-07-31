@@ -6,6 +6,7 @@ pageextension 50060 pageextension70000121 extends "Item Charges"
         {
             field("Vendor No"; Rec."Vendor No")
             {
+                ApplicationArea = All;
             }
         }
     }

@@ -119,20 +119,24 @@ page 50030 "PBL Purchase Order List"
             {
                 ShowFilter = false;
                 Visible = false;
+                ApplicationArea = All;
             }
             part(Control1901138007; "Vendor Details FactBox")
             {
                 SubPageLink = "No." = FIELD("Buy-from Vendor No."),
                               "Date Filter" = FIELD("Date Filter");
                 Visible = true;
+                ApplicationArea = All;
             }
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }
@@ -150,6 +154,7 @@ page 50030 "PBL Purchase Order List"
                     AccessByPermission = TableData Dimension = R;
                     Caption = 'Dimensions';
                     Image = Dimensions;
+                    ApplicationArea = All;
 
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
@@ -168,6 +173,7 @@ page 50030 "PBL Purchase Order List"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'F7';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -178,6 +184,7 @@ page 50030 "PBL Purchase Order List"
                 {
                     Caption = 'Approvals';
                     Image = Approvals;
+                    ApplicationArea = All;
 
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
@@ -194,6 +201,7 @@ page 50030 "PBL Purchase Order List"
                 {
                     Caption = 'Comments';
                     Image = ViewComments;
+                    ApplicationArea = All;
                     RunObject = Page "Purch. Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
                                   "No." = FIELD("No."),
@@ -208,6 +216,7 @@ page 50030 "PBL Purchase Order List"
                 {
                     Caption = 'Receipts';
                     Image = PostedReceipts;
+                    ApplicationArea = All;
 
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
@@ -219,6 +228,7 @@ page 50030 "PBL Purchase Order List"
                 {
                     Caption = 'Invoices';
                     Image = Invoice;
+                    ApplicationArea = All;
 
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
@@ -229,6 +239,7 @@ page 50030 "PBL Purchase Order List"
                 action("Prepa&yment Invoices")
                 {
                     Caption = 'Prepayment Invoices';
+                    ApplicationArea = All;
                     Image = PrepaymentInvoice;
                     RunObject = Page "Posted Purchase Invoices";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
@@ -237,6 +248,7 @@ page 50030 "PBL Purchase Order List"
                 action("Prepayment Credi&t Memos")
                 {
                     Caption = 'Prepayment Credit Memos';
+                    ApplicationArea = All;
                     Image = PrepaymentCreditMemo;
                     RunObject = Page "Posted Purchase Credit Memos";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
@@ -253,6 +265,7 @@ page 50030 "PBL Purchase Order List"
                 action("In&vt. Put-away/Pick Lines")
                 {
                     Caption = 'In&vt. Put-away/Pick Lines';
+                    ApplicationArea = All;
                     Image = PickLines;
                     RunObject = Page "Warehouse Activity List";
                     RunPageLink = "Source Document" = CONST("Purchase Order"),
@@ -262,6 +275,7 @@ page 50030 "PBL Purchase Order List"
                 action("Whse. Receipt Lines")
                 {
                     Caption = 'Whse. Receipt Lines';
+                    ApplicationArea = All;
                     Image = ReceiptLines;
                     RunObject = Page "Whse. Receipt Lines";
                     RunPageLink = "Source Type" = CONST(39),
@@ -287,6 +301,7 @@ page 50030 "PBL Purchase Order List"
                     Image = Print;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -309,6 +324,7 @@ page 50030 "PBL Purchase Order List"
                     Caption = 'Release';
                     Image = ReleaseDoc;
                     ShortCutKey = 'Ctrl+F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -320,6 +336,7 @@ page 50030 "PBL Purchase Order List"
                 action(Reopen)
                 {
                     Caption = 'Reopen';
+                    ApplicationArea = All;
                     Image = ReOpen;
 
                     trigger OnAction()
@@ -342,6 +359,7 @@ page 50030 "PBL Purchase Order List"
                     AccessByPermission = TableData "IC G/L Account" = R;
                     Caption = 'Send IC Purchase Order';
                     Image = IntercompanyOrder;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -361,6 +379,7 @@ page 50030 "PBL Purchase Order List"
                     Caption = 'Send Approval Request';
                     Enabled = NOT OpenApprovalEntriesExist;
                     Image = SendApprovalRequest;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -377,6 +396,7 @@ page 50030 "PBL Purchase Order List"
                     Caption = 'Cancel Approval Request';
                     Enabled = OpenApprovalEntriesExist;
                     Image = Cancel;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -395,6 +415,7 @@ page 50030 "PBL Purchase Order List"
                     AccessByPermission = TableData "Warehouse Receipt Header" = R;
                     Caption = 'Create Whse. Receipt';
                     Image = NewReceipt;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -412,6 +433,7 @@ page 50030 "PBL Purchase Order List"
                     Caption = 'Create Inventory Put-away/Pick';
                     Ellipsis = true;
                     Image = CreatePutawayPick;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -434,6 +456,7 @@ page 50030 "PBL Purchase Order List"
                     Caption = 'Test Report';
                     Ellipsis = true;
                     Image = TestReport;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -449,6 +472,7 @@ page 50030 "PBL Purchase Order List"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -459,6 +483,7 @@ page 50030 "PBL Purchase Order List"
                 {
                     Caption = 'Preview Posting';
                     Image = ViewPostedOrder;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -476,6 +501,7 @@ page 50030 "PBL Purchase Order List"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'Shift+F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -489,6 +515,7 @@ page 50030 "PBL Purchase Order List"
                     Image = PostBatch;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -501,6 +528,7 @@ page 50030 "PBL Purchase Order List"
                     Caption = 'Remove From Job Queue';
                     Image = RemoveLine;
                     Visible = JobQueueActive;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin

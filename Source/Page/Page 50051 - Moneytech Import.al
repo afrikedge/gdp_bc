@@ -51,6 +51,7 @@ page 50051 "Moneytech Import"
             {
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
     }

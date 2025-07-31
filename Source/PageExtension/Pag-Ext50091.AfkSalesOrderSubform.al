@@ -46,10 +46,12 @@ pageextension 50091 "Afk Sales Order Subform" extends "Sales Order Subform"
             field("Qty to prepare"; Rec."Qty to prepare")
             {
                 Visible = ShowQteAPreparer;
+                ApplicationArea = All;
             }
             field("Qty to remove"; Rec."Qty to remove")
             {
                 Visible = ShowQteAEnlever;
+                ApplicationArea = All;
             }
         }
         addafter("Attached Lines Count")
@@ -58,16 +60,19 @@ pageextension 50091 "Afk Sales Order Subform" extends "Sales Order Subform"
             {
                 Visible = false;
                 Editable = false;
+                ApplicationArea = All;
             }
             field("Provision Qty"; Rec."Provision Qty")
             {
                 Visible = false;
                 Editable = false;
+                ApplicationArea = All;
             }
             field("Real Location"; Rec."Real Location")
             {
                 Visible = false;
                 Editable = false;
+                ApplicationArea = All;
             }
         }
     }

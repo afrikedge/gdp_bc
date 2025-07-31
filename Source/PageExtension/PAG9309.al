@@ -6,6 +6,7 @@ pageextension 50075 pageextension70000146 extends "Purchase Credit Memos"
         {
             field("User ID"; Rec."User ID")
             {
+                ApplicationArea = All;
             }
         }
     }

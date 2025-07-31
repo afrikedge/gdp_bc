@@ -59,7 +59,7 @@ pageextension 50092 "Afk Purchase Order" extends "Purchase Order"
             part(SyntheseBudget; "Budget Document Lines")
             {
                 Caption = 'Synthèse budgétaire';
-                ApplicationArea = Suite;
+                ApplicationArea = All;
                 Editable = false;
                 SubPageLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
                 //UpdatePropagation = Both;
@@ -76,7 +76,7 @@ pageextension 50092 "Afk Purchase Order" extends "Purchase Order"
         {
             action(CalculateBudget)
             {
-                ApplicationArea = Suite;
+                ApplicationArea = All;
                 Caption = 'Calculer le budget';
                 Ellipsis = true;
                 Image = Calculate;
@@ -90,7 +90,7 @@ pageextension 50092 "Afk Purchase Order" extends "Purchase Order"
             }
             action(Solder)
             {
-                ApplicationArea = Suite;
+                ApplicationArea = All;
                 Caption = 'Solder la commande';
                 Ellipsis = true;
                 Image = Close;
@@ -103,7 +103,7 @@ pageextension 50092 "Afk Purchase Order" extends "Purchase Order"
             }
             action(ProvisionsEntries)
             {
-                ApplicationArea = Suite;
+                ApplicationArea = All;
                 Caption = 'Ecritures provisions';
                 Ellipsis = true;
                 Image = Entries;

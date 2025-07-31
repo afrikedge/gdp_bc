@@ -6,7 +6,7 @@ pageextension 50104 "Afk Purchase Credit Memo" extends "Purchase Credit Memo"
         {
             field("Ref Cargo"; Rec."Ref Cargo")
             {
-
+                ApplicationArea = All;
             }
         }
     }

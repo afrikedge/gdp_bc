@@ -37,6 +37,7 @@ page 50058 "Moneytech Billing"
             {
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
     }

@@ -8,6 +8,7 @@ pageextension 50016 pageextension70000015 extends "G/L Registers"
             {
                 Caption = 'Reverse Provisions';
                 Image = CancelAllLines;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -22,7 +23,7 @@ pageextension 50016 pageextension70000015 extends "G/L Registers"
             action(NCGoodies)
             {
                 Image = PrintForm;
-                ApplicationArea = Basic, Suite;
+                ApplicationArea = All;
                 ToolTip = 'Imprimer la Note de crédit';
                 Caption = 'Imprimer la Note de crédit';
                 Promoted = true;

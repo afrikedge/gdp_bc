@@ -6,7 +6,7 @@ pageextension 50105 "Afk Sales Invoice List" extends "Sales Invoice List"
         {
             field("User ID"; Rec."User ID")
             {
-
+                ApplicationArea = All;
             }
         }
     }

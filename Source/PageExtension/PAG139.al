@@ -7,6 +7,7 @@ pageextension 50023 pageextension70000039 extends "Posted Purch. Invoice Subform
             field("Batch Number"; Rec."Batch Number")
             {
                 Visible = false;
+                ApplicationArea = All;
             }
         }
     }

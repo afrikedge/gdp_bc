@@ -7,6 +7,7 @@ pageextension 50018 pageextension70000018 extends "G/L Budget Names"
             action(ImportBudget)
             {
                 RunObject = XMLport 50005;
+                ApplicationArea = All;
             }
         }
     }

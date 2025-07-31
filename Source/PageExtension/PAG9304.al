@@ -6,6 +6,7 @@ pageextension 50072 pageextension70000141 extends "Sales Return Order List"
         {
             field("User ID"; Rec."User ID")
             {
+                ApplicationArea = All;
             }
         }
     }

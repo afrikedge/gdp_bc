@@ -6,6 +6,7 @@ pageextension 50029 pageextension70000056 extends "Sales Journal"
         {
             field("VAT Base Amount"; Rec."VAT Base Amount")
             {
+                ApplicationArea = All;
             }
             // field("Bal. Account Name";Rec."Bal. Account Name")
             // {
@@ -27,6 +28,7 @@ pageextension 50029 pageextension70000056 extends "Sales Journal"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -47,6 +49,7 @@ pageextension 50029 pageextension70000056 extends "Sales Journal"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -67,6 +70,7 @@ pageextension 50029 pageextension70000056 extends "Sales Journal"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -87,6 +91,7 @@ pageextension 50029 pageextension70000056 extends "Sales Journal"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -108,6 +113,7 @@ pageextension 50029 pageextension70000056 extends "Sales Journal"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

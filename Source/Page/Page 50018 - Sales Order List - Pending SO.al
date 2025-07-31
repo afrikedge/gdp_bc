@@ -177,25 +177,30 @@ page 50018 "Sales Order List - Pending SO"
                 SubPageLink = "No." = FIELD("Bill-to Customer No."),
                               "Date Filter" = FIELD("Date Filter");
                 Visible = true;
+                ApplicationArea = All;
             }
             part(Control1900316107; "Customer Details FactBox")
             {
                 SubPageLink = "No." = FIELD("Bill-to Customer No."),
                               "Date Filter" = FIELD("Date Filter");
                 Visible = true;
+                ApplicationArea = All;
             }
             part(IncomingDocAttachFactBox; "Incoming Doc. Attach. FactBox")
             {
                 ShowFilter = false;
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }
@@ -214,6 +219,7 @@ page 50018 "Sales Order List - Pending SO"
                     Caption = 'Dimensions';
                     Image = Dimensions;
                     ShortCutKey = 'Shift+Ctrl+D';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -227,6 +233,7 @@ page 50018 "Sales Order List - Pending SO"
                     Promoted = true;
                     PromotedCategory = Process;
                     ShortCutKey = 'F7';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -237,6 +244,7 @@ page 50018 "Sales Order List - Pending SO"
                 {
                     Caption = 'Approvals';
                     Image = Approvals;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -254,6 +262,7 @@ page 50018 "Sales Order List - Pending SO"
                     RunPageLink = "Document Type" = FIELD("Document Type"),
                                   "No." = FIELD("No."),
                                   "Document Line No." = CONST(0);
+                    ApplicationArea = All;
                 }
             }
             group(Documents)
@@ -267,6 +276,7 @@ page 50018 "Sales Order List - Pending SO"
                     RunObject = Page "Posted Sales Shipments";
                     RunPageLink = "Order No." = FIELD("No.");
                     RunPageView = SORTING("Order No.");
+                    ApplicationArea = All;
                 }
                 action(Invoices)
                 {
@@ -275,6 +285,7 @@ page 50018 "Sales Order List - Pending SO"
                     RunObject = Page "Posted Sales Invoices";
                     RunPageLink = "Order No." = FIELD("No.");
                     RunPageView = SORTING("Order No.");
+                    ApplicationArea = All;
                 }
                 action("Prepa&yment Invoices")
                 {
@@ -283,6 +294,7 @@ page 50018 "Sales Order List - Pending SO"
                     RunObject = Page "Posted Sales Invoices";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
                     RunPageView = SORTING("Prepayment Order No.");
+                    ApplicationArea = All;
                 }
                 action("Prepayment Credi&t Memos")
                 {
@@ -291,6 +303,7 @@ page 50018 "Sales Order List - Pending SO"
                     RunObject = Page "Posted Sales Credit Memos";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
                     RunPageView = SORTING("Prepayment Order No.");
+                    ApplicationArea = All;
                 }
             }
         }
@@ -307,6 +320,7 @@ page 50018 "Sales Order List - Pending SO"
                     Promoted = true;
                     PromotedCategory = Process;
                     ShortCutKey = 'Ctrl+F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -321,6 +335,7 @@ page 50018 "Sales Order List - Pending SO"
                     Image = ReOpen;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -336,6 +351,7 @@ page 50018 "Sales Order List - Pending SO"
                     Image = "Action";
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
                     PromotedIsBig = true;
 
                     trigger OnAction()

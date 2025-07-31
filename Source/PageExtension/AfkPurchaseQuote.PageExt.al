@@ -4,9 +4,9 @@ pageextension 50102 "Afk Purchase Quote" extends "Purchase Quote"
     {
         addlast("Foreign Trade")
         {
-            field("Validity Offer"; Rec."Validity Offer") { }
-            field(DelaiDeLivraison; Rec.DelaiDeLivraison) { }
-            field("Offer Prepayment %"; Rec."Offer Prepayment %") { }
+            field("Validity Offer"; Rec."Validity Offer") { ApplicationArea = All; }
+            field(DelaiDeLivraison; Rec.DelaiDeLivraison) { ApplicationArea = All; }
+            field("Offer Prepayment %"; Rec."Offer Prepayment %") { ApplicationArea = All; }
         }
     }
 }

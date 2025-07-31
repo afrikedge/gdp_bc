@@ -69,6 +69,7 @@ page 50014 "Posted Removal Order"
             {
                 Caption = 'Lines';
                 SubPageLink = numBE = FIELD(numBE);
+                ApplicationArea = All;
             }
         }
     }
@@ -84,6 +85,7 @@ page 50014 "Posted Removal Order"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -98,6 +100,7 @@ page 50014 "Posted Removal Order"
                 Caption = 'Delivery Order List';
                 RunObject = Page "Confirmed Delivery Order List";
                 RunPageLink = numBE = FIELD(numBE);
+                ApplicationArea = All;
             }
         }
     }

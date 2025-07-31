@@ -56,16 +56,19 @@ page 50034 "Posted Touring Card"
             {
                 Caption = 'Sales Orders';
                 SubPageLink = IdTouring = FIELD(IdTouring);
+                ApplicationArea = All;
             }
             part(TruckSubform; "Touring Truck Subform")
             {
                 Caption = 'Trucks';
                 SubPageLink = IdTouring = FIELD(IdTouring);
+                ApplicationArea = All;
             }
             part("Bons List"; "Touring BE Subform")
             {
                 Caption = 'Bons List';
                 SubPageLink = idtournee = FIELD(IdTouring);
+                ApplicationArea = All;
 
             }
         }
@@ -81,7 +84,7 @@ page 50034 "Posted Touring Card"
                 Image = ItemSubstitution;
                 RunObject = Page "Bon Dispaching List";
                 RunPageLink = idtournee = FIELD(IdTouring);
-
+                ApplicationArea = All;
             }
         }
         area(Reporting)
@@ -90,7 +93,7 @@ page 50034 "Posted Touring Card"
             {
                 Caption = 'Imprimer BEs';
                 Image = "Report";
-
+                ApplicationArea = All;
                 trigger OnAction()
                 var
                     BE: record pro_enteteBE;
@@ -106,7 +109,7 @@ page 50034 "Posted Touring Card"
             {
                 Caption = 'Imprimer BLs';
                 Image = "Report";
-
+                ApplicationArea = All;
                 trigger OnAction()
                 var
                     BE: record pro_enteteBE;
@@ -122,6 +125,7 @@ page 50034 "Posted Touring Card"
             {
                 Caption = 'Imprimer le programme';
                 Image = "Report";
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -138,6 +142,7 @@ page 50034 "Posted Touring Card"
             {
                 Caption = 'Importation fichier';
                 Image = "Report";
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

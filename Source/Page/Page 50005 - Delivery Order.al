@@ -101,6 +101,7 @@ page 50005 "Delivery Order"
             {
                 Caption = 'Lines';
                 SubPageLink = numBL = FIELD(numBL);
+                ApplicationArea = All;
             }
         }
     }
@@ -118,6 +119,7 @@ page 50005 "Delivery Order"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 ShortCutKey = 'F9';
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -137,6 +139,7 @@ page 50005 "Delivery Order"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 Visible = false;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -165,6 +168,7 @@ page 50005 "Delivery Order"
                 Image = Cancel;
                 Promoted = true;
                 PromotedCategory = Category4;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin

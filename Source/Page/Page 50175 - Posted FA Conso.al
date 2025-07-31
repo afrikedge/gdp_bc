@@ -33,6 +33,7 @@ page 50175 "Posted FA Conso"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)
@@ -58,6 +59,7 @@ page 50175 "Posted FA Conso"
                 Caption = 'Dimensions';
                 Image = Dimensions;
                 ShortCutKey = 'Shift+Ctrl+D';
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -72,6 +74,7 @@ page 50175 "Posted FA Conso"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin

@@ -101,10 +101,12 @@ page 50137 "Letter of Credit"
             part(Control1000000022; "LC Steps Subform")
             {
                 SubPageLink = "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
             part(Control1000000023; "LC Currency Purchase Subform")
             {
                 SubPageLink = "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
     }
@@ -120,6 +122,7 @@ page 50137 "Letter of Credit"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -134,6 +137,7 @@ page 50137 "Letter of Credit"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -150,6 +154,7 @@ page 50137 "Letter of Credit"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
                 Visible = false;
 
                 trigger OnAction()
@@ -163,6 +168,7 @@ page 50137 "Letter of Credit"
                 Image = Journals;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
                 RunObject = Page "Cash Receipt Journal";
             }
         }
