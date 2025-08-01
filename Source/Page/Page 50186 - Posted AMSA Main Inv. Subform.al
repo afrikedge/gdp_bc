@@ -4,6 +4,7 @@ page 50186 "Posted AMSA Main Inv. Subform"
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Posted Fuel Statement";
     SourceTableView = WHERE("Document Type" = CONST(Invoice));
 

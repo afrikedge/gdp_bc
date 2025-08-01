@@ -4,6 +4,7 @@ page 50181 "AMSA Invoice Subform"
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "AMSA Invoice Line";
     SourceTableView = WHERE("Document Type" = CONST(Invoice));
 

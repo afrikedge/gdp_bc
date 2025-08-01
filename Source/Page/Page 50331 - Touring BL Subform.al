@@ -5,6 +5,7 @@ page 50331 "Touring BL Subform"
     Editable = false;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = pro_enteteBL;
 
     layout

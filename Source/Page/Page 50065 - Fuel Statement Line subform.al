@@ -6,6 +6,7 @@ page 50065 "Fuel Statement Line subform"
     InsertAllowed = false;
     ModifyAllowed = false;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Fuel Statement Line";
     SourceTableView = WHERE("Document Type" = CONST(FS));
 

@@ -4,6 +4,7 @@ page 50324 "Touring Truck Subform"
     DelayedInsert = true;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Touring Truck";
 
     layout

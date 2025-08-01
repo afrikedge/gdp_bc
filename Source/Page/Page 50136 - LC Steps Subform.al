@@ -4,6 +4,7 @@ page 50136 "LC Steps Subform"
     Caption = 'DeadLines';
     DelayedInsert = true;
     PageType = ListPart;
+    ApplicationArea = All;
     PopulateAllFields = true;
     SourceTable = "Letter of credit Expiry";
 

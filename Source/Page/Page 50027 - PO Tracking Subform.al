@@ -7,6 +7,7 @@ page 50027 "PO Tracking Subform"
     PopulateAllFields = true;
     SourceTable = "Purchase Order Tracking";
     SourceTableView = WHERE("Data Type" = CONST(Suivi));
+    ApplicationArea = All;
 
     layout
     {

@@ -5,6 +5,7 @@ page 50151 "Purch Requisition Subform"
     DelayedInsert = true;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Purchase Requisition Line";
 
     layout

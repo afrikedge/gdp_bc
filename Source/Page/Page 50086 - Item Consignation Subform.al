@@ -6,6 +6,7 @@ page 50086 "Item Consignation Subform"
     LinksAllowed = false;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Adjustment Line";
     SourceTableView = WHERE("Document Type" = CONST(Consignation));
 

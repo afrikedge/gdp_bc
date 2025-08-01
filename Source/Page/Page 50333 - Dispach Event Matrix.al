@@ -4,6 +4,7 @@ page 50333 "Dispach Event Matrix"
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = ListPart;
+    ApplicationArea = All;
     SaveValues = true;
     SourceTable = pro_moyentransport;
 

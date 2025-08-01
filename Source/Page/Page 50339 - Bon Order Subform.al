@@ -4,6 +4,7 @@ page 50339 "Bon Order Subform"
     Caption = 'Lines';
     DelayedInsert = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = pro_detailBE;
 
     layout

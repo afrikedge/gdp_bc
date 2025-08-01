@@ -6,6 +6,7 @@ page 50093 "Posted Return Loan Subform"
     LinksAllowed = false;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Item Return Line";
     SourceTableView = WHERE("Document Type" = CONST(Loan));
 

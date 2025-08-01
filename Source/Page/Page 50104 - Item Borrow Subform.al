@@ -6,6 +6,7 @@ page 50104 "Item Borrow Subform"
     LinksAllowed = false;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Adjustment Line";
     SourceTableView = WHERE("Document Type" = CONST(Borrow));
 

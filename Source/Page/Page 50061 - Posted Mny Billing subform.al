@@ -4,6 +4,7 @@ page 50061 "Posted Mny Billing subform"
     Caption = 'Lines';
     DelayedInsert = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "MoneyTech Billing Line";
 
     layout

@@ -4,6 +4,7 @@ page 50343 "Confirmed Bon Order Subform"
     Caption = 'Lines';
     DelayedInsert = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = pro_detailBE;
 
     layout

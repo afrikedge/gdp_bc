@@ -4,6 +4,7 @@ page 50179 "AMSA Main Invoice Subform"
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Fuel Statement Header";
     SourceTableView = WHERE("Document Type" = CONST(Invoice));
 

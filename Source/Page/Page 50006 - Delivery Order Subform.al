@@ -5,6 +5,7 @@ page 50006 "Delivery Order Subform"
     DelayedInsert = true;
     PageType = ListPart;
     SourceTable = pro_detailBL;
+    ApplicationArea = All;
 
     layout
     {

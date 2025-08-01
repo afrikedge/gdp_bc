@@ -4,7 +4,9 @@ page 50323 "Touring Sales Order Subform"
     DelayedInsert = true;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Touring Sales Order";
+
 
     layout
     {

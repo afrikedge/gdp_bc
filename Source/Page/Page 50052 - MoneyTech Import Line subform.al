@@ -8,6 +8,7 @@ page 50052 "MoneyTech Import Line subform"
     InsertAllowed = false;
     ModifyAllowed = false;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "MoneyTech Import Line";
 
     layout
