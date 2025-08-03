@@ -4,6 +4,7 @@ report 50044 "Check MCB"
     RDLCLayout = './Source/Report/Layout/Check MCB.rdlc';
     Caption = 'Check';
     Permissions = TableData "Bank Account" = m;
+    ApplicationArea = All;
 
     dataset
     {

@@ -4,6 +4,7 @@ report 50054 "Check BFV"
     RDLCLayout = './Source/Report/Layout/Check BFV.rdlc';
     Caption = 'Check';
     Permissions = TableData "Bank Account" = m;
+    ApplicationArea = All;
 
     dataset
     {

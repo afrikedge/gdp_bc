@@ -5,6 +5,7 @@ report 50198 "Sales Credit Memo"
     PreviewMode = PrintLayout;
     WordMergeDataItem = Header;
     RDLCLayout = './Source/Report/Layout/PostedSalesCreditMemo.rdl';
+    ApplicationArea = All;
 
     dataset
     {

@@ -3,6 +3,7 @@ report 50028 "FA - Cession sur F Compta"
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/FA - Cession sur F Compta.rdlc';
     Caption = 'Fixed Asset - Cession ON JOURNAL';
+    ApplicationArea = All;
 
     dataset
     {

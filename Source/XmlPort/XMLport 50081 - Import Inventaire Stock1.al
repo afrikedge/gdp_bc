@@ -11,24 +11,24 @@ xmlport 50081 "Import Inventaire Stock1"
     {
         textelement(Root)
         {
-            tableelement("Import Data";"Import Data")
+            tableelement("Import Data"; "Import Data")
             {
                 AutoSave = false;
                 XmlName = 'InvoiceData';
                 SourceTableView = SORTING(EntryNo) ORDER(Ascending);
-                fieldattribute(CodeMagasin;"Import Data".LocationCode)
+                fieldattribute(CodeMagasin; "Import Data".LocationCode)
                 {
                 }
-                fieldattribute(CodeArticle;"Import Data".GLAccountNo)
+                fieldattribute(CodeArticle; "Import Data".GLAccountNo)
                 {
                 }
-                fieldattribute(Volume;"Import Data".DebitAmount)
+                fieldattribute(Volume; "Import Data".DebitAmount)
                 {
                 }
-                fieldattribute(Cout;"Import Data".CreditAmount)
+                fieldattribute(Cout; "Import Data".CreditAmount)
                 {
                 }
-                fieldattribute(Cargo;"Import Data".ExternalDocNo)
+                fieldattribute(Cargo; "Import Data".ExternalDocNo)
                 {
                 }
 
@@ -46,15 +46,15 @@ xmlport 50081 "Import Inventaire Stock1"
                     ItemJournalLine."Journal Batch Name" := GenJrnBatch;
                     ItemJournalLine."Line No." := BesoinNo;
 
-                    ItemJournalLine.Validate(ItemJournalLine."Posting Date",DateCompta);
+                    ItemJournalLine.Validate(ItemJournalLine."Posting Date", DateCompta);
                     ItemJournalLine."Entry Type" := ItemJournalLine."Entry Type"::"Positive Adjmt.";
-                    ItemJournalLine.Validate(ItemJournalLine."Item No.","Import Data".GLAccountNo);
-                    ItemJournalLine.Validate(ItemJournalLine."Location Code","Import Data".LocationCode);
-                    ItemJournalLine.Validate(ItemJournalLine.Quantity,"Import Data".DebitAmount);
-                    if "Import Data".CreditAmount>0 then
-                      ItemJournalLine.Validate(ItemJournalLine."Unit Amount","Import Data".CreditAmount);
-                    ItemJournalLine.Validate(ItemJournalLine."Document No.",DocNum);
-                    ItemJournalLine.Validate(ItemJournalLine."Ref Cargo","Import Data".ExternalDocNo);
+                    ItemJournalLine.Validate(ItemJournalLine."Item No.", "Import Data".GLAccountNo);
+                    ItemJournalLine.Validate(ItemJournalLine."Location Code", "Import Data".LocationCode);
+                    ItemJournalLine.Validate(ItemJournalLine.Quantity, "Import Data".DebitAmount);
+                    if "Import Data".CreditAmount > 0 then
+                        ItemJournalLine.Validate(ItemJournalLine."Unit Amount", "Import Data".CreditAmount);
+                    ItemJournalLine.Validate(ItemJournalLine."Document No.", DocNum);
+                    ItemJournalLine.Validate(ItemJournalLine."Ref Cargo", "Import Data".ExternalDocNo);
 
                     ItemJournalLine.Insert(true);
                 end;
@@ -70,21 +70,25 @@ xmlport 50081 "Import Inventaire Stock1"
         {
             area(content)
             {
-                field(GenJrnTemplate;GenJrnTemplate)
+                field(GenJrnTemplate; GenJrnTemplate)
                 {
                     Caption = 'General journal template';
                     TableRelation = "Item Journal Template";
+                    ApplicationArea = All;
                 }
-                field(GenJrnBatch;GenJrnBatch)
+                field(GenJrnBatch; GenJrnBatch)
                 {
                     Caption = 'Posting journal Batch';
                     TableRelation = "Item Journal Batch";
+                    ApplicationArea = All;
                 }
-                field(DateCompta;DateCompta)
+                field(DateCompta; DateCompta)
                 {
+                    ApplicationArea = All;
                 }
-                field("N° Document";DocNum)
+                field("N° Document"; DocNum)
                 {
+                    ApplicationArea = All;
                 }
             }
         }
@@ -115,11 +119,11 @@ xmlport 50081 "Import Inventaire Stock1"
 
         LineNo := 0;
 
-        BesoinNo :=0;
+        BesoinNo := 0;
         Window.Open(Text008);
 
-        if GenJrnTemplate='' then Error(Text003);
-        if GenJrnBatch='' then Error(Text004);
+        if GenJrnTemplate = '' then Error(Text003);
+        if GenJrnBatch = '' then Error(Text004);
     end;
 
     var

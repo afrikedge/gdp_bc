@@ -3,6 +3,7 @@ report 50039 "Facture AMSA"
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Facture AMSA.rdlc';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

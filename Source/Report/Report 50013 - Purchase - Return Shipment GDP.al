@@ -4,6 +4,7 @@ report 50013 "Purchase - Return Shipment GDP"
     RDLCLayout = './Source/Report/Layout/Purchase - Return Shipment GDP.rdlc';
     Caption = 'Purchase - Return Shipment';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

@@ -4,6 +4,7 @@ report 50020 "ND / NC Before"
     RDLCLayout = './Source/Report/Layout/ND  NC Before.rdlc';
     Caption = 'Debit-Credit Note';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

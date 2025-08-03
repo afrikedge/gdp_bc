@@ -2,26 +2,27 @@ report 50184 "Create Provisions Passage TEST"
 {
     Caption = 'Provisions Vente';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {
-        dataitem(pro_enteteBE;pro_enteteBE)
+        dataitem(pro_enteteBE; pro_enteteBE)
         {
-            DataItemTableView = SORTING(numBE) WHERE(isconfirme=CONST(true),isAnnule=CONST(false));
-            dataitem(pro_enteteBL;pro_enteteBL)
+            DataItemTableView = SORTING(numBE) WHERE(isconfirme = CONST(true), isAnnule = CONST(false));
+            dataitem(pro_enteteBL; pro_enteteBL)
             {
-                DataItemLink = numBE=FIELD(numBE);
-                DataItemTableView = SORTING(numBL) WHERE(isconfirme=CONST(true),isAnnule=CONST(false));
-                dataitem(pro_detailBL;pro_detailBL)
+                DataItemLink = numBE = FIELD(numBE);
+                DataItemTableView = SORTING(numBL) WHERE(isconfirme = CONST(true), isAnnule = CONST(false));
+                dataitem(pro_detailBL; pro_detailBL)
                 {
-                    DataItemLink = numBL=FIELD(numBL);
-                    DataItemTableView = SORTING(numBL,"Line No.");
+                    DataItemLink = numBL = FIELD(numBL);
+                    DataItemTableView = SORTING(numBL, "Line No.");
 
                     trigger OnAfterGetRecord()
                     begin
 
-                        ProvisionsItemMgt.TraiterProvisionFraisPassage_TEST(pro_enteteBE,ModeleFeuille,NomFeuille,PostingDate,
-                            LastDocNo,DateDeb,DateFin,LineNum,pro_detailBL,pro_enteteBL);
+                        ProvisionsItemMgt.TraiterProvisionFraisPassage_TEST(pro_enteteBE, ModeleFeuille, NomFeuille, PostingDate,
+                            LastDocNo, DateDeb, DateFin, LineNum, pro_detailBL, pro_enteteBL);
                     end;
 
                     trigger OnPostDataItem()
@@ -37,25 +38,25 @@ report 50184 "Create Provisions Passage TEST"
                 CreateEntry: Boolean;
             begin
 
-                    BesoinNo := BesoinNo + 1;
-                    Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
+                BesoinNo := BesoinNo + 1;
+                Window.Update(1,
+                Round(BesoinNo / NbreTotalLignes * 10000, 1));
 
 
 
 
-                    Clear(NoSeriesMgt);
+                Clear(NoSeriesMgt);
 
-                    if LastDocNo='' then
-                        LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",false);
-                    //END ELSE BEGIN
-                    //    LastDocNo := INCSTR(LastDocNo);
-                    //END;
+                if LastDocNo = '' then
+                    LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series", GenJrnLine."Posting Date", false);
+                //END ELSE BEGIN
+                //    LastDocNo := INCSTR(LastDocNo);
+                //END;
 
 
-                   //CreateEntry := GLMgt.TraiterProvisionCdeAchat("Purchase Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+                //CreateEntry := GLMgt.TraiterProvisionCdeAchat("Purchase Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
 
-                   //IF CreateEntry THEN
+                //IF CreateEntry THEN
             end;
 
             trigger OnPostDataItem()
@@ -74,24 +75,24 @@ report 50184 "Create Provisions Passage TEST"
                 AddOnSetup.Get;
                 //AddOnSetup.TESTFIELD(AddOnSetup."Invoice To Receive Account");
 
-                GenJrnTableND.Get(ModeleFeuille,NomFeuille);
+                GenJrnTableND.Get(ModeleFeuille, NomFeuille);
 
-                if DateDeb=0D then Error(Text008);
-                if DateFin=0D then Error(Text008);
-                pro_enteteBE.SetRange(pro_enteteBE.dateBE,DateDeb,DateFin);
+                if DateDeb = 0D then Error(Text008);
+                if DateFin = 0D then Error(Text008);
+                pro_enteteBE.SetRange(pro_enteteBE.dateBE, DateDeb, DateFin);
 
 
                 GenJrnLine.Reset;
-                GenJrnLine.SetRange("Journal Template Name",ModeleFeuille);
-                GenJrnLine.SetRange("Journal Batch Name",NomFeuille);
-                if GenJrnLine.FindFirst then Error(Text001,NomFeuille);
+                GenJrnLine.SetRange("Journal Template Name", ModeleFeuille);
+                GenJrnLine.SetRange("Journal Batch Name", NomFeuille);
+                if GenJrnLine.FindFirst then Error(Text001, NomFeuille);
 
-                BesoinNo :=0;
+                BesoinNo := 0;
 
                 Window.Open(Text008);
 
-                LineNum:=0;
-                 NbreTotalLignes := pro_enteteBE.Count;
+                LineNum := 0;
+                NbreTotalLignes := pro_enteteBE.Count;
 
                 GenJrnTableND.TestField("No. Series");
             end;
@@ -105,11 +106,11 @@ report 50184 "Create Provisions Passage TEST"
         {
             area(content)
             {
-                field(DateDeb;DateDeb)
+                field(DateDeb; DateDeb)
                 {
                     Caption = 'Starting Date';
                 }
-                field(DateFin;DateFin)
+                field(DateFin; DateFin)
                 {
                     Caption = 'Ending Date';
 
@@ -118,16 +119,16 @@ report 50184 "Create Provisions Passage TEST"
                         PostingDate := DateFin;
                     end;
                 }
-                field(PostingDate;PostingDate)
+                field(PostingDate; PostingDate)
                 {
                     Caption = 'Posting Date';
                 }
-                field(ModeleFeuille;ModeleFeuille)
+                field(ModeleFeuille; ModeleFeuille)
                 {
                     Caption = 'Journal Template';
                     Visible = true;
                 }
-                field(NomFeuille;NomFeuille)
+                field(NomFeuille; NomFeuille)
                 {
                     Caption = 'Gen. Journal';
                     Visible = true;
@@ -138,11 +139,10 @@ report 50184 "Create Provisions Passage TEST"
                         GenJournalBatchPage: Page "General Journal Batches";
                     begin
                         GenJournalBatch.Reset;
-                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name",ModeleFeuille);
-                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then
-                        begin
-                          NomFeuille := GenJournalBatch.Name;
-                          //NewFASubLocationName := FASubLoc.Name;
+                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name", ModeleFeuille);
+                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then begin
+                            NomFeuille := GenJournalBatch.Name;
+                            //NewFASubLocationName := FASubLoc.Name;
                         end;
                     end;
                 }
@@ -163,7 +163,7 @@ report 50184 "Create Provisions Passage TEST"
         AddOnSetup.Get;
         AddOnSetup.TestField("Provision Tmpl Journal");
         ModeleFeuille := AddOnSetup."Provision Tmpl Journal";
-        PostingDate:=WorkDate;
+        PostingDate := WorkDate;
     end;
 
     var
@@ -190,10 +190,10 @@ report 50184 "Create Provisions Passage TEST"
         Text010: Label 'Veuillez entrer la date fin';
         ProvisionsItemMgt: Codeunit "Provisions Item Mgt";
 
-    procedure SetFeuille(CodeModele1: Code[10];CodeFeuille1: Code[10])
+    procedure SetFeuille(CodeModele1: Code[10]; CodeFeuille1: Code[10])
     begin
-        ModeleFeuille:=CodeModele1;
-        NomFeuille:=CodeFeuille1;
+        ModeleFeuille := CodeModele1;
+        NomFeuille := CodeFeuille1;
     end;
 }
 

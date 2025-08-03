@@ -3,6 +3,7 @@ report 50027 "Fixed Asset - Cession"
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Fixed Asset - Cession.rdlc';
     Caption = 'Fixed Asset - Cession';
+    ApplicationArea = All;
 
     dataset
     {

@@ -3,6 +3,7 @@ report 50022 "Fixed Asset - Rebut"
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Fixed Asset - Rebut.rdlc';
     Caption = 'Fixed Asset - Rebut';
+    ApplicationArea = All;
 
     dataset
     {

@@ -2,21 +2,22 @@ report 50159 "Create Provisions Transfert"
 {
     Caption = 'Provisions Vente';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {
-        dataitem("Posted Adjustment Header";"Posted Adjustment Header")
+        dataitem("Posted Adjustment Header"; "Posted Adjustment Header")
         {
-            DataItemTableView = SORTING("Document Type","No.") WHERE("Document Type"=CONST(Transfer),"Item Category Code"=CONST('PBL'));
-            dataitem("Posted Adjustment Line";"Posted Adjustment Line")
+            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Transfer), "Item Category Code" = CONST('PBL'));
+            dataitem("Posted Adjustment Line"; "Posted Adjustment Line")
             {
-                DataItemLink = "Document Type"=FIELD("Document Type"),"Document No."=FIELD("No.");
-                DataItemTableView = SORTING("Document Type","Document No.","Line No.");
+                DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
+                DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
 
                 trigger OnAfterGetRecord()
                 begin
                     ProvisionsItemMgt.TraiterProvisionFraisTransfert("Posted Adjustment Header",
-                      ModeleFeuille,NomFeuille,PostingDate,LastDocNo,DateDeb,DateFin,LineNum,"Posted Adjustment Line");
+                      ModeleFeuille, NomFeuille, PostingDate, LastDocNo, DateDeb, DateFin, LineNum, "Posted Adjustment Line");
                 end;
 
                 trigger OnPostDataItem()
@@ -32,40 +33,40 @@ report 50159 "Create Provisions Transfert"
                 Loc: Record Location;
             begin
 
-                    BesoinNo := BesoinNo + 1;
-                    Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
+                BesoinNo := BesoinNo + 1;
+                Window.Update(1,
+                Round(BesoinNo / NbreTotalLignes * 10000, 1));
 
-                    if "Posted Adjustment Header".Status="Posted Adjustment Header".Status::Cancelled then
-                      CurrReport.Skip;
+                if "Posted Adjustment Header".Status = "Posted Adjustment Header".Status::Cancelled then
+                    CurrReport.Skip;
 
-                    if Loc.Get("Posted Adjustment Header"."Location Code") then
-                      if Loc."GDP Location" then CurrReport.Skip;
+                if Loc.Get("Posted Adjustment Header"."Location Code") then
+                    if Loc."GDP Location" then CurrReport.Skip;
 
-                    if Loc.Get("Posted Adjustment Header"."Transfer-to Code") then
-                      if Loc."GDP Location" then CurrReport.Skip;
+                if Loc.Get("Posted Adjustment Header"."Transfer-to Code") then
+                    if Loc."GDP Location" then CurrReport.Skip;
 
-                    if IsTransfertMassif then
-                      if "Posted Adjustment Header"."Location Code"<>AddOnSetup."GRT Location Code" then
+                if IsTransfertMassif then
+                    if "Posted Adjustment Header"."Location Code" <> AddOnSetup."GRT Location Code" then
                         CurrReport.Skip;
 
-                    if not IsTransfertMassif then
-                      if "Posted Adjustment Header"."Location Code"=AddOnSetup."GRT Location Code" then
+                if not IsTransfertMassif then
+                    if "Posted Adjustment Header"."Location Code" = AddOnSetup."GRT Location Code" then
                         CurrReport.Skip;
 
-                    Clear(NoSeriesMgt);
+                Clear(NoSeriesMgt);
 
-                    if LastDocNo='' then
-                        LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",false);
-                    //END ELSE BEGIN
-                    //    LastDocNo := INCSTR(LastDocNo);
-                    //END;
+                if LastDocNo = '' then
+                    LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series", GenJrnLine."Posting Date", false);
+                //END ELSE BEGIN
+                //    LastDocNo := INCSTR(LastDocNo);
+                //END;
 
 
 
-                   //CreateEntry := GLMgt.TraiterProvisionCdeAchat("Purchase Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+                //CreateEntry := GLMgt.TraiterProvisionCdeAchat("Purchase Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
 
-                   //IF CreateEntry THEN
+                //IF CreateEntry THEN
             end;
 
             trigger OnPostDataItem()
@@ -84,27 +85,27 @@ report 50159 "Create Provisions Transfert"
                 AddOnSetup.Get;
                 //AddOnSetup.TESTFIELD(AddOnSetup."Invoice To Receive Account");
 
-                GenJrnTableND.Get(ModeleFeuille,NomFeuille);
+                GenJrnTableND.Get(ModeleFeuille, NomFeuille);
 
-                if DateDeb=0D then Error(Text008);
-                if DateFin=0D then Error(Text008);
-                "Posted Adjustment Header".SetRange("Receipt Date",DateDeb,DateFin);
+                if DateDeb = 0D then Error(Text008);
+                if DateFin = 0D then Error(Text008);
+                "Posted Adjustment Header".SetRange("Receipt Date", DateDeb, DateFin);
 
 
                 GenJrnLine.Reset;
-                GenJrnLine.SetRange("Journal Template Name",ModeleFeuille);
-                GenJrnLine.SetRange("Journal Batch Name",NomFeuille);
-                if GenJrnLine.FindFirst then Error(Text001,NomFeuille);
+                GenJrnLine.SetRange("Journal Template Name", ModeleFeuille);
+                GenJrnLine.SetRange("Journal Batch Name", NomFeuille);
+                if GenJrnLine.FindFirst then Error(Text001, NomFeuille);
 
-                BesoinNo :=0;
+                BesoinNo := 0;
 
                 Window.Open(Text008);
 
 
                 GenJrnTableND.TestField("No. Series");
 
-                LineNum:=0;
-                 NbreTotalLignes := "Posted Adjustment Header".Count;
+                LineNum := 0;
+                NbreTotalLignes := "Posted Adjustment Header".Count;
             end;
         }
     }
@@ -116,11 +117,11 @@ report 50159 "Create Provisions Transfert"
         {
             area(content)
             {
-                field(DateDeb;DateDeb)
+                field(DateDeb; DateDeb)
                 {
                     Caption = 'Starting Date';
                 }
-                field(DateFin;DateFin)
+                field(DateFin; DateFin)
                 {
                     Caption = 'Ending Date';
 
@@ -129,16 +130,16 @@ report 50159 "Create Provisions Transfert"
                         PostingDate := DateFin;
                     end;
                 }
-                field(PostingDate;PostingDate)
+                field(PostingDate; PostingDate)
                 {
                     Caption = 'Posting Date';
                 }
-                field(ModeleFeuille;ModeleFeuille)
+                field(ModeleFeuille; ModeleFeuille)
                 {
                     Caption = 'Journal Template';
                     Visible = false;
                 }
-                field(NomFeuille;NomFeuille)
+                field(NomFeuille; NomFeuille)
                 {
                     Caption = 'Gen. Journal';
                     Visible = false;
@@ -149,11 +150,10 @@ report 50159 "Create Provisions Transfert"
                         GenJournalBatchPage: Page "General Journal Batches";
                     begin
                         GenJournalBatch.Reset;
-                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name",ModeleFeuille);
-                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then
-                        begin
-                          NomFeuille := GenJournalBatch.Name;
-                          //NewFASubLocationName := FASubLoc.Name;
+                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name", ModeleFeuille);
+                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then begin
+                            NomFeuille := GenJournalBatch.Name;
+                            //NewFASubLocationName := FASubLoc.Name;
                         end;
                     end;
                 }
@@ -174,7 +174,7 @@ report 50159 "Create Provisions Transfert"
         AddOnSetup.Get;
         AddOnSetup.TestField("Provision Tmpl Journal");
         ModeleFeuille := AddOnSetup."Provision Tmpl Journal";
-        PostingDate:=WorkDate;
+        PostingDate := WorkDate;
     end;
 
     var
@@ -202,15 +202,15 @@ report 50159 "Create Provisions Transfert"
         ProvisionsItemMgt: Codeunit "Provisions Item Mgt";
         IsTransfertMassif: Boolean;
 
-    procedure SetFeuille(CodeModele1: Code[10];CodeFeuille1: Code[10])
+    procedure SetFeuille(CodeModele1: Code[10]; CodeFeuille1: Code[10])
     begin
-        ModeleFeuille:=CodeModele1;
-        NomFeuille:=CodeFeuille1;
+        ModeleFeuille := CodeModele1;
+        NomFeuille := CodeFeuille1;
     end;
 
     procedure SetTransfertMassif(isMassif: Boolean)
     begin
-        IsTransfertMassif:=isMassif;
+        IsTransfertMassif := isMassif;
     end;
 }
 

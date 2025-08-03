@@ -4,6 +4,7 @@ report 50040 "Note de Debit Fournisseur"
     RDLCLayout = './Source/Report/Layout/Note de Debit Fournisseur.rdlc';
     Caption = 'Vendor Debit Note';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

@@ -2,46 +2,47 @@ report 50177 "Process Migration Cargo"
 {
     Caption = 'Migration Cargo';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {
-        dataitem("Integer";"Integer")
+        dataitem("Integer"; "Integer")
         {
-            DataItemTableView = SORTING(Number) ORDER(Ascending) WHERE(Number=CONST(1));
+            DataItemTableView = SORTING(Number) ORDER(Ascending) WHERE(Number = CONST(1));
 
             trigger OnAfterGetRecord()
             var
                 CreateEntry: Boolean;
             begin
-                
+
                 /*IF (("G/L Entry"."Entry Type"<>"G/L Entry"."Entry Type"::) AND
                     ("G/L Entry"."Entry Type"<>"G/L Entry"."Entry Type"::VAT)) THEN
                     ERROR(ErrTypeEcr);*/
-                
-                
+
+
                 /*
                     BesoinNo := BesoinNo + 1;
                     Window.UPDATE(1,
                     ROUND(BesoinNo / NbreTotalLignes * 10000,1));*/
-                
-                    /*GenJrnTableND.TESTFIELD("No. Series");
-                    CLEAR(NoSeriesMgt);
-                
-                    IF LastDocNo='' THEN
-                        LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",FALSE);
-                    //END ELSE BEGIN
-                    //    LastDocNo := INCSTR(LastDocNo);
-                    //END;
-                
-                   CreateEntry := GLMgt.TraiterProvisionCdeVente("Sales Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
-                
-                   IF CreateEntry THEN LastDocNo := INCSTR(LastDocNo);*/
-                
+
+                /*GenJrnTableND.TESTFIELD("No. Series");
+                CLEAR(NoSeriesMgt);
+
+                IF LastDocNo='' THEN
+                    LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",FALSE);
+                //END ELSE BEGIN
+                //    LastDocNo := INCSTR(LastDocNo);
+                //END;
+
+               CreateEntry := GLMgt.TraiterProvisionCdeVente("Sales Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+
+               IF CreateEntry THEN LastDocNo := INCSTR(LastDocNo);*/
+
                 //IF "Reversal Entry"."Entry Type"="Reversal Entry"."Entry Type"::"G/L Account" THEN
                 //AddLigneEcr("G/L Entry");
-                
-                
-                CargoMgt.ProcessMigration(DateDeb,DateFin);
+
+
+                CargoMgt.ProcessMigration(DateDeb, DateFin);
 
             end;
 
@@ -60,23 +61,23 @@ report 50177 "Process Migration Cargo"
             begin
                 //AddOnSetup.GET;
                 //AddOnSetup.TESTFIELD(AddOnSetup."Unbilled Revenues Account");
-                
+
                 //GenJrnTableND.GET(ModeleFeuille,NomFeuille);
-                
-                if DateDeb=0D then Error(ErrDateCompta);
-                if DateFin=0D then Error(ErrDateCompta);
+
+                if DateDeb = 0D then Error(ErrDateCompta);
+                if DateFin = 0D then Error(ErrDateCompta);
                 /*
                 GenJrnLine.RESET;
                 GenJrnLine.SETRANGE("Journal Template Name",ModeleFeuille);
                 GenJrnLine.SETRANGE("Journal Batch Name",NomFeuille);
                 IF GenJrnLine.FINDFIRST THEN ERROR(Text001,NomFeuille);*/
-                
-                BesoinNo :=0;
-                
+
+                BesoinNo := 0;
+
                 //Window.OPEN(Text008);
-                
-                
-                LineNum:=0;
+
+
+                LineNum := 0;
                 //NbreTotalLignes := "G/L Entry".COUNT;
 
             end;
@@ -91,20 +92,20 @@ report 50177 "Process Migration Cargo"
         {
             area(content)
             {
-                field(PostingDate1;DateDeb)
+                field(PostingDate1; DateDeb)
                 {
                     Caption = 'Starting Posting Date';
                 }
-                field(PostingDate2;DateFin)
+                field(PostingDate2; DateFin)
                 {
                     Caption = 'Ending Posting Date';
                 }
-                field(ModeleFeuille;ModeleFeuille)
+                field(ModeleFeuille; ModeleFeuille)
                 {
                     Caption = 'Journal Template';
                     Visible = false;
                 }
-                field(NomFeuille;NomFeuille)
+                field(NomFeuille; NomFeuille)
                 {
                     Caption = 'Gen. Journal';
                     Visible = false;
@@ -115,11 +116,10 @@ report 50177 "Process Migration Cargo"
                         GenJournalBatchPage: Page "General Journal Batches";
                     begin
                         GenJournalBatch.Reset;
-                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name",ModeleFeuille);
-                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then
-                        begin
-                          NomFeuille := GenJournalBatch.Name;
-                          //NewFASubLocationName := FASubLoc.Name;
+                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name", ModeleFeuille);
+                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then begin
+                            NomFeuille := GenJournalBatch.Name;
+                            //NewFASubLocationName := FASubLoc.Name;
                         end;
                     end;
                 }
@@ -172,10 +172,10 @@ report 50177 "Process Migration Cargo"
         DateDeb: Date;
         DateFin: Date;
 
-    procedure SetFeuille(CodeModele1: Code[10];CodeFeuille1: Code[10])
+    procedure SetFeuille(CodeModele1: Code[10]; CodeFeuille1: Code[10])
     begin
-        ModeleFeuille:=CodeModele1;
-        NomFeuille:=CodeFeuille1;
+        ModeleFeuille := CodeModele1;
+        NomFeuille := CodeFeuille1;
     end;
 
     local procedure AddLigneEcr(GLEntry: Record "G/L Entry")
@@ -186,7 +186,7 @@ report 50177 "Process Migration Cargo"
         LineAmount: Decimal;
     begin
         Clear(GenJrnLine);
-        GenJrnLine."Journal Template Name":= ModeleFeuille;
+        GenJrnLine."Journal Template Name" := ModeleFeuille;
         GenJrnLine."Journal Batch Name" := NomFeuille;
 
         LineNum := LineNum + 10;
@@ -194,8 +194,8 @@ report 50177 "Process Migration Cargo"
         JrnTmplName.Get(GenJrnLine."Journal Template Name");
         JrnTmplName.TestField("Source Code");
         GenJrnLine."Source Code" := JrnTmplName."Source Code";
-        GenJrnLine.Validate("Posting Date",PostingDate);
-        GenJrnLine.Correction:=true;
+        GenJrnLine.Validate("Posting Date", PostingDate);
+        GenJrnLine.Correction := true;
 
         GenJrnLine."Document No." := GLEntry."Document No.";
         GenJrnLine."External Document No." := GLEntry."External Document No.";
@@ -204,25 +204,25 @@ report 50177 "Process Migration Cargo"
         GLAccNo := GLEntry."G/L Account No.";
 
         GLMgt.CheckParamsGLAcc(GLAccNo);
-        GenJrnLine.Validate("Account No.",GLAccNo);
-        GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
+        GenJrnLine.Validate("Account No.", GLAccNo);
+        GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
 
         //GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text005,SalesH."No."),1,49);
-        GenJrnLine.Description := CopyStr(StrSubstNo(Text002,GLEntry.Description),1,49);
+        GenJrnLine.Description := CopyStr(StrSubstNo(Text002, GLEntry.Description), 1, 49);
 
 
         GenJrnLine.Validate(GenJrnLine.Amount, -GLEntry.Amount);
 
-        GenJrnLine.Validate("Currency Code",'');
-        if GenJrnLine.Amount<>0 then
-          GenJrnLine.Insert(true);
+        GenJrnLine.Validate("Currency Code", '');
+        if GenJrnLine.Amount <> 0 then
+            GenJrnLine.Insert(true);
     end;
 
-    procedure SetTransactionNo(Deb: Integer;Fin: Integer)
+    procedure SetTransactionNo(Deb: Integer; Fin: Integer)
     begin
         //TransactionNo := TransNo;
-        StartingEntryNo:=Deb;
-        EndingEntryNo:=Fin;
+        StartingEntryNo := Deb;
+        EndingEntryNo := Fin;
     end;
 
     procedure SetTransactionNo2(TransNo: Integer)

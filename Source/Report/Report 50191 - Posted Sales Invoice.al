@@ -9,6 +9,7 @@ report 50191 "Posted Sales Invoice"
     PreviewMode = PrintLayout;
     WordMergeDataItem = Header;
     RDLCLayout = './Source/Report/Layout/Posted Sales Invoice.rdl';
+    ApplicationArea = All;
 
     dataset
     {

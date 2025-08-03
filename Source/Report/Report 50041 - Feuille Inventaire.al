@@ -3,6 +3,7 @@ report 50041 "Feuille Inventaire"
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Feuille Inventaire.rdlc';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

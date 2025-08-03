@@ -4,6 +4,7 @@ report 50038 "Transfer Order Product"
     RDLCLayout = './Source/Report/Layout/Transfer Order Product.rdl';
     Caption = 'Transfer Order';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

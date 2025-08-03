@@ -8,7 +8,7 @@ report 50197 "PreparationOrder Lub"
     PreviewMode = PrintLayout;
     WordMergeDataItem = Header;
     UsageCategory = Documents;
-    ApplicationArea = Warehouse;
+    ApplicationArea = All;
     RDLCLayout = './Source/Report/Layout/PreparationOrderLub.rdl';
     dataset
     {

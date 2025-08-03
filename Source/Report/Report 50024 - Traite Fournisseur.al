@@ -4,6 +4,7 @@ report 50024 "Traite Fournisseur"
     RDLCLayout = './Source/Report/Layout/Traite Fournisseur.rdlc';
     EnableExternalImages = true;
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

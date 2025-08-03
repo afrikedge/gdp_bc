@@ -5,6 +5,7 @@ report 50080 "Afk Reminder Letter"
     DefaultLayout = Word;
     WordMergeDataItem = "Issued Reminder Header";
     WordLayout = './Source/Report/Layout/AfkReminderLetter.docx';
+    ApplicationArea = All;
     // RDLCLayout = './Source/Report/Layout/AfkReminderLetter.rdl';
 
     dataset

@@ -2,10 +2,11 @@ report 50173 "Create Entries Cargo Item"
 {
     Caption = 'Compta. écarts Cargo';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {
-        dataitem("Item Cargo Entry";"Item Cargo Entry")
+        dataitem("Item Cargo Entry"; "Item Cargo Entry")
         {
             DataItemTableView = SORTING("Posting Date") ORDER(Ascending);
 
@@ -13,34 +14,34 @@ report 50173 "Create Entries Cargo Item"
             var
                 CreateEntry: Boolean;
             begin
-                
-                    BesoinNo := BesoinNo + 1;
-                    Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
-                
-                
-                
-                
-                
-                    Clear(NoSeriesMgt);
-                
-                    if LastDocNo='' then
-                        LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",false);
-                    //END ELSE BEGIN
-                    //    LastDocNo := INCSTR(LastDocNo);
-                    //END;
-                
-                
-                   //CreateEntry := GLMgt.TraiterProvisionCdeAchat("Purchase Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
-                   CreateEntry:=CargoMgt.TraiterComptaStockCargo("Item Cargo Entry",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,DateDeb,DateFin,LineNum);
-                
-                   //IF CreateEntry THEN
-                   /*
-                   IF ("Sales Invoice Line"."Item Category Code"=AddOnSetup."Transport Item Category") THEN
-                  ProvisionsItemMgt.TraiterProvisionTransportVente("Sales Invoice Header",ModeleFeuille,NomFeuille,PostingDate,
-                    LastDocNo,DateDeb,DateFin,LineNum,"Sales Invoice Line");
-                    */
-                  if CreateEntry then
+
+                BesoinNo := BesoinNo + 1;
+                Window.Update(1,
+                Round(BesoinNo / NbreTotalLignes * 10000, 1));
+
+
+
+
+
+                Clear(NoSeriesMgt);
+
+                if LastDocNo = '' then
+                    LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series", GenJrnLine."Posting Date", false);
+                //END ELSE BEGIN
+                //    LastDocNo := INCSTR(LastDocNo);
+                //END;
+
+
+                //CreateEntry := GLMgt.TraiterProvisionCdeAchat("Purchase Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+                CreateEntry := CargoMgt.TraiterComptaStockCargo("Item Cargo Entry", ModeleFeuille, NomFeuille, PostingDate, LastDocNo, DateDeb, DateFin, LineNum);
+
+                //IF CreateEntry THEN
+                /*
+                IF ("Sales Invoice Line"."Item Category Code"=AddOnSetup."Transport Item Category") THEN
+               ProvisionsItemMgt.TraiterProvisionTransportVente("Sales Invoice Header",ModeleFeuille,NomFeuille,PostingDate,
+                 LastDocNo,DateDeb,DateFin,LineNum,"Sales Invoice Line");
+                 */
+                if CreateEntry then
                     LastDocNo := IncStr(LastDocNo);
 
             end;
@@ -61,26 +62,26 @@ report 50173 "Create Entries Cargo Item"
                 AddOnSetup.Get;
                 //AddOnSetup.TESTFIELD(AddOnSetup."Invoice To Receive Account");
 
-                GenJrnTableND.Get(ModeleFeuille,NomFeuille);
+                GenJrnTableND.Get(ModeleFeuille, NomFeuille);
 
-                if DateDeb=0D then Error(Text008);
-                if DateFin=0D then Error(Text008);
+                if DateDeb = 0D then Error(Text008);
+                if DateFin = 0D then Error(Text008);
 
                 //"Item Cargo Entry".SETCURRENTKEY("Sales Invoice Header"."Posting Date");
-                "Item Cargo Entry".SetRange("Posting Date",DateDeb,DateFin);
+                "Item Cargo Entry".SetRange("Posting Date", DateDeb, DateFin);
 
 
                 GenJrnLine.Reset;
-                GenJrnLine.SetRange("Journal Template Name",ModeleFeuille);
-                GenJrnLine.SetRange("Journal Batch Name",NomFeuille);
-                if GenJrnLine.FindFirst then Error(Text001,NomFeuille);
+                GenJrnLine.SetRange("Journal Template Name", ModeleFeuille);
+                GenJrnLine.SetRange("Journal Batch Name", NomFeuille);
+                if GenJrnLine.FindFirst then Error(Text001, NomFeuille);
 
-                BesoinNo :=0;
+                BesoinNo := 0;
 
                 Window.Open(Text008);
 
-                LineNum:=0;
-                 NbreTotalLignes := "Item Cargo Entry".Count;
+                LineNum := 0;
+                NbreTotalLignes := "Item Cargo Entry".Count;
 
                 GenJrnTableND.TestField("No. Series");
             end;
@@ -94,11 +95,11 @@ report 50173 "Create Entries Cargo Item"
         {
             area(content)
             {
-                field(DateDeb;DateDeb)
+                field(DateDeb; DateDeb)
                 {
                     Caption = 'Starting Date';
                 }
-                field(DateFin;DateFin)
+                field(DateFin; DateFin)
                 {
                     Caption = 'Ending Date';
 
@@ -107,16 +108,16 @@ report 50173 "Create Entries Cargo Item"
                         PostingDate := DateFin;
                     end;
                 }
-                field(PostingDate;PostingDate)
+                field(PostingDate; PostingDate)
                 {
                     Caption = 'Posting Date';
                 }
-                field(ModeleFeuille;ModeleFeuille)
+                field(ModeleFeuille; ModeleFeuille)
                 {
                     Caption = 'Journal Template';
                     Visible = false;
                 }
-                field(NomFeuille;NomFeuille)
+                field(NomFeuille; NomFeuille)
                 {
                     Caption = 'Gen. Journal';
                     Visible = false;
@@ -127,11 +128,10 @@ report 50173 "Create Entries Cargo Item"
                         GenJournalBatchPage: Page "General Journal Batches";
                     begin
                         GenJournalBatch.Reset;
-                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name",ModeleFeuille);
-                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then
-                        begin
-                          NomFeuille := GenJournalBatch.Name;
-                          //NewFASubLocationName := FASubLoc.Name;
+                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name", ModeleFeuille);
+                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then begin
+                            NomFeuille := GenJournalBatch.Name;
+                            //NewFASubLocationName := FASubLoc.Name;
                         end;
                     end;
                 }
@@ -154,7 +154,7 @@ report 50173 "Create Entries Cargo Item"
         //AddOnSetup.TESTFIELD(AddOnSetup."Prov Transport Vente");
         AddOnSetup.TestField(AddOnSetup."Transport Item Category");
         ModeleFeuille := AddOnSetup."Provision Tmpl Journal";
-        PostingDate:=WorkDate;
+        PostingDate := WorkDate;
     end;
 
     var
@@ -182,10 +182,10 @@ report 50173 "Create Entries Cargo Item"
         ProvisionsItemMgt: Codeunit "Provisions Item Mgt";
         CargoMgt: Codeunit "Item Value Cargo Mgt";
 
-    procedure SetFeuille(CodeModele1: Code[10];CodeFeuille1: Code[10])
+    procedure SetFeuille(CodeModele1: Code[10]; CodeFeuille1: Code[10])
     begin
-        ModeleFeuille:=CodeModele1;
-        NomFeuille:=CodeFeuille1;
+        ModeleFeuille := CodeModele1;
+        NomFeuille := CodeFeuille1;
     end;
 }
 

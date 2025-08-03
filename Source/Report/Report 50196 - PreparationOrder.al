@@ -8,7 +8,7 @@ report 50196 "Preparation Order"
     PreviewMode = PrintLayout;
     WordMergeDataItem = Header;
     UsageCategory = Documents;
-    ApplicationArea = Warehouse;
+    ApplicationArea = All;
     RDLCLayout = './Source/Report/Layout/PreparationOrder.rdl';
     dataset
     {

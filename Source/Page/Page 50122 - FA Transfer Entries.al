@@ -4,6 +4,7 @@ page 50122 "FA Transfer Entries"
     Editable = false;
     PageType = List;
     SourceTable = "FA Transfer";
+    ApplicationArea = All;
 
     layout
     {

@@ -2,6 +2,7 @@ report 50036 "Registre Immobilisation"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Registre Immobilisation.rdlc';
+    ApplicationArea = All;
 
     dataset
     {

@@ -4,6 +4,7 @@ report 50019 "Check GDP"
     RDLCLayout = './Source/Report/Layout/Check GDP.rdlc';
     Caption = 'Check';
     Permissions = TableData "Bank Account" = m;
+    ApplicationArea = All;
 
     dataset
     {

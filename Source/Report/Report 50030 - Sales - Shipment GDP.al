@@ -4,6 +4,7 @@ report 50030 "Sales - Shipment GDP"
     RDLCLayout = './Source/Report/Layout/Sales - Shipment GDP.rdlc';
     Caption = 'Sales - Shipment';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

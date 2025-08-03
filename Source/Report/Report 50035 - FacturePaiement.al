@@ -3,6 +3,7 @@ report 50035 FacturePaiement
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/FacturePaiement.rdlc';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

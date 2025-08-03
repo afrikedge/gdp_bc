@@ -4,6 +4,7 @@ report 50012 "Purchase - Receipt GDP"
     RDLCLayout = './Source/Report/Layout/Purchase - Receipt GDP.rdlc';
     Caption = 'Purchase - Receipt';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

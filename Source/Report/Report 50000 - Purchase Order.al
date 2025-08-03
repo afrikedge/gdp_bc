@@ -4,6 +4,7 @@ report 50000 "Purchase Order"
     RDLCLayout = './Source/Report/Layout/Purchase Order.rdl';
     Caption = 'Order';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

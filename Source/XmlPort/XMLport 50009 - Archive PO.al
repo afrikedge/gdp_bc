@@ -11,12 +11,12 @@ xmlport 50009 "Archive PO"
     {
         textelement(Root)
         {
-            tableelement("Import Data";"Import Data")
+            tableelement("Import Data"; "Import Data")
             {
                 AutoSave = false;
                 XmlName = 'InvoiceData';
                 SourceTableView = SORTING(EntryNo) ORDER(Ascending);
-                fieldattribute(PONumber;"Import Data".DocumentNo)
+                fieldattribute(PONumber; "Import Data".DocumentNo)
                 {
                 }
 
@@ -26,11 +26,11 @@ xmlport 50009 "Archive PO"
                     PHeader: Record "Purchase Header";
                     PurchLine: Record "Purchase Line";
                 begin
-                    
+
                     BesoinNo := BesoinNo + 1;
                     Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
-                    
+                    Round(BesoinNo / NbreTotalLignes * 10000, 1));
+
                     /*
                     IF PHeader.GET(PHeader."Document Type"::Order, "Import Data".DocumentNo) THEN BEGIN
                       PHeader."GDP Deletion" := TRUE;
@@ -52,11 +52,11 @@ xmlport 50009 "Archive PO"
                     END;
                     */
                     if PHeader.Get(PHeader."Document Type"::Order, "Import Data".DocumentNo) then begin
-                    
-                      if(CanArchivePO(PHeader)) then
-                        if ArchivePO(PHeader) then
-                          Nbre:=Nbre+1;
-                    
+
+                        if (CanArchivePO(PHeader)) then
+                            if ArchivePO(PHeader) then
+                                Nbre := Nbre + 1;
+
                     end;
 
                 end;
@@ -71,21 +71,24 @@ xmlport 50009 "Archive PO"
         {
             area(content)
             {
-                field(GenJrnTemplate;GenJrnTemplate)
+                field(GenJrnTemplate; GenJrnTemplate)
                 {
                     Caption = 'General journal template';
                     TableRelation = "Gen. Journal Template";
                     Visible = false;
+                    ApplicationArea = All;
                 }
-                field(GenJrnBatch;GenJrnBatch)
+                field(GenJrnBatch; GenJrnBatch)
                 {
                     Caption = 'Posting journal Batch';
                     TableRelation = "Gen. Journal Batch";
                     Visible = false;
+                    ApplicationArea = All;
                 }
-                field("N° Document";DocNum)
+                field("N° Document"; DocNum)
                 {
                     Visible = false;
+                    ApplicationArea = All;
                 }
             }
         }
@@ -109,7 +112,7 @@ xmlport 50009 "Archive PO"
     begin
 
         Window.Close;
-        Message(TextFin,Nbre);
+        Message(TextFin, Nbre);
         //MESSAGE(TxtTraitementTerminé);
     end;
 
@@ -120,9 +123,9 @@ xmlport 50009 "Archive PO"
 
         LineNo := 0;
 
-        BesoinNo :=0;
+        BesoinNo := 0;
         Window.Open(Text008);
-        Nbre:=0;
+        Nbre := 0;
         NbreTotalLignes := 517;
     end;
 
@@ -159,7 +162,7 @@ xmlport 50009 "Archive PO"
         ArchiveManagement: Codeunit ArchiveManagement;
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
 
-    procedure SetFeuille(Modele: Code[10];NomFeuille: Code[10])
+    procedure SetFeuille(Modele: Code[10]; NomFeuille: Code[10])
     begin
         GenJrnBatch := NomFeuille;
         GenJrnTemplate := Modele;
@@ -179,28 +182,29 @@ xmlport 50009 "Archive PO"
 
 
         PurchLine1.Reset;
-        PurchLine1.SetRange("Document Type",PurchLine1."Document Type"::Order);
-        PurchLine1.SetRange("Document No.",PurchH."No.");
-        PurchLine1.SetFilter(Type,'<>%1',PurchLine1.Type::" ");
-        PurchLine1.SetFilter("No.",'<>%1','');
-        if PurchLine1.FindSet then repeat
+        PurchLine1.SetRange("Document Type", PurchLine1."Document Type"::Order);
+        PurchLine1.SetRange("Document No.", PurchH."No.");
+        PurchLine1.SetFilter(Type, '<>%1', PurchLine1.Type::" ");
+        PurchLine1.SetFilter("No.", '<>%1', '');
+        if PurchLine1.FindSet then
+            repeat
 
-          if PurchLine1."Quantity Invoiced"<>PurchLine1."Quantity Received" then
-            exit(false);
-            //ERROR(Text013,PurchLine1."No.");
+                if PurchLine1."Quantity Invoiced" <> PurchLine1."Quantity Received" then
+                    exit(false);
+                //ERROR(Text013,PurchLine1."No.");
 
-          if (PurchH."Document Type" = PurchH."Document Type"::Order) and (PurchLine1.Quantity <> PurchLine1."Quantity Invoiced") then
-            if PurchLine1."Prepmt. Amt. Inv."<>PurchLine1."Prepmt Amt Deducted" then
-              exit(false);
-          //TESTFIELD("Prepmt. Amt. Inv.","Prepmt Amt Deducted");
+                if (PurchH."Document Type" = PurchH."Document Type"::Order) and (PurchLine1.Quantity <> PurchLine1."Quantity Invoiced") then
+                    if PurchLine1."Prepmt. Amt. Inv." <> PurchLine1."Prepmt Amt Deducted" then
+                        exit(false);
+                //TESTFIELD("Prepmt. Amt. Inv.","Prepmt Amt Deducted");
 
-          PurchLine1.Validate(PurchLine1.Quantity,PurchLine1."Quantity Received");
-          PurchLine1.Modify;
+                PurchLine1.Validate(PurchLine1.Quantity, PurchLine1."Quantity Received");
+                PurchLine1.Modify;
 
-        until PurchLine1.Next=0;
+            until PurchLine1.Next = 0;
 
 
-        PurchH."Processing Status":=PurchH."Processing Status"::Soldee;
+        PurchH."Processing Status" := PurchH."Processing Status"::Soldee;
         PurchH."GDP Deletion" := true;
         PurchH.Modify;
         //ArchiveManagement.ArchPurchDocumentNoConfirm(PurchH);
@@ -218,20 +222,21 @@ xmlport 50009 "Archive PO"
 
 
         PurchLine1.Reset;
-        PurchLine1.SetRange("Document Type",PurchLine1."Document Type"::Order);
-        PurchLine1.SetRange("Document No.",PurchH."No.");
-        if PurchLine1.FindSet then repeat
+        PurchLine1.SetRange("Document Type", PurchLine1."Document Type"::Order);
+        PurchLine1.SetRange("Document No.", PurchH."No.");
+        if PurchLine1.FindSet then
+            repeat
 
-          if PurchLine1."Quantity Invoiced"<>PurchLine1."Quantity Received" then
-            exit(false);
-            //ERROR(Text013,PurchLine1."No.");
+                if PurchLine1."Quantity Invoiced" <> PurchLine1."Quantity Received" then
+                    exit(false);
+                //ERROR(Text013,PurchLine1."No.");
 
-          if (PurchH."Document Type" = PurchH."Document Type"::Order) and (PurchLine1.Quantity <> PurchLine1."Quantity Invoiced") then
-            if PurchLine1."Prepmt. Amt. Inv."<>PurchLine1."Prepmt Amt Deducted" then
-              exit(false);
-          //TESTFIELD("Prepmt. Amt. Inv.","Prepmt Amt Deducted");
+                if (PurchH."Document Type" = PurchH."Document Type"::Order) and (PurchLine1.Quantity <> PurchLine1."Quantity Invoiced") then
+                    if PurchLine1."Prepmt. Amt. Inv." <> PurchLine1."Prepmt Amt Deducted" then
+                        exit(false);
+            //TESTFIELD("Prepmt. Amt. Inv.","Prepmt Amt Deducted");
 
-        until PurchLine1.Next=0;
+            until PurchLine1.Next = 0;
 
 
         exit(true);

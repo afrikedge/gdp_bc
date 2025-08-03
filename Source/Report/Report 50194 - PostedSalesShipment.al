@@ -8,6 +8,7 @@ report 50194 "Posted Sales Shipment"
     PreviewMode = PrintLayout;
     WordMergeDataItem = Header;
     RDLCLayout = './Source/Report/Layout/PostedSalesShipment.rdl';
+    ApplicationArea = All;
 
     dataset
     {

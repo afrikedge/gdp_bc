@@ -1,6 +1,7 @@
 report 50161 "Create JIRAMA Forecast Transfe"
 {
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {

@@ -4,6 +4,7 @@ report 50042 "Bon de sortie Feuille article"
     RDLCLayout = './Source/Report/Layout/Bon de sortie Feuille article.rdlc';
     Caption = 'Bon de sortie';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

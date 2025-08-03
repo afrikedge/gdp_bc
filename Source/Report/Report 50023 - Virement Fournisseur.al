@@ -3,6 +3,7 @@ report 50023 "Virement Fournisseur"
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Virement Fournisseur.rdlc';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

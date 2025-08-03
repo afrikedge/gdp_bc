@@ -4,6 +4,7 @@ report 50007 "Note de Debit/Note de Credit"
     RDLCLayout = './Source/Report/Layout/Note de DebitNote de Credit.rdlc';
     Caption = 'Debit-Credit Note';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

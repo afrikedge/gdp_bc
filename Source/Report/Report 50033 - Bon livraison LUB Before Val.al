@@ -3,6 +3,7 @@ report 50033 "Bon livraison LUB Before Val"
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Bon livraison LUB Before Val.rdlc';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

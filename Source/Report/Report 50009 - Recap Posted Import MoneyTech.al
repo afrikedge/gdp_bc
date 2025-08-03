@@ -4,7 +4,7 @@ report 50009 "Recap Posted Import MoneyTech"
     RDLCLayout = './Source/Report/Layout/Recap Posted Import MoneyTech.rdlc';
     Caption = 'MoneyTech Import';
     PreviewMode = PrintLayout;
-
+    ApplicationArea = All;
     dataset
     {
         dataitem("Posted Moneytech Import"; "Posted Moneytech Import")

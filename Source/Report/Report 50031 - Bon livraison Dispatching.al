@@ -4,6 +4,7 @@ report 50031 "Bon livraison Dispatching"
     RDLCLayout = './Source/Report/Layout/Bon livraison Dispatching.rdlc';
     PDFFontEmbedding = Yes;
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

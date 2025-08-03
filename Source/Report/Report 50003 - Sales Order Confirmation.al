@@ -4,6 +4,7 @@ report 50003 "Sales Order Confirmation"
     RDLCLayout = './Source/Report/Layout/Sales Order Confirmation.rdlc';
     Caption = 'Order Confirmation';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

@@ -2,7 +2,7 @@ report 50043 "Comparaison Offres"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Comparaison Offres.rdlc';
-
+    ApplicationArea = All;
     dataset
     {
         dataitem("Purchase Requisition"; "Purchase Requisition")

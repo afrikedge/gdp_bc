@@ -4,6 +4,7 @@ report 50045 "Check BOA"
     RDLCLayout = './Source/Report/Layout/Check BOA.rdlc';
     Caption = 'Check';
     Permissions = TableData "Bank Account" = m;
+    ApplicationArea = All;
 
     dataset
     {

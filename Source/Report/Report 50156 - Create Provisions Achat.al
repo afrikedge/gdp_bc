@@ -5,12 +5,13 @@ report 50156 "Create Provisions Achat"
 
     Caption = 'Provisions Vente';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {
-        dataitem("Purchase Header";"Purchase Header")
+        dataitem("Purchase Header"; "Purchase Header")
         {
-            DataItemTableView = SORTING("Document Type","No.") ORDER(Ascending) WHERE("Document Type"=CONST(Order));
+            DataItemTableView = SORTING("Document Type", "No.") ORDER(Ascending) WHERE("Document Type" = CONST(Order));
 
             trigger OnAfterGetRecord()
             var
@@ -20,32 +21,32 @@ report 50156 "Create Provisions Achat"
 
 
 
-                    BesoinNo := BesoinNo + 1;
-                    Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
+                BesoinNo := BesoinNo + 1;
+                Window.Update(1,
+                Round(BesoinNo / NbreTotalLignes * 10000, 1));
 
-                    GenJrnTableND.TestField("No. Series");
-                    Clear(NoSeriesMgt);
+                GenJrnTableND.TestField("No. Series");
+                Clear(NoSeriesMgt);
 
-                    if LastDocNo='' then
-                        LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",false);
-                    //END ELSE BEGIN
-                    //    LastDocNo := INCSTR(LastDocNo);
-                    //END;
-                    CreateEntry := GLMgt.TraiterProvisionCdeAchat("Purchase Header",
-                      ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum,DateDeb,DateFin);
+                if LastDocNo = '' then
+                    LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series", GenJrnLine."Posting Date", false);
+                //END ELSE BEGIN
+                //    LastDocNo := INCSTR(LastDocNo);
+                //END;
+                CreateEntry := GLMgt.TraiterProvisionCdeAchat("Purchase Header",
+                  ModeleFeuille, NomFeuille, PostingDate, LastDocNo, LineNum, DateDeb, DateFin);
 
 
-                   if CreateEntry then LastDocNo := IncStr(LastDocNo);
+                if CreateEntry then LastDocNo := IncStr(LastDocNo);
 
-                   if (("Purchase Header"."Order Date">=DateDeb) and ("Purchase Header"."Order Date"<=DateFin)) then begin
-                     if "Purchase Header".Anticipated then begin
+                if (("Purchase Header"."Order Date" >= DateDeb) and ("Purchase Header"."Order Date" <= DateFin)) then begin
+                    if "Purchase Header".Anticipated then begin
                         CreateEntry := GLMgt.TraiterProvisionCdeAchatVarStockAnticipee("Purchase Header",
-                          ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+                          ModeleFeuille, NomFeuille, PostingDate, LastDocNo, LineNum);
 
                         if CreateEntry then LastDocNo := IncStr(LastDocNo);
-                     end;
-                   end;
+                    end;
+                end;
             end;
 
             trigger OnPostDataItem()
@@ -64,25 +65,25 @@ report 50156 "Create Provisions Achat"
                 AddOnSetup.Get;
                 AddOnSetup.TestField(AddOnSetup."Invoice To Receive Account");
 
-                GenJrnTableND.Get(ModeleFeuille,NomFeuille);
+                GenJrnTableND.Get(ModeleFeuille, NomFeuille);
 
 
                 GenJrnLine.Reset;
-                GenJrnLine.SetRange("Journal Template Name",ModeleFeuille);
-                GenJrnLine.SetRange("Journal Batch Name",NomFeuille);
-                if GenJrnLine.FindFirst then Error(Text001,NomFeuille);
+                GenJrnLine.SetRange("Journal Template Name", ModeleFeuille);
+                GenJrnLine.SetRange("Journal Batch Name", NomFeuille);
+                if GenJrnLine.FindFirst then Error(Text001, NomFeuille);
 
-                BesoinNo :=0;
+                BesoinNo := 0;
 
                 Window.Open(Text008);
 
-                if ((DateDeb=0D) or (DateFin=0D)) then Error(Text009);
+                if ((DateDeb = 0D) or (DateFin = 0D)) then Error(Text009);
 
 
                 //"Purchase Header".SETRANGE("Order Date",DateDeb,DateFin);
 
-                LineNum:=0;
-                 NbreTotalLignes := "Purchase Header".Count;
+                LineNum := 0;
+                NbreTotalLignes := "Purchase Header".Count;
             end;
         }
     }
@@ -94,24 +95,24 @@ report 50156 "Create Provisions Achat"
         {
             area(content)
             {
-                field(DateDeb;DateDeb)
+                field(DateDeb; DateDeb)
                 {
                     Caption = 'Date commande début';
                 }
-                field(DateFin;DateFin)
+                field(DateFin; DateFin)
                 {
                     Caption = 'Date commande fin';
                 }
-                field(PostingDate;PostingDate)
+                field(PostingDate; PostingDate)
                 {
                     Caption = 'Posting Date';
                 }
-                field(ModeleFeuille;ModeleFeuille)
+                field(ModeleFeuille; ModeleFeuille)
                 {
                     Caption = 'Journal Template';
                     Visible = false;
                 }
-                field(NomFeuille;NomFeuille)
+                field(NomFeuille; NomFeuille)
                 {
                     Caption = 'Gen. Journal';
                     Visible = false;
@@ -122,11 +123,10 @@ report 50156 "Create Provisions Achat"
                         GenJournalBatchPage: Page "General Journal Batches";
                     begin
                         GenJournalBatch.Reset;
-                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name",ModeleFeuille);
-                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then
-                        begin
-                          NomFeuille := GenJournalBatch.Name;
-                          //NewFASubLocationName := FASubLoc.Name;
+                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name", ModeleFeuille);
+                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then begin
+                            NomFeuille := GenJournalBatch.Name;
+                            //NewFASubLocationName := FASubLoc.Name;
                         end;
                     end;
                 }
@@ -147,7 +147,7 @@ report 50156 "Create Provisions Achat"
         AddOnSetup.Get;
         AddOnSetup.TestField("Provision Tmpl Journal");
         ModeleFeuille := AddOnSetup."Provision Tmpl Journal";
-        PostingDate:=WorkDate;
+        PostingDate := WorkDate;
     end;
 
     var
@@ -172,10 +172,10 @@ report 50156 "Create Provisions Achat"
         DateFin: Date;
         Text009: Label 'Veuillez saisir une plage de dates commande';
 
-    procedure SetFeuille(CodeModele1: Code[10];CodeFeuille1: Code[10])
+    procedure SetFeuille(CodeModele1: Code[10]; CodeFeuille1: Code[10])
     begin
-        ModeleFeuille:=CodeModele1;
-        NomFeuille:=CodeFeuille1;
+        ModeleFeuille := CodeModele1;
+        NomFeuille := CodeFeuille1;
     end;
 }
 

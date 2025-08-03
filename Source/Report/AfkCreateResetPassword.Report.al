@@ -3,6 +3,7 @@ report 50026 "Afk CreateResetPassword"
     Caption = 'Create or reset password';
     ProcessingOnly = true;
     UsageCategory = None;
+    ApplicationArea = All;
     dataset
     {
         // dataitem(Integer; "Integer")

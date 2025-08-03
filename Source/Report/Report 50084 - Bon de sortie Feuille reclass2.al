@@ -4,6 +4,7 @@ report 50084 "Bon de sortie Feuille reclass2"
     RDLCLayout = './Source/Report/Layout/Bon de sortie Feuille reclass2.rdlc';
     Caption = 'BON DE TRANSFERT';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

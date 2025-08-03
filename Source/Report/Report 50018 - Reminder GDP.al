@@ -4,6 +4,7 @@ report 50018 "Reminder GDP"
     RDLCLayout = './Source/Report/Layout/Reminder GDP.rdlc';
     Caption = 'Reminder Letter N°1';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

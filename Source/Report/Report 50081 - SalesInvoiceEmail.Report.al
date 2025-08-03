@@ -10,6 +10,7 @@ report 50081 "Sales Invoice Email"
     WordMergeDataItem = Header;
     DefaultLayout = Word;
     WordLayout = './Source/Report/Layout/SalesInvoiceEmail.docx';
+    ApplicationArea = All;
 
     dataset
     {

@@ -2,12 +2,13 @@ report 50167 "Create Provisions Var Stock"
 {
     Caption = 'Provisions Vente';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {
-        dataitem("Sales Header";"Sales Header")
+        dataitem("Sales Header"; "Sales Header")
         {
-            DataItemTableView = SORTING("Document Type","No.") ORDER(Ascending) WHERE("Document Type"=CONST(Order));
+            DataItemTableView = SORTING("Document Type", "No.") ORDER(Ascending) WHERE("Document Type" = CONST(Order));
 
             trigger OnAfterGetRecord()
             var
@@ -15,26 +16,26 @@ report 50167 "Create Provisions Var Stock"
                 Cust: Record Customer;
             begin
 
-                    BesoinNo := BesoinNo + 1;
-                    Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
+                BesoinNo := BesoinNo + 1;
+                Window.Update(1,
+                Round(BesoinNo / NbreTotalLignes * 10000, 1));
 
-                    GenJrnTableND.TestField("No. Series");
-                    Clear(NoSeriesMgt);
+                GenJrnTableND.TestField("No. Series");
+                Clear(NoSeriesMgt);
 
-                    if LastDocNo='' then
-                        LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",false);
-                    //END ELSE BEGIN
-                    //    LastDocNo := INCSTR(LastDocNo);
-                    //END;
-                    CreateEntry:=false;
+                if LastDocNo = '' then
+                    LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series", GenJrnLine."Posting Date", false);
+                //END ELSE BEGIN
+                //    LastDocNo := INCSTR(LastDocNo);
+                //END;
+                CreateEntry := false;
 
-                   if Cust.Get("Sales Header"."Sell-to Customer No.") then
-                     if ((Cust."Sales Channel Code" = AddOnSetup."JIRAMA Sales Channel")
-                       or (Cust."Sales Channel Code" = AddOnSetup."JOVENNA Sales Channel")) then
-                     CreateEntry := GLMgt.TraiterProvisionCdeVenteVarStockJIRAMA("Sales Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+                if Cust.Get("Sales Header"."Sell-to Customer No.") then
+                    if ((Cust."Sales Channel Code" = AddOnSetup."JIRAMA Sales Channel")
+                      or (Cust."Sales Channel Code" = AddOnSetup."JOVENNA Sales Channel")) then
+                        CreateEntry := GLMgt.TraiterProvisionCdeVenteVarStockJIRAMA("Sales Header", ModeleFeuille, NomFeuille, PostingDate, LastDocNo, LineNum);
 
-                   if CreateEntry then LastDocNo := IncStr(LastDocNo);
+                if CreateEntry then LastDocNo := IncStr(LastDocNo);
             end;
 
             trigger OnPostDataItem()
@@ -55,20 +56,20 @@ report 50167 "Create Provisions Var Stock"
                 AddOnSetup.TestField(AddOnSetup."JIRAMA Sales Channel");
                 AddOnSetup.TestField(AddOnSetup."JOVENNA Sales Channel");
 
-                GenJrnTableND.Get(ModeleFeuille,NomFeuille);
+                GenJrnTableND.Get(ModeleFeuille, NomFeuille);
 
 
                 GenJrnLine.Reset;
-                GenJrnLine.SetRange("Journal Template Name",ModeleFeuille);
-                GenJrnLine.SetRange("Journal Batch Name",NomFeuille);
-                if GenJrnLine.FindFirst then Error(Text001,NomFeuille);
+                GenJrnLine.SetRange("Journal Template Name", ModeleFeuille);
+                GenJrnLine.SetRange("Journal Batch Name", NomFeuille);
+                if GenJrnLine.FindFirst then Error(Text001, NomFeuille);
 
-                BesoinNo :=0;
+                BesoinNo := 0;
 
                 Window.Open(Text008);
 
-                LineNum:=0;
-                 NbreTotalLignes := "Sales Header".Count;
+                LineNum := 0;
+                NbreTotalLignes := "Sales Header".Count;
             end;
         }
     }
@@ -80,16 +81,16 @@ report 50167 "Create Provisions Var Stock"
         {
             area(content)
             {
-                field(PostingDate;PostingDate)
+                field(PostingDate; PostingDate)
                 {
                     Caption = 'Posting Date';
                 }
-                field(ModeleFeuille;ModeleFeuille)
+                field(ModeleFeuille; ModeleFeuille)
                 {
                     Caption = 'Journal Template';
                     Visible = false;
                 }
-                field(NomFeuille;NomFeuille)
+                field(NomFeuille; NomFeuille)
                 {
                     Caption = 'Gen. Journal';
                     Visible = false;
@@ -100,11 +101,10 @@ report 50167 "Create Provisions Var Stock"
                         GenJournalBatchPage: Page "General Journal Batches";
                     begin
                         GenJournalBatch.Reset;
-                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name",ModeleFeuille);
-                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then
-                        begin
-                          NomFeuille := GenJournalBatch.Name;
-                          //NewFASubLocationName := FASubLoc.Name;
+                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name", ModeleFeuille);
+                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then begin
+                            NomFeuille := GenJournalBatch.Name;
+                            //NewFASubLocationName := FASubLoc.Name;
                         end;
                     end;
                 }
@@ -125,7 +125,7 @@ report 50167 "Create Provisions Var Stock"
         AddOnSetup.Get;
         AddOnSetup.TestField("Provision Tmpl Journal");
         ModeleFeuille := AddOnSetup."Provision Tmpl Journal";
-        PostingDate:=WorkDate;
+        PostingDate := WorkDate;
     end;
 
     var
@@ -147,10 +147,10 @@ report 50167 "Create Provisions Var Stock"
         LastDocNo: Code[20];
         GLMgt: Codeunit "Provisions Cde Mgt";
 
-    procedure SetFeuille(CodeModele1: Code[10];CodeFeuille1: Code[10])
+    procedure SetFeuille(CodeModele1: Code[10]; CodeFeuille1: Code[10])
     begin
-        ModeleFeuille:=CodeModele1;
-        NomFeuille:=CodeFeuille1;
+        ModeleFeuille := CodeModele1;
+        NomFeuille := CodeFeuille1;
     end;
 }
 

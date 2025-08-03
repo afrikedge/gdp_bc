@@ -2,6 +2,7 @@ report 50166 "Create Provisions Trans Vente"
 {
     Caption = 'Provisions Vente';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {

@@ -1,6 +1,7 @@
 report 50069 "Corr Ajustement Ecart Pompe"
 {
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {

@@ -6,6 +6,7 @@ report 50048 "Sales  Invoice ND"
     PDFFontEmbedding = Yes;
     Permissions = TableData "Sales Shipment Buffer" = rimd;
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

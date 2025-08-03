@@ -3,6 +3,7 @@ report 50029 "Fixed Asset - Inventaire"
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Fixed Asset - Inventaire.rdlc';
     Caption = 'Fixed Asset - Inventory';
+    ApplicationArea = All;
 
     dataset
     {

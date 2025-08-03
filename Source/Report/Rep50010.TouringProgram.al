@@ -2,6 +2,7 @@ report 50010 "Touring Program"
 {
     Caption = 'Touring Program';
     RDLCLayout = './Source/Report/Layout/Touring Program.rdl';
+    ApplicationArea = All;
 
     dataset
     {

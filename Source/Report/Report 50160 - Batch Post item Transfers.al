@@ -2,13 +2,14 @@ report 50160 "Batch Post item Transfers"
 {
     Caption = 'Batch Post Sales Orders';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {
-        dataitem("Adjustment Header";"Adjustment Header")
+        dataitem("Adjustment Header"; "Adjustment Header")
         {
-            DataItemTableView = WHERE("Document Type"=CONST(Transfer));
-            RequestFilterFields = "No.",Status,"Posting Date","External Document No.","Receipt Date";
+            DataItemTableView = WHERE("Document Type" = CONST(Transfer));
+            RequestFilterFields = "No.", Status, "Posting Date", "External Document No.", "Receipt Date";
             RequestFilterHeading = 'Transfer Order';
 
             trigger OnAfterGetRecord()
@@ -19,53 +20,53 @@ report 50160 "Batch Post item Transfers"
                 //  CurrReport.SKIP;
                 Clear(ItemTransferPost);
 
-                if ShipReceipt=ShipReceipt::Livrer then
-                  if not ItemTransferPost.CanPostExpedition("Adjustment Header") then
-                    CurrReport.Skip;
+                if ShipReceipt = ShipReceipt::Livrer then
+                    if not ItemTransferPost.CanPostExpedition("Adjustment Header") then
+                        CurrReport.Skip;
 
-                if ShipReceipt=ShipReceipt::Recevoir then
-                  if not ItemTransferPost.CanPostReception("Adjustment Header") then
-                    CurrReport.Skip;
+                if ShipReceipt = ShipReceipt::Recevoir then
+                    if not ItemTransferPost.CanPostReception("Adjustment Header") then
+                        CurrReport.Skip;
 
 
                 //IF CalcInvDisc THEN
                 //  CalculateInvoiceDiscount;
 
                 Counter := Counter + 1;
-                Window.Update(1,"No.");
-                Window.Update(2,Round(Counter / CounterTotal * 10000,1));
+                Window.Update(1, "No.");
+                Window.Update(2, Round(Counter / CounterTotal * 10000, 1));
                 //Ship := ShipReq;
                 //Invoice := InvReq;
 
                 ItemTransferPost.SetIsBatch(true);
                 //SalesPost.SetPostingDate(ReplacePostingDate,ReplaceDocumentDate,PostingDateReq);
                 if ShipReceipt = ShipReceipt::Livrer then begin
-                  ItemTransferPost.PostExpedition("Adjustment Header");
+                    ItemTransferPost.PostExpedition("Adjustment Header");
                     CounterOK := CounterOK + 1;
                     if MarkedOnly then
-                      Mark(false);
-                  //END;
+                        Mark(false);
+                    //END;
                 end;
 
                 if ShipReceipt = ShipReceipt::Recevoir then begin
-                  ItemTransferPost.PostReception("Adjustment Header");
+                    ItemTransferPost.PostReception("Adjustment Header");
                     CounterOK := CounterOK + 1;
                     if MarkedOnly then
-                      Mark(false);
-                  //END;
+                        Mark(false);
+                    //END;
                 end;
             end;
 
             trigger OnPostDataItem()
             begin
                 Window.Close;
-                Message(Text002,CounterOK,CounterTotal);
+                Message(Text002, CounterOK, CounterTotal);
             end;
 
             trigger OnPreDataItem()
             begin
                 if ReplacePostingDate and (PostingDateReq = 0D) then
-                  Error(Text000);
+                    Error(Text000);
 
                 CounterTotal := Count;
                 Window.Open(Text001);
@@ -84,7 +85,7 @@ report 50160 "Batch Post item Transfers"
                 group(Options)
                 {
                     Caption = 'Options';
-                    field(Ship;ShipReceipt)
+                    field(Ship; ShipReceipt)
                     {
                         Caption = 'Action';
                     }

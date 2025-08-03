@@ -9,6 +9,7 @@ report 50192 "Sales Invoice Soutage"
     PreviewMode = PrintLayout;
     WordMergeDataItem = Header;
     RDLCLayout = './Source/Report/Layout/Sales Invoice Soutage.rdl';
+    ApplicationArea = All;
 
     dataset
     {

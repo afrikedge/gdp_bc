@@ -2,21 +2,22 @@ report 50180 "Create Prov Trans Jirama Amboh"
 {
     Caption = 'Provisions Vente';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {
-        dataitem("Posted Adjustment Header";"Posted Adjustment Header")
+        dataitem("Posted Adjustment Header"; "Posted Adjustment Header")
         {
-            DataItemTableView = SORTING("Document Type","No.") WHERE("Document Type"=CONST(Transfer),"Item Category Code"=CONST('PBL'));
-            dataitem("Posted Adjustment Line";"Posted Adjustment Line")
+            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Transfer), "Item Category Code" = CONST('PBL'));
+            dataitem("Posted Adjustment Line"; "Posted Adjustment Line")
             {
-                DataItemLink = "Document Type"=FIELD("Document Type"),"Document No."=FIELD("No.");
-                DataItemTableView = SORTING("Document Type","Document No.","Line No.");
+                DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
+                DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
 
                 trigger OnAfterGetRecord()
                 begin
                     ProvisionsItemMgt.TraiterProvisionFraisTransfertJIRAMAAmbohimanambola("Posted Adjustment Header",
-                      ModeleFeuille,NomFeuille,PostingDate,LastDocNo,DateDeb,DateFin,LineNum,"Posted Adjustment Line");
+                      ModeleFeuille, NomFeuille, PostingDate, LastDocNo, DateDeb, DateFin, LineNum, "Posted Adjustment Line");
                 end;
 
                 trigger OnPostDataItem()
@@ -32,30 +33,30 @@ report 50180 "Create Prov Trans Jirama Amboh"
                 Loc: Record Location;
             begin
 
-                    BesoinNo := BesoinNo + 1;
-                    Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
+                BesoinNo := BesoinNo + 1;
+                Window.Update(1,
+                Round(BesoinNo / NbreTotalLignes * 10000, 1));
 
-                    if "Posted Adjustment Header".Status="Posted Adjustment Header".Status::Cancelled then
-                      CurrReport.Skip;
+                if "Posted Adjustment Header".Status = "Posted Adjustment Header".Status::Cancelled then
+                    CurrReport.Skip;
 
-                    if "Posted Adjustment Header"."Transfer-to Code"<>AddOnSetup."JIRAMA Ambohimanambola Loc" then
-                      CurrReport.Skip;
-
-
-                    Clear(NoSeriesMgt);
-
-                    if LastDocNo='' then
-                        LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",false);
-                    //END ELSE BEGIN
-                    //    LastDocNo := INCSTR(LastDocNo);
-                    //END;
+                if "Posted Adjustment Header"."Transfer-to Code" <> AddOnSetup."JIRAMA Ambohimanambola Loc" then
+                    CurrReport.Skip;
 
 
+                Clear(NoSeriesMgt);
 
-                   //CreateEntry := GLMgt.TraiterProvisionCdeAchat("Purchase Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+                if LastDocNo = '' then
+                    LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series", GenJrnLine."Posting Date", false);
+                //END ELSE BEGIN
+                //    LastDocNo := INCSTR(LastDocNo);
+                //END;
 
-                   //IF CreateEntry THEN
+
+
+                //CreateEntry := GLMgt.TraiterProvisionCdeAchat("Purchase Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+
+                //IF CreateEntry THEN
             end;
 
             trigger OnPostDataItem()
@@ -74,27 +75,27 @@ report 50180 "Create Prov Trans Jirama Amboh"
                 AddOnSetup.Get;
                 //AddOnSetup.TESTFIELD(AddOnSetup."Invoice To Receive Account");
 
-                GenJrnTableND.Get(ModeleFeuille,NomFeuille);
+                GenJrnTableND.Get(ModeleFeuille, NomFeuille);
 
-                if DateDeb=0D then Error(Text008);
-                if DateFin=0D then Error(Text008);
-                "Posted Adjustment Header".SetRange("Receipt Date",DateDeb,DateFin);
+                if DateDeb = 0D then Error(Text008);
+                if DateFin = 0D then Error(Text008);
+                "Posted Adjustment Header".SetRange("Receipt Date", DateDeb, DateFin);
 
 
                 GenJrnLine.Reset;
-                GenJrnLine.SetRange("Journal Template Name",ModeleFeuille);
-                GenJrnLine.SetRange("Journal Batch Name",NomFeuille);
-                if GenJrnLine.FindFirst then Error(Text001,NomFeuille);
+                GenJrnLine.SetRange("Journal Template Name", ModeleFeuille);
+                GenJrnLine.SetRange("Journal Batch Name", NomFeuille);
+                if GenJrnLine.FindFirst then Error(Text001, NomFeuille);
 
-                BesoinNo :=0;
+                BesoinNo := 0;
 
                 Window.Open(Text008);
 
 
                 GenJrnTableND.TestField("No. Series");
 
-                LineNum:=0;
-                 NbreTotalLignes := "Posted Adjustment Header".Count;
+                LineNum := 0;
+                NbreTotalLignes := "Posted Adjustment Header".Count;
             end;
         }
     }
@@ -106,11 +107,11 @@ report 50180 "Create Prov Trans Jirama Amboh"
         {
             area(content)
             {
-                field(DateDeb;DateDeb)
+                field(DateDeb; DateDeb)
                 {
                     Caption = 'Starting Date';
                 }
-                field(DateFin;DateFin)
+                field(DateFin; DateFin)
                 {
                     Caption = 'Ending Date';
 
@@ -119,16 +120,16 @@ report 50180 "Create Prov Trans Jirama Amboh"
                         PostingDate := DateFin;
                     end;
                 }
-                field(PostingDate;PostingDate)
+                field(PostingDate; PostingDate)
                 {
                     Caption = 'Posting Date';
                 }
-                field(ModeleFeuille;ModeleFeuille)
+                field(ModeleFeuille; ModeleFeuille)
                 {
                     Caption = 'Journal Template';
                     Visible = false;
                 }
-                field(NomFeuille;NomFeuille)
+                field(NomFeuille; NomFeuille)
                 {
                     Caption = 'Gen. Journal';
                     Visible = false;
@@ -139,11 +140,10 @@ report 50180 "Create Prov Trans Jirama Amboh"
                         GenJournalBatchPage: Page "General Journal Batches";
                     begin
                         GenJournalBatch.Reset;
-                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name",ModeleFeuille);
-                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then
-                        begin
-                          NomFeuille := GenJournalBatch.Name;
-                          //NewFASubLocationName := FASubLoc.Name;
+                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name", ModeleFeuille);
+                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then begin
+                            NomFeuille := GenJournalBatch.Name;
+                            //NewFASubLocationName := FASubLoc.Name;
                         end;
                     end;
                 }
@@ -164,7 +164,7 @@ report 50180 "Create Prov Trans Jirama Amboh"
         AddOnSetup.Get;
         AddOnSetup.TestField("Provision Tmpl Journal");
         ModeleFeuille := AddOnSetup."Provision Tmpl Journal";
-        PostingDate:=WorkDate;
+        PostingDate := WorkDate;
     end;
 
     var
@@ -192,15 +192,15 @@ report 50180 "Create Prov Trans Jirama Amboh"
         ProvisionsItemMgt: Codeunit "Provisions Item Mgt";
         IsTransfertMassif: Boolean;
 
-    procedure SetFeuille(CodeModele1: Code[10];CodeFeuille1: Code[10])
+    procedure SetFeuille(CodeModele1: Code[10]; CodeFeuille1: Code[10])
     begin
-        ModeleFeuille:=CodeModele1;
-        NomFeuille:=CodeFeuille1;
+        ModeleFeuille := CodeModele1;
+        NomFeuille := CodeFeuille1;
     end;
 
     procedure SetTransfertMassif(isMassif: Boolean)
     begin
-        IsTransfertMassif:=isMassif;
+        IsTransfertMassif := isMassif;
     end;
 }
 

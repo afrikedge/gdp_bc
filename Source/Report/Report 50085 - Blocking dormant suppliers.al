@@ -3,6 +3,7 @@ report 50085 "Blocking dormant suppliers"
     Caption = 'Bloquer les fournisseurs dormants';
     ProcessingOnly = true;
     UsageCategory = Tasks;
+    ApplicationArea = All;
 
     dataset
     {

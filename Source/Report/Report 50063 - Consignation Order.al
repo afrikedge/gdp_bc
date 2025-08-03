@@ -4,6 +4,7 @@ report 50063 "Consignation Order"
     RDLCLayout = './Source/Report/Layout/Consignation Order.rdlc';
     Caption = 'Transfer Order';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {
