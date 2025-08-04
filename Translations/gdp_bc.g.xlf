@@ -66669,7 +66669,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Invoice Post. Buffer - Field Posting Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4052574762 - Field 1025969885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>ode transport Hors-ville</source>
+          <source>Code transport Hors-ville</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Item - Field Afk Code transport Hors-ville - Property Caption</note>
         </trans-unit>

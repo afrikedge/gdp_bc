@@ -115,7 +115,7 @@ tableextension 50009 "A02 Item" extends Item
         }
         field(50028; "Afk Code transport Hors-ville"; Text[50])
         {
-            Caption = 'ode transport Hors-ville';
+            Caption = 'Code transport Hors-ville';
         }
 
     }
