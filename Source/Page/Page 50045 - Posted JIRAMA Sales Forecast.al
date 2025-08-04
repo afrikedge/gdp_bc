@@ -4,6 +4,8 @@ page 50045 "Posted JIRAMA Sales Forecast"
     PageType = Document;
     SourceTable = "Jirama Sales Forecast";
     SourceTableView = WHERE(Status = CONST(Archived));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -40,6 +42,7 @@ page 50045 "Posted JIRAMA Sales Forecast"
             {
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
     }

@@ -17,6 +17,7 @@ pageextension 50109 "Afk GLEntry" extends "General Ledger Entries"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

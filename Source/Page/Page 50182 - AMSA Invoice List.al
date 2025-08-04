@@ -6,6 +6,7 @@ page 50182 "AMSA Invoice List"
     PageType = List;
     SourceTable = "Fuel Statement Header";
     SourceTableView = WHERE("Document Type" = CONST(Invoice));
+    ApplicationArea = All;
 
     layout
     {

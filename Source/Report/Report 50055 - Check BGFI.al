@@ -4,6 +4,7 @@ report 50055 "Check BGFI"
     RDLCLayout = './Source/Report/Layout/Check BGFI.rdlc';
     Caption = 'Check';
     Permissions = TableData "Bank Account" = m;
+    ApplicationArea = All;
 
     dataset
     {

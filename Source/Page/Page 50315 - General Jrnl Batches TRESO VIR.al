@@ -4,6 +4,8 @@ page 50315 "General Jrnl Batches TRESO VIR"
     DataCaptionExpression = DataCaption;
     PageType = List;
     SourceTable = "Gen. Journal Batch";
+    ApplicationArea = All;
+    UsageCategory = Lists;
 
     layout
     {

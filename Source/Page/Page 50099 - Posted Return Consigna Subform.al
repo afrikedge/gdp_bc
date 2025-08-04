@@ -6,6 +6,7 @@ page 50099 "Posted Return Consigna Subform"
     LinksAllowed = false;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Item Return Line";
     SourceTableView = WHERE("Document Type" = CONST(Consignation));
 

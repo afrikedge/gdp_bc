@@ -5,6 +5,7 @@ page 50330 "Touring BE Subform"
     Editable = false;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = pro_enteteBE;
     SourceTableView = WHERE(IsBon = CONST(true));
 

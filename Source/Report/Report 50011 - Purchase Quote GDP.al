@@ -4,6 +4,7 @@ report 50011 "Purchase Quote GDP"
     RDLCLayout = './Source/Report/Layout/Purchase Quote GDP.rdlc';
     Caption = 'Purchase Quote';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

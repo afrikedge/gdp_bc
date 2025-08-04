@@ -134,10 +134,12 @@ page 50025 "Sales Order List - Closed"
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
         }
     }

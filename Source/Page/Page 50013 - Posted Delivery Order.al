@@ -5,6 +5,8 @@ page 50013 "Posted Delivery Order"
     PageType = Document;
     SourceTable = pro_enteteBL;
     SourceTableView = WHERE(isconfirme = CONST(true));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -84,6 +86,7 @@ page 50013 "Posted Delivery Order"
             {
                 Caption = 'Lines';
                 SubPageLink = numBL = FIELD(numBL);
+                ApplicationArea = All;
             }
         }
     }
@@ -99,6 +102,7 @@ page 50013 "Posted Delivery Order"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -112,6 +116,7 @@ page 50013 "Posted Delivery Order"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

@@ -4,6 +4,7 @@ page 50028 "PO FA Subform"
     Caption = 'Fixed Asset Lines';
     DelayedInsert = true;
     PageType = ListPart;
+    ApplicationArea = All;
     PopulateAllFields = true;
     SourceTable = "Purchase Order Tracking";
     SourceTableView = WHERE("Data Type" = CONST(FraisAnnexe));

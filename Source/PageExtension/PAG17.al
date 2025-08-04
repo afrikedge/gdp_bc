@@ -7,9 +7,11 @@ pageextension 50004 pageextension70000048 extends "G/L Account Card"
         {
             field("Purchased Account"; Rec."Purchased Account")
             {
+                ApplicationArea = All;
             }
             field("Migration Account"; Rec."Migration Account")
             {
+                ApplicationArea = All;
             }
         }
     }

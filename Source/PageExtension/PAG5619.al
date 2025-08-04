@@ -6,6 +6,7 @@ pageextension 50055 pageextension70000112 extends "FA Depreciation Books"
         {
             field("Book Value"; Rec."Book Value")
             {
+                ApplicationArea = All;
             }
         }
     }

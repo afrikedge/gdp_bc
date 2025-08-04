@@ -6,6 +6,7 @@ pageextension 50027 pageextension70000044 extends "Posted Purchase Invoices"
         {
             field("User ID"; Rec."User ID")
             {
+                ApplicationArea = All;
             }
         }
     }

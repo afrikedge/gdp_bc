@@ -7,6 +7,8 @@ page 50007 "Removal Order"
     PageType = Document;
     SourceTable = pro_enteteBE;
     SourceTableView = WHERE(isconfirme = CONST(false));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -92,6 +94,7 @@ page 50007 "Removal Order"
             {
                 Caption = 'Lines';
                 SubPageLink = numBE = FIELD(numBE);
+                ApplicationArea = All;
             }
         }
     }
@@ -109,6 +112,7 @@ page 50007 "Removal Order"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 ShortCutKey = 'F9';
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -124,6 +128,7 @@ page 50007 "Removal Order"
             {
                 Caption = 'Duplicate ';
                 Visible = false;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -134,6 +139,7 @@ page 50007 "Removal Order"
             {
                 Caption = 'Create Shipment order';
                 Visible = false;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -148,6 +154,7 @@ page 50007 "Removal Order"
                 Caption = 'Delivery Order List';
                 RunObject = Page "Delivery Order List";
                 RunPageLink = numBE = FIELD(numBE);
+                ApplicationArea = All;
             }
             action(ImprimerBE)
             {
@@ -157,6 +164,7 @@ page 50007 "Removal Order"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 Visible = false;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -187,6 +195,7 @@ page 50007 "Removal Order"
                 Image = Cancel;
                 Promoted = true;
                 PromotedCategory = Category4;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin

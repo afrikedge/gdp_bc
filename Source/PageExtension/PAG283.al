@@ -6,6 +6,7 @@ pageextension 50031 pageextension70000063 extends "Recurring General Journal"
         {
             field(Correction; Rec.Correction)
             {
+                ApplicationArea = All;
             }
         }
     }

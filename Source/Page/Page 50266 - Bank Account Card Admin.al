@@ -3,6 +3,8 @@ page 50266 "Bank Account Card Admin"
     Caption = 'Bank Account Card';
     PageType = Card;
     SourceTable = "Bank Account";
+    UsageCategory = None;
+    ApplicationArea = All;
 
     layout
     {

@@ -6,10 +6,12 @@ pageextension 50011 pageextension70000090 extends "Sales Invoice Subform"
         modify("Unit Price")
         {
             Editable = AFK_CanUpdatePrice;
+            ApplicationArea = All;
         }
         modify("Line Amount")
         {
             Editable = false;
+            ApplicationArea = All;
         }
     }
 

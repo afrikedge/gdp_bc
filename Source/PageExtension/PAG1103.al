@@ -6,6 +6,7 @@ pageextension 50048 pageextension70000013 extends "Cost Entries"
         {
             field("Cost Object Name"; Rec."Cost Object Name")
             {
+                ApplicationArea = All;
             }
         }
     }

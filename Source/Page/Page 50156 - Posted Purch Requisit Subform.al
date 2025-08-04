@@ -2,6 +2,7 @@ page 50156 "Posted Purch Requisit Subform"
 {
     Caption = 'Lines';
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Posted Purch Requisition Line";
 
     layout

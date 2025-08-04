@@ -14,6 +14,7 @@ pageextension 50065 pageextension70000132 extends "Sales Prices"
                 Promoted = true;
                 PromotedCategory = Process;
                 RunObject = XMLport 50058;
+                ApplicationArea = All;
             }
         }
     }

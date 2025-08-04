@@ -4,6 +4,8 @@ page 50178 "AMSA Main Invoice"
     PageType = Document;
     SourceTable = "Fuel Statement Header";
     SourceTableView = WHERE("Document Type" = CONST("Main invoice"));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -58,6 +60,7 @@ page 50178 "AMSA Main Invoice"
             {
                 SubPageLink = "Parent Invoice No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
     }
@@ -74,6 +77,7 @@ page 50178 "AMSA Main Invoice"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -97,6 +101,7 @@ page 50178 "AMSA Main Invoice"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin

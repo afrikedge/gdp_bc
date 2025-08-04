@@ -6,9 +6,11 @@ pageextension 50052 pageextension70000109 extends "FA Ledger Entries"
         {
             field("Straight-Line %"; Rec."Straight-Line %")
             {
+                ApplicationArea = All;
             }
             field("FA Posting Group"; Rec."FA Posting Group")
             {
+                ApplicationArea = All;
             }
         }
     }

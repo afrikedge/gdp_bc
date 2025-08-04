@@ -17,6 +17,7 @@ report 50062 "GOC Bank Transfer Order"
 
     Caption = 'Check';
     Permissions = TableData "Bank Account" = m;
+    ApplicationArea = All;
 
     dataset
     {

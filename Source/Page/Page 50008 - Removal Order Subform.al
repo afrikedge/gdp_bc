@@ -5,6 +5,7 @@ page 50008 "Removal Order Subform"
     DelayedInsert = true;
     PageType = ListPart;
     SourceTable = pro_detailBE;
+    ApplicationArea = All;
 
     layout
     {

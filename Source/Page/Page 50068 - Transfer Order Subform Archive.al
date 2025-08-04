@@ -6,6 +6,7 @@ page 50068 "Transfer Order Subform Archive"
     LinksAllowed = false;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Transfer Line Archive";
 
     layout

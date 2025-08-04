@@ -5,6 +5,8 @@ page 50303 "MFiles Invoice - integrated"
     PageType = Document;
     SourceTable = tblFacture;
     SourceTableView = WHERE(Statut = CONST(Integrated));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

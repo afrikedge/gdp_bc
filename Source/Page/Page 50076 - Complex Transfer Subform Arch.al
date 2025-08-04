@@ -6,6 +6,7 @@ page 50076 "Complex Transfer Subform Arch"
     LinksAllowed = false;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Transfer Line Archive";
 
     layout

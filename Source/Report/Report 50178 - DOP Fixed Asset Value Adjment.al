@@ -2,30 +2,31 @@ report 50178 "DOP Fixed Asset Value Adjment"
 {
     Caption = 'Compta. écarts coûts immo';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {
-        dataitem("Posted Adjustment Header";"Posted Adjustment Header")
+        dataitem("Posted Adjustment Header"; "Posted Adjustment Header")
         {
-            DataItemTableView = SORTING("Document Type","No.") ORDER(Ascending) WHERE("Document Type"=CONST("FA Conso"));
-            dataitem("Posted Adjustment Line";"Posted Adjustment Line")
+            DataItemTableView = SORTING("Document Type", "No.") ORDER(Ascending) WHERE("Document Type" = CONST("FA Conso"));
+            dataitem("Posted Adjustment Line"; "Posted Adjustment Line")
             {
-                DataItemLink = "Document Type"=FIELD("Document Type"),"Document No."=FIELD("No.");
-                DataItemTableView = SORTING("Document Type","Document No.","Line No.") ORDER(Ascending);
+                DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
+                DataItemTableView = SORTING("Document Type", "Document No.", "Line No.") ORDER(Ascending);
 
                 trigger OnAfterGetRecord()
                 begin
 
                     GenJrnTableND.TestField("No. Series");
-                        Clear(NoSeriesMgt);
+                    Clear(NoSeriesMgt);
 
-                    if LastDocNo='' then
-                      LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",false);
+                    if LastDocNo = '' then
+                        LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series", GenJrnLine."Posting Date", false);
 
-                    CreateEntry:=false;
+                    CreateEntry := false;
 
-                    CreateEntry:=FAConsoMgt.CreateLigneAdjustCoutDOP("Posted Adjustment Header",
-                      "Posted Adjustment Line",ModeleFeuille,NomFeuille,LastDocNo,LineNum);
+                    CreateEntry := FAConsoMgt.CreateLigneAdjustCoutDOP("Posted Adjustment Header",
+                      "Posted Adjustment Line", ModeleFeuille, NomFeuille, LastDocNo, LineNum);
 
                     if CreateEntry then LastDocNo := IncStr(LastDocNo);
                 end;
@@ -36,27 +37,27 @@ report 50178 "DOP Fixed Asset Value Adjment"
                 CreateEntry: Boolean;
                 Cust: Record Customer;
             begin
-                
-                    BesoinNo := BesoinNo + 1;
-                    Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
-                
-                    /*GenJrnTableND.TESTFIELD("No. Series");
-                    CLEAR(NoSeriesMgt);
-                
-                    IF LastDocNo='' THEN
-                        LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",FALSE);
-                    //END ELSE BEGIN
-                    //    LastDocNo := INCSTR(LastDocNo);
-                    //END;
-                    CreateEntry:=FALSE;
-                
-                   IF Cust.GET("Sales Header"."Sell-to Customer No.") THEN
-                     IF ((Cust."Sales Channel Code" = AddOnSetup."JIRAMA Sales Channel")
-                       OR (Cust."Sales Channel Code" = AddOnSetup."JOVENNA Sales Channel")) THEN
-                     CreateEntry := GLMgt.TraiterProvisionCdeVenteVarStockJIRAMA("Sales Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
-                
-                   IF CreateEntry THEN LastDocNo := INCSTR(LastDocNo);*/
+
+                BesoinNo := BesoinNo + 1;
+                Window.Update(1,
+                Round(BesoinNo / NbreTotalLignes * 10000, 1));
+
+                /*GenJrnTableND.TESTFIELD("No. Series");
+                CLEAR(NoSeriesMgt);
+
+                IF LastDocNo='' THEN
+                    LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",FALSE);
+                //END ELSE BEGIN
+                //    LastDocNo := INCSTR(LastDocNo);
+                //END;
+                CreateEntry:=FALSE;
+
+               IF Cust.GET("Sales Header"."Sell-to Customer No.") THEN
+                 IF ((Cust."Sales Channel Code" = AddOnSetup."JIRAMA Sales Channel")
+                   OR (Cust."Sales Channel Code" = AddOnSetup."JOVENNA Sales Channel")) THEN
+                 CreateEntry := GLMgt.TraiterProvisionCdeVenteVarStockJIRAMA("Sales Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+
+               IF CreateEntry THEN LastDocNo := INCSTR(LastDocNo);*/
 
             end;
 
@@ -75,21 +76,21 @@ report 50178 "DOP Fixed Asset Value Adjment"
             begin
                 AddOnSetup.Get;
 
-                GenJrnTableND.Get(ModeleFeuille,NomFeuille);
+                GenJrnTableND.Get(ModeleFeuille, NomFeuille);
 
                 GenJrnLine.Reset;
-                GenJrnLine.SetRange("Journal Template Name",ModeleFeuille);
-                GenJrnLine.SetRange("Journal Batch Name",NomFeuille);
-                if GenJrnLine.FindFirst then Error(Text001,NomFeuille);
+                GenJrnLine.SetRange("Journal Template Name", ModeleFeuille);
+                GenJrnLine.SetRange("Journal Batch Name", NomFeuille);
+                if GenJrnLine.FindFirst then Error(Text001, NomFeuille);
 
-                BesoinNo :=0;
+                BesoinNo := 0;
 
-                "Posted Adjustment Header".SetRange("Posting Date",DateDeb,DateFin);
+                "Posted Adjustment Header".SetRange("Posting Date", DateDeb, DateFin);
 
                 Window.Open(Text008);
 
-                LineNum:=0;
-                 NbreTotalLignes := "Posted Adjustment Header".Count;
+                LineNum := 0;
+                NbreTotalLignes := "Posted Adjustment Header".Count;
             end;
         }
     }
@@ -101,17 +102,17 @@ report 50178 "DOP Fixed Asset Value Adjment"
         {
             area(content)
             {
-                field(PostingDate;PostingDate)
+                field(PostingDate; PostingDate)
                 {
                     Caption = 'Posting Date';
                     Visible = false;
                 }
-                field(ModeleFeuille;ModeleFeuille)
+                field(ModeleFeuille; ModeleFeuille)
                 {
                     Caption = 'Journal Template';
                     Visible = false;
                 }
-                field(NomFeuille;NomFeuille)
+                field(NomFeuille; NomFeuille)
                 {
                     Caption = 'Gen. Journal';
                     Visible = false;
@@ -122,19 +123,18 @@ report 50178 "DOP Fixed Asset Value Adjment"
                         GenJournalBatchPage: Page "General Journal Batches";
                     begin
                         GenJournalBatch.Reset;
-                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name",ModeleFeuille);
-                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then
-                        begin
-                          NomFeuille := GenJournalBatch.Name;
-                          //NewFASubLocationName := FASubLoc.Name;
+                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name", ModeleFeuille);
+                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then begin
+                            NomFeuille := GenJournalBatch.Name;
+                            //NewFASubLocationName := FASubLoc.Name;
                         end;
                     end;
                 }
-                field(DateDeb;DateDeb)
+                field(DateDeb; DateDeb)
                 {
                     Caption = 'Date début';
                 }
-                field(DateFin;DateFin)
+                field(DateFin; DateFin)
                 {
                     Caption = 'Date fin';
                 }
@@ -155,7 +155,7 @@ report 50178 "DOP Fixed Asset Value Adjment"
         AddOnSetup.Get;
         AddOnSetup.TestField("Provision Tmpl Journal");
         ModeleFeuille := AddOnSetup."Provision Tmpl Journal";
-        PostingDate:=WorkDate;
+        PostingDate := WorkDate;
     end;
 
     var
@@ -181,10 +181,10 @@ report 50178 "DOP Fixed Asset Value Adjment"
         DateFin: Date;
         CreateEntry: Boolean;
 
-    procedure SetFeuille(CodeModele1: Code[10];CodeFeuille1: Code[10])
+    procedure SetFeuille(CodeModele1: Code[10]; CodeFeuille1: Code[10])
     begin
-        ModeleFeuille:=CodeModele1;
-        NomFeuille:=CodeFeuille1;
+        ModeleFeuille := CodeModele1;
+        NomFeuille := CodeFeuille1;
     end;
 }
 

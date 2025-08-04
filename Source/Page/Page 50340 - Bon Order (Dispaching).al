@@ -11,6 +11,8 @@ page 50340 "Bon Order (Dispaching)"
     SourceTable = pro_enteteBE;
     SourceTableView = WHERE(BonIsConfirme = CONST(false),
                             IsBon = CONST(true));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -143,6 +145,7 @@ page 50340 "Bon Order (Dispaching)"
             {
                 Caption = 'Lines';
                 SubPageLink = numBE = FIELD(numBE);
+                ApplicationArea = All;
             }
         }
     }
@@ -160,6 +163,7 @@ page 50340 "Bon Order (Dispaching)"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 ShortCutKey = 'F9';
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -175,6 +179,7 @@ page 50340 "Bon Order (Dispaching)"
             {
                 Caption = 'Duplicate ';
                 Visible = false;
+                ApplicationArea = All;
 
 
                 trigger OnAction()
@@ -188,6 +193,7 @@ page 50340 "Bon Order (Dispaching)"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -221,6 +227,7 @@ page 50340 "Bon Order (Dispaching)"
             {
                 Caption = 'Create Shipment order';
                 Visible = false;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -236,6 +243,7 @@ page 50340 "Bon Order (Dispaching)"
                 RunObject = Page "Delivery Order List";
                 RunPageLink = numBE = FIELD(numBE);
                 Visible = false;
+                ApplicationArea = All;
             }
             action(ImprimerBE)
             {
@@ -244,6 +252,7 @@ page 50340 "Bon Order (Dispaching)"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -280,6 +289,7 @@ page 50340 "Bon Order (Dispaching)"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 Visible = false;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -309,6 +319,7 @@ page 50340 "Bon Order (Dispaching)"
                 Promoted = true;
                 PromotedCategory = Category4;
                 Visible = false;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -330,6 +341,7 @@ page 50340 "Bon Order (Dispaching)"
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
                 RunPageMode = Create;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -343,6 +355,7 @@ page 50340 "Bon Order (Dispaching)"
             {
                 Caption = 'Incidents';
                 Image = Entries;
+                ApplicationArea = All;
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;

@@ -4,6 +4,7 @@ page 50318 "Transport Compatibility"
     PageType = List;
     SourceTable = "Delivery Constraint";
     SourceTableView = WHERE(Type = CONST(Transport));
+    ApplicationArea = All;
 
     layout
     {

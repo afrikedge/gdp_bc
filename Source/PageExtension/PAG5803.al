@@ -6,6 +6,7 @@ pageextension 50061 pageextension70000123 extends "Revaluation Journal"
         {
             field("Ref Cargo"; Rec."Ref Cargo")
             {
+                ApplicationArea = All;
             }
         }
     }

@@ -9,6 +9,7 @@ report 50191 "Posted Sales Invoice"
     PreviewMode = PrintLayout;
     WordMergeDataItem = Header;
     RDLCLayout = './Source/Report/Layout/Posted Sales Invoice.rdl';
+    ApplicationArea = All;
 
     dataset
     {
@@ -503,7 +504,9 @@ report 50191 "Posted Sales Invoice"
             column(CompanyPicture; CompanyInfo.Picture)
             {
             }
-
+            column(CompanyStamp; CompanyInfo."Company Stamp")
+            {
+            }
 
             column(DocumentNo; "No.")
             {
@@ -683,8 +686,27 @@ report 50191 "Posted Sales Invoice"
             column(TraiteMode; TraiteMode)
             {
             }
-
-
+            column(RCS; RCS)
+            {
+            }
+            column(RCSLbl; RCSLbl)
+            {
+            }
+            column(Posting_Description; "Posting Description")
+            {
+            }
+            column(SignFullName; UserSetup."User Full Name")
+            {
+            }
+            column(SignFunction; UserSetup."Afk Function Name on PO")
+            {
+            }
+            column(SignSignature; UserSetup."Afk Signature")
+            {
+            }
+            column(SignatureDate; Format(Today))
+            {
+            }
             dataitem(Line; "Sales Invoice Line")
             {
                 DataItemLink = "Document No." = field("No.");
@@ -1553,6 +1575,7 @@ report 50191 "Posted Sales Invoice"
                     NIF := Cust."VAT Registration No.";
                     STAT := Cust."STAT Code";
                     CIF := Cust."CIF/CIS";
+                    RCS := Cust."Trade Number";
                     ChannelCode := Cust."Sales Channel Code";
                     Customer_No_ := Cust."No.";
                     Customer_Name := Cust.Name;
@@ -1640,6 +1663,10 @@ report 50191 "Posted Sales Invoice"
                     else
                         CheckPositionMode := '';
                 end;
+
+                // -----------*--------- Commercial Manager signature ---------*----------//
+                GetUserSignature(UserSetup);
+                // -----------*--------- Commercial Manager signature ---------*----------//
 
                 GetLineFeeNoteOnReportHist("No.");
 
@@ -1794,6 +1821,7 @@ report 50191 "Posted Sales Invoice"
     begin
         CompanyInfo.Get();
         CompanyInfo.CalcFields(Picture);
+        CompanyInfo.CalcFields("Company Stamp");
 
         if Header.GetFilters = '' then
             Error(NoFilterSetErr);
@@ -1819,6 +1847,7 @@ report 50191 "Posted Sales Invoice"
         SellToContact: Record Contact;
         BillToContact: Record Contact;
         SalesHeaderLineRec: Record "Sales Invoice Line";
+        UserSetup: Record "User Setup";
         RepCheck: Report Check;
         LanguageMgt: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
@@ -1843,6 +1872,7 @@ report 50191 "Posted Sales Invoice"
         Foot3: Text;
         STAT: Code[50];
         CIF: Code[50];
+        RCS: Code[50];
         PaymentTerm: Text;
         ChannelCode: Code[10];
         VAT: Text[5];
@@ -1872,6 +1902,8 @@ report 50191 "Posted Sales Invoice"
         CurrencyName: Text;
         LocalCurrencyName: Text;
         NoText: array[2] of Text;
+        // SignFullName: Text;
+        // SignFunction: Text;
 
         JobNo: Code[20];
         JobTaskNo: Code[20];
@@ -1902,6 +1934,7 @@ report 50191 "Posted Sales Invoice"
         OvAvecCahcetMode: Text;
         TraiteMode: Text;
         PrevLineAmount: Decimal;
+        RCSLbl: Label 'RCS :';
         SalespersonLbl: Label 'Salesperson';
         CompanyInfoBankAccNoLbl: Label 'Account No.';
         CompanyInfoBankNameLbl: Label 'Bank';
@@ -2458,5 +2491,19 @@ report 50191 "Posted Sales Invoice"
         ShipmentInv.SetRange("Invoice No.", Header."No.");
         if ShipmentInv.FindFirst() then
             exit(ShipmentInv."Shipment No.");
+    end;
+
+    procedure GetUserSignature(var USetup: record "User Setup")
+    begin
+        USetup.Init();
+        if USetup.FindSet() then
+            repeat
+                if USetup."User ID" <> '' then
+                    if USetup."Afk Commercial Manager" then begin
+                        USetup.CalcFields("Afk Signature");
+                        USetup.CalcFields("User Full Name");
+                        exit;
+                    end;
+            until USetup.Next() = 0;
     end;
 }

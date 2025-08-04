@@ -6,6 +6,7 @@ pageextension 50071 pageextension70000138 extends "Sales Quotes"
         {
             field("User ID"; Rec."User ID")
             {
+                ApplicationArea = All;
             }
         }
     }

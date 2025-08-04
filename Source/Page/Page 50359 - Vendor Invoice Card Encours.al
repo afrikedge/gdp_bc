@@ -4,8 +4,10 @@ page 50359 "Vendor Invoice Card Encours"
     DataCaptionFields = "Vendor Invoice No.", "Reference Number";
     DeleteAllowed = false;
     InsertAllowed = false;
-    PageType = Card;
+    PageType = Document;
     SourceTable = "Vendor Invoice Doc";
+    UsageCategory = Documents;
+    ApplicationArea = All;
 
     layout
     {

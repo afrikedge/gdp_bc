@@ -6,6 +6,7 @@ pageextension 50000 pageextension70000131 extends "Customer Price Groups"
         {
             action(ImportPrices)
             {
+                ApplicationArea = All;
                 Caption = 'Import sales prices';
                 Image = Import;
                 Promoted = true;

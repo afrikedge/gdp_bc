@@ -4,6 +4,8 @@ page 50270 "G/L Account Card ADMIN"
     PageType = Card;
     RefreshOnActivate = true;
     SourceTable = "G/L Account";
+    UsageCategory = None;
+    ApplicationArea = All;
 
     layout
     {

@@ -11,24 +11,24 @@ xmlport 50004 "Import LPSA Receptions"
     {
         textelement(Root)
         {
-            tableelement("Import Data";"Import Data")
+            tableelement("Import Data"; "Import Data")
             {
                 AutoSave = false;
                 XmlName = 'InvoiceData';
                 SourceTableView = SORTING(EntryNo) ORDER(Ascending);
-                fieldattribute(OTNumber;"Import Data".ExternalDocNo)
+                fieldattribute(OTNumber; "Import Data".ExternalDocNo)
                 {
                 }
-                fieldattribute(ReceiptDate;"Import Data".PostingDate)
+                fieldattribute(ReceiptDate; "Import Data".PostingDate)
                 {
                 }
-                fieldattribute(ItemNum;"Import Data".DocNum2)
+                fieldattribute(ItemNum; "Import Data".DocNum2)
                 {
                 }
-                fieldattribute(Volume;"Import Data".DebitAmount)
+                fieldattribute(Volume; "Import Data".DebitAmount)
                 {
                 }
-                fieldattribute(DepotDest;"Import Data".LocationCode2)
+                fieldattribute(DepotDest; "Import Data".LocationCode2)
                 {
                 }
 
@@ -41,14 +41,14 @@ xmlport 50004 "Import LPSA Receptions"
 
                     Clear(TransH);
                     TransH.Reset;
-                    TransH.SetRange("External Document No.","Import Data".ExternalDocNo);
-                    if not TransH.FindFirst then Error(Text005,"Import Data".ExternalDocNo);
-                    TransH.TestField(TransH.Status,TransH.Status::Released);
+                    TransH.SetRange("External Document No.", "Import Data".ExternalDocNo);
+                    if not TransH.FindFirst then Error(Text005, "Import Data".ExternalDocNo);
+                    TransH.TestField(TransH.Status, TransH.Status::Released);
 
                     Evaluate(TransH."Receipt Date", "Import Data".PostingDate);
                     //MESSAGE("Import Data".LocationCode2);
-                    if TransH."Transfer-to Code"<>"Import Data".LocationCode2 then
-                      Error(Text006,"Import Data".ExternalDocNo,TransH."Transfer-to Code");
+                    if TransH."Transfer-to Code" <> "Import Data".LocationCode2 then
+                        Error(Text006, "Import Data".ExternalDocNo, TransH."Transfer-to Code");
                     TransH.Modify;
 
 
@@ -56,31 +56,31 @@ xmlport 50004 "Import LPSA Receptions"
 
 
                     TransLine.Reset;
-                    TransLine.SetRange("Document Type",TransLine."Document Type"::Transfer);
-                    TransLine.SetRange("Document No.",TransH."No.");
+                    TransLine.SetRange("Document Type", TransLine."Document Type"::Transfer);
+                    TransLine.SetRange("Document No.", TransH."No.");
                     if TransLine.FindFirst then begin
 
-                      TransferReason.Reset;
-                      TransferReason.SetRange(TransferReason."Document Type",TransferReason."Document Type"::Transfer);
-                      TransferReason.SetRange(TransferReason."Document No.",TransH."No.");
-                      TransferReason.SetRange(TransferReason."Line No.",TransLine."Line No.");
-                      TransferReason.DeleteAll;
+                        TransferReason.Reset;
+                        TransferReason.SetRange(TransferReason."Document Type", TransferReason."Document Type"::Transfer);
+                        TransferReason.SetRange(TransferReason."Document No.", TransH."No.");
+                        TransferReason.SetRange(TransferReason."Line No.", TransLine."Line No.");
+                        TransferReason.DeleteAll;
 
-                      TransLine.TestField(TransLine."Item No.","Import Data".DocNum2);
+                        TransLine.TestField(TransLine."Item No.", "Import Data".DocNum2);
 
-                      TransferReason.Init;
-                      TransferReason."Document Type" := TransferReason."Document Type"::Transfer;
-                      TransferReason."Document No." := TransH."No.";
-                      if "Import Data".DebitAmount>TransLine.Quantity then
-                        TransferReason."Adjustment Type" := TransferReason."Adjustment Type"::Gain
-                      else
-                        TransferReason."Adjustment Type" := TransferReason."Adjustment Type"::Perte;
-                      TransferReason.Validate("Reason Code",AddOnSetup."LPSA Adjustment Reason Code");
-                      TransferReason.Validate(Quantity,Abs("Import Data".DebitAmount-TransLine.Quantity));
-                      TransferReason.Insert;
+                        TransferReason.Init;
+                        TransferReason."Document Type" := TransferReason."Document Type"::Transfer;
+                        TransferReason."Document No." := TransH."No.";
+                        if "Import Data".DebitAmount > TransLine.Quantity then
+                            TransferReason."Adjustment Type" := TransferReason."Adjustment Type"::Gain
+                        else
+                            TransferReason."Adjustment Type" := TransferReason."Adjustment Type"::Perte;
+                        TransferReason.Validate("Reason Code", AddOnSetup."LPSA Adjustment Reason Code");
+                        TransferReason.Validate(Quantity, Abs("Import Data".DebitAmount - TransLine.Quantity));
+                        TransferReason.Insert;
 
-                      TransLine.AFK_RefreshAdjustQty;
-                      TransLine.Modify;
+                        TransLine.AFK_RefreshAdjustQty;
+                        TransLine.Modify;
                     end;
                 end;
             }
@@ -94,17 +94,19 @@ xmlport 50004 "Import LPSA Receptions"
         {
             area(content)
             {
-                field(GenJrnTemplate;GenJrnTemplate)
+                field(GenJrnTemplate; GenJrnTemplate)
                 {
                     Caption = 'General journal template';
                     TableRelation = "Gen. Journal Template";
                     Visible = false;
+                    ApplicationArea = All;
                 }
-                field(GenJrnBatch;GenJrnBatch)
+                field(GenJrnBatch; GenJrnBatch)
                 {
                     Caption = 'Posting journal Batch';
                     TableRelation = "Gen. Journal Batch";
                     Visible = false;
+                    ApplicationArea = All;
                 }
             }
         }
@@ -135,7 +137,7 @@ xmlport 50004 "Import LPSA Receptions"
 
         LineNo := 0;
 
-        BesoinNo :=0;
+        BesoinNo := 0;
         Window.Open(Text008);
     end;
 

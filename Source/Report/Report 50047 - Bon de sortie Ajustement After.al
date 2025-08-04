@@ -4,6 +4,7 @@ report 50047 "Bon de sortie Ajustement After"
     RDLCLayout = './Source/Report/Layout/Bon de sortie Ajustement After.rdlc';
     Caption = 'Bon de sortie';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

@@ -4,6 +4,8 @@ page 50194 "Item Transfer"
     PageType = Document;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Transfer));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -68,6 +70,7 @@ page 50194 "Item Transfer"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)

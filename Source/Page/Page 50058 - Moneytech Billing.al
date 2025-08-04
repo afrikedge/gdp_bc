@@ -2,6 +2,8 @@ page 50058 "Moneytech Billing"
 {
     PageType = Document;
     SourceTable = "MoneyTech Billing";
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -35,6 +37,7 @@ page 50058 "Moneytech Billing"
             {
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
     }

@@ -6,6 +6,8 @@ page 50075 "Complex Transfer Order Archive"
     RefreshOnActivate = true;
     SourceTable = "Transfer Header Archive";
     SourceTableView = WHERE("Transfer Type" = CONST(Hypothetical));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -67,6 +69,7 @@ page 50075 "Complex Transfer Order Archive"
             {
                 SubPageLink = "Document No." = FIELD("No."),
                               "Derived From Line No." = CONST(0);
+                ApplicationArea = All;
             }
             group("Transfer-from")
             {
@@ -217,10 +220,12 @@ page 50075 "Complex Transfer Order Archive"
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }

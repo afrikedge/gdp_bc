@@ -1016,7 +1016,12 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
                     Caption = 'Demandes revision';
                     RunObject = Page "Afk Customer Revision List";
                 }
-
+                action(AfkOperationPleinCuveList)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Operation Plein Cuve List';
+                    RunObject = Page "Afk Operation Plein Cuve List";
+                }
             }
         }
 

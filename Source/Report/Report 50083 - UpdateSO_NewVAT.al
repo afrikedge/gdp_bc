@@ -2,6 +2,7 @@ report 50083 UpdateSO_NewVAT
 {
     Caption = 'Mise à jour TVA';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {

@@ -12,27 +12,27 @@ xmlport 50077 "Import Primes Station"
     {
         textelement(Root)
         {
-            tableelement("Import Data";"Import Data")
+            tableelement("Import Data"; "Import Data")
             {
                 AutoSave = false;
                 XmlName = 'InvoiceData';
                 SourceTableView = SORTING(EntryNo) ORDER(Ascending);
-                fieldattribute(PostingDate;"Import Data".PostingDate)
+                fieldattribute(PostingDate; "Import Data".PostingDate)
                 {
                 }
-                fieldattribute(ExternalDocNo;"Import Data".ExternalDocNo)
+                fieldattribute(ExternalDocNo; "Import Data".ExternalDocNo)
                 {
                 }
-                fieldattribute(CodeStation;"Import Data".CodeTiers)
+                fieldattribute(CodeStation; "Import Data".CodeTiers)
                 {
                 }
-                fieldattribute(NomStation;"Import Data".Description)
+                fieldattribute(NomStation; "Import Data".Description)
                 {
                 }
-                fieldattribute(Libelle;"Import Data".Description2)
+                fieldattribute(Libelle; "Import Data".Description2)
                 {
                 }
-                fieldattribute(MontantCredit;"Import Data".CreditAmount)
+                fieldattribute(MontantCredit; "Import Data".CreditAmount)
                 {
                 }
 
@@ -40,113 +40,113 @@ xmlport 50077 "Import Primes Station"
                 var
                     GLAccNo: Code[20];
                 begin
-                    
+
                     BesoinNo := BesoinNo + 1;
                     //Window.UPDATE(1,
                     //ROUND(BesoinNo / NbreTotalLignes * 10000,1));
-                    
-                      //Dette fournisseur
-                      Clear(GenJrnLine);
-                      GenJrnLine."Journal Template Name":= GenJrnTemplate;
-                      GenJrnLine."Journal Batch Name" := GenJrnBatch;
-                      LineNo := LineNo+10000;
-                      GenJrnLine."Line No." := LineNo;
-                      JrnTmplName.Get(GenJrnLine."Journal Template Name");
-                      JrnTmplName.TestField(JrnTmplName."Source Code");
-                      GenJrnLine."Source Code" := JrnTmplName."Source Code";
-                      //GenJrnLine.VALIDATE("Posting Date","Import Data".PostingDate);
-                    
-                      GenJrnTable.TestField("No. Series");
-                      if GenJrnTable."No. Series" <> '' then begin
+
+                    //Dette fournisseur
+                    Clear(GenJrnLine);
+                    GenJrnLine."Journal Template Name" := GenJrnTemplate;
+                    GenJrnLine."Journal Batch Name" := GenJrnBatch;
+                    LineNo := LineNo + 10000;
+                    GenJrnLine."Line No." := LineNo;
+                    JrnTmplName.Get(GenJrnLine."Journal Template Name");
+                    JrnTmplName.TestField(JrnTmplName."Source Code");
+                    GenJrnLine."Source Code" := JrnTmplName."Source Code";
+                    //GenJrnLine.VALIDATE("Posting Date","Import Data".PostingDate);
+
+                    GenJrnTable.TestField("No. Series");
+                    if GenJrnTable."No. Series" <> '' then begin
                         Clear(NoSeriesMgt);
-                    
-                        if LastDocNo='' then begin
-                          GenJrnLine."Document No." := NoSeriesMgt.GetNextNo(GenJrnTable."No. Series",GenJrnLine."Posting Date",false);
-                          LastDocNo := GenJrnLine."Document No.";
+
+                        if LastDocNo = '' then begin
+                            GenJrnLine."Document No." := NoSeriesMgt.GetNextNo(GenJrnTable."No. Series", GenJrnLine."Posting Date", false);
+                            LastDocNo := GenJrnLine."Document No.";
                         end else begin
-                          if (LastAmountTotal<>0) then
-                            GenJrnLine."Document No." :=(LastDocNo)
-                          else
-                            GenJrnLine."Document No." :=IncStr(LastDocNo);
-                          LastDocNo := GenJrnLine."Document No.";
+                            if (LastAmountTotal <> 0) then
+                                GenJrnLine."Document No." := (LastDocNo)
+                            else
+                                GenJrnLine."Document No." := IncStr(LastDocNo);
+                            LastDocNo := GenJrnLine."Document No.";
                         end;
-                      end;
-                    
-                      //GenJrnLine."Document No." := DocNum;
-                    
-                      Evaluate(GenJrnLine."Posting Date" ,"Import Data".PostingDate);
-                    
-                      GenJrnLine."Document Type":=GenJrnLine."Document Type"::"Credit Memo";
-                    
-                      GenJrnLine."Account Type" := GenJrnLine."Account Type"::Customer;
-                    
-                      GenJrnLine."External Document No." := "Import Data".ExternalDocNo;
-                    
-                    
-                    
-                      GLAccNo := "Import Data".CodeTiers;
-                      GenJrnLine.Validate("Account No.",GLAccNo);
-                    
-                    
-                    
-                    
-                    
-                      //Cust2.GET(AddOnSetup."Default Customer");
-                      //Vend2.CheckBlockedVendOnJnls(Vend2,"Document Type",FALSE);
-                    
-                    
-                      //GenJrnLine.Description := COPYSTR("Import Data".Description,1,37)+' - '+COPYSTR("Import Data".InvoiceNo,1,10);
-                    
-                      //GenJrnLine."Posting Group" := Cust2."Customer Posting Group";
-                      //GenJrnLine."Salespers./Purch. Code" := Cust2."Salesperson Code";
-                      //"Payment Terms Code" := Vend2."Payment Terms Code";
-                      //GenJrnLine."Due Date" := "Monthly Invoice Data".DueDate;
-                      //GenJrnLine.VALIDATE("Bill-to/Pay-to No.","Monthly Invoice Data".CustomerNo);
-                      //GenJrnLine.VALIDATE("Sell-to/Buy-from No.","Monthly Invoice Data".CustomerNo);
-                      //GenJrnLine."Gen. Posting Type" := ;
-                      //GenJrnLine."Gen. Bus. Posting Group" := '';
-                      //GenJrnLine."Gen. Prod. Posting Group" := '';
-                    
-                      //IF ("Import Data".LocationCode<>'') THEN
-                      //  GenJrnLine.VALIDATE("VAT Bus. Posting Group", "Import Data".LocationCode);
-                    
-                      //IF ("Import Data".LocationCode2<>'') THEN
-                      //  GenJrnLine.VALIDATE("VAT Prod. Posting Group" , "Import Data".LocationCode2);
-                    
-                      GenJrnLine.Validate("Currency Code",'');
-                    
-                      //GenJrnLine."Bal. Account Type" :=  GenJrnLine."Bal. Account Type"::"Bank Account";
-                      //GenJrnLine.VALIDATE("Bal. Account No.","Import Data".BalGLAccountNo);
-                    
-                    
-                      //IF "Import Data".DebitAmount>0 THEN
-                      //  GenJrnLine.Amount := "Import Data".DebitAmount
-                      //ELSE
-                      GenJrnLine.Amount := -"Import Data".CreditAmount;
-                      GenJrnLine.Validate(Amount);
-                    
-                      LastAmountTotal := LastAmountTotal + GenJrnLine.Amount;
-                    
-                      GenJrnLine.Description := CopyStr("Import Data".Description2,1,49);
-                    
-                      //VAT
-                      /*AddOnSetup.TESTFIELD(AddOnSetup."NoVAT Prod. Posting Group");
-                      IF (GenJrnLine."Account Type"=GenJrnLine."Account Type"::"G/L Account") THEN
-                        IF "Import Data".InvoiceNo='' THEN
-                          IF ((GLAccNo[1]='6') OR (GLAccNo[1]='7')) THEN
-                            GenJrnLine.VALIDATE(GenJrnLine."VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-                            */
-                    
-                    
-                    
+                    end;
+
+                    //GenJrnLine."Document No." := DocNum;
+
+                    Evaluate(GenJrnLine."Posting Date", "Import Data".PostingDate);
+
+                    GenJrnLine."Document Type" := GenJrnLine."Document Type"::"Credit Memo";
+
+                    GenJrnLine."Account Type" := GenJrnLine."Account Type"::Customer;
+
+                    GenJrnLine."External Document No." := "Import Data".ExternalDocNo;
+
+
+
+                    GLAccNo := "Import Data".CodeTiers;
+                    GenJrnLine.Validate("Account No.", GLAccNo);
+
+
+
+
+
+                    //Cust2.GET(AddOnSetup."Default Customer");
+                    //Vend2.CheckBlockedVendOnJnls(Vend2,"Document Type",FALSE);
+
+
+                    //GenJrnLine.Description := COPYSTR("Import Data".Description,1,37)+' - '+COPYSTR("Import Data".InvoiceNo,1,10);
+
+                    //GenJrnLine."Posting Group" := Cust2."Customer Posting Group";
+                    //GenJrnLine."Salespers./Purch. Code" := Cust2."Salesperson Code";
+                    //"Payment Terms Code" := Vend2."Payment Terms Code";
+                    //GenJrnLine."Due Date" := "Monthly Invoice Data".DueDate;
+                    //GenJrnLine.VALIDATE("Bill-to/Pay-to No.","Monthly Invoice Data".CustomerNo);
+                    //GenJrnLine.VALIDATE("Sell-to/Buy-from No.","Monthly Invoice Data".CustomerNo);
+                    //GenJrnLine."Gen. Posting Type" := ;
+                    //GenJrnLine."Gen. Bus. Posting Group" := '';
+                    //GenJrnLine."Gen. Prod. Posting Group" := '';
+
+                    //IF ("Import Data".LocationCode<>'') THEN
+                    //  GenJrnLine.VALIDATE("VAT Bus. Posting Group", "Import Data".LocationCode);
+
+                    //IF ("Import Data".LocationCode2<>'') THEN
+                    //  GenJrnLine.VALIDATE("VAT Prod. Posting Group" , "Import Data".LocationCode2);
+
+                    GenJrnLine.Validate("Currency Code", '');
+
+                    //GenJrnLine."Bal. Account Type" :=  GenJrnLine."Bal. Account Type"::"Bank Account";
+                    //GenJrnLine.VALIDATE("Bal. Account No.","Import Data".BalGLAccountNo);
+
+
+                    //IF "Import Data".DebitAmount>0 THEN
+                    //  GenJrnLine.Amount := "Import Data".DebitAmount
+                    //ELSE
+                    GenJrnLine.Amount := -"Import Data".CreditAmount;
+                    GenJrnLine.Validate(Amount);
+
+                    LastAmountTotal := LastAmountTotal + GenJrnLine.Amount;
+
+                    GenJrnLine.Description := CopyStr("Import Data".Description2, 1, 49);
+
+                    //VAT
+                    /*AddOnSetup.TESTFIELD(AddOnSetup."NoVAT Prod. Posting Group");
+                    IF (GenJrnLine."Account Type"=GenJrnLine."Account Type"::"G/L Account") THEN
+                      IF "Import Data".InvoiceNo='' THEN
+                        IF ((GLAccNo[1]='6') OR (GLAccNo[1]='7')) THEN
+                          GenJrnLine.VALIDATE(GenJrnLine."VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
+                          */
+
+
+
                     //Contrepartie
                     GenJrnLine."Bal. Account Type" := GenJrnLine."Account Type"::"G/L Account";
-                    GenJrnLine.Validate("Bal. Account No.",AddOnSetup."Primes Station Acc");
-                    GenJrnLine."Bal. Gen. Posting Type":=GenJrnLine."Bal. Gen. Posting Type"::Sale;
+                    GenJrnLine.Validate("Bal. Account No.", AddOnSetup."Primes Station Acc");
+                    GenJrnLine."Bal. Gen. Posting Type" := GenJrnLine."Bal. Gen. Posting Type"::Sale;
                     LastAmountTotal := LastAmountTotal + (-GenJrnLine.Amount);
-                    
-                    
-                    GenJrnLine.Validate(GenJrnLine."Bal. VAT Prod. Posting Group",AddOnSetup."VAT Group Primes Gerant");
+
+
+                    GenJrnLine.Validate(GenJrnLine."Bal. VAT Prod. Posting Group", AddOnSetup."VAT Group Primes Gerant");
                     /*
                     IF ("Import Data".LocationCode2<>'') THEN BEGIN
                     
@@ -165,10 +165,10 @@ xmlport 50077 "Import Primes Station"
                     
                     END;
                     */
-                    
-                    
-                    
-                      if GenJrnLine.Amount<>0 then
+
+
+
+                    if GenJrnLine.Amount <> 0 then
                         GenJrnLine.Insert(true);
 
                 end;
@@ -183,21 +183,24 @@ xmlport 50077 "Import Primes Station"
         {
             area(content)
             {
-                field(GenJrnTemplate;GenJrnTemplate)
+                field(GenJrnTemplate; GenJrnTemplate)
                 {
                     Caption = 'General journal template';
                     TableRelation = "Gen. Journal Template";
                     Visible = false;
+                    ApplicationArea = All;
                 }
-                field(GenJrnBatch;GenJrnBatch)
+                field(GenJrnBatch; GenJrnBatch)
                 {
                     Caption = 'Posting journal Batch';
                     TableRelation = "Gen. Journal Batch";
                     Visible = false;
+                    ApplicationArea = All;
                 }
-                field("N° Document";DocNum)
+                field("N° Document"; DocNum)
                 {
                     Visible = false;
+                    ApplicationArea = All;
                 }
             }
         }
@@ -230,19 +233,19 @@ xmlport 50077 "Import Primes Station"
 
 
 
-        if GenJrnTemplate='' then Error(Text003);
-        if GenJrnBatch='' then Error(Text004);
+        if GenJrnTemplate = '' then Error(Text003);
+        if GenJrnBatch = '' then Error(Text004);
         //IF DocNum='' THEN ERROR(Text005);
 
-        GenJrnTable.Get(GenJrnTemplate,GenJrnBatch);
+        GenJrnTable.Get(GenJrnTemplate, GenJrnBatch);
 
         GenJrnLine.Reset;
-        GenJrnLine.SetRange("Journal Template Name",GenJrnTemplate);
-        GenJrnLine.SetRange("Journal Batch Name",GenJrnBatch);
-        if GenJrnLine.FindFirst then Error(Text001,GenJrnBatch);
+        GenJrnLine.SetRange("Journal Template Name", GenJrnTemplate);
+        GenJrnLine.SetRange("Journal Batch Name", GenJrnBatch);
+        if GenJrnLine.FindFirst then Error(Text001, GenJrnBatch);
         LineNo := 0;
 
-        BesoinNo :=0;
+        BesoinNo := 0;
         Window.Open(Text008);
     end;
 
@@ -274,7 +277,7 @@ xmlport 50077 "Import Primes Station"
         DocNum: Code[20];
         Text005: Label 'Vous devez selectionner un code document';
 
-    procedure SetFeuille(Modele: Code[10];NomFeuille: Code[10])
+    procedure SetFeuille(Modele: Code[10]; NomFeuille: Code[10])
     begin
         GenJrnBatch := NomFeuille;
         GenJrnTemplate := Modele;

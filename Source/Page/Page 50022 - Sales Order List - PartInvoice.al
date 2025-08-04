@@ -174,25 +174,30 @@ page 50022 "Sales Order List - PartInvoice"
                 SubPageLink = "No." = FIELD("Bill-to Customer No."),
                               "Date Filter" = FIELD("Date Filter");
                 Visible = true;
+                ApplicationArea = All;
             }
             part(Control1900316107; "Customer Details FactBox")
             {
                 SubPageLink = "No." = FIELD("Bill-to Customer No."),
                               "Date Filter" = FIELD("Date Filter");
                 Visible = true;
+                ApplicationArea = All;
             }
             part(IncomingDocAttachFactBox; "Incoming Doc. Attach. FactBox")
             {
                 ShowFilter = false;
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }
@@ -211,6 +216,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Caption = 'Dimensions';
                     Image = Dimensions;
                     ShortCutKey = 'Shift+Ctrl+D';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -224,6 +230,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Promoted = true;
                     PromotedCategory = Process;
                     ShortCutKey = 'F7';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -234,6 +241,7 @@ page 50022 "Sales Order List - PartInvoice"
                 {
                     Caption = 'Approvals';
                     Image = Approvals;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -246,6 +254,7 @@ page 50022 "Sales Order List - PartInvoice"
                 action("Co&mments")
                 {
                     Caption = 'Comments';
+                    ApplicationArea = All;
                     Image = ViewComments;
                     RunObject = Page "Sales Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
@@ -264,6 +273,7 @@ page 50022 "Sales Order List - PartInvoice"
                     RunObject = Page "Posted Sales Shipments";
                     RunPageLink = "Order No." = FIELD("No.");
                     RunPageView = SORTING("Order No.");
+                    ApplicationArea = All;
                 }
                 action(Invoices)
                 {
@@ -272,6 +282,7 @@ page 50022 "Sales Order List - PartInvoice"
                     RunObject = Page "Posted Sales Invoices";
                     RunPageLink = "Order No." = FIELD("No.");
                     RunPageView = SORTING("Order No.");
+                    ApplicationArea = All;
                 }
                 action("Prepa&yment Invoices")
                 {
@@ -280,6 +291,7 @@ page 50022 "Sales Order List - PartInvoice"
                     RunObject = Page "Posted Sales Invoices";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
                     RunPageView = SORTING("Prepayment Order No.");
+                    ApplicationArea = All;
                 }
                 action("Prepayment Credi&t Memos")
                 {
@@ -288,6 +300,7 @@ page 50022 "Sales Order List - PartInvoice"
                     RunObject = Page "Posted Sales Credit Memos";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
                     RunPageView = SORTING("Prepayment Order No.");
+                    ApplicationArea = All;
                 }
             }
             group(Warehouse)
@@ -298,6 +311,7 @@ page 50022 "Sales Order List - PartInvoice"
                 {
                     Caption = 'Whse. Shipment Lines';
                     Image = ShipmentLines;
+                    ApplicationArea = All;
                     RunObject = Page "Whse. Shipment Lines";
                     RunPageLink = "Source Type" = CONST(37),
                                   "Source Subtype" = FIELD("Document Type"),
@@ -308,6 +322,7 @@ page 50022 "Sales Order List - PartInvoice"
                 {
                     Caption = 'In&vt. Put-away/Pick Lines';
                     Image = PickLines;
+                    ApplicationArea = All;
                     RunObject = Page "Warehouse Activity List";
                     RunPageLink = "Source Document" = CONST("Sales Order"),
                                   "Source No." = FIELD("No.");
@@ -325,6 +340,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Image = "Order";
                     ToolTip = 'Open the Dynamics CRM Sales Order List page in NAV';
                     Visible = CRMIntegrationEnabled;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -347,6 +363,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Image = ReleaseDoc;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
                     ShortCutKey = 'Ctrl+F9';
 
                     trigger OnAction()
@@ -362,6 +379,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Image = ReOpen;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -378,6 +396,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -393,6 +412,7 @@ page 50022 "Sales Order List - PartInvoice"
                 {
                     Caption = 'Planning';
                     Image = Planning;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -407,6 +427,7 @@ page 50022 "Sales Order List - PartInvoice"
                     AccessByPermission = TableData "Order Promising Line" = R;
                     Caption = 'Order Promising';
                     Image = OrderPromising;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -422,6 +443,7 @@ page 50022 "Sales Order List - PartInvoice"
                     AccessByPermission = TableData "IC G/L Account" = R;
                     Caption = 'Send IC Sales Order Cnfmn.';
                     Image = IntercompanyOrder;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -441,6 +463,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Caption = 'Send Approval Request';
                     Enabled = NOT OpenApprovalEntriesExist;
                     Image = SendApprovalRequest;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -457,6 +480,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Caption = 'Cancel Approval Request';
                     Enabled = OpenApprovalEntriesExist;
                     Image = Cancel;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -476,6 +500,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Caption = 'Create Inventor&y Put-away/Pick';
                     Ellipsis = true;
                     Image = CreatePutawayPick;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -490,6 +515,7 @@ page 50022 "Sales Order List - PartInvoice"
                     AccessByPermission = TableData "Warehouse Shipment Header" = R;
                     Caption = 'Create &Whse. Shipment';
                     Image = NewShipment;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -515,6 +541,7 @@ page 50022 "Sales Order List - PartInvoice"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -530,6 +557,7 @@ page 50022 "Sales Order List - PartInvoice"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'Shift+F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -541,6 +569,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Caption = 'Post and Email';
                     Ellipsis = true;
                     Image = PostMail;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -554,6 +583,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Caption = 'Test Report';
                     Ellipsis = true;
                     Image = TestReport;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -567,6 +597,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Image = PostBatch;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -579,6 +610,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Caption = 'Remove From Job Queue';
                     Image = RemoveLine;
                     Visible = JobQueueActive;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -589,6 +621,7 @@ page 50022 "Sales Order List - PartInvoice"
                 {
                     Caption = 'Preview Posting';
                     Image = ViewPostedOrder;
+                    ApplicationArea = All;
                     Visible = false;
 
                     trigger OnAction()
@@ -606,6 +639,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Caption = 'Work Order';
                     Ellipsis = true;
                     Image = Print;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -616,6 +650,7 @@ page 50022 "Sales Order List - PartInvoice"
                 {
                     Caption = 'Pick Instruction';
                     Image = Print;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -632,6 +667,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Caption = 'Email Confirmation';
                     Ellipsis = true;
                     Image = Email;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -645,6 +681,7 @@ page 50022 "Sales Order List - PartInvoice"
                     Image = Print;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -659,6 +696,7 @@ page 50022 "Sales Order List - PartInvoice"
             {
                 Caption = 'Sales Reservation Avail.';
                 Image = "Report";
+                ApplicationArea = All;
                 Promoted = true;
                 PromotedCategory = "Report";
                 RunObject = Report "Sales Reservation Avail.";

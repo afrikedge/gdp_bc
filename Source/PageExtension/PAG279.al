@@ -6,6 +6,7 @@ pageextension 50030 pageextension70000062 extends "Source Code Setup"
         {
             field(Payroll; Rec.Payroll)
             {
+                ApplicationArea = All;
             }
         }
     }

@@ -6,6 +6,8 @@ page 50314 "Customer Ledger Entries2"
     InsertAllowed = false;
     PageType = List;
     SourceTable = "Cust. Ledger Entry";
+    ApplicationArea = All;
+    UsageCategory = Lists;
 
     layout
     {
@@ -187,18 +189,22 @@ page 50314 "Customer Ledger Entries2"
             {
                 SubPageLink = "Entry No." = FIELD("Entry No.");
                 Visible = true;
+                ApplicationArea = All;
             }
             part(IncomingDocAttachFactBox; "Incoming Doc. Attach. FactBox")
             {
                 ShowFilter = false;
+                ApplicationArea = All;
             }
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
         }
     }
@@ -218,6 +224,7 @@ page 50314 "Customer Ledger Entries2"
                     RunObject = Page "Applied Customer Entries";
                     RunPageOnRec = true;
                     Scope = Repeater;
+                    ApplicationArea = All;
                 }
                 action(Dimensions)
                 {
@@ -226,6 +233,7 @@ page 50314 "Customer Ledger Entries2"
                     Image = Dimensions;
                     Scope = Repeater;
                     ShortCutKey = 'Shift+Ctrl+D';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -237,6 +245,7 @@ page 50314 "Customer Ledger Entries2"
                     Caption = 'Detailed Ledger Entries';
                     Image = View;
                     RunObject = Page "Detailed Cust. Ledg. Entries";
+                    ApplicationArea = All;
                     RunPageLink = "Cust. Ledger Entry No." = FIELD("Entry No."),
                                   "Customer No." = FIELD("Customer No.");
                     RunPageView = SORTING("Cust. Ledger Entry No.", "Posting Date");
@@ -257,6 +266,7 @@ page 50314 "Customer Ledger Entries2"
                     Image = ApplyEntries;
                     Scope = Repeater;
                     ShortCutKey = 'Shift+F11';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -278,6 +288,7 @@ page 50314 "Customer Ledger Entries2"
                     Ellipsis = true;
                     Image = UnApply;
                     Scope = Repeater;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -295,6 +306,7 @@ page 50314 "Customer Ledger Entries2"
                     Ellipsis = true;
                     Image = ReverseRegister;
                     Scope = Repeater;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -316,6 +328,7 @@ page 50314 "Customer Ledger Entries2"
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -336,6 +349,7 @@ page 50314 "Customer Ledger Entries2"
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -356,6 +370,7 @@ page 50314 "Customer Ledger Entries2"
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
+                    ApplicationArea = All;
 
                     // trigger OnAction()
                     // begin
@@ -391,6 +406,7 @@ page 50314 "Customer Ledger Entries2"
                 Promoted = true;
                 PromotedCategory = Process;
                 Scope = Repeater;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -406,6 +422,7 @@ page 50314 "Customer Ledger Entries2"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 ShortCutKey = 'Return';
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin

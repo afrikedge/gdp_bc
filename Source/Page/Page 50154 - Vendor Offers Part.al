@@ -4,6 +4,7 @@ page 50154 "Vendor Offers Part"
     DeleteAllowed = false;
     Editable = false;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Purchase Header";
     SourceTableView = WHERE("Document Type" = CONST(Quote));
 

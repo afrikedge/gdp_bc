@@ -6,6 +6,8 @@ page 50117 "Posted Item Shipment"
     RefreshOnActivate = true;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Shipment));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -52,6 +54,7 @@ page 50117 "Posted Item Shipment"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
             group(Transport)
             {
@@ -84,10 +87,12 @@ page 50117 "Posted Item Shipment"
             systempart(Control1000000012; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1000000011; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }
@@ -102,6 +107,7 @@ page 50117 "Posted Item Shipment"
                 Caption = 'Dimensions';
                 Image = Dimensions;
                 ShortCutKey = 'Shift+Ctrl+D';
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -116,6 +122,7 @@ page 50117 "Posted Item Shipment"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -129,6 +136,7 @@ page 50117 "Posted Item Shipment"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

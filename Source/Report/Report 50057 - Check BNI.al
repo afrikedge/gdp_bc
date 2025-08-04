@@ -4,6 +4,7 @@ report 50057 "Check BNI"
     RDLCLayout = './Source/Report/Layout/Check BNI.rdlc';
     Caption = 'Check';
     Permissions = TableData "Bank Account" = m;
+    ApplicationArea = All;
 
     dataset
     {

@@ -5,6 +5,7 @@ page 50301 "MFiles Invoice Subform"
     InsertAllowed = false;
     LinksAllowed = false;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = tblAxeAnalytique;
 
     layout

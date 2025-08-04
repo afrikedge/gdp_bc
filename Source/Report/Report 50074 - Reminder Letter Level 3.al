@@ -2,6 +2,7 @@ report 50074 "Reminder Letter Level 3"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Reminder Letter Level 3.rdlc';
+    ApplicationArea = All;
 
     dataset
     {

@@ -3,6 +3,7 @@ page 50150 "Budget Document Lines"
     Caption = 'Budget Document Lines';
     Editable = false;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Purchase Budget Line";
 
     layout

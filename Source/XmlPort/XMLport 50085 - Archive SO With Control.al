@@ -11,12 +11,12 @@ xmlport 50085 "Archive SO With Control"
     {
         textelement(Root)
         {
-            tableelement("Import Data";"Import Data")
+            tableelement("Import Data"; "Import Data")
             {
                 AutoSave = false;
                 XmlName = 'InvoiceData';
                 SourceTableView = SORTING(EntryNo) ORDER(Ascending);
-                fieldattribute(SONumber;"Import Data".DocumentNo)
+                fieldattribute(SONumber; "Import Data".DocumentNo)
                 {
                 }
 
@@ -27,11 +27,11 @@ xmlport 50085 "Archive SO With Control"
                     SLine: Record "Sales Line";
                     SHeaderArchive: Record "Sales Header Archive";
                 begin
-                    
+
                     BesoinNo := BesoinNo + 1;
                     Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
-                    
+                    Round(BesoinNo / NbreTotalLignes * 10000, 1));
+
                     /*
                     IF PHeader.GET(PHeader."Document Type"::Order, "Import Data".DocumentNo) THEN BEGIN
                       PHeader."GDP Deletion" := TRUE;
@@ -53,21 +53,21 @@ xmlport 50085 "Archive SO With Control"
                     END;
                     */
                     if SHeader.Get(SHeader."Document Type"::Order, "Import Data".DocumentNo) then begin
-                    
-                      if(CanArchivePO(SHeader)) then begin
-                        if ArchivePO(SHeader) then
-                          Nbre:=Nbre+1;
-                      end else begin
-                          if SHeader.Get(SHeader."Document Type"::Order,"Import Data".DocumentNo) then begin
-                    
-                            //SHeader."Processing Status":=PurchH."Processing Status"::Soldee;
-                            SHeader."GDP Deletion":=true;
-                            SHeader.Modify;
-                            ArchiveMgt.ArchSalesDocumentNoConfirm(SHeader);
-                            SHeader.Delete;
-                            Nbre:=Nbre+1;
-                          end;
-                      end;
+
+                        if (CanArchivePO(SHeader)) then begin
+                            if ArchivePO(SHeader) then
+                                Nbre := Nbre + 1;
+                        end else begin
+                            if SHeader.Get(SHeader."Document Type"::Order, "Import Data".DocumentNo) then begin
+
+                                //SHeader."Processing Status":=PurchH."Processing Status"::Soldee;
+                                SHeader."GDP Deletion" := true;
+                                SHeader.Modify;
+                                ArchiveMgt.ArchSalesDocumentNoConfirm(SHeader);
+                                SHeader.Delete;
+                                Nbre := Nbre + 1;
+                            end;
+                        end;
                     end;
 
                 end;
@@ -82,24 +82,28 @@ xmlport 50085 "Archive SO With Control"
         {
             area(content)
             {
-                field(GenJrnTemplate;GenJrnTemplate)
+                field(GenJrnTemplate; GenJrnTemplate)
                 {
                     Caption = 'General journal template';
                     TableRelation = "Gen. Journal Template";
                     Visible = false;
+                    ApplicationArea = All;
                 }
-                field(GenJrnBatch;GenJrnBatch)
+                field(GenJrnBatch; GenJrnBatch)
                 {
                     Caption = 'Posting journal Batch';
                     TableRelation = "Gen. Journal Batch";
                     Visible = false;
+                    ApplicationArea = All;
                 }
-                field("N° Document";DocNum)
+                field("N° Document"; DocNum)
                 {
                     Visible = false;
+                    ApplicationArea = All;
                 }
-                field("Nbre de lignes";NbreTotalLignes)
+                field("Nbre de lignes"; NbreTotalLignes)
                 {
+                    ApplicationArea = All;
                 }
             }
         }
@@ -123,7 +127,7 @@ xmlport 50085 "Archive SO With Control"
     begin
 
         Window.Close;
-        Message(TextFin,Nbre);
+        Message(TextFin, Nbre);
         //MESSAGE(TxtTraitementTerminé);
     end;
 
@@ -134,9 +138,9 @@ xmlport 50085 "Archive SO With Control"
 
         LineNo := 0;
 
-        BesoinNo :=0;
+        BesoinNo := 0;
         Window.Open(Text008);
-        Nbre:=0;
+        Nbre := 0;
         //NbreTotalLignes := 517;
     end;
 
@@ -173,7 +177,7 @@ xmlport 50085 "Archive SO With Control"
         ArchiveManagement: Codeunit ArchiveManagement;
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
 
-    procedure SetFeuille(Modele: Code[10];NomFeuille: Code[10])
+    procedure SetFeuille(Modele: Code[10]; NomFeuille: Code[10])
     begin
         GenJrnBatch := NomFeuille;
         GenJrnTemplate := Modele;
@@ -193,25 +197,26 @@ xmlport 50085 "Archive SO With Control"
 
 
         SLine1.Reset;
-        SLine1.SetRange("Document Type",SLine1."Document Type"::Order);
-        SLine1.SetRange("Document No.",SalesHeader."No.");
-        SLine1.SetFilter(Type,'<>%1',SLine1.Type::" ");
-        SLine1.SetFilter("No.",'<>%1','');
-        if SLine1.FindSet then repeat
+        SLine1.SetRange("Document Type", SLine1."Document Type"::Order);
+        SLine1.SetRange("Document No.", SalesHeader."No.");
+        SLine1.SetFilter(Type, '<>%1', SLine1.Type::" ");
+        SLine1.SetFilter("No.", '<>%1', '');
+        if SLine1.FindSet then
+            repeat
 
-          if SLine1."Quantity Invoiced"<>SLine1."Quantity Shipped" then
-            exit(false);
-            //ERROR(Text013,PurchLine1."No.");
+                if SLine1."Quantity Invoiced" <> SLine1."Quantity Shipped" then
+                    exit(false);
+                //ERROR(Text013,PurchLine1."No.");
 
-          if (SalesHeader."Document Type" = SalesHeader."Document Type"::Order) and (SLine1.Quantity <> SLine1."Quantity Invoiced") then
-            if SLine1."Prepmt. Amt. Inv."<>SLine1."Prepmt Amt Deducted" then
-              exit(false);
-          //TESTFIELD("Prepmt. Amt. Inv.","Prepmt Amt Deducted");
+                if (SalesHeader."Document Type" = SalesHeader."Document Type"::Order) and (SLine1.Quantity <> SLine1."Quantity Invoiced") then
+                    if SLine1."Prepmt. Amt. Inv." <> SLine1."Prepmt Amt Deducted" then
+                        exit(false);
+                //TESTFIELD("Prepmt. Amt. Inv.","Prepmt Amt Deducted");
 
-          SLine1.Validate(SLine1.Quantity,SLine1."Quantity Shipped");
-          SLine1.Modify;
+                SLine1.Validate(SLine1.Quantity, SLine1."Quantity Shipped");
+                SLine1.Modify;
 
-        until SLine1.Next=0;
+            until SLine1.Next = 0;
 
 
         //SalesHeader."Processing Status":=PurchH."Processing Status"::Soldee;
@@ -232,20 +237,21 @@ xmlport 50085 "Archive SO With Control"
 
 
         SLine1.Reset;
-        SLine1.SetRange("Document Type",SLine1."Document Type"::Order);
-        SLine1.SetRange("Document No.",SHeader."No.");
-        if SLine1.FindSet then repeat
+        SLine1.SetRange("Document Type", SLine1."Document Type"::Order);
+        SLine1.SetRange("Document No.", SHeader."No.");
+        if SLine1.FindSet then
+            repeat
 
-          if SLine1."Quantity Invoiced"<>SLine1."Quantity Shipped" then
-            exit(false);
-            //ERROR(Text013,PurchLine1."No.");
+                if SLine1."Quantity Invoiced" <> SLine1."Quantity Shipped" then
+                    exit(false);
+                //ERROR(Text013,PurchLine1."No.");
 
-          if (SHeader."Document Type" = SHeader."Document Type"::Order) and (SLine1.Quantity <> SLine1."Quantity Invoiced") then
-            if SLine1."Prepmt. Amt. Inv."<>SLine1."Prepmt Amt Deducted" then
-              exit(false);
-          //TESTFIELD("Prepmt. Amt. Inv.","Prepmt Amt Deducted");
+                if (SHeader."Document Type" = SHeader."Document Type"::Order) and (SLine1.Quantity <> SLine1."Quantity Invoiced") then
+                    if SLine1."Prepmt. Amt. Inv." <> SLine1."Prepmt Amt Deducted" then
+                        exit(false);
+            //TESTFIELD("Prepmt. Amt. Inv.","Prepmt Amt Deducted");
 
-        until SLine1.Next=0;
+            until SLine1.Next = 0;
 
 
         exit(true);

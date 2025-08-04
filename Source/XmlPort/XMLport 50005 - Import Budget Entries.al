@@ -11,21 +11,21 @@ xmlport 50005 "Import Budget Entries"
     {
         textelement(Root)
         {
-            tableelement("Import Data";"Import Data")
+            tableelement("Import Data"; "Import Data")
             {
                 AutoSave = false;
                 XmlName = 'InvoiceData';
                 SourceTableView = SORTING(EntryNo) ORDER(Ascending);
-                fieldattribute(BudgetCode;"Import Data".CodeAnalytique)
+                fieldattribute(BudgetCode; "Import Data".CodeAnalytique)
                 {
                 }
-                fieldattribute(GLAccount;"Import Data".GLAccountNo)
+                fieldattribute(GLAccount; "Import Data".GLAccountNo)
                 {
                 }
-                fieldattribute(Date;"Import Data".PostingDate)
+                fieldattribute(Date; "Import Data".PostingDate)
                 {
                 }
-                fieldattribute(Amount;"Import Data".Amount)
+                fieldattribute(Amount; "Import Data".Amount)
                 {
                 }
 
@@ -40,13 +40,13 @@ xmlport 50005 "Import Budget Entries"
 
                     Clear(BudgetEntry);
                     BudgetEntry."Budget Name" := AddOnSetup."Code Budget Def";
-                     if DimValue.Get(GLSetup."Global Dimension 1 Code","Import Data".CodeAnalytique) then
-                       BudgetEntry.Description := DimValue.Name;
+                    if DimValue.Get(GLSetup."Global Dimension 1 Code", "Import Data".CodeAnalytique) then
+                        BudgetEntry.Description := DimValue.Name;
 
                     BudgetEntry."G/L Account No." := "Import Data".GLAccountNo;
-                    Evaluate(BudgetEntry.Date,"Import Data".PostingDate);
+                    Evaluate(BudgetEntry.Date, "Import Data".PostingDate);
                     BudgetEntry.Amount := "Import Data".Amount;
-                    BudgetEntry.Validate("Global Dimension 1 Code","Import Data".CodeAnalytique);
+                    BudgetEntry.Validate("Global Dimension 1 Code", "Import Data".CodeAnalytique);
                     BudgetEntry.Insert(true);
                 end;
             }
@@ -60,17 +60,19 @@ xmlport 50005 "Import Budget Entries"
         {
             area(content)
             {
-                field(GenJrnTemplate;GenJrnTemplate)
+                field(GenJrnTemplate; GenJrnTemplate)
                 {
                     Caption = 'General journal template';
                     TableRelation = "Gen. Journal Template";
                     Visible = false;
+                    ApplicationArea = All;
                 }
-                field(GenJrnBatch;GenJrnBatch)
+                field(GenJrnBatch; GenJrnBatch)
                 {
                     Caption = 'Posting journal Batch';
                     TableRelation = "Gen. Journal Batch";
                     Visible = false;
+                    ApplicationArea = All;
                 }
             }
         }
@@ -101,7 +103,7 @@ xmlport 50005 "Import Budget Entries"
 
         LineNo := 0;
 
-        BesoinNo :=0;
+        BesoinNo := 0;
         Window.Open(Text008);
     end;
 

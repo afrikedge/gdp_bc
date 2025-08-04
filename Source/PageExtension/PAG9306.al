@@ -6,9 +6,11 @@ pageextension 50073 pageextension70000143 extends "Purchase Quotes"
         {
             field("User ID"; Rec."User ID")
             {
+                ApplicationArea = All;
             }
             field("Code Demande"; Rec."Code Demande")
             {
+                ApplicationArea = All;
             }
         }
     }

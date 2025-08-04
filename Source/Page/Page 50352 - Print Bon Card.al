@@ -5,6 +5,7 @@ page 50352 "Print Bon Card"
     LinksAllowed = false;
     ShowFilter = false;
     SourceTable = pro_enteteBE;
+    ApplicationArea = All;
 
     layout
     {
@@ -30,6 +31,7 @@ page 50352 "Print Bon Card"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -62,6 +64,7 @@ page 50352 "Print Bon Card"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

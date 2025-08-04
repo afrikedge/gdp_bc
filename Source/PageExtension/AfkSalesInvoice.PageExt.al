@@ -7,6 +7,7 @@ pageextension 50100 "Afk Sales Invoice" extends "Sales Invoice"
             field(Observations; Rec.Observations)
             {
                 MultiLine = true;
+                ApplicationArea = All;
             }
         }
     }

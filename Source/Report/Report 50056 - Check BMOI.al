@@ -4,6 +4,7 @@ report 50056 "Check BMOI"
     RDLCLayout = './Source/Report/Layout/Check BMOI.rdlc';
     Caption = 'Check';
     Permissions = TableData "Bank Account" = m;
+    ApplicationArea = All;
 
     dataset
     {

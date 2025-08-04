@@ -4,6 +4,7 @@ page 50059 "MoneyTech Billing Line subform"
     Caption = 'Lines';
     DelayedInsert = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "MoneyTech Billing Line";
 
     layout

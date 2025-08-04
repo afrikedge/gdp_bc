@@ -12,6 +12,7 @@ pageextension 50108 "Afk Posted Sales Credit Memo" extends "Posted Sales Credit 
             {
                 MultiLine = true;
                 Editable = false;
+                ApplicationArea = All;
             }
         }
     }

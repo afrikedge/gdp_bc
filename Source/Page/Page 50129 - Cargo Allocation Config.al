@@ -3,6 +3,7 @@ page 50129 "Cargo Allocation Config"
     Caption = 'Cargo Allocation Methods';
     PageType = List;
     SourceTable = "Cargo Allocation Config";
+    ApplicationArea = All;
 
     layout
     {

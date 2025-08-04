@@ -5,6 +5,8 @@ page 50172 "FA Conso"
     RefreshOnActivate = true;
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST("FA Conso"));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -34,6 +36,7 @@ page 50172 "FA Conso"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)
@@ -59,6 +62,7 @@ page 50172 "FA Conso"
                 Caption = 'Dimensions';
                 Image = Dimensions;
                 ShortCutKey = 'Shift+Ctrl+D';
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin
@@ -77,6 +81,7 @@ page 50172 "FA Conso"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin

@@ -4,6 +4,8 @@ page 50158 "Posted Purchase Requisition"
     Editable = false;
     PageType = Document;
     SourceTable = "Posted Purchase Requisition";
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -107,11 +109,13 @@ page 50158 "Posted Purchase Requisition"
             {
                 Caption = 'Lines';
                 SubPageLink = "Document No" = FIELD("No.");
+                ApplicationArea = All;
             }
             part("Offers List"; "Posted Vendor Offers Part")
             {
                 Caption = 'Offers List';
                 SubPageLink = "Code Demande" = FIELD("No.");
+                ApplicationArea = All;
             }
             systempart(Control1000000001; Links)
             {

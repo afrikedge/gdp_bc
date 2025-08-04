@@ -4,6 +4,7 @@ report 50014 "Return Order GDP"
     RDLCLayout = './Source/Report/Layout/Return Order GDP.rdlc';
     Caption = 'Return Order';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

@@ -7,6 +7,7 @@ report 50005 "JIRAMA Sales  Invoice"
     Caption = 'JIRAMA Sales - Invoice';
     Permissions = TableData "Sales Shipment Buffer" = rimd;
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

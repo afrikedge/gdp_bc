@@ -4,6 +4,7 @@ report 50058 "ND Bordereau Paiement"
     RDLCLayout = './Source/Report/Layout/ND Bordereau Paiement.rdlc';
     Caption = 'Debit Note';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

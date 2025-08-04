@@ -12,18 +12,22 @@ pageextension 50005 pageextension70000051 extends "General Ledger Entries"
         {
             field("Transaction Date"; Rec."Transaction Date")
             {
+                ApplicationArea = All;
             }
             field("External Document No.2"; Rec."External Document No.")
             {
+                ApplicationArea = All;
             }
             field("Purchase Invoice Doc"; Rec."Purchase Invoice Doc")
             {
+                ApplicationArea = All;
             }
         }
         addafter("VAT Amount")
         {
             field("Source No.2"; Rec."Source No.")
             {
+                ApplicationArea = All;
             }
         }
     }
@@ -35,6 +39,7 @@ pageextension 50005 pageextension70000051 extends "General Ledger Entries"
             {
                 Caption = 'Reverse Provisions';
                 Image = CancelAllLines;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

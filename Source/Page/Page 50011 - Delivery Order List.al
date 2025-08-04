@@ -6,6 +6,7 @@ page 50011 "Delivery Order List"
     Editable = false;
     PageType = List;
     SourceTable = pro_enteteBL;
+    ApplicationArea = All;
     SourceTableView = WHERE(isconfirme = CONST(false),
                             isAnnule = CONST(false),
                             IsBon = CONST(false));

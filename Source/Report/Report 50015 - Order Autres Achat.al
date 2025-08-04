@@ -4,6 +4,7 @@ report 50015 "Order Autres Achat"
     RDLCLayout = './Source/Report/Layout/Order Autres Achat.rdl';
     Caption = 'Order';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

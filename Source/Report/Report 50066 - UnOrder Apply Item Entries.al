@@ -3,6 +3,7 @@ report 50066 "UnOrder Apply Item Entries"
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/UnOrder Apply Item Entries.rdlc';
     Caption = 'Lettrage article incorrect';
+    ApplicationArea = All;
 
     dataset
     {

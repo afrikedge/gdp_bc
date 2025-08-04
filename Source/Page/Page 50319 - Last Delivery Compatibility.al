@@ -4,6 +4,7 @@ page 50319 "Last Delivery Compatibility"
     PageType = List;
     SourceTable = "Delivery Constraint";
     SourceTableView = WHERE(Type = CONST(Livraison));
+    ApplicationArea = All;
 
     layout
     {

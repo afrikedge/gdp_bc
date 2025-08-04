@@ -4,6 +4,7 @@ page 50041 "JIRAMA Sales Forecast Subform"
     Caption = 'JIRAMA Sales Forecast Subform';
     DelayedInsert = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Jirama Sales Forecast Line";
 
     layout

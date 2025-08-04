@@ -8,6 +8,7 @@ page 50268 "Payment Journal TRESO"
     PromotedActionCategories = 'New,Process,Report,Bank,Prepare,Approve';
     SaveValues = true;
     SourceTable = "Gen. Journal Line";
+    ApplicationArea = All;
 
     layout
     {

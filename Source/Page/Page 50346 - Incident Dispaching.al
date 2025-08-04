@@ -3,6 +3,7 @@ page 50346 "Incident Dispaching"
     Caption = 'Nouvel Incident';
     LinksAllowed = false;
     ShowFilter = false;
+    ApplicationArea = All;
 
     layout
     {
@@ -112,6 +113,7 @@ page 50346 "Incident Dispaching"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

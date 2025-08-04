@@ -6,6 +6,8 @@ page 50094 "Posted Return Loan"
     RefreshOnActivate = true;
     SourceTable = "Item Return Header";
     SourceTableView = WHERE("Document Type" = CONST(Loan));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -43,6 +45,7 @@ page 50094 "Posted Return Loan"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)
@@ -50,10 +53,12 @@ page 50094 "Posted Return Loan"
             systempart(Control1000000012; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1000000011; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }

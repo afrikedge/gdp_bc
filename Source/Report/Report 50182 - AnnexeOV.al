@@ -3,6 +3,7 @@ report 50182 AnnexeOV
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/AnnexeOV.rdlc';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

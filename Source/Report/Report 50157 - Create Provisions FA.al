@@ -2,38 +2,39 @@ report 50157 "Create Provisions FA"
 {
     Caption = 'Provisions Fixed Assets';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {
-        dataitem("Purchase Header";"Purchase Header")
+        dataitem("Purchase Header"; "Purchase Header")
         {
-            DataItemTableView = SORTING("Document Type","No.") ORDER(Ascending) WHERE("Document Type"=CONST(Order));
-            dataitem("Purchase Order Tracking";"Purchase Order Tracking")
+            DataItemTableView = SORTING("Document Type", "No.") ORDER(Ascending) WHERE("Document Type" = CONST(Order));
+            dataitem("Purchase Order Tracking"; "Purchase Order Tracking")
             {
-                DataItemLink = "Document Type"=FIELD("Document Type"),"Document No."=FIELD("No.");
-                DataItemTableView = SORTING("Document Type","Document No.","Line No.") ORDER(Ascending) WHERE("Data Type"=CONST(FraisAnnexe));
+                DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
+                DataItemTableView = SORTING("Document Type", "Document No.", "Line No.") ORDER(Ascending) WHERE("Data Type" = CONST(FraisAnnexe));
 
                 trigger OnAfterGetRecord()
                 var
                     CreateEntry: Boolean;
                 begin
-                        BesoinNo := BesoinNo + 1;
-                        Window.Update(1,
-                        Round(BesoinNo / NbreTotalLignes * 10000,1));
+                    BesoinNo := BesoinNo + 1;
+                    Window.Update(1,
+                    Round(BesoinNo / NbreTotalLignes * 10000, 1));
 
-                        GenJrnTableND.TestField("No. Series");
-                        Clear(NoSeriesMgt);
+                    GenJrnTableND.TestField("No. Series");
+                    Clear(NoSeriesMgt);
 
-                        if LastDocNo='' then
-                            LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",false);
-                        //END ELSE BEGIN
-                        //    LastDocNo := INCSTR(LastDocNo);
-                        //END;
+                    if LastDocNo = '' then
+                        LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series", GenJrnLine."Posting Date", false);
+                    //END ELSE BEGIN
+                    //    LastDocNo := INCSTR(LastDocNo);
+                    //END;
 
-                       CreateEntry := GLMgt.TraiterProvisionFraisAnnexesOld("Purchase Header","Purchase Order Tracking",
-                             ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+                    CreateEntry := GLMgt.TraiterProvisionFraisAnnexesOld("Purchase Header", "Purchase Order Tracking",
+                          ModeleFeuille, NomFeuille, PostingDate, LastDocNo, LineNum);
 
-                       if CreateEntry then LastDocNo := IncStr(LastDocNo);
+                    if CreateEntry then LastDocNo := IncStr(LastDocNo);
                 end;
             }
 
@@ -53,25 +54,25 @@ report 50157 "Create Provisions FA"
                 AddOnSetup.Get;
                 AddOnSetup.TestField(AddOnSetup."Invoice To Receive Account");
 
-                GenJrnTableND.Get(ModeleFeuille,NomFeuille);
+                GenJrnTableND.Get(ModeleFeuille, NomFeuille);
 
 
                 GenJrnLine.Reset;
-                GenJrnLine.SetRange("Journal Template Name",ModeleFeuille);
-                GenJrnLine.SetRange("Journal Batch Name",NomFeuille);
-                if GenJrnLine.FindFirst then Error(Text001,NomFeuille);
+                GenJrnLine.SetRange("Journal Template Name", ModeleFeuille);
+                GenJrnLine.SetRange("Journal Batch Name", NomFeuille);
+                if GenJrnLine.FindFirst then Error(Text001, NomFeuille);
 
-                BesoinNo :=0;
+                BesoinNo := 0;
 
                 Window.Open(Text008);
 
-                LineNum:=0;
+                LineNum := 0;
                 NbreTotalLignes := "Purchase Header".Count;
 
-                if OrderNum ='' then Error(Text009);
+                if OrderNum = '' then Error(Text009);
 
-                "Purchase Header".SetRange("Purchase Header"."Document Type","Purchase Header"."Document Type"::Order);
-                "Purchase Header".SetRange("Purchase Header"."No.",OrderNum);
+                "Purchase Header".SetRange("Purchase Header"."Document Type", "Purchase Header"."Document Type"::Order);
+                "Purchase Header".SetRange("Purchase Header"."No.", OrderNum);
             end;
         }
     }
@@ -83,16 +84,16 @@ report 50157 "Create Provisions FA"
         {
             area(content)
             {
-                field(PostingDate;PostingDate)
+                field(PostingDate; PostingDate)
                 {
                     Caption = 'Posting Date';
                 }
-                field(ModeleFeuille;ModeleFeuille)
+                field(ModeleFeuille; ModeleFeuille)
                 {
                     Caption = 'Journal Template';
                     Visible = false;
                 }
-                field(NomFeuille;NomFeuille)
+                field(NomFeuille; NomFeuille)
                 {
                     Caption = 'Gen. Journal';
 
@@ -102,11 +103,10 @@ report 50157 "Create Provisions FA"
                         GenJournalBatchPage: Page "General Journal Batches";
                     begin
                         GenJournalBatch.Reset;
-                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name",ModeleFeuille);
-                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then
-                        begin
-                          NomFeuille := GenJournalBatch.Name;
-                          //NewFASubLocationName := FASubLoc.Name;
+                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name", ModeleFeuille);
+                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then begin
+                            NomFeuille := GenJournalBatch.Name;
+                            //NewFASubLocationName := FASubLoc.Name;
                         end;
                     end;
                 }
@@ -127,7 +127,7 @@ report 50157 "Create Provisions FA"
         AddOnSetup.Get;
         AddOnSetup.TestField("Provision Tmpl Journal");
         ModeleFeuille := AddOnSetup."Provision Tmpl Journal";
-        PostingDate:=WorkDate;
+        PostingDate := WorkDate;
     end;
 
     var

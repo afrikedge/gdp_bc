@@ -6,6 +6,7 @@ page 50079 "Afk Requirement Matrix"
     Caption = 'Requirement Matrix';
     PageType = Card;
     SourceTable = "Afk Requirement Matrix";
+    UsageCategory = None;
 
     layout
     {

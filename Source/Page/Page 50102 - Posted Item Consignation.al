@@ -6,6 +6,8 @@ page 50102 "Posted Item Consignation"
     RefreshOnActivate = true;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Consignation));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -37,6 +39,7 @@ page 50102 "Posted Item Consignation"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)
@@ -44,10 +47,12 @@ page 50102 "Posted Item Consignation"
             systempart(Control1000000012; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1000000011; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }

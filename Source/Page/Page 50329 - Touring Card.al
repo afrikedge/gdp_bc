@@ -1,10 +1,12 @@
 page 50329 "Touring Card"
 {
     Editable = true;
-    PageType = Card;
+    PageType = Document;
     RefreshOnActivate = true;
     SourceTable = Touring;
     Caption = 'Tournée';
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -53,16 +55,19 @@ page 50329 "Touring Card"
             {
                 Caption = 'Sales Orders';
                 SubPageLink = IdTouring = FIELD(IdTouring);
+                ApplicationArea = All;
             }
             part(TruckSubform; "Touring Truck Subform")
             {
                 Caption = 'Trucks';
                 SubPageLink = IdTouring = FIELD(IdTouring);
+                ApplicationArea = All;
             }
             part("Bons List"; "Touring BE Subform")
             {
                 Caption = 'Bons List';
                 SubPageLink = idtournee = FIELD(IdTouring);
+                ApplicationArea = All;
                 Visible = IsPosted;
             }
         }
@@ -81,6 +86,7 @@ page 50329 "Touring Card"
                 // Promoted = true;
                 // PromotedCategory = Process;
                 // PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

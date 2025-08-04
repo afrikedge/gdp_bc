@@ -6,6 +6,7 @@ pageextension 50001 pageextension70000010 extends "Shipment Methods"
         {
             field("Disable manually Shipment"; Rec."Disable manually Shipment")
             {
+                ApplicationArea = All;
             }
         }
     }

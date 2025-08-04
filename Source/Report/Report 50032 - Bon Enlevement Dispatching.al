@@ -4,6 +4,7 @@ report 50032 "Bon Enlevement Dispatching"
     RDLCLayout = './Source/Report/Layout/Bon Enlevement Dispatching.rdlc';
     PDFFontEmbedding = Yes;
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

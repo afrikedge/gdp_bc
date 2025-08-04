@@ -9,6 +9,8 @@ page 50342 "Confirmed Bon Order"
     PageType = Document;
     SourceTable = pro_enteteBE;
     SourceTableView = WHERE(IsBon = CONST(true));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

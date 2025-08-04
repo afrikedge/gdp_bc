@@ -3,6 +3,7 @@ page 50337 "Bank Acc. Swift Correspondence"
     Caption = 'Correspondances banque Swift';
     PageType = List;
     SourceTable = "BA Swift Correspondence";
+    ApplicationArea = All;
 
     layout
     {

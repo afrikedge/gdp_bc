@@ -6,6 +6,8 @@ page 50090 "Posted Item Exchange"
     RefreshOnActivate = true;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Exchange));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -43,6 +45,7 @@ page 50090 "Posted Item Exchange"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)
@@ -50,10 +53,12 @@ page 50090 "Posted Item Exchange"
             systempart(Control1000000012; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1000000011; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }

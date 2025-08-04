@@ -8,6 +8,7 @@ page 50255 "Purchase Req Pending Manager"
     PageType = List;
     SourceTable = "Purchase Requisition";
     SourceTableView = WHERE(Status = CONST(Manager));
+    ApplicationArea = All;
 
     layout
     {

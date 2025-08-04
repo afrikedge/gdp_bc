@@ -4,6 +4,7 @@ report 50000 "Purchase Order"
     RDLCLayout = './Source/Report/Layout/Purchase Order.rdl';
     Caption = 'Order';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {
@@ -1030,7 +1031,7 @@ report 50000 "Purchase Order"
                     if (SecondApprover."User ID" <> '') then
                         SecondApproverDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
 
-                    if (ApprovalEntry."Sequence No." > 2) then begin
+                    if (ApprovalEntry."Sequence No." > 1) then begin
                         if ApprovalEntry.Next(-1) <> 0 then begin
                             SecMgt.FindUser(FirstApprover, ApprovalEntry."Approver ID");
                             if (FirstApprover."User ID" <> '') then

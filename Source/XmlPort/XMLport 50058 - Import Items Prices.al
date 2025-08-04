@@ -11,27 +11,27 @@ xmlport 50058 "Import Items Prices"
     {
         textelement(Root)
         {
-            tableelement("Import Data";"Import Data")
+            tableelement("Import Data"; "Import Data")
             {
                 AutoSave = false;
                 XmlName = 'InvoiceData';
                 SourceTableView = SORTING(EntryNo) ORDER(Ascending);
-                fieldattribute(SalesType;"Import Data".ExternalDocNo)
+                fieldattribute(SalesType; "Import Data".ExternalDocNo)
                 {
                 }
-                fieldattribute(CodeVente;"Import Data".DocumentNo)
+                fieldattribute(CodeVente; "Import Data".DocumentNo)
                 {
                 }
-                fieldattribute(ItemCode;"Import Data".DocNum2)
+                fieldattribute(ItemCode; "Import Data".DocNum2)
                 {
                 }
-                fieldattribute(UnitPrice;"Import Data".DebitAmount)
+                fieldattribute(UnitPrice; "Import Data".DebitAmount)
                 {
                 }
-                fieldattribute(StartingDate;"Import Data".PostingDate)
+                fieldattribute(StartingDate; "Import Data".PostingDate)
                 {
                 }
-                fieldattribute(EndingdDate;"Import Data".PostingDate2)
+                fieldattribute(EndingdDate; "Import Data".PostingDate2)
                 {
                 }
 
@@ -47,38 +47,38 @@ xmlport 50058 "Import Items Prices"
 
                     SalesPrice.Init;
 
-                    if ((UpperCase("Import Data".ExternalDocNo)<>'CLIENT') and
-                      (UpperCase("Import Data".ExternalDocNo)<>'GROUPE') and
-                      (UpperCase("Import Data".ExternalDocNo)<>'TOUS')) then
-                      Error(Error01,BesoinNo);
+                    if ((UpperCase("Import Data".ExternalDocNo) <> 'CLIENT') and
+                      (UpperCase("Import Data".ExternalDocNo) <> 'GROUPE') and
+                      (UpperCase("Import Data".ExternalDocNo) <> 'TOUS')) then
+                        Error(Error01, BesoinNo);
 
-                    if UpperCase("Import Data".ExternalDocNo)='CLIENT' then begin
-                      SalesPrice.Validate("Sales Type",SalesPrice."Sales Type"::Customer);
-                      SalesPrice.Validate(SalesPrice."Sales Code","Import Data".DocumentNo);
+                    if UpperCase("Import Data".ExternalDocNo) = 'CLIENT' then begin
+                        SalesPrice.Validate("Sales Type", SalesPrice."Sales Type"::Customer);
+                        SalesPrice.Validate(SalesPrice."Sales Code", "Import Data".DocumentNo);
                     end;
 
-                    if UpperCase("Import Data".ExternalDocNo)='GROUPE' then begin
-                      SalesPrice.Validate("Sales Type",SalesPrice."Sales Type"::"Customer Price Group");
-                      SalesPrice.Validate(SalesPrice."Sales Code","Import Data".DocumentNo);
+                    if UpperCase("Import Data".ExternalDocNo) = 'GROUPE' then begin
+                        SalesPrice.Validate("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
+                        SalesPrice.Validate(SalesPrice."Sales Code", "Import Data".DocumentNo);
                     end;
 
-                    if UpperCase("Import Data".ExternalDocNo)='TOUS' then begin
-                      SalesPrice.Validate("Sales Type",SalesPrice."Sales Type"::"All Customers");
+                    if UpperCase("Import Data".ExternalDocNo) = 'TOUS' then begin
+                        SalesPrice.Validate("Sales Type", SalesPrice."Sales Type"::"All Customers");
                     end;
 
-                    SalesPrice.Validate("Item No.","Import Data".DocNum2);
+                    SalesPrice.Validate("Item No.", "Import Data".DocNum2);
 
                     //IF NOT EVALUATE(PrixUnitaire,"Import Data".DebitAmount) THEN ERROR(Error04,BesoinNo);
-                    SalesPrice.Validate("Unit Price","Import Data".DebitAmount);
+                    SalesPrice.Validate("Unit Price", "Import Data".DebitAmount);
 
-                    if not Evaluate(StartingDate,"Import Data".PostingDate) then Error(Error05,BesoinNo);
-                    SalesPrice.Validate("Starting Date",StartingDate);
+                    if not Evaluate(StartingDate, "Import Data".PostingDate) then Error(Error05, BesoinNo);
+                    SalesPrice.Validate("Starting Date", StartingDate);
 
-                    if not Evaluate(EndingDate,"Import Data".PostingDate2) then Error(Error06,BesoinNo);
-                    SalesPrice.Validate("Ending Date",EndingDate);
+                    if not Evaluate(EndingDate, "Import Data".PostingDate2) then Error(Error06, BesoinNo);
+                    SalesPrice.Validate("Ending Date", EndingDate);
 
                     if not SalesPrice.Insert then
-                      SalesPrice.Modify;
+                        SalesPrice.Modify;
                 end;
             }
         }
@@ -86,22 +86,23 @@ xmlport 50058 "Import Items Prices"
 
     requestpage
     {
-
         layout
         {
             area(content)
             {
-                field(GenJrnTemplate;GenJrnTemplate)
+                field(GenJrnTemplate; GenJrnTemplate)
                 {
                     Caption = 'General journal template';
                     TableRelation = "Gen. Journal Template";
                     Visible = false;
+                    ApplicationArea = All;
                 }
-                field(GenJrnBatch;GenJrnBatch)
+                field(GenJrnBatch; GenJrnBatch)
                 {
                     Caption = 'Posting journal Batch';
                     TableRelation = "Gen. Journal Batch";
                     Visible = false;
+                    ApplicationArea = All;
                 }
             }
         }
@@ -132,7 +133,7 @@ xmlport 50058 "Import Items Prices"
 
         LineNo := 0;
 
-        BesoinNo :=0;
+        BesoinNo := 0;
         Window.Open(Text008);
     end;
 

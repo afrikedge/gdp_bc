@@ -4,6 +4,7 @@ page 50316 "Compartment Subform"
     InsertAllowed = true;
     LinksAllowed = false;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = Compartment;
 
     layout

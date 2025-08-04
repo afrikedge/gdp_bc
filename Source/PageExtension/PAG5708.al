@@ -6,6 +6,7 @@ pageextension 50059 pageextension70000116 extends "Get Shipment Lines"
         {
             field("Your Reference"; Rec."Your Reference")
             {
+                ApplicationArea = All;
             }
         }
     }

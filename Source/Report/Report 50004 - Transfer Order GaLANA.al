@@ -3,6 +3,7 @@ report 50004 "Transfer Order GaLANA"
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Transfer Order GaLANA.rdlc';
     Caption = 'Transfer Order';
+    ApplicationArea = All;
 
     dataset
     {

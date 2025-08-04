@@ -6,6 +6,7 @@ page 50288 "Posted JIRAMA Forecast Subform"
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Jirama Sales Forecast Line";
 
     layout

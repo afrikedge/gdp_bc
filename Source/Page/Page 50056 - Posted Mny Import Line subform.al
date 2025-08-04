@@ -4,6 +4,7 @@ page 50056 "Posted Mny Import Line subform"
     Caption = 'Lines';
     DelayedInsert = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Posted Moneytech Import Line";
 
     layout

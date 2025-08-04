@@ -2,6 +2,7 @@ report 50025 "Touring Importation File"
 {
     Caption = 'Touring Importation file';
     RDLCLayout = './Source/Report/Layout/Touring Import File.rdl';
+    ApplicationArea = All;
 
     dataset
     {

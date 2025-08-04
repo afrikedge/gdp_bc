@@ -4,6 +4,7 @@ page 50275 "Document Step Lines"
     Editable = false;
     PageType = List;
     SourceTable = "Document Step History";
+    ApplicationArea = All;
 
     layout
     {

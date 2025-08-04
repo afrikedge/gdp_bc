@@ -5,19 +5,19 @@ xmlport 50082 "Post Auto GL Reconciliation"
     FieldDelimiter = '<None>';
     FieldSeparator = '<TAB>';
     Format = VariableText;
-    Permissions = TableData "G/L Entry"=rm;
+    Permissions = TableData "G/L Entry" = rm;
     TextEncoding = UTF8;
 
     schema
     {
         textelement(Root)
         {
-            tableelement("G/L Entry";"G/L Entry")
+            tableelement("G/L Entry"; "G/L Entry")
             {
                 AutoSave = false;
                 XmlName = 'InvoiceData';
                 SourceTableView = SORTING("Entry No.");
-                fieldattribute(EntryID;"G/L Entry"."Entry No.")
+                fieldattribute(EntryID; "G/L Entry"."Entry No.")
                 {
                 }
 
@@ -30,19 +30,19 @@ xmlport 50082 "Post Auto GL Reconciliation"
                 begin
 
                     BesoinNo := BesoinNo + 1;
-                    if NbreTotalLignes>0 then
-                       Window.Update(1,Round(BesoinNo / NbreTotalLignes * 10000,1));
+                    if NbreTotalLignes > 0 then
+                        Window.Update(1, Round(BesoinNo / NbreTotalLignes * 10000, 1));
 
                     GLEntry.Get("G/L Entry"."Entry No.");
-                    GLEntry.TestField(GLEntry."G/L Account No.",GLAccountNo);
+                    GLEntry.TestField(GLEntry."G/L Account No.", GLAccountNo);
 
                     TotalAmount := TotalAmount + GLEntry.Amount;
 
                     if LetterToSet <> '' then begin
-                      GLEntry.Letter := LetterToSet;
-                      GLEntry."Applies-to ID" := '';
-                      GLEntry."Letter Date" := LetterDate;
-                      GLEntry.Modify;
+                        GLEntry.Letter := LetterToSet;
+                        GLEntry."Applies-to ID" := '';
+                        GLEntry."Letter Date" := LetterDate;
+                        GLEntry.Modify;
                     end;
                 end;
             }
@@ -57,18 +57,21 @@ xmlport 50082 "Post Auto GL Reconciliation"
         {
             area(content)
             {
-                field(GLAccNum;GLAccountNo)
+                field(GLAccNum; GLAccountNo)
                 {
                     Caption = 'GL Account No';
                     TableRelation = "G/L Account";
+                    ApplicationArea = All;
                 }
-                field(LastPostingDate;LetterDate)
+                field(LastPostingDate; LetterDate)
                 {
                     Caption = 'Last Entry Posting Date';
+                    ApplicationArea = All;
                 }
-                field(NombreLines;NbreTotalLignes)
+                field(NombreLines; NbreTotalLignes)
                 {
                     Caption = 'Number of lines to import';
+                    ApplicationArea = All;
                 }
             }
         }
@@ -84,14 +87,14 @@ xmlport 50082 "Post Auto GL Reconciliation"
         GLSetup.Get;
         AddOnSetup.Get;
         //AddOnSetup.TESTFIELD(AddOnSetup."Code Budget Def");
-        NbreTotalLignes:=100;
+        NbreTotalLignes := 100;
     end;
 
     trigger OnPostXmlPort()
     begin
 
         if TotalAmount <> 0 then
-          Error(Text005);
+            Error(Text005);
 
         Window.Close;
         Message(TxtTraitementTerminé);
@@ -103,11 +106,11 @@ xmlport 50082 "Post Auto GL Reconciliation"
 
         LineNo := 0;
 
-        BesoinNo :=0;
+        BesoinNo := 0;
         Window.Open(Text008);
 
         //IF GenJrnTemplate='' THEN ERROR(Text003);
-        if GLAccountNo='' then Error(Text004);
+        if GLAccountNo = '' then Error(Text004);
 
         GetLetter;
     end;
@@ -153,14 +156,14 @@ xmlport 50082 "Post Auto GL Reconciliation"
         GLEntry2: Record "G/L Entry";
     begin
         if LetterToSet <> '' then
-          exit;
-        GLEntry2.SetFilter("G/L Account No.",GLAccountNo);
-        GLEntry2.SetCurrentKey("G/L Account No.",Letter);
+            exit;
+        GLEntry2.SetFilter("G/L Account No.", GLAccountNo);
+        GLEntry2.SetCurrentKey("G/L Account No.", Letter);
         if GLEntry2.FindLast then
-          LetterToSet := GLEntry2.Letter;
+            LetterToSet := GLEntry2.Letter;
         if GLEntry2.FindLast then
-          if LetterToSet < UpperCase(GLEntry2.Letter) then
-            LetterToSet := UpperCase(GLEntry2.Letter);
+            if LetterToSet < UpperCase(GLEntry2.Letter) then
+                LetterToSet := UpperCase(GLEntry2.Letter);
         NextLetter(LetterToSet);
     end;
 
@@ -169,28 +172,28 @@ xmlport 50082 "Post Auto GL Reconciliation"
         i: Integer;
     begin
         if Letter = 'ZZZ' then
-          exit;
+            exit;
         if Letter = '' then begin
-          Letter := 'AAA';
-          exit;
+            Letter := 'AAA';
+            exit;
         end;
         if Letter[3] <> 'Z' then begin
-          i := Letter[3];
-          i := i + 1;
-          Letter[3] := i;
+            i := Letter[3];
+            i := i + 1;
+            Letter[3] := i;
         end else
-          if Letter[2] <> 'Z' then begin
-            i := Letter[2];
-            i := i + 1;
-            Letter[2] := i;
-            Letter[3] := 'A';
-          end else begin
-            i := Letter[1];
-            i := i + 1;
-            Letter[1] := i;
-            Letter[2] := 'A';
-            Letter[3] := 'A';
-          end;
+            if Letter[2] <> 'Z' then begin
+                i := Letter[2];
+                i := i + 1;
+                Letter[2] := i;
+                Letter[3] := 'A';
+            end else begin
+                i := Letter[1];
+                i := i + 1;
+                Letter[1] := i;
+                Letter[2] := 'A';
+                Letter[3] := 'A';
+            end;
     end;
 
     procedure SetAccount(AccNo: Code[20])

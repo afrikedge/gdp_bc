@@ -5,6 +5,8 @@ page 50258 "Cancelled Delivery Order"
     PageType = Document;
     SourceTable = pro_enteteBL;
     SourceTableView = WHERE(isAnnule = CONST(true));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {

@@ -2,6 +2,7 @@ report 50186 "Lettrage écritures comptables"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Lettrage écritures comptables.rdlc';
+    ApplicationArea = All;
 
     dataset
     {

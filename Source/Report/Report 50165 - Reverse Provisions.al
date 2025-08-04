@@ -2,10 +2,11 @@ report 50165 "Reverse Provisions"
 {
     Caption = 'Provisions Vente';
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {
-        dataitem("G/L Entry";"G/L Entry")
+        dataitem("G/L Entry"; "G/L Entry")
         {
             DataItemTableView = SORTING("Entry No.") ORDER(Ascending);
 
@@ -13,32 +14,32 @@ report 50165 "Reverse Provisions"
             var
                 CreateEntry: Boolean;
             begin
-                
+
                 /*IF (("G/L Entry"."Entry Type"<>"G/L Entry"."Entry Type"::) AND
                     ("G/L Entry"."Entry Type"<>"G/L Entry"."Entry Type"::VAT)) THEN
                     ERROR(ErrTypeEcr);*/
-                
-                
-                
-                    BesoinNo := BesoinNo + 1;
-                    Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
-                
-                    /*GenJrnTableND.TESTFIELD("No. Series");
-                    CLEAR(NoSeriesMgt);
-                
-                    IF LastDocNo='' THEN
-                        LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",FALSE);
-                    //END ELSE BEGIN
-                    //    LastDocNo := INCSTR(LastDocNo);
-                    //END;
-                
-                   CreateEntry := GLMgt.TraiterProvisionCdeVente("Sales Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
-                
-                   IF CreateEntry THEN LastDocNo := INCSTR(LastDocNo);*/
-                
+
+
+
+                BesoinNo := BesoinNo + 1;
+                Window.Update(1,
+                Round(BesoinNo / NbreTotalLignes * 10000, 1));
+
+                /*GenJrnTableND.TESTFIELD("No. Series");
+                CLEAR(NoSeriesMgt);
+
+                IF LastDocNo='' THEN
+                    LastDocNo := NoSeriesMgt.GetNextNo(GenJrnTableND."No. Series",GenJrnLine."Posting Date",FALSE);
+                //END ELSE BEGIN
+                //    LastDocNo := INCSTR(LastDocNo);
+                //END;
+
+               CreateEntry := GLMgt.TraiterProvisionCdeVente("Sales Header",ModeleFeuille,NomFeuille,PostingDate,LastDocNo,LineNum);
+
+               IF CreateEntry THEN LastDocNo := INCSTR(LastDocNo);*/
+
                 //IF "Reversal Entry"."Entry Type"="Reversal Entry"."Entry Type"::"G/L Account" THEN
-                   AddLigneEcr("G/L Entry");
+                AddLigneEcr("G/L Entry");
 
             end;
 
@@ -58,28 +59,28 @@ report 50165 "Reverse Provisions"
                 //AddOnSetup.GET;
                 //AddOnSetup.TESTFIELD(AddOnSetup."Unbilled Revenues Account");
 
-                GenJrnTableND.Get(ModeleFeuille,NomFeuille);
+                GenJrnTableND.Get(ModeleFeuille, NomFeuille);
 
-                if PostingDate=0D then Error(ErrDateCompta);
+                if PostingDate = 0D then Error(ErrDateCompta);
 
                 GenJrnLine.Reset;
-                GenJrnLine.SetRange("Journal Template Name",ModeleFeuille);
-                GenJrnLine.SetRange("Journal Batch Name",NomFeuille);
-                if GenJrnLine.FindFirst then Error(Text001,NomFeuille);
+                GenJrnLine.SetRange("Journal Template Name", ModeleFeuille);
+                GenJrnLine.SetRange("Journal Batch Name", NomFeuille);
+                if GenJrnLine.FindFirst then Error(Text001, NomFeuille);
 
-                BesoinNo :=0;
+                BesoinNo := 0;
 
                 Window.Open(Text008);
 
-                if TransactionNo>0 then begin
-                  "G/L Entry".SetCurrentKey("Transaction No.");
-                  "G/L Entry".SetRange("G/L Entry"."Transaction No.",TransactionNo)
+                if TransactionNo > 0 then begin
+                    "G/L Entry".SetCurrentKey("Transaction No.");
+                    "G/L Entry".SetRange("G/L Entry"."Transaction No.", TransactionNo)
                 end else begin
-                  "G/L Entry".SetRange("G/L Entry"."Entry No.",StartingEntryNo,EndingEntryNo);
+                    "G/L Entry".SetRange("G/L Entry"."Entry No.", StartingEntryNo, EndingEntryNo);
                 end;
 
-                LineNum:=0;
-                 NbreTotalLignes := "G/L Entry".Count;
+                LineNum := 0;
+                NbreTotalLignes := "G/L Entry".Count;
             end;
         }
     }
@@ -91,16 +92,16 @@ report 50165 "Reverse Provisions"
         {
             area(content)
             {
-                field(PostingDate;PostingDate)
+                field(PostingDate; PostingDate)
                 {
                     Caption = 'Posting Date';
                 }
-                field(ModeleFeuille;ModeleFeuille)
+                field(ModeleFeuille; ModeleFeuille)
                 {
                     Caption = 'Journal Template';
                     Visible = false;
                 }
-                field(NomFeuille;NomFeuille)
+                field(NomFeuille; NomFeuille)
                 {
                     Caption = 'Gen. Journal';
 
@@ -110,11 +111,10 @@ report 50165 "Reverse Provisions"
                         GenJournalBatchPage: Page "General Journal Batches";
                     begin
                         GenJournalBatch.Reset;
-                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name",ModeleFeuille);
-                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then
-                        begin
-                          NomFeuille := GenJournalBatch.Name;
-                          //NewFASubLocationName := FASubLoc.Name;
+                        GenJournalBatch.SetRange(GenJournalBatch."Journal Template Name", ModeleFeuille);
+                        if PAGE.RunModal(251, GenJournalBatch) = ACTION::LookupOK then begin
+                            NomFeuille := GenJournalBatch.Name;
+                            //NewFASubLocationName := FASubLoc.Name;
                         end;
                     end;
                 }
@@ -135,7 +135,7 @@ report 50165 "Reverse Provisions"
         AddOnSetup.Get;
         AddOnSetup.TestField("Provision Tmpl Journal");
         ModeleFeuille := AddOnSetup."Provision Tmpl Journal";
-        PostingDate:=WorkDate;
+        PostingDate := WorkDate;
     end;
 
     var
@@ -163,10 +163,10 @@ report 50165 "Reverse Provisions"
         StartingEntryNo: Integer;
         EndingEntryNo: Integer;
 
-    procedure SetFeuille(CodeModele1: Code[10];CodeFeuille1: Code[10])
+    procedure SetFeuille(CodeModele1: Code[10]; CodeFeuille1: Code[10])
     begin
-        ModeleFeuille:=CodeModele1;
-        NomFeuille:=CodeFeuille1;
+        ModeleFeuille := CodeModele1;
+        NomFeuille := CodeFeuille1;
     end;
 
     local procedure AddLigneEcr(GLEntry: Record "G/L Entry")
@@ -177,7 +177,7 @@ report 50165 "Reverse Provisions"
         LineAmount: Decimal;
     begin
         Clear(GenJrnLine);
-        GenJrnLine."Journal Template Name":= ModeleFeuille;
+        GenJrnLine."Journal Template Name" := ModeleFeuille;
         GenJrnLine."Journal Batch Name" := NomFeuille;
 
         LineNum := LineNum + 10;
@@ -185,8 +185,8 @@ report 50165 "Reverse Provisions"
         JrnTmplName.Get(GenJrnLine."Journal Template Name");
         JrnTmplName.TestField("Source Code");
         GenJrnLine."Source Code" := JrnTmplName."Source Code";
-        GenJrnLine.Validate("Posting Date",PostingDate);
-        GenJrnLine.Correction:=true;
+        GenJrnLine.Validate("Posting Date", PostingDate);
+        GenJrnLine.Correction := true;
 
         GenJrnLine."Document No." := GLEntry."Document No.";
         GenJrnLine."External Document No." := GLEntry."External Document No.";
@@ -195,32 +195,32 @@ report 50165 "Reverse Provisions"
         GLAccNo := GLEntry."G/L Account No.";
 
         GLMgt.CheckParamsGLAcc(GLAccNo);
-        GenJrnLine.Validate("Account No.",GLAccNo);
-        GenJrnLine.Validate("VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
+        GenJrnLine.Validate("Account No.", GLAccNo);
+        GenJrnLine.Validate("VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
 
 
 
         //GenJrnLine.Description := COPYSTR(STRSUBSTNO(Text005,SalesH."No."),1,49);
-        GenJrnLine.Description := CopyStr(StrSubstNo(Text002,GLEntry.Description),1,49);
+        GenJrnLine.Description := CopyStr(StrSubstNo(Text002, GLEntry.Description), 1, 49);
 
 
         GenJrnLine.Validate(GenJrnLine.Amount, -GLEntry.Amount);
 
-        GenJrnLine.Validate("Currency Code",'');
+        GenJrnLine.Validate("Currency Code", '');
 
         GenJrnLine."Shortcut Dimension 1 Code" := GLEntry."Global Dimension 1 Code";
         GenJrnLine."Shortcut Dimension 2 Code" := GLEntry."Global Dimension 2 Code";
         GenJrnLine."Dimension Set ID" := GLEntry."Dimension Set ID";
 
-        if GenJrnLine.Amount<>0 then
-          GenJrnLine.Insert(true);
+        if GenJrnLine.Amount <> 0 then
+            GenJrnLine.Insert(true);
     end;
 
-    procedure SetTransactionNo(Deb: Integer;Fin: Integer)
+    procedure SetTransactionNo(Deb: Integer; Fin: Integer)
     begin
         //TransactionNo := TransNo;
-        StartingEntryNo:=Deb;
-        EndingEntryNo:=Fin;
+        StartingEntryNo := Deb;
+        EndingEntryNo := Fin;
     end;
 
     procedure SetTransactionNo2(TransNo: Integer)

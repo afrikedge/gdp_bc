@@ -5,6 +5,8 @@ page 50110 "Posted Item Borrow"
     RefreshOnActivate = true;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Borrow));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -39,6 +41,7 @@ page 50110 "Posted Item Borrow"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)
@@ -46,10 +49,12 @@ page 50110 "Posted Item Borrow"
             systempart(Control1000000012; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1000000011; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }

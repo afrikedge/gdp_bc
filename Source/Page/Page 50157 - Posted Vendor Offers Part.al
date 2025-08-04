@@ -2,6 +2,7 @@ page 50157 "Posted Vendor Offers Part"
 {
     Caption = 'Offers';
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Purchase Header Archive";
     SourceTableView = WHERE("Document Type" = CONST(Quote));
 

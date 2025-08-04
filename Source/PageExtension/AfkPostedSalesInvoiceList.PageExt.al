@@ -20,6 +20,7 @@ pageextension 50090 "Afk Posted Sales Invoice List" extends "Posted Sales Invoic
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -38,6 +39,7 @@ pageextension 50090 "Afk Posted Sales Invoice List" extends "Posted Sales Invoic
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -56,6 +58,7 @@ pageextension 50090 "Afk Posted Sales Invoice List" extends "Posted Sales Invoic
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

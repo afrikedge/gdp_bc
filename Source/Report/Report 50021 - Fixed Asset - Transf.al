@@ -3,6 +3,7 @@ report 50021 "Fixed Asset - Transf"
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Fixed Asset - Transf.rdlc';
     Caption = 'Fixed Asset - Transfert';
+    ApplicationArea = All;
 
     dataset
     {

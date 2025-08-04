@@ -10,6 +10,7 @@ page 50200 "Cash Transfer Journal TRESO"
     PromotedActionCategories = 'New,Process,Report,Approve';
     SaveValues = true;
     SourceTable = "Gen. Journal Line";
+    ApplicationArea = All;
 
     layout
     {

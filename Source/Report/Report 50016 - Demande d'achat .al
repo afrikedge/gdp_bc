@@ -4,6 +4,7 @@ report 50016 "Demande d'achat "
     RDLCLayout = './Source/Report/Layout/Demande d''achat.rdlc';
     Caption = 'Purchase Requisition ';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

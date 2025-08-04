@@ -4,6 +4,7 @@ page 50347 "Touring Order Lines"
     Editable = false;
     PageType = List;
     SourceTable = "Touring Sales Order";
+    ApplicationArea = All;
 
     layout
     {

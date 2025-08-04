@@ -10,51 +10,51 @@ xmlport 50052 "Operations CG import21"
     {
         textelement(Root)
         {
-            tableelement("Import Data";"Import Data")
+            tableelement("Import Data"; "Import Data")
             {
                 AutoSave = false;
                 XmlName = 'InvoiceData';
                 SourceTableView = SORTING(CreditAmount);
-                fieldattribute(AccounNo;"Import Data".GLAccountNo)
+                fieldattribute(AccounNo; "Import Data".GLAccountNo)
                 {
                 }
-                fieldattribute(Type;"Import Data".ExternalDocNo)
+                fieldattribute(Type; "Import Data".ExternalDocNo)
                 {
                 }
-                fieldattribute(NumDoc;"Import Data".InvoiceNo)
+                fieldattribute(NumDoc; "Import Data".InvoiceNo)
                 {
                 }
-                fieldattribute(ExternalDoc;"Import Data".DocNum2)
+                fieldattribute(ExternalDoc; "Import Data".DocNum2)
                 {
                 }
-                fieldattribute(PostingDate;"Import Data".PostingDate)
+                fieldattribute(PostingDate; "Import Data".PostingDate)
                 {
                 }
-                fieldattribute(Descr;"Import Data".Description)
+                fieldattribute(Descr; "Import Data".Description)
                 {
                 }
-                fieldattribute(CurrencyCode;"Import Data".DocNum1)
+                fieldattribute(CurrencyCode; "Import Data".DocNum1)
                 {
                 }
-                fieldattribute(Amount;"Import Data".Amount)
+                fieldattribute(Amount; "Import Data".Amount)
                 {
                 }
-                fieldattribute(TauxChange;"Import Data".DebitAmount)
+                fieldattribute(TauxChange; "Import Data".DebitAmount)
                 {
                 }
-                fieldattribute(CentreCout;"Import Data".CodeAnalytique)
+                fieldattribute(CentreCout; "Import Data".CodeAnalytique)
                 {
                 }
-                fieldattribute(CanalVente;"Import Data".CodeAnalytique2)
+                fieldattribute(CanalVente; "Import Data".CodeAnalytique2)
                 {
                 }
-                fieldattribute(Projet;"Import Data".CodeAnalytique3)
+                fieldattribute(Projet; "Import Data".CodeAnalytique3)
                 {
                 }
-                fieldattribute(Region;"Import Data".CodeAnalytique4)
+                fieldattribute(Region; "Import Data".CodeAnalytique4)
                 {
                 }
-                fieldattribute(Budget;"Import Data".CodeAnalytique5)
+                fieldattribute(Budget; "Import Data".CodeAnalytique5)
                 {
                 }
 
@@ -73,89 +73,89 @@ xmlport 50052 "Operations CG import21"
 
                     BesoinNo := BesoinNo + 1;
                     Window.Update(1,
-                    Round(BesoinNo / NbreTotalLignes * 10000,1));
+                    Round(BesoinNo / NbreTotalLignes * 10000, 1));
 
-                      GenJrnLine.Init;
-                      GenJrnLine."Journal Template Name":= ModeleFeuille;
-                      GenJrnLine."Journal Batch Name" := NomFeuille;
-                      LineNo := LineNo + 10000;
-                      GenJrnLine."Line No." := LineNo;
-                      JrnTmplName.Get(GenJrnLine."Journal Template Name");
-                      JrnTmplName.TestField(JrnTmplName."Source Code");
-                      GenJrnLine."Source Code" := JrnTmplName."Source Code";
-
-
+                    GenJrnLine.Init;
+                    GenJrnLine."Journal Template Name" := ModeleFeuille;
+                    GenJrnLine."Journal Batch Name" := NomFeuille;
+                    LineNo := LineNo + 10000;
+                    GenJrnLine."Line No." := LineNo;
+                    JrnTmplName.Get(GenJrnLine."Journal Template Name");
+                    JrnTmplName.TestField(JrnTmplName."Source Code");
+                    GenJrnLine."Source Code" := JrnTmplName."Source Code";
 
 
-                      Evaluate(GenJrnLine."Posting Date","Import Data".PostingDate);
-                      GenJrnLine.Validate("Posting Date");
 
-                      GenJrnLine."Document No." := "Import Data".InvoiceNo;
-                      GenJrnLine."External Document No." := "Import Data".DocNum2;
 
-                      //GenJrnLine."Document Type" := GenJrnLine."Document Type"::Invoice;
-                      GenJrnLine."Document Type" := GenJrnLine."Document Type"::" ";
+                    Evaluate(GenJrnLine."Posting Date", "Import Data".PostingDate);
+                    GenJrnLine.Validate("Posting Date");
 
-                      if UpperCase("Import Data".ExternalDocNo)='BANQUE' then begin
+                    GenJrnLine."Document No." := "Import Data".InvoiceNo;
+                    GenJrnLine."External Document No." := "Import Data".DocNum2;
+
+                    //GenJrnLine."Document Type" := GenJrnLine."Document Type"::Invoice;
+                    GenJrnLine."Document Type" := GenJrnLine."Document Type"::" ";
+
+                    if UpperCase("Import Data".ExternalDocNo) = 'BANQUE' then begin
                         GenJrnLine."Account Type" := GenJrnLine."Account Type"::"Bank Account";
 
-                      end else begin
+                    end else begin
                         GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
-                      end;
+                    end;
 
-                      GenJrnLine.Validate(GenJrnLine."Account No.","Import Data".GLAccountNo);
-
-
-                      //GenJrnLine.TESTFIELD("Account No.");
-
-                      //Cust2.GET("Monthly Invoice Data".CustomerNo);
-                      //Vend2.CheckBlockedVendOnJnls(Vend2,"Document Type",FALSE);
-                      GenJrnLine.Description := CopyStr("Import Data".Description,1,50);
-                      //GenJrnLine."Posting Group" := Cust2."Customer Posting Group";
-                      //GenJrnLine."Salespers./Purch. Code" := Cust2."Salesperson Code";
-                      //"Payment Terms Code" := Vend2."Payment Terms Code";
-                      //GenJrnLine."Due Date" := "Monthly Invoice Data".DueDate;
-                      //GenJrnLine.VALIDATE("Bill-to/Pay-to No.","Monthly Invoice Data".CustomerNo);
-                      //GenJrnLine.VALIDATE("Sell-to/Buy-from No.","Monthly Invoice Data".CustomerNo);
-                      GenJrnLine."Gen. Posting Type" := 0;
-                      GenJrnLine."Gen. Bus. Posting Group" := '';
-                      GenJrnLine."Gen. Prod. Posting Group" := '';
-                      GenJrnLine."VAT Bus. Posting Group" := '';
-                      GenJrnLine."VAT Prod. Posting Group" := '';
-                      GenJrnLine.Validate("Currency Code","Import Data".DocNum1);
-
-                      GenJrnLine.Validate("Currency Factor" , Round(1 / "Import Data".DebitAmount,0.000000000000001));
-
-                      //GenJrnLine."Bal. Account Type" :=  GenJrnLine."Bal. Account Type"::Customer;
-                      //GenJrnLine.VALIDATE("Bal. Account No.","Monthly Invoice Data".CustomerNo);
-
-                      //VALIDATE("Payment Terms Code");
-                      GenJrnLine.Amount := "Import Data".Amount;
-                      GenJrnLine.Validate(Amount);
+                    GenJrnLine.Validate(GenJrnLine."Account No.", "Import Data".GLAccountNo);
 
 
-                      //Centre de cout
-                      if "Import Data".CodeAnalytique<>'' then
-                        GenJrnLine.Validate("Shortcut Dimension 2 Code","Import Data".CodeAnalytique);
+                    //GenJrnLine.TESTFIELD("Account No.");
 
-                      //Region
-                      if "Import Data".CodeAnalytique4<>'' then
-                        GenJrnLine.ValidateShortcutDimCode(4,"Import Data".CodeAnalytique4);
+                    //Cust2.GET("Monthly Invoice Data".CustomerNo);
+                    //Vend2.CheckBlockedVendOnJnls(Vend2,"Document Type",FALSE);
+                    GenJrnLine.Description := CopyStr("Import Data".Description, 1, 50);
+                    //GenJrnLine."Posting Group" := Cust2."Customer Posting Group";
+                    //GenJrnLine."Salespers./Purch. Code" := Cust2."Salesperson Code";
+                    //"Payment Terms Code" := Vend2."Payment Terms Code";
+                    //GenJrnLine."Due Date" := "Monthly Invoice Data".DueDate;
+                    //GenJrnLine.VALIDATE("Bill-to/Pay-to No.","Monthly Invoice Data".CustomerNo);
+                    //GenJrnLine.VALIDATE("Sell-to/Buy-from No.","Monthly Invoice Data".CustomerNo);
+                    GenJrnLine."Gen. Posting Type" := 0;
+                    GenJrnLine."Gen. Bus. Posting Group" := '';
+                    GenJrnLine."Gen. Prod. Posting Group" := '';
+                    GenJrnLine."VAT Bus. Posting Group" := '';
+                    GenJrnLine."VAT Prod. Posting Group" := '';
+                    GenJrnLine.Validate("Currency Code", "Import Data".DocNum1);
 
-                      //projet
-                      if "Import Data".CodeAnalytique3<>'' then
-                        GenJrnLine.ValidateShortcutDimCode(5,"Import Data".CodeAnalytique3);
+                    GenJrnLine.Validate("Currency Factor", Round(1 / "Import Data".DebitAmount, 0.000000000000001));
 
-                      //Canal de vente
-                      if "Import Data".CodeAnalytique2<>'' then
-                        GenJrnLine.ValidateShortcutDimCode(3,"Import Data".CodeAnalytique2);
+                    //GenJrnLine."Bal. Account Type" :=  GenJrnLine."Bal. Account Type"::Customer;
+                    //GenJrnLine.VALIDATE("Bal. Account No.","Monthly Invoice Data".CustomerNo);
 
-                      //Budget
-                      if "Import Data".CodeAnalytique5<>'' then
-                        GenJrnLine.Validate("Shortcut Dimension 1 Code","Import Data".CodeAnalytique5);
+                    //VALIDATE("Payment Terms Code");
+                    GenJrnLine.Amount := "Import Data".Amount;
+                    GenJrnLine.Validate(Amount);
 
 
-                      GenJrnLine.Insert(true);
+                    //Centre de cout
+                    if "Import Data".CodeAnalytique <> '' then
+                        GenJrnLine.Validate("Shortcut Dimension 2 Code", "Import Data".CodeAnalytique);
+
+                    //Region
+                    if "Import Data".CodeAnalytique4 <> '' then
+                        GenJrnLine.ValidateShortcutDimCode(4, "Import Data".CodeAnalytique4);
+
+                    //projet
+                    if "Import Data".CodeAnalytique3 <> '' then
+                        GenJrnLine.ValidateShortcutDimCode(5, "Import Data".CodeAnalytique3);
+
+                    //Canal de vente
+                    if "Import Data".CodeAnalytique2 <> '' then
+                        GenJrnLine.ValidateShortcutDimCode(3, "Import Data".CodeAnalytique2);
+
+                    //Budget
+                    if "Import Data".CodeAnalytique5 <> '' then
+                        GenJrnLine.Validate("Shortcut Dimension 1 Code", "Import Data".CodeAnalytique5);
+
+
+                    GenJrnLine.Insert(true);
                 end;
             }
         }
@@ -169,18 +169,21 @@ xmlport 50052 "Operations CG import21"
         {
             area(content)
             {
-                field(ModeleFeuille;ModeleFeuille)
+                field(ModeleFeuille; ModeleFeuille)
                 {
                     Caption = 'Journal Template';
                     TableRelation = "Gen. Journal Template";
+                    ApplicationArea = All;
                 }
-                field(NomFeuille;NomFeuille)
+                field(NomFeuille; NomFeuille)
                 {
                     Caption = 'Gen. Journal';
+                    ApplicationArea = All;
                 }
-                field(NbreTotalLignes;NbreTotalLignes)
+                field(NbreTotalLignes; NbreTotalLignes)
                 {
                     Caption = 'Total lines';
+                    ApplicationArea = All;
                 }
             }
         }
@@ -204,21 +207,21 @@ xmlport 50052 "Operations CG import21"
         //AddOnSetup.GET;
         //AddOnSetup.TESTFIELD("Sales Templ Journal Code");
 
-        if ModeleFeuille='' then Error('Invalid Model');
-        if NomFeuille='' then Error('Invalid feuille');
+        if ModeleFeuille = '' then Error('Invalid Model');
+        if NomFeuille = '' then Error('Invalid feuille');
 
-          GenJrnLine.Reset;
-          GenJrnLine.SetRange("Journal Template Name",ModeleFeuille);
-          GenJrnLine.SetRange("Journal Batch Name",NomFeuille);
-          //GenJrnLine.DELETEALL;
-          if GenJrnLine.FindFirst then Error(Text001,GenJrnBatch);
-          LineNo := 0;
+        GenJrnLine.Reset;
+        GenJrnLine.SetRange("Journal Template Name", ModeleFeuille);
+        GenJrnLine.SetRange("Journal Batch Name", NomFeuille);
+        //GenJrnLine.DELETEALL;
+        if GenJrnLine.FindFirst then Error(Text001, GenJrnBatch);
+        LineNo := 0;
 
 
-        BesoinNo :=0;
+        BesoinNo := 0;
         //IF "Monthly Invoice Data".FIND('-') THEN
-           //NbreTotalLignes :=34226;
-        if   NbreTotalLignes=0 then Error('Entrez le nombre de lignes');
+        //NbreTotalLignes :=34226;
+        if NbreTotalLignes = 0 then Error('Entrez le nombre de lignes');
         Window.Open(Text008);
     end;
 

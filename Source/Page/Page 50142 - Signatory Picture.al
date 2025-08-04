@@ -6,6 +6,8 @@ page 50142 "Signatory Picture"
     LinksAllowed = false;
     PageType = Card;
     SourceTable = Signatory;
+    UsageCategory = None;
+    ApplicationArea = All;
 
     layout
     {

@@ -6,6 +6,7 @@ page 50162 "Posted Item Inv. Conso Subform"
     LinksAllowed = false;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Posted Adjustment Line";
     SourceTableView = WHERE("Document Type" = CONST("Invoiced Consumption"));
 

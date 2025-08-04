@@ -133,10 +133,12 @@ page 50024 "Sales Order List - Cancelled"
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
         }
     }

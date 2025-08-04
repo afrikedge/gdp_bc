@@ -5,6 +5,7 @@ page 50063 "Posted Moneytech Billing List"
     Editable = false;
     PageType = List;
     SourceTable = "Posted MoneyTech Billing";
+    ApplicationArea = All;
 
     layout
     {

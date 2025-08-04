@@ -10,6 +10,7 @@ pageextension 50089 "Afk Posted Sales Invoice" extends "Posted Sales Invoice"
         {
             field(Observations; Rec.Observations)
             {
+                ApplicationArea = All;
                 MultiLine = true;
                 Editable = false;
             }
@@ -28,6 +29,7 @@ pageextension 50089 "Afk Posted Sales Invoice" extends "Posted Sales Invoice"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -46,6 +48,7 @@ pageextension 50089 "Afk Posted Sales Invoice" extends "Posted Sales Invoice"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -64,6 +67,7 @@ pageextension 50089 "Afk Posted Sales Invoice" extends "Posted Sales Invoice"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

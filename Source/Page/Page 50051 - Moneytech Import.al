@@ -2,6 +2,8 @@ page 50051 "Moneytech Import"
 {
     PageType = Document;
     SourceTable = "MoneyTech Import";
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -49,6 +51,7 @@ page 50051 "Moneytech Import"
             {
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
     }

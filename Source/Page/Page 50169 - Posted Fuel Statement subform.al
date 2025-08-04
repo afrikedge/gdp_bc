@@ -4,6 +4,7 @@ page 50169 "Posted Fuel Statement subform"
     Caption = 'Lines';
     DelayedInsert = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Posted Fuel Statement Line";
     SourceTableView = WHERE("Document Type" = CONST(FS));
 

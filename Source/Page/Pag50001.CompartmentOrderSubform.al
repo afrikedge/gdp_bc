@@ -5,6 +5,7 @@ page 50001 CompartmentOrderSubform
     LinksAllowed = false;
     PageType = ListPart;
     SourceTable = Compartment;
+    ApplicationArea = All;
 
     layout
     {

@@ -6,6 +6,7 @@ page 50132 "Returned Check Warranty"
     UsageCategory = Lists;
     SourceTable = "Check Warranty";
     SourceTableView = WHERE(Status = CONST(Returned));
+    ApplicationArea = All;
 
     layout
     {

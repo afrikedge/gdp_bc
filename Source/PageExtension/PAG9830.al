@@ -6,9 +6,11 @@ pageextension 50077 pageextension70000155 extends "User Groups"
         {
             field("Allow Posting From"; Rec."Allow Posting From")
             {
+                ApplicationArea = All;
             }
             field("Allow Posting To"; Rec."Allow Posting To")
             {
+                ApplicationArea = All;
             }
         }
     }

@@ -6,6 +6,8 @@ page 50191 "Item Invoiced Conso Released"
     SourceTable = "Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST("Invoiced Consumption"),
                             Status = CONST(Released));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -47,6 +49,7 @@ page 50191 "Item Invoiced Conso Released"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)

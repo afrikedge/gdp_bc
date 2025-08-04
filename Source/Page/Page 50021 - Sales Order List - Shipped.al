@@ -174,25 +174,30 @@ page 50021 "Sales Order List - Shipped"
                 SubPageLink = "No." = FIELD("Bill-to Customer No."),
                               "Date Filter" = FIELD("Date Filter");
                 Visible = true;
+                ApplicationArea = All;
             }
             part(Control1900316107; "Customer Details FactBox")
             {
                 SubPageLink = "No." = FIELD("Bill-to Customer No."),
                               "Date Filter" = FIELD("Date Filter");
                 Visible = true;
+                ApplicationArea = All;
             }
             part(IncomingDocAttachFactBox; "Incoming Doc. Attach. FactBox")
             {
                 ShowFilter = false;
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1900383207; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1905767507; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }
@@ -211,6 +216,7 @@ page 50021 "Sales Order List - Shipped"
                     Caption = 'Dimensions';
                     Image = Dimensions;
                     ShortCutKey = 'Shift+Ctrl+D';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -224,6 +230,7 @@ page 50021 "Sales Order List - Shipped"
                     Promoted = true;
                     PromotedCategory = Process;
                     ShortCutKey = 'F7';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -234,6 +241,7 @@ page 50021 "Sales Order List - Shipped"
                 {
                     Caption = 'Approvals';
                     Image = Approvals;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -246,6 +254,7 @@ page 50021 "Sales Order List - Shipped"
                 action("Co&mments")
                 {
                     Caption = 'Comments';
+                    ApplicationArea = All;
                     Image = ViewComments;
                     RunObject = Page "Sales Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
@@ -264,6 +273,7 @@ page 50021 "Sales Order List - Shipped"
                     RunObject = Page "Posted Sales Shipments";
                     RunPageLink = "Order No." = FIELD("No.");
                     RunPageView = SORTING("Order No.");
+                    ApplicationArea = All;
                 }
                 action(Invoices)
                 {
@@ -272,6 +282,7 @@ page 50021 "Sales Order List - Shipped"
                     RunObject = Page "Posted Sales Invoices";
                     RunPageLink = "Order No." = FIELD("No.");
                     RunPageView = SORTING("Order No.");
+                    ApplicationArea = All;
                 }
                 action("Prepa&yment Invoices")
                 {
@@ -280,6 +291,7 @@ page 50021 "Sales Order List - Shipped"
                     RunObject = Page "Posted Sales Invoices";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
                     RunPageView = SORTING("Prepayment Order No.");
+                    ApplicationArea = All;
                 }
                 action("Prepayment Credi&t Memos")
                 {
@@ -288,6 +300,7 @@ page 50021 "Sales Order List - Shipped"
                     RunObject = Page "Posted Sales Credit Memos";
                     RunPageLink = "Prepayment Order No." = FIELD("No.");
                     RunPageView = SORTING("Prepayment Order No.");
+                    ApplicationArea = All;
                 }
             }
             group(Warehouse)
@@ -297,6 +310,7 @@ page 50021 "Sales Order List - Shipped"
                 action("Whse. Shipment Lines")
                 {
                     Caption = 'Whse. Shipment Lines';
+                    ApplicationArea = All;
                     Image = ShipmentLines;
                     RunObject = Page "Whse. Shipment Lines";
                     RunPageLink = "Source Type" = CONST(37),
@@ -307,6 +321,7 @@ page 50021 "Sales Order List - Shipped"
                 action("In&vt. Put-away/Pick Lines")
                 {
                     Caption = 'Invt. Put-away/Pick Lines';
+                    ApplicationArea = All;
                     Image = PickLines;
                     RunObject = Page "Warehouse Activity List";
                     RunPageLink = "Source Document" = CONST("Sales Order"),
@@ -325,6 +340,7 @@ page 50021 "Sales Order List - Shipped"
                     Image = "Order";
                     ToolTip = 'Open the Dynamics CRM Sales Order List page in NAV';
                     Visible = CRMIntegrationEnabled;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -348,6 +364,7 @@ page 50021 "Sales Order List - Shipped"
                     Promoted = true;
                     PromotedCategory = Process;
                     ShortCutKey = 'Ctrl+F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -362,6 +379,7 @@ page 50021 "Sales Order List - Shipped"
                     Image = ReOpen;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -377,6 +395,7 @@ page 50021 "Sales Order List - Shipped"
                     Image = "Action";
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
                     PromotedIsBig = true;
 
                     trigger OnAction()
@@ -393,6 +412,7 @@ page 50021 "Sales Order List - Shipped"
                 {
                     Caption = 'Planning';
                     Image = Planning;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -407,6 +427,7 @@ page 50021 "Sales Order List - Shipped"
                     AccessByPermission = TableData "Order Promising Line" = R;
                     Caption = 'Order Promising';
                     Image = OrderPromising;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -422,6 +443,7 @@ page 50021 "Sales Order List - Shipped"
                     AccessByPermission = TableData "IC G/L Account" = R;
                     Caption = 'Send IC Sales Order Cnfmn.';
                     Image = IntercompanyOrder;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -441,6 +463,7 @@ page 50021 "Sales Order List - Shipped"
                     Caption = 'Send Approval Request';
                     Enabled = NOT OpenApprovalEntriesExist;
                     Image = SendApprovalRequest;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -456,6 +479,7 @@ page 50021 "Sales Order List - Shipped"
                 {
                     Caption = 'Cancel Approval Request';
                     Enabled = OpenApprovalEntriesExist;
+                    ApplicationArea = All;
                     Image = Cancel;
 
                     trigger OnAction()
@@ -476,6 +500,7 @@ page 50021 "Sales Order List - Shipped"
                     Caption = 'Create Inventory Put-away/Pick';
                     Ellipsis = true;
                     Image = CreatePutawayPick;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -490,6 +515,7 @@ page 50021 "Sales Order List - Shipped"
                     AccessByPermission = TableData "Warehouse Shipment Header" = R;
                     Caption = 'Create Whse. Shipment';
                     Image = NewShipment;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -515,6 +541,7 @@ page 50021 "Sales Order List - Shipped"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -530,6 +557,7 @@ page 50021 "Sales Order List - Shipped"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'Shift+F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -541,6 +569,7 @@ page 50021 "Sales Order List - Shipped"
                     Caption = 'Post and Email';
                     Ellipsis = true;
                     Image = PostMail;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -554,6 +583,7 @@ page 50021 "Sales Order List - Shipped"
                     Caption = 'Test Report';
                     Ellipsis = true;
                     Image = TestReport;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -567,6 +597,7 @@ page 50021 "Sales Order List - Shipped"
                     Image = PostBatch;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -579,6 +610,7 @@ page 50021 "Sales Order List - Shipped"
                     Caption = 'Remove From Job Queue';
                     Image = RemoveLine;
                     Visible = JobQueueActive;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -589,6 +621,7 @@ page 50021 "Sales Order List - Shipped"
                 {
                     Caption = 'Preview Posting';
                     Image = ViewPostedOrder;
+                    ApplicationArea = All;
                     Visible = false;
 
                     trigger OnAction()
@@ -606,6 +639,7 @@ page 50021 "Sales Order List - Shipped"
                     Caption = 'Work Order';
                     Ellipsis = true;
                     Image = Print;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -616,6 +650,7 @@ page 50021 "Sales Order List - Shipped"
                 {
                     Caption = 'Pick Instruction';
                     Image = Print;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -632,6 +667,7 @@ page 50021 "Sales Order List - Shipped"
                     Caption = 'Email Confirmation';
                     Ellipsis = true;
                     Image = Email;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -645,6 +681,7 @@ page 50021 "Sales Order List - Shipped"
                     Image = Print;
                     Promoted = true;
                     PromotedCategory = Process;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -661,6 +698,7 @@ page 50021 "Sales Order List - Shipped"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
+                ApplicationArea = All;
                 RunObject = Report "Sales Reservation Avail.";
             }
         }

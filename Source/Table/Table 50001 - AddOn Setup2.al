@@ -183,9 +183,14 @@ table 50001 "AddOn Setup2"
             Caption = 'Article carte imprimé';
             TableRelation = Item;
         }
-        field(41; "Card print Item Descr"; Text[10])
+        field(41; "Card print Item Descr"; Text[100])
         {
             Caption = 'Article carte imprimé (Descr)';
+        }
+        field(42; "Orange Money WP Acc"; Code[20])
+        {
+            Caption = 'Compte Orange Money WP';
+            TableRelation = "Bank Account";
         }
     }
 

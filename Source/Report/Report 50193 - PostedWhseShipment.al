@@ -6,7 +6,7 @@ report 50193 "Posted Whse Shipment"
     Caption = 'Delivery Note';
     DefaultLayout = RDLC;
     UsageCategory = Documents;
-    ApplicationArea = Warehouse;
+    ApplicationArea = All;
     WordMergeDataItem = Header;
     RDLCLayout = './Source/Report/Layout/PostedWhseShipment.rdl';
 

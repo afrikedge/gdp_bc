@@ -4,6 +4,7 @@ page 50035 "Afk User Signature Factbox"
     PageType = CardPart;
     SourceTable = "User Setup";
     Caption = 'Signature';
+    UsageCategory = None;
 
     layout
     {

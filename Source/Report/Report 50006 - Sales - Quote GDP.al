@@ -4,6 +4,7 @@ report 50006 "Sales - Quote GDP"
     RDLCLayout = './Source/Report/Layout/Sales - Quote GDP.rdlc';
     Caption = 'Sales - Quote';
     PreviewMode = PrintLayout;
+    ApplicationArea = All;
 
     dataset
     {

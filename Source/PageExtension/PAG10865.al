@@ -6,6 +6,7 @@ pageextension 50079 pageextension70000004 extends "Payment Status"
         {
             field(Cancellable; Rec.Cancellable)
             {
+                ApplicationArea = All;
             }
         }
     }

@@ -4,6 +4,7 @@ report 50049 "Sales  Cr Memo NC"
     RDLCLayout = './Source/Report/Layout/Sales  Cr Memo NC.rdlc';
     Caption = 'Sales - Credit Memo';
     Permissions = TableData "Sales Shipment Buffer" = rimd;
+    ApplicationArea = All;
 
     dataset
     {

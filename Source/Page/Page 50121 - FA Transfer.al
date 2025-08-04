@@ -1,7 +1,7 @@
 page 50121 "FA Transfer"
 {
     Caption = 'Fixed Asset Transfer';
-
+    ApplicationArea = All;
     layout
     {
         area(content)
@@ -69,6 +69,7 @@ page 50121 "FA Transfer"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin

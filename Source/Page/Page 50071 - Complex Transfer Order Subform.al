@@ -6,6 +6,7 @@ page 50071 "Complex Transfer Order Subform"
     LinksAllowed = false;
     MultipleNewLines = true;
     PageType = ListPart;
+    ApplicationArea = All;
     SourceTable = "Transfer Line";
 
     layout

@@ -40,6 +40,7 @@ page 50144 "Cash Receipt Journal CCL"
                 ShowCaption = false;
                 field("Posting Date"; Rec."Posting Date")
                 {
+                    ApplicationArea = All;
                 }
                 field("Document Date"; Rec."Document Date")
                 {
@@ -52,6 +53,7 @@ page 50144 "Cash Receipt Journal CCL"
                 field("CC Document Type"; Rec."CC Document Type")
                 {
                     Caption = 'Payment Type';
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -71,6 +73,7 @@ page 50144 "Cash Receipt Journal CCL"
                 field("Account No."; Rec."Account No.")
                 {
                     Caption = 'Customer No';
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -106,13 +109,16 @@ page 50144 "Cash Receipt Journal CCL"
                 field("Check No."; Rec."Check No.")
                 {
                     Caption = 'Check No.';
+                    ApplicationArea = All;
                 }
                 field("Check Date"; Rec."Check Date")
                 {
                     Caption = 'Check Date';
+                    ApplicationArea = All;
                 }
                 field("Due Date"; Rec."Due Date")
                 {
+                    ApplicationArea = All;
                 }
                 field("Gen. Posting Type"; Rec."Gen. Posting Type")
                 {
@@ -158,7 +164,7 @@ page 50144 "Cash Receipt Journal CCL"
                 }
                 field("Credit Amount"; Rec."Credit Amount")
                 {
-
+                    ApplicationArea = All;
                     trigger OnValidate()
                     begin
                         //******************************************
@@ -392,6 +398,7 @@ page 50144 "Cash Receipt Journal CCL"
                     Promoted = true;
                     PromotedCategory = Process;
                     ShortCutKey = 'Shift+Ctrl+D';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -408,6 +415,7 @@ page 50144 "Cash Receipt Journal CCL"
                     PromotedCategory = Process;
                     Scope = Repeater;
                     Visible = false;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -430,6 +438,7 @@ page 50144 "Cash Receipt Journal CCL"
                     RunObject = Codeunit "Gen. Jnl.-Show Card";
                     ShortCutKey = 'Shift+F7';
                     Visible = false;
+                    ApplicationArea = All;
                 }
                 action("Ledger E&ntries")
                 {
@@ -441,6 +450,7 @@ page 50144 "Cash Receipt Journal CCL"
                     RunObject = Codeunit "Gen. Jnl.-Show Entries";
                     ShortCutKey = 'Ctrl+F7';
                     Visible = false;
+                    ApplicationArea = All;
                 }
             }
             action(Approvals)
@@ -469,6 +479,7 @@ page 50144 "Cash Receipt Journal CCL"
                 {
                     Caption = 'Renumber Document Numbers';
                     Image = EditLines;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -484,6 +495,7 @@ page 50144 "Cash Receipt Journal CCL"
                     PromotedCategory = Process;
                     RunObject = Codeunit "Gen. Jnl.-Apply";
                     ShortCutKey = 'Shift+F11';
+                    ApplicationArea = All;
                 }
                 action("Insert Conv. LCY Rndg. Lines")
                 {
@@ -491,6 +503,7 @@ page 50144 "Cash Receipt Journal CCL"
                     Image = InsertCurrency;
                     RunObject = Codeunit "Adjust Gen. Journal Balance";
                     Visible = false;
+                    ApplicationArea = All;
                 }
                 separator(Separator1120000)
                 {
@@ -500,6 +513,7 @@ page 50144 "Cash Receipt Journal CCL"
                     Caption = 'Print Check Remittance Report';
                     Image = PrintCheck;
                     Visible = false;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -516,6 +530,7 @@ page 50144 "Cash Receipt Journal CCL"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     Visible = false;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     var
@@ -549,6 +564,7 @@ page 50144 "Cash Receipt Journal CCL"
                     PromotedCategory = Process;
                     ShortCutKey = 'Ctrl+F11';
                     Visible = false;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -561,6 +577,7 @@ page 50144 "Cash Receipt Journal CCL"
                     Caption = 'Test Report';
                     Ellipsis = true;
                     Image = TestReport;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -575,6 +592,7 @@ page 50144 "Cash Receipt Journal CCL"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -588,6 +606,7 @@ page 50144 "Cash Receipt Journal CCL"
                 {
                     Caption = 'Preview Posting';
                     Image = ViewPostedOrder;
+                    ApplicationArea = All;
                     //Visible = false;
 
                     trigger OnAction()
@@ -605,6 +624,7 @@ page 50144 "Cash Receipt Journal CCL"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'Shift+F9';
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin

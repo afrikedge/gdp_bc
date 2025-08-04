@@ -3,6 +3,8 @@ page 50060 "Posted Moneytech Billing"
     Editable = false;
     PageType = Document;
     SourceTable = "Posted MoneyTech Billing";
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -37,6 +39,7 @@ page 50060 "Posted Moneytech Billing"
             {
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+                ApplicationArea = All;
             }
         }
     }

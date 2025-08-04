@@ -6,12 +6,15 @@ pageextension 50006 pageextension70000064 extends "Vendor Ledger Entries"
         {
             field("Vendor Name2"; Rec."Vendor Name2")
             {
+                ApplicationArea = All;
             }
             field("Transaction Date"; Rec."Transaction Date")
             {
+                ApplicationArea = All;
             }
             field("Recipient Bank Account"; Rec."Recipient Bank Account")
             {
+                ApplicationArea = All;
             }
         }
     }
@@ -26,6 +29,7 @@ pageextension 50006 pageextension70000064 extends "Vendor Ledger Entries"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

@@ -6,9 +6,11 @@ pageextension 50035 pageextension70000075 extends "Item Reclass. Journal"
         {
             field("Customer No."; Rec."Customer No.")
             {
+                ApplicationArea = All;
             }
             field(Observations; Rec.Observations)
             {
+                ApplicationArea = All;
             }
         }
     }
@@ -24,6 +26,7 @@ pageextension 50035 pageextension70000075 extends "Item Reclass. Journal"
                 Promoted = true;
                 PromotedCategory = Process;
                 Visible = false;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -44,6 +47,7 @@ pageextension 50035 pageextension70000075 extends "Item Reclass. Journal"
                 Image = PrintAcknowledgement;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

@@ -2,6 +2,8 @@ page 50327 "Truck Card"
 {
     PageType = Card;
     SourceTable = pro_moyentransport;
+    UsageCategory = Administration;
+    ApplicationArea = All;
 
     layout
     {

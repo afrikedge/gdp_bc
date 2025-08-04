@@ -7,6 +7,7 @@ pageextension 50066 pageextension70000133 extends "Config. Package Subform"
             action(INIT)
             {
                 Caption = 'INIT';
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin

@@ -76,11 +76,11 @@ codeunit 50044 "Afk Post Card Operation"
         end;
     end;
 
-    [TryFunction]
-    local procedure PostSingleEntry(var CardEntryToPost: Record "Afk Card Operation Entry")
-    var
-        CardEntryPost: Codeunit "Afk Post Card Operation";
-    begin
-        CardEntryPost.Run(CardEntryToPost);
-    end;
+    // [TryFunction]
+    // local procedure PostSingleEntry(var CardEntryToPost: Record "Afk Card Operation Entry")
+    // var
+    //     CardEntryPost: Codeunit "Afk Post Card Operation";
+    // begin
+    //     CardEntryPost.Run(CardEntryToPost);
+    // end;
 }

@@ -4,6 +4,7 @@ page 50135 "LC Currency Purchase Subform"
     Caption = 'Currency Purchase';
     DelayedInsert = true;
     PageType = ListPart;
+    ApplicationArea = All;
     PopulateAllFields = true;
     SourceTable = "Currency Purchase";
 

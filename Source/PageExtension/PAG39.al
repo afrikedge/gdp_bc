@@ -8,38 +8,47 @@ pageextension 50008 pageextension70000073 extends "General Journal"
             field(CodeDepotProvisions; Rec.CodeDepotProvisions)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             field(NumDocProvisions; Rec.NumDocProvisions)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             field(CodeArticleProvisions; Rec.CodeArticleProvisions)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             field(CodeDepotDestProv; Rec.CodeDepotDestProv)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             field(VolumeProvisions; Rec.VolumeProvisions)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             field(TransporterNameProvisions; Rec.TransporterNameProvisions)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             field(VendorCodeProvisions; Rec.VendorCodeProvisions)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             field(FraisProvisions; Rec.FraisProvisions)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             field(Destinataire; Rec.Destinataire)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
         }
     }
@@ -86,6 +95,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -101,6 +111,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -116,6 +127,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -132,6 +144,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -148,6 +161,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = TransferReceipt;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -165,6 +179,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -180,6 +195,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -195,6 +211,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -210,6 +227,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -225,6 +243,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Category4;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -240,6 +259,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Category4;
+                ApplicationArea = All;
                 Visible = false;
 
                 trigger OnAction()
@@ -256,6 +276,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -271,6 +292,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GLBalance;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -288,6 +310,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
                 Visible = false;
 
                 trigger OnAction()
@@ -307,6 +330,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = GeneralLedger;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var
@@ -325,6 +349,7 @@ pageextension 50008 pageextension70000073 extends "General Journal"
                 Image = FixedAssets;
                 Promoted = true;
                 PromotedCategory = Process;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

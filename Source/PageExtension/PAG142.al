@@ -6,15 +6,19 @@ pageextension 50025 pageextension70000041 extends "Posted Sales Shipments"
         {
             field("Your Reference"; Rec."Your Reference")
             {
+                ApplicationArea = All;
             }
             field("Order No."; Rec."Order No.")
             {
+                ApplicationArea = All;
             }
             field("User ID"; Rec."User ID")
             {
+                ApplicationArea = All;
             }
             field("Livre JIRAMA"; Rec."Livre JIRAMA")
             {
+                ApplicationArea = All;
             }
         }
     }

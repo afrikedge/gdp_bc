@@ -7,6 +7,7 @@ page 50184 "General Journal Batches CCL"
     UsageCategory = Tasks;
     SourceTable = "Gen. Journal Batch";
 
+
     layout
     {
         area(content)

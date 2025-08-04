@@ -6,6 +6,8 @@ page 50096 "Posted Item Loan"
     RefreshOnActivate = true;
     SourceTable = "Posted Adjustment Header";
     SourceTableView = WHERE("Document Type" = CONST(Loan));
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -43,6 +45,7 @@ page 50096 "Posted Item Loan"
                 Caption = 'Lines';
                 SubPageLink = "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
         area(factboxes)
@@ -50,10 +53,12 @@ page 50096 "Posted Item Loan"
             systempart(Control1000000012; Links)
             {
                 Visible = false;
+                ApplicationArea = All;
             }
             systempart(Control1000000011; Notes)
             {
                 Visible = true;
+                ApplicationArea = All;
             }
         }
     }

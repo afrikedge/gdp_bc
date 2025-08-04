@@ -187,29 +187,35 @@ xmlport 50078 "Import Op. Gerant ND"
                     Caption = 'General journal template';
                     TableRelation = "Gen. Journal Template";
                     Visible = false;
+                    ApplicationArea = All;
                 }
                 field(GenJrnBatch; GenJrnBatch)
                 {
                     Caption = 'Posting journal Batch';
                     TableRelation = "Gen. Journal Batch";
                     Visible = false;
+                    ApplicationArea = All;
                 }
                 field("N° Document"; DocNum)
                 {
                     Visible = false;
+                    ApplicationArea = All;
                 }
                 field(VendorType; VendorType)
                 {
                     Caption = 'Type fournisseur cartes';
+                    ApplicationArea = All;
 
                 }
                 field(ImportType; ImportType)
                 {
                     Caption = 'Import Type';
+                    ApplicationArea = All;
                 }
                 field(NbreTotalLignes; NbreTotalLignes)
                 {
                     Caption = 'Total lines';
+                    ApplicationArea = All;
                 }
             }
         }

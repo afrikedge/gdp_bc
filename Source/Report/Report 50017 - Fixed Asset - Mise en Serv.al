@@ -3,6 +3,7 @@ report 50017 "Fixed Asset - Mise en Serv"
     DefaultLayout = RDLC;
     RDLCLayout = './Source/Report/Layout/Fixed Asset - Mise en Serv.rdlc';
     Caption = 'Fixed Asset - Startup';
+    ApplicationArea = All;
 
     dataset
     {

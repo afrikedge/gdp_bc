@@ -6,10 +6,12 @@ pageextension 50049 pageextension70000099 extends "Sales Order Archive"
         {
             field("Delivery Status"; Rec."Delivery Status")
             {
+                ApplicationArea = All;
             }
             field(Observations; Rec.Observations)
             {
                 MultiLine = true;
+                ApplicationArea = All;
             }
         }
     }
@@ -29,6 +31,7 @@ pageextension 50049 pageextension70000099 extends "Sales Order Archive"
                 Promoted = true;
                 PromotedCategory = Process;
                 Visible = false;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 var

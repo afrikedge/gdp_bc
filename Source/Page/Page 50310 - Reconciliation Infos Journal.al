@@ -3,6 +3,7 @@ page 50310 "Reconciliation Infos Journal"
     Caption = 'Invoices to reconciliate';
     PageType = List;
     SourceTable = "Reconciliation Info";
+    ApplicationArea = All;
 
     layout
     {

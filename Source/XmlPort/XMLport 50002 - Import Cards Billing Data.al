@@ -11,30 +11,30 @@ xmlport 50002 "Import Cards Billing Data"
     {
         textelement(Root)
         {
-            tableelement("Import Data";"Import Data")
+            tableelement("Import Data"; "Import Data")
             {
                 AutoSave = false;
                 XmlName = 'InvoiceData';
                 SourceTableView = SORTING(EntryNo) ORDER(Ascending);
-                fieldattribute(CustNo;"Import Data".GLAccountNo)
+                fieldattribute(CustNo; "Import Data".GLAccountNo)
                 {
                 }
-                fieldattribute(Descr;"Import Data".Description)
+                fieldattribute(Descr; "Import Data".Description)
                 {
                 }
-                fieldattribute(CustName;"Import Data".Description2)
+                fieldattribute(CustName; "Import Data".Description2)
                 {
                 }
-                fieldattribute(TransactionNo;"Import Data".DocumentNo)
+                fieldattribute(TransactionNo; "Import Data".DocumentNo)
                 {
                 }
-                fieldattribute(MontantBrut;"Import Data".DebitAmount)
+                fieldattribute(MontantBrut; "Import Data".DebitAmount)
                 {
                 }
-                fieldattribute(Remise;"Import Data".Amount)
+                fieldattribute(Remise; "Import Data".Amount)
                 {
                 }
-                fieldattribute(NetAPayer;"Import Data".CreditAmount)
+                fieldattribute(NetAPayer; "Import Data".CreditAmount)
                 {
                 }
 
@@ -52,59 +52,59 @@ xmlport 50002 "Import Cards Billing Data"
                     //ROUND(BesoinNo / NbreTotalLignes * 10000,1));
 
 
-                      MontantBrut := "Import Data".DebitAmount;
-                      Remise := "Import Data".Amount;
-                      NetToPay := "Import Data".CreditAmount;
-                      //MESSAGE('%1 %2 %3',MontantBrut,Remise,NetToPay);
-                      //IF NetToPay<>MontantBrut+Remise THEN ERROR(Text006,"Import Data".DocumentNo);//070520 Controle désactivé
+                    MontantBrut := "Import Data".DebitAmount;
+                    Remise := "Import Data".Amount;
+                    NetToPay := "Import Data".CreditAmount;
+                    //MESSAGE('%1 %2 %3',MontantBrut,Remise,NetToPay);
+                    //IF NetToPay<>MontantBrut+Remise THEN ERROR(Text006,"Import Data".DocumentNo);//070520 Controle désactivé
 
-                      //Debit du client
-                      Clear(GenJrnLine);
-                      GenJrnLine."Journal Template Name":= GenJrnTemplate;
-                      GenJrnLine."Journal Batch Name" := GenJrnBatch;
-                      LineNo := LineNo+10000;
-                      GenJrnLine."Line No." := LineNo;
-                      JrnTmplName.Get(GenJrnLine."Journal Template Name");
-                      JrnTmplName.TestField(JrnTmplName."Source Code");
-                      GenJrnLine."Source Code" := JrnTmplName."Source Code";
+                    //Debit du client
+                    Clear(GenJrnLine);
+                    GenJrnLine."Journal Template Name" := GenJrnTemplate;
+                    GenJrnLine."Journal Batch Name" := GenJrnBatch;
+                    LineNo := LineNo + 10000;
+                    GenJrnLine."Line No." := LineNo;
+                    JrnTmplName.Get(GenJrnLine."Journal Template Name");
+                    JrnTmplName.TestField(JrnTmplName."Source Code");
+                    GenJrnLine."Source Code" := JrnTmplName."Source Code";
 
-                      if NetToPay>0 then
+                    if NetToPay > 0 then
                         GenJrnLine."Document Type" := GenJrnLine."Document Type"::Invoice
-                      else
+                    else
                         GenJrnLine."Document Type" := GenJrnLine."Document Type"::"Credit Memo";
-                      GenJrnLine."Document No." := "Import Data".DocumentNo;
+                    GenJrnLine."Document No." := "Import Data".DocumentNo;
 
-                      GenJrnLine.Validate("Posting Date" ,PostingDate);
+                    GenJrnLine.Validate("Posting Date", PostingDate);
 
-                      GenJrnLine."Account Type" := GenJrnLine."Account Type"::Customer;
+                    GenJrnLine."Account Type" := GenJrnLine."Account Type"::Customer;
 
-                      GLAccNo := "Import Data".GLAccountNo;
-                      GenJrnLine.Validate("Account No.",GLAccNo);
+                    GLAccNo := "Import Data".GLAccountNo;
+                    GenJrnLine.Validate("Account No.", GLAccNo);
 
-                      Cust2.Get(GLAccNo);
+                    Cust2.Get(GLAccNo);
 
-                      //GenJrnLine.Description := COPYSTR("Import Data".Description,1,49);
-                      GenJrnLine.Description := Cust2.Name;
+                    //GenJrnLine.Description := COPYSTR("Import Data".Description,1,49);
+                    GenJrnLine.Description := Cust2.Name;
 
-                      GenJrnLine.Validate("Currency Code",'');
+                    GenJrnLine.Validate("Currency Code", '');
 
-                      GenJrnLine.Amount := NetToPay;
-                      GenJrnLine.Validate(Amount);
+                    GenJrnLine.Amount := NetToPay;
+                    GenJrnLine.Validate(Amount);
 
-                      LastAmountTotal := LastAmountTotal + GenJrnLine.Amount;
+                    LastAmountTotal := LastAmountTotal + GenJrnLine.Amount;
 
-                      //AddOnSetup.TESTFIELD("Postpaid Cards Account");
-                      //GenJrnLine."Bal. Account Type" := GenJrnLine."Bal. Account Type"::"G/L Account";
-                      //GenJrnLine.VALIDATE(GenJrnLine."Bal. Account No.",AddOnSetup."Postpaid Cards Account");
+                    //AddOnSetup.TESTFIELD("Postpaid Cards Account");
+                    //GenJrnLine."Bal. Account Type" := GenJrnLine."Bal. Account Type"::"G/L Account";
+                    //GenJrnLine.VALIDATE(GenJrnLine."Bal. Account No.",AddOnSetup."Postpaid Cards Account");
 
-                      // IF ((GLAccNo[1]='6') OR (GLAccNo[1]='7')) THEN
-                      //      GenJrnLine.VALIDATE(GenJrnLine."VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
+                    // IF ((GLAccNo[1]='6') OR (GLAccNo[1]='7')) THEN
+                    //      GenJrnLine.VALIDATE(GenJrnLine."VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
 
-                      //IF GenJrnLine.Amount=0 THEN
-                      //  ERROR(Text005);
+                    //IF GenJrnLine.Amount=0 THEN
+                    //  ERROR(Text005);
 
-                      DimSetE := GenJrnLine."Dimension Set ID";
-                      if(GenJrnLine.Amount<>0) then
+                    DimSetE := GenJrnLine."Dimension Set ID";
+                    if (GenJrnLine.Amount <> 0) then
                         GenJrnLine.Insert(true);
 
 
@@ -113,25 +113,25 @@ xmlport 50002 "Import Cards Billing Data"
 
 
 
-                      //Credit du compte des cartes postpayees
-                      Clear(GenJrnLine);
-                      GenJrnLine."Journal Template Name":= GenJrnTemplate;
-                      GenJrnLine."Journal Batch Name" := GenJrnBatch;
-                      LineNo := LineNo+10000;
-                      GenJrnLine."Line No." := LineNo;
-                      JrnTmplName.Get(GenJrnLine."Journal Template Name");
-                      JrnTmplName.TestField(JrnTmplName."Source Code");
-                      GenJrnLine."Source Code" := JrnTmplName."Source Code";
+                    //Credit du compte des cartes postpayees
+                    Clear(GenJrnLine);
+                    GenJrnLine."Journal Template Name" := GenJrnTemplate;
+                    GenJrnLine."Journal Batch Name" := GenJrnBatch;
+                    LineNo := LineNo + 10000;
+                    GenJrnLine."Line No." := LineNo;
+                    JrnTmplName.Get(GenJrnLine."Journal Template Name");
+                    JrnTmplName.TestField(JrnTmplName."Source Code");
+                    GenJrnLine."Source Code" := JrnTmplName."Source Code";
 
-                      if NetToPay>0 then
+                    if NetToPay > 0 then
                         GenJrnLine."Document Type" := GenJrnLine."Document Type"::Invoice
-                      else
+                    else
                         GenJrnLine."Document Type" := GenJrnLine."Document Type"::"Credit Memo";
-                      GenJrnLine."Document No." := "Import Data".DocumentNo;
-                      GenJrnLine.Validate("Posting Date" ,PostingDate);
-                      GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
+                    GenJrnLine."Document No." := "Import Data".DocumentNo;
+                    GenJrnLine.Validate("Posting Date", PostingDate);
+                    GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
 
-                      if VendorType = VendorType::GALITT then begin
+                    if VendorType = VendorType::GALITT then begin
 
                         if IsGPRO then begin
                             AddOnSetup2.TestField(AddOnSetup2."Galitt Fact Men Postpaid GPRO");
@@ -141,96 +141,96 @@ xmlport 50002 "Import Cards Billing Data"
                             GLAccNo := AddOnSetup2."Galitt Facture Mensue Postpaid";
                         end;
 
-                      end else begin
+                    end else begin
 
                         if IsGPRO then begin
-                          AddOnSetup.TestField(AddOnSetup."GPRO Cards Account");
-                          GLAccNo := AddOnSetup."GPRO Cards Account";
+                            AddOnSetup.TestField(AddOnSetup."GPRO Cards Account");
+                            GLAccNo := AddOnSetup."GPRO Cards Account";
                         end else begin
-                          AddOnSetup.TestField("Postpaid Cards Account");
-                          GLAccNo := AddOnSetup."Postpaid Cards Account";
+                            AddOnSetup.TestField("Postpaid Cards Account");
+                            GLAccNo := AddOnSetup."Postpaid Cards Account";
                         end;
 
-                      end;
-                      GenJrnLine.Validate("Account No.",GLAccNo);
-                      //GenJrnLine.Description := COPYSTR("Import Data".Description,1,49);
-                      GenJrnLine.Description := Cust2.Name;
+                    end;
+                    GenJrnLine.Validate("Account No.", GLAccNo);
+                    //GenJrnLine.Description := COPYSTR("Import Data".Description,1,49);
+                    GenJrnLine.Description := Cust2.Name;
 
-                      GenJrnLine.Validate("Currency Code",'');
+                    GenJrnLine.Validate("Currency Code", '');
 
-                      GenJrnLine.Amount := -(MontantBrut);
-                      GenJrnLine.Validate(Amount);
+                    GenJrnLine.Amount := -(MontantBrut);
+                    GenJrnLine.Validate(Amount);
 
-                      LastAmountTotal := LastAmountTotal + GenJrnLine.Amount;
+                    LastAmountTotal := LastAmountTotal + GenJrnLine.Amount;
 
-                       if ((GLAccNo[1]='6') or (GLAccNo[1]='7')) then begin
-                         GenJrnLine.Validate(GenJrnLine."VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-                         GenJrnLine."Gen. Posting Type":=GenJrnLine."Gen. Posting Type"::Sale;
-                       end;
+                    if ((GLAccNo[1] = '6') or (GLAccNo[1] = '7')) then begin
+                        GenJrnLine.Validate(GenJrnLine."VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
+                        GenJrnLine."Gen. Posting Type" := GenJrnLine."Gen. Posting Type"::Sale;
+                    end;
 
-                      //IF GenJrnLine.Amount=0 THEN
-                      //  ERROR(Text005);
-                      if(GenJrnLine.Amount<>0) then begin
+                    //IF GenJrnLine.Amount=0 THEN
+                    //  ERROR(Text005);
+                    if (GenJrnLine.Amount <> 0) then begin
                         GenJrnLine."Dimension Set ID" := DimSetE;
                         GenJrnLine.Insert(true);
 
                         GenJrnLine."Dimension Set ID" := DimSetE;
                         GenJrnLine.Modify;
-                      end;
+                    end;
 
 
 
 
-                      //Débit de la remise
-                      if (Remise<>0) then begin
+                    //Débit de la remise
+                    if (Remise <> 0) then begin
                         Clear(GenJrnLine);
-                        GenJrnLine."Journal Template Name":= GenJrnTemplate;
+                        GenJrnLine."Journal Template Name" := GenJrnTemplate;
                         GenJrnLine."Journal Batch Name" := GenJrnBatch;
-                        LineNo := LineNo+10000;
+                        LineNo := LineNo + 10000;
                         GenJrnLine."Line No." := LineNo;
                         JrnTmplName.Get(GenJrnLine."Journal Template Name");
                         JrnTmplName.TestField(JrnTmplName."Source Code");
                         GenJrnLine."Source Code" := JrnTmplName."Source Code";
 
-                        if NetToPay>0 then
-                          GenJrnLine."Document Type" := GenJrnLine."Document Type"::Invoice
+                        if NetToPay > 0 then
+                            GenJrnLine."Document Type" := GenJrnLine."Document Type"::Invoice
                         else
-                          GenJrnLine."Document Type" := GenJrnLine."Document Type"::"Credit Memo";
+                            GenJrnLine."Document Type" := GenJrnLine."Document Type"::"Credit Memo";
                         GenJrnLine."Document No." := "Import Data".DocumentNo;
 
-                        GenJrnLine.Validate("Posting Date" ,PostingDate);
+                        GenJrnLine.Validate("Posting Date", PostingDate);
 
                         GenJrnLine."Account Type" := GenJrnLine."Account Type"::"G/L Account";
 
 
                         AddOnSetup.TestField(AddOnSetup."Cards Discount Account");
                         GLAccNo := AddOnSetup."Cards Discount Account";
-                        GenJrnLine.Validate("Account No.",GLAccNo);
+                        GenJrnLine.Validate("Account No.", GLAccNo);
 
                         //GenJrnLine.Description := COPYSTR("Import Data".Description,1,49);
                         GenJrnLine.Description := Cust2.Name;
 
-                        GenJrnLine.Validate("Currency Code",'');
+                        GenJrnLine.Validate("Currency Code", '');
 
                         GenJrnLine.Amount := -(Remise);
                         GenJrnLine.Validate(Amount);
 
                         LastAmountTotal := LastAmountTotal + GenJrnLine.Amount;
 
-                        if ((GLAccNo[1]='6') or (GLAccNo[1]='7')) then begin
-                          GenJrnLine.Validate(GenJrnLine."VAT Prod. Posting Group",AddOnSetup."NoVAT Prod. Posting Group");
-                          GenJrnLine."Gen. Posting Type":=GenJrnLine."Gen. Posting Type"::Sale;
+                        if ((GLAccNo[1] = '6') or (GLAccNo[1] = '7')) then begin
+                            GenJrnLine.Validate(GenJrnLine."VAT Prod. Posting Group", AddOnSetup."NoVAT Prod. Posting Group");
+                            GenJrnLine."Gen. Posting Type" := GenJrnLine."Gen. Posting Type"::Sale;
                         end;
 
-                        if GenJrnLine.Amount<>0 then begin
-                          GenJrnLine."Dimension Set ID" := DimSetE;
-                          GenJrnLine.Insert(true);
+                        if GenJrnLine.Amount <> 0 then begin
+                            GenJrnLine."Dimension Set ID" := DimSetE;
+                            GenJrnLine.Insert(true);
 
-                          GenJrnLine."Dimension Set ID" := DimSetE;
-                          GenJrnLine.Modify;
+                            GenJrnLine."Dimension Set ID" := DimSetE;
+                            GenJrnLine.Modify;
                         end;
 
-                      end;
+                    end;
                 end;
             }
         }
@@ -243,25 +243,29 @@ xmlport 50002 "Import Cards Billing Data"
         {
             area(content)
             {
-                field(GenJrnTemplate;GenJrnTemplate)
+                field(GenJrnTemplate; GenJrnTemplate)
                 {
                     Caption = 'General journal template';
                     TableRelation = "Gen. Journal Template";
                     Visible = false;
+                    ApplicationArea = All;
                 }
-                field(GenJrnBatch;GenJrnBatch)
+                field(GenJrnBatch; GenJrnBatch)
                 {
                     Caption = 'Posting journal Batch';
                     TableRelation = "Gen. Journal Batch";
                     Visible = false;
+                    ApplicationArea = All;
                 }
-                field(VendorType;VendorType)
+                field(VendorType; VendorType)
                 {
                     Caption = 'Type fournisseur cartes';
+                    ApplicationArea = All;
                 }
-                field(PPostingDateCtrl;PostingDate)
+                field(PPostingDateCtrl; PostingDate)
                 {
                     Caption = 'Posting Date';
+                    ApplicationArea = All;
                 }
             }
         }
@@ -294,18 +298,18 @@ xmlport 50002 "Import Cards Billing Data"
 
 
 
-        if GenJrnTemplate='' then Error(Text003);
-        if GenJrnBatch='' then Error(Text004);
+        if GenJrnTemplate = '' then Error(Text003);
+        if GenJrnBatch = '' then Error(Text004);
 
-        GenJrnTable.Get(GenJrnTemplate,GenJrnBatch);
+        GenJrnTable.Get(GenJrnTemplate, GenJrnBatch);
 
         GenJrnLine.Reset;
-        GenJrnLine.SetRange("Journal Template Name",GenJrnTemplate);
-        GenJrnLine.SetRange("Journal Batch Name",GenJrnBatch);
-        if GenJrnLine.FindFirst then Error(Text001,GenJrnBatch);
+        GenJrnLine.SetRange("Journal Template Name", GenJrnTemplate);
+        GenJrnLine.SetRange("Journal Batch Name", GenJrnBatch);
+        if GenJrnLine.FindFirst then Error(Text001, GenJrnBatch);
         LineNo := 0;
 
-        BesoinNo :=0;
+        BesoinNo := 0;
         Window.Open(Text008);
     end;
 
@@ -340,7 +344,7 @@ xmlport 50002 "Import Cards Billing Data"
         VendorType: Option Autres,GALITT;
         AddOnSetup2: Record "AddOn Setup2";
 
-    procedure SetJournalCode(JournalTemplateCode: Code[20];JournalCode: Code[20])
+    procedure SetJournalCode(JournalTemplateCode: Code[20]; JournalCode: Code[20])
     begin
         GenJrnBatch := JournalCode;
         GenJrnTemplate := JournalTemplateCode;
@@ -348,7 +352,7 @@ xmlport 50002 "Import Cards Billing Data"
 
     procedure SetIsGPRO(isGpro1: Boolean)
     begin
-        IsGPRO:=isGpro1;
+        IsGPRO := isGpro1;
     end;
 }
 

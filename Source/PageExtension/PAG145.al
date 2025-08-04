@@ -6,9 +6,11 @@ pageextension 50026 pageextension70000043 extends "Posted Purchase Receipts"
         {
             field("Order No."; Rec."Order No.")
             {
+                ApplicationArea = All;
             }
             field("User ID"; Rec."User ID")
             {
+                ApplicationArea = All;
             }
         }
     }

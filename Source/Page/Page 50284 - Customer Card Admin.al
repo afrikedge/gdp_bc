@@ -5,6 +5,8 @@ page 50284 "Customer Card Admin"
     PromotedActionCategories = 'New,Process,Report,Approve,Request Approval';
     RefreshOnActivate = true;
     SourceTable = Customer;
+    UsageCategory = Administration;
+    ApplicationArea = All;
 
     layout
     {
@@ -154,6 +156,9 @@ page 50284 "Customer Card Admin"
                 {
                 }
                 field("Category 2"; Rec."Category 2")
+                {
+                }
+                field("Afk Type transport"; Rec."Afk Type transport")
                 {
                 }
             }
