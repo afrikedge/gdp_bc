@@ -158,6 +158,9 @@ page 50284 "Customer Card Admin"
                 field("Category 2"; Rec."Category 2")
                 {
                 }
+                field("Afk Type transport"; Rec."Afk Type transport")
+                {
+                }
             }
             group(Communication)
             {

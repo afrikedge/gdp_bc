@@ -3,6 +3,7 @@ page 50124 "FA Owners"
     Caption = 'FA Owners';
     PageType = List;
     SourceTable = "FA Owner";
+    ApplicationArea = All;
 
     layout
     {

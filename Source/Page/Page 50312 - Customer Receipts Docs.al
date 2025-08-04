@@ -4,6 +4,7 @@ page 50312 "Customer Receipts Docs"
     Editable = false;
     PageType = List;
     SourceTable = "G/L Entry";
+    ApplicationArea = All;
 
     layout
     {

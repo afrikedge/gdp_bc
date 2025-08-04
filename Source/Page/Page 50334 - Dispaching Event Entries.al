@@ -5,6 +5,7 @@ page 50334 "Dispaching Event Entries"
     DelayedInsert = true;
     PageType = List;
     SourceTable = "Dispaching Event";
+    ApplicationArea = All;
 
     layout
     {

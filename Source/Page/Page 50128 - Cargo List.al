@@ -4,6 +4,7 @@ page 50128 "Cargo List"
     PageType = List;
     SourceTable = Cargo;
     UsageCategory = Lists;
+    ApplicationArea = All;
 
     layout
     {

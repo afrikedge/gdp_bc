@@ -3,6 +3,7 @@ page 50134 "Invoice to receive (Transport)"
     Caption = 'Invoice Tracking (Transport)';
     PageType = List;
     SourceTable = "Transfer Receipt Header";
+    ApplicationArea = All;
 
     layout
     {

@@ -4,6 +4,7 @@ page 50054 "Posted Moneytech Import List"
     CardPageID = "Posted Moneytech Import";
     Editable = false;
     PageType = List;
+    ApplicationArea = All;
     SourceTable = "Posted Moneytech Import";
 
     layout

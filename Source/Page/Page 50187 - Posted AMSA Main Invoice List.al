@@ -6,6 +6,7 @@ page 50187 "Posted AMSA Main Invoice List"
     PageType = List;
     SourceTable = "Posted Fuel Statement";
     SourceTableView = WHERE("Document Type" = CONST("Main invoice"));
+    ApplicationArea = All;
 
     layout
     {

@@ -76,6 +76,9 @@ pageextension 50094 "Afk Customer Card" extends "Customer Card"
             {
                 ApplicationArea = All;
             }
+            field("Afk Type transport"; Rec."Afk Type transport")
+            {
+            }
         }
 
         addlast(Invoicing)

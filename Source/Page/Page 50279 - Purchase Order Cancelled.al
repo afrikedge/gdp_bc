@@ -5,6 +5,7 @@ page 50279 "Purchase Order Cancelled"
     Editable = false;
     PageType = List;
     UsageCategory = Lists;
+    ApplicationArea = All;
     SourceTable = "Purchase Header Archive";
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Processing Status" = CONST(Soldee));

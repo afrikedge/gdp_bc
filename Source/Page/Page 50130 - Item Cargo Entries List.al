@@ -4,6 +4,7 @@ page 50130 "Item Cargo Entries List"
     Editable = false;
     PageType = List;
     SourceTable = "Item Cargo Entry";
+    ApplicationArea = All;
 
     layout
     {

@@ -49,6 +49,10 @@ pageextension 50098 "Afk Item Card" extends "Item Card"
             {
                 ApplicationArea = All;
             }
+            field("Afk Code transport Hors-ville"; Rec."Afk Code transport Hors-ville")
+            {
+                ApplicationArea = All;
+            }
         }
     }
 }

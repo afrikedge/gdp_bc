@@ -266,6 +266,9 @@ page 50273 "Item Card Admin"
                 field("Afk Show on Market Place"; Rec."Afk Show on Market Place")
                 {
                 }
+                field("Afk Code transport Hors-ville"; Rec."Afk Code transport Hors-ville")
+                {
+                }
             }
             group(Replenishment)
             {

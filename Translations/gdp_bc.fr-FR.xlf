@@ -79841,7 +79841,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 1625664402 - Field 3857534409 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source> ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money,Mvola Money,Orange Money Marchand,Airtel Money Marchand,Orange Money WP</source>
-          <target state="needs-adaptation"> ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money,Mvola Money,Orange Money Marchand,Airtel Money Marchand</target>
+          <target state="needs-adaptation"> ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money,Mvola Money,Orange Money Marchand,Airtel Money Marchand,Orange Money WP</target>
           <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Gen. Journal Line - Field CC Document Type - Property OptionCaption</note>

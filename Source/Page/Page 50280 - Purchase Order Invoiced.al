@@ -5,6 +5,7 @@ page 50280 "Purchase Order Invoiced"
     Editable = false;
     PageType = List;
     UsageCategory = Lists;
+    ApplicationArea = All;
     SourceTable = "Purchase Header Archive";
     SourceTableView = WHERE("Document Type" = CONST(Order),
                             "Processing Status" = CONST(" "));

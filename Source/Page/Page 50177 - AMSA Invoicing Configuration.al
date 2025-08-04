@@ -3,6 +3,7 @@ page 50177 "AMSA Invoicing Configuration"
     Caption = 'AMSA Invoicing Configuration';
     PageType = List;
     SourceTable = "AMSA Invoicing Configuration";
+    ApplicationArea = All;
 
     layout
     {

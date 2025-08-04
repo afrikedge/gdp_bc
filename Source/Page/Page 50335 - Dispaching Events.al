@@ -7,6 +7,7 @@ page 50335 "Dispaching Events"
     LinksAllowed = false;
     ModifyAllowed = false;
     SaveValues = true;
+    ApplicationArea = All;
 
     layout
     {

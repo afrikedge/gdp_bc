@@ -3,6 +3,7 @@ page 50141 "Signatory Card"
     Caption = 'Contact Card';
     PageType = ListPlus;
     SourceTable = Signatory;
+    ApplicationArea = All;
 
     layout
     {

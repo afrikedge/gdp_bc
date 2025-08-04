@@ -727,7 +727,7 @@ tableextension 50018 "A02 Gen. Journal Line" extends "Gen. Journal Line"
         {
             Caption = 'Check Date';
         }
-        field(50013; "Customer Name"; Text[50])
+        field(50013; "Customer Name"; Text[100])
         {
             Caption = 'Customer Name';
             Editable = false;
@@ -773,7 +773,7 @@ tableextension 50018 "A02 Gen. Journal Line" extends "Gen. Journal Line"
             DecimalPlaces = 0 : 5;
             Editable = false;
         }
-        field(50022; TransporterNameProvisions; Text[50])
+        field(50022; TransporterNameProvisions; Text[100])
         {
             Caption = 'Tranporter Name';
             Editable = false;

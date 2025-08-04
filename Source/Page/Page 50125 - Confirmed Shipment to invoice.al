@@ -5,6 +5,7 @@ page 50125 "Confirmed Shipment to invoice"
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = List;
+    ApplicationArea = All;
     SourceTable = pro_enteteBL;
     SourceTableView = WHERE(isconfirme = CONST(true),
                             codemoyentransport = CONST('<>'''));

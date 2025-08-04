@@ -4,6 +4,7 @@ page 50266 "Bank Account Card Admin"
     PageType = Card;
     SourceTable = "Bank Account";
     UsageCategory = None;
+    ApplicationArea = All;
 
     layout
     {

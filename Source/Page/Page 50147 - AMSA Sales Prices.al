@@ -3,6 +3,7 @@ page 50147 "AMSA Sales Prices"
     Caption = 'AMSA Sales Prices';
     PageType = List;
     SourceTable = "AMSA Sales Price";
+    ApplicationArea = All;
 
     layout
     {

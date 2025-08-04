@@ -4,6 +4,7 @@ page 50133 "Invoice To Receive BE"
     PageType = List;
     SourceTable = pro_enteteBE;
     SourceTableView = WHERE(isconfirme = CONST(true));
+    ApplicationArea = All;
 
     layout
     {

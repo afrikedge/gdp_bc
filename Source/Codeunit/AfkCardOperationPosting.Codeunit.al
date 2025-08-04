@@ -86,7 +86,8 @@ codeunit 50043 "Afk Card Operation Posting"
 
     local procedure ProcessSingleEntryWithErrorHandling(var CardEntryToPost: Record "Afk Card Operation Entry")
     var
-    //CardEntryPost: Codeunit "Afk Post Card Operation";
+        //CardEntryPost: Codeunit "Afk Post Card Operation";
+        isSuccess: Boolean;
     begin
         // Nettoyer les erreurs précédentes
         ClearLastError();
@@ -95,13 +96,20 @@ codeunit 50043 "Afk Card Operation Posting"
         //CardEntryPost.SetCardEntry(CardEntryToPost);
 
         // Utilisation d'un bloc try-catch manuel
-        //Codeunit.Run(Codeunit::"Afk Post Card Operation", CardEntryToPost);
-        if not PostOneEntry(CardEntryToPost) then
+        commit;
+        isSuccess := Codeunit.Run(Codeunit::"Afk Post Card Operation", CardEntryToPost);
+        if (not isSuccess) then
             if GetLastErrorText() <> '' then begin
                 CardEntryToPost."Error Message" := CopyStr(GetLastErrorText(), 1, 250);
                 CardEntryToPost.Modify();
                 ClearLastError();
             end;
+        // if not PostOneEntry(CardEntryToPost) then
+        //     if GetLastErrorText() <> '' then begin
+        //         CardEntryToPost."Error Message" := CopyStr(GetLastErrorText(), 1, 250);
+        //         CardEntryToPost.Modify();
+        //         ClearLastError();
+        //     end;
     end;
 
 
