@@ -113,9 +113,10 @@ tableextension 50009 "A02 Item" extends Item
         {
             Caption = 'Show on Market Place';
         }
-        field(50028; "Afk Code transport Hors-ville"; Text[50])
+        field(50028; "Afk Code transport Hors-ville"; Code[20])
         {
             Caption = 'Code transport Hors-ville';
+            TableRelation = Item;
         }
 
     }
