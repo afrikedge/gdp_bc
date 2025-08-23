@@ -73,7 +73,7 @@ tableextension 50066 "A02 Transfer Line" extends "Transfer Line"
 
     procedure AFK_RefreshAdjustQty()
     var
-        AdjReason: Record "50068";
+        AdjReason: Record 50068;
         TotalAdjustQty: Decimal;
     begin
         AdjReason.RESET;
