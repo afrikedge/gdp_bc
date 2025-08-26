@@ -1,7 +1,7 @@
 report 50037 "Bon de sortie Ajustement"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Source/Report/Layout/Bon de sortie Ajustement.rdlc';
+    RDLCLayout = './Source/Report/Layout/Bon de sortie Ajustement.rdl';
     Caption = 'Bon de sortie';
     PreviewMode = PrintLayout;
 
@@ -31,6 +31,12 @@ report 50037 "Bon de sortie Ajustement"
             {
             }
             column(PhoneNoCaption; PhoneNoCaptionLbl)
+            {
+            }
+            column(NoDocExterneLbl; NoDocExterneLbl)
+            {
+            }
+            column(ExternalDocNo; ExternalDocNo)
             {
             }
             dataitem("Adjustment Line"; "Adjustment Line")
@@ -151,6 +157,14 @@ report 50037 "Bon de sortie Ajustement"
                       "Campaign No.","Posting Description",'');*/
 
                 Cust.Get("Adjustment Header"."Customer No.");
+
+                if "External Document No." = '' then begin
+                    NoDocExterneLbl := '';
+                    ExternalDocNo := '';
+                end else begin
+                    NoDocExterneLbl := 'N° doc externe :';
+                    ExternalDocNo := "External Document No.";
+                end;
 
             end;
         }
@@ -281,6 +295,8 @@ report 50037 "Bon de sortie Ajustement"
         QuantityCaptionLbl: Label 'Quantité';
         UOMCaptionLbl: Label 'Unité';
         LocationCaptionLbl: Label 'Code Magasin';
+        NoDocExterneLbl: Text[25];
+        ExternalDocNo: Code[35];
 
     procedure InitLogInteraction()
     begin
