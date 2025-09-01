@@ -109,9 +109,13 @@ page 50284 "Customer Card Admin"
                 field("Holding Code"; Rec."Holding Code")
                 {
                 }
+                // New
+                field("Holding Name"; Rec."Holding Name") { }
                 field("Company Code"; Rec."Company Code")
                 {
                 }
+                // New
+                field("Company Name"; Rec."Company Name") { }
                 field("Legal Status Code"; Rec."Legal Status Code")
                 {
                 }

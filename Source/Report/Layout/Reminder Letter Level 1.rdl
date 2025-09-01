@@ -8,6 +8,7 @@
         <ConnectString />
       </ConnectionProperties>
       <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>1822cb70-1e8b-4464-a268-539a74db53de</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <ReportSections>
@@ -1085,7 +1086,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>2.67361in</Top>
-              <Height>0.25in</Height>
+              <Height>0.30389in</Height>
               <Width>0.8368in</Width>
               <ZIndex>5</ZIndex>
               <Style>
@@ -1151,7 +1152,7 @@
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>2.6875in</Top>
               <Left>2.16075cm</Left>
-              <Height>0.25in</Height>
+              <Height>0.29in</Height>
               <Width>4.0139in</Width>
               <ZIndex>7</ZIndex>
               <Style>
@@ -1185,7 +1186,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!Contact_IssuedReminderHeader.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!CustomerContact.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -1284,7 +1285,6 @@
         <PageHeight>27.94cm</PageHeight>
         <PageWidth>21.59cm</PageWidth>
         <LeftMargin>3cm</LeftMargin>
-        <RightMargin>0cm</RightMargin>
         <TopMargin>1cm</TopMargin>
         <BottomMargin>1cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
@@ -1330,6 +1330,7 @@ End Function
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>24b8a73d-40d4-46ea-b4b3-b91cdb13729d</rd:ReportID>
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
