@@ -8,6 +8,7 @@
         <ConnectString />
       </ConnectionProperties>
       <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>f1c2b142-4c7f-4f0e-a0b5-d8ab5c65ab58</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <ReportSections>
@@ -32,9 +33,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.23958in</Top>
-            <Left>1.21709cm</Left>
+            <Left>1.64042cm</Left>
             <Height>0.2in</Height>
-            <Width>3.89584in</Width>
+            <Width>3.72917in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -52,7 +53,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!TextAvecMontant.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!LblNousTenonsA.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -62,10 +63,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.625in</Top>
-            <Left>0.1868cm</Left>
-            <Height>0.90417in</Height>
-            <Width>6.27937in</Width>
+            <Top>0.66667in</Top>
+            <Left>1.64042cm</Left>
+            <Height>0.2in</Height>
+            <Width>5.70708in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -750,8 +751,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>4.35362cm</Top>
-            <Left>0cm</Left>
+            <Top>2.76612cm</Top>
             <Height>1.8cm</Height>
             <Width>16.1364cm</Width>
             <ZIndex>2</ZIndex>
@@ -768,7 +768,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!LblTextBody02.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!LblAfterLinesText01.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -778,11 +778,43 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>2.58333in</Top>
-            <Left>0cm</Left>
-            <Height>0.4in</Height>
-            <Width>6.35291in</Width>
+            <Top>2.08333in</Top>
+            <Left>1.64042cm</Left>
+            <Height>0.2in</Height>
+            <Width>5.70708in</Width>
             <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>1pt</PaddingLeft>
+              <PaddingRight>1pt</PaddingRight>
+              <PaddingTop>1pt</PaddingTop>
+              <PaddingBottom>1pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox14">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!LblVeuillezAggreerMonsieur.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>3.36528in</Top>
+            <Left>1.64042cm</Left>
+            <Height>0.2in</Height>
+            <Width>5.70708in</Width>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -812,11 +844,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>4.78021in</Top>
+            <Top>4.03021in</Top>
             <Left>10.50271cm</Left>
             <Height>0.25in</Height>
             <Width>1.33495in</Width>
-            <ZIndex>4</ZIndex>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -845,41 +877,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>4.78021in</Top>
+            <Top>4.03021in</Top>
             <Left>14.03459cm</Left>
             <Height>0.25in</Height>
             <Width>0.82748in</Width>
-            <ZIndex>5</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>1pt</PaddingLeft>
-              <PaddingRight>1pt</PaddingRight>
-              <PaddingTop>1pt</PaddingTop>
-              <PaddingBottom>1pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox14">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!LblTextBody03.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>3.05277in</Top>
-            <Height>0.4in</Height>
-            <Width>6.35291in</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -898,7 +899,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!LblTextBody04.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!LbAfterlLinesText02.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -908,42 +909,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>3.52222in</Top>
-            <Left>0.00001cm</Left>
+            <Top>2.30886in</Top>
             <Height>0.2in</Height>
             <Width>6.35291in</Width>
             <ZIndex>7</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>1pt</PaddingLeft>
-              <PaddingRight>1pt</PaddingRight>
-              <PaddingTop>1pt</PaddingTop>
-              <PaddingBottom>1pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox25">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!LblTextBody05.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>3.77777in</Top>
-            <Height>0.2in</Height>
-            <Width>6.35291in</Width>
-            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -961,7 +930,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!LblVeuillezAggreerMonsieur.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!LblAfterLinesText04.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -971,10 +940,42 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>4.04722in</Top>
-            <Left>0.00001cm</Left>
+            <Top>2.71484in</Top>
+            <Left>1.82722cm</Left>
             <Height>0.2in</Height>
-            <Width>6.35291in</Width>
+            <Width>5.63354in</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>1pt</PaddingLeft>
+              <PaddingRight>1pt</PaddingRight>
+              <PaddingTop>1pt</PaddingTop>
+              <PaddingBottom>1pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox27">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!LblAfterLinesText05.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>2.94037in</Top>
+            <Left>0.1868cm</Left>
+            <Height>0.2in</Height>
+            <Width>6.27937in</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -987,7 +988,7 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>12.77673cm</Height>
+        <Height>10.87173cm</Height>
         <Style />
       </Body>
       <Width>16.51cm</Width>
@@ -1151,7 +1152,6 @@
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>2.17361in</Top>
-              <Left>0cm</Left>
               <Height>0.25in</Height>
               <Width>0.8368in</Width>
               <ZIndex>4</ZIndex>
@@ -1184,8 +1184,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>2.42361in</Top>
-              <Left>0cm</Left>
-              <Height>0.25in</Height>
+              <Height>0.30389in</Height>
               <Width>0.8368in</Width>
               <ZIndex>5</ZIndex>
               <Style>
@@ -1251,7 +1250,7 @@
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>2.4375in</Top>
               <Left>2.16075cm</Left>
-              <Height>0.25in</Height>
+              <Height>0.29in</Height>
               <Width>4.0139in</Width>
               <ZIndex>7</ZIndex>
               <Style>
@@ -1269,7 +1268,6 @@
               <Value>=First(Fields!CompanyInfoPicture.Value, "DataSet_Result")</Value>
               <MIMEType>image/jpeg</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Left>0cm</Left>
               <Height>3.09563cm</Height>
               <Width>3.69604cm</Width>
               <ZIndex>8</ZIndex>
@@ -1286,7 +1284,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!Contact_IssuedReminderHeader.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!CustomerContact.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -1384,8 +1382,7 @@
         </PageHeader>
         <PageHeight>27.94cm</PageHeight>
         <PageWidth>21.59cm</PageWidth>
-        <LeftMargin>2cm</LeftMargin>
-        <RightMargin>0cm</RightMargin>
+        <LeftMargin>3cm</LeftMargin>
         <TopMargin>1cm</TopMargin>
         <BottomMargin>1cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
@@ -1431,6 +1428,7 @@ End Function
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>83f3e98c-818a-4f5d-a635-e6e9261f5721</rd:ReportID>
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
@@ -1509,20 +1507,23 @@ End Function
         <Field Name="CompanyInfoPicture">
           <DataField>CompanyInfoPicture</DataField>
         </Field>
-        <Field Name="LblTextBody02">
-          <DataField>LblTextBody02</DataField>
+        <Field Name="LblAfterLinesText01">
+          <DataField>LblAfterLinesText01</DataField>
         </Field>
-        <Field Name="LblTextBody03">
-          <DataField>LblTextBody03</DataField>
+        <Field Name="LbAfterlLinesText02">
+          <DataField>LbAfterlLinesText02</DataField>
         </Field>
-        <Field Name="LblTextBody04">
-          <DataField>LblTextBody04</DataField>
+        <Field Name="LblAfterLinesText03">
+          <DataField>LblAfterLinesText03</DataField>
         </Field>
-        <Field Name="LblTextBody05">
-          <DataField>LblTextBody05</DataField>
+        <Field Name="LblAfterLinesText04">
+          <DataField>LblAfterLinesText04</DataField>
         </Field>
-        <Field Name="TextAvecMontant">
-          <DataField>TextAvecMontant</DataField>
+        <Field Name="LblAfterLinesText05">
+          <DataField>LblAfterLinesText05</DataField>
+        </Field>
+        <Field Name="LblAfterLinesText06">
+          <DataField>LblAfterLinesText06</DataField>
         </Field>
         <Field Name="DocumentType_IssuedReminderLine">
           <DataField>DocumentType_IssuedReminderLine</DataField>
