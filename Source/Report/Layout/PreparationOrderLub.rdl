@@ -2203,7 +2203,7 @@
                                                                   <Value>=Fields!TonneConversion.Value</Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
-                                                                    <Format>#,0.00000;(#,0.00000)</Format>
+                                                                    <Format>#,0.00;(#,0.00)</Format>
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
@@ -2554,6 +2554,7 @@
                                                           </Style>
                                                         </Textbox>
                                                         <ColSpan>6</ColSpan>
+                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell />
