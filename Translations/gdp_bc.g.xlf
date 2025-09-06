@@ -1833,6 +1833,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Primary Key - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 3928472155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remove check on Lubs shipment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Remove check on Lubs shipment - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 3275391108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Délai de blocage fsseurs dormants (Mois)</source>
           <note from="Developer" annotates="general" priority="2"></note>

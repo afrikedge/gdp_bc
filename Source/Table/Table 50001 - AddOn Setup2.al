@@ -192,6 +192,10 @@ table 50001 "AddOn Setup2"
             Caption = 'Compte Orange Money WP';
             TableRelation = "Bank Account";
         }
+        field(43; "Remove check on Lubs shipment"; Boolean)
+        {
+            Caption = 'Remove check on Lubs shipment';
+        }
     }
 
     keys
