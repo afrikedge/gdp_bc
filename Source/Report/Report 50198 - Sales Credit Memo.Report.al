@@ -194,6 +194,21 @@ report 50198 "Sales Credit Memo"
             column(RCSLbl; RCSLbl)
             {
             }
+            column(CompanyStamp; CompanyInfo."Company Stamp")
+            {
+            }
+            column(SignFullName; UserSetup."User Full Name")
+            {
+            }
+            column(SignFunction; UserSetup."Afk Function Name on PO")
+            {
+            }
+            column(SignSignature; UserSetup."Afk Signature")
+            {
+            }
+            column(SignatureDate; Format(Today))
+            {
+            }
             dataitem(Line; "Sales Cr.Memo Line")
             {
                 DataItemLink = "Document No." = field("No.");
@@ -964,6 +979,10 @@ report 50198 "Sales Credit Memo"
                 if not CompanyBankAccount.Get(Header."Company Bank Account Code") then
                     CompanyBankAccount.CopyBankFieldsFromCompanyInfo(CompanyInfo);
 
+                // -----------*--------- Commercial Manager signature ---------*----------//
+                GetUserSignature(UserSetup);
+                // -----------*--------- Commercial Manager signature ---------*----------//
+
                 if "Currency Code" <> '' then begin
                     CurrencyExchangeRate.FindCurrency("Posting Date", "Currency Code", 1);
                     CalculatedExchRate :=
@@ -1098,6 +1117,10 @@ report 50198 "Sales Credit Memo"
 
     trigger OnPreReport()
     begin
+        CompanyInfo.Get();
+        CompanyInfo.CalcFields(Picture);
+        CompanyInfo.CalcFields("Company Stamp");
+
         if Header.GetFilters = '' then
             Error(NoFilterSetErr);
 
@@ -1113,6 +1136,7 @@ report 50198 "Sales Credit Memo"
         DummyCompanyInfo: Record "Company Information";
         SalesSetup: Record "Sales & Receivables Setup";
         Cust: Record Customer;
+        UserSetup: Record "User Setup";
         RespCenter: Record "Responsibility Center";
         CurrencyExchangeRate: Record "Currency Exchange Rate";
         LocalCurrency: Record Currency;
@@ -1481,5 +1505,19 @@ report 50198 "Sales Credit Memo"
         if (pos >= 1) then
             Rep := DelStr(OriginString, pos, StrLen(ReplaceStr));
         exit(Rep);
+    end;
+
+    procedure GetUserSignature(var USetup: record "User Setup")
+    begin
+        USetup.Init();
+        if USetup.FindSet() then
+            repeat
+                if USetup."User ID" <> '' then
+                    if USetup."Afk Commercial Manager" then begin
+                        USetup.CalcFields("Afk Signature");
+                        USetup.CalcFields("User Full Name");
+                        exit;
+                    end;
+            until USetup.Next() = 0;
     end;
 }
