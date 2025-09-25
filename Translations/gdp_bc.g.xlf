@@ -66079,7 +66079,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Type transport - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3475545745 - Field 2782418617 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Ville,Hors-ville</source>
+          <source>Non applique,Ville,Hors-ville</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Type transport - Property OptionCaption</note>
         </trans-unit>
@@ -67777,6 +67777,11 @@
           <source>Le document provient d'une sortie à refacturer %1, le code client ne doit pas être changé sur la facture</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - NamedType AFK_Text004</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1551112472 - Field 2668507657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Payment Required</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Afk Payment Required - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 2471556914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Web Order Sent</source>
