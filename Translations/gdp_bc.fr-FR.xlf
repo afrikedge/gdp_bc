@@ -2199,6 +2199,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Primary Key - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 3928472155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remove check on Lubs shipment</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Remove check on Lubs shipment - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 3275391108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Délai de blocage fsseurs dormants (Mois)</source>
           <target state="needs-review-translation">Délai de blocage fsseurs dormants (Mois)</target>
@@ -79281,6 +79287,18 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk PNS SPE - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3475545745 - Field 2782418617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Type transport</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Type transport - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3475545745 - Field 2782418617 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Non applique,Ville,Hors-ville</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Type transport - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3475545745 - Field 1123169005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Warranty Caution</source>
           <target state="needs-review-translation">Caution</target>
@@ -79842,7 +79860,6 @@
         <trans-unit id="TableExtension 1625664402 - Field 3857534409 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source> ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money,Mvola Money,Orange Money Marchand,Airtel Money Marchand,Orange Money WP</source>
           <target state="needs-adaptation"> ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money,Mvola Money,Orange Money Marchand,Airtel Money Marchand,Orange Money WP</target>
-          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Gen. Journal Line - Field CC Document Type - Property OptionCaption</note>
         </trans-unit>
@@ -79989,6 +80006,12 @@
           <target state="needs-review-translation">Libellé écriture</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Invoice Post. Buffer - Field Posting Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4052574762 - Field 1025969885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Code transport Hors-ville</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Item - Field Afk Code transport Hors-ville - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4052574762 - Field 3006404875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Default Transport Code</source>
@@ -81309,6 +81332,12 @@
           <target state="needs-review-translation">Le document provient d'une sortie à refacturer %1, le code client ne doit pas être changé sur la facture</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - NamedType AFK_Text004</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1551112472 - Field 2668507657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Payment Required</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Afk Payment Required - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 2471556914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Web Order Sent</source>

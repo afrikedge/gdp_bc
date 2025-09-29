@@ -387,6 +387,12 @@ tableextension 50011 "A02 Sales Header" extends "Sales Header"
             DataClassification = CustomerContent;
             Editable = false;
         }
+        field(50081; "Afk Payment Required"; Boolean)
+        {
+            Caption = 'Payment Required';
+            DataClassification = CustomerContent;
+            //Editable = false;
+        }
     }
     keys
     {

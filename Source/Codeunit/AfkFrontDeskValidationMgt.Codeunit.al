@@ -1085,6 +1085,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."Requested Delivery Date"), input, 'Requested Delivery Date');
         WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."Ship-to Code"), input, 'Ship-to Code');
         WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."Afk Web Order Sent"), input, 'Web Order Sent');
+        WS.ValidateField(RecRef, SalesHeader.FieldNo(SalesHeader."Afk Payment Required"), input, 'Payment Required');
 
         RecRef.SetTable(SalesHeader);
     end;

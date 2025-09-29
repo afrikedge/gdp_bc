@@ -276,9 +276,13 @@ report 50197 "PreparationOrder Lub"
                     else
                         LineNumberText := Format(LineNumber);
 
-                    if ItemUnitMeasure.Get(Line."Item No.", Line."Unit of Measure Code") then
-                        if ItemUnitMeasure.Get(Line."Item No.", 'KG') then
-                            TonneConversion := Line.Quantity / ItemUnitMeasure."Qty. per Unit of Measure";
+                    Item.Get(Line."Item No.");
+                    if Item."Sales Category Code" = 'LUB' then
+                        TonneConversion := Item."Gross Weight" * Line.Quantity
+                    else
+                        if ItemUnitMeasure.Get(Line."Item No.", Line."Unit of Measure Code") then
+                            if ItemUnitMeasure.Get(Line."Item No.", 'KG') then
+                                TonneConversion := Line.Quantity / ItemUnitMeasure."Qty. per Unit of Measure";
                 end;
 
                 trigger OnPreDataItem()
@@ -358,6 +362,7 @@ report 50197 "PreparationOrder Lub"
     var
         Location: Record Location;
         Cust: Record Customer;
+        Item: Record Item;
         ShipToAddress: Record "Ship-to Address";
         RespCenter: Record "Responsibility Center";
         CompanyInfo: Record "Company Information";
