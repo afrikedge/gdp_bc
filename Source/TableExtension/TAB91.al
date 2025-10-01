@@ -252,6 +252,18 @@ tableextension 50021 "A02 User Setup" extends "User Setup"
                 end;
             end;
         }
+        field(50045; "Afk Code User dispatch"; Code[50])
+        {
+            Caption = 'Code utilisateur dispatching';
+            TableRelation = User."User Name";
+            ValidateTableRelation = false;
+        }
+        field(50046; "Afk Code Resp dispatch"; Code[50])
+        {
+            Caption = 'Code utilisateur Responsable dispatching';
+            TableRelation = User."User Name";
+            ValidateTableRelation = false;
+        }
     }
 
     //Unsupported feature: Property Deletion (LookupPageID).

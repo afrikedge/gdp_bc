@@ -68853,6 +68853,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Group - Field Allow Posting To - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 288146863 - Field 1268932527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Code utilisateur Responsable dispatching</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Setup - Field Afk Code Resp dispatch - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 288146863 - Field 4249383324 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Code utilisateur dispatching</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Setup - Field Afk Code User dispatch - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 288146863 - Field 1951786589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Directeur commercial</source>
           <note from="Developer" annotates="general" priority="2"></note>
