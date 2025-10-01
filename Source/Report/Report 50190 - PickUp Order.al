@@ -473,7 +473,7 @@ report 50190 "PickUp Order"
                 end;
 
                 // -----------*--------- Signature Dispatcheur ---------*----------//
-                GetUserSignature(UserSetup, UserSetup2);
+                GetUserSignature(UserSetup, UserSetup2, Header);
                 // -----------*--------- Signature Dispatcheur ---------*----------//
             end;
 
@@ -797,17 +797,20 @@ report 50190 "PickUp Order"
             until TouringEntry.Next() = 0;
     end;
 
-    procedure GetUserSignature(var USetup1: record "User Setup"; var USetup2: record "User Setup")
+    procedure GetUserSignature(var USetup1: record "User Setup"; var USetup2: record "User Setup"; Dispach: Record pro_enteteBE)
     Var
         UserT: Record "User Setup";
     begin
         Clear(UserT);
         Clear(USetup1);
         Clear(USetup2);
-        UserT.Get(UserId);
-        if USetup1.Get(UserT."Afk Code User dispatch") then
+
+        Usetup1.SetRange("Afk Dispatch User", Dispach.nom);
+        if USetup1.FindFirst() then
             USetup1.CalcFields("Afk Signature");
-        if USetup2.Get(UserT."Afk Code Resp dispatch") then
+
+        Usetup2.SetRange("Afk Dispatch User", Dispach.nomresponsable);
+        if USetup2.FindFirst() then
             USetup2.CalcFields("Afk Signature");
     end;
 }

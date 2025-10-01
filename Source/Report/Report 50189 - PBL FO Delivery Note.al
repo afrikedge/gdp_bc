@@ -477,7 +477,7 @@ report 50189 "PBL FO Delivery Note"
                     end;
 
                 // -----------*--------- Signature Dispatcheur ---------*----------//
-                GetUserSignature(UserSetup, UserSetup2);
+                GetUserSignature(UserSetup, UserSetup2, Header);
                 // -----------*--------- Signature Dispatcheur ---------*----------//
             end;
         }
@@ -513,7 +513,6 @@ report 50189 "PBL FO Delivery Note"
         // ShipmentMethod: Record "Shipment Method";
         UserSetup: Record "User Setup";
         UserSetup2: Record "User Setup";
-        Test: Code[50];
         ConvertedVolume: Decimal;
         AddresLivr1: Text[100];
         AddressLivr2: Text[50];
@@ -711,7 +710,7 @@ report 50189 "PBL FO Delivery Note"
             until TouringEntry.Next() = 0;
     end;
 
-    procedure GetUserSignature(var USetup1: record "User Setup"; var USetup2: record "User Setup")
+    procedure GetUserSignature(var USetup1: record "User Setup"; var USetup2: record "User Setup"; Dispach: Record pro_enteteBE)
     Var
         UserT: Record "User Setup";
     begin
@@ -719,9 +718,13 @@ report 50189 "PBL FO Delivery Note"
         Clear(USetup1);
         Clear(USetup2);
         UserT.Get(UserId);
-        if USetup1.Get(UserT."Afk Code User dispatch") then
+
+        Usetup1.SetRange("Afk Dispatch User", Dispach.nom);
+        if USetup1.FindFirst() then
             USetup1.CalcFields("Afk Signature");
-        if USetup2.Get(UserT."Afk Code Resp dispatch") then
+
+        Usetup2.SetRange("Afk Dispatch User", Dispach.nomresponsable);
+        if USetup2.FindFirst() then
             USetup2.CalcFields("Afk Signature");
     end;
 }
