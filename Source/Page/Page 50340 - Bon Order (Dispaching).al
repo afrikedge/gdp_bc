@@ -60,11 +60,13 @@ page 50340 "Bon Order (Dispaching)"
                 }
                 field(nom; Rec.nom)
                 {
-                    Editable = BEIsNotConfirme;
+                    // Editable = BEIsNotConfirme;
+                    Editable = false; // new 01/10/25
                 }
                 field(nomresponsable; Rec.nomresponsable)
                 {
-                    Editable = BEIsNotConfirme;
+                    // Editable = BEIsNotConfirme;
+                    Editable = false; // new 01/10/25
                 }
                 field(datecreation; Rec.datecreation)
                 {

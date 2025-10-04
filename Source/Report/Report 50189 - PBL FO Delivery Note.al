@@ -374,6 +374,18 @@ report 50189 "PBL FO Delivery Note"
             column(Vol10; Vol10)
             {
             }
+            column(SignSignature; UserSetup."Afk Signature")
+            {
+            }
+            column(SignSignature2; UserSetup2."Afk Signature")
+            {
+            }
+            column(SignatureDate; Format(Today))
+            {
+            }
+            column(CompanyStamp; CompanyInfo."Company Stamp")
+            {
+            }
             dataitem(Line; pro_detailBE)
             {
                 DataItemTableView = sorting(numBE, "Line No.");
@@ -463,6 +475,10 @@ report 50189 "PBL FO Delivery Note"
                         proEnteteBL."Last Printed Date" := CreateDateTime(today, time);
                         proEnteteBL.Modify();
                     end;
+
+                // -----------*--------- Signature Dispatcheur ---------*----------//
+                GetUserSignature(UserSetup, UserSetup2, Header);
+                // -----------*--------- Signature Dispatcheur ---------*----------//
             end;
         }
     }
@@ -482,6 +498,7 @@ report 50189 "PBL FO Delivery Note"
     begin
         CompanyInfo.Get();
         CompanyInfo.CalcFields(Picture);
+        CompanyInfo.CalcFields("Company Stamp");
     end;
 
     var
@@ -494,6 +511,8 @@ report 50189 "PBL FO Delivery Note"
         CompanyInfos: Record "Company Information";
         ShipToAddress: Record "Ship-to Address";
         // ShipmentMethod: Record "Shipment Method";
+        UserSetup: Record "User Setup";
+        UserSetup2: Record "User Setup";
         ConvertedVolume: Decimal;
         AddresLivr1: Text[100];
         AddressLivr2: Text[50];
@@ -689,6 +708,24 @@ report 50189 "PBL FO Delivery Note"
                     Vol10 := TouringEntry.Volume * 1000;
                 end;
             until TouringEntry.Next() = 0;
+    end;
+
+    procedure GetUserSignature(var USetup1: record "User Setup"; var USetup2: record "User Setup"; Dispach: Record pro_enteteBE)
+    Var
+        UserT: Record "User Setup";
+    begin
+        Clear(UserT);
+        Clear(USetup1);
+        Clear(USetup2);
+        UserT.Get(UserId);
+
+        Usetup1.SetRange("Afk Dispatch User", Dispach.nom);
+        if USetup1.FindFirst() then
+            USetup1.CalcFields("Afk Signature");
+
+        Usetup2.SetRange("Afk Dispatch User", Dispach.nomresponsable);
+        if USetup2.FindFirst() then
+            USetup2.CalcFields("Afk Signature");
     end;
 }
 
