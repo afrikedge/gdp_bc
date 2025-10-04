@@ -113,6 +113,86 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort Afk Import Op Plein Cuve - NamedType Text008</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2500866334 - Change 3294270728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2839142818">
+          <source>Created by</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Posted Whse. Shipment - Change Assigned User ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2706967699 - Change 3294270728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2938519335">
+          <source>Created by</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Afk Warehouse Shipment - Change Assigned User ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 601472046 - Field 551043783 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2260220107">
+          <source>Transporter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkPosted Whse. Shipment Head - Field Afk Transporter Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 601472046 - Field 2659540897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2260220107">
+          <source>Transporter Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkPosted Whse. Shipment Head - Field Afk Transporter Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 601472046 - Field 4267860134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2260220107">
+          <source>Truck code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkPosted Whse. Shipment Head - Field Afk Truck Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 601472046 - Field 145281817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2260220107">
+          <source>Carte grise</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkPosted Whse. Shipment Head - Field AfkCarteGrise - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 601472046 - Field 1294710031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2260220107">
+          <source>Driver Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkPosted Whse. Shipment Head - Field AfkNomchauffeur - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 601472046 - Field 3904531656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2260220107">
+          <source>Driver licence</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkPosted Whse. Shipment Head - Field AfkPermis - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 601472046 - Field 2006332854 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2260220107">
+          <source>Driver First Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkPosted Whse. Shipment Head - Field AfkPrenomchauffeur - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1187129242 - Field 551043783 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3880947038">
+          <source>Transporter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkWarehouse Shipment Header - Field Afk Transporter Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1187129242 - Field 2659540897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3880947038">
+          <source>Transporter Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkWarehouse Shipment Header - Field Afk Transporter Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1187129242 - Field 4267860134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3880947038">
+          <source>Truck code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkWarehouse Shipment Header - Field Afk Truck Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1187129242 - Field 145281817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3880947038">
+          <source>Carte grise</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkWarehouse Shipment Header - Field AfkCarteGrise - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1187129242 - Field 1294710031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3880947038">
+          <source>Driver Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkWarehouse Shipment Header - Field AfkNomchauffeur - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1187129242 - Field 3904531656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3880947038">
+          <source>Driver licence</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkWarehouse Shipment Header - Field AfkPermis - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1187129242 - Field 2006332854 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3880947038">
+          <source>Driver First Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AfkWarehouse Shipment Header - Field AfkPrenomchauffeur - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 2361576835 - EnumValue 2221101399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Credit Note</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14867,6 +14947,11 @@
           <source>Aucune adresse email trouvée pour l'envoi de l'alerte.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit EmailMgt - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1780695589 - Method 3747720445 - NamedType 4195951934" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vous ne devez pas facturer à partir de cette page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EventsSubscribers Code - Method C5764_OnAfterConfirmPost - NamedType ErrLab</note>
         </trans-unit>
         <trans-unit id="Codeunit 1780695589 - Method 329016207 - NamedType 1626979228" size-unit="char" translate="yes" xml:space="preserve">
           <source>Option non disponible, sélectionnez Livrer ou Facturer</source>
@@ -38558,6 +38643,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Print Confirmation - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 2889890743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Action3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 3368837321 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create a warehouse shipment to start a pick a ship process according to an advanced warehouse configuration.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Create &amp;Warehouse Shipment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 3368837321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create &amp;Warehouse Shipment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Create &amp;Warehouse Shipment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 875193488 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create an inventory put-away or inventory pick to handle items on the document according to a basic warehouse configuration that does not require warehouse receipt or shipment documents.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Create Inventor&amp;y Put-away/Pick - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 875193488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Inventor&amp;y Put-away/Pick</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Create Inventor&amp;y Put-away/Pick - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2802597164 - Action 517468406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Release</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38687,6 +38797,41 @@
           <source>Test Report</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Test Report - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 1484878399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Warehouse - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 626952520 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View items that are inbound or outbound on inventory put-away or inventory pick documents for the sales order.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action In&amp;vt. Put-away/Pick Lines - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 626952520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>In&amp;vt. Put-away/Pick Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action In&amp;vt. Put-away/Pick Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 2819631100 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View ongoing warehouse shipments for the document, in advanced warehouse configurations.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Warehouse Shipment Lines - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 2819631100 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse Shipment Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Warehouse Shipment Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 2847620781 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View items that are outbound on warehouse pick documents for the sales order.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Whse. Pick Lines - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2802597164 - Action 2847620781 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse Pick Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sales Order - workflow - Action Whse. Pick Lines - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1535004187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Orders - Blocked</source>
@@ -68517,6 +68662,41 @@
           <source>Real Location</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Line Archive - Field Real Location - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 551043783 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Transporter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field Afk Transporter Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 2659540897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Transporter Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field Afk Transporter Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 4267860134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Truck code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field Afk Truck Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 145281817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Carte grise</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field AfkCarteGrise - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 1294710031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Driver Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field AfkNomchauffeur - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 3904531656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Driver licence</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field AfkPermis - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 2006332854 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Driver First Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field AfkPrenomchauffeur - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2714900704 - Field 1321722400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>BE Number</source>

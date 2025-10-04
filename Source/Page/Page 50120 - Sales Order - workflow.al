@@ -707,6 +707,7 @@ page 50120 "Sales Order - workflow"
                         SOProcess.AnnulerCde(Rec);
                     end;
                 }
+                //****************-------------------------------------------------------------------------------------------
                 action(CreerPreparation)
                 {
                     Caption = 'Create preparation document';
@@ -716,7 +717,7 @@ page 50120 "Sales Order - workflow"
                     Promoted = true;
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
-                    Visible = ShowCreerPreparation;
+                    Visible = false;
 
                     trigger OnAction()
                     begin
@@ -738,6 +739,88 @@ page 50120 "Sales Order - workflow"
                     begin
                         LogistiqueMgt.CreateBLBEJIRAMA_FromOrder(Rec);
                     end;
+                }
+            }
+            group(Action3)
+            {
+                Caption = 'Warehouse';
+                Image = Warehouse;
+                action("Create Inventor&y Put-away/Pick")
+                {
+                    AccessByPermission = TableData "Posted Invt. Pick Header" = R;
+                    ApplicationArea = Warehouse;
+                    Caption = 'Create Inventor&y Put-away/Pick';
+                    Ellipsis = true;
+                    Image = CreateInventoryPickup;
+                    ToolTip = 'Create an inventory put-away or inventory pick to handle items on the document according to a basic warehouse configuration that does not require warehouse receipt or shipment documents.';
+
+                    trigger OnAction()
+                    begin
+                        Rec.PerformManualRelease();
+                        Rec.CreateInvtPutAwayPick();
+
+                        if not Rec.Find('=><') then
+                            Rec.Init();
+                    end;
+                }
+                action("Create &Warehouse Shipment")
+                {
+                    AccessByPermission = TableData "Warehouse Shipment Header" = R;
+                    ApplicationArea = Warehouse;
+                    Caption = 'Create &Warehouse Shipment';
+                    Image = NewShipment;
+                    ToolTip = 'Create a warehouse shipment to start a pick a ship process according to an advanced warehouse configuration.';
+
+                    trigger OnAction()
+                    var
+                        GetSourceDocOutbound: Codeunit "Get Source Doc. Outbound";
+                    begin
+                        Rec.PerformManualRelease();
+                        GetSourceDocOutbound.CreateFromSalesOrder(Rec);
+
+                        if not Rec.Find('=><') then
+                            Rec.Init();
+                    end;
+                }
+            }
+            group(Warehouse)
+            {
+                Caption = 'Warehouse';
+                Image = Warehouse;
+                action("In&vt. Put-away/Pick Lines")
+                {
+                    ApplicationArea = Warehouse;
+                    Caption = 'In&vt. Put-away/Pick Lines';
+                    Image = PickLines;
+                    RunObject = Page "Warehouse Activity List";
+                    RunPageLink = "Source Document" = const("Sales Order"),
+                                  "Source No." = field("No.");
+                    RunPageView = sorting("Source Document", "Source No.", "Location Code");
+                    ToolTip = 'View items that are inbound or outbound on inventory put-away or inventory pick documents for the sales order.';
+                }
+                action("Warehouse Shipment Lines")
+                {
+                    ApplicationArea = Warehouse;
+                    Caption = 'Warehouse Shipment Lines';
+                    Image = ShipmentLines;
+                    RunObject = Page "Whse. Shipment Lines";
+                    RunPageLink = "Source Type" = const(37),
+#pragma warning disable AL0603
+                                  "Source Subtype" = field("Document Type"),
+#pragma warning restore
+                                  "Source No." = field("No.");
+                    RunPageView = sorting("Source Type", "Source Subtype", "Source No.", "Source Line No.");
+                    ToolTip = 'View ongoing warehouse shipments for the document, in advanced warehouse configurations.';
+                }
+                action("Whse. Pick Lines")
+                {
+                    ApplicationArea = Warehouse;
+                    Caption = 'Warehouse Pick Lines';
+                    Image = PickLines;
+                    RunObject = page "Warehouse Activity Lines";
+                    RunPageLink = "Source Document" = const("Sales Order"), "Source No." = field("No.");
+                    RunPageView = sorting("Source Type", "Source Subtype", "Source No.");
+                    ToolTip = 'View items that are outbound on warehouse pick documents for the sales order.';
                 }
             }
             group("P&osting")
