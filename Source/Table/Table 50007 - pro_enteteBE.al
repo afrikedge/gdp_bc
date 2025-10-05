@@ -380,7 +380,8 @@ table 50007 pro_enteteBE
         field(112; "Delivery Site"; Code[30])
         {
             Caption = 'Delivery Site';
-            TableRelation = "Delivery Site".Site WHERE("Location Code" = FIELD(depot));
+            TableRelation = "Delivery Site".Site WHERE("Location Code" = FIELD(depot), Desactivated = const(false));
+            ValidateTableRelation = false;
 
             trigger OnValidate()
             begin

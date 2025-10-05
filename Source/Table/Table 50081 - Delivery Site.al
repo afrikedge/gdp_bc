@@ -4,30 +4,34 @@ table 50081 "Delivery Site"
 
     fields
     {
-        field(1;"Location Code";Code[10])
+        field(1; "Location Code"; Code[10])
         {
             Caption = 'Location Code';
             TableRelation = Location;
         }
-        field(2;Site;Code[30])
+        field(2; Site; Code[30])
         {
         }
-        field(3;"Location Name";Text[50])
+        field(3; "Location Name"; Text[50])
         {
-            CalcFormula = Lookup(Location.Name WHERE (Code=FIELD("Location Code")));
+            CalcFormula = Lookup(Location.Name WHERE(Code = FIELD("Location Code")));
             Caption = 'Nom du dépôt';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(4;"Transport Fees";Decimal)
+        field(4; "Transport Fees"; Decimal)
         {
             Caption = 'Transport fees';
+        }
+        field(5; "Desactivated"; Boolean)
+        {
+            Caption = 'Désactivé';
         }
     }
 
     keys
     {
-        key(Key1;"Location Code",Site)
+        key(Key1; "Location Code", Site)
         {
         }
     }

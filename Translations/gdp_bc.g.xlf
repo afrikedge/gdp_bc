@@ -4863,6 +4863,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Delivery Site - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1498432649 - Field 1930828969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Désactivé</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Delivery Site - Field Desactivated - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1498432649 - Field 2161572060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Location Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -40372,6 +40377,11 @@
           <source>Trucks</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Control TruckSubform - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1975951532 - Action 2986646893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Recalculer les quantités</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action Recalculate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1975951532 - Action 710507135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Dispach</source>

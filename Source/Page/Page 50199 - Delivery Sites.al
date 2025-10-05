@@ -24,6 +24,9 @@ page 50199 "Delivery Sites"
                 field("Transport Fees"; Rec."Transport Fees")
                 {
                 }
+                field(Desactivated; Rec.Desactivated)
+                {
+                }
             }
         }
     }
