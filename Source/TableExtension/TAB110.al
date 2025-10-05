@@ -33,6 +33,37 @@ tableextension 50024 "A02 Sales Shipment Header" extends "Sales Shipment Header"
             Editable = false;
             FieldClass = FlowField;
         }
+        field(50053; "Afk Truck Code"; Code[20])
+        {
+            Caption = 'Truck code';
+            TableRelation = pro_moyentransport.immatriculation;
+            ValidateTableRelation = false;
+        }
+        field(50054; "Afk Transporter Code"; Code[20])
+        {
+            Caption = 'Transporter';
+            TableRelation = Vendor;
+        }
+        field(50055; "Afk Transporter Name"; Text[50])
+        {
+            Caption = 'Transporter Name';
+        }
+        field(50056; AfkNomchauffeur; Text[50])
+        {
+            Caption = 'Driver Name';
+        }
+        field(50057; AfkPrenomchauffeur; Text[50])
+        {
+            Caption = 'Driver First Name';
+        }
+        field(50058; AfkPermis; Text[50])
+        {
+            Caption = 'Driver licence';
+        }
+        field(50059; AfkCarteGrise; Text[30])
+        {
+            Caption = 'Carte grise';
+        }
     }
 }
 

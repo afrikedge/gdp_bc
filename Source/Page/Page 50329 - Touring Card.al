@@ -120,7 +120,41 @@ page 50329 "Touring Card"
                     Message(Text039);
                 end;
             }
+            action(Recalculate)
+            {
+                Caption = 'Recalculer les quantités';
+                Image = Recalculate;
+                //Visible = IsEditable;
+                //Promoted = true;
+                //PromotedCategory = Process;
+                // PromotedIsBig = true;
+                ApplicationArea = All;
 
+                trigger OnAction()
+                var
+                    TourOrder: Record "Touring Sales Order";
+                begin
+                    if (Rec.Status = Rec.Status::Created) then begin
+                        TourOrder.SetRange(IdTouring, Rec.IdTouring);
+                        if TourOrder.FindSet() then
+                            repeat
+                                TourOrder.RefreshQtyOnValidateOrderNo();
+                                TourOrder.Modify();
+                            until TourOrder.Next() < 1;
+                        CurrPage.Update(false);
+                    end;
+                end;
+            }
+
+        }
+        area(Promoted)
+        {
+            actionref(RunDispachRef; RunDispach)
+            {
+            }
+            actionref(RecalculateRef; Recalculate)
+            {
+            }
         }
     }
 

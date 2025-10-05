@@ -6,6 +6,13 @@ pageextension 50090 "Afk Posted Sales Invoice List" extends "Posted Sales Invoic
     layout
     {
         // Add changes to page layout here
+        addafter("Remaining Amount")
+        {
+            field("User ID"; Rec."User ID")
+            {
+                ApplicationArea = All;
+            }
+        }
     }
 
     actions

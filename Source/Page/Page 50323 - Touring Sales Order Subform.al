@@ -151,6 +151,7 @@ page 50323 "Touring Sales Order Subform"
 
     actions
     {
+
     }
 
     trigger OnAfterGetRecord()

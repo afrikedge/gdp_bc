@@ -196,10 +196,10 @@ codeunit 50005 "Item Transfer Mgt"
                     CloseDocument := false;
 
 
-                if ItemAdj."Item Category Code" = AddOnsSetup."LUBS Item Category" then begin
-                    AdjustLine.TestField("Batch Number");
-                    AdjustLine.TestField("Expiration Date");
-                end;
+                // if ItemAdj."Item Category Code" = AddOnsSetup."LUBS Item Category" then begin
+                //  AdjustLine.TestField("Batch Number");
+                //     AdjustLine.TestField("Expiration Date");
+                // end;
 
                 //************************Added 230616 Controle reception PBL
                 if IsBatch then

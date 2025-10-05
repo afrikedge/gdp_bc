@@ -172,7 +172,21 @@ pageextension 50084 "AG1 User Setup" extends "User Setup"
             {
                 ApplicationArea = All;
             }
-
+        }
+        addafter("Dispatching Manager Name")
+        {
+            // field("Afk Code User dispatch"; Rec."Afk Code User dispatch")
+            // {
+            //     ApplicationArea = All;
+            // }
+            // field("Afk Code Resp dispatch"; Rec."Afk Code Resp dispatch")
+            // {
+            //     ApplicationArea = All;
+            // }
+            field("Afk Dispatch User"; Rec."Afk Dispatch User")
+            {
+                ApplicationArea = All;
+            }
         }
     }
 

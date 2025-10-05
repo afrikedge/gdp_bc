@@ -15,56 +15,9 @@ table 50084 "Touring Sales Order"
             trigger OnValidate()
             begin
                 TestField("Order No");
-                if "Order No" = '' then begin
-                    GO := 0;
-                    SC := 0;
-                    PL := 0;
-                    FO := 0;
-                    "Sell-to Customer No." := '';
-                    "Sell-to Customer Name" := '';
-                    "Ship-to Code" := '';
-                    "Responsibility Center" := '';
-                    "Requested Delivery Date" := 0D;
-                end;
-
-
                 DispachMgt.CheckNewOrderDispaching(IdTouring, "Order No");
 
-                Touring.Get(IdTouring);
-
-                SO.Get(SO."Document Type"::Order, "Order No");
-                "Sell-to Customer No." := SO."Sell-to Customer No.";
-                "Sell-to Customer Name" := SO."Sell-to Customer Name";
-                "Ship-to Code" := SO."Ship-to Code";
-                "Responsibility Center" := SO."Responsibility Center";
-                "Requested Delivery Date" := SO."Requested Delivery Date";
-
-                SO.TestField(SO."Shipment Method Code", 'TRP');
-                SO.TestField(SO."Location Code", Touring."Location Code");
-                SO.TestField(SO."Document Type", SO."Document Type"::Order);
-                if SO."Dispatching Status" = SO."Dispatching Status"::Processed then
-                    Error(Text003, "Order No");
-
-                if ((SO."Delivery Status" <> SO."Delivery Status"::AttenteLivraison) and
-                  (SO."Delivery Status" <> SO."Delivery Status"::PartiellementFacturee) and
-                  (SO."Delivery Status" <> SO."Delivery Status"::PartiellementLivree)) then
-                    Error(Text002);
-
-
-                DeliveryConstraint.Reset;
-                DeliveryConstraint.SetRange(Type, DeliveryConstraint.Type::PointLivraisonAxe);
-                DeliveryConstraint.SetRange("Customer No", "Sell-to Customer No.");
-                DeliveryConstraint.SetRange("Customer Site", "Ship-to Code");
-                if not DeliveryConstraint.FindFirst then
-                    Message(Text001, "Ship-to Code");
-
-                GO := 0;
-                SC := 0;
-                PL := 0;
-                FO := 0;
-
-                DispachMgt.SetVolumeRestantALivrerCde("Order No", GO, SC, PL, FO);
-                Total := GO + SC + PL + FO;
+                RefreshQtyOnValidateOrderNo();
             end;
         }
         field(3; "Sell-to Customer No."; Code[20])
@@ -170,6 +123,57 @@ table 50084 "Touring Sales Order"
 
     local procedure UpdateTotal()
     begin
+        Total := GO + SC + PL + FO;
+    end;
+
+    procedure RefreshQtyOnValidateOrderNo()
+    begin
+        if "Order No" = '' then begin
+            GO := 0;
+            SC := 0;
+            PL := 0;
+            FO := 0;
+            "Sell-to Customer No." := '';
+            "Sell-to Customer Name" := '';
+            "Ship-to Code" := '';
+            "Responsibility Center" := '';
+            "Requested Delivery Date" := 0D;
+        end;
+
+        Touring.Get(IdTouring);
+
+        SO.Get(SO."Document Type"::Order, "Order No");
+        "Sell-to Customer No." := SO."Sell-to Customer No.";
+        "Sell-to Customer Name" := SO."Sell-to Customer Name";
+        "Ship-to Code" := SO."Ship-to Code";
+        "Responsibility Center" := SO."Responsibility Center";
+        "Requested Delivery Date" := SO."Requested Delivery Date";
+
+        SO.TestField(SO."Shipment Method Code", 'TRP');
+        SO.TestField(SO."Location Code", Touring."Location Code");
+        SO.TestField(SO."Document Type", SO."Document Type"::Order);
+        if SO."Dispatching Status" = SO."Dispatching Status"::Processed then
+            Error(Text003, "Order No");
+
+        if ((SO."Delivery Status" <> SO."Delivery Status"::AttenteLivraison) and
+          (SO."Delivery Status" <> SO."Delivery Status"::PartiellementFacturee) and
+          (SO."Delivery Status" <> SO."Delivery Status"::PartiellementLivree)) then
+            Error(Text002);
+
+
+        DeliveryConstraint.Reset;
+        DeliveryConstraint.SetRange(Type, DeliveryConstraint.Type::PointLivraisonAxe);
+        DeliveryConstraint.SetRange("Customer No", "Sell-to Customer No.");
+        DeliveryConstraint.SetRange("Customer Site", "Ship-to Code");
+        if not DeliveryConstraint.FindFirst then
+            Message(Text001, "Ship-to Code");
+
+        GO := 0;
+        SC := 0;
+        PL := 0;
+        FO := 0;
+
+        DispachMgt.SetVolumeRestantALivrerCde("Order No", GO, SC, PL, FO);
         Total := GO + SC + PL + FO;
     end;
 

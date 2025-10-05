@@ -404,6 +404,18 @@ report 50190 "PickUp Order"
             column(Compteur; Compteur)
             {
             }
+            column(SignSignature; UserSetup."Afk Signature")
+            {
+            }
+            column(SignSignature2; UserSetup2."Afk Signature")
+            {
+            }
+            column(SignatureDate; Format(Today))
+            {
+            }
+            column(CompanyStamp; CompanyInfo."Company Stamp")
+            {
+            }
             trigger OnAfterGetRecord()
             begin
                 if RespCenter.Get(Header.region) then
@@ -460,7 +472,9 @@ report 50190 "PickUp Order"
                     Header.Modify();
                 end;
 
-
+                // -----------*--------- Signature Dispatcheur ---------*----------//
+                GetUserSignature(UserSetup, UserSetup2, Header);
+                // -----------*--------- Signature Dispatcheur ---------*----------//
             end;
 
         }
@@ -481,6 +495,7 @@ report 50190 "PickUp Order"
     begin
         CompanyInfo.Get();
         CompanyInfo.CalcFields(Picture);
+        CompanyInfo.CalcFields("Company Stamp");
     end;
 
     var
@@ -490,6 +505,8 @@ report 50190 "PickUp Order"
         LineRec: Record pro_detailBE;
         RespCenter: Record "Responsibility Center";
         CompanyInfos: Record "Company Information";
+        UserSetup: Record "User Setup";
+        UserSetup2: Record "User Setup";
         // ShipmentMethod: Record "Shipment Method";
         ItName1: Text[50];
         ItName2: Text[50];
@@ -778,5 +795,22 @@ report 50190 "PickUp Order"
                     Vol10 := TouringEntry.Volume * 1000;
                 end;
             until TouringEntry.Next() = 0;
+    end;
+
+    procedure GetUserSignature(var USetup1: record "User Setup"; var USetup2: record "User Setup"; Dispach: Record pro_enteteBE)
+    Var
+        UserT: Record "User Setup";
+    begin
+        Clear(UserT);
+        Clear(USetup1);
+        Clear(USetup2);
+
+        Usetup1.SetRange("Afk Dispatch User", Dispach.nom);
+        if USetup1.FindFirst() then
+            USetup1.CalcFields("Afk Signature");
+
+        Usetup2.SetRange("Afk Dispatch User", Dispach.nomresponsable);
+        if USetup2.FindFirst() then
+            USetup2.CalcFields("Afk Signature");
     end;
 }

@@ -1,8 +1,16 @@
-pageextension 50019 pageextension70000021 extends "Posted Sales Shipment"
+namespace gdp_bc.gdp_bc;
+
+using Microsoft.Warehouse.History;
+
+pageextension 50112 "Afk Posted Whse. Shipment" extends "Posted Whse. Shipment"
 {
-    Editable = false;
     layout
     {
+        modify("Assigned User ID")
+        {
+            Editable = false;
+            Caption = 'Created by';
+        }
         addlast(Shipping)
         {
             field("Afk Truck Code"; Rec."Afk Truck Code")
@@ -36,6 +44,6 @@ pageextension 50019 pageextension70000021 extends "Posted Sales Shipment"
                 Editable = false;
             }
         }
+
     }
 }
-
