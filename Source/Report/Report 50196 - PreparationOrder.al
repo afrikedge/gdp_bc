@@ -181,19 +181,28 @@ report 50196 "Preparation Order"
                 column(ObservationsCaptionLbl; ObservationsCaptionLbl)
                 {
                 }
-                // column(OrderNo; "Order No.")
-                // {
-                // }
-                // column(RespCenter; "Responsibility Center")
-                // {
-                // }
                 column(Location_Code; Header."Location Code")
                 {
                 }
-                column(Agency; Agency)
+                column(UserCode; Header."Assigned User ID")
+                {
+                }
+                column(Camion; Header."Afk Truck Code")
+                {
+                }
+                column(Transporteur; Header."Afk Transporter Name")
+                {
+                }
+                column(NomChauffeur; Header.AfkNomchauffeur)
+                {
+                }
+                column(NoPermis; Header.AfkPermis)
                 {
                 }
                 column(CompanyInfoName; CompanyInfo.Name)
+                {
+                }
+                column(CompanyStamp; CompanyInfo."Company Stamp")
                 {
                 }
                 dataitem(Line; "Warehouse Shipment Line")
@@ -207,7 +216,7 @@ report 50196 "Preparation Order"
                     column(No_; "Item No.")
                     {
                     }
-                    column(Source_No_; "Source No.")
+                    column(OrderNo; "Source No.")
                     {
                     }
                     column(Description; Description)
@@ -223,6 +232,21 @@ report 50196 "Preparation Order"
                     {
                     }
                     column(QtyConverted; QtyConverted)
+                    {
+                    }
+                    column(TonneConversion; TonneConversion)
+                    {
+                    }
+                    column(Address; Address)
+                    {
+                    }
+                    column(Agency; Agency)
+                    {
+                    }
+                    column(Batch; Batch)
+                    {
+                    }
+                    column(ExpDate; ExpDate)
                     {
                     }
                     dataitem(Customer; Customer)
@@ -242,6 +266,9 @@ report 50196 "Preparation Order"
                         column(Sell_to_Address; Address)
                         {
                         }
+                        column(RespCent; "Responsibility Center")
+                        {
+                        }
                     }
                     trigger OnAfterGetRecord()
                     begin
@@ -255,6 +282,21 @@ report 50196 "Preparation Order"
                             LineNumberText := '0' + Format(LineNumber)
                         else
                             LineNumberText := Format(LineNumber);
+
+                        QtyConverted := Quantity * 1000;
+
+                        Item.Get(Line."Item No.");
+                        if Item."Sales Category Code" = 'LUB' then
+                            TonneConversion := Item."Gross Weight" * Line.Quantity
+                        else
+                            if ItemUnitMeasure.Get(Line."Item No.", Line."Unit of Measure Code") then
+                                if ItemUnitMeasure.Get(Line."Item No.", 'KG') then
+                                    TonneConversion := Line.Quantity / ItemUnitMeasure."Qty. per Unit of Measure";
+
+                        Address := GetShipToAddress(Line);
+                        Agency := GetRespCenter(Line);
+                        Batch := GetBatchNumber(Line);
+                        ExpDate := GetExpirationDate(Line);
                     end;
 
                     trigger OnPreDataItem()
@@ -320,19 +362,26 @@ report 50196 "Preparation Order"
     begin
         CompanyInfo.Get();
         CompanyInfo.CalcFields(Picture);
+        CompanyInfo.CalcFields("Company Stamp");
     end;
 
     var
         Location: Record Location;
+        Item: Record Item;
         CompanyInfo: Record "Company Information";
         CompanyInfos: Record "Company Information";
+        ItemUnitMeasure: Record "Item Unit of Measure";
         Lines: Integer;
         QtyConverted: Decimal;
-        Agency: Text[100];
+        TonneConversion: Decimal;
         LineNumber: Integer;
         LinesNumb: Integer;
-        LineNumberText: Code[2];
+        LineNumberText: Code[3];
         DepotName: Text[100];
+        Address: Text;
+        Agency: Text;
+        Batch: Text;
+        ExpDate: Text;
         Foot3: Text;
         // PAGENOCaptionLbl: Label 'Page';
         WhsePostedShipmentCaptionLbl: Label 'DELIVERY NOTE';
@@ -385,5 +434,77 @@ report 50196 "Preparation Order"
         else
             if Location.Code <> LocationCode then
                 Location.Get(LocationCode);
+    end;
+
+    procedure GetShipToAddress(WhseShipLine: Record "Warehouse Shipment Line"): Text
+    var
+        SHeader: Record "Sales Header";
+        ShipToAddress: Record "Ship-to Address";
+        AddressText: Text;
+    begin
+        if WhseShipLine."Source Document" = WhseShipLine."Source Document"::"Sales Order" then
+            if SHeader.Get(WhseShipLine."Source Subtype", WhseShipLine."Source No.") then
+                if SHeader."Ship-to Code" <> '' then begin
+                    ShipToAddress.SetRange("Customer No.", SHeader."Sell-to Customer No.");
+                    ShipToAddress.SetRange(Code, SHeader."Ship-to Code");
+                    if ShipToAddress.FindFirst() then
+                        AddressText := ShipToAddress.Address + ' ' + ShipToAddress."Address 2";
+                end else
+                    AddressText := SHeader."Ship-to Address" + ' ' + SHeader."Ship-to Address 2";
+        exit(AddressText);
+    end;
+
+    procedure GetRespCenter(WhseShipLine: Record "Warehouse Shipment Line"): Text
+    var
+        SHeader: Record "Sales Header";
+        RespC: Record "Responsibility Center";
+        RespName: Text;
+    begin
+        if WhseShipLine."Source Document" = WhseShipLine."Source Document"::"Sales Order" then
+            if SHeader.Get(WhseShipLine."Source Subtype", WhseShipLine."Source No.") then
+                if SHeader."Responsibility Center" <> '' then
+                    // RespC.SetRange(Code, SHeader."Responsibility Center");
+                    if RespC.Get(SHeader."Responsibility Center") then
+                        RespName := RespC.Name;
+        exit(RespName);
+    end;
+
+    procedure GetBatchNumber(WhseShipLine: Record "Warehouse Shipment Line"): Text
+    var
+        TrackingSpec: Record "Tracking Specification";
+        BatchText: Text;
+    begin
+        TrackingSpec.SetRange("Source Type", WhseShipLine."Source Type");
+        TrackingSpec.SetRange("Source ID", WhseShipLine."Source No.");
+        TrackingSpec.SetRange("Source Ref. No.", WhseShipLine."Line No.");
+        TrackingSpec.SetRange("Item No.", WhseShipLine."Item No.");
+
+        if TrackingSpec.FindSet() then
+            repeat
+                if TrackingSpec."Lot No." <> '' then
+                    BatchText := TrackingSpec."Lot No."; // ' (' + Format(TrackingSpec."Quantity (Base)") + ')'
+            until TrackingSpec.Next() = 0;
+
+        exit(BatchText);
+    end;
+
+    procedure GetExpirationDate(WhseShipLine: Record "Warehouse Shipment Line"): Text
+    var
+        TrackingSpec: Record "Tracking Specification";
+        DateText: Text;
+    begin
+        TrackingSpec.SetRange("Source Type", WhseShipLine."Source Type");
+        TrackingSpec.SetRange("Source ID", WhseShipLine."Source No.");
+        TrackingSpec.SetRange("Source Ref. No.", WhseShipLine."Line No.");
+        TrackingSpec.SetRange("Item No.", WhseShipLine."Item No.");
+        // TrackingSpec.SetRange("Quantity (Base)", WhseShipLine.Quantity);
+
+        if TrackingSpec.FindSet() then
+            repeat
+                if TrackingSpec."Expiration Date" <> 0D then
+                    DateText := Format(TrackingSpec."Expiration Date");
+            until TrackingSpec.Next() = 0;
+
+        exit(DateText)
     end;
 }
