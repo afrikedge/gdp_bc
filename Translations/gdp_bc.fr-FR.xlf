@@ -17,7 +17,7 @@
         </trans-unit>
         <trans-unit id="Page 1447496441 - Action 428359810 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comptabiliser</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Comptabiliser</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Afk Card Entry To Post - Action PostNow - Property Caption</note>
         </trans-unit>
@@ -5834,6 +5834,12 @@
           <target state="needs-review-translation">Site de livraison</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Delivery Site - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1498432649 - Field 1930828969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Désactivé</source>
+          <target state="needs-translation"></target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Delivery Site - Field Desactivated - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1498432649 - Field 2161572060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Location Code</source>
@@ -17936,6 +17942,12 @@
           <target state="needs-review-translation">Aucune adresse email trouvée pour l'envoi de l'alerte.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit EmailMgt - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1780695589 - Method 3747720445 - NamedType 4195951934" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vous ne devez pas facturer à partir de cette page</source>
+          <target state="needs-translation"></target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EventsSubscribers Code - Method C5764_OnAfterConfirmPost - NamedType ErrLab</note>
         </trans-unit>
         <trans-unit id="Codeunit 1780695589 - Method 329016207 - NamedType 1626979228" size-unit="char" translate="yes" xml:space="preserve">
           <source>Option non disponible, sélectionnez Livrer ou Facturer</source>
@@ -48440,6 +48452,12 @@
           <target state="needs-review-translation">Camions</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Control TruckSubform - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1975951532 - Action 2986646893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Recalculer les quantités</source>
+          <target state="needs-translation"></target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Touring Card - Action Recalculate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1975951532 - Action 710507135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Dispach</source>
@@ -81503,19 +81521,19 @@
         </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 2668507657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Payment Required</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Paiement réquis</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Afk Payment Required - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 2471556914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Web Order Sent</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Cde Web envoyée</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Afk Web Order Sent - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1551112472 - Field 2968489684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Web User Id</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Id utilisateur Web</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Header - Field Afk Web User Id - Property Caption</note>
         </trans-unit>
@@ -82389,6 +82407,48 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Line Archive - Field Real Location - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 551043783 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Transporter</source>
+          <target state="needs-review-translation">Code Transporteur</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field Afk Transporter Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 2659540897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Transporter Name</source>
+          <target state="needs-review-translation">Nom du transporteur</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field Afk Transporter Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 4267860134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Truck code</source>
+          <target state="needs-review-translation">Code camion</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field Afk Truck Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 145281817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Carte grise</source>
+          <target state="needs-review-translation">Carte grise</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field AfkCarteGrise - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 1294710031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Driver Name</source>
+          <target state="needs-review-translation">Nom du chauffeur</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field AfkNomchauffeur - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 3904531656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Driver licence</source>
+          <target state="needs-review-translation">Permis de conduire</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field AfkPermis - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2714900704 - Field 2006332854 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Driver First Name</source>
+          <target state="needs-review-translation">Nom du chauffeur</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Sales Shipment Header - Field AfkPrenomchauffeur - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2714900704 - Field 1321722400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>BE Number</source>
           <target state="needs-review-translation">Numéro BE</target>
@@ -82457,7 +82517,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 611707355 - Field 2106544914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1187003046">
           <source>Modified By</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Modifié par</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Ship-to Address - Field Afk Modified By - Property Caption</note>
         </trans-unit>
@@ -82793,9 +82853,15 @@
         </trans-unit>
         <trans-unit id="TableExtension 288146863 - Field 1951786589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Directeur commercial</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Directeur commercial</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Setup - Field Afk Commercial Manager - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 288146863 - Field 1255961455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Code utilisateur dispatch</source>
+          <target state="needs-review-translation">Code utilisateur dispatch</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Setup - Field Afk Dispatch User - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 288146863 - Field 2666531729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Titre sur le bon de commande</source>
@@ -83831,7 +83897,7 @@
         </trans-unit>
         <trans-unit id="Enum 3759309350 - EnumValue 3566004263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Method</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Méthode de paiement</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Table Type - EnumValue Payment Method - Property Caption</note>
         </trans-unit>
@@ -83891,25 +83957,25 @@
         </trans-unit>
         <trans-unit id="Enum 99219820 - EnumValue 3371220206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>None</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Aucun</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum AfkEmailType - EnumValue None - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 99219820 - EnumValue 395510365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Achat</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum AfkEmailType - EnumValue Purchase - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 99219820 - EnumValue 1385143975 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>VendorInvoice</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Facture fournisseur</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum AfkEmailType - EnumValue VendorInvoice - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 99219820 - EnumValue 4149131617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>VendorTransfer</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Virement fournisseur</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum AfkEmailType - EnumValue VendorTransfer - Property Caption</note>
         </trans-unit>
@@ -84017,19 +84083,19 @@
         </trans-unit>
         <trans-unit id="EnumExtension 2722947597 - EnumValue 503931689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>Reminder1</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Relance1</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AFG Report Selection Usage - EnumValue Reminder1 - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 2722947597 - EnumValue 4161202368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>Reminder2</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Relance2</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AFG Report Selection Usage - EnumValue Reminder2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 2722947597 - EnumValue 3523505751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>Reminder3</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Relance3</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension AFG Report Selection Usage - EnumValue Reminder3 - Property Caption</note>
         </trans-unit>
