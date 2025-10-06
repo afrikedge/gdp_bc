@@ -476,8 +476,10 @@ report 50193 "Posted Whse Shipment"
 
         if ILE.FindSet() then
             repeat
-                if ILE."Lot No." <> '' then
-                    BatchText := ILE."Lot No.";
+                if ILE."Lot No." <> '' then begin
+                    BatchText += ILE."Lot No.";
+                    BatchText += '\n';
+                end;
             until ILE.Next() = 0;
 
         exit(BatchText);
@@ -494,8 +496,10 @@ report 50193 "Posted Whse Shipment"
 
         if ILE.FindSet() then
             repeat
-                if ILE."Expiration Date" <> 0D then
-                    DateText := Format(ILE."Expiration Date");
+                if ILE."Expiration Date" <> 0D then begin
+                    DateText += Format(ILE."Expiration Date");
+                    DateText += '\n';
+                end;
             until ILE.Next() = 0;
 
         exit(DateText);

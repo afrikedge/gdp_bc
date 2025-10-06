@@ -474,18 +474,21 @@ report 50196 "Preparation Order"
         TrackingSpec: Record "Tracking Specification";
         BatchText: Text;
     begin
-        TrackingSpec.SetRange("Source Type", WhseShipLine."Source Type");
-        TrackingSpec.SetRange("Source ID", WhseShipLine."Source No.");
-        TrackingSpec.SetRange("Source Ref. No.", WhseShipLine."Line No.");
-        TrackingSpec.SetRange("Item No.", WhseShipLine."Item No.");
+        if WhseShipLine."Source Document" = WhseShipLine."Source Document"::"Sales Order" then begin
+            TrackingSpec.SetRange("Source Type", WhseShipLine."Source Type");
+            TrackingSpec.SetRange("Source Ref. No.", WhseShipLine."Line No.");
+            // TrackingSpec.SetRange("Source ID", WhseShipLine."Source No.");
 
-        if TrackingSpec.FindSet() then
-            repeat
-                if TrackingSpec."Lot No." <> '' then
-                    BatchText := TrackingSpec."Lot No."; // ' (' + Format(TrackingSpec."Quantity (Base)") + ')'
-            until TrackingSpec.Next() = 0;
+            if TrackingSpec.FindSet() then
+                repeat
+                    if TrackingSpec."Lot No." <> '' then begin
+                        BatchText += TrackingSpec."Lot No."; // ' (' + Format(TrackingSpec."Quantity (Base)") + ')'
+                        BatchText += '\n';
+                    end;
+                until TrackingSpec.Next() = 0;
 
-        exit(BatchText);
+            exit(BatchText);
+        end;
     end;
 
     procedure GetExpirationDate(WhseShipLine: Record "Warehouse Shipment Line"): Text
@@ -493,18 +496,20 @@ report 50196 "Preparation Order"
         TrackingSpec: Record "Tracking Specification";
         DateText: Text;
     begin
-        TrackingSpec.SetRange("Source Type", WhseShipLine."Source Type");
-        TrackingSpec.SetRange("Source ID", WhseShipLine."Source No.");
-        TrackingSpec.SetRange("Source Ref. No.", WhseShipLine."Line No.");
-        TrackingSpec.SetRange("Item No.", WhseShipLine."Item No.");
-        // TrackingSpec.SetRange("Quantity (Base)", WhseShipLine.Quantity);
+        if WhseShipLine."Source Document" = WhseShipLine."Source Document"::"Sales Order" then begin
+            TrackingSpec.SetRange("Source Type", WhseShipLine."Source Type");
+            TrackingSpec.SetRange("Source Ref. No.", WhseShipLine."Line No.");
+            // TrackingSpec.SetRange("Source ID", WhseShipLine."Source No.");
 
-        if TrackingSpec.FindSet() then
-            repeat
-                if TrackingSpec."Expiration Date" <> 0D then
-                    DateText := Format(TrackingSpec."Expiration Date");
-            until TrackingSpec.Next() = 0;
+            if TrackingSpec.FindSet() then
+                repeat
+                    if TrackingSpec."Expiration Date" <> 0D then begin
+                        DateText += Format(TrackingSpec."Expiration Date");
+                        DateText += '\n';
+                    end;
+                until TrackingSpec.Next() = 0;
 
-        exit(DateText)
+            exit(DateText)
+        end;
     end;
 }

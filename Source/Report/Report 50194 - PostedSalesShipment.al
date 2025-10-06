@@ -1533,9 +1533,14 @@ report 50194 "Posted Sales Shipment"
 
         if ILE.FindSet() then
             repeat
-                if ILE."Lot No." <> '' then
-                    BatchText := ILE."Lot No.";
+                if ILE."Lot No." <> '' then begin
+                    BatchText += ILE."Lot No."; // ' (' + Format(Abs(ILE.Quantity)) + ')';
+                    BatchText += '\n';
+                end;
             until ILE.Next() = 0;
+
+        // if BatchText <> '' then
+        // BatchText := CopyStr(BatchText, 1, StrLen(BatchText) - 2); 
 
         exit(BatchText);
     end;
@@ -1551,8 +1556,10 @@ report 50194 "Posted Sales Shipment"
 
         if ILE.FindSet() then
             repeat
-                if ILE."Expiration Date" <> 0D then
-                    DateText := Format(ILE."Expiration Date");
+                if ILE."Expiration Date" <> 0D then begin
+                    DateText += Format(ILE."Expiration Date");
+                    DateText += '\n';
+                end;
             until ILE.Next() = 0;
 
         exit(DateText);
