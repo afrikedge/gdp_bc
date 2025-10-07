@@ -1081,6 +1081,17 @@ codeunit 50032 "EventsSubscribers Code"
         SalesShptHeader.AfkPrenomchauffeur := TempWhseShptHeader.AfkPrenomchauffeur;
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Whse.-Post Shipment + Print", 'OnAfterConfirmPost', '', true, false)]
+    local procedure C5765_OnAfterConfirmPost(WhseShipmentLine: Record "Warehouse Shipment Line"; Invoice: Boolean)
+    var
+        ErrLab: label 'Vous ne devez pas facturer à partir de cette page';
+    begin
+        if (Invoice) then
+            error(ErrLab);
+    end;
+
+
+
 
 
 

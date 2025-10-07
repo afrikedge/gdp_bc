@@ -14958,6 +14958,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit EventsSubscribers Code - Method C5764_OnAfterConfirmPost - NamedType ErrLab</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1780695589 - Method 3012592446 - NamedType 4195951934" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vous ne devez pas facturer à partir de cette page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EventsSubscribers Code - Method C5765_OnAfterConfirmPost - NamedType ErrLab</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1780695589 - Method 329016207 - NamedType 1626979228" size-unit="char" translate="yes" xml:space="preserve">
           <source>Option non disponible, sélectionnez Livrer ou Facturer</source>
           <note from="Developer" annotates="general" priority="2"></note>
