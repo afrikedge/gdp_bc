@@ -809,8 +809,11 @@ report 50190 "PickUp Order"
         if USetup1.FindFirst() then
             USetup1.CalcFields("Afk Signature");
 
-        Usetup2.SetRange("Afk Dispatch User", Dispach.nomresponsable);
-        if USetup2.FindFirst() then
-            USetup2.CalcFields("Afk Signature");
+        if (Header."ValidatedByManager") then begin
+            Usetup2.SetRange("Afk Dispatch User", Dispach.nomresponsable);
+            if USetup2.FindFirst() then
+                USetup2.CalcFields("Afk Signature");
+        end;
+
     end;
 }

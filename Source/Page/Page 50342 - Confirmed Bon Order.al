@@ -95,6 +95,9 @@ page 50342 "Confirmed Bon Order"
                 field("Cargo Name"; Rec."Cargo Name")
                 {
                 }
+                field(ValidatedByManager; Rec.ValidatedByManager)
+                {
+                }
             }
             group(Livraison)
             {

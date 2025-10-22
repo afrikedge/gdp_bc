@@ -12339,6 +12339,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_enteteBE - Field temperature - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 259130890 - Field 1613398894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Validated by manager</source>
+          <target state="needs-translation">Validé par responsable</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table pro_enteteBE - Field ValidatedByManager - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 259130890 - Field 4237891705 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Validation Date</source>
           <target state="needs-review-translation">Validé le</target>
@@ -17948,6 +17954,12 @@
           <target state="needs-translation"></target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit EventsSubscribers Code - Method C5764_OnAfterConfirmPost - NamedType ErrLab</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1780695589 - Method 3012592446 - NamedType 4195951934" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vous ne devez pas facturer à partir de cette page</source>
+          <target state="needs-translation"></target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EventsSubscribers Code - Method C5765_OnAfterConfirmPost - NamedType ErrLab</note>
         </trans-unit>
         <trans-unit id="Codeunit 1780695589 - Method 329016207 - NamedType 1626979228" size-unit="char" translate="yes" xml:space="preserve">
           <source>Option non disponible, sélectionnez Livrer ou Facturer</source>
@@ -28712,6 +28724,12 @@
           <target state="needs-review-translation">Valider</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Bon Order (Dispaching) - Action Post - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2415739284 - Action 1381943671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Validate bon (Manager)</source>
+          <target state="needs-translation">Approuver bon (Resp)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Bon Order (Dispaching) - Action ValidateManager - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 684313745 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines</source>
@@ -80207,7 +80225,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 4052574762 - Field 485534419 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Show on Market Place</source>
-          <target state="needs-translation"></target>
+          <target state="needs-review-translation">Visible sur MarketPlace</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Item - Field Afk Show on Market Place - Property Caption</note>
         </trans-unit>
@@ -82850,6 +82868,12 @@
           <target state="needs-review-translation">Fin période validation</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Group - Field Allow Posting To - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 288146863 - Field 1304064038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Can Validate Dispaching</source>
+          <target state="needs-review-translation">Peut approuver Dispaching</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Setup - Field Afk Can Validate Dispaching - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 288146863 - Field 1951786589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Directeur commercial</source>

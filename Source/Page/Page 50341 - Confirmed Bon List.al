@@ -109,6 +109,9 @@ page 50341 "Confirmed Bon List"
                 field(observation; Rec.observation)
                 {
                 }
+                field(ValidatedByManager; Rec.ValidatedByManager)
+                {
+                }
             }
         }
     }

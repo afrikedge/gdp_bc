@@ -610,6 +610,8 @@ table 50007 pro_enteteBE
         {
             Caption = 'BC Client';
         }
+
+
         field(50023; "Cancelled Incident Type"; Option)
         {
             CalcFormula = Lookup("Dispaching Incident".IncidentType WHERE(IdRef = FIELD(numBE),
@@ -635,6 +637,11 @@ table 50007 pro_enteteBE
             Caption = 'Motif';
             Editable = false;
             FieldClass = FlowField;
+        }
+        field(50026; "ValidatedByManager"; Boolean)
+        {
+            Caption = 'Validated by manager';
+            Editable = false;
         }
     }
 
