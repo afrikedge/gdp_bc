@@ -8001,9 +8001,6 @@
                                                               <Left>14.91381cm</Left>
                                                               <Height>2cm</Height>
                                                               <Width>3.75522cm</Width>
-                                                              <Visibility>
-                                                                <Hidden>true</Hidden>
-                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -8020,9 +8017,6 @@
                                                               <Height>1.54022cm</Height>
                                                               <Width>4.20608cm</Width>
                                                               <ZIndex>1</ZIndex>
-                                                              <Visibility>
-                                                                <Hidden>true</Hidden>
-                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -8039,9 +8033,6 @@
                                                               <Height>1.54022cm</Height>
                                                               <Width>4.02194cm</Width>
                                                               <ZIndex>2</ZIndex>
-                                                              <Visibility>
-                                                                <Hidden>true</Hidden>
-                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -8094,7 +8085,6 @@
                                                           </Style>
                                                         </Rectangle>
                                                         <ColSpan>13</ColSpan>
-                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell />
