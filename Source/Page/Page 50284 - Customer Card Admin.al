@@ -165,6 +165,9 @@ page 50284 "Customer Card Admin"
                 field("Afk Type transport"; Rec."Afk Type transport")
                 {
                 }
+                field("Disable Blocking"; Rec."Disable Blocking")
+                {
+                }
             }
             group(Communication)
             {

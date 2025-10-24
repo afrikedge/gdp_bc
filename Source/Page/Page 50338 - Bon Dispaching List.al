@@ -103,6 +103,9 @@ page 50338 "Bon Dispaching List"
                 field(observation; Rec.observation)
                 {
                 }
+                field(ValidatedByManager; Rec.ValidatedByManager)
+                {
+                }
             }
         }
     }

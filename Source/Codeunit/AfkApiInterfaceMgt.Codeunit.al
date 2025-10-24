@@ -97,6 +97,9 @@ codeunit 50041 "Afk Api Interface Mgt"
             'salesOrder_cancel':
                 exit(FrontDeskMgt.Run_CancelOrder(input));
 
+            'refresh_touring_data':
+                exit(FrontDeskMgt.Run_RefreshTouringData(input));
+
 
 
             // 'orders_item_getPrice':

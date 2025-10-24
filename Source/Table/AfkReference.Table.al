@@ -24,6 +24,10 @@ table 50098 "Afk Reference"
         {
             Caption = 'Active';
         }
+        field(5; "BC Payment"; Boolean)
+        {
+            Caption = 'BC Payment';
+        }
     }
     keys
     {

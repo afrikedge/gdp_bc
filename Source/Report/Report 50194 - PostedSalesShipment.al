@@ -412,7 +412,13 @@ report 50194 "Posted Sales Shipment"
             column(Agency; Agency)
             {
             }
+            column(UserCode; "User ID")
+            {
+            }
             column(CompanyInfoName; CompanyInfo.Name)
+            {
+            }
+            column(CompanyStamp; CompanyInfos."Company Stamp")
             {
             }
             column(Foot5; 'R.C.S. : ' + CompanyInfo."Trade Register" + ' - ' + 'STAT : ' + CompanyInfo."Legal Form")
@@ -571,6 +577,21 @@ report 50194 "Posted Sales Shipment"
             column(ObservationsCaptionLbl; ObservationsCaptionLbl)
             {
             }
+            column(Address; Address)
+            {
+            }
+            column(Camion; "Afk Truck Code")
+            {
+            }
+            column(Transporteur; "Afk Transporter Name")
+            {
+            }
+            column(NomChauffeur; AfkNomchauffeur)
+            {
+            }
+            column(NoPermis; AfkPermis)
+            {
+            }
             dataitem(Line; "Sales Shipment Line")
             {
                 DataItemLink = "Document No." = field("No.");
@@ -597,6 +618,19 @@ report 50194 "Posted Sales Shipment"
                 column(Description_Line; Description)
                 {
                 }
+                column(QtyConverted; QtyConverted)
+                {
+                }
+                column(TonneConversion; TonneConversion)
+                {
+                }
+                column(Batch; Batch)
+                {
+                }
+                column(ExpDate; ExpDate)
+                {
+                }
+
                 column(Description_Line_Lbl; FieldCaption(Description))
                 {
                 }
@@ -763,6 +797,18 @@ report 50194 "Posted Sales Shipment"
                         FormattedQuantity := Format(Quantity)
                     else
                         FormattedQuantity := '';
+
+                    QtyConverted := Quantity * 1000;
+                    Item.Get(Line."No.");
+                    if Item."Sales Category Code" = 'LUB' then
+                        TonneConversion := Item."Gross Weight" * Line.Quantity
+                    else
+                        if ItemUnitMeasure.Get(Line."No.", Line."Unit of Measure Code") then
+                            if ItemUnitMeasure.Get(Line."No.", 'KG') then
+                                TonneConversion := Line.Quantity / ItemUnitMeasure."Qty. per Unit of Measure";
+
+                    Batch := GetBatchNumber(Line);
+                    ExpDate := GetExpirationDate(Line);
                 end;
 
                 trigger OnPreDataItem()
@@ -935,6 +981,9 @@ report 50194 "Posted Sales Shipment"
                 if Location.Get(Header."Location Code") then
                     DepotName := Location.Name;
 
+                if ShipToAddress.Get(Header."Sell-to Customer No.", Header."Ship-to Code") then
+                    Address := ShipToAddress.Address + ' ' + ShipToAddress."Address 2";
+
                 if CompanyInfo.Get() then
                     Foot3 := CompanyInfo."Phone No." + ' - Fax : ' + CompanyInfo."Fax No.";
 
@@ -1077,7 +1126,9 @@ report 50194 "Posted Sales Shipment"
     trigger OnPreReport()
     begin
         CompanyInfo.Get();
+        CompanyInfos.Get();
         CompanyInfo.CalcFields(Picture);
+        CompanyInfos.CalcFields("Company Stamp");
 
         if Header.GetFilters = '' then
             Error(NoFilterSetErr);
@@ -1090,8 +1141,12 @@ report 50194 "Posted Sales Shipment"
 
     var
         GLSetup: Record "General Ledger Setup";
+        Item: Record Item;
+        ItemUnitMeasure: Record "Item Unit of Measure";
+        ShipToAddress: Record "Ship-to Address";
         CompanyBankAccount: Record "Bank Account";
         DummyCompanyInfo: Record "Company Information";
+        CompanyInfos: Record "Company Information";
         SalesSetup: Record "Sales & Receivables Setup";
         Cust: Record Customer;
         Location: Record Location;
@@ -1120,10 +1175,15 @@ report 50194 "Posted Sales Shipment"
         CompanyLogoPosition: Integer;
         TrackingSpecCount: Integer;
 
+        QtyConverted: Decimal;
+        TonneConversion: Decimal;
+        Address: Text;
+        Batch: Text;
+        ExpDate: Text;
         Lines: Integer;
         LineNumber: Integer;
         LinesNumb: Integer;
-        LineNumberText: Code[2];
+        LineNumberText: Code[3];
         DepotName: Text[100];
         Agency: Text[100];
         Foot3: Text;
@@ -1462,4 +1522,46 @@ report 50194 "Posted Sales Shipment"
     begin
     end;
 
+    procedure GetBatchNumber(WhseShipLine: Record "Sales Shipment Line"): Text
+    var
+        ILE: Record "Item Ledger Entry";
+        BatchText: Text;
+    begin
+        ILE.SetRange("Document No.", WhseShipLine."Document No.");
+        ILE.SetRange("Item No.", WhseShipLine."No.");
+        ILE.SetRange("Document Line No.", WhseShipLine."Line No.");
+
+        if ILE.FindSet() then
+            repeat
+                if ILE."Lot No." <> '' then begin
+                    BatchText += ILE."Lot No."; // ' (' + Format(Abs(ILE.Quantity)) + ')';
+                    BatchText += '\n';
+                end;
+            until ILE.Next() = 0;
+
+        // if BatchText <> '' then
+        // BatchText := CopyStr(BatchText, 1, StrLen(BatchText) - 2); 
+
+        exit(BatchText);
+    end;
+
+    procedure GetExpirationDate(WhseShipLine: Record "Sales Shipment Line"): Text
+    var
+        ILE: Record "Item Ledger Entry";
+        DateText: Text;
+    begin
+        ILE.SetRange("Document No.", WhseShipLine."Document No.");
+        ILE.SetRange("Item No.", WhseShipLine."No.");
+        ILE.SetRange("Document Line No.", WhseShipLine."Line No.");
+
+        if ILE.FindSet() then
+            repeat
+                if ILE."Expiration Date" <> 0D then begin
+                    DateText += Format(ILE."Expiration Date");
+                    DateText += '\n';
+                end;
+            until ILE.Next() = 0;
+
+        exit(DateText);
+    end;
 }

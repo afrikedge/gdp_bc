@@ -3448,6 +3448,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Reference - Field Active - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3706542705 - Field 1918147989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BC Payment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Reference - Field BC Payment - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3706542705 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10283,6 +10288,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_enteteBE - Field temperature - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 259130890 - Field 1613398894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Validated by manager</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table pro_enteteBE - Field ValidatedByManager - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 259130890 - Field 4237891705 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Validation Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14957,6 +14967,11 @@
           <source>Vous ne devez pas facturer à partir de cette page</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit EventsSubscribers Code - Method C5764_OnAfterConfirmPost - NamedType ErrLab</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1780695589 - Method 3012592446 - NamedType 4195951934" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vous ne devez pas facturer à partir de cette page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EventsSubscribers Code - Method C5765_OnAfterConfirmPost - NamedType ErrLab</note>
         </trans-unit>
         <trans-unit id="Codeunit 1780695589 - Method 329016207 - NamedType 1626979228" size-unit="char" translate="yes" xml:space="preserve">
           <source>Option non disponible, sélectionnez Livrer ou Facturer</source>
@@ -23927,6 +23942,11 @@
           <source>Post</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Bon Order (Dispaching) - Action Post - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2415739284 - Action 1381943671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Validate bon (Manager)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Bon Order (Dispaching) - Action ValidateManager - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 684313745 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines</source>
@@ -69042,6 +69062,11 @@
           <source>Allow Posting To</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Group - Field Allow Posting To - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 288146863 - Field 1304064038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Can Validate Dispaching</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 User Setup - Field Afk Can Validate Dispaching - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 288146863 - Field 1951786589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Directeur commercial</source>

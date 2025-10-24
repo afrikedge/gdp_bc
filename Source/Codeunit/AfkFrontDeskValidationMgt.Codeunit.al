@@ -256,6 +256,22 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         end;
     end;
 
+    procedure Run_RefreshTouringData(input: JsonObject): Text
+    var
+        SalesHeader: Record "Sales Header";
+        TouringEntry: Record "Touring Product Entry";
+        idTournee: Integer;
+        WebUser: text;
+    begin
+        // idTournee := ws.GetInt('idTournee', input);
+        // TouringEntry.SetRange(IdTouring, idTournee);
+        // if TouringEntry.FindSet(true) then
+        //     repeat
+        //         TouringEntry.Validate("Real Shipped Volume", TouringEntry."Real Shipped Volume");
+        //         TouringEntry.Modify(true);
+        //     until TouringEntry.Next() < 1;
+    end;
+
 
     local procedure SetDdeDeblocageStatus(input: JsonObject): Text
     var

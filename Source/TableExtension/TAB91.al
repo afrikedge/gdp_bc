@@ -268,6 +268,10 @@ tableextension 50021 "A02 User Setup" extends "User Setup"
         {
             Caption = 'Code utilisateur dispatch';
         }
+        field(50048; "Afk Can Validate Dispaching"; Boolean)
+        {
+            Caption = 'Can Validate Dispaching';
+        }
     }
 
     //Unsupported feature: Property Deletion (LookupPageID).

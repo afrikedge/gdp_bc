@@ -187,6 +187,10 @@ pageextension 50084 "AG1 User Setup" extends "User Setup"
             {
                 ApplicationArea = All;
             }
+            field("Afk Can Validate Dispaching"; Rec."Afk Can Validate Dispaching")
+            {
+                ApplicationArea = All;
+            }
         }
     }
 

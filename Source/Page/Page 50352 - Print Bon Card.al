@@ -40,7 +40,7 @@ page 50352 "Print Bon Card"
                     EnteteBE.SETRANGE(numBE, Rec.numBE);
                     EnteteBE.SetRange(NumBU, Rec.NumBU);
                     EnteteBE.SetRange(idtournee, Rec.idtournee);
-                    REPORT.RUN(50190, TRUE, FALSE, EnteteBE);
+                    REPORT.RUN(report::"PickUp Order", TRUE, FALSE, EnteteBE);
 
 
                     //BonIsEditable:=FALSE;

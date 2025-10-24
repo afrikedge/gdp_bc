@@ -178,6 +178,30 @@ report 50193 "Posted Whse Shipment"
                 column(ObservationsCaptionLbl; ObservationsCaptionLbl)
                 {
                 }
+                column(Location_Code; Header."Location Code")
+                {
+                }
+                column(UserCode; Header."Assigned User ID")
+                {
+                }
+                column(Camion; Header."Afk Truck Code")
+                {
+                }
+                column(Transporteur; Header."Afk Transporter Name")
+                {
+                }
+                column(NomChauffeur; Header.AfkNomchauffeur)
+                {
+                }
+                column(NoPermis; Header.AfkPermis)
+                {
+                }
+                column(CompanyInfoName; CompanyInfo.Name)
+                {
+                }
+                column(CompanyStamp; CompanyInfo."Company Stamp")
+                {
+                }
                 dataitem(Line; "Posted Whse. Shipment Line")
                 {
                     DataItemLink = "No." = field("No.");
@@ -189,7 +213,7 @@ report 50193 "Posted Whse Shipment"
                     column(No_; "Item No.")
                     {
                     }
-                    column(Source_No_; "Source No.")
+                    column(OrderNo; "Source No.")
                     {
                     }
                     column(Description; Description)
@@ -202,6 +226,24 @@ report 50193 "Posted Whse Shipment"
                     {
                     }
                     column(ShelfNo_PostedWhseShptLine; "Shelf No.")
+                    {
+                    }
+                    column(QtyConverted; QtyConverted)
+                    {
+                    }
+                    column(TonneConversion; TonneConversion)
+                    {
+                    }
+                    column(Address; Address)
+                    {
+                    }
+                    column(Agency; Agency)
+                    {
+                    }
+                    column(Batch; Batch)
+                    {
+                    }
+                    column(ExpDate; ExpDate)
                     {
                     }
                     dataitem(Customer; Customer)
@@ -221,6 +263,9 @@ report 50193 "Posted Whse Shipment"
                         column(Sell_to_Address; Address)
                         {
                         }
+                        column(RespCent; "Responsibility Center")
+                        {
+                        }
                     }
 
                     trigger OnAfterGetRecord()
@@ -233,6 +278,20 @@ report 50193 "Posted Whse Shipment"
                             LineNumberText := '0' + Format(LineNumber)
                         else
                             LineNumberText := Format(LineNumber);
+
+                        QtyConverted := Quantity * 1000;
+                        Item.Get(Line."Item No.");
+                        if Item."Sales Category Code" = 'LUB' then
+                            TonneConversion := Item."Gross Weight" * Line.Quantity
+                        else
+                            if ItemUnitMeasure.Get(Line."Item No.", Line."Unit of Measure Code") then
+                                if ItemUnitMeasure.Get(Line."Item No.", 'KG') then
+                                    TonneConversion := Line.Quantity / ItemUnitMeasure."Qty. per Unit of Measure";
+
+                        Address := GetShipToAddress(Line);
+                        Agency := GetRespCenter(Line);
+                        Batch := GetBatchNumber(Line);
+                        ExpDate := GetExpirationDate(Line);
                     end;
 
                     trigger OnPreDataItem()
@@ -296,17 +355,26 @@ report 50193 "Posted Whse Shipment"
     begin
         CompanyInfo.Get();
         CompanyInfo.CalcFields(Picture);
+        CompanyInfo.CalcFields("Company Stamp");
     end;
 
     var
         Location: Record Location;
+        Item: Record Item;
+        ItemUnitMeasure: Record "Item Unit of Measure";
         CompanyInfo: Record "Company Information";
         CompanyInfos: Record "Company Information";
+        QtyConverted: Decimal;
+        TonneConversion: Decimal;
         Lines: Integer;
         LineNumber: Integer;
         LinesNumb: Integer;
         LineNumberText: Code[2];
         DepotName: Text[100];
+        Address: Text;
+        Agency: Text;
+        Batch: Text;
+        ExpDate: Text;
         Foot3: Text;
         // PAGENOCaptionLbl: Label 'Page';
         WhsePostedShipmentCaptionLbl: Label 'DELIVERY NOTE';
@@ -358,5 +426,82 @@ report 50193 "Posted Whse Shipment"
         else
             if Location.Code <> LocationCode then
                 Location.Get(LocationCode);
+    end;
+
+    procedure GetShipToAddress(WhseShipLine: Record "Posted Whse. Shipment Line"): Text
+    var
+        SHeader: Record "Sales Header";
+        ShipToAddress: Record "Ship-to Address";
+        AddressText: Text;
+    begin
+        if WhseShipLine."Source Document" = WhseShipLine."Source Document"::"Sales Order" then
+            if SHeader.Get(WhseShipLine."Source Subtype", WhseShipLine."Source No.") then
+                if SHeader."Ship-to Code" <> '' then begin
+                    ShipToAddress.SetRange("Customer No.", SHeader."Sell-to Customer No.");
+                    ShipToAddress.SetRange(Code, SHeader."Ship-to Code");
+                    if ShipToAddress.FindFirst() then
+                        AddressText := ShipToAddress.Address + ' ' + ShipToAddress."Address 2";
+                end else
+                    AddressText := SHeader."Ship-to Address" + ' ' + SHeader."Ship-to Address 2";
+        exit(AddressText);
+    end;
+
+    procedure GetRespCenter(WhseShipLine: Record "Posted Whse. Shipment Line"): Text
+    var
+        SHeader: Record "Sales Header";
+        RespC: Record "Responsibility Center";
+        RespName: Text;
+    begin
+        if WhseShipLine."Source Document" = WhseShipLine."Source Document"::"Sales Order" then
+            if SHeader.Get(WhseShipLine."Source Subtype", WhseShipLine."Source No.") then
+                if SHeader."Responsibility Center" <> '' then
+                    // RespC.SetRange(Code, SHeader."Responsibility Center");
+                    if RespC.Get(SHeader."Responsibility Center") then
+                        RespName := RespC.Name;
+        exit(RespName);
+    end;
+
+    procedure GetBatchNumber(WhseShipLine: Record "Posted Whse. Shipment Line"): Text
+    var
+        ILE: Record "Item Ledger Entry";
+        BatchText: Text;
+    begin
+        // if WhseShipLine."Posted Source Document" = WhseShipLine."Posted Source Document"::"Posted Shipment" then
+        //     if SShipL.Get(WhseShipLine."Posted Source No.", WhseShipLine."Line No.") then
+        //     if ILE.Get(SShipL."Document No.") then
+
+        ILE.SetRange("Document No.", WhseShipLine."Posted Source No.");
+        ILE.SetRange("Item No.", WhseShipLine."Item No.");
+        ILE.SetRange("Document Line No.", WhseShipLine."Line No.");
+
+        if ILE.FindSet() then
+            repeat
+                if ILE."Lot No." <> '' then begin
+                    BatchText += ILE."Lot No.";
+                    BatchText += '\n';
+                end;
+            until ILE.Next() = 0;
+
+        exit(BatchText);
+    end;
+
+    procedure GetExpirationDate(WhseShipLine: Record "Posted Whse. Shipment Line"): Text
+    var
+        ILE: Record "Item Ledger Entry";
+        DateText: Text;
+    begin
+        ILE.SetRange("Document No.", WhseShipLine."Posted Source No.");
+        ILE.SetRange("Item No.", WhseShipLine."Item No.");
+        ILE.SetRange("Document Line No.", WhseShipLine."Line No.");
+
+        if ILE.FindSet() then
+            repeat
+                if ILE."Expiration Date" <> 0D then begin
+                    DateText += Format(ILE."Expiration Date");
+                    DateText += '\n';
+                end;
+            until ILE.Next() = 0;
+
+        exit(DateText);
     end;
 }

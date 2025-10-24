@@ -60,13 +60,13 @@ page 50340 "Bon Order (Dispaching)"
                 }
                 field(nom; Rec.nom)
                 {
-                    // Editable = BEIsNotConfirme;
-                    Editable = false; // new 01/10/25
+                    Editable = BEIsNotConfirme;
+                    // Editable = false; // new 01/10/25
                 }
                 field(nomresponsable; Rec.nomresponsable)
                 {
-                    // Editable = BEIsNotConfirme;
-                    Editable = false; // new 01/10/25
+                    Editable = BEIsNotConfirme;
+                    // Editable = false; // new 01/10/25
                 }
                 field(datecreation; Rec.datecreation)
                 {
@@ -95,6 +95,10 @@ page 50340 "Bon Order (Dispaching)"
                 field("Cargo Name"; Rec."Cargo Name")
                 {
                     Editable = BEIsNotConfirme;
+                }
+                field(ValidatedByManager; Rec."ValidatedByManager")
+                {
+                    Editable = false;
                 }
             }
             group(Livraison)
@@ -236,6 +240,28 @@ page 50340 "Bon Order (Dispaching)"
                     StockAdjustMgt.CreateBLFromBE(Rec);
                 end;
             }
+            action(ValidateManager)
+            {
+                Caption = 'Validate bon (Manager)';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ApplicationArea = All;
+                Image = Approve;
+
+                trigger OnAction()
+                var
+                    UserSetup: Record "User Setup";
+                begin
+                    UserSetup.Get(UserId);
+                    UserSetup.TestField("Afk Can Validate Dispaching");
+                    UserSetup.TestField("Afk Dispatch User");
+                    Rec.nomresponsable := UserSetup."Afk Dispatch User";
+                    Rec."ValidatedByManager" := true;
+                    Rec.Modify();
+                    CurrPage.Update(false);
+                end;
+            }
         }
         area(navigation)
         {
@@ -265,7 +291,7 @@ page 50340 "Bon Order (Dispaching)"
                     //REPORT.RUN(REPORT::"Bon Enlevement Dispatching",TRUE, FALSE,EnteteBE);
 
                     Rec.TestField(codemoyentransport);
-                    PAGE.RunModal(50352, Rec);
+                    PAGE.RunModal(Page::"Print Bon Card", Rec);
 
                     /*
                     //BonIsEditable:=FALSE;
@@ -300,7 +326,7 @@ page 50340 "Bon Order (Dispaching)"
                     //EnteteBL.SETRANGE(numBL,Rec.numBL);
                     //REPORT.RUN(REPORT::"Bon livraison Dispatching",TRUE, FALSE,EnteteBL);
                     Rec.TestField(codemoyentransport);
-                    PAGE.RunModal(50352, Rec);
+                    PAGE.RunModal(Page::"Print Bon Card", Rec);
                     /*
                     PrintCrystal.PrintBL(numBL);
                     

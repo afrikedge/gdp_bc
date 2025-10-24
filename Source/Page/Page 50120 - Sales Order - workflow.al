@@ -717,7 +717,7 @@ page 50120 "Sales Order - workflow"
                     Promoted = true;
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
-                    Visible = false;
+                    Visible = ShowCreerPreparation;
 
                     trigger OnAction()
                     begin

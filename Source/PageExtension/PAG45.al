@@ -4,6 +4,10 @@ pageextension 50010 pageextension70000087 extends "Sales List"
     {
         addafter("Currency Code")
         {
+            field("Requested Delivery Date"; Rec."Requested Delivery Date")
+            {
+                ApplicationArea = All;
+            }
             field("Reliquat Number"; Rec."Reliquat Number")
             {
                 ApplicationArea = All;
@@ -15,6 +19,10 @@ pageextension 50010 pageextension70000087 extends "Sales List"
             field("User ID"; Rec."User ID")
             {
                 ApplicationArea = All;
+            }
+            field("Order Date"; Rec."Order Date")
+            {
+
             }
         }
     }

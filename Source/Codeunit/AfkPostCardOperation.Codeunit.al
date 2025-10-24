@@ -37,6 +37,12 @@ codeunit 50044 "Afk Post Card Operation"
                 GenJnlLine."Document No." := NosSeriesMgt.GetNextNo(AddOnSetup."Credit Notes Nos.", GenJnlLine."Posting Date", true);
             end;
 
+            if (Rec.Amount < 0) then begin
+                GenJnlLine.Correction := true;
+                GenJnlLine."Document Type" := GenJnlLine."Document Type"::" ";
+            end;
+
+
             GenJnlLine."Account Type" := GenJnlLine."Account Type"::Customer;
             GenJnlLine."Gen. Posting Type" := GenJnlLine."Gen. Posting Type"::" ";
             GenJnlLine.Validate(GenJnlLine."Account No.", Rec."Customer No.");
@@ -49,7 +55,7 @@ codeunit 50044 "Afk Post Card Operation"
                 GenJnlLine.Validate(GenJnlLine.Amount, -Rec.Amount);
 
 
-            GenJnlLine."External Document No." := CopyStr(Rec.File, 1, 35);
+            GenJnlLine."External Document No." := Rec."External Doc No.";
             GenJnlLine."Source Code" := SourceCodeSetup.Sales;
             GenJnlLine.SetHideValidation(true);
             GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
@@ -69,10 +75,7 @@ codeunit 50044 "Afk Post Card Operation"
             //Error(ErrorPostingLbl, GetLastErrorText());
 
             // Si tout s'est bien passé, marquer l'écriture comme comptabilisée
-            Rec."Posted In GL" := true;
-            Rec."Error Message" := '';
             Rec."Posted Document No." := GenJnlLine."Document No.";
-            Rec.Modify();
         end;
     end;
 

@@ -8085,7 +8085,6 @@
                                                           </Style>
                                                         </Rectangle>
                                                         <ColSpan>13</ColSpan>
-                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell />

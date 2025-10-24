@@ -633,15 +633,15 @@ codeunit 50032 "EventsSubscribers Code"
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
     begin
         AddOnSetup.GetRecordOnce();
-        // IF (PurchaseLine.GetParentCategory() = AddOnSetup."LUBS Item Category") THEN
-        //     IF PurchaseHeader."Purchase Type" = PurchaseHeader."Purchase Type"::AchatMarchandise THEN BEGIN
-        //         PurchaseLine.TESTFIELD("Expiration Date");
-        //         PurchaseLine.TESTFIELD("Batch Number");
-        //     END;
+        IF (PurchaseLine.GetParentCategory() = AddOnSetup."LUBS Item Category") THEN
+            IF PurchaseHeader."Purchase Type" = PurchaseHeader."Purchase Type"::AchatMarchandise THEN BEGIN
+                PurchaseLine.TESTFIELD("Expiration Date");
+                PurchaseLine.TESTFIELD("Batch Number");
+            END;
 
         ItemJournalLine."Ref Cargo" := PurchaseHeader."Ref Cargo";
-        // ItemJournalLine."LUB Expiration Date" := PurchaseLine."Expiration Date";//JN110321
-        // ItemJournalLine."Batch Number" := PurchaseLine."Batch Number";//JN110321
+        ItemJournalLine."LUB Expiration Date" := PurchaseLine."Expiration Date";//JN110321
+        ItemJournalLine."Batch Number" := PurchaseLine."Batch Number";//JN110321
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post (Yes/No)", 'OnAfterConfirmPost', '', true, true)]
@@ -1080,6 +1080,17 @@ codeunit 50032 "EventsSubscribers Code"
         SalesShptHeader.AfkPermis := TempWhseShptHeader.AfkPermis;
         SalesShptHeader.AfkPrenomchauffeur := TempWhseShptHeader.AfkPrenomchauffeur;
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Whse.-Post Shipment + Print", 'OnAfterConfirmPost', '', true, false)]
+    local procedure C5765_OnAfterConfirmPost(WhseShipmentLine: Record "Warehouse Shipment Line"; Invoice: Boolean)
+    var
+        ErrLab: label 'Vous ne devez pas facturer à partir de cette page';
+    begin
+        if (Invoice) then
+            error(ErrLab);
+    end;
+
+
 
 
 
