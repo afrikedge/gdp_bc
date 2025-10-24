@@ -21,6 +21,9 @@ page 50230 AfkFrontDeskPaymentMethod
                 field(Description; Rec.Description)
                 {
                 }
+                field("BC Payment"; Rec."BC Payment")
+                {
+                }
             }
         }
     }

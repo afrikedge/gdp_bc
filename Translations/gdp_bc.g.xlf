@@ -3448,6 +3448,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Reference - Field Active - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3706542705 - Field 1918147989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BC Payment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Reference - Field BC Payment - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3706542705 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
