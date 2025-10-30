@@ -990,7 +990,7 @@ codeunit 50000 "Logistique Mgt"
 
         if UserSetup.Get(UserId) then begin
             BE.nom := UserSetup."Dispatching User Name";
-            BE.nomresponsable := UserSetup."Dispatching Manager Name";
+            //BE.nomresponsable := UserSetup."Dispatching Manager Name";
         end;
         if Cust1.Get(SalesOrder."Sell-to Customer No.") then
             if not Cust1."Remove JIR Ref on BE" then

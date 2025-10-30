@@ -346,7 +346,7 @@ table 50005 pro_enteteBL
         User.SetRange(User."User Name", UserId);
         if User.FindFirst then begin
             nom := User."Full Name";
-            nomresponsable := UserSetup."Dispatching Manager Name";
+            //nomresponsable := UserSetup."Dispatching Manager Name";
         end;
         idtournee := -1;
     end;
