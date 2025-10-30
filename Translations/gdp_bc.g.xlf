@@ -56383,10 +56383,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Purchase - Receipt GDP - NamedType BankNameCaptionLbl</note>
         </trans-unit>
+        <trans-unit id="Report 3596148107 - NamedType 3558876860" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Batch</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Purchase - Receipt GDP - NamedType BatchCaptionLbl</note>
+        </trans-unit>
         <trans-unit id="Report 3596148107 - NamedType 3901489671" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Purchase - Receipt GDP - NamedType DescCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3596148107 - NamedType 2231493774" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DLV</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Purchase - Receipt GDP - NamedType DLVCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3596148107 - NamedType 3112881028" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Date</source>

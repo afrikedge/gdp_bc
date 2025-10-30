@@ -3570,7 +3570,6 @@
                                                           </Style>
                                                         </Textbox>
                                                         <ColSpan>6</ColSpan>
-                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell />
@@ -3629,7 +3628,7 @@
                                                   </TablixCells>
                                                 </TablixRow>
                                                 <TablixRow>
-                                                  <Height>2.20433cm</Height>
+                                                  <Height>2.2cm</Height>
                                                   <TablixCells>
                                                     <TablixCell>
                                                       <CellContents>
@@ -3655,6 +3654,7 @@
                                                               </Paragraphs>
                                                               <rd:DefaultName>Textbox19</rd:DefaultName>
                                                               <Top>0.93716cm</Top>
+                                                              <Left>0.07056cm</Left>
                                                               <Height>0.36728cm</Height>
                                                               <Width>1.54072cm</Width>
                                                               <Style>
@@ -3688,7 +3688,7 @@
                                                               </Paragraphs>
                                                               <rd:DefaultName>Textbox19</rd:DefaultName>
                                                               <Top>1.33972cm</Top>
-                                                              <Left>0.01086cm</Left>
+                                                              <Left>0.07056cm</Left>
                                                               <Height>0.36728cm</Height>
                                                               <Width>1.54072cm</Width>
                                                               <ZIndex>1</ZIndex>
@@ -3723,7 +3723,7 @@
                                                               </Paragraphs>
                                                               <rd:DefaultName>Textbox19</rd:DefaultName>
                                                               <Top>1.34313cm</Top>
-                                                              <Left>1.58686cm</Left>
+                                                              <Left>1.65741cm</Left>
                                                               <Height>0.36728cm</Height>
                                                               <Width>3.76322cm</Width>
                                                               <ZIndex>2</ZIndex>
@@ -3758,7 +3758,7 @@
                                                               </Paragraphs>
                                                               <rd:DefaultName>Textbox19</rd:DefaultName>
                                                               <Top>0.94057cm</Top>
-                                                              <Left>1.576cm</Left>
+                                                              <Left>1.61128cm</Left>
                                                               <Height>0.36728cm</Height>
                                                               <Width>4.40908cm</Width>
                                                               <ZIndex>3</ZIndex>
@@ -3794,9 +3794,9 @@
                                                               </Paragraphs>
                                                               <rd:DefaultName>Textbox19</rd:DefaultName>
                                                               <Top>0.94057cm</Top>
-                                                              <Left>6.02036cm</Left>
+                                                              <Left>6.09091cm</Left>
                                                               <Height>0.36728cm</Height>
-                                                              <Width>3.96542cm</Width>
+                                                              <Width>3.92276cm</Width>
                                                               <ZIndex>4</ZIndex>
                                                               <Style>
                                                                 <Border>
@@ -3814,8 +3814,9 @@
                                                               <Value>=First(Fields!CompanyStamp.Value, "DataSet_Result")</Value>
                                                               <MIMEType>image/jpeg</MIMEType>
                                                               <Sizing>FitProportional</Sizing>
+                                                              <Top>0.06089cm</Top>
                                                               <Left>14.03534cm</Left>
-                                                              <Height>2.20433cm</Height>
+                                                              <Height>2.07288cm</Height>
                                                               <Width>3.75522cm</Width>
                                                               <ZIndex>5</ZIndex>
                                                               <Style>
@@ -3831,7 +3832,7 @@
                                                               <Sizing>FitProportional</Sizing>
                                                               <Top>0.06089cm</Top>
                                                               <Left>10.11951cm</Left>
-                                                              <Height>2.10817cm</Height>
+                                                              <Height>2.07288cm</Height>
                                                               <Width>3.433cm</Width>
                                                               <ZIndex>6</ZIndex>
                                                               <Style>
@@ -3842,6 +3843,9 @@
                                                             </Image>
                                                           </ReportItems>
                                                           <KeepTogether>true</KeepTogether>
+                                                          <Visibility>
+                                                            <Hidden>=IIf(Fields!Customer_Name.Value Like "*PBF" Or Fields!Customer_Name.Value Like "*LUB" Or Fields!Customer_Name.Value Like "*GPL", False, True)</Hidden>
+                                                          </Visibility>
                                                           <Style>
                                                             <Border>
                                                               <Style>None</Style>
@@ -3891,7 +3895,7 @@
                                             </TablixRowHierarchy>
                                             <Top>9.37051cm</Top>
                                             <Left>0.01086cm</Left>
-                                            <Height>5.34527cm</Height>
+                                            <Height>5.34094cm</Height>
                                             <Width>19.01086cm</Width>
                                             <ZIndex>5</ZIndex>
                                             <Style>

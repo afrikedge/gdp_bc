@@ -1,7 +1,7 @@
 report 50012 "Purchase - Receipt GDP"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Source/Report/Layout/Purchase - Receipt GDP.rdlc';
+    RDLCLayout = './Source/Report/Layout/Purchase - Receipt GDP.rdl';
     Caption = 'Purchase - Receipt';
     PreviewMode = PrintLayout;
     ApplicationArea = All;
@@ -203,6 +203,12 @@ report 50012 "Purchase - Receipt GDP"
                     column(VendAddr8; VendAddr[8])
                     {
                     }
+                    column(BatchCaptionLbl; BatchCaptionLbl)
+                    {
+                    }
+                    column(DLVCaptionLbl; DLVCaptionLbl)
+                    {
+                    }
                     dataitem("Purch. Rcpt. Line"; "Purch. Rcpt. Line")
                     {
                         DataItemLink = "Document No." = FIELD("No.");
@@ -238,6 +244,12 @@ report 50012 "Purchase - Receipt GDP"
                         column(No_PurchRcptLineCaption; FieldCaption("No."))
                         {
                         }
+                        column(Batch; Batch)
+                        {
+                        }
+                        column(ExpDate; ExpDate)
+                        {
+                        }
 
                         trigger OnAfterGetRecord()
                         begin
@@ -245,6 +257,9 @@ report 50012 "Purchase - Receipt GDP"
                                 CurrReport.Skip;
 
                             DimSetEntry2.SetRange("Dimension Set ID", "Dimension Set ID");
+
+                            Batch := GetBatchNumber("Purch. Rcpt. Line");
+                            ExpDate := GetExpirationDate("Purch. Rcpt. Line");
                         end;
 
                         trigger OnPreDataItem()
@@ -470,6 +485,10 @@ report 50012 "Purchase - Receipt GDP"
         BuyFromAddr: array[8] of Text[50];
         NoCaptionLbl: Label 'Produit';
         OrderCaptionLbl: Label 'N° Commande : ';
+        Batch: Text;
+        ExpDate: Text;
+        BatchCaptionLbl: Label 'Batch';
+        DLVCaptionLbl: Label 'DLV';
         FirstApprover: Record "User Setup";
         FirstApproverDate: Date;
 
@@ -479,6 +498,46 @@ report 50012 "Purchase - Receipt GDP"
         ShowInternalInfo := NewShowInternalInfo;
         LogInteraction := NewLogInteraction;
         ShowCorrectionLines := NewShowCorrectionLines;
+    end;
+
+    procedure GetBatchNumber(PurchReceiptLine: Record "Purch. Rcpt. Line"): Text
+    var
+        ILE: Record "Item Ledger Entry";
+        BatchText: Text;
+    begin
+        ILE.SetRange("Document No.", PurchReceiptLine."Document No.");
+        ILE.SetRange("Item No.", PurchReceiptLine."No.");
+        ILE.SetRange("Document Line No.", PurchReceiptLine."Line No.");
+
+        if ILE.FindSet() then
+            repeat
+                if ILE."Lot No." <> '' then begin
+                    BatchText += ILE."Lot No." + ' (' + Format(Abs(ILE.Quantity)) + ')';
+                    BatchText += '\n';
+                end;
+            until ILE.Next() = 0;
+
+        exit(BatchText);
+    end;
+
+    procedure GetExpirationDate(PurchReceiptLine: Record "Purch. Rcpt. Line"): Text
+    var
+        ILE: Record "Item Ledger Entry";
+        DateText: Text;
+    begin
+        ILE.SetRange("Document No.", PurchReceiptLine."Document No.");
+        ILE.SetRange("Item No.", PurchReceiptLine."No.");
+        ILE.SetRange("Document Line No.", PurchReceiptLine."Line No.");
+
+        if ILE.FindSet() then
+            repeat
+                if ILE."Expiration Date" <> 0D then begin
+                    DateText += Format(ILE."Expiration Date");
+                    DateText += '\n';
+                end;
+            until ILE.Next() = 0;
+
+        exit(DateText);
     end;
 }
 
