@@ -257,7 +257,7 @@ page 50340 "Bon Order (Dispaching)"
                     UserSetup.Get(UserId);
                     UserSetup.TestField("Afk Can Validate Dispaching");
                     UserSetup.TestField("Afk Dispatch User");
-                    Rec.nomresponsable := UserSetup."Afk Dispatch User";
+                    Rec.Validate(nomresponsable, UserSetup."Afk Dispatch User");
                     Rec."ValidatedByManager" := true;
                     Rec.Modify();
                     CurrPage.Update(false);
