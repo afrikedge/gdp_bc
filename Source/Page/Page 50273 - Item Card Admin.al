@@ -139,6 +139,9 @@ page 50273 "Item Card Admin"
                 field("Shipment Group"; Rec."Shipment Group")
                 {
                 }
+                field("Afk Negative Price"; Rec."Afk Negative Price")
+                {
+                }
             }
             group(Invoicing)
             {

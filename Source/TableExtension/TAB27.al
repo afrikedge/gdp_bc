@@ -118,6 +118,10 @@ tableextension 50009 "A02 Item" extends Item
             Caption = 'Code transport Hors-ville';
             TableRelation = Item;
         }
+        field(50029; "Afk Negative Price"; Boolean)
+        {
+            Caption = 'Negative Price';
+        }
 
     }
     keys

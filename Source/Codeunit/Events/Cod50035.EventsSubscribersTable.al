@@ -1213,17 +1213,20 @@ codeunit 50035 "EventsSubscribers Table"
     end;
 
 
-
-
-
-
-
-
-
-
-
-
-
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterUpdateUnitPrice', '', false, false)]
+    local procedure T37_OnAfterUpdateUnitPrice(var SalesLine: Record "Sales Line"; xSalesLine: Record "Sales Line"; CalledByFieldNo: Integer; CurrFieldNo: Integer)
+    var
+        Item: Record Item;
+    begin
+        if SalesLine.Type = SalesLine.Type::Item then begin
+            if Item.Get(SalesLine."No.") then begin
+                if Item."Afk Negative Price" then begin
+                    SalesLine.Validate("Unit Price", -Abs(SalesLine."Unit Price"));
+                    if SalesLine.Modify(true) then;
+                end;
+            end;
+        end;
+    end;
 
 
 

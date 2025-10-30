@@ -66863,6 +66863,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Item - Field Afk Default Transport Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4052574762 - Field 2485417526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Negative Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Item - Field Afk Negative Price - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4052574762 - Field 485534419 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Show on Market Place</source>
           <note from="Developer" annotates="general" priority="2"></note>
