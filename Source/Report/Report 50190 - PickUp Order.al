@@ -417,7 +417,11 @@ report 50190 "PickUp Order"
             {
             }
             trigger OnAfterGetRecord()
+            var
+
             begin
+                Header.CheckBonIsValidatedByManager();
+
                 if RespCenter.Get(Header.region) then
                     Agency := RespCenter.Name;
 

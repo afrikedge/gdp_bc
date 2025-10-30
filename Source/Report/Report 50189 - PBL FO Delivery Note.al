@@ -435,6 +435,9 @@ report 50189 "PBL FO Delivery Note"
             }
             trigger OnAfterGetRecord()
             begin
+
+                Header.CheckBonIsValidatedByManager();
+
                 if Customer.Get(Header."Customer No") then begin
                     CustSearchName := Customer."Search Name";
                     CustAddress := Customer.Address;

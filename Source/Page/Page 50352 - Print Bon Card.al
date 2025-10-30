@@ -73,7 +73,7 @@ page 50352 "Print Bon Card"
                     EnteteBL.SETRANGE(numBL, Rec.numBL);
                     EnteteBL.SetRange(NumBU, Rec.NumBU);
                     EnteteBL.SetRange(idtournee, Rec.idtournee);
-                    REPORT.RUN(50189, TRUE, FALSE, EnteteBL);
+                    REPORT.RUN(report::"PBL FO Delivery Note", TRUE, FALSE, EnteteBL);
 
                     //PrintCrystal.PrintBL(Rec.numBL);
 
