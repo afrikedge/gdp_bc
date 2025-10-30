@@ -9988,6 +9988,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table pro_enteteBE - NamedType Text004</note>
         </trans-unit>
+        <trans-unit id="Table 259130890 - Method 3900074191 - NamedType 3057240171" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The Bon %1 has not been validated by the manager.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table pro_enteteBE - Method CheckBonIsValidatedByManager - NamedType ErrBonNotValidated</note>
+        </trans-unit>
         <trans-unit id="Table 259130890 - Field 1866569254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delivery Adress</source>
           <note from="Developer" annotates="general" priority="2"></note>

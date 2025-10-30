@@ -761,6 +761,21 @@ table 50007 pro_enteteBE
         end;
     end;
 
+    procedure BonIsValidatedByManager(): Boolean
+    var
+    begin
+        //exit((Rec.nomresponsable <> '') or (Rec.ValidatedByManager));
+        exit(Rec.ValidatedByManager);
+    end;
+
+    procedure CheckBonIsValidatedByManager()
+    var
+        ErrBonNotValidated: Label 'The Bon %1 has not been validated by the manager.';
+    begin
+        if (not BonIsValidatedByManager()) then
+            Error(ErrBonNotValidated, Rec.NumBU);
+    end;
+
     procedure IsBEJIRAMAPompe(): Boolean
     var
         SalesOrderHeader: Record "Sales Header";

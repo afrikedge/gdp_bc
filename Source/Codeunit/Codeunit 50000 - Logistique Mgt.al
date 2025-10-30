@@ -519,6 +519,8 @@ codeunit 50000 "Logistique Mgt"
 
         AddOnSetup.Get;
 
+        RemovalH.CheckBonIsValidatedByManager();
+
         PostShipExists := PostedSalesShip.Get(RemovalH.NumBU);
 
         if ((RemovalH."Sales Channel Code" = AddOnSetup."Station Sales Channel") or (RemovalH.isconfirme)) then begin

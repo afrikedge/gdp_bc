@@ -60,13 +60,13 @@ page 50340 "Bon Order (Dispaching)"
                 }
                 field(nom; Rec.nom)
                 {
-                    Editable = BEIsNotConfirme;
-                    // Editable = false; // new 01/10/25
+                    //Editable = BEIsNotConfirme;
+                    Editable = false;
                 }
                 field(nomresponsable; Rec.nomresponsable)
                 {
-                    Editable = BEIsNotConfirme;
-                    // Editable = false; // new 01/10/25
+                    //Editable = BEIsNotConfirme;
+                    Editable = false;
                 }
                 field(datecreation; Rec.datecreation)
                 {
@@ -170,6 +170,7 @@ page 50340 "Bon Order (Dispaching)"
                 PromotedIsBig = true;
                 ShortCutKey = 'F9';
                 ApplicationArea = All;
+                Enabled = BonIsValidatedManager;
 
                 trigger OnAction()
                 var
@@ -281,6 +282,7 @@ page 50340 "Bon Order (Dispaching)"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 ApplicationArea = All;
+                Enabled = BonIsValidatedManager;
 
                 trigger OnAction()
                 var
@@ -400,6 +402,7 @@ page 50340 "Bon Order (Dispaching)"
         IsNotJirama := not Rec.IsBEJIRAMA;
         BEIsNotConfirme := not Rec.isconfirme;
         BonIsNotConfirme := not Rec.BonIsConfirme;
+        BonIsValidatedManager := Rec.BonIsValidatedByManager();
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
@@ -428,6 +431,7 @@ page 50340 "Bon Order (Dispaching)"
         BEIsNotConfirme: Boolean;
         BonIsNotConfirme: Boolean;
         BonIsEditable: Boolean;
+        BonIsValidatedManager: Boolean;
 
     procedure ClosePage()
     begin
