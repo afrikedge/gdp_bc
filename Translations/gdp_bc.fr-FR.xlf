@@ -75,42 +75,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 120542316 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>General</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control General - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 120542316 - Control 3662228450 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Criteria Code field.</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2">%</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control Criteria Code - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 120542316 - Control 3478782985 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Legal Status field.</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2">%</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control Legal Status - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 120542316 - Control 1769411827 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Requirement Level field.</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2">%</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control Requirement Level - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 120542316 - Control 3900461607 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Sales Category Code field.</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2">%</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control Sales Category Code - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 120542316 - Control 1503714101 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Sales Channel field.</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2">%</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Afk Requirement Matrix - Control Sales Channel - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 2376765531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Moyens de paiement Frontdesk</source>
           <target state="needs-translation"/>
@@ -80074,8 +80038,9 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Gen. Journal Line - Field CC Document Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1625664402 - Field 3857534409 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source> ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money,Mvola Money,Orange Money Marchand,Airtel Money Marchand,Orange Money WP</source>
-          <target state="needs-adaptation"> ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money,Mvola Money,Orange Money Marchand,Airtel Money Marchand,Orange Money WP</target>
+          <source> ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money Marchand,Mvola Money,Orange Money Marchand,Airtel Money Marchand GD,Orange Money WP</source>
+          <target state="needs-adaptation"> ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money Marchand,Mvola Money,Orange Money Marchand,Airtel Money Marchand GD,Orange Money WP</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Gen. Journal Line - Field CC Document Type - Property OptionCaption</note>
         </trans-unit>
