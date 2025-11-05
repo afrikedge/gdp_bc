@@ -136,8 +136,14 @@ page 50346 "Incident Dispaching"
                         EnteteBE.Validate(nomchauffeur, nomchauffeur);
                         EnteteBE.Validate(nomTransporteur, nomTransporteur);
                         EnteteBE.Validate(permis, permis);
+                        EnteteBE.ValidatedByManager := false;
+                        EnteteBE.Modify;
+                    end else begin
+                        EnteteBE.Get(IdBE);
+                        EnteteBE.ValidatedByManager := false;
                         EnteteBE.Modify;
                     end;
+                    ;
 
                     CurrPage.Close;
                     if not IsRefreshedOnCurr then

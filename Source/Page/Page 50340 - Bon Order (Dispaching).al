@@ -249,6 +249,7 @@ page 50340 "Bon Order (Dispaching)"
                 PromotedIsBig = true;
                 ApplicationArea = All;
                 Image = Approve;
+                Enabled = not BonIsValidatedManager;
 
                 trigger OnAction()
                 var
