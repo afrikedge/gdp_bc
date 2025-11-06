@@ -53,6 +53,10 @@ pageextension 50098 "Afk Item Card" extends "Item Card"
             {
                 ApplicationArea = All;
             }
+            field("Afk Negative Price"; Rec."Afk Negative Price")
+            {
+                ApplicationArea = All;
+            }
         }
     }
 }
