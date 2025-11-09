@@ -291,6 +291,10 @@ tableextension 50005 "A02 Customer" extends Customer
         {
             Caption = 'Remove JIR Ref on BE';
         }
+        field(50067; "Transport Type"; enum "Afk Transport Type")
+        {
+            Caption = 'Transport Type';
+        }
         //**fin champs identiques avec Contact
 
 

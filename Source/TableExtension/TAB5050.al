@@ -222,6 +222,10 @@ tableextension 50055 "A02 Contact" extends Contact
         {
             Caption = 'Remove JIR Ref on BE';
         }
+        field(50067; "Transport Type"; enum "Afk Transport Type")
+        {
+            Caption = 'Transport Type';
+        }
         //**fin champs identiques avec client
 
 
