@@ -1402,16 +1402,19 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::Holding) then begin
                 AfkSetup.TestField(AfkSetup."Holding Cust Templ");
                 ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Holding Cust Templ");
+                TransferCustRequirementsFromContactToCust(ParentCustNo, Lead."No.");
                 customerNos.Add(ParentCustNo);
             end;
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Opération") then begin
                 AfkSetup.TestField(AfkSetup."Operation Cust Templ");
                 ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
+                TransferCustRequirementsFromContactToCust(ParentCustNo, Lead."No.");
                 customerNos.Add(ParentCustNo);
             end;
             if (Lead."Afk Customer Level" = Lead."Afk Customer Level"::"Société") then begin
                 AfkSetup.TestField(AfkSetup."Company Cust Templ");
                 ParentCustNo := Lead.CreateCustomerFromTemplate(AfkSetup."Company Cust Templ");
+                TransferCustRequirementsFromContactToCust(ParentCustNo, Lead."No.");
                 customerNos.Add(ParentCustNo);
             end;
 
@@ -1420,6 +1423,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
                 repeat
                     AfkSetup.TestField(AfkSetup."Operation Cust Templ");
                     CustNo := Cont.CreateCustomerFromTemplate(AfkSetup."Operation Cust Templ");
+                    TransferCustRequirementsFromContactToCust(CustNo, Cont."No.");
                     if (Cust.Get(CustNo)) then begin
                         Cust."Afk Parent Account No." := ParentCustNo;
                         Cust.Modify();
@@ -1435,6 +1439,20 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
             SendEmailWhenNewCustomer(CustNo);
         end;
 
+    end;
+
+    procedure TransferCustRequirementsFromContactToCust(CustNo: Code[20]; LeadNo: Code[20])
+    var
+        CustReq: Record "Afk Customer Requirement";
+    begin
+        CustReq.SetRange("Account Type", CustReq."Account Type"::Prospect);
+        CustReq.SetRange("Lead No.", LeadNo);
+        if CustReq.FindSet(true) then
+            repeat
+                CustReq."Customer No." := CustNo;
+                CustReq."Account Type" := CustReq."Account Type"::Client;
+                CustReq.Modify();
+            until CustReq.Next() < 1;
     end;
 
     procedure SendEmailWhenNewCustomer(CustNo: Code[20])
