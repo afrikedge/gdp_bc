@@ -207,6 +207,24 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Card Posting Account Type - EnumValue Debit Note - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 3998600433 - EnumValue 714791889 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <target state="needs-review-translation">Ville</target>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Transport Type - EnumValue City - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3998600433 - EnumValue 1338707164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not applied</source>
+          <target state="needs-review-translation">Non appliqué</target>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Transport Type - EnumValue Not applied - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3998600433 - EnumValue 1238556982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Outside city</source>
+          <target state="needs-review-translation">Hors-ville</target>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Transport Type - EnumValue Outside city - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 2308264948 - EnumValue 4145758217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Groupe de prix client</source>
           <target state="needs-review-translation">Groupe de prix client</target>
@@ -67659,11 +67677,23 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report Purchase - Receipt GDP - NamedType BankNameCaptionLbl</note>
         </trans-unit>
+        <trans-unit id="Report 3596148107 - NamedType 3558876860" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Batch</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Purchase - Receipt GDP - NamedType BatchCaptionLbl</note>
+        </trans-unit>
         <trans-unit id="Report 3596148107 - NamedType 3901489671" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <target state="needs-review-translation">Description</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report Purchase - Receipt GDP - NamedType DescCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3596148107 - NamedType 2231493774" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DLV</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Purchase - Receipt GDP - NamedType DLVCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3596148107 - NamedType 3112881028" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Date</source>
@@ -79257,6 +79287,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Contact - Field Signataire - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2478494885 - Field 254479997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Transport Type</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Contact - Field Transport Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2995372381 - Field 3702373668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 864848052">
           <source>Category</source>
           <target state="needs-review-translation">Catégorie</target>
@@ -79797,6 +79833,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Traite UnPaid - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3475545745 - Field 254479997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Transport Type</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Transport Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3475545745 - Change 2247850105 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Responsibility Center</source>
           <target state="needs-review-translation">Centre de gestion</target>
@@ -80040,7 +80082,6 @@
         <trans-unit id="TableExtension 1625664402 - Field 3857534409 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source> ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money Marchand,Mvola Money,Orange Money Marchand,Airtel Money Marchand GD,Orange Money WP</source>
           <target state="needs-adaptation"> ,Chèque règlement,Chèque caution,Chèque commande encours,Espèces,Virement,Orange Money,Traite,Airtel Money Marchand,Mvola Money,Orange Money Marchand,Airtel Money Marchand GD,Orange Money WP</target>
-          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Gen. Journal Line - Field CC Document Type - Property OptionCaption</note>
         </trans-unit>
