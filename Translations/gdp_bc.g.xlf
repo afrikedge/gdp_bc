@@ -173,6 +173,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Card Posting Account Type - EnumValue Debit Note - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 3998600433 - EnumValue 714791889 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Transport Type - EnumValue City - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3998600433 - EnumValue 1338707164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not applied</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Transport Type - EnumValue Not applied - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3998600433 - EnumValue 1238556982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Outside city</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Afk Transport Type - EnumValue Outside city - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 2308264948 - EnumValue 4145758217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Groupe de prix client</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -66058,6 +66073,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Contact - Field Signataire - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2478494885 - Field 254479997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Transport Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Contact - Field Transport Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2995372381 - Field 3702373668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 864848052">
           <source>Category</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -66507,6 +66527,11 @@
           <source>Traites/chèques impayées</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Traite UnPaid - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3475545745 - Field 254479997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Transport Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Transport Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3475545745 - Change 2247850105 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Responsibility Center</source>

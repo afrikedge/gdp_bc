@@ -3570,6 +3570,7 @@
                                                           </Style>
                                                         </Textbox>
                                                         <ColSpan>6</ColSpan>
+                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell />
@@ -3844,7 +3845,7 @@
                                                           </ReportItems>
                                                           <KeepTogether>true</KeepTogether>
                                                           <Visibility>
-                                                            <Hidden>=IIf(Fields!Customer_Name.Value Like "*PBF" Or Fields!Customer_Name.Value Like "*LUB" Or Fields!Customer_Name.Value Like "*GPL", False, True)</Hidden>
+                                                            <Hidden>=IIf(Fields!Customer_Name.Value Like "*PBF" And Fields!InvTitle.Value &lt;&gt; "NOTE DE DEBIT" Or Fields!Customer_Name.Value Like "*LUB" And Fields!InvTitle.Value &lt;&gt; "NOTE DE DEBIT" Or Fields!Customer_Name.Value Like "*GPL"  And Fields!InvTitle.Value &lt;&gt; "NOTE DE DEBIT", False, True)</Hidden>
                                                           </Visibility>
                                                           <Style>
                                                             <Border>
