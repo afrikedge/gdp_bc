@@ -3657,6 +3657,9 @@
                                                               <Left>0.07056cm</Left>
                                                               <Height>0.36728cm</Height>
                                                               <Width>1.54072cm</Width>
+                                                              <Visibility>
+                                                                <Hidden>=IIf(Fields!InvTitle.Value = "NOTE DE DEBIT", True, False)</Hidden>
+                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -3762,6 +3765,9 @@
                                                               <Height>0.36728cm</Height>
                                                               <Width>4.40908cm</Width>
                                                               <ZIndex>3</ZIndex>
+                                                              <Visibility>
+                                                                <Hidden>=IIf(Fields!InvTitle.Value = "NOTE DE DEBIT", True, False)</Hidden>
+                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -3798,6 +3804,9 @@
                                                               <Height>0.36728cm</Height>
                                                               <Width>3.92276cm</Width>
                                                               <ZIndex>4</ZIndex>
+                                                              <Visibility>
+                                                                <Hidden>=IIf(Fields!InvTitle.Value = "NOTE DE DEBIT", True, False)</Hidden>
+                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -3835,6 +3844,9 @@
                                                               <Height>2.07288cm</Height>
                                                               <Width>3.433cm</Width>
                                                               <ZIndex>6</ZIndex>
+                                                              <Visibility>
+                                                                <Hidden>=IIf(Fields!InvTitle.Value = "NOTE DE DEBIT", True, False)</Hidden>
+                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
