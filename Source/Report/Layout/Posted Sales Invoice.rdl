@@ -3570,7 +3570,6 @@
                                                           </Style>
                                                         </Textbox>
                                                         <ColSpan>6</ColSpan>
-                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell />
@@ -3658,6 +3657,9 @@
                                                               <Left>0.07056cm</Left>
                                                               <Height>0.36728cm</Height>
                                                               <Width>1.54072cm</Width>
+                                                              <Visibility>
+                                                                <Hidden>=IIf(Fields!InvTitle.Value = "NOTE DE DEBIT", True, False)</Hidden>
+                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -3763,6 +3765,9 @@
                                                               <Height>0.36728cm</Height>
                                                               <Width>4.40908cm</Width>
                                                               <ZIndex>3</ZIndex>
+                                                              <Visibility>
+                                                                <Hidden>=IIf(Fields!InvTitle.Value = "NOTE DE DEBIT", True, False)</Hidden>
+                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -3799,6 +3804,9 @@
                                                               <Height>0.36728cm</Height>
                                                               <Width>3.92276cm</Width>
                                                               <ZIndex>4</ZIndex>
+                                                              <Visibility>
+                                                                <Hidden>=IIf(Fields!InvTitle.Value = "NOTE DE DEBIT", True, False)</Hidden>
+                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -3836,6 +3844,9 @@
                                                               <Height>2.07288cm</Height>
                                                               <Width>3.433cm</Width>
                                                               <ZIndex>6</ZIndex>
+                                                              <Visibility>
+                                                                <Hidden>=IIf(Fields!InvTitle.Value = "NOTE DE DEBIT", True, False)</Hidden>
+                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -3845,7 +3856,7 @@
                                                           </ReportItems>
                                                           <KeepTogether>true</KeepTogether>
                                                           <Visibility>
-                                                            <Hidden>=IIf(Fields!Customer_Name.Value Like "*PBF" And Fields!InvTitle.Value &lt;&gt; "NOTE DE DEBIT" Or Fields!Customer_Name.Value Like "*LUB" And Fields!InvTitle.Value &lt;&gt; "NOTE DE DEBIT" Or Fields!Customer_Name.Value Like "*GPL"  And Fields!InvTitle.Value &lt;&gt; "NOTE DE DEBIT", False, True)</Hidden>
+                                                            <Hidden>=IIf(Fields!Customer_Name.Value Like "*PBF" Or Fields!Customer_Name.Value Like "*LUB" Or Fields!Customer_Name.Value Like "*GPL", False, True)</Hidden>
                                                           </Visibility>
                                                           <Style>
                                                             <Border>
