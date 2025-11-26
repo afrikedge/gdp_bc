@@ -1446,15 +1446,25 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     procedure TransferCustRequirementsFromContactToCust(CustNo: Code[20]; LeadNo: Code[20])
     var
         CustReq: Record "Afk Customer Requirement";
+        CustReqNew: Record "Afk Customer Requirement";
     begin
         CustReq.SetRange("Account Type", CustReq."Account Type"::Prospect);
         CustReq.SetRange("Lead No.", LeadNo);
-        if CustReq.FindSet(true) then
+        if CustReq.FindSet() then
             repeat
-                CustReq."Customer No." := CustNo;
-                CustReq."Account Type" := CustReq."Account Type"::Client;
-                CustReq.Modify();
+                // CustReq."Customer No." := CustNo;
+                // CustReq."Account Type" := CustReq."Account Type"::Client;
+                // CustReq.Modify();
+                CustReqNew.Init();
+                CustReqNew.TransferFields(CustReq);
+                CustReqNew."Customer No." := CustNo;
+                CustReqNew."Account Type" := CustReq."Account Type"::Client;
+                CustReqNew.Insert();
             until CustReq.Next() < 1;
+
+        CustReq.SetRange("Account Type", CustReq."Account Type"::Prospect);
+        CustReq.SetRange("Lead No.", LeadNo);
+        CustReq.DeleteAll();
     end;
 
     procedure SendEmailWhenNewCustomer(CustNo: Code[20])

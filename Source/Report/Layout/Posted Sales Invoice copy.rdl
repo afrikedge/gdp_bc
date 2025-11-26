@@ -3856,7 +3856,7 @@
                                                           </ReportItems>
                                                           <KeepTogether>true</KeepTogether>
                                                           <Visibility>
-                                                            <Hidden>=IIf(Fields!SalesCatCode.Value = "PBL" Or Fields!SalesCatCode.Value = "LUB" Or Fields!SalesCatCode.Value = "GPL", False, True)</Hidden>
+                                                            <Hidden>=IIf(Fields!Customer_Name.Value Like "*PBF" Or Fields!Customer_Name.Value Like "*LUB" Or Fields!Customer_Name.Value Like "*GPL", False, True)</Hidden>
                                                           </Visibility>
                                                           <Style>
                                                             <Border>
@@ -5426,9 +5426,6 @@ End Function
         </Field>
         <Field Name="RCSLbl">
           <DataField>RCSLbl</DataField>
-        </Field>
-        <Field Name="SalesCatCode">
-          <DataField>SalesCatCode</DataField>
         </Field>
         <Field Name="Posting_Description">
           <DataField>Posting_Description</DataField>
