@@ -692,6 +692,9 @@ report 50191 "Posted Sales Invoice"
             column(RCSLbl; RCSLbl)
             {
             }
+            column(SalesCatCode; SalesCatCode)
+            {
+            }
             column(Posting_Description; "Posting Description")
             {
             }
@@ -1583,6 +1586,7 @@ report 50191 "Posted Sales Invoice"
                     Sell_to_Address := Cust.Address;
                     Sell_to_Address_2 := Cust."Address 2";
                     Post_Code := Cust."Post Code";
+                    SalesCatCode := Cust."Sales Category Code";
                 end;
 
                 if CompanyInfos.Get() then
@@ -1857,6 +1861,7 @@ report 50191 "Posted Sales Invoice"
         WorkDescriptionInstream: InStream;
 
         Lines: Integer;
+        SalesCatCode: Code[10];
         Customer_No_: Code[20];
         Customer_Name: Text[100];
         Customer_Name_2: Code[100];
