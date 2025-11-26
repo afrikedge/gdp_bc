@@ -31,7 +31,7 @@
             "from": 60015,
             "to": 60018
         }
-    ],
+    ], 
     "resourceExposurePolicy": {
         "allowDebugging": true,
         "allowDownloadingSource": true,
