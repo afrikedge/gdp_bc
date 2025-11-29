@@ -386,6 +386,12 @@ report 50189 "PBL FO Delivery Note"
             column(CompanyStamp; CompanyInfo."Company Stamp")
             {
             }
+            column(ReferenceLbl; ReferenceLbl)
+            {
+            }
+            column(RefTxt; RefTxt)
+            {
+            }
             dataitem(Line; pro_detailBE)
             {
                 DataItemTableView = sorting(numBE, "Line No.");
@@ -449,8 +455,10 @@ report 50189 "PBL FO Delivery Note"
                 if Location.Get(Header.depot) then
                     DepotName := Location.Name;
 
-                if SalesHeader.Get(SalesHeader."Document Type"::Order, Header.NavOrderNo) then
+                if SalesHeader.Get(SalesHeader."Document Type"::Order, Header.NavOrderNo) then begin
                     DeliveryMode := SalesHeader."Shipment Method Code";
+                    RefTxt := SalesHeader."External Document No.";
+                end;
 
                 if ShipToAddress.Get(Header."Customer No", Header.AdrLivraisonBL) then begin
                     AddresLivr1 := ShipToAddress.Address;
@@ -559,6 +567,7 @@ report 50189 "PBL FO Delivery Note"
         Agency: Text[100];
         DeliveryMode: Text[100];
         Duplicata: Text;
+        RefTxt: Code[35];
 
         PBLFODeliveryNoteTitleLbl: Label 'PBL AND FO DELIVERY NOTE';
         BLNumberLbl: Label 'B/L N°';
@@ -617,6 +626,7 @@ report 50189 "PBL FO Delivery Note"
         TheCarrierLbl: Label 'THE CARRIER';
         Name4Lbl: Label 'Name :';
         Date4Lbl: Label 'Date :';
+        ReferenceLbl: Label 'Référence :';
 
     local procedure FindTouringProduct(EnteteBE: record pro_enteteBE)
     var
