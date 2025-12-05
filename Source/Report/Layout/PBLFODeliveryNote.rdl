@@ -1084,10 +1084,16 @@
                                             <TablixBody>
                                               <TablixColumns>
                                                 <TablixColumn>
-                                                  <Width>1.70625cm</Width>
+                                                  <Width>1.8775cm</Width>
                                                 </TablixColumn>
                                                 <TablixColumn>
-                                                  <Width>7.08564cm</Width>
+                                                  <Width>8.8cm</Width>
+                                                </TablixColumn>
+                                                <TablixColumn>
+                                                  <Width>1.5cm</Width>
+                                                </TablixColumn>
+                                                <TablixColumn>
+                                                  <Width>2.64688cm</Width>
                                                 </TablixColumn>
                                               </TablixColumns>
                                               <TablixRows>
@@ -1103,7 +1109,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value>=First(Fields!BLNumberLbl.Value, "DataSet_Result")</Value>
+                                                                  <Value>=First(Fields!ReferenceLbl.Value, "DataSet_Result")</Value>
                                                                   <Style>
                                                                     <FontSize>9pt</FontSize>
                                                                   </Style>
@@ -1138,7 +1144,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value>=Fields!NumBU.Value</Value>
+                                                                  <Value>=Fields!RefTxt.Value</Value>
                                                                   <Style>
                                                                     <FontSize>9pt</FontSize>
                                                                     <FontWeight>Bold</FontWeight>
@@ -1166,12 +1172,86 @@
                                                         </Textbox>
                                                       </CellContents>
                                                     </TablixCell>
+                                                    <TablixCell>
+                                                      <CellContents>
+                                                        <Textbox Name="Textbox104">
+                                                          <CanGrow>true</CanGrow>
+                                                          <KeepTogether>true</KeepTogether>
+                                                          <Paragraphs>
+                                                            <Paragraph>
+                                                              <TextRuns>
+                                                                <TextRun>
+                                                                  <Value>=First(Fields!BLNumberLbl.Value, "DataSet_Result")</Value>
+                                                                  <Style>
+                                                                    <FontSize>9pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                              </TextRuns>
+                                                              <Style>
+                                                                <TextAlign>Right</TextAlign>
+                                                              </Style>
+                                                            </Paragraph>
+                                                          </Paragraphs>
+                                                          <rd:DefaultName>Textbox104</rd:DefaultName>
+                                                          <Style>
+                                                            <Border>
+                                                              <Color>LightGrey</Color>
+                                                              <Style>None</Style>
+                                                            </Border>
+                                                            <VerticalAlign>Middle</VerticalAlign>
+                                                            <PaddingLeft>2pt</PaddingLeft>
+                                                            <PaddingRight>2pt</PaddingRight>
+                                                            <PaddingTop>2pt</PaddingTop>
+                                                            <PaddingBottom>2pt</PaddingBottom>
+                                                          </Style>
+                                                        </Textbox>
+                                                      </CellContents>
+                                                    </TablixCell>
+                                                    <TablixCell>
+                                                      <CellContents>
+                                                        <Textbox Name="Textbox158">
+                                                          <CanGrow>true</CanGrow>
+                                                          <KeepTogether>true</KeepTogether>
+                                                          <Paragraphs>
+                                                            <Paragraph>
+                                                              <TextRuns>
+                                                                <TextRun>
+                                                                  <Value>=Fields!NumBU.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>9pt</FontSize>
+                                                                    <FontWeight>Bold</FontWeight>
+                                                                    <Color>DimGray</Color>
+                                                                  </Style>
+                                                                </TextRun>
+                                                              </TextRuns>
+                                                              <Style>
+                                                                <TextAlign>Left</TextAlign>
+                                                              </Style>
+                                                            </Paragraph>
+                                                          </Paragraphs>
+                                                          <rd:DefaultName>Textbox158</rd:DefaultName>
+                                                          <Style>
+                                                            <Border>
+                                                              <Color>LightGrey</Color>
+                                                              <Style>None</Style>
+                                                            </Border>
+                                                            <VerticalAlign>Middle</VerticalAlign>
+                                                            <PaddingLeft>2pt</PaddingLeft>
+                                                            <PaddingRight>2pt</PaddingRight>
+                                                            <PaddingTop>2pt</PaddingTop>
+                                                            <PaddingBottom>2pt</PaddingBottom>
+                                                          </Style>
+                                                        </Textbox>
+                                                      </CellContents>
+                                                    </TablixCell>
                                                   </TablixCells>
                                                 </TablixRow>
                                               </TablixRows>
                                             </TablixBody>
                                             <TablixColumnHierarchy>
                                               <TablixMembers>
+                                                <TablixMember />
+                                                <TablixMember />
                                                 <TablixMember />
                                                 <TablixMember />
                                               </TablixMembers>
@@ -1182,9 +1262,9 @@
                                               </TablixMembers>
                                             </TablixRowHierarchy>
                                             <Top>0.00028cm</Top>
-                                            <Left>10.18596cm</Left>
+                                            <Left>4.15346cm</Left>
                                             <Height>0.45861cm</Height>
-                                            <Width>8.79189cm</Width>
+                                            <Width>14.82438cm</Width>
                                             <ZIndex>2</ZIndex>
                                             <Style>
                                               <Border>
@@ -7432,7 +7512,6 @@
                                                                 </Paragraph>
                                                               </Paragraphs>
                                                               <rd:DefaultName>Textbox28</rd:DefaultName>
-                                                              <Left>0cm</Left>
                                                               <Height>0.45889cm</Height>
                                                               <Width>6.40415cm</Width>
                                                               <ZIndex>3</ZIndex>
@@ -8633,7 +8712,6 @@
                                           </Border>
                                         </Style>
                                       </Rectangle>
-                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixCell>
                                 </TablixCells>
@@ -9432,6 +9510,12 @@ End Function
         </Field>
         <Field Name="CompanyStamp">
           <DataField>CompanyStamp</DataField>
+        </Field>
+        <Field Name="ReferenceLbl">
+          <DataField>ReferenceLbl</DataField>
+        </Field>
+        <Field Name="RefTxt">
+          <DataField>RefTxt</DataField>
         </Field>
         <Field Name="NavItemCode">
           <DataField>NavItemCode</DataField>

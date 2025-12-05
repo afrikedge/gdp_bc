@@ -1108,7 +1108,7 @@ report 50191 "Posted Sales Invoice"
 
                 trigger OnPreDataItem()
                 begin
-                    SetRange(Number, 1, 14 - LinesNumb);
+                    SetRange(Number, 1, 13 - LinesNumb);
                 end;
             }
             dataitem(WorkDescriptionLines; "Integer")
