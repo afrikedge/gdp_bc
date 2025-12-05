@@ -345,12 +345,12 @@ tableextension 50005 "A02 Customer" extends Customer
         {
             Caption = 'CRM Guid';
         }
-        field(60006; "Afk Type transport"; Option)
-        {
-            Caption = 'Type transport';
-            OptionCaption = 'Non applique,Ville,Hors-ville';
-            OptionMembers = NonApplique,Ville,HorsVille;
-        }
+        // field(60006; "Afk Type transport"; Option)
+        // {
+        //     Caption = 'Type transport';
+        //     OptionCaption = 'Non applique,Ville,Hors-ville';
+        //     OptionMembers = NonApplique,Ville,HorsVille;
+        // }
 
     }
     keys

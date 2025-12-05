@@ -162,7 +162,7 @@ page 50284 "Customer Card Admin"
                 field("Category 2"; Rec."Category 2")
                 {
                 }
-                field("Afk Type transport"; Rec."Afk Type transport")
+                field("Afk Type transport"; Rec."Transport Type")
                 {
                 }
                 field("Disable Blocking"; Rec."Disable Blocking")
