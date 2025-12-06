@@ -54328,6 +54328,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PBL FO Delivery Note - NamedType QuantityLbl</note>
         </trans-unit>
+        <trans-unit id="Report 732918645 - NamedType 1162595851" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Référence :</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PBL FO Delivery Note - NamedType ReferenceLbl</note>
+        </trans-unit>
         <trans-unit id="Report 732918645 - NamedType 3296344106" size-unit="char" translate="yes" xml:space="preserve">
           <source>Remarks on delivery with signatures :</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -66252,16 +66257,6 @@
           <source>PNS SPE</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk PNS SPE - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3475545745 - Field 2782418617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Type transport</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Type transport - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3475545745 - Field 2782418617 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Non applique,Ville,Hors-ville</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Customer - Field Afk Type transport - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3475545745 - Field 1123169005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Warranty Caution</source>
