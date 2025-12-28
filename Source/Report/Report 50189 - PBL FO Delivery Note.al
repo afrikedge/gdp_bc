@@ -392,6 +392,9 @@ report 50189 "PBL FO Delivery Note"
             column(RefTxt; RefTxt)
             {
             }
+            column(Sales_Channel_Code; "Sales Channel Code")
+            {
+            }
             dataitem(Line; pro_detailBE)
             {
                 DataItemTableView = sorting(numBE, "Line No.");
@@ -490,6 +493,7 @@ report 50189 "PBL FO Delivery Note"
                 // -----------*--------- Signature Dispatcheur ---------*----------//
                 GetUserSignature(UserSetup, UserSetup2, Header);
                 // -----------*--------- Signature Dispatcheur ---------*----------//
+
             end;
         }
     }

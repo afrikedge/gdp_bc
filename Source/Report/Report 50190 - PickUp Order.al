@@ -416,6 +416,12 @@ report 50190 "PickUp Order"
             column(CompanyStamp; CompanyInfo."Company Stamp")
             {
             }
+            column(Customer_No; "Customer No")
+            {
+            }
+            column(Sales_Channel_Code; "Sales Channel Code")
+            {
+            }
             trigger OnAfterGetRecord()
             var
 
