@@ -42,6 +42,12 @@ page 50285 "Customer List Admin"
                 field("Phone No."; Rec."Phone No.")
                 {
                 }
+                field(Address; Rec.Address)
+                {
+                }
+                field("Address 2"; Rec."Address 2")
+                {
+                }
                 field("Fax No."; Rec."Fax No.")
                 {
                     Visible = false;
@@ -53,9 +59,12 @@ page 50285 "Customer List Admin"
                 field(Contact; Rec.Contact)
                 {
                 }
+                field("E-Mail"; Rec."E-Mail")
+                {
+                }
                 field("Salesperson Code"; Rec."Salesperson Code")
                 {
-                    Visible = false;
+                    // Visible = false;
                 }
                 field("Customer Posting Group"; Rec."Customer Posting Group")
                 {
@@ -159,6 +168,12 @@ page 50285 "Customer List Admin"
                 {
                 }
                 field("STAT Code"; Rec."STAT Code")
+                {
+                }
+                field("CIF/CIS"; Rec."CIF/CIS")
+                {
+                }
+                field("Trade Number"; Rec."Trade Number")
                 {
                 }
                 field("Risk Level"; Rec."Risk Level")

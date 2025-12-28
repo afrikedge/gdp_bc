@@ -168,6 +168,12 @@ page 50284 "Customer Card Admin"
                 field("Disable Blocking"; Rec."Disable Blocking")
                 {
                 }
+                field("BE Inscription"; Rec."BE Inscription")
+                {
+                }
+                field("DN Inscription"; Rec."DN Inscription")
+                {
+                }
             }
             group(Communication)
             {

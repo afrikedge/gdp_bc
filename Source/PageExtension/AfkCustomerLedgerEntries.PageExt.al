@@ -92,6 +92,25 @@ pageextension 50095 "Afk Customer Ledger Entries" extends "Customer Ledger Entri
                     Report.Run(50078, true, false, Inv);
                 end;
             }
+            action("Etat Lettrage")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Imprimer l''Etat de lettrage';
+                Image = PrintForm;
+                Caption = 'Imprimer Etat de lettrage';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    Inv: Record "Cust. Ledger Entry";
+                begin
+                    Inv.SetRange("Entry No.", Rec."Entry No.");
+                    Inv.SetRange("Document No.", Rec."Document No.");
+                    Report.Run(50086, true, false, Inv);
+                end;
+            }
         }
     }
     trigger OnOpenPage()

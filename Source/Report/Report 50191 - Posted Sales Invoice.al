@@ -966,6 +966,7 @@ report 50191 "Posted Sales Invoice"
                     TTC: Decimal;
                 begin
                     InitializeShipmentLine();
+                    ShipmentRef1 := GetShipmentNumber(Line);
 
                     Lines := 1;
                     LineNumber := LineNumber + 1;
@@ -1566,7 +1567,7 @@ report 50191 "Posted Sales Invoice"
                 else
                     InvTitle := InvoicetitleLbl;
 
-                ShipmentRef1 := ReturnShipmentRef();
+                // ShipmentRef1 := ReturnShipmentRef();
 
                 if RespCenter.Get(Header."Responsibility Center") then
                     Agency := RespCenter.Name;
@@ -2489,13 +2490,31 @@ report 50191 "Posted Sales Invoice"
         IsNoteDebit := Invoice1;
     end;
 
-    local procedure ReturnShipmentRef(): Code[20]
+    // local procedure ReturnShipmentRef(): Code[20]
+    // var
+    //     ShipmentInv: Record "Shipment Invoiced";
+    // begin
+    //     ShipmentInv.SetRange("Invoice No.", Header."No.");
+    //     if ShipmentInv.FindFirst() then
+    //         exit(ShipmentInv."Shipment No.");
+    // end;
+
+    procedure GetShipmentNumber(SInvL: Record "Sales Invoice Line"): Text
     var
         ShipmentInv: Record "Shipment Invoiced";
+        ShipmentText: Text;
     begin
-        ShipmentInv.SetRange("Invoice No.", Header."No.");
-        if ShipmentInv.FindFirst() then
-            exit(ShipmentInv."Shipment No.");
+        ShipmentInv.SetRange("Invoice No.", SInvL."Document No.");
+        ShipmentInv.SetRange("Invoice Line No.", SInvL."Line No.");
+        if ShipmentInv.FindSet() then
+            repeat
+                if ShipmentInv."Shipment No." <> '' then begin
+                    ShipmentText += ShipmentInv."Shipment No.";
+                    ShipmentText += '\n';
+                end;
+            until ShipmentInv.Next() = 0;
+
+        exit(ShipmentText);
     end;
 
     procedure GetUserSignature(var USetup: record "User Setup")

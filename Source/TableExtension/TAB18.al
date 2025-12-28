@@ -351,6 +351,14 @@ tableextension 50005 "A02 Customer" extends Customer
         //     OptionCaption = 'Non applique,Ville,Hors-ville';
         //     OptionMembers = NonApplique,Ville,HorsVille;
         // }
+        field(60006; "BE Inscription"; Enum "Afk Type Inscription BE BL")
+        {
+            Caption = 'Inscription sur BE';
+        }
+        field(60007; "DN Inscription"; Enum "Afk Type Inscription BE BL")
+        {
+            Caption = 'Inscription sur BL';
+        }
 
     }
     keys
