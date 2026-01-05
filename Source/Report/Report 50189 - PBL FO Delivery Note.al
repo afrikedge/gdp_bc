@@ -395,6 +395,9 @@ report 50189 "PBL FO Delivery Note"
             column(Sales_Channel_Code; "Sales Channel Code")
             {
             }
+            column(InscriptionTxt; InscriptionTxt)
+            {
+            }
             dataitem(Line; pro_detailBE)
             {
                 DataItemTableView = sorting(numBE, "Line No.");
@@ -450,6 +453,7 @@ report 50189 "PBL FO Delivery Note"
                 if Customer.Get(Header."Customer No") then begin
                     CustSearchName := Customer."Search Name";
                     CustAddress := Customer.Address;
+                    InscriptionTxt := Format(Customer."DN Inscription");
                 end;
 
                 if RespCenter.Get(Header.region) then
@@ -572,6 +576,7 @@ report 50189 "PBL FO Delivery Note"
         DeliveryMode: Text[100];
         Duplicata: Text;
         RefTxt: Code[35];
+        InscriptionTxt: Text;
 
         PBLFODeliveryNoteTitleLbl: Label 'PBL AND FO DELIVERY NOTE';
         BLNumberLbl: Label 'B/L N°';
