@@ -875,6 +875,7 @@
                                                           </Style>
                                                         </Textbox>
                                                         <ColSpan>3</ColSpan>
+                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell />
@@ -1352,7 +1353,6 @@
                                                             <PaddingBottom>2pt</PaddingBottom>
                                                           </Style>
                                                         </Textbox>
-                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                   </TablixCells>
@@ -8712,10 +8712,10 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>Gasoil JIRAMA à colorer en VIOLET</Value>
+                                                    <Value>=UCase(First(Fields!InscriptionTxt.Value, "DataSet_Result"))</Value>
                                                     <Style>
+                                                      <FontSize>12pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>Purple</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -8727,136 +8727,17 @@
                                             <rd:DefaultName>Textbox28</rd:DefaultName>
                                             <Top>3.85638cm</Top>
                                             <Left>10.9872cm</Left>
-                                            <Height>0.5cm</Height>
+                                            <Height>2.03059cm</Height>
                                             <Width>7.9335cm</Width>
                                             <ZIndex>6</ZIndex>
                                             <Visibility>
-                                              <Hidden>true</Hidden>
+                                              <Hidden>=IIF(Fields!InscriptionTxt.Value = "Non appliqué", True, False)</Hidden>
                                             </Visibility>
                                             <Style>
                                               <Border>
-                                                <Style>None</Style>
+                                                <Style>Solid</Style>
+                                                <Width>1.5pt</Width>
                                               </Border>
-                                              <BackgroundColor>Yellow</BackgroundColor>
-                                              <VerticalAlign>Middle</VerticalAlign>
-                                              <PaddingLeft>2pt</PaddingLeft>
-                                              <PaddingRight>2pt</PaddingRight>
-                                              <PaddingTop>2pt</PaddingTop>
-                                              <PaddingBottom>2pt</PaddingBottom>
-                                            </Style>
-                                          </Textbox>
-                                          <Textbox Name="Textbox61">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>Gasoil à colorer en BLEU</Value>
-                                                    <Style>
-                                                      <FontWeight>Bold</FontWeight>
-                                                      <Color>Blue</Color>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
-                                            <Top>4.39166cm</Top>
-                                            <Left>10.9872cm</Left>
-                                            <Height>0.5cm</Height>
-                                            <Width>7.93349cm</Width>
-                                            <ZIndex>7</ZIndex>
-                                            <Visibility>
-                                              <Hidden>true</Hidden>
-                                            </Visibility>
-                                            <Style>
-                                              <Border>
-                                                <Style>None</Style>
-                                              </Border>
-                                              <BackgroundColor>Yellow</BackgroundColor>
-                                              <VerticalAlign>Middle</VerticalAlign>
-                                              <PaddingLeft>2pt</PaddingLeft>
-                                              <PaddingRight>2pt</PaddingRight>
-                                              <PaddingTop>2pt</PaddingTop>
-                                              <PaddingBottom>2pt</PaddingBottom>
-                                            </Style>
-                                          </Textbox>
-                                          <Textbox Name="Textbox80">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>Gasoil à colorer en JAUNE</Value>
-                                                    <Style>
-                                                      <FontWeight>Bold</FontWeight>
-                                                      <Color>Gold</Color>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
-                                            <Top>4.92694cm</Top>
-                                            <Left>10.98721cm</Left>
-                                            <Height>0.5cm</Height>
-                                            <Width>7.93349cm</Width>
-                                            <ZIndex>8</ZIndex>
-                                            <Visibility>
-                                              <Hidden>true</Hidden>
-                                            </Visibility>
-                                            <Style>
-                                              <Border>
-                                                <Style>None</Style>
-                                              </Border>
-                                              <BackgroundColor>Yellow</BackgroundColor>
-                                              <VerticalAlign>Middle</VerticalAlign>
-                                              <PaddingLeft>2pt</PaddingLeft>
-                                              <PaddingRight>2pt</PaddingRight>
-                                              <PaddingTop>2pt</PaddingTop>
-                                              <PaddingBottom>2pt</PaddingBottom>
-                                            </Style>
-                                          </Textbox>
-                                          <Textbox Name="Textbox162">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>N/A</Value>
-                                                    <Style>
-                                                      <FontWeight>Bold</FontWeight>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
-                                            <Top>5.46221cm</Top>
-                                            <Left>10.9872cm</Left>
-                                            <Height>0.5cm</Height>
-                                            <Width>7.93349cm</Width>
-                                            <ZIndex>9</ZIndex>
-                                            <Visibility>
-                                              <Hidden>true</Hidden>
-                                            </Visibility>
-                                            <Style>
-                                              <Border>
-                                                <Style>None</Style>
-                                              </Border>
-                                              <BackgroundColor>Yellow</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -9679,6 +9560,9 @@ End Function
         </Field>
         <Field Name="Sales_Channel_Code">
           <DataField>Sales_Channel_Code</DataField>
+        </Field>
+        <Field Name="InscriptionTxt">
+          <DataField>InscriptionTxt</DataField>
         </Field>
         <Field Name="NavItemCode">
           <DataField>NavItemCode</DataField>
