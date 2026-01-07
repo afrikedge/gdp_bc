@@ -20,6 +20,9 @@ report 50064 "Afk Blocking Dormant Customer"
                 Window.Update(1,
                 Round(BesoinNo / NbreTotalLignes * 10000, 1));
 
+                if (Customer."Sales Channel Code" = AddOnSetup1."JIRAMA Sales Channel") then
+                    CurrReport.Skip();
+
                 CustLedgEntry.Reset();
                 CustLedgEntry.SetRange("Customer No.", Customer."No.");
                 if (CustLedgEntry.FindLast) then begin
@@ -71,6 +74,7 @@ report 50064 "Afk Blocking Dormant Customer"
     trigger OnPreReport()
     begin
         AddOnSetup.Get;
+        AddOnSetup1.Get();
         AddOnSetup.TestField("Customer blocking period Month");
     end;
 
@@ -116,6 +120,7 @@ report 50064 "Afk Blocking Dormant Customer"
     var
         //CalculCte: Codeunit CalculCte;
         AddOnSetup: Record "AddOn Setup2";
+        AddOnSetup1: Record "AddOn Setup";
         BesoinNo: Integer;
         NbreTotalLignes: Integer;
         Window: Dialog;
