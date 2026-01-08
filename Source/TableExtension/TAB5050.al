@@ -352,7 +352,14 @@ tableextension 50055 "A02 Contact" extends Contact
             Caption = 'Blocked';
         }
 
-
+        field(61027; "BE Inscription"; Enum "Afk Type Inscription BE BL")
+        {
+            Caption = 'Inscription sur BE';
+        }
+        field(61028; "DN Inscription"; Enum "Afk Type Inscription BE BL")
+        {
+            Caption = 'Inscription sur BL';
+        }
     }
 }
 

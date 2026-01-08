@@ -66183,10 +66183,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Contact - Field Appliquer Ecart pompe JIR - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2478494885 - Field 3225539665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Inscription sur BE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Contact - Field BE Inscription - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2478494885 - Field 2062702722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Disable Shipment Validation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Contact - Field Disable Shipment Autorisation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2478494885 - Field 3300441414 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Inscription sur BL</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension A02 Contact - Field DN Inscription - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2478494885 - Field 429256172 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Remove JIR Ref on BE</source>

@@ -1954,6 +1954,9 @@
                               <Height>0.4cm</Height>
                               <Width>8.01223cm</Width>
                               <ZIndex>6</ZIndex>
+                              <Visibility>
+                                <Hidden>true</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
