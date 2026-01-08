@@ -3749,6 +3749,9 @@
                                                               <Top>0.93716cm</Top>
                                                               <Height>0.36728cm</Height>
                                                               <Width>1.54072cm</Width>
+                                                              <Visibility>
+                                                                <Hidden>=IIf(Fields!Applies_to_Doc__No.Value = "" Or Fields!SalesCreditMemoOrder.Value = "", True, False)</Hidden>
+                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -3854,6 +3857,9 @@
                                                               <Height>0.36728cm</Height>
                                                               <Width>4.40908cm</Width>
                                                               <ZIndex>3</ZIndex>
+                                                              <Visibility>
+                                                                <Hidden>=IIf(Fields!Applies_to_Doc__No.Value = "" Or Fields!SalesCreditMemoOrder.Value = "", True, False)</Hidden>
+                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -3890,6 +3896,9 @@
                                                               <Height>0.36728cm</Height>
                                                               <Width>3.96542cm</Width>
                                                               <ZIndex>4</ZIndex>
+                                                              <Visibility>
+                                                                <Hidden>=IIf(Fields!Applies_to_Doc__No.Value = "" Or Fields!SalesCreditMemoOrder.Value = "", True, False)</Hidden>
+                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -3926,6 +3935,9 @@
                                                               <Height>2.10817cm</Height>
                                                               <Width>3.433cm</Width>
                                                               <ZIndex>6</ZIndex>
+                                                              <Visibility>
+                                                                <Hidden>=IIf(Fields!Applies_to_Doc__No.Value = "" Or Fields!SalesCreditMemoOrder.Value = "", True, False)</Hidden>
+                                                              </Visibility>
                                                               <Style>
                                                                 <Border>
                                                                   <Style>None</Style>
@@ -4687,6 +4699,12 @@ End Function
         </Field>
         <Field Name="SignatureDate">
           <DataField>SignatureDate</DataField>
+        </Field>
+        <Field Name="Applies_to_Doc__No">
+          <DataField>Applies_to_Doc__No</DataField>
+        </Field>
+        <Field Name="SalesCreditMemoOrder">
+          <DataField>SalesCreditMemoOrder</DataField>
         </Field>
         <Field Name="LineNo_Line">
           <DataField>LineNo_Line</DataField>

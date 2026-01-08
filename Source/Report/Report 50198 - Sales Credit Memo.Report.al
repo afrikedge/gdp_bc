@@ -209,6 +209,12 @@ report 50198 "Sales Credit Memo"
             column(SignatureDate; Format(Today))
             {
             }
+            column(Applies_to_Doc__No; "Applies-to Doc. No.")
+            {
+            }
+            column(SalesCreditMemoOrder; SalesCreditMemoOrder)
+            {
+            }
             dataitem(Line; "Sales Cr.Memo Line")
             {
                 DataItemLink = "Document No." = field("No.");
@@ -944,6 +950,9 @@ report 50198 "Sales Credit Memo"
                 if PaymentTerms.Get(Header."Payment Terms Code") then
                     PaymentTerm := PaymentTerms.Description;
 
+                if SalesInvH.Get(Header."Applies-to Doc. No.") then
+                    SalesCreditMemoOrder := SalesInvH."Order No.";
+
                 GLSetup.Get();
                 GLSetup.TestField("LCY Code");
                 CurrCode := Header."Currency Code";
@@ -1144,6 +1153,7 @@ report 50198 "Sales Credit Memo"
         Location: Record Location;
         // Currency: Record Currency;
         SalesHeaderLineRec: Record "Sales Cr.Memo Line";
+        SalesInvH: Record "Sales Invoice Header";
         RepCheck: Report Check;
 
         LanguageMgt: Codeunit Language;
@@ -1173,6 +1183,7 @@ report 50198 "Sales Credit Memo"
         CurrSymbol: Text[10];
         VATClauseText: Text;
 
+        SalesCreditMemoOrder: Code[20];
         Lines: Integer;
         LineNumber: Integer;
         LinesNumb: Integer;
