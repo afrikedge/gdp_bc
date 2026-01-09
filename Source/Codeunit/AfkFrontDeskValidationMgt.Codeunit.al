@@ -1072,6 +1072,9 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Afk Blocked"), input, 'Blocked');
         WS.ValidateField(RecRef, Lead.FieldNo(Lead."Transport Type"), input, 'Transport Type');
 
+        WS.ValidateField(RecRef, Lead.FieldNo(Lead."BE Inscription"), input, 'BE Inscription');
+        WS.ValidateField(RecRef, Lead.FieldNo(Lead."DN Inscription"), input, 'DN Inscription');
+
         RecRef.SetTable(Lead);
     end;
 
@@ -1264,6 +1267,8 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Warranty Validity"), input, 'Warranty Validity');
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Afk Desactivation Reason"), input, 'Deactivation Reason');
         WS.ValidateField(RecRef, Cust.FieldNo(Cust."Transport Type"), input, 'Transport Type');
+        WS.ValidateField(RecRef, Cust.FieldNo(Cust."BE Inscription"), input, 'BE Inscription');
+        WS.ValidateField(RecRef, Cust.FieldNo(Cust."DN Inscription"), input, 'DN Inscription');
 
         RecRef.SetTable(Cust);
     end;
