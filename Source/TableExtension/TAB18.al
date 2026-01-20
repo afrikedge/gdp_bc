@@ -295,6 +295,14 @@ tableextension 50005 "A02 Customer" extends Customer
         {
             Caption = 'Transport Type';
         }
+        field(50068; "BE Inscription"; Enum "Afk Type Inscription BE BL")
+        {
+            Caption = 'Inscription sur BE';
+        }
+        field(50069; "DN Inscription"; Enum "Afk Type Inscription BE BL")
+        {
+            Caption = 'Inscription sur BL';
+        }
         //**fin champs identiques avec Contact
 
 
@@ -351,6 +359,7 @@ tableextension 50005 "A02 Customer" extends Customer
         //     OptionCaption = 'Non applique,Ville,Hors-ville';
         //     OptionMembers = NonApplique,Ville,HorsVille;
         // }
+
 
     }
     keys

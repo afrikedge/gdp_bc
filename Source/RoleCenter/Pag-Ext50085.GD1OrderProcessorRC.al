@@ -544,7 +544,6 @@ pageextension 50085 "GD1 Order Processor RC" extends "Order Processor Role Cente
                     RunObject = Page "User Personalization";
                 }
             }
-
             group(GD1_Jirama)
             {
                 Caption = 'Afk Jirama';

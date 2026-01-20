@@ -79,6 +79,14 @@ pageextension 50094 "Afk Customer Card" extends "Customer Card"
             field("Afk Type transport"; Rec."Transport Type")
             {
             }
+            field("BE Inscription"; Rec."BE Inscription")
+            {
+                ApplicationArea = All;
+            }
+            field("DN Inscription"; Rec."DN Inscription")
+            {
+                ApplicationArea = All;
+            }
         }
 
         addlast(Invoicing)

@@ -226,6 +226,14 @@ tableextension 50055 "A02 Contact" extends Contact
         {
             Caption = 'Transport Type';
         }
+        field(50068; "BE Inscription"; Enum "Afk Type Inscription BE BL")
+        {
+            Caption = 'Inscription sur BE';
+        }
+        field(50069; "DN Inscription"; Enum "Afk Type Inscription BE BL")
+        {
+            Caption = 'Inscription sur BL';
+        }
         //**fin champs identiques avec client
 
 
@@ -351,8 +359,6 @@ tableextension 50055 "A02 Contact" extends Contact
         {
             Caption = 'Blocked';
         }
-
-
     }
 }
 

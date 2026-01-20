@@ -416,11 +416,23 @@ report 50190 "PickUp Order"
             column(CompanyStamp; CompanyInfo."Company Stamp")
             {
             }
+            column(Customer_No; "Customer No")
+            {
+            }
+            column(Sales_Channel_Code; "Sales Channel Code")
+            {
+            }
+            column(InscriptionTxt; InscriptionTxt)
+            {
+            }
             trigger OnAfterGetRecord()
             var
 
             begin
                 Header.CheckBonIsValidatedByManager();
+
+                if Customer.Get(Header."Customer No") then
+                    InscriptionTxt := Format(Customer."BE Inscription");
 
                 if RespCenter.Get(Header.region) then
                     Agency := RespCenter.Name;
@@ -511,6 +523,7 @@ report 50190 "PickUp Order"
         CompanyInfos: Record "Company Information";
         UserSetup: Record "User Setup";
         UserSetup2: Record "User Setup";
+        Customer: Record Customer;
         // ShipmentMethod: Record "Shipment Method";
         ItName1: Text[50];
         ItName2: Text[50];
@@ -574,6 +587,7 @@ report 50190 "PickUp Order"
         Agency: Text[100];
         DeliveryMode: Text[100];
         Duplicata: Text;
+        InscriptionTxt: Text;
         PickUpOrderTitleLbl: Label 'PICK-UP ORDER';
         BENumberLbl: Label 'B/E N°';
         SalesAgencyLbl: Label 'SALES AGENCY';

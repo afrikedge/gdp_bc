@@ -47,6 +47,16 @@ page 50002 "Sales Order Payments"
                     Visible = false;
                 }
             }
+
+        }
+        area(FactBoxes)
+        {
+            part("Attached Documents"; "Document Attachment Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Attachments';
+                SubPageLink = "Table ID" = const(Database::"Sales Order Pay Doc"), "No." = field("Pay Document No."), "Line No." = field("Line No.");
+            }
         }
     }
     local procedure GD1LookupCreditNotes(var Text: Text; var Rec: record "Sales Order Pay Doc")

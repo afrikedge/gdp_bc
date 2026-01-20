@@ -592,6 +592,15 @@ report 50194 "Posted Sales Shipment"
             column(NoPermis; AfkPermis)
             {
             }
+            column(RefTxt; RefTxt)
+            {
+            }
+            column(ReferenceLbl; ReferenceLbl)
+            {
+            }
+            column(UserFullName; UserSetup."User Full Name")
+            {
+            }
             dataitem(Line; "Sales Shipment Line")
             {
                 DataItemLink = "Document No." = field("No.");
@@ -987,6 +996,9 @@ report 50194 "Posted Sales Shipment"
                 if CompanyInfo.Get() then
                     Foot3 := CompanyInfo."Phone No." + ' - Fax : ' + CompanyInfo."Fax No.";
 
+                if SalesHeader.Get(SalesHeader."Document Type"::Order, Header."Order No.") then
+                    RefTxt := SalesHeader."External Document No.";
+
                 if not IsReportInPreviewMode() then
                     CODEUNIT.Run(CODEUNIT::"Sales Shpt.-Printed", Header);
 
@@ -1011,6 +1023,8 @@ report 50194 "Posted Sales Shipment"
 
                 TempTrackingSpecBuffer.Reset();
                 TempTrackingSpecBuffer.DeleteAll();
+
+                UserFullName(UserSetup, Header);
 
                 OnAfterGetSalesHeader(Header);
             end;
@@ -1153,6 +1167,8 @@ report 50194 "Posted Sales Shipment"
         RespCenter: Record "Responsibility Center";
         SellToContact: Record Contact;
         BillToContact: Record Contact;
+        SalesHeader: Record "Sales Header";
+        UserSetup: Record "User Setup";
         LanguageMgt: Codeunit Language;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
@@ -1187,6 +1203,7 @@ report 50194 "Posted Sales Shipment"
         DepotName: Text[100];
         Agency: Text[100];
         Foot3: Text;
+        RefTxt: Code[35];
 
         NoFilterSetErr: Label 'You must specify one or more filters to avoid accidently printing all documents.';
         GreetingLbl: Label 'Hello';
@@ -1280,6 +1297,7 @@ report 50194 "Posted Sales Shipment"
         Name5CaptionLbl: Label 'Name :';
         Date5CaptionLbl: Label 'Date :';
         ObservationsCaptionLbl: Label 'OBSERVATIONS';
+        ReferenceLbl: Label 'Référence :';
         LegalOfficeTxt, LegalOfficeLbl, CustomGiroTxt, CustomGiroLbl, LegalStatementLbl : Text;
 
     protected var
@@ -1534,7 +1552,7 @@ report 50194 "Posted Sales Shipment"
         if ILE.FindSet() then
             repeat
                 if ILE."Lot No." <> '' then begin
-                    BatchText += ILE."Lot No."; // ' (' + Format(Abs(ILE.Quantity)) + ')';
+                    BatchText += ILE."Lot No." + ' (' + Format(Abs(ILE.Quantity)) + ')';
                     BatchText += '\n';
                 end;
             until ILE.Next() = 0;
@@ -1563,5 +1581,18 @@ report 50194 "Posted Sales Shipment"
             until ILE.Next() = 0;
 
         exit(DateText);
+    end;
+
+    procedure UserFullName(var USetup1: record "User Setup"; SSH: Record "Sales Shipment Header")
+    Var
+        UserT: Record "User Setup";
+    begin
+        Clear(UserT);
+        Clear(USetup1);
+        UserT.Get(UserId);
+
+        USetup1.SetRange("User ID", SSH."User ID");
+        if USetup1.FindFirst() then
+            USetup1.CalcFields("User Full Name");
     end;
 }

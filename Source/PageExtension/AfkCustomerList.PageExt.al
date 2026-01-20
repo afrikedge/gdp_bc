@@ -4,6 +4,15 @@ pageextension 50110 "Afk Customer List" extends "Customer List"
     {
         addafter(Contact)
         {
+            field(Address; Rec.Address)
+            {
+            }
+            field("Address 2"; Rec."Address 2")
+            {
+            }
+            field("E-Mail"; Rec."E-Mail")
+            {
+            }
             field("Holding Code"; Rec."Holding Code")
             {
             }
@@ -26,6 +35,12 @@ pageextension 50110 "Afk Customer List" extends "Customer List"
             {
             }
             field("STAT Code"; Rec."STAT Code")
+            {
+            }
+            field("CIF/CIS"; Rec."CIF/CIS")
+            {
+            }
+            field("Trade Number"; Rec."Trade Number")
             {
             }
             field("Risk Level"; Rec."Risk Level")

@@ -202,6 +202,12 @@ report 50193 "Posted Whse Shipment"
                 column(CompanyStamp; CompanyInfo."Company Stamp")
                 {
                 }
+                column(ReferenceLbl; ReferenceLbl)
+                {
+                }
+                column(UserFullName; UserSetup."User Full Name")
+                {
+                }
                 dataitem(Line; "Posted Whse. Shipment Line")
                 {
                     DataItemLink = "No." = field("No.");
@@ -246,6 +252,9 @@ report 50193 "Posted Whse Shipment"
                     column(ExpDate; ExpDate)
                     {
                     }
+                    column(RefTxt; RefTxt)
+                    {
+                    }
                     dataitem(Customer; Customer)
                     {
                         DataItemLink = "No." = field("Destination No.");
@@ -287,6 +296,9 @@ report 50193 "Posted Whse Shipment"
                             if ItemUnitMeasure.Get(Line."Item No.", Line."Unit of Measure Code") then
                                 if ItemUnitMeasure.Get(Line."Item No.", 'KG') then
                                     TonneConversion := Line.Quantity / ItemUnitMeasure."Qty. per Unit of Measure";
+
+                        if SalesHeader.Get(SalesHeader."Document Type"::Order, Line."Source No.") then
+                            RefTxt := SalesHeader."External Document No.";
 
                         Address := GetShipToAddress(Line);
                         Agency := GetRespCenter(Line);
@@ -334,6 +346,8 @@ report 50193 "Posted Whse Shipment"
 
                 if CompanyInfos.Get() then
                     Foot3 := CompanyInfos."Phone No." + ' - Fax : ' + CompanyInfos."Fax No.";
+
+                UserFullName(UserSetup, Header);
             end;
         }
     }
@@ -364,6 +378,8 @@ report 50193 "Posted Whse Shipment"
         ItemUnitMeasure: Record "Item Unit of Measure";
         CompanyInfo: Record "Company Information";
         CompanyInfos: Record "Company Information";
+        SalesHeader: Record "Sales Header";
+        UserSetup: Record "User Setup";
         QtyConverted: Decimal;
         TonneConversion: Decimal;
         Lines: Integer;
@@ -376,6 +392,7 @@ report 50193 "Posted Whse Shipment"
         Batch: Text;
         ExpDate: Text;
         Foot3: Text;
+        RefTxt: Code[35];
         // PAGENOCaptionLbl: Label 'Page';
         WhsePostedShipmentCaptionLbl: Label 'DELIVERY NOTE';
         BLNumberCaptionLbl: Label 'B/L N°';
@@ -418,6 +435,7 @@ report 50193 "Posted Whse Shipment"
         Name5CaptionLbl: Label 'Name :';
         Date5CaptionLbl: Label 'Date :';
         ObservationsCaptionLbl: Label 'OBSERVATIONS';
+        ReferenceLbl: Label 'Référence :';
 
     local procedure GetLocation(LocationCode: Code[10])
     begin
@@ -477,7 +495,7 @@ report 50193 "Posted Whse Shipment"
         if ILE.FindSet() then
             repeat
                 if ILE."Lot No." <> '' then begin
-                    BatchText += ILE."Lot No.";
+                    BatchText += ILE."Lot No." + ' (' + Format(Abs(ILE.Quantity)) + ')';
                     BatchText += '\n';
                 end;
             until ILE.Next() = 0;
@@ -503,5 +521,18 @@ report 50193 "Posted Whse Shipment"
             until ILE.Next() = 0;
 
         exit(DateText);
+    end;
+
+    procedure UserFullName(var USetup1: record "User Setup"; PWSH: Record "Posted Whse. Shipment Header")
+    Var
+        UserT: Record "User Setup";
+    begin
+        Clear(UserT);
+        Clear(USetup1);
+        UserT.Get(UserId);
+
+        USetup1.SetRange("User ID", PWSH."Assigned User ID");
+        if USetup1.FindFirst() then
+            USetup1.CalcFields("User Full Name");
     end;
 }

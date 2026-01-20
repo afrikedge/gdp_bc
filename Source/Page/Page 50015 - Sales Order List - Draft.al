@@ -8,7 +8,8 @@ page 50015 "Sales Order List - Draft"
     UsageCategory = Lists;
     SourceTable = "Sales Header";
     SourceTableView = WHERE("Document Type" = CONST(Order),
-                            "Delivery Status" = CONST(Saisie));
+                            "Delivery Status" = CONST(Saisie),
+                            "Afk Hide In BC" = CONST(false));
 
     layout
     {
@@ -340,6 +341,7 @@ page 50015 "Sales Order List - Draft"
 
                     trigger OnAction()
                     begin
+                        //Rec.TestField("Afk Web Order Sent", true);
                         SOProcess.TraiterCommande(Rec);
                     end;
                 }
