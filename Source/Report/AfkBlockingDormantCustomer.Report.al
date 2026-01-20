@@ -30,6 +30,7 @@ report 50064 "Afk Blocking Dormant Customer"
                     if NbreMois >= AddOnSetup."Customer blocking period Month" then begin
                         if (Customer.Blocked <> Customer.Blocked::All) then begin
                             Customer.Blocked := Customer.Blocked::All;
+                            Customer."Customer Status" := Customer."Customer Status"::Inactif;
                             Customer.Modify;
                         end;
                     end;

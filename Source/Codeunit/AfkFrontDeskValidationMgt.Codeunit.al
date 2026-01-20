@@ -492,6 +492,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         SalesOrder.Insert(true);
 
         PopulateValuesSalesOrder(SalesOrder, input);
+        SalesOrder."Afk Hide In BC" := true;
         SalesOrder.Modify(true);
         //processOrdersLines(SalesOrder, SalesOrderLine, input);
 
@@ -1554,6 +1555,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     var
     begin
         SalesHeader."Afk Web Order Sent" := true;
+        SalesHeader."Afk Hide In BC" := false;
         SalesHeader.Modify();
         SendEmailNewSalesOrder(SalesHeader, sentToEmailAdress);
     end;

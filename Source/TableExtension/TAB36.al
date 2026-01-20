@@ -393,6 +393,13 @@ tableextension 50011 "A02 Sales Header" extends "Sales Header"
             DataClassification = CustomerContent;
             //Editable = false;
         }
+        field(50082; "Afk Hide In BC"; Boolean)
+        {
+            Caption = 'Hide in BC';
+            DataClassification = CustomerContent;
+            Editable = false;
+            //Editable = false;
+        }
     }
     keys
     {
