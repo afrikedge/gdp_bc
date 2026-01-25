@@ -2442,6 +2442,7 @@
                                                 </TablixMember>
                                               </TablixMembers>
                                             </TablixRowHierarchy>
+                                            <DataSetName>DataSet_Result</DataSetName>
                                             <Filters>
                                               <Filter>
                                                 <FilterExpression>=Fields!Lines.Value + Fields!LinesFoot.Value</FilterExpression>
@@ -2567,6 +2568,12 @@
                                                               <TextRuns>
                                                                 <TextRun>
                                                                   <Value>=Fields!Observations.Value</Value>
+                                                                  <Style>
+                                                                    <FontSize>8pt</FontSize>
+                                                                  </Style>
+                                                                </TextRun>
+                                                                <TextRun>
+                                                                  <Value xml:space="preserve"> </Value>
                                                                   <Style>
                                                                     <FontSize>8pt</FontSize>
                                                                   </Style>
@@ -3292,7 +3299,6 @@
                                                           </Style>
                                                         </Textbox>
                                                         <ColSpan>6</ColSpan>
-                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell />
@@ -4222,7 +4228,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value>=Fields!VATAmountLCY_VATAmountLine.Value</Value>
+                                                                  <Value>=Sum(Fields!VATAmountLCY_VATAmountLine.Value)</Value>
                                                                   <Style>
                                                                     <FontFamily>Segoe UI</FontFamily>
                                                                     <FontSize>8pt</FontSize>
@@ -4266,10 +4272,16 @@
                                             <TablixRowHierarchy>
                                               <TablixMembers>
                                                 <TablixMember>
-                                                  <Group Name="Details2" />
+                                                  <Group Name="Details2">
+                                                    <GroupExpressions>
+                                                      <GroupExpression>=Fields!VATPct_VatAmountLine.Value</GroupExpression>
+                                                    </GroupExpressions>
+                                                  </Group>
                                                 </TablixMember>
                                               </TablixMembers>
                                             </TablixRowHierarchy>
+                                            <KeepTogether>true</KeepTogether>
+                                            <DataSetName>DataSet_Result</DataSetName>
                                             <Filters>
                                               <Filter>
                                                 <FilterExpression>=Cstr(Len(Fields!VATIdentifier_VatAmountLine.Value))</FilterExpression>
