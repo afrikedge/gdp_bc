@@ -973,10 +973,13 @@ codeunit 50032 "EventsSubscribers Code"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document Attachment Mgmt", 'OnAfterTableHasNumberFieldPrimaryKey', '', true, false)]
     local procedure DocumentAttachmentMgmt_OnAfterTableHasNumberFieldPrimaryKey(TableNo: Integer; var Result: Boolean; var FieldNo: Integer)
     var
-        BudgetMgt: codeunit "Purchase Requisition Mgt";
     begin
         if (TableNo = Database::"Vendor Invoice Doc") then begin
             FieldNo := 20;
+            Result := true;
+        end;
+        if (TableNo = Database::"Sales Order Pay Doc") then begin
+            FieldNo := 13;
             Result := true;
         end;
 

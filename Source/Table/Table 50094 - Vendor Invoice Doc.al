@@ -277,7 +277,7 @@ table 50094 "Vendor Invoice Doc"
 
     var
         gRequisitionSetup: Record "AddOn Setup2";
-        NosSeriesMgt: Codeunit NoSeriesManagement;
+        NosSeriesMgt: Codeunit "No. Series";
         PurchOrder: Record "Purchase Header";
         PurchReq: Record "Purchase Requisition";
         WkfwCode: Record "Custom Workflow Config";

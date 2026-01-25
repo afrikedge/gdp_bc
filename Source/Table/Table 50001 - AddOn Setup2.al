@@ -196,6 +196,11 @@ table 50001 "AddOn Setup2"
         {
             Caption = 'Remove check on Lubs shipment';
         }
+        field(44; "SO Payment Ref Nos"; Code[20])
+        {
+            Caption = 'Sales Orders Payment ref. Nos';
+            TableRelation = "No. Series".Code;
+        }
     }
 
     keys
