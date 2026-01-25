@@ -59,6 +59,9 @@ page 50037 "Afk External User"
                 field("Responsibility Center"; Rec."Responsibility Center")
                 {
                 }
+                field("Can Consult GM"; Rec."Can Consult GM")
+                {
+                }
             }
             group(Autorisations)
             {

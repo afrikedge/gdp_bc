@@ -1923,6 +1923,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field Remove check on Lubs shipment - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3242877383 - Field 1598579487 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Orders Payment ref. Nos</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AddOn Setup2 - Field SO Payment Ref Nos - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3242877383 - Field 3275391108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Délai de blocage fsseurs dormants (Mois)</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3292,6 +3297,11 @@
           <source>Can Approve As DG</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk FrontDesk User - Field Can Approve As DG - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1907769039 - Field 1386468606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Can Consult GM</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk FrontDesk User - Field Can Consult GM - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1907769039 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
@@ -12994,9 +13004,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Frontdesk Reference - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3127719954 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Frontdesk Observations</source>
+          <source>Line No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3127719954 - Field 2917288502 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Media Ref No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Media Ref No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3127719954 - Field 231998036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Paid Amount</source>

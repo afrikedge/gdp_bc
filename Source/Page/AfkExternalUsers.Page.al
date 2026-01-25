@@ -86,6 +86,9 @@ page 50036 "Afk External Users"
                 field("BC User Id"; Rec."BC User Id")
                 {
                 }
+                field("Can Consult GM"; Rec."Can Consult GM")
+                {
+                }
             }
         }
     }
