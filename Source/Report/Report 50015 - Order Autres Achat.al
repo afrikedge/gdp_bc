@@ -438,6 +438,9 @@ report 50015 "Order Autres Achat"
                         column(TextTotalRemis; Text011)
                         {
                         }
+                        column(DiscountLbl; DiscountLbl)
+                        {
+                        }
                         dataitem(DimensionLoop2; "Integer")
                         {
                             DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
@@ -1259,7 +1262,7 @@ report 50015 "Order Autres Achat"
         FaxCaptionLbl: Label 'Fax : ';
         EmailCaptionLbl: Label 'Email : ';
         UOM_PurchLineCaptionLbl: Label 'Unité';
-        Text010: Label 'REMISE  %';
+        Text010: Label 'REMISE';
         ModePaieCaptionLbl: Label 'Mode de Paiement';
         DelaiLivCaptionLbl: Label 'Délai de livraison';
         Text011: Label 'Total avec remise';
@@ -1270,6 +1273,7 @@ report 50015 "Order Autres Achat"
         DevAmountCaption: Label 'Devise %1';
         TxtNeant: Label 'NEANT';
         ConditionLbl: Label '"La société GALANA DISTRIBUTION PETROLIERE (GDP) S.A requiert de l''ensemble de ses fournisseurs qu''ils s’engagent formellement à respecter le Code éthique du groupe RUBIS, consultable sur le site "www.rubis.fr", ainsi que de les Conditions Générales d’Achat de la société."';
+        DiscountLbl: Label 'Remise %';
         CodeDemand: Code[20];
         TotalAvecRemise: Decimal;
         Pays: Record "Country/Region";

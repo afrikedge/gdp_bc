@@ -53713,6 +53713,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Order Autres Achat - NamedType DevAmountCaption</note>
         </trans-unit>
+        <trans-unit id="Report 3663497183 - NamedType 1856822529" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remise %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Autres Achat - NamedType DiscountLbl</note>
+        </trans-unit>
         <trans-unit id="Report 3663497183 - NamedType 1877430892" size-unit="char" translate="yes" xml:space="preserve">
           <source>Email : </source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -53814,7 +53819,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Order Autres Achat - NamedType Text009</note>
         </trans-unit>
         <trans-unit id="Report 3663497183 - NamedType 1664139952" size-unit="char" translate="yes" xml:space="preserve">
-          <source>REMISE  %</source>
+          <source>REMISE</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Order Autres Achat - NamedType Text010</note>
         </trans-unit>
