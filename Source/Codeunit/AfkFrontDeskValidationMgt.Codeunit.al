@@ -1169,23 +1169,24 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         RecRef.SetTable(SalesLine);
     end;
 
-    local procedure PopulateValuesSOPaymentMethods(var PayMethod: Record "Sales Order Pay Doc"; input: JsonObject)
+    local procedure PopulateValuesSOPaymentMethods(var PayDoc: Record "Sales Order Pay Doc"; input: JsonObject)
     var
         RecRef: RecordRef;
     begin
 
-        RecRef.GetTable(PayMethod);
+        RecRef.GetTable(PayDoc);
 
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Pay Document No."), input, 'Pay Document No_');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Line No."), input, 'Line No_');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Pay Method"), input, 'No_');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Reference"), input, 'Reference');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Amount"), input, 'Amount');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Paid Amount"), input, 'Amount');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Observations"), input, 'Observation');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Pay Document No."), input, 'Pay Document No_');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Line No."), input, 'Line No_');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Frontdesk Pay Method"), input, 'No_');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Frontdesk Reference"), input, 'Reference');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Frontdesk Amount"), input, 'Amount');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Paid Amount"), input, 'Amount');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Frontdesk Observations"), input, 'Observation');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."File Link"), input, 'Link');
 
 
-        RecRef.SetTable(PayMethod);
+        RecRef.SetTable(PayDoc);
     end;
 
 

@@ -3463,6 +3463,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Afk Reference - Field Active - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3706542705 - Field 1166999572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachment Required</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Afk Reference - Field Attachment Required - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3706542705 - Field 1918147989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BC Payment</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12977,6 +12982,11 @@
           <source>Document No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3127719954 - Field 3393556346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>File Link</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Order Pay Doc - Field File Link - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3127719954 - Field 1253942328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Frontdesk Amount</source>

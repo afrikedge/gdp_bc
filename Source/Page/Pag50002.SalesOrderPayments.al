@@ -46,6 +46,10 @@ page 50002 "Sales Order Payments"
                 {
                     Visible = false;
                 }
+                field("File Link"; Rec."File Link")
+                {
+                    ExtendedDatatype = URL;
+                }
             }
 
         }

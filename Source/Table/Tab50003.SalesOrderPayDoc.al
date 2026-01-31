@@ -84,6 +84,11 @@ table 50003 "Sales Order Pay Doc"
             Caption = 'Media Ref No.';
             Editable = false;
         }
+        field(14; "File Link"; Text[1000])
+        {
+            Caption = 'File Link';
+            Editable = false;
+        }
     }
     keys
     {
