@@ -4,12 +4,19 @@ codeunit 50033 "EventsSubscribers Page"
     local procedure DocumentAttachmentFactbox_OnBeforeDrillDown(DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef)
     var
         VendInvoice: record "Vendor Invoice Doc";
+        SalesOrderPayDoc: record "Sales Order Pay Doc";
     begin
         if (DocumentAttachment."Table ID" = Database::"Vendor Invoice Doc") then begin
             RecRef.Open(Database::"Vendor Invoice Doc");
             VendInvoice.SetRange("Reference Number", DocumentAttachment."No.");
             if (VendInvoice.FindFirst()) then
                 RecRef.GetTable(VendInvoice);
+        end;
+        if (DocumentAttachment."Table ID" = Database::"Sales Order Pay Doc") then begin
+            RecRef.Open(Database::"Sales Order Pay Doc");
+            SalesOrderPayDoc.SetRange("Media Ref No.", DocumentAttachment."No.");
+            if (SalesOrderPayDoc.FindFirst()) then
+                RecRef.GetTable(SalesOrderPayDoc);
         end;
     end;
 

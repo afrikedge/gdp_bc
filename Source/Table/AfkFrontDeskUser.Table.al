@@ -113,6 +113,11 @@ table 50099 "Afk FrontDesk User"
             Editable = false;
             Caption = 'Password Exists';
         }
+        field(26; "Can Consult GM"; Boolean)
+        {
+            Caption = 'Can Consult GM';
+        }
+
     }
     keys
     {

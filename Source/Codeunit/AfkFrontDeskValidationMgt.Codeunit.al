@@ -710,7 +710,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
     local procedure processOrdersPayMethods(SalesOrder: Record "Sales Header"; input: JsonObject)
     var
         PayMethod: record "Sales Order Pay Doc";
-        PayMethodLine: Record "Sales Order Pay Doc";
+        //PayMethodLine: Record "Sales Order Pay Doc";
         c: JsonToken;
         LinesArray: JsonArray;
         LineInput: JsonObject;
@@ -729,6 +729,59 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
             AddOrUpdateSalesOrderPaymentMethod(SalesOrder, LineInput);
         end;
     end;
+
+    local procedure AddDocumentAttachmentFromJson_BC25(PayMethod: Record "Sales Order Pay Doc"; input: JsonObject)
+    var
+        AttObj: JsonObject;
+        Tok: JsonToken;
+        FileName: Text;
+        ContentType: Text;
+        Base64Txt: Text;
+        DocAtt: Record "Document Attachment";
+        TempBlob: Codeunit "Temp Blob";
+        OutStr: OutStream;
+        InStr: InStream;
+        Base64Convert: Codeunit "Base64 Convert";
+    begin
+        if not input.Get('Attachment', Tok) then
+            exit;
+
+        AttObj := Tok.AsObject();
+
+        FileName := GetJsonText(AttObj, 'FileName');
+        ContentType := GetJsonText(AttObj, 'ContentType');
+        Base64Txt := GetJsonText(AttObj, 'ContentBase64');
+
+        if (FileName = '') or (Base64Txt = '') then
+            exit;
+
+        // Base64 -> InStream
+        TempBlob.CreateOutStream(OutStr);
+        Base64Convert.FromBase64(Base64Txt, OutStr);
+        TempBlob.CreateInStream(InStr);
+
+
+        Clear(DocAtt);
+        DocAtt.Init();
+        DocAtt.Validate("Table ID", Database::"Sales Order Pay Doc");
+        DocAtt.Validate("No.", CopyStr(PayMethod."Media Ref No.", 1, MaxStrLen(DocAtt."No.")));
+        DocAtt.Validate("File Name", CopyStr(FileName, 1, MaxStrLen(DocAtt."File Name")));
+        DocAtt."Document Reference ID".ImportStream(InStr, FileName);
+
+        DocAtt.Insert(true);
+    end;
+
+    local procedure GetJsonText(JObj: JsonObject; Name: Text): Text
+    var
+        Tok: JsonToken;
+    begin
+        if not JObj.Get(Name, Tok) then
+            exit('');
+        if Tok.IsValue() then
+            exit(Tok.AsValue().AsText());
+        exit('');
+    end;
+
 
     local procedure AddOrUpdateSalesOrderLine(SalesOrder: Record "Sales Header"; var SalesLine: Record "Sales Line"; input: JsonObject)
     var
@@ -758,32 +811,16 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
 
     local procedure AddOrUpdateSalesOrderPaymentMethod(SalesOrder: Record "Sales Header"; input: JsonObject)
     var
-
-
         PayMethod: Record "Sales Order Pay Doc";
-        SalesPayDoc: Record "Sales Order Pay Doc";
     begin
-
-
-        // SalesPayDoc.Reset();
-        // SalesPayDoc.SetRange("Customer No.", SalesOrder."Sell-to Customer No.");
-        // SalesPayDoc.SetRange("Document No.", SalesOrder."No.");
-        // SalesPayDoc.SetRange("Line No.", WS.GetInt('Line No_', input));
-        // if (not SalesPayDoc.FindFirst()) then begin
-
         clear(PayMethod);
         PayMethod."Customer No." := SalesOrder."Sell-to Customer No.";
         PayMethod."Document No." := SalesOrder."No.";
         PopulateValuesSOPaymentMethods(PayMethod, input);
         PayMethod."Paid Amount" := -PayMethod."Paid Amount";
-        PayMethod.Insert();
+        PayMethod.Insert(true);
 
-        // end else begin
-
-        // PopulateValuesSOPaymentMethods(SalesPayDoc, input);
-        // SalesPayDoc.Modify(true);
-
-        //end;
+        AddDocumentAttachmentFromJson_BC25(PayMethod, input);
     end;
 
     local procedure processCustRequirements(RecNo: Code[20]; input: JsonObject; IsLead: Boolean)
@@ -1132,23 +1169,24 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         RecRef.SetTable(SalesLine);
     end;
 
-    local procedure PopulateValuesSOPaymentMethods(var PayMethod: Record "Sales Order Pay Doc"; input: JsonObject)
+    local procedure PopulateValuesSOPaymentMethods(var PayDoc: Record "Sales Order Pay Doc"; input: JsonObject)
     var
         RecRef: RecordRef;
     begin
 
-        RecRef.GetTable(PayMethod);
+        RecRef.GetTable(PayDoc);
 
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Pay Document No."), input, 'Pay Document No_');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Line No."), input, 'Line No_');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Pay Method"), input, 'No_');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Reference"), input, 'Reference');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Amount"), input, 'Amount');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Paid Amount"), input, 'Amount');
-        WS.ValidateField(RecRef, PayMethod.FieldNo(PayMethod."Frontdesk Observations"), input, 'Observation');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Pay Document No."), input, 'Pay Document No_');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Line No."), input, 'Line No_');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Frontdesk Pay Method"), input, 'No_');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Frontdesk Reference"), input, 'Reference');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Frontdesk Amount"), input, 'Amount');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Paid Amount"), input, 'Amount');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."Frontdesk Observations"), input, 'Observation');
+        WS.ValidateField(RecRef, PayDoc.FieldNo(PayDoc."File Link"), input, 'Link');
 
 
-        RecRef.SetTable(PayMethod);
+        RecRef.SetTable(PayDoc);
     end;
 
 
@@ -1568,6 +1606,7 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         EmailMgt: Codeunit EmailMgt;
         CCAdress: Text;
         Objet: Text;
+        CCList: Text;
     begin
 
         AddOnSetup2.Get();
@@ -1575,6 +1614,9 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         AddOnSetup2.TestField("BC Main Url");
 
         Objet := 'Une commande N° ' + SalesHeader."No." + ' vient d''être soumise par votre client ' + SalesHeader."Sell-to Customer Name";
+
+        CCList := BuildCCForNewSalesOrder(SalesHeader, AddOnSetup2);
+
 
         EmailToSend.Init();
         //EmailToSend.EntryID := EmailMgt.GetNextEntryNoInEmailRec();
@@ -1585,12 +1627,65 @@ codeunit 50039 "Afk FrontDeskValidation Mgt"
         EmailToSend."User ID" := UserId;
         EmailToSend."Entry Date" := Today;
         EmailToSend."Document No." := SalesHeader."No.";
-        if (CCAdress <> '') then
-            EmailToSend.SendToCC := CCAdress;
 
-        if ((ToAdress <> '') or (CCAdress <> '')) then
+
+        if CCList <> '' then
+            EmailToSend.SendToCC := CCList;
+
+        if ((ToAdress <> '') or (CCList <> '')) then
             EmailMgt.SendEmail(EmailToSend);
     end;
+
+    local procedure BuildCCForNewSalesOrder(SalesHeader: Record "Sales Header"; AddOnSetup2: Record "AddOn Setup2"): Text
+    var
+        Cust: Record Customer;
+        Salesperson: Record "Salesperson/Purchaser";
+        RespCenter: Record "Responsibility Center";
+        CCList: Text;
+    begin
+
+        AddEmailToCc(CCList, AddOnSetup2."Email Copie New Sales Order");
+
+        // Charger le client vendu-à
+        if Cust.Get(SalesHeader."Sell-to Customer No.") then begin
+
+            AddEmailToCc(CCList, Cust."E-Mail");
+
+            // 2) Gestionnaire du compte
+            if (Cust."Salesperson Code" <> '') and Salesperson.Get(Cust."Salesperson Code") then
+                AddEmailToCc(CCList, Salesperson."E-Mail");
+
+            // 3) CSC : email du centre de gestion
+            if SalesHeader."Responsibility Center" <> '' then begin
+                if RespCenter.Get(SalesHeader."Responsibility Center") then
+                    AddEmailToCc(CCList, RespCenter."E-Mail");
+            end else begin
+                if (Cust."Responsibility Center" <> '') and RespCenter.Get(Cust."Responsibility Center") then
+                    AddEmailToCc(CCList, RespCenter."E-Mail");
+            end;
+        end;
+
+        exit(CCList);
+    end;
+
+    local procedure AddEmailToCc(var CCList: Text; Email: Text)
+    var
+        Clean: Text;
+    begin
+        Clean := DelChr(Email, '<>', ' ');
+        if Clean = '' then
+            exit;
+
+        // évite les doublons simples (insensible à la casse)
+        if StrPos(LowerCase(';' + CCList + ';'), LowerCase(';' + Clean + ';')) > 0 then
+            exit;
+
+        if CCList = '' then
+            CCList := Clean
+        else
+            CCList := CCList + ';' + Clean;
+    end;
+
 
     procedure CreateEmailBody(SalesHeader: record "Sales Header"): Text
     var

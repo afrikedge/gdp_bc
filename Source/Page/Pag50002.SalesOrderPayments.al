@@ -46,6 +46,10 @@ page 50002 "Sales Order Payments"
                 {
                     Visible = false;
                 }
+                field("File Link"; Rec."File Link")
+                {
+                    ExtendedDatatype = URL;
+                }
             }
 
         }
@@ -55,7 +59,7 @@ page 50002 "Sales Order Payments"
             {
                 ApplicationArea = All;
                 Caption = 'Attachments';
-                SubPageLink = "Table ID" = const(Database::"Sales Order Pay Doc"), "No." = field("Pay Document No."), "Line No." = field("Line No.");
+                SubPageLink = "Table ID" = const(Database::"Sales Order Pay Doc"), "No." = field("Media Ref No.");
             }
         }
     }

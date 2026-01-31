@@ -28,6 +28,11 @@ table 50098 "Afk Reference"
         {
             Caption = 'BC Payment';
         }
+        field(6; "Attachment Required"; Boolean)
+        {
+            Caption = 'Attachment Required';
+        }
+
     }
     keys
     {

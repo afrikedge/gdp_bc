@@ -133,6 +133,9 @@ page 50351 "Params Setup2"
                 field("Orange Money WP Acc"; Rec."Orange Money WP Acc")
                 {
                 }
+                field("SO Payment Ref Nos"; Rec."SO Payment Ref Nos")
+                {
+                }
             }
         }
     }

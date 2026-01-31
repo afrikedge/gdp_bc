@@ -77,7 +77,17 @@ table 50003 "Sales Order Pay Doc"
         }
         field(12; "Line No."; Integer)
         {
-            Caption = 'Frontdesk Observations';
+            Caption = 'Line No.';
+        }
+        field(13; "Media Ref No."; Code[20])
+        {
+            Caption = 'Media Ref No.';
+            Editable = false;
+        }
+        field(14; "File Link"; Text[1000])
+        {
+            Caption = 'File Link';
+            Editable = false;
         }
     }
     keys
@@ -86,5 +96,20 @@ table 50003 "Sales Order Pay Doc"
         {
             Clustered = true;
         }
+        key(Secondary; "Media Ref No.")
+        {
+
+        }
     }
+    trigger OnInsert()
+    var
+    begin
+        gRequisitionSetup.Get;
+        gRequisitionSetup.TestField("SO Payment Ref Nos");
+        "Media Ref No." := NosSeriesMgt.GetNextNo(gRequisitionSetup."SO Payment Ref Nos", WorkDate, true);
+    end;
+
+    var
+        gRequisitionSetup: Record "AddOn Setup2";
+        NosSeriesMgt: Codeunit "No. Series";
 }

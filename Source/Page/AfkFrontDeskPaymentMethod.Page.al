@@ -24,6 +24,9 @@ page 50230 AfkFrontDeskPaymentMethod
                 field("BC Payment"; Rec."BC Payment")
                 {
                 }
+                field("Attachment Required"; Rec."Attachment Required")
+                {
+                }
             }
         }
     }
